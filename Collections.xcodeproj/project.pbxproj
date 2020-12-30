@@ -17,6 +17,9 @@
 		78231234259C147900D9E723 /* Rswift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78231233259C147900D9E723 /* Rswift.framework */; };
 		78231235259C147900D9E723 /* Rswift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 78231233259C147900D9E723 /* Rswift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		785D2798259C183300F7C9A6 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785D2797259C183300F7C9A6 /* R.generated.swift */; };
+		7892EF52259C58C0006F7315 /* IBDesignableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7892EF51259C58C0006F7315 /* IBDesignableButton.swift */; };
+		7892EF5C259C5DF0006F7315 /* IBDesignableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7892EF5B259C5DF0006F7315 /* IBDesignableTextField.swift */; };
+		7892EF62259C642C006F7315 /* IBDesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7892EF61259C642C006F7315 /* IBDesignableView.swift */; };
 		78997E69259C28970076FF97 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 78997E68259C28970076FF97 /* GoogleService-Info.plist */; };
 		78997E83259C29D80076FF97 /* nanopb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78997E6E259C29D70076FF97 /* nanopb.framework */; };
 		78997E85259C29D80076FF97 /* GoogleDataTransport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78997E6F259C29D70076FF97 /* GoogleDataTransport.framework */; };
@@ -39,6 +42,7 @@
 		78997EA7259C29D80076FF97 /* FirebaseFirestore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78997E80259C29D80076FF97 /* FirebaseFirestore.framework */; };
 		78997EA9259C29D80076FF97 /* FirebaseAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78997E81259C29D80076FF97 /* FirebaseAnalytics.framework */; };
 		78997EAB259C29D80076FF97 /* leveldb-library.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78997E82259C29D80076FF97 /* leveldb-library.framework */; };
+		78997EE5259C4C5E0076FF97 /* UIView-IBInspectable-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78997EE4259C4C5E0076FF97 /* UIView-IBInspectable-Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +93,9 @@
 		7823121D259C0D9300D9E723 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		78231233259C147900D9E723 /* Rswift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Rswift.framework; path = Carthage/Build/iOS/Rswift.framework; sourceTree = "<group>"; };
 		785D2797259C183300F7C9A6 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = R.generated.swift; path = Collections/AppResources/R/R.generated.swift; sourceTree = SOURCE_ROOT; };
+		7892EF51259C58C0006F7315 /* IBDesignableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBDesignableButton.swift; sourceTree = "<group>"; };
+		7892EF5B259C5DF0006F7315 /* IBDesignableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBDesignableTextField.swift; sourceTree = "<group>"; };
+		7892EF61259C642C006F7315 /* IBDesignableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBDesignableView.swift; sourceTree = "<group>"; };
 		78997E68259C28970076FF97 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		78997E6E259C29D70076FF97 /* nanopb.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = nanopb.framework; path = Carthage/Build/iOS/nanopb.framework; sourceTree = "<group>"; };
 		78997E6F259C29D70076FF97 /* GoogleDataTransport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleDataTransport.framework; path = Carthage/Build/iOS/GoogleDataTransport.framework; sourceTree = "<group>"; };
@@ -111,6 +118,7 @@
 		78997E80259C29D80076FF97 /* FirebaseFirestore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseFirestore.framework; path = Carthage/Build/iOS/FirebaseFirestore.framework; sourceTree = "<group>"; };
 		78997E81259C29D80076FF97 /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAnalytics.framework; path = Carthage/Build/iOS/FirebaseAnalytics.framework; sourceTree = "<group>"; };
 		78997E82259C29D80076FF97 /* leveldb-library.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "leveldb-library.framework"; path = "Carthage/Build/iOS/leveldb-library.framework"; sourceTree = "<group>"; };
+		78997EE4259C4C5E0076FF97 /* UIView-IBInspectable-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView-IBInspectable-Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -238,6 +246,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		7892EF48259C539B006F7315 /* IBDesignable */ = {
+			isa = PBXGroup;
+			children = (
+				7892EF61259C642C006F7315 /* IBDesignableView.swift */,
+				7892EF5B259C5DF0006F7315 /* IBDesignableTextField.swift */,
+				7892EF51259C58C0006F7315 /* IBDesignableButton.swift */,
+			);
+			path = IBDesignable;
+			sourceTree = "<group>";
+		};
 		78997EB7259C34550076FF97 /* AppConfig */ = {
 			isa = PBXGroup;
 			children = (
@@ -333,6 +351,8 @@
 		78997EC2259C350B0076FF97 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				7892EF48259C539B006F7315 /* IBDesignable */,
+				78997EE3259C4C4D0076FF97 /* Extension */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -376,6 +396,14 @@
 				78231204259C0D9300D9E723 /* LaunchScreen.storyboard */,
 			);
 			path = Launch;
+			sourceTree = "<group>";
+		};
+		78997EE3259C4C4D0076FF97 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				78997EE4259C4C5E0076FF97 /* UIView-IBInspectable-Extensions.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -573,8 +601,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7892EF5C259C5DF0006F7315 /* IBDesignableTextField.swift in Sources */,
+				7892EF52259C58C0006F7315 /* IBDesignableButton.swift in Sources */,
 				782311FE259C0D9200D9E723 /* SignupViewController.swift in Sources */,
+				7892EF62259C642C006F7315 /* IBDesignableView.swift in Sources */,
 				782311FA259C0D9200D9E723 /* AppDelegate.swift in Sources */,
+				78997EE5259C4C5E0076FF97 /* UIView-IBInspectable-Extensions.swift in Sources */,
 				785D2798259C183300F7C9A6 /* R.generated.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
