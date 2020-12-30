@@ -1,13 +1,14 @@
 import UIKit
 
 final class SignupViewController: UIViewController {
-    
+
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var passwordConfirmationTextField: UITextField!
     @IBOutlet weak var secureTextChangeButton: UIButton!
     @IBOutlet weak var signupButton: UIButton!
-    
+
+    private var isSecureCheck: Bool = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,8 +23,32 @@ extension SignupViewController {
         [emailTextField, passwordTextField, passwordConfirmationTextField]
             .forEach { $0?.delegate = self }
     }
-    
+
     private func setupButton() {
+        secureTextChangeButton.addTarget(
+            self,
+            action: #selector(secureTextChange),
+            for: .touchUpInside
+        )
+
+        signupButton.addTarget(
+            self,
+            action: #selector(showHomeScreen),
+            for: .touchUpInside
+        )
+    }
+
+    @objc private func secureTextChange(_ sender: UIButton) {
+        let secureImage = isSecureCheck ? R.image.check_In_Box() : R.image.check_Off_Box()
+        sender.setImage(secureImage, for: .normal)
+        [passwordTextField, passwordConfirmationTextField].forEach {
+            $0?.isSecureTextEntry = isSecureCheck ? false : true
+        }
+        isSecureCheck = !isSecureCheck
+    }
+
+    @objc private func showHomeScreen(_ sender: UIButton) {
+
     }
 }
 
