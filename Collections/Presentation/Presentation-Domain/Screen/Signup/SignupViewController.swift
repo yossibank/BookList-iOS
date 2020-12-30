@@ -8,7 +8,8 @@ final class SignupViewController: UIViewController {
     @IBOutlet weak var passwordConfirmationTextField: UITextField!
     @IBOutlet weak var secureTextChangeButton: UIButton!
     @IBOutlet weak var signupButton: UIButton!
-
+    @IBOutlet weak var loginButton: UIButton!
+    
     var keyboardNotifier: KeyboardNotifier = KeyboardNotifier()
 
     private var isSecureCheck: Bool = true

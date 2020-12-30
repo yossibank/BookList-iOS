@@ -38,7 +38,7 @@ extension UIView {
     }
     
     @IBInspectable var shadowColor: UIColor? {
-        get { return layer.shadowColor.map { UIColor(cgColor: $0 )}        }
+        get { return layer.shadowColor.map { UIColor(cgColor: $0 ) }}
         set { layer.shadowColor = newValue?.cgColor }
     }
 }
