@@ -15,6 +15,9 @@
 		78231206259C0D9300D9E723 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78231204259C0D9300D9E723 /* LaunchScreen.storyboard */; };
 		78231211259C0D9300D9E723 /* CollectionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78231210259C0D9300D9E723 /* CollectionsTests.swift */; };
 		7823121C259C0D9300D9E723 /* CollectionsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7823121B259C0D9300D9E723 /* CollectionsUITests.swift */; };
+		78231234259C147900D9E723 /* Rswift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78231233259C147900D9E723 /* Rswift.framework */; };
+		78231235259C147900D9E723 /* Rswift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 78231233259C147900D9E723 /* Rswift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		785D2798259C183300F7C9A6 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785D2797259C183300F7C9A6 /* R.generated.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +37,20 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		78231236259C147900D9E723 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				78231235259C147900D9E723 /* Rswift.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		782311F6259C0D9200D9E723 /* Collections.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Collections.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		782311F9259C0D9200D9E723 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +66,8 @@
 		78231217259C0D9300D9E723 /* CollectionsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CollectionsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7823121B259C0D9300D9E723 /* CollectionsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionsUITests.swift; sourceTree = "<group>"; };
 		7823121D259C0D9300D9E723 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		78231233259C147900D9E723 /* Rswift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Rswift.framework; path = Carthage/Build/iOS/Rswift.framework; sourceTree = "<group>"; };
+		785D2797259C183300F7C9A6 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78231234259C147900D9E723 /* Rswift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +103,7 @@
 				7823120F259C0D9300D9E723 /* CollectionsTests */,
 				7823121A259C0D9300D9E723 /* CollectionsUITests */,
 				782311F7259C0D9200D9E723 /* Products */,
+				78231232259C147900D9E723 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,6 +120,7 @@
 		782311F8259C0D9200D9E723 /* Collections */ = {
 			isa = PBXGroup;
 			children = (
+				785D2797259C183300F7C9A6 /* R.generated.swift */,
 				782311F9259C0D9200D9E723 /* AppDelegate.swift */,
 				782311FB259C0D9200D9E723 /* SceneDelegate.swift */,
 				782311FD259C0D9200D9E723 /* ViewController.swift */,
@@ -128,6 +150,14 @@
 			path = CollectionsUITests;
 			sourceTree = "<group>";
 		};
+		78231232259C147900D9E723 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				78231233259C147900D9E723 /* Rswift.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,9 +165,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 78231220259C0D9300D9E723 /* Build configuration list for PBXNativeTarget "Collections" */;
 			buildPhases = (
+				781B131B259C14C300D0AE80 /* Rswift */,
 				782311F2259C0D9200D9E723 /* Sources */,
 				782311F3259C0D9200D9E723 /* Frameworks */,
+				78231236259C147900D9E723 /* Embed Frameworks */,
 				782311F4259C0D9200D9E723 /* Resources */,
+				7823122C259C13E600D9E723 /* Carthage */,
 			);
 			buildRules = (
 			);
@@ -231,8 +264,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				78231206259C0D9300D9E723 /* LaunchScreen.storyboard in Resources */,
 				78231203259C0D9300D9E723 /* Assets.xcassets in Resources */,
+				78231206259C0D9300D9E723 /* LaunchScreen.storyboard in Resources */,
 				78231201259C0D9200D9E723 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -253,6 +286,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		781B131B259C14C300D0AE80 /* Rswift */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$TEMP_DIR/rswift-lastrun",
+			);
+			name = Rswift;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				$SRCROOT/R.generated.swift,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"rswift\" generate \"$SRCROOT/R.generated.swift\"\n";
+		};
+		7823122C259C13E600D9E723 /* Carthage */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Rswift.framework",
+			);
+			name = Carthage;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		782311F2259C0D9200D9E723 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -261,6 +336,7 @@
 				782311FE259C0D9200D9E723 /* ViewController.swift in Sources */,
 				782311FA259C0D9200D9E723 /* AppDelegate.swift in Sources */,
 				782311FC259C0D9200D9E723 /* SceneDelegate.swift in Sources */,
+				785D2798259C183300F7C9A6 /* R.generated.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -352,6 +428,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				EXCLUDED_ARCHS = "";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -373,6 +450,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VALIDATE_WORKSPACE = YES;
 			};
 			name = Debug;
 		};
@@ -428,6 +506,7 @@
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
+				VALIDATE_WORKSPACE = YES;
 			};
 			name = Release;
 		};
@@ -437,6 +516,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Collections/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -455,6 +538,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Collections/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
