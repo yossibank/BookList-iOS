@@ -171,6 +171,7 @@
 				78231236259C147900D9E723 /* Embed Frameworks */,
 				782311F4259C0D9200D9E723 /* Resources */,
 				7823122C259C13E600D9E723 /* Carthage */,
+				785D27A0259C195400F7C9A6 /* Swiftlint */,
 			);
 			buildRules = (
 			);
@@ -325,6 +326,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+		785D27A0259C195400F7C9A6 /* Swiftlint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Swiftlint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"SwiftLint does not exist, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
