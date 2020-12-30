@@ -404,8 +404,7 @@
 			isa = PBXGroup;
 			children = (
 				78997EC7259C353E0076FF97 /* Launch */,
-				782311FF259C0D9200D9E723 /* SignupViewController.storyboard */,
-				782311FD259C0D9200D9E723 /* SignupViewController.swift */,
+				78DF9170259C7D77007E5D9A /* Signup */,
 			);
 			path = Screen;
 			sourceTree = "<group>";
@@ -424,6 +423,15 @@
 				78997EE4259C4C5E0076FF97 /* UIView-IBInspectable-Extensions.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		78DF9170259C7D77007E5D9A /* Signup */ = {
+			isa = PBXGroup;
+			children = (
+				782311FF259C0D9200D9E723 /* SignupViewController.storyboard */,
+				782311FD259C0D9200D9E723 /* SignupViewController.swift */,
+			);
+			path = Signup;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
