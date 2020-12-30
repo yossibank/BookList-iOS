@@ -96,6 +96,7 @@
                         <outlet property="passwordTextField" destination="BS3-2F-isb" id="VY1-1m-xBH"/>
                         <outlet property="secureTextChangeButton" destination="YGP-JC-Ey3" id="5gj-9s-MSK"/>
                         <outlet property="signupButton" destination="bMa-gU-6jb" id="rpJ-ZA-RHh"/>
+                        <outlet property="stackView" destination="JQ1-y2-NAh" id="0Fw-jo-wKl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
