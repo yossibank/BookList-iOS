@@ -39,8 +39,11 @@ extension SignupViewController {
     }
 
     @objc private func secureTextChange(_ sender: UIButton) {
-        let secureImage = isSecureCheck ? R.image.check_In_Box() : R.image.check_Off_Box()
+        let secureImage = isSecureCheck
+            ? Resources.Images.Account.checkInBox
+            : Resources.Images.Account.checkOffBox
         sender.setImage(secureImage, for: .normal)
+
         [passwordTextField, passwordConfirmationTextField].forEach {
             $0?.isSecureTextEntry = isSecureCheck ? false : true
         }

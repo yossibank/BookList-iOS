@@ -20,6 +20,9 @@
 		7892EF52259C58C0006F7315 /* IBDesignableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7892EF51259C58C0006F7315 /* IBDesignableButton.swift */; };
 		7892EF5C259C5DF0006F7315 /* IBDesignableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7892EF5B259C5DF0006F7315 /* IBDesignableTextField.swift */; };
 		7892EF62259C642C006F7315 /* IBDesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7892EF61259C642C006F7315 /* IBDesignableView.swift */; };
+		7892EF68259C720A006F7315 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7892EF67259C720A006F7315 /* Strings.swift */; };
+		7892EF6C259C7212006F7315 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7892EF6B259C7212006F7315 /* Images.swift */; };
+		7892EF70259C721F006F7315 /* Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7892EF6F259C721F006F7315 /* Resources.swift */; };
 		78997E69259C28970076FF97 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 78997E68259C28970076FF97 /* GoogleService-Info.plist */; };
 		78997E83259C29D80076FF97 /* nanopb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78997E6E259C29D70076FF97 /* nanopb.framework */; };
 		78997E85259C29D80076FF97 /* GoogleDataTransport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78997E6F259C29D70076FF97 /* GoogleDataTransport.framework */; };
@@ -96,6 +99,9 @@
 		7892EF51259C58C0006F7315 /* IBDesignableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBDesignableButton.swift; sourceTree = "<group>"; };
 		7892EF5B259C5DF0006F7315 /* IBDesignableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBDesignableTextField.swift; sourceTree = "<group>"; };
 		7892EF61259C642C006F7315 /* IBDesignableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBDesignableView.swift; sourceTree = "<group>"; };
+		7892EF67259C720A006F7315 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
+		7892EF6B259C7212006F7315 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
+		7892EF6F259C721F006F7315 /* Resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resources.swift; sourceTree = "<group>"; };
 		78997E68259C28970076FF97 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		78997E6E259C29D70076FF97 /* nanopb.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = nanopb.framework; path = Carthage/Build/iOS/nanopb.framework; sourceTree = "<group>"; };
 		78997E6F259C29D70076FF97 /* GoogleDataTransport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleDataTransport.framework; path = Carthage/Build/iOS/GoogleDataTransport.framework; sourceTree = "<group>"; };
@@ -294,6 +300,9 @@
 		78997EBB259C34940076FF97 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				7892EF6F259C721F006F7315 /* Resources.swift */,
+				7892EF67259C720A006F7315 /* Strings.swift */,
+				7892EF6B259C7212006F7315 /* Images.swift */,
 				78997EBE259C34AD0076FF97 /* ResourcesSupport */,
 			);
 			path = Resources;
@@ -603,7 +612,10 @@
 			files = (
 				7892EF5C259C5DF0006F7315 /* IBDesignableTextField.swift in Sources */,
 				7892EF52259C58C0006F7315 /* IBDesignableButton.swift in Sources */,
+				7892EF68259C720A006F7315 /* Strings.swift in Sources */,
+				7892EF70259C721F006F7315 /* Resources.swift in Sources */,
 				782311FE259C0D9200D9E723 /* SignupViewController.swift in Sources */,
+				7892EF6C259C7212006F7315 /* Images.swift in Sources */,
 				7892EF62259C642C006F7315 /* IBDesignableView.swift in Sources */,
 				782311FA259C0D9200D9E723 /* AppDelegate.swift in Sources */,
 				78997EE5259C4C5E0076FF97 /* UIView-IBInspectable-Extensions.swift in Sources */,
