@@ -12,7 +12,13 @@ final class SignupViewController: UIViewController {
     
     var keyboardNotifier: KeyboardNotifier = KeyboardNotifier()
 
+    private let router: RouterProtocol = Router()
+
     private var isSecureCheck: Bool = true
+
+    static func createInstance() -> SignupViewController {
+        SignupViewController.instantiateInitialViewController()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,7 +72,13 @@ extension SignupViewController {
     }
 
     @objc private func showLoginScreen(_ sender: UIButton) {
-
+        if presentingViewController is LoginViewController {
+            self.dismiss(animated: true)
+        } else {
+            router.present(.login, from: self, isModalInPresentation: false)
+        }
+        
+        
     }
 }
 

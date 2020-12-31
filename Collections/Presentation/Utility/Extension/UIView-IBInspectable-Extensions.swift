@@ -1,5 +1,7 @@
 import UIKit
 
+typealias VoidBlock = () -> Void
+
 extension UIView {
 
     @IBInspectable var layerColor: UIColor? {
