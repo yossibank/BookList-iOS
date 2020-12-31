@@ -1,15 +1,14 @@
 import UIKit
 
-final class SignupViewController: UIViewController {
+final class LoginViewController: UIViewController {
 
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var passwordConfirmationTextField: UITextField!
     @IBOutlet weak var secureTextChangeButton: UIButton!
-    @IBOutlet weak var signupButton: UIButton!
     @IBOutlet weak var loginButton: UIButton!
-    
+    @IBOutlet weak var signupButton: UIButton!
+
     var keyboardNotifier: KeyboardNotifier = KeyboardNotifier()
 
     private var isSecureCheck: Bool = true
@@ -22,11 +21,12 @@ final class SignupViewController: UIViewController {
     }
 }
 
-extension SignupViewController {
+extension LoginViewController {
 
     private func setupTextField() {
-        [emailTextField, passwordTextField, passwordConfirmationTextField]
-            .forEach { $0?.delegate = self }
+        [emailTextField, passwordTextField].forEach {
+            $0?.delegate = self
+        }
     }
 
     private func setupButton() {
@@ -36,13 +36,13 @@ extension SignupViewController {
             for: .touchUpInside
         )
 
-        signupButton.addTarget(
+        loginButton.addTarget(
             self,
             action: #selector(showHomeScreen),
             for: .touchUpInside
         )
 
-        loginButton.addTarget(
+        signupButton.addTarget(
             self,
             action: #selector(showLoginScreen),
             for: .touchUpInside
@@ -55,9 +55,7 @@ extension SignupViewController {
             : Resources.Images.Account.checkOffBox
         sender.setImage(secureImage, for: .normal)
 
-        [passwordTextField, passwordConfirmationTextField].forEach {
-            $0?.isSecureTextEntry = isSecureCheck ? false : true
-        }
+        passwordTextField.isSecureTextEntry = isSecureCheck ? false : true
         isSecureCheck = !isSecureCheck
     }
 
@@ -70,7 +68,7 @@ extension SignupViewController {
     }
 }
 
-extension SignupViewController: UITextFieldDelegate {
+extension LoginViewController: UITextFieldDelegate {
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
@@ -79,8 +77,6 @@ extension SignupViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if emailTextField == textField {
             passwordTextField.becomeFirstResponder()
-        } else if passwordTextField == textField {
-            passwordConfirmationTextField.becomeFirstResponder()
         } else {
             textField.resignFirstResponder()
         }
@@ -88,12 +84,12 @@ extension SignupViewController: UITextFieldDelegate {
     }
 }
 
-extension SignupViewController: KeyboardDelegate {
+extension LoginViewController: KeyboardDelegate {
 
     func keyboardPresent(_ height: CGFloat) {
         let displayHeight = self.view.frame.height - height
-        let signupButtonOffsetY = signupButton.convert(signupButton.frame, to: stackView).minY
-        let bottomOffsetY = signupButtonOffsetY - displayHeight
+        let loginButtonContentOffsetY = loginButton.convert(loginButton.frame, to: stackView).maxY
+        let bottomOffsetY = loginButtonContentOffsetY - displayHeight + 60
         view.frame.origin.y == 0 ? (view.frame.origin.y -= bottomOffsetY) : ()
     }
 

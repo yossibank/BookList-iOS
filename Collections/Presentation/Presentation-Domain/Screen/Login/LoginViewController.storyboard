@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CUS-jl-4Lt">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Login View Controller-->
+        <scene sceneID="cTU-WI-lgY">
+            <objects>
+                <viewController id="CUS-jl-4Lt" customClass="LoginViewController" customModule="Collections" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jlf-NY-6cF">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="48" translatesAutoresizingMaskIntoConstraints="NO" id="ehu-uA-PNP">
+                                <rect key="frame" x="56" y="312" width="302" height="272"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="メールアドレス" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rS5-U3-gai" customClass="BorderBottomTextField" customModule="Collections" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="302" height="32"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="32" id="xgC-Ku-qbv"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="パスワード" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NvK-EG-EPS" customClass="BorderBottomTextField" customModule="Collections" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="80" width="302" height="32"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="32" id="z4B-je-a6y"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" secureTextEntry="YES"/>
+                                    </textField>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="tAg-0E-XoJ">
+                                        <rect key="frame" x="0.0" y="160" width="302" height="24"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ABH-Ek-Eng">
+                                                <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="24" id="YZr-LY-5yv"/>
+                                                    <constraint firstAttribute="width" constant="24" id="mXh-74-Cjt"/>
+                                                </constraints>
+                                                <state key="normal" image="Check_Off_Box"/>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="パスワードを表示する" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j4c-jk-SIR">
+                                                <rect key="frame" x="32" y="0.0" width="270" height="24"/>
+                                                <fontDescription key="fontDescription" name="HiraMinProN-W6" family="Hiragino Mincho ProN" pointSize="15"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1aq-gh-JfO" customClass="IBDesignableButton" customModule="Collections" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="232" width="302" height="40"/>
+                                        <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="cmT-Pi-Lpt"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                        <state key="normal" title="ログイン">
+                                            <color key="titleColor" systemColor="systemBackgroundColor"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q2f-Ro-sP8" customClass="IBDesignableButton" customModule="Collections" customModuleProvider="target">
+                                <rect key="frame" x="243" y="640" width="135" height="40"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                                <state key="normal" title="アカウント作成">
+                                    <color key="titleColor" systemColor="systemBackgroundColor"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="JOl-Lw-EHW"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ehu-uA-PNP" firstAttribute="centerY" secondItem="jlf-NY-6cF" secondAttribute="centerY" id="7NX-oq-Tgq"/>
+                            <constraint firstItem="q2f-Ro-sP8" firstAttribute="centerX" secondItem="jlf-NY-6cF" secondAttribute="centerX" multiplier="1.5" id="8Tz-T1-aHk"/>
+                            <constraint firstItem="JOl-Lw-EHW" firstAttribute="trailing" secondItem="ehu-uA-PNP" secondAttribute="trailing" constant="56" id="FYn-Gy-1bR"/>
+                            <constraint firstItem="ehu-uA-PNP" firstAttribute="leading" secondItem="jlf-NY-6cF" secondAttribute="leading" constant="56" id="wEm-nW-GAz"/>
+                            <constraint firstItem="q2f-Ro-sP8" firstAttribute="top" secondItem="ehu-uA-PNP" secondAttribute="bottom" constant="56" id="y2g-gQ-zsW"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="emailTextField" destination="rS5-U3-gai" id="02u-Fw-xne"/>
+                        <outlet property="loginButton" destination="1aq-gh-JfO" id="yOj-6G-Woo"/>
+                        <outlet property="passwordTextField" destination="NvK-EG-EPS" id="pvr-4N-u34"/>
+                        <outlet property="secureTextChangeButton" destination="ABH-Ek-Eng" id="bAu-hf-Y5u"/>
+                        <outlet property="signupButton" destination="q2f-Ro-sP8" id="6yR-Qf-qe7"/>
+                        <outlet property="stackView" destination="ehu-uA-PNP" id="owm-6R-DrG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wk4-2d-Ite" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-157" y="139"/>
+        </scene>
+    </scenes>
+    <designables>
+        <designable name="1aq-gh-JfO">
+            <size key="intrinsicContentSize" width="66" height="32"/>
+        </designable>
+        <designable name="NvK-EG-EPS">
+            <size key="intrinsicContentSize" width="82" height="20"/>
+        </designable>
+        <designable name="q2f-Ro-sP8">
+            <size key="intrinsicContentSize" width="135" height="40"/>
+        </designable>
+        <designable name="rS5-U3-gai">
+            <size key="intrinsicContentSize" width="114.5" height="21"/>
+        </designable>
+    </designables>
+    <resources>
+        <image name="Check_Off_Box" width="15" height="15"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
