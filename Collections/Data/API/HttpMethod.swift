@@ -22,7 +22,7 @@ enum HttpMethod: String {
                   let dictionary = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] else {
                 return nil
             }
-            
+
             components.queryItems = dictionary.map { URLQueryItem(name: $0.key, value: "\($0.value)") }
             guard let getUrl = components.url else {
                 return nil
