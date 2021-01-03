@@ -49,6 +49,7 @@
 		78997EA9259C29D80076FF97 /* FirebaseAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78997E81259C29D80076FF97 /* FirebaseAnalytics.framework */; };
 		78997EAB259C29D80076FF97 /* leveldb-library.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78997E82259C29D80076FF97 /* leveldb-library.framework */; };
 		78997EE5259C4C5E0076FF97 /* UIView-IBInspectable-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78997EE4259C4C5E0076FF97 /* UIView-IBInspectable-Extensions.swift */; };
+		78C61C0E25A1655600DC78A6 /* HttpMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C61C0D25A1655600DC78A6 /* HttpMethod.swift */; };
 		78F940E6259D7E42007C972A /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F940E5259D7E42007C972A /* Router.swift */; };
 		78F940EA259D7EEF007C972A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F940E9259D7EEF007C972A /* ViewController.swift */; };
 		78F940EE259D995F007C972A /* ResourcesSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F940ED259D995F007C972A /* ResourcesSupport.swift */; };
@@ -134,6 +135,7 @@
 		78997E81259C29D80076FF97 /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAnalytics.framework; path = Carthage/Build/iOS/FirebaseAnalytics.framework; sourceTree = "<group>"; };
 		78997E82259C29D80076FF97 /* leveldb-library.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "leveldb-library.framework"; path = "Carthage/Build/iOS/leveldb-library.framework"; sourceTree = "<group>"; };
 		78997EE4259C4C5E0076FF97 /* UIView-IBInspectable-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView-IBInspectable-Extensions.swift"; sourceTree = "<group>"; };
+		78C61C0D25A1655600DC78A6 /* HttpMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpMethod.swift; sourceTree = "<group>"; };
 		78F940E5259D7E42007C972A /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		78F940E9259D7EEF007C972A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		78F940ED259D995F007C972A /* ResourcesSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourcesSupport.swift; sourceTree = "<group>"; };
@@ -311,6 +313,7 @@
 		78997EB9259C34670076FF97 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				78C61C0C25A1654600DC78A6 /* API */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -446,6 +449,14 @@
 				78997EE4259C4C5E0076FF97 /* UIView-IBInspectable-Extensions.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		78C61C0C25A1654600DC78A6 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				78C61C0D25A1655600DC78A6 /* HttpMethod.swift */,
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 		78DF9170259C7D77007E5D9A /* Signup */ = {
@@ -665,6 +676,7 @@
 				7892EF62259C642C006F7315 /* IBDesignableView.swift in Sources */,
 				782311FA259C0D9200D9E723 /* AppDelegate.swift in Sources */,
 				78997EE5259C4C5E0076FF97 /* UIView-IBInspectable-Extensions.swift in Sources */,
+				78C61C0E25A1655600DC78A6 /* HttpMethod.swift in Sources */,
 				785D2798259C183300F7C9A6 /* R.generated.swift in Sources */,
 				7892EF79259C73C9006F7315 /* KeyboardNotifier.swift in Sources */,
 				78F940E6259D7E42007C972A /* Router.swift in Sources */,
