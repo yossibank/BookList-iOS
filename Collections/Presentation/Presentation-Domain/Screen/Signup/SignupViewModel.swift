@@ -1,32 +1,36 @@
-import UIKit
 import RxSwift
 import RxRelay
 
 final class SignupViewModel {
-    private let resultSubject: BehaviorRelay<Result<SignupResponse, Error>?> = BehaviorRelay(value: nil)
+    private let usecase: SignupUsecase
     private let loadingSubject: BehaviorRelay<Bool> = BehaviorRelay(value: false)
+    private let resultSubject: BehaviorRelay<Result<SignupResponse, Error>?> = BehaviorRelay(value: nil)
     private let disposeBag: DisposeBag = DisposeBag()
-
-    var result: Observable<Result<SignupResponse, Error>?> {
-        resultSubject.asObservable()
-    }
 
     var loading: Observable<Bool> {
         loadingSubject.asObservable()
     }
 
-    func signup(email: String, password: String) {
+    var result: Observable<Result<SignupResponse, Error>?> {
+        resultSubject.asObservable()
+    }
 
-        loadingSubject.accept(true)
+    init(usecase: SignupUsecase) {
+        self.usecase = usecase
+        bindUsecase()
+    }
 
-        SignupRequest().request(.init(email: email, password: password))
-            .subscribe(onSuccess: { response in
-                self.loadingSubject.accept(false)
-                self.resultSubject.accept(.success(response))
-            }, onFailure: { error in
-                self.loadingSubject.accept(false)
-                self.resultSubject.accept(.failure(error))
-            })
+    private func bindUsecase() {
+        usecase.loading
+            .bind(to: loadingSubject)
             .disposed(by: disposeBag)
+
+        usecase.result
+            .bind(to: resultSubject)
+            .disposed(by: disposeBag)
+    }
+
+    func signup(email: String, password: String) {
+        usecase.signup(email: email, password: password)
     }
 }
