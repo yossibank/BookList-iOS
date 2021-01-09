@@ -16,6 +16,9 @@
 		7823121C259C0D9300D9E723 /* CollectionsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7823121B259C0D9300D9E723 /* CollectionsUITests.swift */; };
 		78231234259C147900D9E723 /* Rswift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78231233259C147900D9E723 /* Rswift.framework */; };
 		78231235259C147900D9E723 /* Rswift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 78231233259C147900D9E723 /* Rswift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		785A1AB725A9A369005E8A4B /* SignupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785A1AB625A9A369005E8A4B /* SignupViewModel.swift */; };
+		785A1ABD25A9A407005E8A4B /* SignupRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785A1ABC25A9A407005E8A4B /* SignupRequest.swift */; };
+		785A1AC125A9A416005E8A4B /* SignupResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785A1AC025A9A416005E8A4B /* SignupResponse.swift */; };
 		785D2798259C183300F7C9A6 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785D2797259C183300F7C9A6 /* R.generated.swift */; };
 		7892EF52259C58C0006F7315 /* IBDesignableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7892EF51259C58C0006F7315 /* IBDesignableButton.swift */; };
 		7892EF5C259C5DF0006F7315 /* IBDesignableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7892EF5B259C5DF0006F7315 /* IBDesignableTextField.swift */; };
@@ -106,6 +109,9 @@
 		7823121B259C0D9300D9E723 /* CollectionsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionsUITests.swift; sourceTree = "<group>"; };
 		7823121D259C0D9300D9E723 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		78231233259C147900D9E723 /* Rswift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Rswift.framework; path = Carthage/Build/iOS/Rswift.framework; sourceTree = "<group>"; };
+		785A1AB625A9A369005E8A4B /* SignupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewModel.swift; sourceTree = "<group>"; };
+		785A1ABC25A9A407005E8A4B /* SignupRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupRequest.swift; sourceTree = "<group>"; };
+		785A1AC025A9A416005E8A4B /* SignupResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupResponse.swift; sourceTree = "<group>"; };
 		785D2797259C183300F7C9A6 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = R.generated.swift; path = Collections/AppResources/R/R.generated.swift; sourceTree = SOURCE_ROOT; };
 		7892EF51259C58C0006F7315 /* IBDesignableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBDesignableButton.swift; sourceTree = "<group>"; };
 		7892EF5B259C5DF0006F7315 /* IBDesignableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBDesignableTextField.swift; sourceTree = "<group>"; };
@@ -476,6 +482,7 @@
 			isa = PBXGroup;
 			children = (
 				78C61C1F25A16DC800DC78A6 /* Base */,
+				785A1ABC25A9A407005E8A4B /* SignupRequest.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -483,6 +490,7 @@
 		78C61C1E25A16DBD00DC78A6 /* Response */ = {
 			isa = PBXGroup;
 			children = (
+				785A1AC025A9A416005E8A4B /* SignupResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -508,6 +516,7 @@
 			children = (
 				782311FF259C0D9200D9E723 /* SignupViewController.storyboard */,
 				782311FD259C0D9200D9E723 /* SignupViewController.swift */,
+				785A1AB625A9A369005E8A4B /* SignupViewModel.swift */,
 			);
 			path = Signup;
 			sourceTree = "<group>";
@@ -711,11 +720,13 @@
 				78987B3C259C8813008311DC /* LoginViewController.swift in Sources */,
 				7892EF5C259C5DF0006F7315 /* IBDesignableTextField.swift in Sources */,
 				7892EF52259C58C0006F7315 /* IBDesignableButton.swift in Sources */,
+				785A1AB725A9A369005E8A4B /* SignupViewModel.swift in Sources */,
 				78C61C1425A1692900DC78A6 /* APIError.swift in Sources */,
 				7892EF68259C720A006F7315 /* Strings.swift in Sources */,
 				78F940EA259D7EEF007C972A /* ViewController.swift in Sources */,
 				7892EF70259C721F006F7315 /* Resources.swift in Sources */,
 				78F940EE259D995F007C972A /* ResourcesSupport.swift in Sources */,
+				785A1AC125A9A416005E8A4B /* SignupResponse.swift in Sources */,
 				78C61C2C25A1716800DC78A6 /* StringsUtil.swift in Sources */,
 				78C61C2125A16DCE00DC78A6 /* BaseRequest.swift in Sources */,
 				782311FE259C0D9200D9E723 /* SignupViewController.swift in Sources */,
@@ -726,6 +737,7 @@
 				78997EE5259C4C5E0076FF97 /* UIView-IBInspectable-Extensions.swift in Sources */,
 				78C61C0E25A1655600DC78A6 /* HttpMethod.swift in Sources */,
 				785D2798259C183300F7C9A6 /* R.generated.swift in Sources */,
+				785A1ABD25A9A407005E8A4B /* SignupRequest.swift in Sources */,
 				7892EF79259C73C9006F7315 /* KeyboardNotifier.swift in Sources */,
 				78F940E6259D7E42007C972A /* Router.swift in Sources */,
 			);
