@@ -1,4 +1,5 @@
 import UIKit
+import RxSwift
 
 final class SignupViewController: UIViewController {
 
@@ -13,6 +14,7 @@ final class SignupViewController: UIViewController {
     var keyboardNotifier: KeyboardNotifier = KeyboardNotifier()
 
     private let router: RouterProtocol = Router()
+    private let disposeBag: DisposeBag = DisposeBag()
 
     private var isSecureCheck: Bool = true
 
@@ -68,19 +70,17 @@ extension SignupViewController {
     }
 
     @objc private func showHomeScreen(_ sender: UIButton) {
-        SignupRequest().request(.init(email: emailTextField.text ?? "", password: passwordTextField.text ?? "")) { result in
-
-            switch result {
-
-            case .success(let response):
+        SignupRequest().request(.init(email: emailTextField.text ?? "", password: passwordTextField.text ?? ""))
+            .subscribe(onSuccess: { response in
                 dump(response)
                 print("success.")
-
-            case .failure(let error):
-                dump(error.description())
+            }, onFailure: { error in
+                if let error = error as? APIError {
+                    dump(error.description())
+                }
                 print("failure.")
-            }
-        }
+            })
+            .disposed(by: disposeBag)
     }
 
     @objc private func showLoginScreen(_ sender: UIButton) {
@@ -89,8 +89,6 @@ extension SignupViewController {
         } else {
             router.present(.login, from: self, isModalInPresentation: false)
         }
-        
-        
     }
 }
 
