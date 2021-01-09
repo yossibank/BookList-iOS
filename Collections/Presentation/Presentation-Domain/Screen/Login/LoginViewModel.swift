@@ -2,6 +2,7 @@ import RxSwift
 import RxRelay
 
 final class LoginViewModel {
+    private let usecase: LoginUsecase
     private let loadingSubject: BehaviorRelay<Bool> = BehaviorRelay(value: false)
     private let resultSubject: BehaviorRelay<Result<LoginResponse, Error>?> = BehaviorRelay(value: nil)
     private let disposeBag: DisposeBag = DisposeBag()
@@ -14,18 +15,22 @@ final class LoginViewModel {
         resultSubject.asObservable()
     }
 
-    func login(email: String, password: String) {
+    init(usecase: LoginUsecase) {
+        self.usecase = usecase
+        bindUsecase()
+    }
 
-        loadingSubject.accept(true)
-
-        LoginRequest().request(.init(email: email, password: password))
-            .subscribe(onSuccess: { response in
-                self.loadingSubject.accept(false)
-                self.resultSubject.accept(.success(response))
-            }, onFailure: { error in
-                self.loadingSubject.accept(false)
-                self.resultSubject.accept(.failure(error))
-            })
+    private func bindUsecase() {
+        usecase.loading
+            .bind(to: loadingSubject)
             .disposed(by: disposeBag)
+
+        usecase.result
+            .bind(to: resultSubject)
+            .disposed(by: disposeBag)
+    }
+
+    func login(email: String, password: String) {
+        usecase.login(email: email, password: password)
     }
 }

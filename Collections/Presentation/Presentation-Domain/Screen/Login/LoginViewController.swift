@@ -31,6 +31,7 @@ final class LoginViewController: UIViewController {
         setupTextField()
         setupButton()
         listenerKeyboard(keyboardNotifier: keyboardNotifier)
+        bindValue()
         bindViewModel()
     }
 }
@@ -90,6 +91,24 @@ extension LoginViewController {
 }
 
 extension LoginViewController {
+
+    private func bindValue() {
+        Observable
+            .combineLatest(
+                emailTextField.rx.text.orEmpty.map { $0.isEmpty },
+                passwordTextField.rx.text.orEmpty.map { $0.isEmpty })
+            .map { isEmailEmpty, isPasswordEmpty in
+                !(isEmailEmpty || isPasswordEmpty)
+            }
+            .subscribe(onNext: { [weak self] isEnabled in
+                guard let self = self else { return }
+
+                let backgroundColor: UIColor = isEnabled ? .systemGreen : .gray
+                self.loginButton.backgroundColor = backgroundColor
+                self.loginButton.isEnabled = isEnabled
+            })
+            .disposed(by: disposeBag)
+    }
 
     private func bindViewModel() {
         viewModel.result
