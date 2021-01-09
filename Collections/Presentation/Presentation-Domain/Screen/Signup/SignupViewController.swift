@@ -68,7 +68,19 @@ extension SignupViewController {
     }
 
     @objc private func showHomeScreen(_ sender: UIButton) {
+        SignupRequest().request(.init(email: emailTextField.text ?? "", password: passwordTextField.text ?? "")) { result in
 
+            switch result {
+
+            case .success(let response):
+                dump(response)
+                print("success.")
+
+            case .failure(let error):
+                dump(error.description())
+                print("failure.")
+            }
+        }
     }
 
     @objc private func showLoginScreen(_ sender: UIButton) {
