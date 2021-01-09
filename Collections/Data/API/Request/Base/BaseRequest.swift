@@ -26,7 +26,7 @@ protocol BaseRequest {
 extension BaseRequest {
 
     var baseUrl: String {
-        AppConfigrator.currentApiUrl.description
+        AppConfigurator.currentApiUrl.description
     }
 
     var url: URL? {
