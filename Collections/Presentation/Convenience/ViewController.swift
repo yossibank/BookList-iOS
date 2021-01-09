@@ -22,7 +22,8 @@ extension Resources {
             }
 
             func login() -> LoginViewController {
-                let vc = LoginViewController.createInstance()
+                let viewModel = LoginViewModel()
+                let vc = LoginViewController.createInstance(viewModel: viewModel)
                 return vc
             }
         }

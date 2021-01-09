@@ -1,4 +1,6 @@
 import UIKit
+import RxSwift
+import RxCocoa
 
 final class LoginViewController: UIViewController {
 
@@ -8,15 +10,20 @@ final class LoginViewController: UIViewController {
     @IBOutlet weak var secureTextChangeButton: UIButton!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var signupButton: UIButton!
-
+    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
+    
     var keyboardNotifier: KeyboardNotifier = KeyboardNotifier()
 
     private let router: RouterProtocol = Router()
+    private let disposeBag: DisposeBag = DisposeBag()
 
+    private var viewModel: LoginViewModel!
     private var isSecureCheck: Bool = true
 
-    static func createInstance() -> LoginViewController {
-        LoginViewController.instantiateInitialViewController()
+    static func createInstance(viewModel: LoginViewModel) -> LoginViewController {
+        let instance = LoginViewController.instantiateInitialViewController()
+        instance.viewModel = viewModel
+        return instance
     }
 
     override func viewDidLoad() {
@@ -24,6 +31,7 @@ final class LoginViewController: UIViewController {
         setupTextField()
         setupButton()
         listenerKeyboard(keyboardNotifier: keyboardNotifier)
+        bindViewModel()
     }
 }
 
@@ -66,7 +74,10 @@ extension LoginViewController {
     }
 
     @objc private func showHomeScreen(_ sender: UIButton) {
-
+        viewModel.login(
+            email: emailTextField.text ?? "",
+            password: passwordTextField.text ?? ""
+        )
     }
 
     @objc private func showSignupScreen(_ sender: UIButton) {
@@ -75,6 +86,41 @@ extension LoginViewController {
         } else {
             router.present(.signup, from: self, isModalInPresentation: false)
         }
+    }
+}
+
+extension LoginViewController {
+
+    private func bindViewModel() {
+        viewModel.result
+            .asDriver(onErrorJustReturn: nil)
+            .drive(onNext: { [weak self] result in
+                guard let self = self,
+                      let result = result else { return }
+
+                switch result {
+
+                case .success(let response):
+                    dump(response)
+                    print("success.")
+
+                case .failure(let error):
+                    if let error = error as? APIError {
+                        dump(error)
+                    }
+                    print("failure.")
+                }
+            })
+            .disposed(by: disposeBag)
+
+        viewModel.loading
+            .asDriver(onErrorJustReturn: false)
+            .drive(onNext: { [weak self] loading in
+                guard let self = self else { return }
+
+                loading ? self.loadingIndicator.startAnimating() : self.loadingIndicator.stopAnimating()
+            })
+            .disposed(by: disposeBag)
     }
 }
 
