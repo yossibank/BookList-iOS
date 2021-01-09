@@ -19,6 +19,16 @@
 		785A1AB725A9A369005E8A4B /* SignupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785A1AB625A9A369005E8A4B /* SignupViewModel.swift */; };
 		785A1ABD25A9A407005E8A4B /* SignupRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785A1ABC25A9A407005E8A4B /* SignupRequest.swift */; };
 		785A1AC125A9A416005E8A4B /* SignupResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785A1AC025A9A416005E8A4B /* SignupResponse.swift */; };
+		785A1AC925A9A989005E8A4B /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 785A1AC425A9A989005E8A4B /* RxCocoa.framework */; };
+		785A1ACA25A9A989005E8A4B /* RxCocoa.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 785A1AC425A9A989005E8A4B /* RxCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		785A1ACB25A9A989005E8A4B /* RxRelay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 785A1AC525A9A989005E8A4B /* RxRelay.framework */; };
+		785A1ACC25A9A989005E8A4B /* RxRelay.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 785A1AC525A9A989005E8A4B /* RxRelay.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		785A1ACD25A9A989005E8A4B /* RxBlocking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 785A1AC625A9A989005E8A4B /* RxBlocking.framework */; };
+		785A1ACE25A9A989005E8A4B /* RxBlocking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 785A1AC625A9A989005E8A4B /* RxBlocking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		785A1ACF25A9A98A005E8A4B /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 785A1AC725A9A989005E8A4B /* RxSwift.framework */; };
+		785A1AD025A9A98A005E8A4B /* RxSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 785A1AC725A9A989005E8A4B /* RxSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		785A1AD125A9A98A005E8A4B /* RxTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 785A1AC825A9A989005E8A4B /* RxTest.framework */; };
+		785A1AD225A9A98A005E8A4B /* RxTest.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 785A1AC825A9A989005E8A4B /* RxTest.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		785D2798259C183300F7C9A6 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785D2797259C183300F7C9A6 /* R.generated.swift */; };
 		7892EF52259C58C0006F7315 /* IBDesignableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7892EF51259C58C0006F7315 /* IBDesignableButton.swift */; };
 		7892EF5C259C5DF0006F7315 /* IBDesignableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7892EF5B259C5DF0006F7315 /* IBDesignableTextField.swift */; };
@@ -86,6 +96,11 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				785A1AD225A9A98A005E8A4B /* RxTest.framework in Embed Frameworks */,
+				785A1ACC25A9A989005E8A4B /* RxRelay.framework in Embed Frameworks */,
+				785A1ACE25A9A989005E8A4B /* RxBlocking.framework in Embed Frameworks */,
+				785A1AD025A9A98A005E8A4B /* RxSwift.framework in Embed Frameworks */,
+				785A1ACA25A9A989005E8A4B /* RxCocoa.framework in Embed Frameworks */,
 				78997EA0259C29D80076FF97 /* CodableFirebase.framework in Embed Frameworks */,
 				78231235259C147900D9E723 /* Rswift.framework in Embed Frameworks */,
 			);
@@ -112,6 +127,11 @@
 		785A1AB625A9A369005E8A4B /* SignupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewModel.swift; sourceTree = "<group>"; };
 		785A1ABC25A9A407005E8A4B /* SignupRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupRequest.swift; sourceTree = "<group>"; };
 		785A1AC025A9A416005E8A4B /* SignupResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupResponse.swift; sourceTree = "<group>"; };
+		785A1AC425A9A989005E8A4B /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
+		785A1AC525A9A989005E8A4B /* RxRelay.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxRelay.framework; path = Carthage/Build/iOS/RxRelay.framework; sourceTree = "<group>"; };
+		785A1AC625A9A989005E8A4B /* RxBlocking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxBlocking.framework; path = Carthage/Build/iOS/RxBlocking.framework; sourceTree = "<group>"; };
+		785A1AC725A9A989005E8A4B /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
+		785A1AC825A9A989005E8A4B /* RxTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxTest.framework; path = Carthage/Build/iOS/RxTest.framework; sourceTree = "<group>"; };
 		785D2797259C183300F7C9A6 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = R.generated.swift; path = Collections/AppResources/R/R.generated.swift; sourceTree = SOURCE_ROOT; };
 		7892EF51259C58C0006F7315 /* IBDesignableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBDesignableButton.swift; sourceTree = "<group>"; };
 		7892EF5B259C5DF0006F7315 /* IBDesignableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBDesignableTextField.swift; sourceTree = "<group>"; };
@@ -160,6 +180,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				785A1ACF25A9A98A005E8A4B /* RxSwift.framework in Frameworks */,
 				78997E8D259C29D80076FF97 /* abseil.framework in Frameworks */,
 				78997EA3259C29D80076FF97 /* BoringSSL-GRPC.framework in Frameworks */,
 				78997E9F259C29D80076FF97 /* CodableFirebase.framework in Frameworks */,
@@ -171,6 +192,7 @@
 				78997EA7259C29D80076FF97 /* FirebaseFirestore.framework in Frameworks */,
 				78997E99259C29D80076FF97 /* FirebaseInstallations.framework in Frameworks */,
 				78997E89259C29D80076FF97 /* FirebaseStorage.framework in Frameworks */,
+				785A1ACD25A9A989005E8A4B /* RxBlocking.framework in Frameworks */,
 				78997EA5259C29D80076FF97 /* GoogleAppMeasurement.framework in Frameworks */,
 				78997E85259C29D80076FF97 /* GoogleDataTransport.framework in Frameworks */,
 				78997E8B259C29D80076FF97 /* GoogleUtilities.framework in Frameworks */,
@@ -178,8 +200,11 @@
 				78997EA1259C29D80076FF97 /* gRPC-C++.framework in Frameworks */,
 				78997E91259C29D80076FF97 /* GTMSessionFetcher.framework in Frameworks */,
 				78997EAB259C29D80076FF97 /* leveldb-library.framework in Frameworks */,
+				785A1ACB25A9A989005E8A4B /* RxRelay.framework in Frameworks */,
 				78997E83259C29D80076FF97 /* nanopb.framework in Frameworks */,
 				78997E8F259C29D80076FF97 /* PromisesObjC.framework in Frameworks */,
+				785A1AC925A9A989005E8A4B /* RxCocoa.framework in Frameworks */,
+				785A1AD125A9A98A005E8A4B /* RxTest.framework in Frameworks */,
 				78231234259C147900D9E723 /* Rswift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -254,6 +279,11 @@
 		78231232259C147900D9E723 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				785A1AC625A9A989005E8A4B /* RxBlocking.framework */,
+				785A1AC425A9A989005E8A4B /* RxCocoa.framework */,
+				785A1AC525A9A989005E8A4B /* RxRelay.framework */,
+				785A1AC725A9A989005E8A4B /* RxSwift.framework */,
+				785A1AC825A9A989005E8A4B /* RxTest.framework */,
 				78997E73259C29D70076FF97 /* abseil.framework */,
 				78997E7E259C29D80076FF97 /* BoringSSL-GRPC.framework */,
 				78997E7C259C29D80076FF97 /* CodableFirebase.framework */,
@@ -682,6 +712,7 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Rswift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
 			);
 			name = Carthage;
 			outputFileListPaths = (
