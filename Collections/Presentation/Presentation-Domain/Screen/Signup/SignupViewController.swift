@@ -1,5 +1,6 @@
 import UIKit
 import RxSwift
+import RxCocoa
 
 final class SignupViewController: UIViewController {
 
@@ -10,16 +11,20 @@ final class SignupViewController: UIViewController {
     @IBOutlet weak var secureTextChangeButton: UIButton!
     @IBOutlet weak var signupButton: UIButton!
     @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     
     var keyboardNotifier: KeyboardNotifier = KeyboardNotifier()
 
     private let router: RouterProtocol = Router()
     private let disposeBag: DisposeBag = DisposeBag()
 
+    private var viewModel: SignupViewModel!
     private var isSecureCheck: Bool = true
 
-    static func createInstance() -> SignupViewController {
-        SignupViewController.instantiateInitialViewController()
+    static func createInstance(viewModel: SignupViewModel) -> SignupViewController {
+        let instance = SignupViewController.instantiateInitialViewController()
+        instance.viewModel = viewModel
+        return instance
     }
 
     override func viewDidLoad() {
@@ -27,6 +32,8 @@ final class SignupViewController: UIViewController {
         setupTextField()
         setupButton()
         listenerKeyboard(keyboardNotifier: keyboardNotifier)
+        bindValue()
+        bindViewModel()
     }
 }
 
@@ -70,17 +77,10 @@ extension SignupViewController {
     }
 
     @objc private func showHomeScreen(_ sender: UIButton) {
-        SignupRequest().request(.init(email: emailTextField.text ?? "", password: passwordTextField.text ?? ""))
-            .subscribe(onSuccess: { response in
-                dump(response)
-                print("success.")
-            }, onFailure: { error in
-                if let error = error as? APIError {
-                    dump(error.description())
-                }
-                print("failure.")
-            })
-            .disposed(by: disposeBag)
+        viewModel.signup(
+            email: emailTextField.text ?? "",
+            password: passwordTextField.text ?? ""
+        )
     }
 
     @objc private func showLoginScreen(_ sender: UIButton) {
@@ -89,6 +89,56 @@ extension SignupViewController {
         } else {
             router.present(.login, from: self, isModalInPresentation: false)
         }
+    }
+}
+
+extension SignupViewController {
+
+    private func bindValue() {
+        Observable
+            .combineLatest(
+                emailTextField.rx.text.orEmpty.map { $0.isEmpty },
+                passwordTextField.rx.text.orEmpty.map { $0.isEmpty },
+                passwordConfirmationTextField.rx.text.orEmpty.map { $0.isEmpty })
+            .map { isEmailEmpty, isPasswordEmpty, isPasswordConfirmationEmpty -> Bool in
+                !(isEmailEmpty || isPasswordEmpty || isPasswordConfirmationEmpty)
+            }
+            .subscribe(onNext: { [weak self] isEnabled in
+                let backgroundColor: UIColor = isEnabled ? .blue : .lightGray
+                self?.signupButton.backgroundColor = backgroundColor
+                self?.signupButton.isEnabled = isEnabled
+            })
+            .disposed(by: disposeBag)
+    }
+
+    private func bindViewModel() {
+        viewModel.result
+            .asDriver(onErrorJustReturn: nil)
+            .drive(onNext: { [weak self] result in
+                guard let self = self,
+                      let result = result else { return }
+
+                switch result {
+
+                case .success(let response):
+                    dump(response)
+                    print("success.")
+
+                case .failure(let error):
+                    if let error = error as? APIError {
+                        dump(error.description())
+                    }
+                    print("failure.")
+                }
+            }).disposed(by: disposeBag)
+
+        viewModel.loading
+            .asDriver(onErrorJustReturn: false)
+            .drive(onNext: { [weak self] loading in
+                guard let self = self else { return }
+
+                loading ? self.loadingIndicator.startAnimating() : self.loadingIndicator.stopAnimating()
+            }).disposed(by: disposeBag)
     }
 }
 
