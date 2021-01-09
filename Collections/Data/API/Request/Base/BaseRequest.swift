@@ -1,5 +1,6 @@
 import Foundation
 import UIKit
+import RxSwift
 
 protocol BaseRequest {
     associatedtype Request: Encodable
@@ -19,7 +20,7 @@ protocol BaseRequest {
 
     var decoder: JSONDecoder { get }
 
-    func request(_ parameter: Request?, completionHandler: ((Result<Response, APIError>) -> Void)?)
+    func request(_ parameter: Request?) -> Single<Response>
 }
 
 extension BaseRequest {
@@ -52,62 +53,60 @@ extension BaseRequest {
         return decoder
     }
 
-    func request(
-        _ parameter: Request? = nil,
-        completionHandler: ((Result<Response, APIError>) -> Void)? = nil
-    ) {
+    func request(_ parameter: Request? = nil) -> Single<Response> {
         do {
-            let data = parameter == nil ? nil : try encoder.encode(parameter)
-            request(data, completionHandler: completionHandler)
+            let data = try encoder.encode(parameter)
+            return request(data)
         } catch {
-            completionHandler?(.failure(.request))
+            return Single.error(APIError.request)
         }
     }
 
-    private func request(
-        _ data: Data?,
-        completionHandler: ((Result<Response, APIError>) -> Void)? = nil
-    ) {
-        do {
-            guard let url = url,
-                  var urlRequest = try method.urlRequest(url: url, data: data)
-            else {
-                return
-            }
-
-            urlRequest.allHTTPHeaderFields = defaultHeaderFields.merging(headerFields) { $1 }
-            urlRequest.timeoutInterval = 8
-
-            var dataTask: URLSessionTask!
-
-            dataTask = URLSession.shared.dataTask(with: urlRequest, completionHandler: { data, response, error in
-                if let error = error {
-                    completionHandler?(.failure(.network(error: error)))
-                    return
-                }
-
-                guard let data = data,
-                      let response = response as? HTTPURLResponse
+    private func request(_ data: Data?) -> Single<Response> {
+        return Single.create(subscribe: { observer -> Disposable in
+            do {
+                guard let url = url,
+                      var urlRequest = try method.urlRequest(url: url, data: data)
                 else {
-                    completionHandler?(.failure(.emptyResponse))
-                    return
+                    return Disposables.create()
                 }
 
-                guard 200..<300 ~= response.statusCode else {
-                    completionHandler?(.failure(.http(status: response.statusCode)))
-                    return
-                }
+                urlRequest.allHTTPHeaderFields = defaultHeaderFields.merging(headerFields) { $1 }
+                urlRequest.timeoutInterval = 8
 
-                do {
-                    let entity = try self.decoder.decode(Response.self, from: data)
-                    completionHandler?(.success(entity))
-                } catch {
-                    completionHandler?(.failure(.decode(error: error)))
-                }
-            })
-            dataTask.resume()
-        } catch {
-            completionHandler?(.failure(.request))
-        }
+                var dataTask: URLSessionTask!
+
+                dataTask = URLSession.shared.dataTask(with: urlRequest, completionHandler: { data, response, error in
+                    if let error = error {
+                        observer(.failure(APIError.network(error: error)))
+                        return
+                    }
+
+                    guard let data = data,
+                          let response = response as? HTTPURLResponse
+                    else {
+                        observer(.failure(APIError.emptyResponse))
+                        return
+                    }
+
+                    guard 200..<300 ~= response.statusCode else {
+                        observer(.failure(APIError.http(status: response.statusCode)))
+                        return
+                    }
+
+                    do {
+                        let entity = try self.decoder.decode(Response.self, from: data)
+                        observer(.success(entity))
+                    } catch {
+                        observer(.failure(APIError.decode(error: error)))
+                    }
+                })
+                dataTask.resume()
+                return Disposables.create()
+            } catch {
+                observer(.failure(APIError.request))
+                return Disposables.create()
+            }
+        })
     }
 }

@@ -15,7 +15,9 @@ extension Resources {
         struct AppControllers {
 
             func signup() -> SignupViewController {
-                let vc = SignupViewController.createInstance()
+                let usecase = SignupUsecase()
+                let viewModel = SignupViewModel(usecase: usecase)
+                let vc = SignupViewController.createInstance(viewModel: viewModel)
                 return vc
             }
 
