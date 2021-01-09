@@ -20,13 +20,13 @@ protocol BaseRequest {
 
     var decoder: JSONDecoder { get }
 
-    func request(_ parameter: Request?) -> Single<Response>
+    func request(_ parameter: Request) -> Single<Response>
 }
 
 extension BaseRequest {
 
     var baseUrl: String {
-        AppConfigrator.currentApiUrl.description
+        AppConfigurator.currentApiUrl.description
     }
 
     var url: URL? {
@@ -53,7 +53,7 @@ extension BaseRequest {
         return decoder
     }
 
-    func request(_ parameter: Request? = nil) -> Single<Response> {
+    func request(_ parameter: Request) -> Single<Response> {
         do {
             let data = try encoder.encode(parameter)
             return request(data)

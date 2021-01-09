@@ -87,6 +87,10 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="VVT-MF-8nR">
+                                <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
+                                <color key="color" systemColor="systemGrayColor"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="JOl-Lw-EHW"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -94,12 +98,15 @@
                             <constraint firstItem="ehu-uA-PNP" firstAttribute="centerY" secondItem="jlf-NY-6cF" secondAttribute="centerY" id="7NX-oq-Tgq"/>
                             <constraint firstItem="q2f-Ro-sP8" firstAttribute="centerX" secondItem="jlf-NY-6cF" secondAttribute="centerX" multiplier="1.5" id="8Tz-T1-aHk"/>
                             <constraint firstItem="JOl-Lw-EHW" firstAttribute="trailing" secondItem="ehu-uA-PNP" secondAttribute="trailing" constant="56" id="FYn-Gy-1bR"/>
+                            <constraint firstItem="VVT-MF-8nR" firstAttribute="centerY" secondItem="jlf-NY-6cF" secondAttribute="centerY" id="LCi-hO-fTL"/>
+                            <constraint firstItem="VVT-MF-8nR" firstAttribute="centerX" secondItem="jlf-NY-6cF" secondAttribute="centerX" id="nAW-eY-zP5"/>
                             <constraint firstItem="ehu-uA-PNP" firstAttribute="leading" secondItem="jlf-NY-6cF" secondAttribute="leading" constant="56" id="wEm-nW-GAz"/>
                             <constraint firstItem="q2f-Ro-sP8" firstAttribute="top" secondItem="ehu-uA-PNP" secondAttribute="bottom" constant="56" id="y2g-gQ-zsW"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="emailTextField" destination="rS5-U3-gai" id="02u-Fw-xne"/>
+                        <outlet property="loadingIndicator" destination="VVT-MF-8nR" id="PAi-ef-svu"/>
                         <outlet property="loginButton" destination="1aq-gh-JfO" id="yOj-6G-Woo"/>
                         <outlet property="passwordTextField" destination="NvK-EG-EPS" id="pvr-4N-u34"/>
                         <outlet property="secureTextChangeButton" destination="ABH-Ek-Eng" id="bAu-hf-Y5u"/>
@@ -130,6 +137,9 @@
         <image name="Check_Off_Box" width="15" height="15"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGrayColor">
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGreenColor">
             <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

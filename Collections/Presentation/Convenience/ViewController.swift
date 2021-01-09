@@ -22,7 +22,9 @@ extension Resources {
             }
 
             func login() -> LoginViewController {
-                let vc = LoginViewController.createInstance()
+                let usecase = LoginUsecase()
+                let viewModel = LoginViewModel(usecase: usecase)
+                let vc = LoginViewController.createInstance(viewModel: viewModel)
                 return vc
             }
         }
