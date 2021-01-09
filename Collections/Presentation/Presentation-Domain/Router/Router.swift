@@ -175,7 +175,11 @@ final class Router: RouterProtocol {
         )
     }
 
-    private func internalPush(_ resolvedViewController: UIViewController, from: UIViewController, animated: Bool) {
+    private func internalPush(
+        _ resolvedViewController: UIViewController,
+        from:                     UIViewController,
+        animated:                 Bool
+    ) {
         let vc = resolvedViewController
         let navVC = from.navigationController
 
