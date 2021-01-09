@@ -1,6 +1,6 @@
 struct LoginRequest: BaseRequest {
 
-    typealias Response = SignupResponse
+    typealias Response = LoginResponse
 
     struct Request: Encodable {
         var email: String
