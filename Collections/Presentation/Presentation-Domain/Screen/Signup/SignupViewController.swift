@@ -9,6 +9,7 @@ final class SignupViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var passwordConfirmationTextField: UITextField!
     @IBOutlet weak var secureTextChangeButton: UIButton!
+    @IBOutlet weak var validateLabel: UILabel!
     @IBOutlet weak var signupButton: UIButton!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
@@ -109,6 +110,30 @@ extension SignupViewController {
                 self?.signupButton.isEnabled = isEnabled
             })
             .disposed(by: disposeBag)
+
+        Observable
+            .combineLatest(
+                passwordTextField.rx.text.orEmpty.map { $0 },
+                passwordConfirmationTextField.rx.text.map { $0 })
+            .map { passwordText, passwordConfirmationText -> String in
+                if passwordText == passwordConfirmationText {
+                    return ""
+                }
+                return "パスワードが一致しません。"
+            }
+            .subscribe(onNext: { [weak self] text in
+                self?.validateLabel.text = text
+            })
+            .disposed(by: disposeBag)
+
+        passwordTextField.rx.text
+            .validate(PasswordValidator.self)
+            .map { validate in
+                validate.errorDescription
+            }
+            .skip(2)
+            .bind(to: validateLabel.rx.text)
+            .disposed(by: disposeBag)
     }
 
     private func bindViewModel() {
@@ -164,8 +189,7 @@ extension SignupViewController: KeyboardDelegate {
 
     func keyboardPresent(_ height: CGFloat) {
         let displayHeight = self.view.frame.height - height
-        let signupButtonOffsetY = signupButton.convert(signupButton.frame, to: stackView).minY
-        let bottomOffsetY = signupButtonOffsetY - displayHeight
+        let bottomOffsetY = loginButton.frame.minY - 20 - displayHeight
         view.frame.origin.y == 0 ? (view.frame.origin.y -= bottomOffsetY) : ()
     }
 

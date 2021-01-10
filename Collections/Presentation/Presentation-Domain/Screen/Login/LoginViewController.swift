@@ -8,6 +8,7 @@ final class LoginViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var secureTextChangeButton: UIButton!
+    @IBOutlet weak var validateLabel: UILabel!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var signupButton: UIButton!
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
@@ -108,6 +109,15 @@ extension LoginViewController {
                 self.loginButton.isEnabled = isEnabled
             })
             .disposed(by: disposeBag)
+
+        passwordTextField.rx.text
+            .validate(PasswordValidator.self)
+            .map { validate in
+                validate.errorDescription
+            }
+            .skip(2)
+            .bind(to: validateLabel.rx.text)
+            .disposed(by: disposeBag)
     }
 
     private func bindViewModel() {
@@ -163,8 +173,7 @@ extension LoginViewController: KeyboardDelegate {
 
     func keyboardPresent(_ height: CGFloat) {
         let displayHeight = self.view.frame.height - height
-        let loginButtonContentOffsetY = loginButton.convert(loginButton.frame, to: stackView).maxY
-        let bottomOffsetY = loginButtonContentOffsetY - displayHeight + 60
+        let bottomOffsetY = signupButton.frame.minY - 20 - displayHeight
         view.frame.origin.y == 0 ? (view.frame.origin.y -= bottomOffsetY) : ()
     }
 
