@@ -124,7 +124,7 @@ extension SignupViewController {
                 if passwordText == passwordConfirmationText {
                     return .blank
                 }
-                return "パスワードが一致しません。"
+                return Resources.Strings.Validator.notMatchingPassword
             }
             .subscribe(onNext: { [weak self] text in
                 self?.validatePasswordConfirmationLabel.text = text

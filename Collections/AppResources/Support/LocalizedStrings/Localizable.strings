@@ -1,0 +1,6 @@
+// MARK: - バリデーション
+"not_correct_format_email" = "メールアドレスが正しいフォームで入力されていません";
+"not_input_email" = "メールアドレスが入力されていません";
+"not_input_password" = "パスワードが入力されていません";
+"not_length_password" = "パスワードは%@文字以上で入力が必要です";
+"not_matching_password" = "パスワードとパスワード（確認）が一致しません";

@@ -36,10 +36,10 @@ enum EmailError: LocalizedError {
         switch self {
 
         case .empty:
-            return "メールアドレスが入力されていません"
+            return Resources.Strings.Validator.emailEmpty
 
         case .format:
-            return "正しいフォームで入力してください"
+            return Resources.Strings.Validator.invalidEmailFormat
         }
     }
 }

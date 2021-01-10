@@ -32,10 +32,10 @@ enum PasswordError: LocalizedError {
         switch self {
 
         case .empty:
-            return "パスワードが入力されていません"
+            return Resources.Strings.Validator.passwordEmpty
 
         case .tooShort:
-            return "文字数が足りません(\(minimumLength)文字以上でご入力ください)"
+            return Resources.Strings.Validator.notFilledPassword
         }
     }
 }
