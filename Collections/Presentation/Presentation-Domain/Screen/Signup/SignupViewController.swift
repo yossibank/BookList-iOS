@@ -149,7 +149,10 @@ extension SignupViewController {
                     if let error = error as? APIError {
                         dump(error.description())
                     }
-                    print("failure.")
+                    self.showError(
+                        title: Resources.Strings.General.error,
+                        message: Resources.Strings.App.failedSignup
+                    )
                 }
             }).disposed(by: disposeBag)
 

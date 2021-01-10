@@ -131,7 +131,10 @@ extension LoginViewController {
                     if let error = error as? APIError {
                         dump(error)
                     }
-                    print("failure.")
+                    self.showError(
+                        title: Resources.Strings.General.error,
+                        message: Resources.Strings.App.failedLogin
+                    )
                 }
             })
             .disposed(by: disposeBag)
