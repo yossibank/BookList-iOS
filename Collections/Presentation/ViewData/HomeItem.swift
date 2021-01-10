@@ -15,10 +15,16 @@ enum CellItem: CaseIterable {
         switch self {
 
         case .bookList:
-            return Item(title: "書籍一覧", image: Resources.Images.Home.bookList)
+            return Item(
+                title: Resources.Strings.Home.bookList,
+                image: Resources.Images.Home.bookList
+            )
 
         case .wishList:
-            return Item(title: "お気に入り書籍", image: Resources.Images.Home.wishList)
+            return Item(
+                title: Resources.Strings.Home.wishList,
+                image: Resources.Images.Home.wishList
+            )
         }
     }
 }

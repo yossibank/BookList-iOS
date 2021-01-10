@@ -2,6 +2,10 @@
 "failed_login" = "ログインに失敗しました";
 "failed_signup" = "登録に失敗しました";
 
+// MARK: - ホーム
+"book_list" = "書籍一覧";
+"wish_list_book" = "お気に入り書籍";
+
 // MARK: - バリデーション
 "not_correct_format_email" = "メールアドレスが正しいフォームで入力されていません";
 "not_input_email" = "メールアドレスが入力されていません";
