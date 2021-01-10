@@ -1,0 +1,18 @@
+// MARK: - ログイン, サインアップ
+"failed_login" = "ログインに失敗しました";
+"failed_signup" = "登録に失敗しました";
+
+// MARK: - バリデーション
+"not_correct_format_email" = "メールアドレスが正しいフォームで入力されていません";
+"not_input_email" = "メールアドレスが入力されていません";
+"not_input_password" = "パスワードが入力されていません";
+"not_length_password" = "パスワードは%@文字以上で入力が必要です";
+"not_matching_password" = "パスワードとパスワード（確認）が一致しません";
+"maybe_already_email" = "メールアドレスが使用されている可能性があります";
+
+// MARK: - 一般
+"yes" = "はい";
+"no" = "いいえ";
+"close" = "閉じる";
+"error" = "エラー";
+"please_check_again_contents" = "ご入力内容をもう一度ご確認ください";

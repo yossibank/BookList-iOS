@@ -8,6 +8,8 @@ final class LoginViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var secureTextChangeButton: UIButton!
+    @IBOutlet weak var validateEmailLabel: UILabel!
+    @IBOutlet weak var validatePasswordLabel: UILabel!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var signupButton: UIButton!
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
@@ -93,20 +95,22 @@ extension LoginViewController {
 extension LoginViewController {
 
     private func bindValue() {
-        Observable
-            .combineLatest(
-                emailTextField.rx.text.orEmpty.map { $0.isEmpty },
-                passwordTextField.rx.text.orEmpty.map { $0.isEmpty })
-            .map { isEmailEmpty, isPasswordEmpty in
-                !(isEmailEmpty || isPasswordEmpty)
+        emailTextField.rx.text
+            .validate(EmailValidator.self)
+            .map { validate in
+                validate.errorDescription
             }
-            .subscribe(onNext: { [weak self] isEnabled in
-                guard let self = self else { return }
+            .skip(2)
+            .bind(to: validateEmailLabel.rx.text)
+            .disposed(by: disposeBag)
 
-                let backgroundColor: UIColor = isEnabled ? .systemGreen : .gray
-                self.loginButton.backgroundColor = backgroundColor
-                self.loginButton.isEnabled = isEnabled
-            })
+        passwordTextField.rx.text
+            .validate(PasswordValidator.self)
+            .map { validate in
+                validate.errorDescription
+            }
+            .skip(2)
+            .bind(to: validatePasswordLabel.rx.text)
             .disposed(by: disposeBag)
     }
 
@@ -127,7 +131,10 @@ extension LoginViewController {
                     if let error = error as? APIError {
                         dump(error)
                     }
-                    print("failure.")
+                    self.showError(
+                        title: Resources.Strings.General.error,
+                        message: Resources.Strings.App.failedLogin
+                    )
                 }
             })
             .disposed(by: disposeBag)
@@ -163,8 +170,7 @@ extension LoginViewController: KeyboardDelegate {
 
     func keyboardPresent(_ height: CGFloat) {
         let displayHeight = self.view.frame.height - height
-        let loginButtonContentOffsetY = loginButton.convert(loginButton.frame, to: stackView).maxY
-        let bottomOffsetY = loginButtonContentOffsetY - displayHeight + 60
+        let bottomOffsetY = signupButton.frame.minY - 20 - displayHeight
         view.frame.origin.y == 0 ? (view.frame.origin.y -= bottomOffsetY) : ()
     }
 

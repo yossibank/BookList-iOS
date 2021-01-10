@@ -9,6 +9,9 @@ final class SignupViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var passwordConfirmationTextField: UITextField!
     @IBOutlet weak var secureTextChangeButton: UIButton!
+    @IBOutlet weak var validateEmailLabel: UILabel!
+    @IBOutlet weak var validatePasswordLabel: UILabel!
+    @IBOutlet weak var validatePasswordConfirmationLabel: UILabel!
     @IBOutlet weak var signupButton: UIButton!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
@@ -95,18 +98,36 @@ extension SignupViewController {
 extension SignupViewController {
 
     private func bindValue() {
+        emailTextField.rx.text
+            .validate(EmailValidator.self)
+            .map { validate in
+                validate.errorDescription
+            }
+            .skip(2)
+            .bind(to: validateEmailLabel.rx.text)
+            .disposed(by: disposeBag)
+
+        passwordTextField.rx.text
+            .validate(PasswordValidator.self)
+            .map { validate in
+                validate.errorDescription
+            }
+            .skip(2)
+            .bind(to: validatePasswordLabel.rx.text)
+            .disposed(by: disposeBag)
+
         Observable
             .combineLatest(
-                emailTextField.rx.text.orEmpty.map { $0.isEmpty },
-                passwordTextField.rx.text.orEmpty.map { $0.isEmpty },
-                passwordConfirmationTextField.rx.text.orEmpty.map { $0.isEmpty })
-            .map { isEmailEmpty, isPasswordEmpty, isPasswordConfirmationEmpty -> Bool in
-                !(isEmailEmpty || isPasswordEmpty || isPasswordConfirmationEmpty)
+                passwordTextField.rx.text.orEmpty.map { $0 },
+                passwordConfirmationTextField.rx.text.map { $0 })
+            .map { passwordText, passwordConfirmationText -> String in
+                if passwordText == passwordConfirmationText {
+                    return .blank
+                }
+                return Resources.Strings.Validator.notMatchingPassword
             }
-            .subscribe(onNext: { [weak self] isEnabled in
-                let backgroundColor: UIColor = isEnabled ? .blue : .lightGray
-                self?.signupButton.backgroundColor = backgroundColor
-                self?.signupButton.isEnabled = isEnabled
+            .subscribe(onNext: { [weak self] text in
+                self?.validatePasswordConfirmationLabel.text = text
             })
             .disposed(by: disposeBag)
     }
@@ -128,7 +149,10 @@ extension SignupViewController {
                     if let error = error as? APIError {
                         dump(error.description())
                     }
-                    print("failure.")
+                    self.showError(
+                        title: Resources.Strings.General.error,
+                        message: Resources.Strings.App.failedSignup
+                    )
                 }
             }).disposed(by: disposeBag)
 
@@ -164,8 +188,7 @@ extension SignupViewController: KeyboardDelegate {
 
     func keyboardPresent(_ height: CGFloat) {
         let displayHeight = self.view.frame.height - height
-        let signupButtonOffsetY = signupButton.convert(signupButton.frame, to: stackView).minY
-        let bottomOffsetY = signupButtonOffsetY - displayHeight
+        let bottomOffsetY = loginButton.frame.minY - 20 - displayHeight
         view.frame.origin.y == 0 ? (view.frame.origin.y -= bottomOffsetY) : ()
     }
 
