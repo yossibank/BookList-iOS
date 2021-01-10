@@ -123,6 +123,7 @@ enum Route {
 
     case signup
     case login
+    case home
 
     fileprivate func viewController() -> UIViewController {
 
@@ -136,6 +137,8 @@ enum Route {
         case .login:
             viewController = Resources.ViewControllers.App.login()
 
+        case .home:
+            viewController = Resources.ViewControllers.App.home()
         }
 
         return viewController

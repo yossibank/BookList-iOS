@@ -27,6 +27,11 @@ extension Resources {
                 let vc = LoginViewController.createInstance(viewModel: viewModel)
                 return vc
             }
+
+            func home() -> HomeViewController {
+                let vc = HomeViewController.createInstance()
+                return vc
+            }
         }
     }
 }
