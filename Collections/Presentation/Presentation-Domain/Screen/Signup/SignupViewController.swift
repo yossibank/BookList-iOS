@@ -9,7 +9,9 @@ final class SignupViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var passwordConfirmationTextField: UITextField!
     @IBOutlet weak var secureTextChangeButton: UIButton!
-    @IBOutlet weak var validateLabel: UILabel!
+    @IBOutlet weak var validateEmailLabel: UILabel!
+    @IBOutlet weak var validatePasswordLabel: UILabel!
+    @IBOutlet weak var validatePasswordConfirmationLabel: UILabel!
     @IBOutlet weak var signupButton: UIButton!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
@@ -96,34 +98,13 @@ extension SignupViewController {
 extension SignupViewController {
 
     private func bindValue() {
-        Observable
-            .combineLatest(
-                emailTextField.rx.text.orEmpty.map { $0.isEmpty },
-                passwordTextField.rx.text.orEmpty.map { $0.isEmpty },
-                passwordConfirmationTextField.rx.text.orEmpty.map { $0.isEmpty })
-            .map { isEmailEmpty, isPasswordEmpty, isPasswordConfirmationEmpty -> Bool in
-                !(isEmailEmpty || isPasswordEmpty || isPasswordConfirmationEmpty)
+        emailTextField.rx.text
+            .validate(EmailValidator.self)
+            .map { validate in
+                validate.errorDescription
             }
-            .subscribe(onNext: { [weak self] isEnabled in
-                let backgroundColor: UIColor = isEnabled ? .blue : .lightGray
-                self?.signupButton.backgroundColor = backgroundColor
-                self?.signupButton.isEnabled = isEnabled
-            })
-            .disposed(by: disposeBag)
-
-        Observable
-            .combineLatest(
-                passwordTextField.rx.text.orEmpty.map { $0 },
-                passwordConfirmationTextField.rx.text.map { $0 })
-            .map { passwordText, passwordConfirmationText -> String in
-                if passwordText == passwordConfirmationText {
-                    return ""
-                }
-                return "パスワードが一致しません。"
-            }
-            .subscribe(onNext: { [weak self] text in
-                self?.validateLabel.text = text
-            })
+            .skip(2)
+            .bind(to: validateEmailLabel.rx.text)
             .disposed(by: disposeBag)
 
         passwordTextField.rx.text
@@ -132,7 +113,22 @@ extension SignupViewController {
                 validate.errorDescription
             }
             .skip(2)
-            .bind(to: validateLabel.rx.text)
+            .bind(to: validatePasswordLabel.rx.text)
+            .disposed(by: disposeBag)
+
+        Observable
+            .combineLatest(
+                passwordTextField.rx.text.orEmpty.map { $0 },
+                passwordConfirmationTextField.rx.text.map { $0 })
+            .map { passwordText, passwordConfirmationText -> String in
+                if passwordText == passwordConfirmationText {
+                    return .blank
+                }
+                return "パスワードが一致しません。"
+            }
+            .subscribe(onNext: { [weak self] text in
+                self?.validatePasswordConfirmationLabel.text = text
+            })
             .disposed(by: disposeBag)
     }
 

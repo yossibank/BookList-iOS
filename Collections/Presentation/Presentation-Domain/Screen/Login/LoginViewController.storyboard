@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="ehu-uA-PNP">
-                                <rect key="frame" x="56" y="304" width="302" height="288"/>
+                                <rect key="frame" x="56" y="301.5" width="302" height="293"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="メールアドレス" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rS5-U3-gai" customClass="BorderBottomTextField" customModule="Collections" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="302" height="32"/>
@@ -55,14 +55,25 @@
                                             </label>
                                         </subviews>
                                     </stackView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vNZ-MM-Iyq">
-                                        <rect key="frame" x="0.0" y="208" width="302" height="0.0"/>
-                                        <fontDescription key="fontDescription" name="HiraMinProN-W6" family="Hiragino Mincho ProN" pointSize="12"/>
-                                        <color key="textColor" systemColor="systemRedColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="tXj-Fd-vNI">
+                                        <rect key="frame" x="0.0" y="208" width="302" height="5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vNZ-MM-Iyq">
+                                                <rect key="frame" x="0.0" y="0.0" width="302" height="0.0"/>
+                                                <fontDescription key="fontDescription" name="HiraMinProN-W6" family="Hiragino Mincho ProN" pointSize="12"/>
+                                                <color key="textColor" systemColor="systemRedColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dnm-Rz-UQU">
+                                                <rect key="frame" x="0.0" y="5" width="302" height="0.0"/>
+                                                <fontDescription key="fontDescription" name="HiraMinProN-W6" family="Hiragino Mincho ProN" pointSize="12"/>
+                                                <color key="textColor" systemColor="systemRedColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1aq-gh-JfO" customClass="IBDesignableButton" customModule="Collections" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="248" width="302" height="40"/>
+                                        <rect key="frame" x="0.0" y="253" width="302" height="40"/>
                                         <color key="backgroundColor" systemColor="systemGreenColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="cmT-Pi-Lpt"/>
@@ -80,7 +91,7 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q2f-Ro-sP8" customClass="IBDesignableButton" customModule="Collections" customModuleProvider="target">
-                                <rect key="frame" x="243" y="648" width="135" height="40"/>
+                                <rect key="frame" x="243" y="650.5" width="135" height="40"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                 <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
@@ -118,7 +129,8 @@
                         <outlet property="secureTextChangeButton" destination="ABH-Ek-Eng" id="bAu-hf-Y5u"/>
                         <outlet property="signupButton" destination="q2f-Ro-sP8" id="6yR-Qf-qe7"/>
                         <outlet property="stackView" destination="ehu-uA-PNP" id="owm-6R-DrG"/>
-                        <outlet property="validateLabel" destination="vNZ-MM-Iyq" id="Faw-au-srv"/>
+                        <outlet property="validateEmailLabel" destination="vNZ-MM-Iyq" id="rNP-mk-1SW"/>
+                        <outlet property="validatePasswordLabel" destination="dnm-Rz-UQU" id="mIS-of-WNX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wk4-2d-Ite" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -8,7 +8,8 @@ final class LoginViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var secureTextChangeButton: UIButton!
-    @IBOutlet weak var validateLabel: UILabel!
+    @IBOutlet weak var validateEmailLabel: UILabel!
+    @IBOutlet weak var validatePasswordLabel: UILabel!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var signupButton: UIButton!
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
@@ -94,20 +95,13 @@ extension LoginViewController {
 extension LoginViewController {
 
     private func bindValue() {
-        Observable
-            .combineLatest(
-                emailTextField.rx.text.orEmpty.map { $0.isEmpty },
-                passwordTextField.rx.text.orEmpty.map { $0.isEmpty })
-            .map { isEmailEmpty, isPasswordEmpty in
-                !(isEmailEmpty || isPasswordEmpty)
+        emailTextField.rx.text
+            .validate(EmailValidator.self)
+            .map { validate in
+                validate.errorDescription
             }
-            .subscribe(onNext: { [weak self] isEnabled in
-                guard let self = self else { return }
-
-                let backgroundColor: UIColor = isEnabled ? .systemGreen : .gray
-                self.loginButton.backgroundColor = backgroundColor
-                self.loginButton.isEnabled = isEnabled
-            })
+            .skip(2)
+            .bind(to: validateEmailLabel.rx.text)
             .disposed(by: disposeBag)
 
         passwordTextField.rx.text
@@ -116,7 +110,7 @@ extension LoginViewController {
                 validate.errorDescription
             }
             .skip(2)
-            .bind(to: validateLabel.rx.text)
+            .bind(to: validatePasswordLabel.rx.text)
             .disposed(by: disposeBag)
     }
 
