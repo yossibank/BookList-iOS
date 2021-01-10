@@ -143,7 +143,8 @@ extension SignupViewController {
 
                 case .success(let response):
                     dump(response)
-                    print("success.")
+                    let window = UIApplication.shared.windows.first { $0.isKeyWindow }
+                    window?.rootViewController = self.router.initialWindow(.home, type: .navigation)
 
                 case .failure(let error):
                     if let error = error as? APIError {

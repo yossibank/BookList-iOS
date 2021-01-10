@@ -67,6 +67,11 @@
 		78DEE7B525AAD4D500219963 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 78DEE7B425AAD4D500219963 /* Localizable.strings */; };
 		78DEE7B925AADFC600219963 /* UIAlertController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DEE7B825AADFC600219963 /* UIAlertController+Extension.swift */; };
 		78DEE7BD25AAE3AD00219963 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DEE7BC25AAE3AD00219963 /* UIViewController+Extension.swift */; };
+		78DEE7CC25AB006000219963 /* HomeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78DEE7CB25AB006000219963 /* HomeViewController.storyboard */; };
+		78DEE7D025AB006F00219963 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DEE7CF25AB006F00219963 /* HomeViewController.swift */; };
+		78DEE7DE25AB02A200219963 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DEE7DC25AB02A200219963 /* HomeTableViewCell.swift */; };
+		78DEE7DF25AB02A200219963 /* HomeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78DEE7DD25AB02A200219963 /* HomeTableViewCell.xib */; };
+		78DEE7E625AB0BD800219963 /* HomeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DEE7E525AB0BD800219963 /* HomeItem.swift */; };
 		78E609CB25AA015F0041B3D0 /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E609CA25AA015F0041B3D0 /* LoginRequest.swift */; };
 		78E609CF25AA018D0041B3D0 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E609CE25AA018D0041B3D0 /* LoginResponse.swift */; };
 		78E609D325AA04300041B3D0 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E609D225AA04300041B3D0 /* LoginViewModel.swift */; };
@@ -180,6 +185,11 @@
 		78DEE7B425AAD4D500219963 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		78DEE7B825AADFC600219963 /* UIAlertController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extension.swift"; sourceTree = "<group>"; };
 		78DEE7BC25AAE3AD00219963 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		78DEE7CB25AB006000219963 /* HomeViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HomeViewController.storyboard; sourceTree = "<group>"; };
+		78DEE7CF25AB006F00219963 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		78DEE7DC25AB02A200219963 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
+		78DEE7DD25AB02A200219963 /* HomeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeTableViewCell.xib; sourceTree = "<group>"; };
+		78DEE7E525AB0BD800219963 /* HomeItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeItem.swift; sourceTree = "<group>"; };
 		78E609CA25AA015F0041B3D0 /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
 		78E609CE25AA018D0041B3D0 /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 		78E609D225AA04300041B3D0 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
@@ -388,6 +398,7 @@
 				78997EC4259C351C0076FF97 /* Convenience */,
 				78997EC3259C35100076FF97 /* Presentation-Domain */,
 				78997EC2259C350B0076FF97 /* Utility */,
+				78DEE7E425AB0BC300219963 /* ViewData */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -497,6 +508,7 @@
 				78997EC7259C353E0076FF97 /* Launch */,
 				78DF9170259C7D77007E5D9A /* Signup */,
 				78987B36259C87EE008311DC /* Login */,
+				78DEE7CA25AB004800219963 /* Home */,
 			);
 			path = Screen;
 			sourceTree = "<group>";
@@ -564,6 +576,33 @@
 				78C61C2B25A1716800DC78A6 /* StringsUtil.swift */,
 			);
 			path = AppUtil;
+			sourceTree = "<group>";
+		};
+		78DEE7CA25AB004800219963 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				78DEE7DB25AB027900219963 /* VIew */,
+				78DEE7CF25AB006F00219963 /* HomeViewController.swift */,
+				78DEE7CB25AB006000219963 /* HomeViewController.storyboard */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		78DEE7DB25AB027900219963 /* VIew */ = {
+			isa = PBXGroup;
+			children = (
+				78DEE7DC25AB02A200219963 /* HomeTableViewCell.swift */,
+				78DEE7DD25AB02A200219963 /* HomeTableViewCell.xib */,
+			);
+			path = VIew;
+			sourceTree = "<group>";
+		};
+		78DEE7E425AB0BC300219963 /* ViewData */ = {
+			isa = PBXGroup;
+			children = (
+				78DEE7E525AB0BD800219963 /* HomeItem.swift */,
+			);
+			path = ViewData;
 			sourceTree = "<group>";
 		};
 		78DF9170259C7D77007E5D9A /* Signup */ = {
@@ -696,6 +735,8 @@
 			files = (
 				78231203259C0D9300D9E723 /* Assets.xcassets in Resources */,
 				78DEE7B525AAD4D500219963 /* Localizable.strings in Resources */,
+				78DEE7DF25AB02A200219963 /* HomeTableViewCell.xib in Resources */,
+				78DEE7CC25AB006000219963 /* HomeViewController.storyboard in Resources */,
 				78997E69259C28970076FF97 /* GoogleService-Info.plist in Resources */,
 				78987B38259C8802008311DC /* LoginViewController.storyboard in Resources */,
 				78231206259C0D9300D9E723 /* LaunchScreen.storyboard in Resources */,
@@ -790,11 +831,14 @@
 				7892EF52259C58C0006F7315 /* IBDesignableButton.swift in Sources */,
 				785A1AB725A9A369005E8A4B /* SignupViewModel.swift in Sources */,
 				78C61C1425A1692900DC78A6 /* APIError.swift in Sources */,
+				78DEE7D025AB006F00219963 /* HomeViewController.swift in Sources */,
+				78DEE7DE25AB02A200219963 /* HomeTableViewCell.swift in Sources */,
 				7892EF68259C720A006F7315 /* Strings.swift in Sources */,
 				78E609CF25AA018D0041B3D0 /* LoginResponse.swift in Sources */,
 				78F940EA259D7EEF007C972A /* ViewController.swift in Sources */,
 				78E60A0025AAAEAC0041B3D0 /* ObservableType+Extension.swift in Sources */,
 				78E609D325AA04300041B3D0 /* LoginViewModel.swift in Sources */,
+				78DEE7E625AB0BD800219963 /* HomeItem.swift in Sources */,
 				78E609FB25AAABF80041B3D0 /* PasswordValidator.swift in Sources */,
 				7892EF70259C721F006F7315 /* Resources.swift in Sources */,
 				78F940EE259D995F007C972A /* ResourcesSupport.swift in Sources */,

@@ -26,6 +26,9 @@ extension NSObject: ClassInitializable {
     }
 }
 
+/*
+ MARK: - View Controller Initialization
+ */
 extension Initializable where Self: UIViewController {
     /**
      storyboardからUIViewControllerを初期化して取得する
@@ -41,5 +44,22 @@ extension Initializable where Self: UIViewController {
         let controller = storyboard.instantiateInitialViewController()
 
         return controller as! Self
+    }
+}
+
+/*
+ MARK: - View initialization
+ */
+extension Initializable where Self: UIView {
+    /**
+     XibからUIViewを初期化して取得する
+     - Parameter customXib: the name of a custom xib if classname != xib name.
+     */
+    static func xib(
+        fromXibOrNil customXib: String? = nil
+    ) -> UINib {
+
+        let finalXibsName = customXib ?? self.resourceName
+        return UINib(nibName: finalXibsName, bundle: Bundle(for: self))
     }
 }

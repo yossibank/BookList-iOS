@@ -7,6 +7,11 @@ struct StringResources {
         static var failedLogin: String { Internal.localizable.failed_login() + "\n" + Internal.localizable.please_check_again_contents() }
     }
 
+    struct Home {
+        static var bookList: String { Internal.localizable.book_list() }
+        static var wishList: String { Internal.localizable.wish_list_book() }
+    }
+
     struct General {
         static var yes: String { Internal.localizable.yes() }
         static var no: String { Internal.localizable.no() }
