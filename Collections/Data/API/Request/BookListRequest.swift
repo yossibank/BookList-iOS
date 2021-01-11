@@ -10,4 +10,6 @@ struct BookListRequest: BaseRequest {
     var path: String { "/books" }
 
     var method: HttpMethod { .get }
+
+    var headerFields: [String : String] { ["Authorization": "GHZ7EV7xGmc8X1NPxw2FqL51X99V_mHYuj_GfaJoYgc"] }
 }

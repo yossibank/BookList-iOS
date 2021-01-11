@@ -15,10 +15,19 @@ final class BookListTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
 
-    func setup(image: UIImage, title: String, purchaseDate: String, price: String) {
-        bookImageView.image = image
-        bookTitleLabel.text = title
-        bookPurchaseLabel.text = purchaseDate
-        bookPriceLabel.text = price
+    func setup(book: Book) {
+        bookTitleLabel.text = book.name
+
+        if let purchaseDate = book.purchaseDate {
+            bookPurchaseLabel.text = purchaseDate
+        }
+
+        if let price = book.price {
+            bookPriceLabel.text = String(price)
+        }
+
+        if let imageUrl = book.image, let url = URL(string: imageUrl) {
+//
+        }
     }
 }
