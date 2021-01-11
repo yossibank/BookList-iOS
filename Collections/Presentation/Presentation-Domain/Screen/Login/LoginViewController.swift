@@ -126,7 +126,7 @@ extension LoginViewController {
                 case .success(let response):
                     dump(response)
                     let window = UIApplication.shared.windows.first { $0.isKeyWindow }
-                    window?.rootViewController = self.router.initialWindow(.home, type: .navigation)
+                    window?.rootViewController = self.router.initialWindow(.bookList, type: .navigation)
 
                 case .failure(let error):
                     if let error = error as? APIError {
