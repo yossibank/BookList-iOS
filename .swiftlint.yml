@@ -1,7 +1,6 @@
-
 excluded: # paths to ignore during linting. Takes precedence over `included`.
   - Carthage
-  - R.generated.swift
+  - Collections/AppResources/R/R.generated.swift
 disabled_rules:
   - colon
   - nesting
