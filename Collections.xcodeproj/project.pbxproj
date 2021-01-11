@@ -70,6 +70,7 @@
 		78CF3AF925ABF85D00ADBB60 /* BookListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78CF3AF725ABF85D00ADBB60 /* BookListTableViewCell.xib */; };
 		78CF3AFF25AC00C700ADBB60 /* BookListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CF3AFE25AC00C700ADBB60 /* BookListResponse.swift */; };
 		78CF3B0325AC031700ADBB60 /* BookListRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CF3B0225AC031700ADBB60 /* BookListRequest.swift */; };
+		78CF3B0725AC0E3500ADBB60 /* BookListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CF3B0625AC0E3500ADBB60 /* BookListViewModel.swift */; };
 		78DEE7B525AAD4D500219963 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 78DEE7B425AAD4D500219963 /* Localizable.strings */; };
 		78DEE7B925AADFC600219963 /* UIAlertController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DEE7B825AADFC600219963 /* UIAlertController+Extension.swift */; };
 		78DEE7BD25AAE3AD00219963 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DEE7BC25AAE3AD00219963 /* UIViewController+Extension.swift */; };
@@ -194,6 +195,7 @@
 		78CF3AF725ABF85D00ADBB60 /* BookListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookListTableViewCell.xib; sourceTree = "<group>"; };
 		78CF3AFE25AC00C700ADBB60 /* BookListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListResponse.swift; sourceTree = "<group>"; };
 		78CF3B0225AC031700ADBB60 /* BookListRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListRequest.swift; sourceTree = "<group>"; };
+		78CF3B0625AC0E3500ADBB60 /* BookListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListViewModel.swift; sourceTree = "<group>"; };
 		78DEE7B425AAD4D500219963 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		78DEE7B825AADFC600219963 /* UIAlertController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extension.swift"; sourceTree = "<group>"; };
 		78DEE7BC25AAE3AD00219963 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
@@ -597,6 +599,7 @@
 			isa = PBXGroup;
 			children = (
 				78CF3AED25ABF80700ADBB60 /* View */,
+				78CF3B0625AC0E3500ADBB60 /* BookListViewModel.swift */,
 				78CF3AF225ABF82900ADBB60 /* BookListViewController.swift */,
 				78CF3AEE25ABF81400ADBB60 /* BookListViewController.storyboard */,
 			);
@@ -867,6 +870,7 @@
 				7892EF5C259C5DF0006F7315 /* IBDesignableTextField.swift in Sources */,
 				7892EF52259C58C0006F7315 /* IBDesignableButton.swift in Sources */,
 				78CF3AF325ABF82900ADBB60 /* BookListViewController.swift in Sources */,
+				78CF3B0725AC0E3500ADBB60 /* BookListViewModel.swift in Sources */,
 				785A1AB725A9A369005E8A4B /* SignupViewModel.swift in Sources */,
 				78C61C1425A1692900DC78A6 /* APIError.swift in Sources */,
 				78CF3AFF25AC00C700ADBB60 /* BookListResponse.swift in Sources */,
