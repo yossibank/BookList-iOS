@@ -60,7 +60,7 @@ extension BookListViewController {
 extension BookListViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.book.count
+        return viewModel.books.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -69,7 +69,7 @@ extension BookListViewController: UITableViewDataSource {
             for: indexPath
         ) as? BookListTableViewCell ?? BookListTableViewCell()
 
-        cell.setup(book: viewModel.book[indexPath.row])
+        cell.setup(book: viewModel.books[indexPath.row])
 
         return cell
     }
