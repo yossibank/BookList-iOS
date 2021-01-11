@@ -17,7 +17,7 @@ final class BookListUsecase {
         resultSubject.asObservable()
     }
 
-    var books: [Book] = []
+    var books: [BookListItem] = []
 
     func fetchBookList(isInitial: Bool) {
 
@@ -28,11 +28,23 @@ final class BookListUsecase {
         BookListRequest().request(.init(limit: limit, page: currentPage))
             .subscribe(onSuccess: { response in
                 self.resultSubject.accept(.success(response))
-                self.books.append(contentsOf: response.result)
                 self.totalPage = response.totalPages
+                self.books = self.map(book: response.result)
             }, onFailure: { error in
                 self.resultSubject.accept(.failure(error))
             })
             .disposed(by: disposeBag)
+    }
+
+    func map(book: [Book]) -> [BookListItem] {
+        let books = book.map {
+            BookListItem(
+                name: $0.name,
+                image: $0.image,
+                price: $0.price,
+                purchaseDate: $0.purchaseDate
+            )
+        }
+        return books
     }
 }

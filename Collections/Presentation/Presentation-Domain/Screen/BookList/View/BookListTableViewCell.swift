@@ -15,7 +15,7 @@ final class BookListTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
 
-    func setup(book: Book) {
+    func setup(book: BookListItem) {
         bookTitleLabel.text = book.name
 
         if let purchaseDate = book.purchaseDate {
@@ -24,10 +24,6 @@ final class BookListTableViewCell: UITableViewCell {
 
         if let price = book.price {
             bookPriceLabel.text = String(price)
-        }
-
-        if let imageUrl = book.image, let url = URL(string: imageUrl) {
-//
         }
     }
 }
