@@ -9,6 +9,7 @@ final class BookListViewController: UIViewController {
     private let disposeBag: DisposeBag = DisposeBag()
 
     private var viewModel: BookListViewModel!
+    private var dataSource: BookListDataSource!
 
     static func createInstance(viewModel: BookListViewModel) -> BookListViewController {
         let instance = BookListViewController.instantiateInitialViewController()
@@ -26,8 +27,10 @@ final class BookListViewController: UIViewController {
 extension BookListViewController {
 
     private func setupTableView() {
+        dataSource = BookListDataSource(viewModel: viewModel)
+
         tableView.register(BookListTableViewCell.xib(), forCellReuseIdentifier: BookListTableViewCell.resourceName)
-        tableView.dataSource = self
+        tableView.dataSource = dataSource
         tableView.rowHeight = 100
     }
 }
@@ -54,23 +57,5 @@ extension BookListViewController {
                 }
             })
             .disposed(by: disposeBag)
-    }
-}
-
-extension BookListViewController: UITableViewDataSource {
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.books.count
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(
-            withIdentifier: BookListTableViewCell.resourceName,
-            for: indexPath
-        ) as? BookListTableViewCell ?? BookListTableViewCell()
-
-        cell.setup(book: viewModel.books[indexPath.row])
-
-        return cell
     }
 }
