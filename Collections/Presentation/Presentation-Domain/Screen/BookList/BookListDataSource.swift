@@ -8,6 +8,7 @@ final class BookListDataSource: NSObject {
         self.viewModel = viewModel
     }
 }
+
 extension BookListDataSource: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
