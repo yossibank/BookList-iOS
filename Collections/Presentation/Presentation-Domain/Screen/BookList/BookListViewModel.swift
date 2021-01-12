@@ -10,7 +10,7 @@ final class BookListViewModel {
         resultSubject.asObservable()
     }
 
-    var books: [Book] {
+    var books: [BookListItem] {
         usecase.books
     }
 
