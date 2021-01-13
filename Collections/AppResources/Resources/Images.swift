@@ -13,4 +13,8 @@ struct ImageResources {
         static var bookList: UIImage? { Internal.book_list() }
         static var wishList: UIImage? { Internal.wish_list() }
     }
+
+    struct General {
+        static var noImage: UIImage? { Internal.no_Image() }
+    }
 }
