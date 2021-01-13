@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7820E0AB25AEFC1200A5E6D8 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7820E0AA25AEFC1200A5E6D8 /* ImageLoader.swift */; };
 		782311FA259C0D9200D9E723 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782311F9259C0D9200D9E723 /* AppDelegate.swift */; };
 		782311FE259C0D9200D9E723 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782311FD259C0D9200D9E723 /* SignupViewController.swift */; };
 		78231201259C0D9200D9E723 /* SignupViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 782311FF259C0D9200D9E723 /* SignupViewController.storyboard */; };
@@ -131,6 +132,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7820E0AA25AEFC1200A5E6D8 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		782311F6259C0D9200D9E723 /* Collections.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Collections.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		782311F9259C0D9200D9E723 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		782311FD259C0D9200D9E723 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
@@ -272,6 +274,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7820E0A925AEFBFF00A5E6D8 /* ImageLoader */ = {
+			isa = PBXGroup;
+			children = (
+				7820E0AA25AEFC1200A5E6D8 /* ImageLoader.swift */,
+			);
+			path = ImageLoader;
+			sourceTree = "<group>";
+		};
 		782311ED259C0D9200D9E723 = {
 			isa = PBXGroup;
 			children = (
@@ -492,6 +502,7 @@
 				7892EF48259C539B006F7315 /* IBDesignable */,
 				78997EE3259C4C4D0076FF97 /* Extension */,
 				7892EF77259C73B2006F7315 /* Service */,
+				7820E0A925AEFBFF00A5E6D8 /* ImageLoader */,
 				78E609EF25AAAA210041B3D0 /* Validator */,
 			);
 			path = Utility;
@@ -912,6 +923,7 @@
 				78DEE7B925AADFC600219963 /* UIAlertController+Extension.swift in Sources */,
 				782311FA259C0D9200D9E723 /* AppDelegate.swift in Sources */,
 				78E609CB25AA015F0041B3D0 /* LoginRequest.swift in Sources */,
+				7820E0AB25AEFC1200A5E6D8 /* ImageLoader.swift in Sources */,
 				78CF3B3525AC48FD00ADBB60 /* BookListDataSource.swift in Sources */,
 				78997EE5259C4C5E0076FF97 /* UIView-IBInspectable-Extensions.swift in Sources */,
 				78C61C0E25A1655600DC78A6 /* HttpMethod.swift in Sources */,

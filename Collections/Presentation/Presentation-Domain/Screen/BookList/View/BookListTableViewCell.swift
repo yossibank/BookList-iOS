@@ -25,5 +25,13 @@ final class BookListTableViewCell: UITableViewCell {
         if let price = book.price {
             bookPriceLabel.text = String(price)
         }
+
+        if let imageUrl = book.image {
+            ImageLoader.shared.loadImage(with: .string(urlString: imageUrl)) { [weak self] image, _ in
+                guard let self = self else { return }
+
+                self.bookImageView.image = image
+            }
+        }
     }
 }

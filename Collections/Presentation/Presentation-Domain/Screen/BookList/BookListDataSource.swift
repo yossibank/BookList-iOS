@@ -27,6 +27,7 @@ extension BookListDataSource: UITableViewDataSource {
         )
 
         if let bookListCell = cell as? BookListTableViewCell {
+            bookListCell.bookImageView.image = nil
             bookListCell.setup(book: cellData[indexPath.row])
         }
 
