@@ -4,6 +4,7 @@
 
 // MARK: - ホーム
 "book_list" = "書籍一覧";
+"add_book" = "書籍追加";
 "wish_list_book" = "お気に入り書籍";
 
 // MARK: - バリデーション

@@ -17,14 +17,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xcr-93-PIM">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="No_Image" translatesAutoresizingMaskIntoConstraints="NO" id="xcr-93-PIM">
                                 <rect key="frame" x="72" y="68" width="270" height="270"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="xcr-93-PIM" secondAttribute="height" multiplier="1:1" id="RYJ-E3-Fsi"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="28" translatesAutoresizingMaskIntoConstraints="NO" id="pvI-UH-8of">
-                                <rect key="frame" x="56" y="354" width="302" height="344"/>
+                                <rect key="frame" x="56" y="354" width="302" height="296"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fpG-xE-NXb" customClass="IBDesignableButton" customModule="Collections" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="302" height="32"/>
@@ -50,8 +58,8 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </button>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="64" translatesAutoresizingMaskIntoConstraints="NO" id="SlX-VM-8nq">
-                                        <rect key="frame" x="0.0" y="120" width="302" height="224"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="SlX-VM-8nq">
+                                        <rect key="frame" x="0.0" y="120" width="302" height="176"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="名前" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="i2S-EU-nGw" customClass="BorderBottomTextField" customModule="Collections" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="302" height="32"/>
@@ -62,7 +70,7 @@
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="金額" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="Egn-8I-iff" customClass="BorderBottomTextField" customModule="Collections" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="96" width="302" height="32"/>
+                                                <rect key="frame" x="0.0" y="72" width="302" height="32"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="32" id="Qey-Ag-O4V"/>
                                                 </constraints>
@@ -70,7 +78,7 @@
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="購入日" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="jRN-j8-kLE" customClass="BorderBottomTextField" customModule="Collections" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="192" width="302" height="32"/>
+                                                <rect key="frame" x="0.0" y="144" width="302" height="32"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="32" id="Y99-q5-WkX"/>
                                                 </constraints>
@@ -117,6 +125,7 @@
         </designable>
     </designables>
     <resources>
+        <image name="No_Image" width="150" height="150"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
