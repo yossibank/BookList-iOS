@@ -112,6 +112,8 @@ final class ImageLoader {
             guard let self = self else { return }
 
             if let error = error {
+                Logger.error("finish image loading, but error occur, url: \(url.absoluteString), error: \(error)")
+                
                 self.finish(immediately: immediatery) {
                     if let noImage = Self.noImage {
                         completion((image: noImage, isCachedOnMemoryOrDisk: false))
