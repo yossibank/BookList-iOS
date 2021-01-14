@@ -30,6 +30,8 @@
 		785A1AD025A9A98A005E8A4B /* RxSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 785A1AC725A9A989005E8A4B /* RxSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		785A1ADE25A9CC1A005E8A4B /* SignupUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785A1ADD25A9CC1A005E8A4B /* SignupUsecase.swift */; };
 		785D2798259C183300F7C9A6 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785D2797259C183300F7C9A6 /* R.generated.swift */; };
+		78844C6125B0873600C9AEC0 /* AddBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78844C6025B0873600C9AEC0 /* AddBookViewController.swift */; };
+		78844C6525B0874100C9AEC0 /* AddBookViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78844C6425B0874100C9AEC0 /* AddBookViewController.storyboard */; };
 		7892EF52259C58C0006F7315 /* IBDesignableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7892EF51259C58C0006F7315 /* IBDesignableButton.swift */; };
 		7892EF5C259C5DF0006F7315 /* IBDesignableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7892EF5B259C5DF0006F7315 /* IBDesignableTextField.swift */; };
 		7892EF62259C642C006F7315 /* IBDesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7892EF61259C642C006F7315 /* IBDesignableView.swift */; };
@@ -160,6 +162,8 @@
 		785A1AC825A9A989005E8A4B /* RxTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxTest.framework; path = Carthage/Build/iOS/RxTest.framework; sourceTree = "<group>"; };
 		785A1ADD25A9CC1A005E8A4B /* SignupUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupUsecase.swift; sourceTree = "<group>"; };
 		785D2797259C183300F7C9A6 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = R.generated.swift; path = Collections/AppResources/R/R.generated.swift; sourceTree = SOURCE_ROOT; };
+		78844C6025B0873600C9AEC0 /* AddBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookViewController.swift; sourceTree = "<group>"; };
+		78844C6425B0874100C9AEC0 /* AddBookViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddBookViewController.storyboard; sourceTree = "<group>"; };
 		7892EF51259C58C0006F7315 /* IBDesignableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBDesignableButton.swift; sourceTree = "<group>"; };
 		7892EF5B259C5DF0006F7315 /* IBDesignableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBDesignableTextField.swift; sourceTree = "<group>"; };
 		7892EF61259C642C006F7315 /* IBDesignableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBDesignableView.swift; sourceTree = "<group>"; };
@@ -380,6 +384,8 @@
 		787052D325B06DD800CAAC3E /* AddBook */ = {
 			isa = PBXGroup;
 			children = (
+				78844C6025B0873600C9AEC0 /* AddBookViewController.swift */,
+				78844C6425B0874100C9AEC0 /* AddBookViewController.storyboard */,
 			);
 			path = AddBook;
 			sourceTree = "<group>";
@@ -810,6 +816,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				78231203259C0D9300D9E723 /* Assets.xcassets in Resources */,
+				78844C6525B0874100C9AEC0 /* AddBookViewController.storyboard in Resources */,
 				78DEE7B525AAD4D500219963 /* Localizable.strings in Resources */,
 				78DEE7DF25AB02A200219963 /* HomeTableViewCell.xib in Resources */,
 				78DEE7CC25AB006000219963 /* HomeViewController.storyboard in Resources */,
@@ -929,6 +936,7 @@
 				78E609D925AA0EE60041B3D0 /* LoginUsecase.swift in Sources */,
 				78CF3B0325AC031700ADBB60 /* BookListRequest.swift in Sources */,
 				783231BC25B05C1400EB178B /* HomeDataSource.swift in Sources */,
+				78844C6125B0873600C9AEC0 /* AddBookViewController.swift in Sources */,
 				785A1AC125A9A416005E8A4B /* SignupResponse.swift in Sources */,
 				78E609F125AAAA530041B3D0 /* Validator+Protocol.swift in Sources */,
 				78C61C2C25A1716800DC78A6 /* StringsUtil.swift in Sources */,
