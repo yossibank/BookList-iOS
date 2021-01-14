@@ -1,12 +1,12 @@
 import UIKit
 
-struct Item {
+struct HomeCellData {
     let title: String
     let image: UIImage?
 }
 
-enum CellItem: CaseIterable {
-    typealias RawValue = Item
+enum HomeItem: CaseIterable {
+    typealias RawValue = HomeCellData
 
     case bookList
     case wishList
@@ -15,13 +15,13 @@ enum CellItem: CaseIterable {
         switch self {
 
         case .bookList:
-            return Item(
+            return HomeCellData(
                 title: Resources.Strings.Home.bookList,
                 image: Resources.Images.Home.bookList
             )
 
         case .wishList:
-            return Item(
+            return HomeCellData(
                 title: Resources.Strings.Home.wishList,
                 image: Resources.Images.Home.wishList
             )
