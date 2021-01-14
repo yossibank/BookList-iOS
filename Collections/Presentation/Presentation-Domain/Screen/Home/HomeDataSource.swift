@@ -1,7 +1,7 @@
 import UIKit
 
 final class HomeDataSource: NSObject {
-    private let cellData = HomeCellData.HomeItem.allCases.compactMap { $0.rawValue }
+    let cellData = HomeCellData.HomeItem.allCases.compactMap { $0.rawValue }
 }
 
 extension HomeDataSource: UITableViewDataSource {

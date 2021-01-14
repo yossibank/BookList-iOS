@@ -26,5 +26,16 @@ struct HomeCellData {
                 )
             }
         }
+
+        var routes: Route {
+            switch self {
+
+            case .bookList:
+                return .bookList
+
+            case .wishList:
+                return .login
+            }
+        }
     }
 }
