@@ -13,7 +13,7 @@ final class HomeTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
 
-    func setup(item: Item) {
+    func setup(item: HomeCellData) {
         iconImageView.image = item.image
         titleLabel.text = item.title
     }

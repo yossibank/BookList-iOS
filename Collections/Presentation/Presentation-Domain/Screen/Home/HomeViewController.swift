@@ -5,7 +5,8 @@ final class HomeViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
 
     private let router: RouterProtocol = Router()
-    private let homeItems = CellItem.allCases.compactMap { $0.rawValue }
+
+    private var dataSource: HomeDataSource! = HomeDataSource()
 
     static func createInstance() -> HomeViewController {
         HomeViewController.instantiateInitialViewController()
@@ -21,31 +22,18 @@ extension HomeViewController {
 
     private func setupTableView() {
         tableView.register(HomeTableViewCell.xib(), forCellReuseIdentifier: HomeTableViewCell.resourceName)
+        tableView.dataSource = dataSource
         tableView.delegate = self
-        tableView.dataSource = self
+        tableView.rowHeight = 100
     }
 }
 
 extension HomeViewController: UITableViewDelegate {
 
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
-    }
-}
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
 
-extension HomeViewController: UITableViewDataSource {
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return homeItems.count
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(
-                withIdentifier: HomeTableViewCell.resourceName,
-                for: indexPath
-        ) as? HomeTableViewCell ?? HomeTableViewCell()
-
-        cell.setup(item: homeItems[indexPath.row])
-        return cell
+        let routes = HomeCellData.HomeItem.allCases.compactMap { $0.routes }
+        router.push(routes[indexPath.row], from: self)
     }
 }
