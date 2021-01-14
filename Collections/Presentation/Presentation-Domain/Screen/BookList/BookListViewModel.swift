@@ -11,7 +11,7 @@ final class BookListViewModel {
     }
 
     var books: [BookListItem] {
-        usecase.books
+        map(book: usecase.books)
     }
 
     init(usecase: BookListUsecase) {
@@ -27,5 +27,17 @@ final class BookListViewModel {
 
     func fetchBookList(isInitial: Bool) {
         usecase.fetchBookList(isInitial: isInitial)
+    }
+
+    private func map(book: [Book]) -> [BookListItem] {
+        let books = book.map {
+            BookListItem(
+                name: $0.name,
+                image: $0.image,
+                price: $0.price,
+                purchaseDate: $0.purchaseDate
+            )
+        }
+        return books
     }
 }
