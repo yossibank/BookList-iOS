@@ -1,6 +1,13 @@
 import RxSwift
 import RxRelay
 
+struct BookListCellData {
+    let name: String
+    let image: String?
+    let price: Int?
+    let purchaseDate: String?
+}
+
 final class BookListViewModel {
     private let usecase: BookListUsecase
     private let resultSubject: BehaviorRelay<Result<BookListResponse, Error>?> = BehaviorRelay(value: nil)
@@ -10,7 +17,7 @@ final class BookListViewModel {
         resultSubject.asObservable()
     }
 
-    var books: [BookListItem] {
+    var books: [BookListCellData] {
         map(book: usecase.books)
     }
 
@@ -29,9 +36,9 @@ final class BookListViewModel {
         usecase.fetchBookList(isInitial: isInitial)
     }
 
-    private func map(book: [Book]) -> [BookListItem] {
+    private func map(book: [Book]) -> [BookListCellData] {
         let books = book.map {
-            BookListItem(
+            BookListCellData(
                 name: $0.name,
                 image: $0.image,
                 price: $0.price,

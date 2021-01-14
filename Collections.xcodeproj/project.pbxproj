@@ -75,7 +75,6 @@
 		78CF3B0725AC0E3500ADBB60 /* BookListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CF3B0625AC0E3500ADBB60 /* BookListViewModel.swift */; };
 		78CF3B1925AC320900ADBB60 /* BookListUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CF3B1825AC320900ADBB60 /* BookListUsecase.swift */; };
 		78CF3B3525AC48FD00ADBB60 /* BookListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CF3B3425AC48FD00ADBB60 /* BookListDataSource.swift */; };
-		78CF3B3B25AC4A9500ADBB60 /* BookListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CF3B3A25AC4A9500ADBB60 /* BookListItem.swift */; };
 		78DEE7B525AAD4D500219963 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 78DEE7B425AAD4D500219963 /* Localizable.strings */; };
 		78DEE7B925AADFC600219963 /* UIAlertController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DEE7B825AADFC600219963 /* UIAlertController+Extension.swift */; };
 		78DEE7BD25AAE3AD00219963 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DEE7BC25AAE3AD00219963 /* UIViewController+Extension.swift */; };
@@ -205,7 +204,6 @@
 		78CF3B0625AC0E3500ADBB60 /* BookListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListViewModel.swift; sourceTree = "<group>"; };
 		78CF3B1825AC320900ADBB60 /* BookListUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListUsecase.swift; sourceTree = "<group>"; };
 		78CF3B3425AC48FD00ADBB60 /* BookListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListDataSource.swift; sourceTree = "<group>"; };
-		78CF3B3A25AC4A9500ADBB60 /* BookListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListItem.swift; sourceTree = "<group>"; };
 		78DEE7B425AAD4D500219963 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		78DEE7B825AADFC600219963 /* UIAlertController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extension.swift"; sourceTree = "<group>"; };
 		78DEE7BC25AAE3AD00219963 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
@@ -660,7 +658,6 @@
 			isa = PBXGroup;
 			children = (
 				78DEE7E525AB0BD800219963 /* HomeItem.swift */,
-				78CF3B3A25AC4A9500ADBB60 /* BookListItem.swift */,
 			);
 			path = ViewData;
 			sourceTree = "<group>";
@@ -910,7 +907,6 @@
 				78E609FB25AAABF80041B3D0 /* PasswordValidator.swift in Sources */,
 				7892EF70259C721F006F7315 /* Resources.swift in Sources */,
 				78F940EE259D995F007C972A /* ResourcesSupport.swift in Sources */,
-				78CF3B3B25AC4A9500ADBB60 /* BookListItem.swift in Sources */,
 				78E609D925AA0EE60041B3D0 /* LoginUsecase.swift in Sources */,
 				78CF3B0325AC031700ADBB60 /* BookListRequest.swift in Sources */,
 				785A1AC125A9A416005E8A4B /* SignupResponse.swift in Sources */,
