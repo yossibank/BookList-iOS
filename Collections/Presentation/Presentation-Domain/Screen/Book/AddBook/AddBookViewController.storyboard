@@ -107,6 +107,7 @@
                         <outlet property="bookPurchaseDateTextField" destination="jRN-j8-kLE" id="a3B-9X-QPY"/>
                         <outlet property="bookTitleTextField" destination="i2S-EU-nGw" id="Xwb-NO-O9Q"/>
                         <outlet property="imageSelectButton" destination="fpG-xE-NXb" id="k2T-aE-jcS"/>
+                        <outlet property="stackView" destination="SlX-VM-8nq" id="n02-pr-OLM"/>
                         <outlet property="takingPictureButton" destination="yfe-Vl-4el" id="2Az-uS-fgd"/>
                     </connections>
                 </viewController>
