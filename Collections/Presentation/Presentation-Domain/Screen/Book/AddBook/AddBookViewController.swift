@@ -1,4 +1,6 @@
 import UIKit
+import RxSwift
+import RxCocoa
 
 final class AddBookViewController: UIViewController {
 
@@ -12,19 +14,32 @@ final class AddBookViewController: UIViewController {
 
     var keyboardNotifier: KeyboardNotifier = KeyboardNotifier()
 
+    private let disposeBag: DisposeBag = DisposeBag()
+
     static func createInstance() -> AddBookViewController {
         AddBookViewController.instantiateInitialViewController()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupNavigation()
         setupTextField()
         setupButton()
         listenerKeyboard(keyboardNotifier: keyboardNotifier)
+        bindValue()
     }
 }
 
 extension AddBookViewController {
+
+    private func setupNavigation() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            title: Resources.Strings.Navigation.done,
+            style: .done,
+            target: self,
+            action: #selector(tappedAddBookButton)
+        )
+    }
 
     private func setupTextField() {
         [bookTitleTextField, bookPriceTextField, bookPurchaseDateTextField]
@@ -43,6 +58,10 @@ extension AddBookViewController {
             action: #selector(setupLaunchCamera),
             for: .touchUpInside
         )
+    }
+
+    @objc private  func tappedAddBookButton(_ sender: UIButton) {
+        
     }
 
     @objc private func setupPhotoLibrary(_ sender: UIButton) {
@@ -65,6 +84,26 @@ extension AddBookViewController {
             picker.delegate = self
             self.present(picker, animated: true)
         }
+    }
+}
+
+extension AddBookViewController {
+
+    private func bindValue() {
+        Observable
+            .combineLatest(
+                bookTitleTextField.rx.text.orEmpty.map { $0.isEmpty },
+                bookPriceTextField.rx.text.orEmpty.map { $0.isEmpty },
+                bookPurchaseDateTextField.rx.text.orEmpty.map { $0.isEmpty })
+            .map { isbookTitleEmpty, isBookPriceEmpty, isBookPurchaseDateEmpty in
+                !(isbookTitleEmpty || isBookPriceEmpty || isBookPurchaseDateEmpty)
+            }
+            .subscribe(onNext: { [weak self] isEnabled in
+                guard let self = self else { return }
+
+                self.navigationItem.rightBarButtonItem?.isEnabled = isEnabled
+            })
+            .disposed(by: disposeBag)
     }
 }
 

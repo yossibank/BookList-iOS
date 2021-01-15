@@ -15,6 +15,9 @@
 "not_matching_password" = "パスワードとパスワード（確認）が一致しません";
 "maybe_already_email" = "メールアドレスが使用されている可能性があります";
 
+// MARK: - ナビゲーションバー
+"done" = "完了";
+
 // MARK: - 一般
 "yes" = "はい";
 "no" = "いいえ";

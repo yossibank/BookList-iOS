@@ -13,6 +13,10 @@ struct StringResources {
         static var wishList: String { Internal.localizable.wish_list_book() }
     }
 
+    struct Navigation {
+        static var done: String { Internal.localizable.done() }
+    }
+
     struct General {
         static var yes: String { Internal.localizable.yes() }
         static var no: String { Internal.localizable.no() }
