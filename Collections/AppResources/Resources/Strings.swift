@@ -3,9 +3,14 @@ struct StringResources {
     private typealias Internal = R.string
 
     struct App {
-        static var failedSignup: String { Internal.localizable.failed_signup() + "\n" + Internal.localizable.maybe_already_email() }
-        static var failedLogin: String { Internal.localizable.failed_login() + "\n" + Internal.localizable.please_check_again_contents() }
+        static var failedSignup: String {
+            Internal.localizable.failed_signup() + "\n" + Internal.localizable.maybe_already_email()
+        }
+        static var failedLogin: String {
+            Internal.localizable.failed_login() + "\n" + Internal.localizable.please_check_again_contents()
+        }
         static var failedAddBook: String { Internal.localizable.failed_add_book() }
+        static var successAddBook: String { Internal.localizable.success_add_book() }
     }
 
     struct Home {
@@ -21,6 +26,8 @@ struct StringResources {
     struct General {
         static var yes: String { Internal.localizable.yes() }
         static var no: String { Internal.localizable.no() }
+        static var success: String { Internal.localizable.success() }
+        static var failure: String { Internal.localizable.failure() }
         static var close: String { Internal.localizable.close() }
         static var error: String { Internal.localizable.error() }
     }

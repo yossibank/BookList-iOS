@@ -145,7 +145,12 @@ extension AddBookViewController {
 
                 case .success(let response):
                     Logger.info("success: \(response)")
-                    self.router.push(.home, from: self)
+                    self.showAlert(
+                        title: Resources.Strings.General.success,
+                        message: Resources.Strings.App.successAddBook
+                    ) {
+                        self.router.dismiss(self)
+                    }
 
                 case .failure(let error):
                     if let error = error as? APIError {
