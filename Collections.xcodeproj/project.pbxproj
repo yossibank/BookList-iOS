@@ -394,9 +394,9 @@
 		787052D325B06DD800CAAC3E /* AddBook */ = {
 			isa = PBXGroup;
 			children = (
+				784E135D25B2A13D008FD947 /* AddBookViewModel.swift */,
 				78844C6025B0873600C9AEC0 /* AddBookViewController.swift */,
 				78844C6425B0874100C9AEC0 /* AddBookViewController.storyboard */,
-				784E135D25B2A13D008FD947 /* AddBookViewModel.swift */,
 			);
 			path = AddBook;
 			sourceTree = "<group>";
