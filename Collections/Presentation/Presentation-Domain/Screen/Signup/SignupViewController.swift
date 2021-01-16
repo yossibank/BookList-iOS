@@ -120,7 +120,7 @@ extension SignupViewController {
             .combineLatest(
                 passwordTextField.rx.text.orEmpty.map { $0 },
                 passwordConfirmationTextField.rx.text.map { $0 })
-            .map { passwordText, passwordConfirmationText -> String in
+            .map { passwordText, passwordConfirmationText in
                 if passwordText == passwordConfirmationText {
                     return .blank
                 }

@@ -32,7 +32,7 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="28" translatesAutoresizingMaskIntoConstraints="NO" id="pvI-UH-8of">
-                                <rect key="frame" x="56" y="354" width="302" height="296"/>
+                                <rect key="frame" x="56" y="354" width="302" height="386"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fpG-xE-NXb" customClass="IBDesignableButton" customModule="Collections" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="302" height="32"/>
@@ -58,27 +58,49 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </button>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="SlX-VM-8nq">
-                                        <rect key="frame" x="0.0" y="120" width="302" height="176"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="SlX-VM-8nq">
+                                        <rect key="frame" x="0.0" y="120" width="302" height="266"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="名前" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="i2S-EU-nGw" customClass="BorderBottomTextField" customModule="Collections" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="302" height="32"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="32" id="bXi-uc-F3I"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="金額" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="Egn-8I-iff" customClass="BorderBottomTextField" customModule="Collections" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="72" width="302" height="32"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="32" id="Qey-Ag-O4V"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Vy9-Dl-Awu">
+                                                <rect key="frame" x="0.0" y="0.0" width="302" height="87"/>
+                                                <subviews>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="名前" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="i2S-EU-nGw" customClass="BorderBottomTextField" customModule="Collections" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="302" height="32"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="32" id="bXi-uc-F3I"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wee-2K-X1x">
+                                                        <rect key="frame" x="0.0" y="37" width="302" height="50"/>
+                                                        <fontDescription key="fontDescription" name="HiraMinProN-W6" family="Hiragino Mincho ProN" pointSize="12"/>
+                                                        <color key="textColor" systemColor="systemRedColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Gmu-WH-rzL">
+                                                <rect key="frame" x="0.0" y="117" width="302" height="87"/>
+                                                <subviews>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="金額" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="Egn-8I-iff" customClass="BorderBottomTextField" customModule="Collections" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="302" height="32"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="32" id="Qey-Ag-O4V"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jgo-sV-BVX">
+                                                        <rect key="frame" x="0.0" y="37" width="302" height="50"/>
+                                                        <fontDescription key="fontDescription" name="HiraMinProN-W6" family="Hiragino Mincho ProN" pointSize="12"/>
+                                                        <color key="textColor" systemColor="systemRedColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="購入日" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="jRN-j8-kLE" customClass="BorderBottomTextField" customModule="Collections" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="144" width="302" height="32"/>
+                                                <rect key="frame" x="0.0" y="234" width="302" height="32"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="32" id="Y99-q5-WkX"/>
                                                 </constraints>
@@ -109,6 +131,8 @@
                         <outlet property="imageSelectButton" destination="fpG-xE-NXb" id="k2T-aE-jcS"/>
                         <outlet property="stackView" destination="SlX-VM-8nq" id="n02-pr-OLM"/>
                         <outlet property="takingPictureButton" destination="yfe-Vl-4el" id="2Az-uS-fgd"/>
+                        <outlet property="validatePriceLabel" destination="jgo-sV-BVX" id="Juo-nr-qbE"/>
+                        <outlet property="validateTitleLabel" destination="Wee-2K-X1x" id="sJZ-5O-S9X"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PPs-OB-Wlr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -137,6 +161,9 @@
         <image name="No_Image" width="150" height="150"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

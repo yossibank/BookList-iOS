@@ -11,6 +11,8 @@ final class AddBookViewController: UIViewController {
     @IBOutlet weak var bookTitleTextField: UITextField!
     @IBOutlet weak var bookPriceTextField: UITextField!
     @IBOutlet weak var bookPurchaseDateTextField: UITextField!
+    @IBOutlet weak var validateTitleLabel: UILabel!
+    @IBOutlet weak var validatePriceLabel: UILabel!
 
     var keyboardNotifier: KeyboardNotifier = KeyboardNotifier()
 
@@ -119,6 +121,24 @@ extension AddBookViewController {
 extension AddBookViewController {
 
     private func bindValue() {
+        bookTitleTextField.rx.text
+            .validate(TitleValidator.self)
+            .map { validate in
+                validate.errorDescription
+            }
+            .skip(2)
+            .bind(to: validateTitleLabel.rx.text)
+            .disposed(by: disposeBag)
+
+        bookPriceTextField.rx.text
+            .validate(NumberValidator.self)
+            .map { validate in
+                validate.errorDescription
+            }
+            .skip(2)
+            .bind(to: validatePriceLabel.rx.text)
+            .disposed(by: disposeBag)
+
         Observable
             .combineLatest(
                 bookTitleTextField.rx.text.orEmpty.map { $0.isEmpty },
@@ -145,6 +165,7 @@ extension AddBookViewController {
 
                 case .success(let response):
                     Logger.info("success: \(response)")
+
                     self.showAlert(
                         title: Resources.Strings.General.success,
                         message: Resources.Strings.App.successAddBook
