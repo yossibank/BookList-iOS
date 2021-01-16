@@ -10,8 +10,13 @@ struct BookListCellData {
 
 final class BookListViewModel {
     private let usecase: BookListUsecase
+    private let loadingSubject: BehaviorRelay<Bool> = BehaviorRelay(value: false)
     private let resultSubject: BehaviorRelay<Result<BookListResponse, Error>?> = BehaviorRelay(value: nil)
     private let disposeBag: DisposeBag = DisposeBag()
+
+    var loading: Observable<Bool> {
+        loadingSubject.asObservable()
+    }
 
     var result: Observable<Result<BookListResponse, Error>?> {
         resultSubject.asObservable()
@@ -27,6 +32,10 @@ final class BookListViewModel {
     }
 
     private func bindUsecase() {
+        usecase.loading
+            .bind(to: loadingSubject)
+            .disposed(by: disposeBag)
+
         usecase.result
             .bind(to: resultSubject)
             .disposed(by: disposeBag)

@@ -2,6 +2,7 @@ import RxSwift
 import RxRelay
 
 final class BookListUsecase {
+    private let loadingSubject: BehaviorRelay<Bool> = BehaviorRelay(value: false)
     private let resultSubject: BehaviorRelay<Result<BookListResponse, Error>?> = BehaviorRelay(value: nil)
     private let disposeBag: DisposeBag = DisposeBag()
 
@@ -11,6 +12,10 @@ final class BookListUsecase {
 
     private var isNextPage: Bool {
         currentPage > totalPage && totalPage != 0
+    }
+
+    var loading: Observable<Bool> {
+        loadingSubject.asObservable()
     }
 
     var result: Observable<Result<BookListResponse, Error>?> {
@@ -25,12 +30,16 @@ final class BookListUsecase {
 
         if isNextPage { return }
 
+        loadingSubject.accept(true)
+
         BookListRequest().request(.init(limit: limit, page: currentPage))
             .subscribe(onSuccess: { response in
+                self.loadingSubject.accept(false)
                 self.resultSubject.accept(.success(response))
                 self.totalPage = response.totalPages
                 self.books.append(contentsOf: response.result)
             }, onFailure: { error in
+                self.loadingSubject.accept(false)
                 self.resultSubject.accept(.failure(error))
             })
             .disposed(by: disposeBag)

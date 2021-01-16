@@ -5,6 +5,7 @@ import RxCocoa
 final class BookListViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
 
     private let disposeBag: DisposeBag = DisposeBag()
 
@@ -55,6 +56,15 @@ extension BookListViewController {
                 case .failure(let error):
                     dump(error)
                 }
+            })
+            .disposed(by: disposeBag)
+
+        viewModel.loading
+            .asDriver(onErrorJustReturn: false)
+            .drive(onNext: { [weak self] loading in
+                guard let self = self else { return }
+
+                loading ? self.loadingIndicator.startAnimating() : self.loadingIndicator.stopAnimating()
             })
             .disposed(by: disposeBag)
     }
