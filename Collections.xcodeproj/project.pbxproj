@@ -22,6 +22,8 @@
 		784E135625B29952008FD947 /* DatePicker+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784E135525B29952008FD947 /* DatePicker+Util.swift */; };
 		784E135A25B2995E008FD947 /* DateFormatter+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784E135925B2995E008FD947 /* DateFormatter+Util.swift */; };
 		784E135E25B2A13D008FD947 /* AddBookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784E135D25B2A13D008FD947 /* AddBookViewModel.swift */; };
+		784E136225B2A209008FD947 /* AddBookResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784E136125B2A209008FD947 /* AddBookResponse.swift */; };
+		784E136C25B2A399008FD947 /* AddBookRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784E136B25B2A399008FD947 /* AddBookRequest.swift */; };
 		785A1AB725A9A369005E8A4B /* SignupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785A1AB625A9A369005E8A4B /* SignupViewModel.swift */; };
 		785A1ABD25A9A407005E8A4B /* SignupRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785A1ABC25A9A407005E8A4B /* SignupRequest.swift */; };
 		785A1AC125A9A416005E8A4B /* SignupResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785A1AC025A9A416005E8A4B /* SignupResponse.swift */; };
@@ -158,6 +160,8 @@
 		784E135525B29952008FD947 /* DatePicker+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DatePicker+Util.swift"; sourceTree = "<group>"; };
 		784E135925B2995E008FD947 /* DateFormatter+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Util.swift"; sourceTree = "<group>"; };
 		784E135D25B2A13D008FD947 /* AddBookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookViewModel.swift; sourceTree = "<group>"; };
+		784E136125B2A209008FD947 /* AddBookResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookResponse.swift; sourceTree = "<group>"; };
+		784E136B25B2A399008FD947 /* AddBookRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookRequest.swift; sourceTree = "<group>"; };
 		785A1AB625A9A369005E8A4B /* SignupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewModel.swift; sourceTree = "<group>"; };
 		785A1ABC25A9A407005E8A4B /* SignupRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupRequest.swift; sourceTree = "<group>"; };
 		785A1AC025A9A416005E8A4B /* SignupResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupResponse.swift; sourceTree = "<group>"; };
@@ -614,6 +618,7 @@
 				785A1ABC25A9A407005E8A4B /* SignupRequest.swift */,
 				78E609CA25AA015F0041B3D0 /* LoginRequest.swift */,
 				78CF3B0225AC031700ADBB60 /* BookListRequest.swift */,
+				784E136B25B2A399008FD947 /* AddBookRequest.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -624,6 +629,7 @@
 				785A1AC025A9A416005E8A4B /* SignupResponse.swift */,
 				78E609CE25AA018D0041B3D0 /* LoginResponse.swift */,
 				78CF3AFE25AC00C700ADBB60 /* BookListResponse.swift */,
+				784E136125B2A209008FD947 /* AddBookResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -955,6 +961,7 @@
 				782311FE259C0D9200D9E723 /* SignupViewController.swift in Sources */,
 				78E609F725AAABEA0041B3D0 /* EmailValidator.swift in Sources */,
 				785A1ADE25A9CC1A005E8A4B /* SignupUsecase.swift in Sources */,
+				784E136C25B2A399008FD947 /* AddBookRequest.swift in Sources */,
 				7892EF6C259C7212006F7315 /* Images.swift in Sources */,
 				7892EF62259C642C006F7315 /* IBDesignableView.swift in Sources */,
 				78C61C2725A170E000DC78A6 /* AppConfigurator.swift in Sources */,
@@ -971,6 +978,7 @@
 				7892EF79259C73C9006F7315 /* KeyboardNotifier.swift in Sources */,
 				784E135A25B2995E008FD947 /* DateFormatter+Util.swift in Sources */,
 				78F940E6259D7E42007C972A /* Router.swift in Sources */,
+				784E136225B2A209008FD947 /* AddBookResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

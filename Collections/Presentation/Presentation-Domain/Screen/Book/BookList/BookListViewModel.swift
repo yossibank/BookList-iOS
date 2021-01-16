@@ -36,7 +36,7 @@ final class BookListViewModel {
         usecase.fetchBookList(isInitial: isInitial)
     }
 
-    private func map(book: [Book]) -> [BookListCellData] {
+    private func map(book: [BookListResponse.Book]) -> [BookListCellData] {
         let books = book.map {
             BookListCellData(
                 name: $0.name,

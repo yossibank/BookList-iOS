@@ -17,7 +17,7 @@ final class BookListUsecase {
         resultSubject.asObservable()
     }
 
-    var books: [Book] = []
+    var books: [BookListResponse.Book] = []
 
     func fetchBookList(isInitial: Bool) {
 
