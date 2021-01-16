@@ -9,7 +9,7 @@ struct EditBookRequest: BaseRequest {
         var purchaseDate: String?
     }
 
-    var id: String
+    var id: Int
 
     var path: String { "books/\(id)"}
 
