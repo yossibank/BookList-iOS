@@ -14,11 +14,21 @@ final class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupNavigation()
         setupTableView()
     }
 }
 
 extension HomeViewController {
+
+    private func setupNavigation() {
+        navigationItem.backBarButtonItem = UIBarButtonItem(
+            title: .blank,
+            style: .plain,
+            target: nil,
+            action: nil
+        )
+    }
 
     private func setupTableView() {
         tableView.register(HomeTableViewCell.xib(), forCellReuseIdentifier: HomeTableViewCell.resourceName)
