@@ -18,6 +18,9 @@
 "not_length_password" = "パスワードは%@文字以上で入力が必要です";
 "not_matching_password" = "パスワードとパスワード（確認）が一致しません";
 "maybe_already_email" = "メールアドレスが使用されている可能性があります";
+"not_input_title" = "タイトルが入力されていません";
+"not_input_price" = "金額が入力されていません";
+"only_input_number" = "数字のみご入力ください";
 
 // MARK: - ナビゲーションバー
 "done" = "完了";

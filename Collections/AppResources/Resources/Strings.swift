@@ -40,5 +40,8 @@ struct StringResources {
         static var invalidEmailFormat: String { Internal.localizable.not_correct_format_email() }
         static var notFilledPassword: String { Internal.localizable.not_length_password(minimumLength) }
         static var notMatchingPassword: String { Internal.localizable.not_matching_password() }
+        static var titleEmpty: String { Internal.localizable.not_input_title() }
+        static var priceEmpty: String { Internal.localizable.not_input_price() }
+        static var onlyNumber: String { Internal.localizable.only_input_number() }
     }
 }
