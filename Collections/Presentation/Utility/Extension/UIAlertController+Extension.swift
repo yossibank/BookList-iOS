@@ -27,6 +27,26 @@ extension UIAlertController {
         return alert
     }
 
+    static func createActionAlert(
+        title: String,
+        message: String,
+        handler: @escaping (UIAlertAction) -> Void
+    ) -> UIAlertController {
+        let alert = UIAlertController(
+            title: title,
+            message: message,
+            preferredStyle: .alert
+        )
+
+        alert.addAction(
+            title: Resources.Strings.General.yes,
+            style: .default,
+            handler: handler
+        )
+
+        return alert
+    }
+
     static func createCloseAlert(
         title: String,
         message: String,

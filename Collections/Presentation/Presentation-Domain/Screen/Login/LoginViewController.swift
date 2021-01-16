@@ -130,7 +130,7 @@ extension LoginViewController {
 
                 case .failure(let error):
                     if let error = error as? APIError {
-                        dump(error)
+                        dump(error.description())
                     }
                     self.showError(
                         title: Resources.Strings.General.error,
@@ -171,7 +171,10 @@ extension LoginViewController: KeyboardDelegate {
 
     func keyboardPresent(_ height: CGFloat) {
         let displayHeight = self.view.frame.height - height
-        let bottomOffsetY = signupButton.frame.minY - 20 - displayHeight
+        let bottomOffsetY = stackView.convert(
+            loginButton.frame, to: self.view
+        ).maxY + 20 - displayHeight
+
         view.frame.origin.y == 0 ? (view.frame.origin.y -= bottomOffsetY) : ()
     }
 

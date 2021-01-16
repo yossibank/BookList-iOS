@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mXf-Q5-xcO">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Add Book View Controller-->
+        <scene sceneID="3Q9-J2-16b">
+            <objects>
+                <viewController id="mXf-Q5-xcO" customClass="AddBookViewController" customModule="Collections" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="KHd-m5-hiY">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="No_Image" translatesAutoresizingMaskIntoConstraints="NO" id="xcr-93-PIM">
+                                <rect key="frame" x="72" y="68" width="270" height="270"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="xcr-93-PIM" secondAttribute="height" multiplier="1:1" id="RYJ-E3-Fsi"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="28" translatesAutoresizingMaskIntoConstraints="NO" id="pvI-UH-8of">
+                                <rect key="frame" x="56" y="354" width="302" height="296"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fpG-xE-NXb" customClass="IBDesignableButton" customModule="Collections" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="302" height="32"/>
+                                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="画像を選択"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yfe-Vl-4el" customClass="IBDesignableButton" customModule="Collections" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="60" width="302" height="32"/>
+                                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="写真を撮る"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="SlX-VM-8nq">
+                                        <rect key="frame" x="0.0" y="120" width="302" height="176"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="名前" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="i2S-EU-nGw" customClass="BorderBottomTextField" customModule="Collections" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="302" height="32"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="32" id="bXi-uc-F3I"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="金額" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="Egn-8I-iff" customClass="BorderBottomTextField" customModule="Collections" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="72" width="302" height="32"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="32" id="Qey-Ag-O4V"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="購入日" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="jRN-j8-kLE" customClass="BorderBottomTextField" customModule="Collections" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="144" width="302" height="32"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="32" id="Y99-q5-WkX"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="4AZ-Tr-lMN"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="4AZ-Tr-lMN" firstAttribute="trailing" secondItem="xcr-93-PIM" secondAttribute="trailing" constant="72" id="0IT-fr-UuY"/>
+                            <constraint firstItem="xcr-93-PIM" firstAttribute="top" secondItem="4AZ-Tr-lMN" secondAttribute="top" constant="24" id="GAB-hP-PfY"/>
+                            <constraint firstItem="pvI-UH-8of" firstAttribute="leading" secondItem="4AZ-Tr-lMN" secondAttribute="leading" constant="56" id="Jcs-b5-FXt"/>
+                            <constraint firstItem="4AZ-Tr-lMN" firstAttribute="trailing" secondItem="pvI-UH-8of" secondAttribute="trailing" constant="56" id="Mle-Jo-vmO"/>
+                            <constraint firstItem="pvI-UH-8of" firstAttribute="top" secondItem="xcr-93-PIM" secondAttribute="bottom" constant="16" id="dQk-1i-5oA"/>
+                            <constraint firstItem="xcr-93-PIM" firstAttribute="leading" secondItem="4AZ-Tr-lMN" secondAttribute="leading" constant="72" id="ovI-az-rww"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="bookImageView" destination="xcr-93-PIM" id="vJk-Hw-Z4V"/>
+                        <outlet property="bookPriceTextField" destination="Egn-8I-iff" id="xK7-Ro-0m3"/>
+                        <outlet property="bookPurchaseDateTextField" destination="jRN-j8-kLE" id="a3B-9X-QPY"/>
+                        <outlet property="bookTitleTextField" destination="i2S-EU-nGw" id="Xwb-NO-O9Q"/>
+                        <outlet property="imageSelectButton" destination="fpG-xE-NXb" id="k2T-aE-jcS"/>
+                        <outlet property="stackView" destination="SlX-VM-8nq" id="n02-pr-OLM"/>
+                        <outlet property="takingPictureButton" destination="yfe-Vl-4el" id="2Az-uS-fgd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PPs-OB-Wlr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="218.84057971014494" y="-197.54464285714286"/>
+        </scene>
+    </scenes>
+    <designables>
+        <designable name="Egn-8I-iff">
+            <size key="intrinsicContentSize" width="37" height="23"/>
+        </designable>
+        <designable name="fpG-xE-NXb">
+            <size key="intrinsicContentSize" width="82" height="32"/>
+        </designable>
+        <designable name="i2S-EU-nGw">
+            <size key="intrinsicContentSize" width="37" height="23"/>
+        </designable>
+        <designable name="jRN-j8-kLE">
+            <size key="intrinsicContentSize" width="55.5" height="23"/>
+        </designable>
+        <designable name="yfe-Vl-4el">
+            <size key="intrinsicContentSize" width="82" height="32"/>
+        </designable>
+    </designables>
+    <resources>
+        <image name="No_Image" width="150" height="150"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

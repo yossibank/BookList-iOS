@@ -1,9 +1,14 @@
-// MARK: - ログイン, サインアップ
+// MARK: - エラーメッセージ
 "failed_login" = "ログインに失敗しました";
 "failed_signup" = "登録に失敗しました";
+"failed_add_book" = "書籍登録に失敗しました";
+
+// MARK: - アラートメッセージ
+"success_add_book" = "書籍登録が完了しました";
 
 // MARK: - ホーム
 "book_list" = "書籍一覧";
+"add_book" = "書籍追加";
 "wish_list_book" = "お気に入り書籍";
 
 // MARK: - バリデーション
@@ -14,9 +19,14 @@
 "not_matching_password" = "パスワードとパスワード（確認）が一致しません";
 "maybe_already_email" = "メールアドレスが使用されている可能性があります";
 
+// MARK: - ナビゲーションバー
+"done" = "完了";
+
 // MARK: - 一般
 "yes" = "はい";
 "no" = "いいえ";
+"success" = "成功";
+"failure" = "失敗";
 "close" = "閉じる";
 "error" = "エラー";
 "please_check_again_contents" = "ご入力内容をもう一度ご確認ください";

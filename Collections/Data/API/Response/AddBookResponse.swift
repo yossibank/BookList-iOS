@@ -1,6 +1,6 @@
-struct BookListResponse: Decodable {
+struct AddBookResponse: Decodable {
     var status: Int
-    var result: [Book]
+    var result: Book
 
     struct Book: Decodable {
         var id: Int
@@ -9,9 +9,4 @@ struct BookListResponse: Decodable {
         var price: Int?
         var purchaseDate: String?
     }
-
-    var totalCount: Int
-    var totalPages: Int
-    var currentPage: Int
-    var limit: Int
 }

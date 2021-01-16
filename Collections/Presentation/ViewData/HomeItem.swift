@@ -8,6 +8,7 @@ struct HomeCellData {
         typealias RawValue = HomeCellData
 
         case bookList
+        case addBook
         case wishList
 
         var rawValue: RawValue {
@@ -17,6 +18,12 @@ struct HomeCellData {
                 return HomeCellData(
                     title: Resources.Strings.Home.bookList,
                     image: Resources.Images.Home.bookList
+                )
+
+            case .addBook:
+                return HomeCellData(
+                    title: Resources.Strings.Home.addBook,
+                    image: Resources.Images.Home.addBook
                 )
 
             case .wishList:
@@ -32,6 +39,9 @@ struct HomeCellData {
 
             case .bookList:
                 return .bookList
+
+            case .addBook:
+                return .addBook
 
             case .wishList:
                 return .login
