@@ -16,6 +16,26 @@ final class AddBookViewController: UIViewController {
 
     private let disposeBag: DisposeBag = DisposeBag()
 
+    private lazy var datePicker: UIDatePicker = {
+        let datePicker = UIDatePicker()
+        datePicker.date = Date()
+        datePicker.datePickerMode = .date
+        datePicker.timeZone = .current
+        datePicker.locale = Locale(identifier: "ja_JP")
+        if #available(iOS 14, *) {
+            datePicker.preferredDatePickerStyle = .wheels
+        }
+        return datePicker
+    }()
+
+    private lazy var toolbar: UIToolbar = {
+        let toolbar = UIToolbar(frame: .init(x: 0, y: 0, width: view.frame.width, height: 35))
+        let spaceItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        let doneItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(tappedDoneButton))
+        toolbar.setItems([spaceItem, doneItem], animated: true)
+        return toolbar
+    }()
+
     static func createInstance() -> AddBookViewController {
         AddBookViewController.instantiateInitialViewController()
     }
@@ -42,6 +62,9 @@ extension AddBookViewController {
     }
 
     private func setupTextField() {
+        bookPurchaseDateTextField.inputView = datePicker
+        bookPurchaseDateTextField.inputAccessoryView = toolbar
+
         [bookTitleTextField, bookPriceTextField, bookPurchaseDateTextField]
             .forEach { $0?.delegate = self }
     }
@@ -62,6 +85,13 @@ extension AddBookViewController {
 
     @objc private  func tappedAddBookButton(_ sender: UIButton) {
         
+    }
+
+    @objc private func tappedDoneButton(_ sender: UIButton) {
+        bookPurchaseDateTextField.endEditing(true)
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy/MM/dd"
+        bookPurchaseDateTextField.text = formatter.string(from: datePicker.date)
     }
 
     @objc private func setupPhotoLibrary(_ sender: UIButton) {
