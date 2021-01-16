@@ -71,6 +71,8 @@
 		78997EAB259C29D80076FF97 /* leveldb-library.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78997E82259C29D80076FF97 /* leveldb-library.framework */; };
 		78997EE5259C4C5E0076FF97 /* UIView-IBInspectable-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78997EE4259C4C5E0076FF97 /* UIView-IBInspectable-Extensions.swift */; };
 		78B29D0125B3124A00A7DC7F /* TitleValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B29D0025B3124A00A7DC7F /* TitleValidator.swift */; };
+		78B29D0D25B3277700A7DC7F /* EditBookResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B29D0C25B3277700A7DC7F /* EditBookResponse.swift */; };
+		78B29D1125B32A5D00A7DC7F /* EditBookRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B29D1025B32A5D00A7DC7F /* EditBookRequest.swift */; };
 		78C61C0E25A1655600DC78A6 /* HttpMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C61C0D25A1655600DC78A6 /* HttpMethod.swift */; };
 		78C61C1425A1692900DC78A6 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C61C1325A1692900DC78A6 /* APIError.swift */; };
 		78C61C2125A16DCE00DC78A6 /* BaseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C61C2025A16DCE00DC78A6 /* BaseRequest.swift */; };
@@ -210,6 +212,8 @@
 		78997E82259C29D80076FF97 /* leveldb-library.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "leveldb-library.framework"; path = "Carthage/Build/iOS/leveldb-library.framework"; sourceTree = "<group>"; };
 		78997EE4259C4C5E0076FF97 /* UIView-IBInspectable-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView-IBInspectable-Extensions.swift"; sourceTree = "<group>"; };
 		78B29D0025B3124A00A7DC7F /* TitleValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleValidator.swift; sourceTree = "<group>"; };
+		78B29D0C25B3277700A7DC7F /* EditBookResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBookResponse.swift; sourceTree = "<group>"; };
+		78B29D1025B32A5D00A7DC7F /* EditBookRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBookRequest.swift; sourceTree = "<group>"; };
 		78C61C0D25A1655600DC78A6 /* HttpMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpMethod.swift; sourceTree = "<group>"; };
 		78C61C1325A1692900DC78A6 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		78C61C2025A16DCE00DC78A6 /* BaseRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRequest.swift; sourceTree = "<group>"; };
@@ -623,6 +627,7 @@
 				78E609CA25AA015F0041B3D0 /* LoginRequest.swift */,
 				78CF3B0225AC031700ADBB60 /* BookListRequest.swift */,
 				784E136B25B2A399008FD947 /* AddBookRequest.swift */,
+				78B29D1025B32A5D00A7DC7F /* EditBookRequest.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -634,6 +639,7 @@
 				78E609CE25AA018D0041B3D0 /* LoginResponse.swift */,
 				78CF3AFE25AC00C700ADBB60 /* BookListResponse.swift */,
 				784E136125B2A209008FD947 /* AddBookResponse.swift */,
+				78B29D0C25B3277700A7DC7F /* EditBookResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -946,6 +952,7 @@
 				785A1AB725A9A369005E8A4B /* SignupViewModel.swift in Sources */,
 				78C61C1425A1692900DC78A6 /* APIError.swift in Sources */,
 				78CF3AFF25AC00C700ADBB60 /* BookListResponse.swift in Sources */,
+				78B29D1125B32A5D00A7DC7F /* EditBookRequest.swift in Sources */,
 				78DEE7D025AB006F00219963 /* HomeViewController.swift in Sources */,
 				78DEE7DE25AB02A200219963 /* HomeTableViewCell.swift in Sources */,
 				7892EF68259C720A006F7315 /* Strings.swift in Sources */,
@@ -973,6 +980,7 @@
 				7892EF6C259C7212006F7315 /* Images.swift in Sources */,
 				7892EF62259C642C006F7315 /* IBDesignableView.swift in Sources */,
 				78C61C2725A170E000DC78A6 /* AppConfigurator.swift in Sources */,
+				78B29D0D25B3277700A7DC7F /* EditBookResponse.swift in Sources */,
 				78DEE7BD25AAE3AD00219963 /* UIViewController+Extension.swift in Sources */,
 				78DEE7B925AADFC600219963 /* UIAlertController+Extension.swift in Sources */,
 				782311FA259C0D9200D9E723 /* AppDelegate.swift in Sources */,
