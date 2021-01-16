@@ -14,7 +14,10 @@ final class AddBookViewController: UIViewController {
 
     var keyboardNotifier: KeyboardNotifier = KeyboardNotifier()
 
+    private let router: RouterProtocol = Router()
     private let disposeBag: DisposeBag = DisposeBag()
+
+    private var viewModel: AddBookViewModel!
 
     private lazy var toolbar: UIToolbar = {
         let toolbar = UIToolbar(frame: .init(x: 0, y: 0, width: view.frame.width, height: 35))
@@ -24,8 +27,10 @@ final class AddBookViewController: UIViewController {
         return toolbar
     }()
 
-    static func createInstance() -> AddBookViewController {
-        AddBookViewController.instantiateInitialViewController()
+    static func createInstance(viewModel: AddBookViewModel) -> AddBookViewController {
+        let instance = AddBookViewController.instantiateInitialViewController()
+        instance.viewModel = viewModel
+        return instance
     }
 
     override func viewDidLoad() {
@@ -35,6 +40,7 @@ final class AddBookViewController: UIViewController {
         setupButton()
         listenerKeyboard(keyboardNotifier: keyboardNotifier)
         bindValue()
+        bindViewModel()
     }
 }
 
@@ -72,12 +78,19 @@ extension AddBookViewController {
     }
 
     @objc private  func tappedAddBookButton(_ sender: UIButton) {
-        
+        let imageString = bookImageView.image?.pngData()?.base64EncodedString()
+
+        viewModel.addBook(
+            name: bookTitleTextField.text ?? "",
+            image: imageString,
+            price: Int(bookPriceTextField.text ?? ""),
+            purchaseDate: bookPurchaseDateTextField.text
+        )
     }
 
     @objc private func tappedDoneButton(_ sender: UIButton) {
-        bookPurchaseDateTextField.endEditing(true)
         bookPurchaseDateTextField.text = DateFormatter.convertToYearAndMonth(UIDatePicker.purchaseDatePicker.date)
+        bookPurchaseDateTextField.endEditing(true)
     }
 
     @objc private func setupPhotoLibrary(_ sender: UIButton) {
@@ -118,6 +131,31 @@ extension AddBookViewController {
                 guard let self = self else { return }
 
                 self.navigationItem.rightBarButtonItem?.isEnabled = isEnabled
+            })
+            .disposed(by: disposeBag)
+    }
+
+    private func bindViewModel() {
+        viewModel.result.asDriver(onErrorJustReturn: nil)
+            .drive(onNext: { [weak self] result in
+                guard let self = self,
+                      let result = result else { return }
+
+                switch result {
+
+                case .success(let response):
+                    Logger.info("success: \(response)")
+                    self.router.push(.home, from: self)
+
+                case .failure(let error):
+                    if let error = error as? APIError {
+                        dump(error.description())
+                    }
+                    self.showError(
+                        title: Resources.Strings.General.error,
+                        message: Resources.Strings.App.failedAddBook
+                    )
+                }
             })
             .disposed(by: disposeBag)
     }

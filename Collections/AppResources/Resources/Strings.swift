@@ -5,6 +5,7 @@ struct StringResources {
     struct App {
         static var failedSignup: String { Internal.localizable.failed_signup() + "\n" + Internal.localizable.maybe_already_email() }
         static var failedLogin: String { Internal.localizable.failed_login() + "\n" + Internal.localizable.please_check_again_contents() }
+        static var failedAddBook: String { Internal.localizable.failed_add_book() }
     }
 
     struct Home {

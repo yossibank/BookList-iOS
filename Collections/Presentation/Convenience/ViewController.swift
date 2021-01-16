@@ -41,7 +41,8 @@ extension Resources {
             }
 
             func addBook() -> AddBookViewController {
-                let vc = AddBookViewController.createInstance()
+                let viewModel = AddBookViewModel()
+                let vc = AddBookViewController.createInstance(viewModel: viewModel)
                 return vc
             }
         }

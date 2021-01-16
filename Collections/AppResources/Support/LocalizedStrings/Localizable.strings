@@ -1,6 +1,7 @@
-// MARK: - ログイン, サインアップ
+// MARK: - エラーメッセージ
 "failed_login" = "ログインに失敗しました";
 "failed_signup" = "登録に失敗しました";
+"failed_add_book" = "書籍登録に失敗しました";
 
 // MARK: - ホーム
 "book_list" = "書籍一覧";

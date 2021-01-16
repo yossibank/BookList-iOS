@@ -130,7 +130,7 @@ extension LoginViewController {
 
                 case .failure(let error):
                     if let error = error as? APIError {
-                        dump(error)
+                        dump(error.description())
                     }
                     self.showError(
                         title: Resources.Strings.General.error,

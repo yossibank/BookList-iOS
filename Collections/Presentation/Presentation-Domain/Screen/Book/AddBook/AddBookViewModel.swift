@@ -10,7 +10,7 @@ final class AddBookViewModel {
         resultSubject.asObservable()
     }
 
-    func addBook(name: String, image: String, price: Int, purchaseDate: String) {
+    func addBook(name: String, image: String?, price: Int?, purchaseDate: String?) {
         AddBookRequest().request(.init(name: name, image: image, price: price, purchaseDate: purchaseDate))
             .subscribe(onSuccess: { response in
                 self.resultSubject.accept(.success(response))
