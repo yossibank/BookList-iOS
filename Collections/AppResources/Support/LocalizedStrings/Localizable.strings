@@ -9,9 +9,11 @@
 "failed_login" = "ログインに失敗しました";
 "failed_signup" = "登録に失敗しました";
 "failed_add_book" = "書籍登録に失敗しました";
+"failed_edit_book" = "書籍編集に失敗しました";
 
 // MARK: - アラートメッセージ
 "success_add_book" = "書籍登録が完了しました";
+"success_edit_book" = "書籍編集が完了しました";
 
 // MARK: - ホーム
 "book_list" = "書籍一覧";

@@ -36,6 +36,11 @@ extension BookListViewController {
         tableView.delegate = self
         tableView.rowHeight = 100
     }
+
+    func reloadBookList() {
+        bindViewModel()
+        tableView.reloadData()
+    }
 }
 
 extension BookListViewController {

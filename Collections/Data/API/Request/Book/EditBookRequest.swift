@@ -11,7 +11,7 @@ struct EditBookRequest: BaseRequest {
 
     var id: Int
 
-    var path: String { "books/\(id)"}
+    var path: String { "/books/\(id)"}
 
     var method: HttpMethod { .put }
 

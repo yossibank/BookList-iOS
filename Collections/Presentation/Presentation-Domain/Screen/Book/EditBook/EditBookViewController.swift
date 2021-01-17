@@ -17,6 +17,7 @@ final class EditBookViewController: UIViewController {
 
     var keyboardNotifier: KeyboardNotifier = KeyboardNotifier()
 
+    private let router: RouterProtocol = Router()
     private let disposeBag: DisposeBag = DisposeBag()
 
     private var viewModel: EditBookViewModel!
@@ -81,7 +82,14 @@ extension EditBookViewController {
     }
 
     @objc private  func tappedEditBookButton(_ sender: UIButton) {
-        
+        let imageString = bookImageView.image?.pngData()?.base64EncodedString()
+
+        viewModel.editBook(
+            name: bookTitleTextField.text ?? "",
+            image: imageString,
+            price: Int(bookPriceTextField.text ?? ""),
+            purchaseDate: bookPurchaseDateTextField.text
+        )
     }
 
     @objc private func tappedDoneButton(_ sender: UIButton) {
@@ -179,10 +187,25 @@ extension EditBookViewController {
                 case .success(let response):
                     Logger.info("success: \(response)")
 
+                    self.showAlert(
+                        title: Resources.Strings.General.success,
+                        message: Resources.Strings.App.successEditBook
+                    ) {
+                        if let viewControllers = self.navigationController?.viewControllers,
+                           let bookListVC = viewControllers[1] as? BookListViewController {
+                            bookListVC.reloadBookList()
+                        }
+                        self.router.dismiss(self)
+                    }
+
                 case .failure(let error):
                     if let error = error as? APIError {
                         dump(error.description())
                     }
+                    self.showError(
+                        title: Resources.Strings.General.error,
+                        message: Resources.Strings.App.failedEditBook
+                    )
                 }
             })
             .disposed(by: disposeBag)

@@ -277,7 +277,10 @@ final class Router: RouterProtocol {
         completion: VoidBlock?
     ) {
         if let nc = vc.navigationController, nc.viewControllers.count > 1 {
-            nc.popViewController(animated: animated)
+            nc.popViewController(
+                animated: animated,
+                completion: completion
+            )
         } else {
             vc.dismiss(
                 animated:   animated,
