@@ -123,6 +123,17 @@
                             <constraint firstItem="Gai-ex-vW5" firstAttribute="leading" secondItem="rZ7-JX-LeT" secondAttribute="leading" constant="56" id="kgF-dj-AmP"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="bookImageView" destination="fgD-Aa-xdB" id="4ld-Wr-daw"/>
+                        <outlet property="bookPriceTextField" destination="K9N-00-XOg" id="6Qa-N6-tD9"/>
+                        <outlet property="bookPurchaseDateTextField" destination="gbp-mZ-PLg" id="Ejh-OY-WYn"/>
+                        <outlet property="bookTitleTextField" destination="lOD-lW-6Wr" id="VoO-1D-ySs"/>
+                        <outlet property="imageSelectButton" destination="SxR-wM-chO" id="xfw-Gf-RHx"/>
+                        <outlet property="stackView" destination="rHr-Kw-sjQ" id="SPs-4y-zyw"/>
+                        <outlet property="takingPictureButton" destination="4Ex-Ra-hHc" id="6ti-Pa-m33"/>
+                        <outlet property="validatePriceLabel" destination="u01-nu-K4G" id="jQ9-1C-gdO"/>
+                        <outlet property="validateTitleLabel" destination="dmP-pk-6k1" id="vqV-fL-uST"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vgG-Ux-Yu8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
