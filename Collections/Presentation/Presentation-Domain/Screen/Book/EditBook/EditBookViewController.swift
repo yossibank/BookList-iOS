@@ -18,5 +18,32 @@ final class EditBookViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupTextField()
+    }
+}
+
+extension EditBookViewController {
+
+    private func setupTextField() {
+        [bookTitleTextField, bookPriceTextField, bookPurchaseDateTextField]
+            .forEach { $0?.delegate = self }
+    }
+}
+
+extension EditBookViewController: UITextFieldDelegate {
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if bookTitleTextField == textField {
+            bookPriceTextField.becomeFirstResponder()
+        } else if bookPriceTextField == textField {
+            bookPurchaseDateTextField.becomeFirstResponder()
+        } else {
+            textField.resignFirstResponder()
+        }
+        return true
     }
 }
