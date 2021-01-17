@@ -174,7 +174,7 @@ extension AddBookViewController {
                 switch result {
 
                 case .success(let response):
-                    Logger.info("success: \(response)")
+                    dump(response)
 
                     self.showAlert(
                         title: Resources.Strings.General.success,

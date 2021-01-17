@@ -57,7 +57,7 @@ extension BookListViewController {
                 switch result {
 
                 case .success(let response):
-                    Logger.info("success: \(response)")
+                    dump(response)
                     self.tableView.reloadData()
 
                 case .failure(let error):
