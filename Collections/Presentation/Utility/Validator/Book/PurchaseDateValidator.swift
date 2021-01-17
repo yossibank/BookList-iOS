@@ -1,12 +1,12 @@
 import Foundation
 
-enum EmptyValidator: ValidatorProtocol {
+enum PurchaseDateValidator: ValidatorProtocol {
     typealias ValueType = String?
-    typealias ErrorType = EmptyError
+    typealias ErrorType = PurchaseDateError
 
     static func validate(
         _ value: String?
-    ) -> ValidationResult<EmptyError> {
+    ) -> ValidationResult<PurchaseDateError> {
         guard let value = value,
               !value.isEmpty
         else {
@@ -17,7 +17,7 @@ enum EmptyValidator: ValidatorProtocol {
     }
 }
 
-enum EmptyError: LocalizedError {
+enum PurchaseDateError: LocalizedError {
     case empty
 
     var errorDescription: String? {
@@ -25,7 +25,7 @@ enum EmptyError: LocalizedError {
         switch self {
 
         case .empty:
-            return Resources.Strings.Validator.titleEmpty
+            return Resources.Strings.Validator.purchaseDateEmpty
         }
     }
 }

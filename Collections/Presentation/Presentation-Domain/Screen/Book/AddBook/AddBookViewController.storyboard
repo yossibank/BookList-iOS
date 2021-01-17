@@ -32,7 +32,7 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="28" translatesAutoresizingMaskIntoConstraints="NO" id="pvI-UH-8of">
-                                <rect key="frame" x="56" y="354" width="302" height="286"/>
+                                <rect key="frame" x="56" y="354" width="302" height="291"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fpG-xE-NXb" customClass="IBDesignableButton" customModule="Collections" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="302" height="32"/>
@@ -59,7 +59,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="SlX-VM-8nq">
-                                        <rect key="frame" x="0.0" y="120" width="302" height="166"/>
+                                        <rect key="frame" x="0.0" y="120" width="302" height="171"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Vy9-Dl-Awu">
                                                 <rect key="frame" x="0.0" y="0.0" width="302" height="37"/>
@@ -99,14 +99,25 @@
                                                     </label>
                                                 </subviews>
                                             </stackView>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="購入日" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="jRN-j8-kLE" customClass="BorderBottomTextField" customModule="Collections" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="134" width="302" height="32"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="32" id="Y99-q5-WkX"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="RDp-gi-HzR">
+                                                <rect key="frame" x="0.0" y="134" width="302" height="37"/>
+                                                <subviews>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="購入日" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="jRN-j8-kLE" customClass="BorderBottomTextField" customModule="Collections" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="302" height="32"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="32" id="Y99-q5-WkX"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ur-qo-12v">
+                                                        <rect key="frame" x="0.0" y="37" width="302" height="0.0"/>
+                                                        <fontDescription key="fontDescription" name="HiraMinProN-W6" family="Hiragino Mincho ProN" pointSize="12"/>
+                                                        <color key="textColor" systemColor="systemRedColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
                                         </subviews>
                                     </stackView>
                                 </subviews>
@@ -129,9 +140,10 @@
                         <outlet property="bookPurchaseDateTextField" destination="jRN-j8-kLE" id="a3B-9X-QPY"/>
                         <outlet property="bookTitleTextField" destination="i2S-EU-nGw" id="Xwb-NO-O9Q"/>
                         <outlet property="imageSelectButton" destination="fpG-xE-NXb" id="k2T-aE-jcS"/>
-                        <outlet property="stackView" destination="SlX-VM-8nq" id="n02-pr-OLM"/>
+                        <outlet property="stackView" destination="RDp-gi-HzR" id="W0p-B6-bBK"/>
                         <outlet property="takingPictureButton" destination="yfe-Vl-4el" id="2Az-uS-fgd"/>
                         <outlet property="validatePriceLabel" destination="jgo-sV-BVX" id="Juo-nr-qbE"/>
+                        <outlet property="validatePurchaseDateLabel" destination="7ur-qo-12v" id="LgE-ik-Wso"/>
                         <outlet property="validateTitleLabel" destination="Wee-2K-X1x" id="sJZ-5O-S9X"/>
                     </connections>
                 </viewController>

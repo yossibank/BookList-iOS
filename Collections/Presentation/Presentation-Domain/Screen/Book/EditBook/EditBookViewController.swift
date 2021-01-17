@@ -13,6 +13,7 @@ final class EditBookViewController: UIViewController {
     @IBOutlet weak var bookPurchaseDateTextField: UITextField!
     @IBOutlet weak var validateTitleLabel: UILabel!
     @IBOutlet weak var validatePriceLabel: UILabel!
+    @IBOutlet weak var validatePurchaseDateLabel: UILabel!
 
     var keyboardNotifier: KeyboardNotifier = KeyboardNotifier()
 
@@ -109,7 +110,7 @@ extension EditBookViewController {
 
     private func bindValue() {
         bookTitleTextField.rx.text
-            .validate(EmptyValidator.self)
+            .validate(TitleValidator.self)
             .map { validate in
                 validate.errorDescription
             }
@@ -124,6 +125,15 @@ extension EditBookViewController {
             }
             .skip(2)
             .bind(to: validatePriceLabel.rx.text)
+            .disposed(by: disposeBag)
+
+        bookPurchaseDateTextField.rx.text
+            .validate(PurchaseDateValidator.self)
+            .map { validate in
+                validate.errorDescription
+            }
+            .skip(2)
+            .bind(to: validatePurchaseDateLabel.rx.text)
             .disposed(by: disposeBag)
 
         Observable
