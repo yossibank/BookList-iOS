@@ -2,6 +2,7 @@ import RxSwift
 import RxRelay
 
 struct BookListCellData {
+    let id: Int
     let name: String
     let image: String?
     let price: Int?
@@ -45,13 +46,18 @@ final class BookListViewModel {
         usecase.fetchBookList(isInitial: isInitial)
     }
 
+    func getBookId(index: Int) -> Int? {
+        books.any(at: index)?.id
+    }
+
     private func map(book: [BookListResponse.Book]) -> [BookListCellData] {
-        let books = book.map {
+        let books = book.map { book in
             BookListCellData(
-                name: $0.name,
-                image: $0.image,
-                price: $0.price,
-                purchaseDate: $0.purchaseDate
+                id: book.id,
+                name: book.name,
+                image: book.image,
+                price: book.price,
+                purchaseDate: book.purchaseDate
             )
         }
         return books
