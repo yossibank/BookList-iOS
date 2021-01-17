@@ -11,35 +11,32 @@ struct EditBookViewData {
 }
 
 final class EditBookViewModel {
+    private let usecase: EditBookUsecase
     private let resultSubject: BehaviorRelay<Result<EditBookResponse, Error>?> = BehaviorRelay(value: nil)
     private let disposeBag: DisposeBag = DisposeBag()
-    private var bookData: EditBookViewData
 
     var result: Observable<Result<EditBookResponse, Error>?> {
         resultSubject.asObservable()
     }
 
-    init(bookData: EditBookViewData) {
-        self.bookData = bookData
+    init(usecase: EditBookUsecase) {
+        self.usecase = usecase
+        bindUsecase()
+    }
+
+    private func bindUsecase() {
+        usecase.result
+            .bind(to: resultSubject)
+            .disposed(by: disposeBag)
     }
 
     func editBook(name: String, image: String?, price: Int?, purchaseDate: String?) {
-        EditBookRequest(id: bookData.id)
-            .request(
-                .init(
-                    name: bookData.name,
-                    image: bookData.image,
-                    price: bookData.price,
-                    purchaseDate: bookData.purchaseDate
-                )
-            )
-            .subscribe(onSuccess: { response in
-                self.resultSubject.accept(.success(response))
-                self.bookData = self.map(book: response.result)
-            }, onFailure: { error in
-                self.resultSubject.accept(.failure(error))
-            })
-            .disposed(by: disposeBag)
+        usecase.editBook(
+            name: name,
+            image: image,
+            price: price,
+            purchaseDate: purchaseDate
+        )
     }
 
     private func map(book: EditBookResponse.Book) -> EditBookViewData {
@@ -50,12 +47,5 @@ final class EditBookViewModel {
             price: book.price,
             purchaseDate: book.purchaseDate
         )
-    }
-}
-
-extension EditBookViewModel {
-
-    var getBookData: EditBookViewData {
-        return bookData
     }
 }

@@ -42,6 +42,7 @@ final class EditBookViewController: UIViewController {
         setupButton()
         listenerKeyboard(keyboardNotifier: keyboardNotifier)
         bindValue()
+        bindViewModel()
     }
 }
 
@@ -150,6 +151,27 @@ extension EditBookViewController {
             }
             .subscribe(onNext: { [weak self] isEnabled in
                 self?.navigationItem.rightBarButtonItem?.isEnabled = isEnabled
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func bindViewModel() {
+        viewModel.result
+            .asDriver(onErrorJustReturn: nil)
+            .drive(onNext: { [weak self] result in
+                guard let self = self,
+                      let result = result else { return }
+
+                switch result {
+
+                case .success(let response):
+                    Logger.info("success: \(response)")
+
+                case .failure(let error):
+                    if let error = error as? APIError {
+                        dump(error.description())
+                    }
+                }
             })
             .disposed(by: disposeBag)
     }

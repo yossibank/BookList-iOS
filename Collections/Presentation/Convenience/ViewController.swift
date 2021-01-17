@@ -46,8 +46,9 @@ extension Resources {
                 return vc
             }
 
-            func editBook(bookData: EditBookViewData) -> EditBookViewController {
-                let viewModel = EditBookViewModel(bookData: bookData)
+            func editBook(bookId: Int) -> EditBookViewController {
+                let usecase = EditBookUsecase(bookId: bookId)
+                let viewModel = EditBookViewModel(usecase: usecase)
                 let vc = EditBookViewController.createInstance(viewModel: viewModel)
                 return vc
             }
