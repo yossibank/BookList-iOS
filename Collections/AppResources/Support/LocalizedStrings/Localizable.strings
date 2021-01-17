@@ -8,6 +8,7 @@
 // MARK: - エラーメッセージ
 "failed_login" = "ログインに失敗しました";
 "failed_signup" = "登録に失敗しました";
+"failed_book_list" = "書籍の取得に失敗しました";
 "failed_add_book" = "書籍登録に失敗しました";
 "failed_edit_book" = "書籍編集に失敗しました";
 

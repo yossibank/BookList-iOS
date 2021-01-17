@@ -64,6 +64,10 @@ extension BookListViewController {
                     if let error = error as? APIError {
                         dump(error.description())
                     }
+                    self.showError(
+                        title: Resources.Strings.General.error,
+                        message: Resources.Strings.App.failedBookList
+                    )
                 }
             })
             .disposed(by: disposeBag)
