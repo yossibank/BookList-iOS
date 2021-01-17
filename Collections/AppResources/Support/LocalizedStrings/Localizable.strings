@@ -1,3 +1,10 @@
+// MARK: - アプリ
+"mail_address" = "メールアドレス";
+"password" = "パスワード";
+"title" = "タイトル";
+"price" = "金額";
+"purchase_date" = "購入日";
+
 // MARK: - エラーメッセージ
 "failed_login" = "ログインに失敗しました";
 "failed_signup" = "登録に失敗しました";
@@ -12,14 +19,11 @@
 "wish_list_book" = "お気に入り書籍";
 
 // MARK: - バリデーション
+"not_filled" = "%@が入力されていません";
 "not_correct_format_email" = "メールアドレスが正しいフォームで入力されていません";
-"not_input_email" = "メールアドレスが入力されていません";
-"not_input_password" = "パスワードが入力されていません";
 "not_length_password" = "パスワードは%@文字以上で入力が必要です";
 "not_matching_password" = "パスワードとパスワード（確認）が一致しません";
 "maybe_already_email" = "メールアドレスが使用されている可能性があります";
-"not_input_title" = "タイトルが入力されていません";
-"not_input_price" = "金額が入力されていません";
 "only_input_number" = "数字のみご入力ください";
 
 // MARK: - ナビゲーションバー
