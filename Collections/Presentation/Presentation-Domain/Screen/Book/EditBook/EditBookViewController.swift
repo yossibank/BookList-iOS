@@ -18,12 +18,22 @@ final class EditBookViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupNavigation()
         setupTextField()
         setupButton()
     }
 }
 
 extension EditBookViewController {
+
+    private func setupNavigation() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            title: Resources.Strings.Navigation.done,
+            style: .done,
+            target: self,
+            action: #selector(tappedEditBookButton)
+        )
+    }
 
     private func setupTextField() {
         [bookTitleTextField, bookPriceTextField, bookPurchaseDateTextField]
@@ -44,7 +54,7 @@ extension EditBookViewController {
         )
     }
 
-    @objc private  func tappedAddBookButton(_ sender: UIButton) {
+    @objc private  func tappedEditBookButton(_ sender: UIButton) {
         
     }
 
