@@ -208,7 +208,7 @@ extension AddBookViewController: UITextFieldDelegate {
 extension AddBookViewController: KeyboardDelegate {
 
     func keyboardPresent(_ height: CGFloat) {
-        let displayHeight = self.view.frame.height - height
+        let displayHeight = view.frame.height - height
         let bottomOffsetY = stackView.convert(
             bookPurchaseDateTextField.frame,
             to: self.view

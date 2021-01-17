@@ -12,6 +12,8 @@ final class EditBookViewController: UIViewController {
     @IBOutlet weak var validateTitleLabel: UILabel!
     @IBOutlet weak var validatePriceLabel: UILabel!
 
+    var keyboardNotifier: KeyboardNotifier = KeyboardNotifier()
+
     static func createInstance() -> EditBookViewController {
         EditBookViewController.instantiateInitialViewController()
     }
@@ -21,6 +23,7 @@ final class EditBookViewController: UIViewController {
         setupNavigation()
         setupTextField()
         setupButton()
+        listenerKeyboard(keyboardNotifier: keyboardNotifier)
     }
 }
 
@@ -101,6 +104,23 @@ extension EditBookViewController: UITextFieldDelegate {
             textField.resignFirstResponder()
         }
         return true
+    }
+}
+
+extension EditBookViewController: KeyboardDelegate {
+
+    func keyboardPresent(_ height: CGFloat) {
+        let displayHeihgt = view.frame.height - height
+        let bottomOffsetY = stackView.convert(
+            bookPurchaseDateTextField.frame,
+            to: self.view
+        ).maxY + 20 - displayHeihgt
+
+        view.frame.origin.y == 0 ? (view.frame.origin.y -= bottomOffsetY) : ()
+    }
+
+    func keyboardDismiss(_ height: CGFloat) {
+        view.frame.origin.y != 0 ? (view.frame.origin.y = 0) : ()
     }
 }
 

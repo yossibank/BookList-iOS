@@ -188,7 +188,7 @@ extension SignupViewController: UITextFieldDelegate {
 extension SignupViewController: KeyboardDelegate {
 
     func keyboardPresent(_ height: CGFloat) {
-        let displayHeight = self.view.frame.height - height
+        let displayHeight = view.frame.height - height
         let bottomOffsetY = stackView.convert(
             signupButton.frame,
             to: self.view
