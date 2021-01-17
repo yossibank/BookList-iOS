@@ -122,7 +122,7 @@ extension AddBookViewController {
 
     private func bindValue() {
         bookTitleTextField.rx.text
-            .validate(TitleValidator.self)
+            .validate(EmptyValidator.self)
             .map { validate in
                 validate.errorDescription
             }

@@ -1,12 +1,12 @@
 import Foundation
 
-enum TitleValidator: ValidatorProtocol {
+enum EmptyValidator: ValidatorProtocol {
     typealias ValueType = String?
-    typealias ErrorType = TitleError
+    typealias ErrorType = EmptyError
 
     static func validate(
         _ value: String?
-    ) -> ValidationResult<TitleError> {
+    ) -> ValidationResult<EmptyError> {
         guard let value = value,
               !value.isEmpty
         else {
@@ -17,7 +17,7 @@ enum TitleValidator: ValidatorProtocol {
     }
 }
 
-enum TitleError: LocalizedError {
+enum EmptyError: LocalizedError {
     case empty
 
     var errorDescription: String? {
