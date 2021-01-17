@@ -17,9 +17,9 @@ final class EditBookViewController: UIViewController {
 
     var keyboardNotifier: KeyboardNotifier = KeyboardNotifier()
 
-    private var bookId: Int?
-
     private let disposeBag: DisposeBag = DisposeBag()
+
+    private var viewModel: EditBookViewModel!
 
     private lazy var toolbar: UIToolbar = {
         let toolbar = UIToolbar(frame: .init(x: 0, y: 0, width: view.frame.width, height: 35))
@@ -29,9 +29,9 @@ final class EditBookViewController: UIViewController {
         return toolbar
     }()
 
-    static func createInstance(bookId: Int) -> EditBookViewController {
+    static func createInstance(viewModel: EditBookViewModel) -> EditBookViewController {
         let instance = EditBookViewController.instantiateInitialViewController()
-        instance.bookId = bookId
+        instance.viewModel = viewModel
         return instance
     }
 
