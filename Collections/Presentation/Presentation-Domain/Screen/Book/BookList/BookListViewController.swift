@@ -7,6 +7,7 @@ final class BookListViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
 
+    private let router: RouterProtocol = Router()
     private let disposeBag: DisposeBag = DisposeBag()
 
     private var viewModel: BookListViewModel!
@@ -32,6 +33,7 @@ extension BookListViewController {
 
         tableView.register(BookListTableViewCell.xib(), forCellReuseIdentifier: BookListTableViewCell.resourceName)
         tableView.dataSource = dataSource
+        tableView.delegate = self
         tableView.rowHeight = 100
     }
 }
@@ -67,5 +69,15 @@ extension BookListViewController {
                 loading ? self.loadingIndicator.startAnimating() : self.loadingIndicator.stopAnimating()
             })
             .disposed(by: disposeBag)
+    }
+}
+
+extension BookListViewController: UITableViewDelegate {
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+
+        guard let bookId = viewModel.getBookId(index: indexPath.row) else { return }
+        router.push(.editBook(bookId: bookId), from: self)
     }
 }

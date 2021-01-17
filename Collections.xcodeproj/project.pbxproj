@@ -37,6 +37,9 @@
 		785A1ADE25A9CC1A005E8A4B /* SignupUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785A1ADD25A9CC1A005E8A4B /* SignupUsecase.swift */; };
 		785D2798259C183300F7C9A6 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785D2797259C183300F7C9A6 /* R.generated.swift */; };
 		78772B3C25B3D37300E6493E /* PurchaseDateValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78772B3B25B3D37300E6493E /* PurchaseDateValidator.swift */; };
+		78772B4E25B3DEBD00E6493E /* Array+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78772B4D25B3DEBD00E6493E /* Array+Util.swift */; };
+		78772B5425B3E48B00E6493E /* EditBookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78772B5325B3E48B00E6493E /* EditBookViewModel.swift */; };
+		78772B5A25B3EE0900E6493E /* EditBookUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78772B5925B3EE0900E6493E /* EditBookUsecase.swift */; };
 		78844C6125B0873600C9AEC0 /* AddBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78844C6025B0873600C9AEC0 /* AddBookViewController.swift */; };
 		78844C6525B0874100C9AEC0 /* AddBookViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78844C6425B0874100C9AEC0 /* AddBookViewController.storyboard */; };
 		7892EF52259C58C0006F7315 /* IBDesignableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7892EF51259C58C0006F7315 /* IBDesignableButton.swift */; };
@@ -80,7 +83,7 @@
 		78C61C1425A1692900DC78A6 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C61C1325A1692900DC78A6 /* APIError.swift */; };
 		78C61C2125A16DCE00DC78A6 /* BaseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C61C2025A16DCE00DC78A6 /* BaseRequest.swift */; };
 		78C61C2725A170E000DC78A6 /* AppConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C61C2625A170E000DC78A6 /* AppConfigurator.swift */; };
-		78C61C2C25A1716800DC78A6 /* StringsUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C61C2B25A1716800DC78A6 /* StringsUtil.swift */; };
+		78C61C2C25A1716800DC78A6 /* String+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C61C2B25A1716800DC78A6 /* String+Util.swift */; };
 		78CF3AEF25ABF81400ADBB60 /* BookListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78CF3AEE25ABF81400ADBB60 /* BookListViewController.storyboard */; };
 		78CF3AF325ABF82900ADBB60 /* BookListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CF3AF225ABF82900ADBB60 /* BookListViewController.swift */; };
 		78CF3AF825ABF85D00ADBB60 /* BookListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CF3AF625ABF85D00ADBB60 /* BookListTableViewCell.swift */; };
@@ -181,6 +184,9 @@
 		785A1ADD25A9CC1A005E8A4B /* SignupUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupUsecase.swift; sourceTree = "<group>"; };
 		785D2797259C183300F7C9A6 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = R.generated.swift; path = Collections/AppResources/R/R.generated.swift; sourceTree = SOURCE_ROOT; };
 		78772B3B25B3D37300E6493E /* PurchaseDateValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseDateValidator.swift; sourceTree = "<group>"; };
+		78772B4D25B3DEBD00E6493E /* Array+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Util.swift"; sourceTree = "<group>"; };
+		78772B5325B3E48B00E6493E /* EditBookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBookViewModel.swift; sourceTree = "<group>"; };
+		78772B5925B3EE0900E6493E /* EditBookUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBookUsecase.swift; sourceTree = "<group>"; };
 		78844C6025B0873600C9AEC0 /* AddBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookViewController.swift; sourceTree = "<group>"; };
 		78844C6425B0874100C9AEC0 /* AddBookViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddBookViewController.storyboard; sourceTree = "<group>"; };
 		7892EF51259C58C0006F7315 /* IBDesignableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBDesignableButton.swift; sourceTree = "<group>"; };
@@ -224,7 +230,7 @@
 		78C61C1325A1692900DC78A6 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		78C61C2025A16DCE00DC78A6 /* BaseRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRequest.swift; sourceTree = "<group>"; };
 		78C61C2625A170E000DC78A6 /* AppConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfigurator.swift; sourceTree = "<group>"; };
-		78C61C2B25A1716800DC78A6 /* StringsUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringsUtil.swift; sourceTree = "<group>"; };
+		78C61C2B25A1716800DC78A6 /* String+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Util.swift"; sourceTree = "<group>"; };
 		78CF3AEE25ABF81400ADBB60 /* BookListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BookListViewController.storyboard; sourceTree = "<group>"; };
 		78CF3AF225ABF82900ADBB60 /* BookListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListViewController.swift; sourceTree = "<group>"; };
 		78CF3AF625ABF85D00ADBB60 /* BookListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListTableViewCell.swift; sourceTree = "<group>"; };
@@ -637,6 +643,8 @@
 		78B29D1A25B330D600A7DC7F /* EditBook */ = {
 			isa = PBXGroup;
 			children = (
+				78772B5925B3EE0900E6493E /* EditBookUsecase.swift */,
+				78772B5325B3E48B00E6493E /* EditBookViewModel.swift */,
 				78B29D1B25B3310000A7DC7F /* EditBookViewController.swift */,
 				78B29D2125B3311A00A7DC7F /* EditBookViewController.storyboard */,
 			);
@@ -690,7 +698,8 @@
 		78C61C2A25A1714B00DC78A6 /* AppUtil */ = {
 			isa = PBXGroup;
 			children = (
-				78C61C2B25A1716800DC78A6 /* StringsUtil.swift */,
+				78C61C2B25A1716800DC78A6 /* String+Util.swift */,
+				78772B4D25B3DEBD00E6493E /* Array+Util.swift */,
 				784E135525B29952008FD947 /* DatePicker+Util.swift */,
 				784E135925B2995E008FD947 /* DateFormatter+Util.swift */,
 			);
@@ -974,6 +983,7 @@
 			files = (
 				78987B3C259C8813008311DC /* LoginViewController.swift in Sources */,
 				784E135E25B2A13D008FD947 /* AddBookViewModel.swift in Sources */,
+				78772B5A25B3EE0900E6493E /* EditBookUsecase.swift in Sources */,
 				78CF3B1925AC320900ADBB60 /* BookListUsecase.swift in Sources */,
 				78CF3AF825ABF85D00ADBB60 /* BookListTableViewCell.swift in Sources */,
 				7892EF5C259C5DF0006F7315 /* IBDesignableTextField.swift in Sources */,
@@ -996,6 +1006,7 @@
 				78E609D325AA04300041B3D0 /* LoginViewModel.swift in Sources */,
 				78DEE7E625AB0BD800219963 /* HomeItem.swift in Sources */,
 				78E609FB25AAABF80041B3D0 /* PasswordValidator.swift in Sources */,
+				78772B5425B3E48B00E6493E /* EditBookViewModel.swift in Sources */,
 				7892EF70259C721F006F7315 /* Resources.swift in Sources */,
 				78F940EE259D995F007C972A /* ResourcesSupport.swift in Sources */,
 				78E609D925AA0EE60041B3D0 /* LoginUsecase.swift in Sources */,
@@ -1004,9 +1015,10 @@
 				78844C6125B0873600C9AEC0 /* AddBookViewController.swift in Sources */,
 				785A1AC125A9A416005E8A4B /* SignupResponse.swift in Sources */,
 				78E609F125AAAA530041B3D0 /* Validator+Protocol.swift in Sources */,
-				78C61C2C25A1716800DC78A6 /* StringsUtil.swift in Sources */,
+				78C61C2C25A1716800DC78A6 /* String+Util.swift in Sources */,
 				78C61C2125A16DCE00DC78A6 /* BaseRequest.swift in Sources */,
 				782311FE259C0D9200D9E723 /* SignupViewController.swift in Sources */,
+				78772B4E25B3DEBD00E6493E /* Array+Util.swift in Sources */,
 				784E138225B2F555008FD947 /* NumberValidator.swift in Sources */,
 				78772B3C25B3D37300E6493E /* PurchaseDateValidator.swift in Sources */,
 				78E609F725AAABEA0041B3D0 /* EmailValidator.swift in Sources */,

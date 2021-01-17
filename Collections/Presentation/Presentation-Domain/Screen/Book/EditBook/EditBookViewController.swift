@@ -19,6 +19,8 @@ final class EditBookViewController: UIViewController {
 
     private let disposeBag: DisposeBag = DisposeBag()
 
+    private var viewModel: EditBookViewModel!
+
     private lazy var toolbar: UIToolbar = {
         let toolbar = UIToolbar(frame: .init(x: 0, y: 0, width: view.frame.width, height: 35))
         let spaceItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
@@ -27,8 +29,10 @@ final class EditBookViewController: UIViewController {
         return toolbar
     }()
 
-    static func createInstance() -> EditBookViewController {
-        EditBookViewController.instantiateInitialViewController()
+    static func createInstance(viewModel: EditBookViewModel) -> EditBookViewController {
+        let instance = EditBookViewController.instantiateInitialViewController()
+        instance.viewModel = viewModel
+        return instance
     }
 
     override func viewDidLoad() {
@@ -38,6 +42,7 @@ final class EditBookViewController: UIViewController {
         setupButton()
         listenerKeyboard(keyboardNotifier: keyboardNotifier)
         bindValue()
+        bindViewModel()
     }
 }
 
@@ -146,6 +151,27 @@ extension EditBookViewController {
             }
             .subscribe(onNext: { [weak self] isEnabled in
                 self?.navigationItem.rightBarButtonItem?.isEnabled = isEnabled
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func bindViewModel() {
+        viewModel.result
+            .asDriver(onErrorJustReturn: nil)
+            .drive(onNext: { [weak self] result in
+                guard let self = self,
+                      let result = result else { return }
+
+                switch result {
+
+                case .success(let response):
+                    Logger.info("success: \(response)")
+
+                case .failure(let error):
+                    if let error = error as? APIError {
+                        dump(error.description())
+                    }
+                }
             })
             .disposed(by: disposeBag)
     }
