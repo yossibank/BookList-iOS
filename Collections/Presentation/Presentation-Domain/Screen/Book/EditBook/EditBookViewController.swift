@@ -14,6 +14,14 @@ final class EditBookViewController: UIViewController {
 
     var keyboardNotifier: KeyboardNotifier = KeyboardNotifier()
 
+    private lazy var toolbar: UIToolbar = {
+        let toolbar = UIToolbar(frame: .init(x: 0, y: 0, width: view.frame.width, height: 35))
+        let spaceItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        let doneItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(tappedDoneButton))
+        toolbar.setItems([spaceItem, doneItem], animated: true)
+        return toolbar
+    }()
+
     static func createInstance() -> EditBookViewController {
         EditBookViewController.instantiateInitialViewController()
     }
@@ -39,6 +47,9 @@ extension EditBookViewController {
     }
 
     private func setupTextField() {
+        bookPurchaseDateTextField.inputAccessoryView = toolbar
+        bookPurchaseDateTextField.inputView = UIDatePicker.purchaseDatePicker
+
         [bookTitleTextField, bookPriceTextField, bookPurchaseDateTextField]
             .forEach { $0?.delegate = self }
     }
