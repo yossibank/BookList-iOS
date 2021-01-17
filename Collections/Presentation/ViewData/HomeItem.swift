@@ -44,7 +44,7 @@ struct HomeCellData {
                 return .addBook
 
             case .wishList:
-                return .login
+                return .editBook
             }
         }
     }

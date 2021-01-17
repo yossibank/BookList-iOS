@@ -2,7 +2,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-final class AddBookViewController: UIViewController {
+final class EditBookViewController: UIViewController {
 
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var bookImageView: UIImageView!
@@ -17,10 +17,7 @@ final class AddBookViewController: UIViewController {
 
     var keyboardNotifier: KeyboardNotifier = KeyboardNotifier()
 
-    private let router: RouterProtocol = Router()
     private let disposeBag: DisposeBag = DisposeBag()
-
-    private var viewModel: AddBookViewModel!
 
     private lazy var toolbar: UIToolbar = {
         let toolbar = UIToolbar(frame: .init(x: 0, y: 0, width: view.frame.width, height: 35))
@@ -30,10 +27,8 @@ final class AddBookViewController: UIViewController {
         return toolbar
     }()
 
-    static func createInstance(viewModel: AddBookViewModel) -> AddBookViewController {
-        let instance = AddBookViewController.instantiateInitialViewController()
-        instance.viewModel = viewModel
-        return instance
+    static func createInstance() -> EditBookViewController {
+        EditBookViewController.instantiateInitialViewController()
     }
 
     override func viewDidLoad() {
@@ -43,18 +38,17 @@ final class AddBookViewController: UIViewController {
         setupButton()
         listenerKeyboard(keyboardNotifier: keyboardNotifier)
         bindValue()
-        bindViewModel()
     }
 }
 
-extension AddBookViewController {
+extension EditBookViewController {
 
     private func setupNavigation() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             title: Resources.Strings.Navigation.done,
             style: .done,
             target: self,
-            action: #selector(tappedAddBookButton)
+            action: #selector(tappedEditBookButton)
         )
     }
 
@@ -80,15 +74,8 @@ extension AddBookViewController {
         )
     }
 
-    @objc private  func tappedAddBookButton(_ sender: UIButton) {
-        let imageString = bookImageView.image?.pngData()?.base64EncodedString()
-
-        viewModel.addBook(
-            name: bookTitleTextField.text ?? "",
-            image: imageString,
-            price: Int(bookPriceTextField.text ?? ""),
-            purchaseDate: bookPurchaseDateTextField.text
-        )
+    @objc private  func tappedEditBookButton(_ sender: UIButton) {
+        
     }
 
     @objc private func tappedDoneButton(_ sender: UIButton) {
@@ -119,7 +106,7 @@ extension AddBookViewController {
     }
 }
 
-extension AddBookViewController {
+extension EditBookViewController {
 
     private func bindValue() {
         bookTitleTextField.rx.text
@@ -158,46 +145,13 @@ extension AddBookViewController {
                 !(isbookTitleEmpty || isBookPriceEmpty || isBookPurchaseDateEmpty)
             }
             .subscribe(onNext: { [weak self] isEnabled in
-                guard let self = self else { return }
-
-                self.navigationItem.rightBarButtonItem?.isEnabled = isEnabled
-            })
-            .disposed(by: disposeBag)
-    }
-
-    private func bindViewModel() {
-        viewModel.result.asDriver(onErrorJustReturn: nil)
-            .drive(onNext: { [weak self] result in
-                guard let self = self,
-                      let result = result else { return }
-
-                switch result {
-
-                case .success(let response):
-                    Logger.info("success: \(response)")
-
-                    self.showAlert(
-                        title: Resources.Strings.General.success,
-                        message: Resources.Strings.App.successAddBook
-                    ) {
-                        self.router.dismiss(self)
-                    }
-
-                case .failure(let error):
-                    if let error = error as? APIError {
-                        dump(error.description())
-                    }
-                    self.showError(
-                        title: Resources.Strings.General.error,
-                        message: Resources.Strings.App.failedAddBook
-                    )
-                }
+                self?.navigationItem.rightBarButtonItem?.isEnabled = isEnabled
             })
             .disposed(by: disposeBag)
     }
 }
 
-extension AddBookViewController: UITextFieldDelegate {
+extension EditBookViewController: UITextFieldDelegate {
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
@@ -215,14 +169,14 @@ extension AddBookViewController: UITextFieldDelegate {
     }
 }
 
-extension AddBookViewController: KeyboardDelegate {
+extension EditBookViewController: KeyboardDelegate {
 
     func keyboardPresent(_ height: CGFloat) {
-        let displayHeight = view.frame.height - height
+        let displayHeihgt = view.frame.height - height
         let bottomOffsetY = stackView.convert(
             bookPurchaseDateTextField.frame,
             to: self.view
-        ).maxY + 20 - displayHeight
+        ).maxY + 20 - displayHeihgt
 
         view.frame.origin.y == 0 ? (view.frame.origin.y -= bottomOffsetY) : ()
     }
@@ -232,7 +186,7 @@ extension AddBookViewController: KeyboardDelegate {
     }
 }
 
-extension AddBookViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension EditBookViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     func imagePickerController(
         _ picker: UIImagePickerController,

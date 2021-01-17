@@ -170,7 +170,7 @@ extension LoginViewController: UITextFieldDelegate {
 extension LoginViewController: KeyboardDelegate {
 
     func keyboardPresent(_ height: CGFloat) {
-        let displayHeight = self.view.frame.height - height
+        let displayHeight = view.frame.height - height
         let bottomOffsetY = stackView.convert(
             loginButton.frame, to: self.view
         ).maxY + 20 - displayHeight
