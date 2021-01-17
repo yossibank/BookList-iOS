@@ -12,6 +12,7 @@ struct EditBookViewData {
 
 final class EditBookViewModel {
     private let usecase: EditBookUsecase
+    private let bookData: EditBookViewData
     private let resultSubject: BehaviorRelay<Result<EditBookResponse, Error>?> = BehaviorRelay(value: nil)
     private let disposeBag: DisposeBag = DisposeBag()
 
@@ -19,8 +20,13 @@ final class EditBookViewModel {
         resultSubject.asObservable()
     }
 
-    init(usecase: EditBookUsecase) {
+    var getBook: EditBookViewData {
+        bookData
+    }
+
+    init(usecase: EditBookUsecase, bookData: EditBookViewData) {
         self.usecase = usecase
+        self.bookData = bookData
         bindUsecase()
     }
 

@@ -441,6 +441,44 @@
 			path = Book;
 			sourceTree = "<group>";
 		};
+		788FF92925B41FBE00A1BF46 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				785A1ABC25A9A407005E8A4B /* SignupRequest.swift */,
+				78E609CA25AA015F0041B3D0 /* LoginRequest.swift */,
+			);
+			path = Account;
+			sourceTree = "<group>";
+		};
+		788FF92A25B41FC400A1BF46 /* Book */ = {
+			isa = PBXGroup;
+			children = (
+				78CF3B0225AC031700ADBB60 /* BookListRequest.swift */,
+				784E136B25B2A399008FD947 /* AddBookRequest.swift */,
+				78B29D1025B32A5D00A7DC7F /* EditBookRequest.swift */,
+			);
+			path = Book;
+			sourceTree = "<group>";
+		};
+		788FF92B25B41FE500A1BF46 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				785A1AC025A9A416005E8A4B /* SignupResponse.swift */,
+				78E609CE25AA018D0041B3D0 /* LoginResponse.swift */,
+			);
+			path = Account;
+			sourceTree = "<group>";
+		};
+		788FF92C25B41FEA00A1BF46 /* Book */ = {
+			isa = PBXGroup;
+			children = (
+				78CF3AFE25AC00C700ADBB60 /* BookListResponse.swift */,
+				784E136125B2A209008FD947 /* AddBookResponse.swift */,
+				78B29D0C25B3277700A7DC7F /* EditBookResponse.swift */,
+			);
+			path = Book;
+			sourceTree = "<group>";
+		};
 		7892EF48259C539B006F7315 /* IBDesignable */ = {
 			isa = PBXGroup;
 			children = (
@@ -665,12 +703,9 @@
 		78C61C1D25A16DB700DC78A6 /* Request */ = {
 			isa = PBXGroup;
 			children = (
-				78C61C1F25A16DC800DC78A6 /* Base */,
-				785A1ABC25A9A407005E8A4B /* SignupRequest.swift */,
-				78E609CA25AA015F0041B3D0 /* LoginRequest.swift */,
-				78CF3B0225AC031700ADBB60 /* BookListRequest.swift */,
-				784E136B25B2A399008FD947 /* AddBookRequest.swift */,
-				78B29D1025B32A5D00A7DC7F /* EditBookRequest.swift */,
+				788FF92925B41FBE00A1BF46 /* Account */,
+				788FF92A25B41FC400A1BF46 /* Book */,
+				78C61C2025A16DCE00DC78A6 /* BaseRequest.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -678,21 +713,10 @@
 		78C61C1E25A16DBD00DC78A6 /* Response */ = {
 			isa = PBXGroup;
 			children = (
-				785A1AC025A9A416005E8A4B /* SignupResponse.swift */,
-				78E609CE25AA018D0041B3D0 /* LoginResponse.swift */,
-				78CF3AFE25AC00C700ADBB60 /* BookListResponse.swift */,
-				784E136125B2A209008FD947 /* AddBookResponse.swift */,
-				78B29D0C25B3277700A7DC7F /* EditBookResponse.swift */,
+				788FF92B25B41FE500A1BF46 /* Account */,
+				788FF92C25B41FEA00A1BF46 /* Book */,
 			);
 			path = Response;
-			sourceTree = "<group>";
-		};
-		78C61C1F25A16DC800DC78A6 /* Base */ = {
-			isa = PBXGroup;
-			children = (
-				78C61C2025A16DCE00DC78A6 /* BaseRequest.swift */,
-			);
-			path = Base;
 			sourceTree = "<group>";
 		};
 		78C61C2A25A1714B00DC78A6 /* AppUtil */ = {
