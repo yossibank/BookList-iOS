@@ -239,7 +239,6 @@ extension AddBookViewController: UIImagePickerControllerDelegate, UINavigationCo
         didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]
     ) {
         if let image = info[.originalImage] as? UIImage {
-            bookImageView.contentMode = .scaleAspectFill
             bookImageView.image = image
         }
         self.dismiss(animated: true)

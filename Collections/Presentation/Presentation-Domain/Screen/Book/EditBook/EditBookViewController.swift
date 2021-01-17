@@ -41,6 +41,7 @@ final class EditBookViewController: UIViewController {
         setupTextField()
         setupButton()
         listenerKeyboard(keyboardNotifier: keyboardNotifier)
+        setupBookData()
         bindValue()
         bindViewModel()
     }
@@ -112,6 +113,17 @@ extension EditBookViewController {
 }
 
 extension EditBookViewController {
+
+    private func setupBookData() {
+        let bookData = viewModel.getBookData()
+        bookTitleTextField.text = bookData.name
+        bookPriceTextField.text = bookData.price
+        bookPurchaseDateTextField.text = bookData.purchaseDate
+
+        ImageLoader.shared.loadImage(with: .string(urlString: bookData.image)) { [weak self] image, _ in
+            self?.bookImageView.image = image
+        }
+    }
 
     private func bindValue() {
         bookTitleTextField.rx.text

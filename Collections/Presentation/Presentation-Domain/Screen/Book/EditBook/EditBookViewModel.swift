@@ -3,7 +3,6 @@ import RxSwift
 import RxRelay
 
 struct EditBookViewData {
-    let id: Int
     let name: String
     let image: String?
     let price: Int?
@@ -18,10 +17,6 @@ final class EditBookViewModel {
 
     var result: Observable<Result<EditBookResponse, Error>?> {
         resultSubject.asObservable()
-    }
-
-    var getBook: EditBookViewData {
-        bookData
     }
 
     init(usecase: EditBookUsecase, bookData: EditBookViewData) {
@@ -45,13 +40,20 @@ final class EditBookViewModel {
         )
     }
 
-    private func map(book: EditBookResponse.Book) -> EditBookViewData {
-        return EditBookViewData(
-            id: book.id,
-            name: book.name,
-            image: book.image,
-            price: book.price,
-            purchaseDate: book.purchaseDate
-        )
+    func getBookData() -> (name: String, image: String, price: String, purchaseDate: String) {
+        var book: (name: String, image: String, price: String, purchaseDate: String) = ("", "", "", "")
+
+        book.name = bookData.name
+        if let imageUrl = bookData.image {
+            book.image = imageUrl
+        }
+        if let price = bookData.price {
+            book.price = price.description
+        }
+        if let purchaseDate = bookData.purchaseDate {
+            book.purchaseDate = purchaseDate
+        }
+
+        return book
     }
 }

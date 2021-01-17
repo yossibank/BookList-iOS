@@ -77,15 +77,19 @@ extension BookListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
 
-        guard let bookId = viewModel.getBookId(index: indexPath.row) else { return }
-        let book = viewModel.books[indexPath.row]
+        guard let bookId = viewModel.getBookId(index: indexPath.row),
+              let book = viewModel.books.any(at: indexPath.row)
+        else {
+            return
+        }
+
         let bookData = EditBookViewData(
-            id: bookId,
             name: book.name,
             image: book.image,
             price: book.price,
             purchaseDate: book.purchaseDate
         )
+
         router.push(.editBook(bookId: bookId, bookData: bookData), from: self)
     }
 }
