@@ -38,8 +38,8 @@ extension BookListViewController {
     }
 
     func reloadBookList() {
-        bindViewModel()
-        tableView.reloadData()
+        viewModel.resetBookData()
+        viewModel.fetchBookList(isInitial: true)
     }
 }
 
@@ -57,11 +57,13 @@ extension BookListViewController {
                 switch result {
 
                 case .success(let response):
-                    dump(response)
+                    Logger.info("success: \(response)")
                     self.tableView.reloadData()
 
                 case .failure(let error):
-                    dump(error)
+                    if let error = error as? APIError {
+                        dump(error.description())
+                    }
                 }
             })
             .disposed(by: disposeBag)

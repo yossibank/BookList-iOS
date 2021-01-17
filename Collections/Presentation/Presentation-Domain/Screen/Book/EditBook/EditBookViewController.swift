@@ -192,7 +192,7 @@ extension EditBookViewController {
                         message: Resources.Strings.App.successEditBook
                     ) {
                         if let viewControllers = self.navigationController?.viewControllers,
-                           let bookListVC = viewControllers[1] as? BookListViewController {
+                           let bookListVC = viewControllers.dropLast().last as? BookListViewController {
                             bookListVC.reloadBookList()
                         }
                         self.router.dismiss(self)

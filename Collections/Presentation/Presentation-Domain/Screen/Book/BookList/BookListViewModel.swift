@@ -46,6 +46,10 @@ final class BookListViewModel {
         books.any(at: index)?.id
     }
 
+    func resetBookData() {
+        usecase.books = []
+    }
+
     func fetchBookList(isInitial: Bool) {
         usecase.fetchBookList(isInitial: isInitial)
     }
