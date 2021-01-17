@@ -1,4 +1,6 @@
 import UIKit
+import RxSwift
+import RxCocoa
 
 final class EditBookViewController: UIViewController {
 
@@ -13,6 +15,8 @@ final class EditBookViewController: UIViewController {
     @IBOutlet weak var validatePriceLabel: UILabel!
 
     var keyboardNotifier: KeyboardNotifier = KeyboardNotifier()
+
+    private let disposeBag: DisposeBag = DisposeBag()
 
     private lazy var toolbar: UIToolbar = {
         let toolbar = UIToolbar(frame: .init(x: 0, y: 0, width: view.frame.width, height: 35))
@@ -97,6 +101,24 @@ extension EditBookViewController {
             picker.delegate = self
             self.present(picker, animated: true)
         }
+    }
+}
+
+extension EditBookViewController {
+
+    private func bindValue() {
+        Observable
+            .combineLatest(
+                bookTitleTextField.rx.text.orEmpty.map { $0.isEmpty },
+                bookPriceTextField.rx.text.orEmpty.map { $0.isEmpty },
+                bookPurchaseDateTextField.rx.text.orEmpty.map { $0.isEmpty })
+            .map { isbookTitleEmpty, isBookPriceEmpty, isBookPurchaseDateEmpty in
+                !(isbookTitleEmpty || isBookPriceEmpty || isBookPurchaseDateEmpty)
+            }
+            .subscribe(onNext: { [weak self] isEnabled in
+                self?.navigationItem.rightBarButtonItem?.isEnabled = isEnabled
+            })
+            .disposed(by: disposeBag)
     }
 }
 
