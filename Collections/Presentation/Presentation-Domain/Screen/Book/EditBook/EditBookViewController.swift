@@ -36,6 +36,7 @@ final class EditBookViewController: UIViewController {
         setupTextField()
         setupButton()
         listenerKeyboard(keyboardNotifier: keyboardNotifier)
+        bindValue()
     }
 }
 
@@ -107,6 +108,24 @@ extension EditBookViewController {
 extension EditBookViewController {
 
     private func bindValue() {
+        bookTitleTextField.rx.text
+            .validate(TitleValidator.self)
+            .map { validate in
+                validate.errorDescription
+            }
+            .skip(2)
+            .bind(to: validateTitleLabel.rx.text)
+            .disposed(by: disposeBag)
+
+        bookPriceTextField.rx.text
+            .validate(NumberValidator.self)
+            .map { validate in
+                validate.errorDescription
+            }
+            .skip(2)
+            .bind(to: validatePriceLabel.rx.text)
+            .disposed(by: disposeBag)
+
         Observable
             .combineLatest(
                 bookTitleTextField.rx.text.orEmpty.map { $0.isEmpty },
