@@ -126,7 +126,10 @@ enum Route {
     case home
     case bookList
     case addBook
-    case editBook(bookId: Int)
+    case editBook(
+            bookId: Int,
+            bookData: EditBookViewData
+         )
 
     fileprivate func viewController() -> UIViewController {
 
@@ -149,8 +152,11 @@ enum Route {
         case .addBook:
             viewController = Resources.ViewControllers.App.addBook()
 
-        case .editBook(let bookId):
-            viewController = Resources.ViewControllers.App.editBook(bookId: bookId)
+        case .editBook(let bookId, let bookData):
+            viewController = Resources.ViewControllers.App.editBook(
+                bookId: bookId,
+                bookData: bookData
+            )
         }
 
         return viewController
@@ -271,7 +277,10 @@ final class Router: RouterProtocol {
         completion: VoidBlock?
     ) {
         if let nc = vc.navigationController, nc.viewControllers.count > 1 {
-            nc.popViewController(animated: animated)
+            nc.popViewController(
+                animated: animated,
+                completion: completion
+            )
         } else {
             vc.dismiss(
                 animated:   animated,

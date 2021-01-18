@@ -15,15 +15,7 @@ final class EditBookUsecase {
     }
 
     func editBook(name: String, image: String?, price: Int?, purchaseDate: String?) {
-        EditBookRequest(id: bookId)
-            .request(
-                .init(
-                    name: name,
-                    image: image,
-                    price: price,
-                    purchaseDate: purchaseDate
-                )
-            )
+        EditBookRequest(id: bookId).request(.init(name: name, image: image, price: price, purchaseDate: purchaseDate))
             .subscribe(onSuccess: { response in
                 self.resultSubject.accept(.success(response))
             }, onFailure: { error in

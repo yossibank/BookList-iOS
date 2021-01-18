@@ -6,9 +6,9 @@ final class BookListUsecase {
     private let resultSubject: BehaviorRelay<Result<BookListResponse, Error>?> = BehaviorRelay(value: nil)
     private let disposeBag: DisposeBag = DisposeBag()
 
-    private(set) var currentPage: Int = 1
-    private(set) var totalPage: Int = 0
-    private(set) var limit: Int = 20
+    private var currentPage: Int = 1
+    private var totalPage: Int = 0
+    private var limit: Int = 20
 
     private var isNextPage: Bool {
         currentPage > totalPage && totalPage != 0

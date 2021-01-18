@@ -174,7 +174,7 @@ extension AddBookViewController {
                 switch result {
 
                 case .success(let response):
-                    Logger.info("success: \(response)")
+                    dump(response)
 
                     self.showAlert(
                         title: Resources.Strings.General.success,
@@ -239,7 +239,6 @@ extension AddBookViewController: UIImagePickerControllerDelegate, UINavigationCo
         didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]
     ) {
         if let image = info[.originalImage] as? UIImage {
-            bookImageView.contentMode = .scaleAspectFill
             bookImageView.image = image
         }
         self.dismiss(animated: true)

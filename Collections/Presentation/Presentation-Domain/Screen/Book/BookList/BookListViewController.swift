@@ -36,6 +36,11 @@ extension BookListViewController {
         tableView.delegate = self
         tableView.rowHeight = 100
     }
+
+    func reloadBookList() {
+        viewModel.resetBookData()
+        viewModel.fetchBookList(isInitial: true)
+    }
 }
 
 extension BookListViewController {
@@ -56,7 +61,13 @@ extension BookListViewController {
                     self.tableView.reloadData()
 
                 case .failure(let error):
-                    dump(error)
+                    if let error = error as? APIError {
+                        dump(error.description())
+                    }
+                    self.showError(
+                        title: Resources.Strings.General.error,
+                        message: Resources.Strings.App.failedBookList
+                    )
                 }
             })
             .disposed(by: disposeBag)
@@ -77,7 +88,19 @@ extension BookListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
 
-        guard let bookId = viewModel.getBookId(index: indexPath.row) else { return }
-        router.push(.editBook(bookId: bookId), from: self)
+        guard let bookId = viewModel.getBookId(index: indexPath.row),
+              let book = viewModel.books.any(at: indexPath.row)
+        else {
+            return
+        }
+
+        let bookData = EditBookViewData(
+            name: book.name,
+            image: book.image,
+            price: book.price,
+            purchaseDate: book.purchaseDate
+        )
+
+        router.push(.editBook(bookId: bookId, bookData: bookData), from: self)
     }
 }

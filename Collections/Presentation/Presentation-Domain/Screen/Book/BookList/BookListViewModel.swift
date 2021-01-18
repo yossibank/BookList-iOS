@@ -42,12 +42,16 @@ final class BookListViewModel {
             .disposed(by: disposeBag)
     }
 
-    func fetchBookList(isInitial: Bool) {
-        usecase.fetchBookList(isInitial: isInitial)
-    }
-
     func getBookId(index: Int) -> Int? {
         books.any(at: index)?.id
+    }
+
+    func resetBookData() {
+        usecase.books = []
+    }
+
+    func fetchBookList(isInitial: Bool) {
+        usecase.fetchBookList(isInitial: isInitial)
     }
 
     private func map(book: [BookListResponse.Book]) -> [BookListCellData] {

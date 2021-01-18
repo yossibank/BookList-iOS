@@ -18,3 +18,4 @@ disabled_rules:
   - cyclomatic_complexity
   - closure_parameter_position
   - force_cast
+  - large_tuple
