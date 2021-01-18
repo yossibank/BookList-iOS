@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		781C318125B5ACC100C11D77 /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 781C318025B5ACC100C11D77 /* KeychainAccess.framework */; };
+		781C318225B5ACC100C11D77 /* KeychainAccess.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 781C318025B5ACC100C11D77 /* KeychainAccess.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7820E0AB25AEFC1200A5E6D8 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7820E0AA25AEFC1200A5E6D8 /* ImageLoader.swift */; };
 		782311FA259C0D9200D9E723 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782311F9259C0D9200D9E723 /* AppDelegate.swift */; };
 		782311FE259C0D9200D9E723 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782311FD259C0D9200D9E723 /* SignupViewController.swift */; };
@@ -139,6 +141,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				781C318225B5ACC100C11D77 /* KeychainAccess.framework in Embed Frameworks */,
 				78997EA0259C29D80076FF97 /* CodableFirebase.framework in Embed Frameworks */,
 				785A1ACC25A9A989005E8A4B /* RxRelay.framework in Embed Frameworks */,
 				785A1AD025A9A98A005E8A4B /* RxSwift.framework in Embed Frameworks */,
@@ -151,6 +154,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		781C318025B5ACC100C11D77 /* KeychainAccess.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainAccess.framework; path = Carthage/Build/iOS/KeychainAccess.framework; sourceTree = "<group>"; };
 		7820E0AA25AEFC1200A5E6D8 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		782311F6259C0D9200D9E723 /* Collections.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Collections.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		782311F9259C0D9200D9E723 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -282,6 +286,7 @@
 				78997E89259C29D80076FF97 /* FirebaseStorage.framework in Frameworks */,
 				78997EA5259C29D80076FF97 /* GoogleAppMeasurement.framework in Frameworks */,
 				78997E85259C29D80076FF97 /* GoogleDataTransport.framework in Frameworks */,
+				781C318125B5ACC100C11D77 /* KeychainAccess.framework in Frameworks */,
 				78997E8B259C29D80076FF97 /* GoogleUtilities.framework in Frameworks */,
 				78997E93259C29D80076FF97 /* gRPC-Core.framework in Frameworks */,
 				78997EA1259C29D80076FF97 /* gRPC-C++.framework in Frameworks */,
@@ -373,6 +378,7 @@
 		78231232259C147900D9E723 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				781C318025B5ACC100C11D77 /* KeychainAccess.framework */,
 				785A1AC625A9A989005E8A4B /* RxBlocking.framework */,
 				785A1AC425A9A989005E8A4B /* RxCocoa.framework */,
 				785A1AC525A9A989005E8A4B /* RxRelay.framework */,
@@ -973,6 +979,8 @@
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Rswift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/KeychainAccess.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/CodableFirebase.framework",
 			);
 			name = Carthage;
 			outputFileListPaths = (
