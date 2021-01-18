@@ -134,7 +134,7 @@ extension LoginViewController {
                     }
                     self.showError(
                         title: Resources.Strings.General.error,
-                        message: Resources.Strings.App.failedLogin
+                        message: Resources.Strings.Alert.failedLogin
                     )
                 }
             })

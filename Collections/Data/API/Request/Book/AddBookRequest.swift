@@ -13,5 +13,7 @@ struct AddBookRequest: BaseRequest {
 
     var method: HttpMethod { .post }
 
-    var headerFields: [String : String] { ["Authorization": KeychainManager.shared.getToken() ?? .blank] }
+    var headerFields: [String : String] {
+        [Resources.Strings.API.authorization: KeychainManager.shared.getToken() ?? .blank]
+    }
 }

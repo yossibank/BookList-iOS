@@ -152,7 +152,7 @@ extension SignupViewController {
                     }
                     self.showError(
                         title: Resources.Strings.General.error,
-                        message: Resources.Strings.App.failedSignup
+                        message: Resources.Strings.Alert.failedSignup
                     )
                 }
             }).disposed(by: disposeBag)

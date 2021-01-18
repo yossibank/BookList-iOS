@@ -2,12 +2,22 @@ struct StringResources {
 
     private typealias Internal = R.string
 
+    struct Navigation {
+        static var done: String { Internal.localizable.done() }
+    }
+
     struct App {
         static var email: String { Internal.localizable.mail_address() }
         static var password: String { Internal.localizable.password() }
         static var title: String { Internal.localizable.title() }
         static var price: String { Internal.localizable.price() }
         static var purchaseDate: String { Internal.localizable.purchase_date() }
+        static var bookList: String { Internal.localizable.book_list() }
+        static var addBook: String { Internal.localizable.add_book() }
+        static var wishList: String { Internal.localizable.wish_list_book() }
+    }
+
+    struct Alert {
         static var failedSignup: String { Internal.localizable.failed_signup() + "\n" + Internal.localizable.maybe_already_email() }
         static var failedLogin: String { Internal.localizable.failed_login() + "\n" + Internal.localizable.please_check_again_contents() }
         static var failedBookList: String { Internal.localizable.failed_book_list() }
@@ -15,16 +25,6 @@ struct StringResources {
         static var failedEditBook: String { Internal.localizable.failed_edit_book() }
         static var successAddBook: String { Internal.localizable.success_add_book() }
         static var successEditBook: String { Internal.localizable.success_edit_book() }
-    }
-
-    struct Home {
-        static var bookList: String { Internal.localizable.book_list() }
-        static var addBook: String { Internal.localizable.add_book() }
-        static var wishList: String { Internal.localizable.wish_list_book() }
-    }
-
-    struct Navigation {
-        static var done: String { Internal.localizable.done() }
     }
 
     struct General {
@@ -48,5 +48,10 @@ struct StringResources {
         static var notFilledPassword: String { Internal.localizable.not_length_password(minimumLength) }
         static var notMatchingPassword: String { Internal.localizable.not_matching_password() }
         static var onlyNumber: String { Internal.localizable.only_input_number() }
+    }
+
+    struct API {
+        static let apiBaseUrl = "http://54.250.239.8"
+        static let authorization = "Authorization"
     }
 }

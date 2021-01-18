@@ -66,7 +66,7 @@ extension BookListViewController {
                     }
                     self.showError(
                         title: Resources.Strings.General.error,
-                        message: Resources.Strings.App.failedBookList
+                        message: Resources.Strings.Alert.failedBookList
                     )
                 }
             })
