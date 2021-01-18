@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     ) -> Bool {
 
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = router.initialWindow(.home, type: .navigation)
+        window?.rootViewController = router.initialWindow(.login, type: .normal)
         window?.makeKeyAndVisible()
 
         FirebaseApp.configure()
