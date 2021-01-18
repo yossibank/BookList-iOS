@@ -22,6 +22,7 @@ final class SignupUsecase {
             .subscribe(onSuccess: { response in
                 self.loadingSubject.accept(false)
                 self.resultSubject.accept(.success(response))
+                KeychainManager.shared.setToken(response.result.token)
             }, onFailure: { error in
                 self.loadingSubject.accept(false)
                 self.resultSubject.accept(.failure(error))

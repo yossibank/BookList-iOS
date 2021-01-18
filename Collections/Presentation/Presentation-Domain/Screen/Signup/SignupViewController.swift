@@ -142,7 +142,7 @@ extension SignupViewController {
                 switch result {
 
                 case .success(let response):
-                    KeychainManager.shared.setToken(response.result.token)
+                    dump(response)
                     let window = UIApplication.shared.windows.first { $0.isKeyWindow }
                     window?.rootViewController = self.router.initialWindow(.home, type: .navigation)
 
