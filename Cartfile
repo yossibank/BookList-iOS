@@ -1,4 +1,5 @@
 github "mac-cain13/R.swift.Library"
+github "kishikawakatsumi/KeychainAccess"
 github "alickbass/CodableFirebase"
 github "ReactiveX/RxSwift" "6.0.0-rc.2"
 

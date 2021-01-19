@@ -189,7 +189,7 @@ extension EditBookViewController {
 
                     self.showAlert(
                         title: Resources.Strings.General.success,
-                        message: Resources.Strings.App.successEditBook
+                        message: Resources.Strings.Alert.successEditBook
                     ) {
                         if let viewControllers = self.navigationController?.viewControllers,
                            let bookListVC = viewControllers.dropLast().last as? BookListViewController {
@@ -204,7 +204,7 @@ extension EditBookViewController {
                     }
                     self.showError(
                         title: Resources.Strings.General.error,
-                        message: Resources.Strings.App.failedEditBook
+                        message: Resources.Strings.Alert.failedEditBook
                     )
                 }
             })

@@ -16,19 +16,19 @@ struct HomeCellData {
 
             case .bookList:
                 return HomeCellData(
-                    title: Resources.Strings.Home.bookList,
+                    title: Resources.Strings.App.bookList,
                     image: Resources.Images.Home.bookList
                 )
 
             case .addBook:
                 return HomeCellData(
-                    title: Resources.Strings.Home.addBook,
+                    title: Resources.Strings.App.addBook,
                     image: Resources.Images.Home.addBook
                 )
 
             case .wishList:
                 return HomeCellData(
-                    title: Resources.Strings.Home.wishList,
+                    title: Resources.Strings.App.wishList,
                     image: Resources.Images.Home.wishList
                 )
             }

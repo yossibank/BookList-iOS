@@ -178,7 +178,7 @@ extension AddBookViewController {
 
                     self.showAlert(
                         title: Resources.Strings.General.success,
-                        message: Resources.Strings.App.successAddBook
+                        message: Resources.Strings.Alert.successAddBook
                     ) {
                         self.router.dismiss(self)
                     }
@@ -189,7 +189,7 @@ extension AddBookViewController {
                     }
                     self.showError(
                         title: Resources.Strings.General.error,
-                        message: Resources.Strings.App.failedAddBook
+                        message: Resources.Strings.Alert.failedAddBook
                     )
                 }
             })

@@ -21,12 +21,22 @@ final class BookListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupNavigation()
         setupTableView()
         bindViewModel()
     }
 }
 
 extension BookListViewController {
+    
+    private func setupNavigation() {
+        navigationItem.backBarButtonItem = UIBarButtonItem(
+            title: .blank,
+            style: .plain,
+            target: nil,
+            action: nil
+        )
+    }
 
     private func setupTableView() {
         dataSource = BookListDataSource(viewModel: viewModel)
@@ -66,7 +76,7 @@ extension BookListViewController {
                     }
                     self.showError(
                         title: Resources.Strings.General.error,
-                        message: Resources.Strings.App.failedBookList
+                        message: Resources.Strings.Alert.failedBookList
                     )
                 }
             })
