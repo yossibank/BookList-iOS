@@ -28,6 +28,13 @@ extension HomeViewController {
             target: nil,
             action: nil
         )
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            image: Resources.Images.General.logout?.withRenderingMode(.alwaysOriginal),
+            style: .plain,
+            target: self,
+            action: #selector(tappedLogoutButton)
+        )
     }
 
     private func setupTableView() {
@@ -35,6 +42,10 @@ extension HomeViewController {
         tableView.dataSource = dataSource
         tableView.delegate = self
         tableView.rowHeight = 100
+    }
+    
+    @objc private func tappedLogoutButton() {
+        
     }
 }
 
