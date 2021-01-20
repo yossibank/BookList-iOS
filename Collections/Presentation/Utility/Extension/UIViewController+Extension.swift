@@ -35,4 +35,19 @@ extension UIViewController {
 
         self.present(alert, animated: true)
     }
+
+    func showAlert(
+        title: String,
+        message: String,
+        completion: @escaping VoidBlock
+    ) {
+        let alert = UIAlertController.createAlert(
+            title: title,
+            message: message
+        ) { _ in
+            completion()
+        }
+
+        self.present(alert, animated: true)
+    }
 }

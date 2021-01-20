@@ -17,5 +17,6 @@ struct ImageResources {
 
     struct General {
         static var noImage: UIImage? { Internal.no_Image() }
+        static var logout: UIImage? { Internal.logout() }
     }
 }
