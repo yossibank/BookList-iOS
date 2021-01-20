@@ -6,10 +6,13 @@ final class HomeViewController: UIViewController {
 
     private let router: RouterProtocol = Router()
 
+    private var viewModel: HomeViewModel!
     private var dataSource: HomeDataSource! = HomeDataSource()
 
-    static func createInstance() -> HomeViewController {
-        HomeViewController.instantiateInitialViewController()
+    static func createInstance(viewModel: HomeViewModel) -> HomeViewController {
+        let instance = HomeViewController.instantiateInitialViewController()
+        instance.viewModel = viewModel
+        return instance
     }
 
     override func viewDidLoad() {
