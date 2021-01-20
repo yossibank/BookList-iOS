@@ -1,10 +1,13 @@
 import UIKit
+import RxSwift
+import RxCocoa
 
 final class HomeViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
 
     private let router: RouterProtocol = Router()
+    private let disposeBag: DisposeBag = DisposeBag()
 
     private var viewModel: HomeViewModel!
     private var dataSource: HomeDataSource! = HomeDataSource()
@@ -19,6 +22,7 @@ final class HomeViewController: UIViewController {
         super.viewDidLoad()
         setupNavigation()
         setupTableView()
+        bindViewModel()
     }
 }
 
@@ -46,9 +50,43 @@ extension HomeViewController {
         tableView.delegate = self
         tableView.rowHeight = 100
     }
-    
+
     @objc private func tappedLogoutButton() {
-        
+        showAlert(
+            title: Resources.Strings.App.logout,
+            message: Resources.Strings.Alert.didYouLogout)
+        { [weak self] in
+            self?.viewModel.logout()
+        }
+    }
+}
+
+extension HomeViewController {
+
+    private func bindViewModel() {
+        viewModel.result
+            .asDriver(onErrorJustReturn: nil)
+            .drive(onNext: { [weak self] result in
+                guard let self = self,
+                      let result = result else { return }
+
+                switch result {
+
+                case .success:
+                    let window = UIApplication.shared.windows.first { $0.isKeyWindow }
+                    window?.rootViewController = self.router.initialWindow(.login, type: .normal)
+
+                case .failure(let error):
+                    if let error = error as? APIError {
+                        dump(error.description())
+                    }
+                    self.showError(
+                        title: Resources.Strings.General.error,
+                        message: Resources.Strings.Alert.failedLogout
+                    )
+                }
+            })
+            .disposed(by: disposeBag)
     }
 }
 

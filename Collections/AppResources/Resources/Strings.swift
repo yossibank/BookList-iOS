@@ -9,6 +9,7 @@ struct StringResources {
     struct App {
         static var email: String { Internal.localizable.mail_address() }
         static var password: String { Internal.localizable.password() }
+        static var logout: String { Internal.localizable.logout() }
         static var title: String { Internal.localizable.title() }
         static var price: String { Internal.localizable.price() }
         static var purchaseDate: String { Internal.localizable.purchase_date() }
@@ -20,11 +21,13 @@ struct StringResources {
     struct Alert {
         static var failedSignup: String { Internal.localizable.failed_signup() + "\n" + Internal.localizable.maybe_already_email() }
         static var failedLogin: String { Internal.localizable.failed_login() + "\n" + Internal.localizable.please_check_again_contents() }
+        static var failedLogout: String { Internal.localizable.failed_logout() }
         static var failedBookList: String { Internal.localizable.failed_book_list() }
         static var failedAddBook: String { Internal.localizable.failed_add_book() }
         static var failedEditBook: String { Internal.localizable.failed_edit_book() }
         static var successAddBook: String { Internal.localizable.success_add_book() }
         static var successEditBook: String { Internal.localizable.success_edit_book() }
+        static var didYouLogout: String { Internal.localizable.did_you_logout() }
     }
 
     struct General {
