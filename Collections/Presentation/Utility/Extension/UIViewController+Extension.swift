@@ -36,7 +36,7 @@ extension UIViewController {
         self.present(alert, animated: true)
     }
 
-    func showAlert(
+    func showActionAlert(
         title: String,
         message: String,
         completion: @escaping VoidBlock
