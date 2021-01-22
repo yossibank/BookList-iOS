@@ -12,6 +12,7 @@ final class BookListViewController: UIViewController {
 
     private var viewModel: BookListViewModel!
     private var dataSource: BookListDataSource!
+    private var footerView: UIView = .init()
 
     static func createInstance(viewModel: BookListViewModel) -> BookListViewController {
         let instance = BookListViewController.instantiateInitialViewController()
@@ -45,6 +46,9 @@ extension BookListViewController {
         tableView.dataSource = dataSource
         tableView.delegate = self
         tableView.rowHeight = 100
+
+        footerView.frame = .init(x: 0, y: 0, width: view.frame.width, height: 44)
+        tableView.tableFooterView = footerView
     }
 
     func reloadBookList() {
@@ -87,7 +91,11 @@ extension BookListViewController {
             .drive(onNext: { [weak self] loading in
                 guard let self = self else { return }
 
-                loading ? self.loadingIndicator.startAnimating() : self.loadingIndicator.stopAnimating()
+                loading ?
+                    self.loadingIndicator.startAnimating() :
+                    self.loadingIndicator.stopAnimating()
+
+                self.footerView.isHidden = loading ? false : true
             })
             .disposed(by: disposeBag)
     }
@@ -112,5 +120,14 @@ extension BookListViewController: UITableViewDelegate {
         )
 
         router.push(.editBook(bookId: bookId, bookData: bookData), from: self)
+    }
+
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let lastSection = tableView.numberOfSections - 1
+        let lastIndex = tableView.numberOfRows(inSection: lastSection) - 1
+
+        if indexPath.section == lastSection && indexPath.row == lastIndex {
+            viewModel.fetchBookList(isInitial: false)
+        }
     }
 }
