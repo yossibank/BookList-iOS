@@ -13,12 +13,17 @@ enum TitleValidator: ValidatorProtocol {
             return .invalid(.empty)
         }
 
+        guard value.count <= 30 else {
+            return .invalid(.longer)
+        }
+
         return .valid
     }
 }
 
 enum TitleError: LocalizedError {
     case empty
+    case longer
 
     var errorDescription: String? {
 
@@ -26,6 +31,9 @@ enum TitleError: LocalizedError {
 
         case .empty:
             return Resources.Strings.Validator.titleEmpty
+
+        case .longer:
+            return Resources.Strings.Validator.notLognerTitleText
         }
     }
 }

@@ -45,7 +45,7 @@ extension BookListViewController {
         tableView.register(BookListTableViewCell.xib(), forCellReuseIdentifier: BookListTableViewCell.resourceName)
         tableView.dataSource = dataSource
         tableView.delegate = self
-        tableView.rowHeight = 120
+        tableView.rowHeight = 150
 
         footerView.frame = .init(x: 0, y: 0, width: view.frame.width, height: 44)
         tableView.tableFooterView = footerView

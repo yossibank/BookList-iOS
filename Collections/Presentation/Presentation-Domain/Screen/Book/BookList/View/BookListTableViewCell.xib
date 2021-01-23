@@ -47,7 +47,7 @@
                         </subviews>
                     </stackView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VpY-RX-i90">
-                        <rect key="frame" x="365" y="38" width="48" height="48"/>
+                        <rect key="frame" x="355" y="38" width="48" height="48"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="48" id="bCV-HQ-Vkr"/>
                             <constraint firstAttribute="height" constant="48" id="zcA-oS-w6d"/>
@@ -59,7 +59,7 @@
                     <constraint firstItem="Yeu-Me-T7M" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="6H1-zc-0la"/>
                     <constraint firstItem="UGO-OM-xNn" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="6zl-Zx-Scv"/>
                     <constraint firstItem="UGO-OM-xNn" firstAttribute="leading" secondItem="Yeu-Me-T7M" secondAttribute="trailing" constant="10" id="UeW-Uw-Ihe"/>
-                    <constraint firstAttribute="trailing" secondItem="VpY-RX-i90" secondAttribute="trailing" id="V8t-Hx-wCs"/>
+                    <constraint firstAttribute="trailing" secondItem="VpY-RX-i90" secondAttribute="trailing" constant="10" id="V8t-Hx-wCs"/>
                     <constraint firstItem="VpY-RX-i90" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Xig-4j-ebc"/>
                     <constraint firstItem="Yeu-Me-T7M" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="YyU-Tj-N8e"/>
                     <constraint firstAttribute="trailing" secondItem="UGO-OM-xNn" secondAttribute="trailing" constant="64" id="v5w-bE-LAK"/>
