@@ -51,7 +51,9 @@ final class EditBookViewModel {
             book.price = price.description
         }
         if let purchaseDate = bookData.purchaseDate {
-            book.purchaseDate = purchaseDate
+            if let dateFormat = Date.toConvertDate(purchaseDate, with: .yearToDayOfWeek) {
+                book.purchaseDate = dateFormat.toString(with: .yearToDayOfWeekJapanese)
+            }
         }
 
         return book

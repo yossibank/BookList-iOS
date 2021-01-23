@@ -19,7 +19,9 @@ final class BookListTableViewCell: UITableViewCell {
         bookTitleLabel.text = book.name
 
         if let purchaseDate = book.purchaseDate {
-            bookPurchaseLabel.text = purchaseDate
+            if let dateFormat = Date.toConvertDate(purchaseDate, with: .yearToDayOfWeek) {
+                bookPurchaseLabel.text = dateFormat.toString(with: .yearToDayOfWeekJapanese)
+            }
         }
 
         if let price = book.price {
