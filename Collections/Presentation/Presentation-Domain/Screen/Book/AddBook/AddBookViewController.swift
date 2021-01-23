@@ -82,17 +82,21 @@ extension AddBookViewController {
 
     @objc private  func tappedAddBookButton(_ sender: UIButton) {
         let imageString = bookImageView.image?.pngData()?.base64EncodedString()
+        let dateFormat = Date.toConvertDate(
+            bookPurchaseDateTextField.text ?? .blank,
+            with: .yearToDayOfWeekJapanese
+        )
 
         viewModel.addBook(
-            name: bookTitleTextField.text ?? "",
+            name: bookTitleTextField.text ?? .blank,
             image: imageString,
-            price: Int(bookPriceTextField.text ?? ""),
-            purchaseDate: bookPurchaseDateTextField.text
+            price: Int(bookPriceTextField.text ?? .blank),
+            purchaseDate: dateFormat?.toString(with: .yearToDayOfWeek)
         )
     }
 
     @objc private func tappedDoneButton(_ sender: UIButton) {
-        bookPurchaseDateTextField.text = DateFormatter.convertToYearAndMonth(UIDatePicker.purchaseDatePicker.date)
+        bookPurchaseDateTextField.text = UIDatePicker.purchaseDatePicker.date.toString(with: .yearToDayOfWeekJapanese)
         bookPurchaseDateTextField.endEditing(true)
     }
 
