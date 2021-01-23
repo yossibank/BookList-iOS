@@ -11,10 +11,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="124" id="KGk-i7-Jjw" customClass="BookListTableViewCell" customModule="Collections" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="458" height="124"/>
+            <rect key="frame" x="0.0" y="0.0" width="413" height="124"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="458" height="124"/>
+                <rect key="frame" x="0.0" y="0.0" width="413" height="124"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Yeu-Me-T7M">
@@ -24,7 +24,7 @@
                         </constraints>
                     </imageView>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="UGO-OM-xNn">
-                        <rect key="frame" x="124" y="20" width="270" height="84.5"/>
+                        <rect key="frame" x="124" y="20" width="225" height="84.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="タイトル" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c6x-qE-cfp">
                                 <rect key="frame" x="0.0" y="0.0" width="73.5" height="21.5"/>
@@ -46,11 +46,21 @@
                             </label>
                         </subviews>
                     </stackView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VpY-RX-i90">
+                        <rect key="frame" x="365" y="38" width="48" height="48"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="48" id="bCV-HQ-Vkr"/>
+                            <constraint firstAttribute="height" constant="48" id="zcA-oS-w6d"/>
+                        </constraints>
+                        <state key="normal" image="No_favorite"/>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="Yeu-Me-T7M" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="6H1-zc-0la"/>
                     <constraint firstItem="UGO-OM-xNn" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="6zl-Zx-Scv"/>
                     <constraint firstItem="UGO-OM-xNn" firstAttribute="leading" secondItem="Yeu-Me-T7M" secondAttribute="trailing" constant="10" id="UeW-Uw-Ihe"/>
+                    <constraint firstAttribute="trailing" secondItem="VpY-RX-i90" secondAttribute="trailing" id="V8t-Hx-wCs"/>
+                    <constraint firstItem="VpY-RX-i90" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Xig-4j-ebc"/>
                     <constraint firstItem="Yeu-Me-T7M" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="YyU-Tj-N8e"/>
                     <constraint firstAttribute="trailing" secondItem="UGO-OM-xNn" secondAttribute="trailing" constant="64" id="v5w-bE-LAK"/>
                     <constraint firstAttribute="bottom" secondItem="Yeu-Me-T7M" secondAttribute="bottom" constant="10" id="vpw-ky-TxO"/>
@@ -62,8 +72,12 @@
                 <outlet property="bookPriceLabel" destination="DRs-aK-9NJ" id="7NB-vu-q2n"/>
                 <outlet property="bookPurchaseLabel" destination="98C-W8-aG2" id="w3U-Ih-MUK"/>
                 <outlet property="bookTitleLabel" destination="c6x-qE-cfp" id="z6s-5T-Dor"/>
+                <outlet property="favoriteButton" destination="VpY-RX-i90" id="eJx-Nx-Ys9"/>
             </connections>
-            <point key="canvasLocation" x="127.53623188405798" y="170.75892857142856"/>
+            <point key="canvasLocation" x="94.927536231884062" y="170.75892857142856"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="No_favorite" width="32" height="32"/>
+    </resources>
 </document>

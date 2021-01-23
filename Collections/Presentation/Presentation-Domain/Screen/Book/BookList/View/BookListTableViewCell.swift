@@ -6,6 +6,7 @@ final class BookListTableViewCell: UITableViewCell {
     @IBOutlet weak var bookTitleLabel: UILabel!
     @IBOutlet weak var bookPurchaseLabel: UILabel!
     @IBOutlet weak var bookPriceLabel: UILabel!
+    @IBOutlet weak var favoriteButton: UIButton!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -29,7 +30,9 @@ final class BookListTableViewCell: UITableViewCell {
         }
 
         if let imageUrl = book.image {
-            ImageLoader.shared.loadImage(with: .string(urlString: imageUrl)) { [weak self] image, _ in
+            ImageLoader.shared.loadImage(
+                with: .string(urlString: imageUrl)
+            ) { [weak self] image, _ in
                 guard let self = self else { return }
 
                 self.bookImageView.image = image

@@ -132,7 +132,9 @@ extension EditBookViewController {
         bookPriceTextField.text = bookData.price
         bookPurchaseDateTextField.text = bookData.purchaseDate
 
-        ImageLoader.shared.loadImage(with: .string(urlString: bookData.image)) { [weak self] image, _ in
+        ImageLoader.shared.loadImage(
+            with: .string(urlString: bookData.image)
+        ) { [weak self] image, _ in
             self?.bookImageView.image = image
         }
     }
