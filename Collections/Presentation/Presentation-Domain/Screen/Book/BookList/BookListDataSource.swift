@@ -29,9 +29,23 @@ extension BookListDataSource: UITableViewDataSource {
         if let bookListCell = cell as? BookListTableViewCell {
             bookListCell.accessoryType = .disclosureIndicator
             bookListCell.bookImageView.image = nil
+            bookListCell.delegate = self
+            bookListCell.favoriteButton.tag = indexPath.row
             bookListCell.setup(book: cellData[indexPath.row])
         }
 
         return cell
+    }
+}
+
+extension BookListDataSource: BookListDelegate {
+
+    func tappedFavorite(_ row: Int) {
+        guard let cellData = viewModel?.books,
+              let book = cellData.any(at: row) else {
+            return
+        }
+
+        viewModel?.saveFavorite(book: book)
     }
 }

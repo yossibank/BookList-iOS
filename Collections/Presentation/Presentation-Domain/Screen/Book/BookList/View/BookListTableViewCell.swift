@@ -1,12 +1,28 @@
 import UIKit
 
+protocol BookListDelegate: AnyObject {
+    func tappedFavorite(_ row: Int)
+}
+
 final class BookListTableViewCell: UITableViewCell {
 
     @IBOutlet weak var bookImageView: UIImageView!
     @IBOutlet weak var bookTitleLabel: UILabel!
     @IBOutlet weak var bookPurchaseLabel: UILabel!
     @IBOutlet weak var bookPriceLabel: UILabel!
-    @IBOutlet weak var favoriteButton: UIButton!
+    @IBOutlet weak var favoriteButton: UIButton! {
+        didSet {
+            favoriteButton.addTarget(
+                self,
+                action: #selector(tappedFavoriteButton),
+                for: .touchUpInside
+            )
+        }
+    }
+
+    weak var delegate: BookListDelegate?
+
+    var isFavorited: Bool = false
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -38,5 +54,9 @@ final class BookListTableViewCell: UITableViewCell {
                 self.bookImageView.image = image
             }
         }
+    }
+
+    @objc private func tappedFavoriteButton(_ sender: UIButton) {
+        delegate?.tappedFavorite(sender.tag)
     }
 }
