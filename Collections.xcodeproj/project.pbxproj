@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		7802FBB425BBC91D00565A16 /* Date+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7802FBB325BBC91D00565A16 /* Date+Util.swift */; };
+		781936B325BC5B2B00309FB7 /* FileManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781936B225BC5B2B00309FB7 /* FileManagement.swift */; };
+		781936C025BC752D00309FB7 /* BookListCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781936BF25BC752D00309FB7 /* BookListCellData.swift */; };
 		781C318125B5ACC100C11D77 /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 781C318025B5ACC100C11D77 /* KeychainAccess.framework */; };
 		781C318225B5ACC100C11D77 /* KeychainAccess.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 781C318025B5ACC100C11D77 /* KeychainAccess.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		781C318725B5AFE100C11D77 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781C318625B5AFE100C11D77 /* KeychainManager.swift */; };
@@ -159,6 +161,8 @@
 
 /* Begin PBXFileReference section */
 		7802FBB325BBC91D00565A16 /* Date+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Util.swift"; sourceTree = "<group>"; };
+		781936B225BC5B2B00309FB7 /* FileManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagement.swift; sourceTree = "<group>"; };
+		781936BF25BC752D00309FB7 /* BookListCellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListCellData.swift; sourceTree = "<group>"; };
 		781C318025B5ACC100C11D77 /* KeychainAccess.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainAccess.framework; path = Carthage/Build/iOS/KeychainAccess.framework; sourceTree = "<group>"; };
 		781C318625B5AFE100C11D77 /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
 		7820E0AA25AEFC1200A5E6D8 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
@@ -325,9 +329,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		781936BE25BC752000309FB7 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				781936BF25BC752D00309FB7 /* BookListCellData.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 		781C318525B5AFC900C11D77 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				781936B225BC5B2B00309FB7 /* FileManagement.swift */,
 				781C318625B5AFE100C11D77 /* KeychainManager.swift */,
 			);
 			path = Service;
@@ -761,6 +774,7 @@
 		78CF3AEC25ABF7EA00ADBB60 /* BookList */ = {
 			isa = PBXGroup;
 			children = (
+				781936BE25BC752000309FB7 /* Data */,
 				78CF3AED25ABF80700ADBB60 /* View */,
 				78CF3B1825AC320900ADBB60 /* BookListUsecase.swift */,
 				78CF3B0625AC0E3500ADBB60 /* BookListViewModel.swift */,
@@ -1036,6 +1050,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				781936C025BC752D00309FB7 /* BookListCellData.swift in Sources */,
 				78987B3C259C8813008311DC /* LoginViewController.swift in Sources */,
 				784E135E25B2A13D008FD947 /* AddBookViewModel.swift in Sources */,
 				78772B5A25B3EE0900E6493E /* EditBookUsecase.swift in Sources */,
@@ -1087,6 +1102,7 @@
 				7892EF6C259C7212006F7315 /* Images.swift in Sources */,
 				7892EF62259C642C006F7315 /* IBDesignableView.swift in Sources */,
 				78C61C2725A170E000DC78A6 /* AppConfigurator.swift in Sources */,
+				781936B325BC5B2B00309FB7 /* FileManagement.swift in Sources */,
 				78B29D0D25B3277700A7DC7F /* EditBookResponse.swift in Sources */,
 				78B29D1C25B3310000A7DC7F /* EditBookViewController.swift in Sources */,
 				78DEE7BD25AAE3AD00219963 /* UIViewController+Extension.swift in Sources */,

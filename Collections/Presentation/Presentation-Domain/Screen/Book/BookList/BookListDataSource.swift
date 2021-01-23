@@ -42,10 +42,10 @@ extension BookListDataSource: BookListDelegate {
 
     func tappedFavorite(_ row: Int) {
         guard let cellData = viewModel?.books,
-              let book = cellData.any(at: row) else {
+              let bookData = cellData.any(at: row) else {
             return
         }
 
-        viewModel?.saveFavorite(book: book)
+        viewModel?.saveFavoriteBookData(bookData: bookData)
     }
 }

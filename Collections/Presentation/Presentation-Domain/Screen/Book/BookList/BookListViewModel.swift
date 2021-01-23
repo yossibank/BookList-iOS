@@ -1,41 +1,5 @@
-import Foundation
 import RxSwift
 import RxRelay
-
-struct BookListCellData: Codable {
-    var id: Int
-    var name: String
-    var image: String?
-    var price: Int?
-    var purchaseDate: String?
-    var isFavorite: Bool?
-
-    var json: Data? {
-        try? JSONEncoder().encode(self)
-    }
-
-    init(
-        id: Int,
-        name: String,
-        image: String?,
-        price: Int?,
-        purchaseDate: String?
-    ) {
-        self.id = id
-        self.name = name
-        self.image = image
-        self.price = price
-        self.purchaseDate = purchaseDate
-    }
-
-    init?(json: Data) {
-        if let newValue = try? JSONDecoder().decode(BookListCellData.self, from: json) {
-            self = newValue
-        } else {
-            return nil
-        }
-    }
-}
 
 final class BookListViewModel {
     private let usecase: BookListUsecase
@@ -82,37 +46,11 @@ final class BookListViewModel {
         usecase.fetchBookList(isInitial: isInitial)
     }
 
-    func saveFavorite(book: BookListCellData) {
-        let fileManager = FileManager.default
-        guard let url = try? fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true).appendingPathComponent(String(book.id)) else { return }
-        
-        do {
-            try book.json?.write(to: url)
-            print("okok")
-        } catch {
-            print(error)
-        }
-    }
-
-    func getFavoritePath() {
-        let documentDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-        do {
-            let contentUrls = try FileManager.default.contentsOfDirectory(at: documentDirectoryURL, includingPropertiesForKeys: nil)
-            let files = contentUrls.map{$0.lastPathComponent}
-            files.forEach { file in
-                guard let url = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent(file) else { return }
-
-                 do {
-                     let jsonData = try Data(contentsOf: url)
-                     let readChocolates = BookListCellData(json: jsonData)
-                    print("content", readChocolates)
-                } catch let error {
-                     print(error)
-                }
-            }
-        } catch {
-            print(error)
-        }
+    func saveFavoriteBookData(bookData: BookListCellData) {
+        FileManagement.shared.setData(
+            path: String(bookData.id),
+            data: bookData.json
+        )
     }
 
     private func map(book: [BookListResponse.Book]) -> [BookListCellData] {
