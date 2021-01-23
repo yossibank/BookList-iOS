@@ -25,7 +25,7 @@ final class BookListTableViewCell: UITableViewCell {
         }
 
         if let price = book.price {
-            bookPriceLabel.text = String(price)
+            bookPriceLabel.text = String.toTaxText(price)
         }
 
         if let imageUrl = book.image {
