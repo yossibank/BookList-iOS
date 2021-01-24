@@ -28,6 +28,7 @@
 		784B18EF25BD48F80071C32E /* WishListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784B18ED25BD48F80071C32E /* WishListTableViewCell.swift */; };
 		784B18F025BD48F80071C32E /* WishListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 784B18EE25BD48F80071C32E /* WishListTableViewCell.xib */; };
 		784B18F625BD4D5F0071C32E /* WishListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784B18F525BD4D5F0071C32E /* WishListViewModel.swift */; };
+		784B18FC25BD50FC0071C32E /* WishListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784B18FB25BD50FC0071C32E /* WishListDataSource.swift */; };
 		784E135625B29952008FD947 /* DatePicker+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784E135525B29952008FD947 /* DatePicker+Util.swift */; };
 		784E135E25B2A13D008FD947 /* AddBookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784E135D25B2A13D008FD947 /* AddBookViewModel.swift */; };
 		784E136225B2A209008FD947 /* AddBookResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784E136125B2A209008FD947 /* AddBookResponse.swift */; };
@@ -190,6 +191,7 @@
 		784B18ED25BD48F80071C32E /* WishListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListTableViewCell.swift; sourceTree = "<group>"; };
 		784B18EE25BD48F80071C32E /* WishListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WishListTableViewCell.xib; sourceTree = "<group>"; };
 		784B18F525BD4D5F0071C32E /* WishListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListViewModel.swift; sourceTree = "<group>"; };
+		784B18FB25BD50FC0071C32E /* WishListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListDataSource.swift; sourceTree = "<group>"; };
 		784E135525B29952008FD947 /* DatePicker+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DatePicker+Util.swift"; sourceTree = "<group>"; };
 		784E135D25B2A13D008FD947 /* AddBookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookViewModel.swift; sourceTree = "<group>"; };
 		784E136125B2A209008FD947 /* AddBookResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookResponse.swift; sourceTree = "<group>"; };
@@ -818,6 +820,7 @@
 			children = (
 				784B18EC25BD48E00071C32E /* View */,
 				784B18F525BD4D5F0071C32E /* WishListViewModel.swift */,
+				784B18FB25BD50FC0071C32E /* WishListDataSource.swift */,
 				78DE1D6625BD423A00A2C0F2 /* WishListViewController.swift */,
 				78DE1D6C25BD424800A2C0F2 /* WishListViewController.storyboard */,
 			);
@@ -1152,6 +1155,7 @@
 				78C61C0E25A1655600DC78A6 /* HttpMethod.swift in Sources */,
 				785D2798259C183300F7C9A6 /* R.generated.swift in Sources */,
 				785A1ABD25A9A407005E8A4B /* SignupRequest.swift in Sources */,
+				784B18FC25BD50FC0071C32E /* WishListDataSource.swift in Sources */,
 				7892EF79259C73C9006F7315 /* KeyboardNotifier.swift in Sources */,
 				78F940E6259D7E42007C972A /* Router.swift in Sources */,
 				784E136225B2A209008FD947 /* AddBookResponse.swift in Sources */,

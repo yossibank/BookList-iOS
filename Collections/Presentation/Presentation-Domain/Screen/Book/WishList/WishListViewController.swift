@@ -1,8 +1,9 @@
 import UIKit
 
 final class WishListViewController: UIViewController {
-    
+
     private var viewModel: WishListViewModel!
+    private var dataSource: WishListDataSource!
 
     @IBOutlet weak var tableView: UITableView!
 
@@ -31,35 +32,15 @@ extension WishListViewController {
     }
 
     private func setupTableView() {
+        dataSource = WishListDataSource(viewModel: viewModel)
+
         tableView.register(WishListTableViewCell.xib(), forCellReuseIdentifier: WishListTableViewCell.resourceName)
+        tableView.dataSource = dataSource
         tableView.delegate = self
-        tableView.dataSource = self
         tableView.rowHeight = 150
     }
 }
 
 extension WishListViewController: UITableViewDelegate {
 
-}
-
-extension WishListViewController: UITableViewDataSource {
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        viewModel.books.count
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(
-            withIdentifier: WishListTableViewCell.resourceName,
-            for: indexPath
-        )
-
-        if let wishListCell = cell as? WishListTableViewCell {
-            wishListCell.accessoryType = .disclosureIndicator
-            wishListCell.bookImageView.image = nil
-            wishListCell.setup(book: viewModel.books[indexPath.row])
-        }
-        
-        return cell
-    }
 }
