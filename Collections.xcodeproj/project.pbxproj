@@ -102,6 +102,8 @@
 		78CF3B3525AC48FD00ADBB60 /* BookListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CF3B3425AC48FD00ADBB60 /* BookListDataSource.swift */; };
 		78DCC90025B7046F006FFF0F /* LogoutRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DCC8FF25B7046F006FFF0F /* LogoutRequest.swift */; };
 		78DCC90425B7048E006FFF0F /* LogoutResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DCC90325B7048E006FFF0F /* LogoutResponse.swift */; };
+		78DE1D6725BD423A00A2C0F2 /* WishListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DE1D6625BD423A00A2C0F2 /* WishListViewController.swift */; };
+		78DE1D6D25BD424800A2C0F2 /* WishListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78DE1D6C25BD424800A2C0F2 /* WishListViewController.storyboard */; };
 		78DEE7B525AAD4D500219963 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 78DEE7B425AAD4D500219963 /* Localizable.strings */; };
 		78DEE7B925AADFC600219963 /* UIAlertController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DEE7B825AADFC600219963 /* UIAlertController+Extension.swift */; };
 		78DEE7BD25AAE3AD00219963 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DEE7BC25AAE3AD00219963 /* UIViewController+Extension.swift */; };
@@ -258,6 +260,8 @@
 		78CF3B3425AC48FD00ADBB60 /* BookListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListDataSource.swift; sourceTree = "<group>"; };
 		78DCC8FF25B7046F006FFF0F /* LogoutRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutRequest.swift; sourceTree = "<group>"; };
 		78DCC90325B7048E006FFF0F /* LogoutResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutResponse.swift; sourceTree = "<group>"; };
+		78DE1D6625BD423A00A2C0F2 /* WishListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListViewController.swift; sourceTree = "<group>"; };
+		78DE1D6C25BD424800A2C0F2 /* WishListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WishListViewController.storyboard; sourceTree = "<group>"; };
 		78DEE7B425AAD4D500219963 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		78DEE7B825AADFC600219963 /* UIAlertController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extension.swift"; sourceTree = "<group>"; };
 		78DEE7BC25AAE3AD00219963 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
@@ -442,6 +446,7 @@
 		787052D225B06DC900CAAC3E /* Book */ = {
 			isa = PBXGroup;
 			children = (
+				78DE1D6525BD41D100A2C0F2 /* WishList */,
 				78CF3AEC25ABF7EA00ADBB60 /* BookList */,
 				787052D325B06DD800CAAC3E /* AddBook */,
 				78B29D1A25B330D600A7DC7F /* EditBook */,
@@ -794,6 +799,15 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		78DE1D6525BD41D100A2C0F2 /* WishList */ = {
+			isa = PBXGroup;
+			children = (
+				78DE1D6625BD423A00A2C0F2 /* WishListViewController.swift */,
+				78DE1D6C25BD424800A2C0F2 /* WishListViewController.storyboard */,
+			);
+			path = WishList;
+			sourceTree = "<group>";
+		};
 		78DEE7CA25AB004800219963 /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -957,6 +971,7 @@
 				78DEE7B525AAD4D500219963 /* Localizable.strings in Resources */,
 				78DEE7DF25AB02A200219963 /* HomeTableViewCell.xib in Resources */,
 				78DEE7CC25AB006000219963 /* HomeViewController.storyboard in Resources */,
+				78DE1D6D25BD424800A2C0F2 /* WishListViewController.storyboard in Resources */,
 				78CF3AF925ABF85D00ADBB60 /* BookListTableViewCell.xib in Resources */,
 				78CF3AEF25ABF81400ADBB60 /* BookListViewController.storyboard in Resources */,
 				78997E69259C28970076FF97 /* GoogleService-Info.plist in Resources */,
@@ -1051,6 +1066,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				781936C025BC752D00309FB7 /* BookListCellData.swift in Sources */,
+				78DE1D6725BD423A00A2C0F2 /* WishListViewController.swift in Sources */,
 				78987B3C259C8813008311DC /* LoginViewController.swift in Sources */,
 				784E135E25B2A13D008FD947 /* AddBookViewModel.swift in Sources */,
 				78772B5A25B3EE0900E6493E /* EditBookUsecase.swift in Sources */,
