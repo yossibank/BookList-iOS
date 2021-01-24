@@ -2,6 +2,8 @@ import UIKit
 
 final class WishListViewController: UIViewController {
 
+    private let router: RouterProtocol = Router()
+
     private var viewModel: WishListViewModel!
     private var dataSource: WishListDataSource!
 
@@ -43,4 +45,22 @@ extension WishListViewController {
 
 extension WishListViewController: UITableViewDelegate {
 
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+
+        guard let bookId = viewModel.getBookId(index: indexPath.row),
+              let book = viewModel.books.any(at: indexPath.row)
+        else {
+            return
+        }
+
+        let bookData = EditBookViewData(
+            name: book.name,
+            image: book.image,
+            price: book.price,
+            purchaseDate: book.purchaseDate
+        )
+
+        router.push(.editBook(bookId: bookId, bookData: bookData), from: self)
+    }
 }
