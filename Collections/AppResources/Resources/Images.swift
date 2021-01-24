@@ -15,6 +15,11 @@ struct ImageResources {
         static var wishList: UIImage? { Internal.wish_list() }
     }
 
+    struct BookList {
+        static var favorite: UIImage? { Internal.favorite() }
+        static var nonFavorite: UIImage? { Internal.no_favorite() }
+    }
+
     struct General {
         static var noImage: UIImage? { Internal.no_Image() }
         static var logout: UIImage? { Internal.logout() }

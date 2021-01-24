@@ -45,7 +45,7 @@ extension BookListViewController {
         tableView.register(BookListTableViewCell.xib(), forCellReuseIdentifier: BookListTableViewCell.resourceName)
         tableView.dataSource = dataSource
         tableView.delegate = self
-        tableView.rowHeight = 100
+        tableView.rowHeight = 150
 
         footerView.frame = .init(x: 0, y: 0, width: view.frame.width, height: 44)
         tableView.tableFooterView = footerView
@@ -70,8 +70,7 @@ extension BookListViewController {
 
                 switch result {
 
-                case .success(let response):
-                    dump(response)
+                case .success:
                     self.tableView.reloadData()
 
                 case .failure(let error):

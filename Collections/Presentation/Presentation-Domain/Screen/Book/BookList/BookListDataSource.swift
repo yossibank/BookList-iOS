@@ -27,10 +27,37 @@ extension BookListDataSource: UITableViewDataSource {
         )
 
         if let bookListCell = cell as? BookListTableViewCell {
+            bookListCell.accessoryType = .disclosureIndicator
             bookListCell.bookImageView.image = nil
+            bookListCell.delegate = self
+            bookListCell.tableView = tableView
+            bookListCell.favoriteButton.tag = indexPath.row
             bookListCell.setup(book: cellData[indexPath.row])
         }
 
         return cell
+    }
+}
+
+extension BookListDataSource: BookListCellDelegate {
+
+    func didSelectFavoriteButton(
+        at index: Int,
+        of cell: BookListTableViewCell,
+        tableView: UITableView
+    ) {
+        guard let cellData = viewModel?.books,
+              let bookData = cellData.any(at: index)
+        else {
+            return
+        }
+
+        if bookData.isFavorite {
+            viewModel?.removeFavoriteBookData(bookData: bookData)
+        } else {
+            viewModel?.saveFavoriteBookData(bookData: bookData)
+        }
+
+        tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .fade)
     }
 }

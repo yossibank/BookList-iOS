@@ -1,14 +1,6 @@
 import RxSwift
 import RxRelay
 
-struct BookListCellData {
-    let id: Int
-    let name: String
-    let image: String?
-    let price: Int?
-    let purchaseDate: String?
-}
-
 final class BookListViewModel {
     private let usecase: BookListUsecase
     private let loadingSubject: BehaviorRelay<Bool> = BehaviorRelay(value: false)
@@ -54,6 +46,19 @@ final class BookListViewModel {
         usecase.fetchBookList(isInitial: isInitial)
     }
 
+    func saveFavoriteBookData(bookData: BookListCellData) {
+        BookFileManagement.shared.setData(
+            path: String(bookData.id),
+            data: bookData.json
+        )
+    }
+
+    func removeFavoriteBookData(bookData: BookListCellData) {
+        BookFileManagement.shared.removeData(
+            path: String(bookData.id)
+        )
+    }
+
     private func map(book: [BookListResponse.Book]) -> [BookListCellData] {
         let books = book.map { book in
             BookListCellData(
@@ -61,7 +66,8 @@ final class BookListViewModel {
                 name: book.name,
                 image: book.image,
                 price: book.price,
-                purchaseDate: book.purchaseDate
+                purchaseDate: book.purchaseDate,
+                isFavorite: BookFileManagement.shared.isFavorited(path: String(book.id))
             )
         }
         return books

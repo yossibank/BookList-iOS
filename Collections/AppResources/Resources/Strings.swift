@@ -16,6 +16,7 @@ struct StringResources {
         static var bookList: String { Internal.localizable.book_list() }
         static var addBook: String { Internal.localizable.add_book() }
         static var wishList: String { Internal.localizable.wish_list_book() }
+        static var taxText: String { Internal.localizable.plus() + Internal.localizable.tax() }
     }
 
     struct Alert {
@@ -41,6 +42,7 @@ struct StringResources {
 
     struct Validator {
         private static let minimumLength = "6"
+        private static let maxLength = "30"
 
         static var emailEmpty: String { Internal.localizable.not_filled(Resources.Strings.App.email) }
         static var passwordEmpty: String { Internal.localizable.not_filled(Resources.Strings.App.password) }
@@ -50,6 +52,7 @@ struct StringResources {
         static var invalidEmailFormat: String { Internal.localizable.not_correct_format_email() }
         static var notFilledPassword: String { Internal.localizable.not_length_password(minimumLength) }
         static var notMatchingPassword: String { Internal.localizable.not_matching_password() }
+        static var notLognerTitleText: String { Internal.localizable.not_longer_title_text(maxLength) }
         static var onlyNumber: String { Internal.localizable.only_input_number() }
     }
 

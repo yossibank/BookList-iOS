@@ -52,7 +52,7 @@ extension HomeViewController {
     }
 
     @objc private func tappedLogoutButton() {
-        showAlert(
+        showActionAlert(
             title: Resources.Strings.App.logout,
             message: Resources.Strings.Alert.didYouLogout)
         { [weak self] in

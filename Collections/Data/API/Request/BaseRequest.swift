@@ -71,6 +71,17 @@ extension BaseRequest {
                     return Disposables.create()
                 }
 
+//                if let cacheResponse = URLCache.shared.cachedResponse(for: urlRequest) {
+//                    do {
+//                        let entity = try decoder.decode(Response.self, from: cacheResponse.data)
+//                        observer(.success(entity))
+//                        return Disposables.create()
+//                    } catch {
+//                        observer(.failure(APIError.decode(error: error)))
+//                        return Disposables.create()
+//                    }
+//                }
+
                 urlRequest.allHTTPHeaderFields = defaultHeaderFields.merging(headerFields) { $1 }
                 urlRequest.timeoutInterval = 8
 
