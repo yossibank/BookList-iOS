@@ -1,11 +1,15 @@
 import UIKit
 
 final class WishListViewController: UIViewController {
+    
+    private var viewModel: WishListViewModel!
 
     @IBOutlet weak var tableView: UITableView!
 
-    static func createInstance() -> WishListViewController {
-        WishListViewController.instantiateInitialViewController()
+    static func createInstance(viewModel: WishListViewModel) -> WishListViewController {
+        let instance = WishListViewController.instantiateInitialViewController()
+        instance.viewModel = viewModel
+        return instance
     }
 
     override func viewDidLoad() {

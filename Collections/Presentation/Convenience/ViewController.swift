@@ -55,7 +55,8 @@ extension Resources {
             }
 
             func wishList() -> WishListViewController {
-                let vc = WishListViewController.createInstance()
+                let viewModel = WishListViewModel()
+                let vc = WishListViewController.createInstance(viewModel: viewModel)
                 return vc
             }
         }
