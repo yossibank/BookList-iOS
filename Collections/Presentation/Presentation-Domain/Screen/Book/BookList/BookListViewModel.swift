@@ -47,7 +47,7 @@ final class BookListViewModel {
     }
 
     func saveFavoriteBookData(bookData: BookListCellData) {
-        FileManagement.shared.setData(
+        BookFileManagement.shared.setData(
             path: String(bookData.id),
             data: bookData.json
         )

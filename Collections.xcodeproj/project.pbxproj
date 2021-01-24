@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7802FBB425BBC91D00565A16 /* Date+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7802FBB325BBC91D00565A16 /* Date+Util.swift */; };
-		781936B325BC5B2B00309FB7 /* FileManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781936B225BC5B2B00309FB7 /* FileManagement.swift */; };
+		781936B325BC5B2B00309FB7 /* BookFileManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781936B225BC5B2B00309FB7 /* BookFileManagement.swift */; };
 		781936C025BC752D00309FB7 /* BookListCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781936BF25BC752D00309FB7 /* BookListCellData.swift */; };
 		781C318125B5ACC100C11D77 /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 781C318025B5ACC100C11D77 /* KeychainAccess.framework */; };
 		781C318225B5ACC100C11D77 /* KeychainAccess.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 781C318025B5ACC100C11D77 /* KeychainAccess.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -161,7 +161,7 @@
 
 /* Begin PBXFileReference section */
 		7802FBB325BBC91D00565A16 /* Date+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Util.swift"; sourceTree = "<group>"; };
-		781936B225BC5B2B00309FB7 /* FileManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagement.swift; sourceTree = "<group>"; };
+		781936B225BC5B2B00309FB7 /* BookFileManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookFileManagement.swift; sourceTree = "<group>"; };
 		781936BF25BC752D00309FB7 /* BookListCellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListCellData.swift; sourceTree = "<group>"; };
 		781C318025B5ACC100C11D77 /* KeychainAccess.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainAccess.framework; path = Carthage/Build/iOS/KeychainAccess.framework; sourceTree = "<group>"; };
 		781C318625B5AFE100C11D77 /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
@@ -340,7 +340,7 @@
 		781C318525B5AFC900C11D77 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				781936B225BC5B2B00309FB7 /* FileManagement.swift */,
+				781936B225BC5B2B00309FB7 /* BookFileManagement.swift */,
 				781C318625B5AFE100C11D77 /* KeychainManager.swift */,
 			);
 			path = Service;
@@ -1102,7 +1102,7 @@
 				7892EF6C259C7212006F7315 /* Images.swift in Sources */,
 				7892EF62259C642C006F7315 /* IBDesignableView.swift in Sources */,
 				78C61C2725A170E000DC78A6 /* AppConfigurator.swift in Sources */,
-				781936B325BC5B2B00309FB7 /* FileManagement.swift in Sources */,
+				781936B325BC5B2B00309FB7 /* BookFileManagement.swift in Sources */,
 				78B29D0D25B3277700A7DC7F /* EditBookResponse.swift in Sources */,
 				78B29D1C25B3310000A7DC7F /* EditBookViewController.swift in Sources */,
 				78DEE7BD25AAE3AD00219963 /* UIViewController+Extension.swift in Sources */,

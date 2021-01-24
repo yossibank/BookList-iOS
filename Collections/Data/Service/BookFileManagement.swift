@@ -1,8 +1,8 @@
 import Foundation
 
-final class FileManagement {
+final class BookFileManagement {
 
-    static let shared = FileManagement()
+    static let shared = BookFileManagement()
 
     private var fileManager: FileManager {
         FileManager.default
@@ -29,24 +29,44 @@ final class FileManagement {
             Logger.error("couldn't write in file manager \(error.localizedDescription)")
         }
     }
-    
+
+    func isFavorited(path: String) -> Bool {
+        let documentDirectoryUrl = fileManager.urls(
+                for: .documentDirectory,
+                in: .userDomainMask
+        )[0]
+
+        do {
+            let contentUrls = try fileManager.contentsOfDirectory(
+                at: documentDirectoryUrl,
+                includingPropertiesForKeys: nil
+            )
+            let files = contentUrls.map { $0.lastPathComponent }
+
+            return files.contains(path) ? true : false
+        } catch {
+            Logger.error("couldn't fetch in file manager \(error.localizedDescription)")
+            return false
+        }
+    }
+
     func fetchData() -> [BookListCellData] {
         var data: [BookListCellData] = []
 
-        let documentDirectoryUrl = FileManager.default.urls(
+        let documentDirectoryUrl = fileManager.urls(
             for: .documentDirectory,
             in: .userDomainMask
         )[0]
 
         do {
-            let contentUrls = try FileManager.default.contentsOfDirectory(
+            let contentUrls = try fileManager.contentsOfDirectory(
                 at: documentDirectoryUrl,
                 includingPropertiesForKeys: nil
             )
             let files = contentUrls.map { $0.lastPathComponent }
 
             files.forEach { file in
-                guard let url = try? FileManager.default.url(
+                guard let url = try? fileManager.url(
                         for: .documentDirectory,
                         in: .userDomainMask,
                         appropriateFor: nil,
