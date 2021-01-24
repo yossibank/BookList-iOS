@@ -190,8 +190,7 @@ extension EditBookViewController {
 
                 switch result {
 
-                case .success(let response):
-                    dump(response)
+                case .success:
 
                     self.showAlert(
                         title: Resources.Strings.General.success,

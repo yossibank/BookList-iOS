@@ -141,8 +141,7 @@ extension SignupViewController {
 
                 switch result {
 
-                case .success(let response):
-                    dump(response)
+                case .success:
                     let window = UIApplication.shared.windows.first { $0.isKeyWindow }
                     window?.rootViewController = self.router.initialWindow(.home, type: .navigation)
 
