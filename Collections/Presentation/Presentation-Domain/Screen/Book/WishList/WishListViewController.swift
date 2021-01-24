@@ -45,10 +45,21 @@ extension WishListViewController: UITableViewDelegate {
 extension WishListViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        1
+        viewModel.books.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        UITableViewCell()
+        let cell = tableView.dequeueReusableCell(
+            withIdentifier: WishListTableViewCell.resourceName,
+            for: indexPath
+        )
+
+        if let wishListCell = cell as? WishListTableViewCell {
+            wishListCell.accessoryType = .disclosureIndicator
+            wishListCell.bookImageView.image = nil
+            wishListCell.setup(book: viewModel.books[indexPath.row])
+        }
+        
+        return cell
     }
 }
