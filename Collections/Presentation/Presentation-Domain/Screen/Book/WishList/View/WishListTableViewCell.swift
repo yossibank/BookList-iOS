@@ -1,33 +1,11 @@
 import UIKit
 
-protocol BookListCellDelegate: AnyObject {
-    func didSelectFavoriteButton(
-        at index: Int,
-        of cell: BookListTableViewCell,
-        tableView: UITableView
-    )
-}
-
-final class BookListTableViewCell: UITableViewCell {
+final class WishListTableViewCell: UITableViewCell {
 
     @IBOutlet weak var bookImageView: UIImageView!
     @IBOutlet weak var bookTitleLabel: UILabel!
     @IBOutlet weak var bookPriceLabel: UILabel!
     @IBOutlet weak var bookPurchaseLabel: UILabel!
-    @IBOutlet weak var favoriteButton: UIButton! {
-        didSet {
-            favoriteButton.addTarget(
-                self,
-                action: #selector(tappedFavoriteButton),
-                for: .touchUpInside
-            )
-        }
-    }
-
-    weak var delegate: BookListCellDelegate?
-
-    var tableView: UITableView = UITableView()
-    var isFavorited: Bool = false
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -59,14 +37,5 @@ final class BookListTableViewCell: UITableViewCell {
                 self.bookImageView.image = image
             }
         }
-
-        isFavorited = BookFileManagement.shared.isFavorited(path: String(book.id))
-
-        let image = isFavorited ? Resources.Images.BookList.favorite : Resources.Images.BookList.nonFavorite
-        favoriteButton.setImage(image, for: .normal)
-    }
-
-    @objc private func tappedFavoriteButton(_ sender: UIButton) {
-        delegate?.didSelectFavoriteButton(at: sender.tag, of: self, tableView: tableView)
     }
 }

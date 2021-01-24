@@ -47,8 +47,8 @@ final class BookFileManagement {
         }
     }
 
-    func fetchData() -> [BookListCellData] {
-        var data: [BookListCellData] = []
+    func fetchData() -> [BookViewData] {
+        var data: [BookViewData] = []
 
         let documentDirectoryUrl = fileManager.urls(
             for: .documentDirectory,
@@ -74,7 +74,7 @@ final class BookFileManagement {
 
                  do {
                     let json = try Data(contentsOf: url)
-                    if let bookListCellData = BookListCellData(json: json) {
+                    if let bookListCellData = BookViewData(json: json) {
                         data.append(bookListCellData)
                     }
                 } catch {

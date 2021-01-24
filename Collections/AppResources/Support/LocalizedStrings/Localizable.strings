@@ -5,6 +5,7 @@
 "title" = "タイトル";
 "price" = "金額";
 "purchase_date" = "購入日";
+"yen" = "円";
 "tax" = "税";
 "plus" = "+";
 

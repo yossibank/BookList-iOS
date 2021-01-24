@@ -1,11 +1,11 @@
 import UIKit
 
-struct HomeCellData {
+struct HomeViewData {
     let title: String
     let image: UIImage?
     
     enum HomeItem: CaseIterable {
-        typealias RawValue = HomeCellData
+        typealias RawValue = HomeViewData
 
         case bookList
         case addBook
@@ -15,19 +15,19 @@ struct HomeCellData {
             switch self {
 
             case .bookList:
-                return HomeCellData(
+                return HomeViewData(
                     title: Resources.Strings.App.bookList,
                     image: Resources.Images.Home.bookList
                 )
 
             case .addBook:
-                return HomeCellData(
+                return HomeViewData(
                     title: Resources.Strings.App.addBook,
                     image: Resources.Images.Home.addBook
                 )
 
             case .wishList:
-                return HomeCellData(
+                return HomeViewData(
                     title: Resources.Strings.App.wishList,
                     image: Resources.Images.Home.wishList
                 )
@@ -44,7 +44,7 @@ struct HomeCellData {
                 return .addBook
 
             case .wishList:
-                return .addBook
+                return .wishList
             }
         }
     }
