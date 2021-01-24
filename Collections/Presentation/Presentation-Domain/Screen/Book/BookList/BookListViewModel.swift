@@ -53,6 +53,12 @@ final class BookListViewModel {
         )
     }
 
+    func removeFavoriteBookData(bookData: BookListCellData) {
+        BookFileManagement.shared.removeData(
+            path: String(bookData.id)
+        )
+    }
+
     private func map(book: [BookListResponse.Book]) -> [BookListCellData] {
         let books = book.map { book in
             BookListCellData(
@@ -60,7 +66,8 @@ final class BookListViewModel {
                 name: book.name,
                 image: book.image,
                 price: book.price,
-                purchaseDate: book.purchaseDate
+                purchaseDate: book.purchaseDate,
+                isFavorite: BookFileManagement.shared.isFavorited(path: String(book.id))
             )
         }
         return books

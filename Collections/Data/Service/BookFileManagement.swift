@@ -30,6 +30,23 @@ final class BookFileManagement {
         }
     }
 
+    func removeData(path: String) {
+        guard let url = try? fileManager.url(
+                for: .documentDirectory,
+                in: .userDomainMask,
+                appropriateFor: nil,
+                create: true).appendingPathComponent(path)
+        else {
+            return
+        }
+
+        do {
+            try fileManager.removeItem(at: url)
+        } catch {
+            Logger.error("couldn't delete in file manager \(error.localizedDescription)")
+        }
+    }
+
     func isFavorited(path: String) -> Bool {
         let documentDirectoryUrl = fileManager.urls(
                 for: .documentDirectory,

@@ -6,7 +6,7 @@ struct BookListCellData: Codable {
     var image: String?
     var price: Int?
     var purchaseDate: String?
-    var isFavorite: Bool?
+    var isFavorite: Bool
 
     var json: Data? {
         try? JSONEncoder().encode(self)
@@ -17,13 +17,15 @@ struct BookListCellData: Codable {
         name: String,
         image: String?,
         price: Int?,
-        purchaseDate: String?
+        purchaseDate: String?,
+        isFavorite: Bool
     ) {
         self.id = id
         self.name = name
         self.image = image
         self.price = price
         self.purchaseDate = purchaseDate
+        self.isFavorite = isFavorite
     }
 
     init?(json: Data) {
