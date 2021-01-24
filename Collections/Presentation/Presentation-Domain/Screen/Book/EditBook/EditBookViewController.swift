@@ -190,7 +190,7 @@ extension EditBookViewController {
 
                 switch result {
 
-                case .success:
+                case .success(let response):
 
                     self.showAlert(
                         title: Resources.Strings.General.success,
@@ -200,6 +200,15 @@ extension EditBookViewController {
                            let bookListVC = viewControllers.dropLast().last as? BookListViewController {
                             bookListVC.reloadBookList()
                         }
+
+                        if let viewControllers = self.navigationController?.viewControllers,
+                           let wishListVC = viewControllers.dropLast().last as? WishListViewController {
+                            self.viewModel.updateFavoriteBookData(
+                                bookData: self.viewModel.map(book: response.result)
+                            )
+                            wishListVC.reloadWishList()
+                        }
+
                         self.router.dismiss(self)
                     }
 

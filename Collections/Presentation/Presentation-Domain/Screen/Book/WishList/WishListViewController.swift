@@ -41,6 +41,10 @@ extension WishListViewController {
         tableView.delegate = self
         tableView.rowHeight = 150
     }
+
+    func reloadWishList() {
+        tableView.reloadData()
+    }
 }
 
 extension WishListViewController: UITableViewDelegate {
@@ -54,11 +58,13 @@ extension WishListViewController: UITableViewDelegate {
             return
         }
 
-        let bookData = EditBookViewData(
+        let bookData = BookViewData(
+            id: book.id,
             name: book.name,
             image: book.image,
             price: book.price,
-            purchaseDate: book.purchaseDate
+            purchaseDate: book.purchaseDate,
+            isFavorite: book.isFavorite
         )
 
         router.push(.editBook(bookId: bookId, bookData: bookData), from: self)

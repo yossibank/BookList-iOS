@@ -111,11 +111,13 @@ extension BookListViewController: UITableViewDelegate {
             return
         }
 
-        let bookData = EditBookViewData(
+        let bookData = BookViewData(
+            id: book.id,
             name: book.name,
             image: book.image,
             price: book.price,
-            purchaseDate: book.purchaseDate
+            purchaseDate: book.purchaseDate,
+            isFavorite: book.isFavorite
         )
 
         router.push(.editBook(bookId: bookId, bookData: bookData), from: self)

@@ -128,7 +128,7 @@ enum Route {
     case addBook
     case editBook(
             bookId: Int,
-            bookData: EditBookViewData
+            bookData: BookViewData
          )
     case wishList
 

@@ -10,6 +10,8 @@ final class EditBookUsecase {
         resultSubject.asObservable()
     }
 
+    var book: EditBookResponse.Book?
+
     init(bookId: Int) {
         self.bookId = bookId
     }
@@ -18,6 +20,7 @@ final class EditBookUsecase {
         EditBookRequest(id: bookId).request(.init(name: name, image: image, price: price, purchaseDate: purchaseDate))
             .subscribe(onSuccess: { response in
                 self.resultSubject.accept(.success(response))
+                self.book = response.result
             }, onFailure: { error in
                 self.resultSubject.accept(.failure(error))
             })

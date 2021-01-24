@@ -38,14 +38,6 @@ final class BookListViewModel {
         books.any(at: index)?.id
     }
 
-    func resetBookData() {
-        usecase.books = []
-    }
-
-    func fetchBookList(isInitial: Bool) {
-        usecase.fetchBookList(isInitial: isInitial)
-    }
-
     func saveFavoriteBookData(bookData: BookViewData) {
         BookFileManagement.shared.setData(
             path: String(bookData.id),
@@ -58,6 +50,17 @@ final class BookListViewModel {
             path: String(bookData.id)
         )
     }
+
+    func resetBookData() {
+        usecase.books = []
+    }
+
+    func fetchBookList(isInitial: Bool) {
+        usecase.fetchBookList(isInitial: isInitial)
+    }
+}
+
+extension BookListViewModel {
 
     private func map(book: [BookListResponse.Book]) -> [BookViewData] {
         let books = book.map { book in
