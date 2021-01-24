@@ -47,26 +47,6 @@ final class BookFileManagement {
         }
     }
 
-    func isFavorited(path: String) -> Bool {
-        let documentDirectoryUrl = fileManager.urls(
-                for: .documentDirectory,
-                in: .userDomainMask
-        )[0]
-
-        do {
-            let contentUrls = try fileManager.contentsOfDirectory(
-                at: documentDirectoryUrl,
-                includingPropertiesForKeys: nil
-            )
-            let files = contentUrls.map { $0.lastPathComponent }
-
-            return files.contains(path) ? true : false
-        } catch {
-            Logger.error("couldn't fetch in file manager \(error.localizedDescription)")
-            return false
-        }
-    }
-
     func fetchData() -> [BookListCellData] {
         var data: [BookListCellData] = []
 
@@ -105,6 +85,26 @@ final class BookFileManagement {
         } catch {
             Logger.error("couldn't fetch in file manager \(error.localizedDescription)")
             return []
+        }
+    }
+    
+    func isFavorited(path: String) -> Bool {
+        let documentDirectoryUrl = fileManager.urls(
+                for: .documentDirectory,
+                in: .userDomainMask
+        )[0]
+
+        do {
+            let contentUrls = try fileManager.contentsOfDirectory(
+                at: documentDirectoryUrl,
+                includingPropertiesForKeys: nil
+            )
+            let files = contentUrls.map { $0.lastPathComponent }
+
+            return files.contains(path) ? true : false
+        } catch {
+            Logger.error("couldn't fetch in file manager \(error.localizedDescription)")
+            return false
         }
     }
 }
