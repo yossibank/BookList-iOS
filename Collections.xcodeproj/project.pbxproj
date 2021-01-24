@@ -333,12 +333,12 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		781936BE25BC752000309FB7 /* Data */ = {
+		781936BE25BC752000309FB7 /* ViewData */ = {
 			isa = PBXGroup;
 			children = (
 				781936BF25BC752D00309FB7 /* BookViewData.swift */,
 			);
-			path = Data;
+			path = ViewData;
 			sourceTree = "<group>";
 		};
 		781C318525B5AFC900C11D77 /* Service */ = {
@@ -446,7 +446,7 @@
 		787052D225B06DC900CAAC3E /* Book */ = {
 			isa = PBXGroup;
 			children = (
-				781936BE25BC752000309FB7 /* Data */,
+				781936BE25BC752000309FB7 /* ViewData */,
 				78CF3AEC25ABF7EA00ADBB60 /* BookList */,
 				787052D325B06DD800CAAC3E /* AddBook */,
 				78B29D1A25B330D600A7DC7F /* EditBook */,
@@ -807,18 +807,18 @@
 			path = WishList;
 			sourceTree = "<group>";
 		};
-		78DE1D7225BD445900A2C0F2 /* Data */ = {
+		78DE1D7225BD445900A2C0F2 /* ViewData */ = {
 			isa = PBXGroup;
 			children = (
 				78DEE7E525AB0BD800219963 /* HomeItem.swift */,
 			);
-			path = Data;
+			path = ViewData;
 			sourceTree = "<group>";
 		};
 		78DEE7CA25AB004800219963 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				78DE1D7225BD445900A2C0F2 /* Data */,
+				78DE1D7225BD445900A2C0F2 /* ViewData */,
 				78DEE7DB25AB027900219963 /* VIew */,
 				78B97BEE25B8572300107C44 /* HomeViewModel.swift */,
 				783231BB25B05C1400EB178B /* HomeDataSource.swift */,
