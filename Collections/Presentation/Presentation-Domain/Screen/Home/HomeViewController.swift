@@ -95,7 +95,7 @@ extension HomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
 
-        let routes = HomeCellData.HomeItem.allCases.compactMap { $0.routes }
+        let routes = HomeViewData.HomeItem.allCases.compactMap { $0.routes }
         router.push(routes[indexPath.row], from: self)
     }
 }
