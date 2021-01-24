@@ -12,8 +12,8 @@ final class BookListTableViewCell: UITableViewCell {
 
     @IBOutlet weak var bookImageView: UIImageView!
     @IBOutlet weak var bookTitleLabel: UILabel!
-    @IBOutlet weak var bookPurchaseLabel: UILabel!
     @IBOutlet weak var bookPriceLabel: UILabel!
+    @IBOutlet weak var bookPurchaseLabel: UILabel!
     @IBOutlet weak var favoriteButton: UIButton! {
         didSet {
             favoriteButton.addTarget(

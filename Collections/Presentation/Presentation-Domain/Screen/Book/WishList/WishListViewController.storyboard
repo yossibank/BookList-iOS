@@ -16,9 +16,24 @@
                     <view key="view" contentMode="scaleToFill" id="V1x-Dz-TpX">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3ni-3b-fvB">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="P2P-R4-E5r"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="P2P-R4-E5r" firstAttribute="bottom" secondItem="3ni-3b-fvB" secondAttribute="bottom" id="FhC-b4-gIb"/>
+                            <constraint firstItem="3ni-3b-fvB" firstAttribute="leading" secondItem="P2P-R4-E5r" secondAttribute="leading" id="GW0-hC-jAu"/>
+                            <constraint firstItem="P2P-R4-E5r" firstAttribute="trailing" secondItem="3ni-3b-fvB" secondAttribute="trailing" id="sIk-sb-khE"/>
+                            <constraint firstItem="3ni-3b-fvB" firstAttribute="top" secondItem="P2P-R4-E5r" secondAttribute="top" id="uTE-Bj-pm2"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="3ni-3b-fvB" id="lx0-0y-mdL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="POM-nv-IhF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
