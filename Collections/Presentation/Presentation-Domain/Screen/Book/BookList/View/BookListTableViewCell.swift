@@ -1,7 +1,7 @@
 import UIKit
 
-protocol BookListDelegate: AnyObject {
-    func tappedFavorite(_ row: Int)
+protocol BookListCellDelegate: AnyObject {
+    func didSelectFavoriteButton(at index: Int, of cell: BookListTableViewCell)
 }
 
 final class BookListTableViewCell: UITableViewCell {
@@ -20,7 +20,7 @@ final class BookListTableViewCell: UITableViewCell {
         }
     }
 
-    weak var delegate: BookListDelegate?
+    weak var delegate: BookListCellDelegate?
 
     var isFavorited: Bool = false
 
@@ -57,6 +57,6 @@ final class BookListTableViewCell: UITableViewCell {
     }
 
     @objc private func tappedFavoriteButton(_ sender: UIButton) {
-        delegate?.tappedFavorite(sender.tag)
+        delegate?.didSelectFavoriteButton(at: sender.tag, of: self)
     }
 }

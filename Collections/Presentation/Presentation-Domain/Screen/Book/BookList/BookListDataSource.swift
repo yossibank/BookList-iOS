@@ -38,11 +38,11 @@ extension BookListDataSource: UITableViewDataSource {
     }
 }
 
-extension BookListDataSource: BookListDelegate {
+extension BookListDataSource: BookListCellDelegate {
 
-    func tappedFavorite(_ row: Int) {
+    func didSelectFavoriteButton(at index: Int, of cell: BookListTableViewCell) {
         guard let cellData = viewModel?.books,
-              let bookData = cellData.any(at: row) else {
+              let bookData = cellData.any(at: index) else {
             return
         }
 
