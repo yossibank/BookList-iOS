@@ -130,6 +130,7 @@ enum Route {
             bookId: Int,
             bookData: EditBookViewData
          )
+    case wishList
 
     fileprivate func viewController() -> UIViewController {
 
@@ -157,6 +158,10 @@ enum Route {
                 bookId: bookId,
                 bookData: bookData
             )
+
+        case .wishList:
+            viewController = Resources.ViewControllers.App.wishList()
+
         }
 
         return viewController

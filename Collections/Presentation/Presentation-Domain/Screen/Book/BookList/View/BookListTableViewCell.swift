@@ -37,7 +37,7 @@ final class BookListTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
 
-    func setup(book: BookListCellData) {
+    func setup(book: BookViewData) {
         bookTitleLabel.text = book.name
 
         if let purchaseDate = book.purchaseDate {

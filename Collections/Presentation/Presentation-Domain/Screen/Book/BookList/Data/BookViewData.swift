@@ -1,6 +1,6 @@
 import Foundation
 
-struct BookListCellData: Codable {
+struct BookViewData: Codable {
     var id: Int
     var name: String
     var image: String?
@@ -29,7 +29,7 @@ struct BookListCellData: Codable {
     }
 
     init?(json: Data) {
-        if let newValue = try? JSONDecoder().decode(BookListCellData.self, from: json) {
+        if let newValue = try? JSONDecoder().decode(BookViewData.self, from: json) {
             self = newValue
         } else {
             return nil

@@ -15,7 +15,7 @@ final class BookListViewModel {
         resultSubject.asObservable()
     }
 
-    var books: [BookListCellData] {
+    var books: [BookViewData] {
         map(book: usecase.books)
     }
 
@@ -46,22 +46,22 @@ final class BookListViewModel {
         usecase.fetchBookList(isInitial: isInitial)
     }
 
-    func saveFavoriteBookData(bookData: BookListCellData) {
+    func saveFavoriteBookData(bookData: BookViewData) {
         BookFileManagement.shared.setData(
             path: String(bookData.id),
             data: bookData.json
         )
     }
 
-    func removeFavoriteBookData(bookData: BookListCellData) {
+    func removeFavoriteBookData(bookData: BookViewData) {
         BookFileManagement.shared.removeData(
             path: String(bookData.id)
         )
     }
 
-    private func map(book: [BookListResponse.Book]) -> [BookListCellData] {
+    private func map(book: [BookListResponse.Book]) -> [BookViewData] {
         let books = book.map { book in
-            BookListCellData(
+            BookViewData(
                 id: book.id,
                 name: book.name,
                 image: book.image,

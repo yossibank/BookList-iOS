@@ -53,6 +53,11 @@ extension Resources {
                 let vc = EditBookViewController.createInstance(viewModel: viewModel)
                 return vc
             }
+
+            func wishList() -> WishListViewController {
+                let vc = WishListViewController.createInstance()
+                return vc
+            }
         }
     }
 }
