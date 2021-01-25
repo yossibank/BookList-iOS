@@ -8,10 +8,6 @@ struct BookViewData: Codable {
     var purchaseDate: String?
     var isFavorite: Bool
 
-    var json: Data? {
-        try? JSONEncoder().encode(self)
-    }
-
     init(
         id: Int,
         name: String,
@@ -26,6 +22,13 @@ struct BookViewData: Codable {
         self.price = price
         self.purchaseDate = purchaseDate
         self.isFavorite = isFavorite
+    }
+}
+
+extension BookViewData {
+
+    var json: Data? {
+        try? JSONEncoder().encode(self)
     }
 
     init?(json: Data) {
