@@ -10,7 +10,7 @@ final class HomeViewController: UIViewController {
     private let disposeBag: DisposeBag = DisposeBag()
 
     private var viewModel: HomeViewModel!
-    private var dataSource: HomeDataSource! = HomeDataSource()
+    private var dataSource: HomeDataSource!
 
     static func createInstance(viewModel: HomeViewModel) -> HomeViewController {
         let instance = HomeViewController.instantiateInitialViewController()
@@ -45,6 +45,8 @@ extension HomeViewController {
     }
 
     private func setupTableView() {
+        dataSource = HomeDataSource()
+
         tableView.register(HomeTableViewCell.xib(), forCellReuseIdentifier: HomeTableViewCell.resourceName)
         tableView.dataSource = dataSource
         tableView.delegate = self

@@ -29,7 +29,8 @@ extension Resources {
             }
 
             func home() -> HomeViewController {
-                let viewModel = HomeViewModel()
+                let usecase = HomeUsecase()
+                let viewModel = HomeViewModel(usecase: usecase)
                 let vc = HomeViewController.createInstance(viewModel: viewModel)
                 return vc
             }
