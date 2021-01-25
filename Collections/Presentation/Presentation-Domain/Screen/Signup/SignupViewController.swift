@@ -34,9 +34,9 @@ final class SignupViewController: UIViewController {
         super.viewDidLoad()
         setupTextField()
         setupButton()
-        listenerKeyboard(keyboardNotifier: keyboardNotifier)
         bindValue()
         bindViewModel()
+        listenerKeyboard(keyboardNotifier: keyboardNotifier)
     }
 }
 

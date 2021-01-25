@@ -21,6 +21,7 @@ final class EditBookViewController: UIViewController {
     private let disposeBag: DisposeBag = DisposeBag()
 
     private var viewModel: EditBookViewModel!
+    private var bookViewData: BookViewData!
 
     private lazy var toolbar: UIToolbar = {
         let toolbar = UIToolbar(frame: .init(x: 0, y: 0, width: view.frame.width, height: 35))
@@ -30,9 +31,10 @@ final class EditBookViewController: UIViewController {
         return toolbar
     }()
 
-    static func createInstance(viewModel: EditBookViewModel) -> EditBookViewController {
+    static func createInstance(viewModel: EditBookViewModel, bookViewData: BookViewData) -> EditBookViewController {
         let instance = EditBookViewController.instantiateInitialViewController()
         instance.viewModel = viewModel
+        instance.bookViewData = bookViewData
         return instance
     }
 
@@ -41,10 +43,10 @@ final class EditBookViewController: UIViewController {
         setupNavigation()
         setupTextField()
         setupButton()
-        listenerKeyboard(keyboardNotifier: keyboardNotifier)
-        setupBookData()
+        setupBookViewData()
         bindValue()
         bindViewModel()
+        listenerKeyboard(keyboardNotifier: keyboardNotifier)
     }
 }
 
@@ -126,16 +128,25 @@ extension EditBookViewController {
 
 extension EditBookViewController {
 
-    private func setupBookData() {
-        let bookData = viewModel.getBookData()
-        bookTitleTextField.text = bookData.name
-        bookPriceTextField.text = bookData.price
-        bookPurchaseDateTextField.text = bookData.purchaseDate
+    private func setupBookViewData() {
+        bookTitleTextField.text = bookViewData.name
 
-        ImageLoader.shared.loadImage(
-            with: .string(urlString: bookData.image)
-        ) { [weak self] image, _ in
-            self?.bookImageView.image = image
+        if let price = bookViewData.price {
+            bookPriceTextField.text = price.description
+        }
+
+        if let purchaseDate = bookViewData.purchaseDate {
+            if let dateFormat = Date.toConvertDate(purchaseDate, with: .yearToDayOfWeek) {
+                bookPurchaseDateTextField.text = dateFormat.toString(with: .yearToDayOfWeekJapanese)
+            }
+        }
+
+        if let imageUrl = bookViewData.image {
+            ImageLoader.shared.loadImage(
+                with: .string(urlString: imageUrl)
+            ) { [weak self] image, _ in
+                self?.bookImageView.image = image
+            }
         }
     }
 
@@ -204,7 +215,10 @@ extension EditBookViewController {
                         if let viewControllers = self.navigationController?.viewControllers,
                            let wishListVC = viewControllers.dropLast().last as? WishListViewController {
                             self.viewModel.updateFavoriteBookData(
-                                bookData: self.viewModel.map(book: response.result)
+                                bookData: self.viewModel.map(
+                                    book: response.result,
+                                    isFavorite: self.bookViewData.isFavorite
+                                )
                             )
                             wishListVC.reloadWishList()
                         }

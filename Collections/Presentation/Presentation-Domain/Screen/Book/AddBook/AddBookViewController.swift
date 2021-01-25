@@ -41,9 +41,9 @@ final class AddBookViewController: UIViewController {
         setupNavigation()
         setupTextField()
         setupButton()
-        listenerKeyboard(keyboardNotifier: keyboardNotifier)
         bindValue()
         bindViewModel()
+        listenerKeyboard(keyboardNotifier: keyboardNotifier)
     }
 }
 
