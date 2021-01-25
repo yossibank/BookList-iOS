@@ -31,7 +31,10 @@ final class EditBookViewController: UIViewController {
         return toolbar
     }()
 
-    static func createInstance(viewModel: EditBookViewModel, bookViewData: BookViewData) -> EditBookViewController {
+    static func createInstance(
+        viewModel: EditBookViewModel,
+        bookViewData: BookViewData
+    ) -> EditBookViewController {
         let instance = EditBookViewController.instantiateInitialViewController()
         instance.viewModel = viewModel
         instance.bookViewData = bookViewData
