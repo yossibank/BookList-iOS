@@ -25,7 +25,7 @@ final class AddBookViewController: UIViewController {
     private lazy var toolbar: UIToolbar = {
         let toolbar = UIToolbar(frame: .init(x: 0, y: 0, width: view.frame.width, height: 35))
         let spaceItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
-        let doneItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(tappedDoneButton))
+        let doneItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonTapped))
         toolbar.setItems([spaceItem, doneItem], animated: true)
         return toolbar
     }()
@@ -54,7 +54,7 @@ extension AddBookViewController {
             title: Resources.Strings.Navigation.done,
             style: .done,
             target: self,
-            action: #selector(tappedAddBookButton)
+            action: #selector(addBookButtonTapped)
         )
     }
 
@@ -62,8 +62,9 @@ extension AddBookViewController {
         bookPurchaseDateTextField.inputAccessoryView = toolbar
         bookPurchaseDateTextField.inputView = UIDatePicker.purchaseDatePicker
 
-        [bookTitleTextField, bookPriceTextField, bookPurchaseDateTextField]
-            .forEach { $0?.delegate = self }
+        [bookTitleTextField, bookPriceTextField, bookPurchaseDateTextField].forEach {
+            $0?.delegate = self
+        }
     }
 
     private func setupButton() {
@@ -80,27 +81,32 @@ extension AddBookViewController {
         )
     }
 
-    @objc private  func tappedAddBookButton(_ sender: UIButton) {
-        let imageString = bookImageView.image?.pngData()?.base64EncodedString()
-        let dateFormat = Date.toConvertDate(
-            bookPurchaseDateTextField.text ?? .blank,
-            with: .yearToDayOfWeekJapanese
-        )
+    @objc private  func addBookButtonTapped() {
+        if let name = bookTitleTextField.text,
+           let price = bookTitleTextField.text,
+           let purchaseDate = bookPurchaseDateTextField.text {
 
-        viewModel.addBook(
-            name: bookTitleTextField.text ?? .blank,
-            image: imageString,
-            price: Int(bookPriceTextField.text ?? .blank),
-            purchaseDate: dateFormat?.toString(with: .yearToDayOfWeek)
-        )
+            let imageString = bookImageView.image?.pngData()?.base64EncodedString()
+            let purchaseDateFormat = Date.toConvertDate(
+                purchaseDate,
+                with: .yearToDayOfWeekJapanese
+            )?.toString(with: .yearToDayOfWeek)
+
+            viewModel.addBook(
+                name: name,
+                image: imageString,
+                price: Int(price),
+                purchaseDate: purchaseDateFormat
+            )
+        }
     }
 
-    @objc private func tappedDoneButton(_ sender: UIButton) {
+    @objc private func doneButtonTapped() {
         bookPurchaseDateTextField.text = UIDatePicker.purchaseDatePicker.date.toString(with: .yearToDayOfWeekJapanese)
         bookPurchaseDateTextField.endEditing(true)
     }
 
-    @objc private func setupPhotoLibrary(_ sender: UIButton) {
+    @objc private func setupPhotoLibrary() {
         let photoLibrary = UIImagePickerController.SourceType.photoLibrary
 
         if UIImagePickerController.isSourceTypeAvailable(photoLibrary) {
@@ -111,7 +117,7 @@ extension AddBookViewController {
         }
     }
 
-    @objc private func setupLaunchCamera(_ sender: UIButton) {
+    @objc private func setupLaunchCamera() {
         let camera = UIImagePickerController.SourceType.camera
 
         if UIImagePickerController.isSourceTypeAvailable(camera) {
