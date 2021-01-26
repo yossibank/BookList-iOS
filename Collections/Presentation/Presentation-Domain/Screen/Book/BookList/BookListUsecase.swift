@@ -32,16 +32,21 @@ final class BookListUsecase {
 
         loadingSubject.accept(true)
 
-        BookListRequest().request(.init(limit: limit, page: currentPage))
-            .subscribe(onSuccess: { response in
-                self.loadingSubject.accept(false)
-                self.resultSubject.accept(.success(response))
-                self.totalPage = response.totalPages
-                self.books.append(contentsOf: response.result)
-            }, onFailure: { error in
-                self.loadingSubject.accept(false)
-                self.resultSubject.accept(.failure(error))
-            })
+        BookListRequest()
+            .request(.init(
+                        limit: limit,
+                        page: currentPage))
+            .subscribe(
+                onSuccess: { [weak self] response in
+                    self?.loadingSubject.accept(false)
+                    self?.resultSubject.accept(.success(response))
+                    self?.totalPage = response.totalPages
+                    self?.books.append(contentsOf: response.result)
+                },
+                onFailure: { [weak self] error in
+                    self?.loadingSubject.accept(false)
+                    self?.resultSubject.accept(.failure(error))
+                })
             .disposed(by: disposeBag)
     }
 }

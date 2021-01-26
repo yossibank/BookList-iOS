@@ -88,7 +88,7 @@ final class BookFileManagement {
         }
     }
     
-    func isFavorited(path: String) -> Bool {
+    func isFavorite(path: String) -> Bool {
         let documentDirectoryUrl = fileManager.urls(
                 for: .documentDirectory,
                 in: .userDomainMask

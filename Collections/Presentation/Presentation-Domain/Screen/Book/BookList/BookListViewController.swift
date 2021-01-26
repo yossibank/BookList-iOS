@@ -12,7 +12,6 @@ final class BookListViewController: UIViewController {
 
     private var viewModel: BookListViewModel!
     private var dataSource: BookListDataSource!
-    private var footerView: UIView = .init()
 
     static func createInstance(viewModel: BookListViewModel) -> BookListViewController {
         let instance = BookListViewController.instantiateInitialViewController()
@@ -24,12 +23,13 @@ final class BookListViewController: UIViewController {
         super.viewDidLoad()
         setupNavigation()
         setupTableView()
+        fetchBookList()
         bindViewModel()
     }
 }
 
 extension BookListViewController {
-    
+
     private func setupNavigation() {
         navigationItem.backBarButtonItem = UIBarButtonItem(
             title: .blank,
@@ -46,12 +46,13 @@ extension BookListViewController {
         tableView.dataSource = dataSource
         tableView.delegate = self
         tableView.rowHeight = 150
-
-        footerView.frame = .init(x: 0, y: 0, width: view.frame.width, height: 44)
-        tableView.tableFooterView = footerView
     }
 
-    func reloadBookList() {
+    private func fetchBookList() {
+        viewModel.fetchBookList(isInitial: true)
+    }
+
+    func resetBookList() {
         viewModel.resetBookData()
         viewModel.fetchBookList(isInitial: true)
     }
@@ -60,8 +61,6 @@ extension BookListViewController {
 extension BookListViewController {
 
     private func bindViewModel() {
-        viewModel.fetchBookList(isInitial: true)
-
         viewModel.result
             .asDriver(onErrorJustReturn: nil)
             .drive(onNext: { [weak self] result in
@@ -90,11 +89,7 @@ extension BookListViewController {
             .drive(onNext: { [weak self] loading in
                 guard let self = self else { return }
 
-                loading ?
-                    self.loadingIndicator.startAnimating() :
-                    self.loadingIndicator.stopAnimating()
-
-                self.footerView.isHidden = loading ? false : true
+                loading ? self.loadingIndicator.startAnimating() : self.loadingIndicator.stopAnimating()
             })
             .disposed(by: disposeBag)
     }
@@ -102,12 +97,13 @@ extension BookListViewController {
 
 extension BookListViewController: UITableViewDelegate {
 
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(
+        _ tableView: UITableView,
+        didSelectRowAt indexPath: IndexPath
+    ) {
         tableView.deselectRow(at: indexPath, animated: true)
 
-        guard let bookId = viewModel.getBookId(index: indexPath.row),
-              let book = viewModel.books.any(at: indexPath.row)
-        else {
+        guard let book = viewModel.books.any(at: indexPath.row) else {
             return
         }
 
@@ -120,10 +116,14 @@ extension BookListViewController: UITableViewDelegate {
             isFavorite: book.isFavorite
         )
 
-        router.push(.editBook(bookId: bookId, bookData: bookData), from: self)
+        router.push(.editBook(bookId: book.id, bookData: bookData), from: self)
     }
 
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+    func tableView(
+        _ tableView: UITableView,
+        willDisplay cell: UITableViewCell,
+        forRowAt indexPath: IndexPath
+    ) {
         let lastSection = tableView.numberOfSections - 1
         let lastIndex = tableView.numberOfRows(inSection: lastSection) - 1
 

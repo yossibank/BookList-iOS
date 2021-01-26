@@ -7,22 +7,6 @@ struct BookViewData: Codable {
     var price: Int?
     var purchaseDate: String?
     var isFavorite: Bool
-
-    init(
-        id: Int,
-        name: String,
-        image: String?,
-        price: Int?,
-        purchaseDate: String?,
-        isFavorite: Bool
-    ) {
-        self.id = id
-        self.name = name
-        self.image = image
-        self.price = price
-        self.purchaseDate = purchaseDate
-        self.isFavorite = isFavorite
-    }
 }
 
 extension BookViewData {

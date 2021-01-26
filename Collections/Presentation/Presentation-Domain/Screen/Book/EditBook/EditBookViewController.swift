@@ -212,7 +212,7 @@ extension EditBookViewController {
                     ) {
                         if let viewControllers = self.navigationController?.viewControllers,
                            let bookListVC = viewControllers.dropLast().last as? BookListViewController {
-                            bookListVC.reloadBookList()
+                            bookListVC.resetBookList()
                         }
 
                         if let viewControllers = self.navigationController?.viewControllers,
