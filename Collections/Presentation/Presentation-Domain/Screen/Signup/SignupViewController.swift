@@ -15,7 +15,7 @@ final class SignupViewController: UIViewController {
     @IBOutlet weak var signupButton: UIButton!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
-    
+
     var keyboardNotifier: KeyboardNotifier = KeyboardNotifier()
 
     private let router: RouterProtocol = Router()
@@ -43,31 +43,32 @@ final class SignupViewController: UIViewController {
 extension SignupViewController {
 
     private func setupTextField() {
-        [emailTextField, passwordTextField, passwordConfirmationTextField]
-            .forEach { $0?.delegate = self }
+        [emailTextField, passwordTextField, passwordConfirmationTextField].forEach {
+            $0?.delegate = self
+        }
     }
 
     private func setupButton() {
         secureTextChangeButton.addTarget(
             self,
-            action: #selector(secureTextChange),
+            action: #selector(secureButtonTapped),
             for: .touchUpInside
         )
 
         signupButton.addTarget(
             self,
-            action: #selector(showHomeScreen),
+            action: #selector(signupButtonTapped),
             for: .touchUpInside
         )
 
         loginButton.addTarget(
             self,
-            action: #selector(showLoginScreen),
+            action: #selector(loginButtonTapped),
             for: .touchUpInside
         )
     }
 
-    @objc private func secureTextChange(_ sender: UIButton) {
+    @objc private func secureButtonTapped(_ sender: UIButton) {
         let secureImage = isSecureCheck
             ? Resources.Images.Account.checkInBox
             : Resources.Images.Account.checkOffBox
@@ -79,14 +80,17 @@ extension SignupViewController {
         isSecureCheck = !isSecureCheck
     }
 
-    @objc private func showHomeScreen(_ sender: UIButton) {
-        viewModel.signup(
-            email: emailTextField.text ?? "",
-            password: passwordTextField.text ?? ""
-        )
+    @objc private func signupButtonTapped(_ sender: UIButton) {
+        if let email = emailTextField.text,
+           let password = passwordTextField.text {
+            viewModel.signup(
+                email: email,
+                password: password
+            )
+        }
     }
 
-    @objc private func showLoginScreen(_ sender: UIButton) {
+    @objc private func loginButtonTapped(_ sender: UIButton) {
         if presentingViewController is LoginViewController {
             self.dismiss(animated: true)
         } else {

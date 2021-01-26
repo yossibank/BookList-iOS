@@ -2,7 +2,7 @@ import RxSwift
 import RxRelay
 
 final class SignupViewModel {
-    private let usecase: SignupUsecase
+    private let usecase: SignupUsecase!
     private let loadingSubject: BehaviorRelay<Bool> = BehaviorRelay(value: false)
     private let resultSubject: BehaviorRelay<Result<SignupResponse, Error>?> = BehaviorRelay(value: nil)
     private let disposeBag: DisposeBag = DisposeBag()
@@ -30,7 +30,13 @@ final class SignupViewModel {
             .disposed(by: disposeBag)
     }
 
-    func signup(email: String, password: String) {
-        usecase.signup(email: email, password: password)
+    func signup(
+        email: String,
+        password: String
+    ) {
+        usecase.signup(
+            email: email,
+            password: password
+        )
     }
 }
