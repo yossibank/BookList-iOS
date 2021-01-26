@@ -8,7 +8,7 @@ final class SignupViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var passwordConfirmationTextField: UITextField!
-    @IBOutlet weak var secureTextChangeButton: UIButton!
+    @IBOutlet weak var secureButton: UIButton!
     @IBOutlet weak var validateEmailLabel: UILabel!
     @IBOutlet weak var validatePasswordLabel: UILabel!
     @IBOutlet weak var validatePasswordConfirmationLabel: UILabel!
@@ -49,7 +49,7 @@ extension SignupViewController {
     }
 
     private func setupButton() {
-        secureTextChangeButton.addTarget(
+        secureButton.addTarget(
             self,
             action: #selector(secureButtonTapped),
             for: .touchUpInside
@@ -94,7 +94,10 @@ extension SignupViewController {
         if presentingViewController is LoginViewController {
             self.dismiss(animated: true)
         } else {
-            router.present(.login, from: self, isModalInPresentation: false)
+            router.present(
+                .login,
+                from: self
+            )
         }
     }
 }

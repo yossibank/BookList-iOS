@@ -7,13 +7,13 @@ final class LoginViewController: UIViewController {
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var secureTextChangeButton: UIButton!
+    @IBOutlet weak var secureButton: UIButton!
     @IBOutlet weak var validateEmailLabel: UILabel!
     @IBOutlet weak var validatePasswordLabel: UILabel!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var signupButton: UIButton!
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
-    
+
     var keyboardNotifier: KeyboardNotifier = KeyboardNotifier()
 
     private let router: RouterProtocol = Router()
@@ -47,26 +47,26 @@ extension LoginViewController {
     }
 
     private func setupButton() {
-        secureTextChangeButton.addTarget(
+        secureButton.addTarget(
             self,
-            action: #selector(secureTextChange),
+            action: #selector(secureButtonTapped),
             for: .touchUpInside
         )
 
         loginButton.addTarget(
             self,
-            action: #selector(showHomeScreen),
+            action: #selector(loginButtonTapped),
             for: .touchUpInside
         )
 
         signupButton.addTarget(
             self,
-            action: #selector(showSignupScreen),
+            action: #selector(signupButtonTapped),
             for: .touchUpInside
         )
     }
 
-    @objc private func secureTextChange(_ sender: UIButton) {
+    @objc private func secureButtonTapped(_ sender: UIButton) {
         let secureImage = isSecureCheck
             ? Resources.Images.Account.checkInBox
             : Resources.Images.Account.checkOffBox
@@ -76,18 +76,24 @@ extension LoginViewController {
         isSecureCheck = !isSecureCheck
     }
 
-    @objc private func showHomeScreen(_ sender: UIButton) {
-        viewModel.login(
-            email: emailTextField.text ?? "",
-            password: passwordTextField.text ?? ""
-        )
+    @objc private func loginButtonTapped(_ sender: UIButton) {
+        if let email = emailTextField.text,
+           let password = passwordTextField.text {
+            viewModel.login(
+                email: email,
+                password: password
+            )
+        }
     }
 
-    @objc private func showSignupScreen(_ sender: UIButton) {
+    @objc private func signupButtonTapped(_ sender: UIButton) {
         if presentingViewController is SignupViewController {
             self.dismiss(animated: true)
         } else {
-            router.present(.signup, from: self, isModalInPresentation: false)
+            router.present(
+                .signup,
+                from: self
+            )
         }
     }
 }
