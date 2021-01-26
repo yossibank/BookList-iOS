@@ -35,12 +35,12 @@ extension HomeViewController {
             target: nil,
             action: nil
         )
-        
+
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             image: Resources.Images.General.logout?.withRenderingMode(.alwaysOriginal),
             style: .plain,
             target: self,
-            action: #selector(tappedLogoutButton)
+            action: #selector(logoutButtonTapped)
         )
     }
 
@@ -53,7 +53,7 @@ extension HomeViewController {
         tableView.rowHeight = 100
     }
 
-    @objc private func tappedLogoutButton() {
+    @objc private func logoutButtonTapped() {
         showActionAlert(
             title: Resources.Strings.App.logout,
             message: Resources.Strings.Alert.didYouLogout)
@@ -94,7 +94,10 @@ extension HomeViewController {
 
 extension HomeViewController: UITableViewDelegate {
 
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(
+        _ tableView: UITableView,
+        didSelectRowAt indexPath: IndexPath
+    ) {
         tableView.deselectRow(at: indexPath, animated: true)
 
         let routes = HomeViewData.HomeItem.allCases.compactMap { $0.routes }

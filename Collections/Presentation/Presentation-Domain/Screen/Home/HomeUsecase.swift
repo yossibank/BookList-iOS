@@ -10,13 +10,16 @@ final class HomeUsecase {
     }
 
     func logout() {
-        LogoutRequest().request(.init())
-            .subscribe(onSuccess: { response in
-                self.resultSubject.accept(.success(response))
-                KeychainManager.shared.removeToken()
-            }, onFailure: { error in
-                self.resultSubject.accept(.failure(error))
-            })
+        LogoutRequest()
+            .request(.init())
+            .subscribe(
+                onSuccess: { [weak self] response in
+                    self?.resultSubject.accept(.success(response))
+                    KeychainManager.shared.removeToken()
+                },
+                onFailure: { [weak self] error in
+                    self?.resultSubject.accept(.failure(error))
+                })
             .disposed(by: disposeBag)
     }
 }
