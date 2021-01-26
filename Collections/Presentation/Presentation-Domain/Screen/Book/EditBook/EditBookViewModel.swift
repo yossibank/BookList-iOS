@@ -21,10 +21,10 @@ final class EditBookViewModel {
             .disposed(by: disposeBag)
     }
 
-    func updateFavoriteBookData(bookData: BookViewData) {
+    func updateFavoriteBook(book: BookViewData) {
         BookFileManagement.shared.setData(
-            path: String(bookData.id),
-            data: bookData.json
+            path: String(book.id),
+            data: book.json
         )
     }
 
@@ -32,7 +32,7 @@ final class EditBookViewModel {
         book: EditBookResponse.Book,
         isFavorite: Bool
     ) -> BookViewData {
-        return BookViewData(
+        BookViewData(
             id: book.id,
             name: book.name,
             image: book.image,

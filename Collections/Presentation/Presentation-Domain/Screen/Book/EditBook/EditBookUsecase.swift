@@ -25,13 +25,14 @@ final class EditBookUsecase {
                         name: name,
                         image: image,
                         price: price,
-                        purchaseDate: purchaseDate)
-            )
-            .subscribe(onSuccess: { response in
-                self.resultSubject.accept(.success(response))
-            }, onFailure: { error in
-                self.resultSubject.accept(.failure(error))
-            })
+                        purchaseDate: purchaseDate))
+            .subscribe(
+                onSuccess: { [weak self] response in
+                    self?.resultSubject.accept(.success(response))
+                },
+                onFailure: { [weak self] error in
+                    self?.resultSubject.accept(.failure(error))
+                })
             .disposed(by: disposeBag)
     }
 }
