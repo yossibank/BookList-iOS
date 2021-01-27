@@ -2,7 +2,7 @@ import RxSwift
 import RxRelay
 
 final class LoginViewModel {
-    private let usecase: LoginUsecase
+    private let usecase: LoginUsecase!
     private let loadingSubject: BehaviorRelay<Bool> = BehaviorRelay(value: false)
     private let resultSubject: BehaviorRelay<Result<LoginResponse, Error>?> = BehaviorRelay(value: nil)
     private let disposeBag: DisposeBag = DisposeBag()
@@ -30,7 +30,13 @@ final class LoginViewModel {
             .disposed(by: disposeBag)
     }
 
-    func login(email: String, password: String) {
-        usecase.login(email: email, password: password)
+    func login(
+        email: String,
+        password: String
+    ) {
+        usecase.login(
+            email: email,
+            password: password
+        )
     }
 }

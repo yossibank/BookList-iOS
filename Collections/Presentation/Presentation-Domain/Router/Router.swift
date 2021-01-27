@@ -153,10 +153,14 @@ enum Route {
         case .addBook:
             viewController = Resources.ViewControllers.App.addBook()
 
-        case .editBook(let bookId, let bookData):
+        case .editBook(
+            let bookId,
+            let bookViewData
+        ):
+
             viewController = Resources.ViewControllers.App.editBook(
                 bookId: bookId,
-                bookData: bookData
+                bookViewData: bookViewData
             )
 
         case .wishList:
@@ -283,8 +287,7 @@ final class Router: RouterProtocol {
     ) {
         if let nc = vc.navigationController, nc.viewControllers.count > 1 {
             nc.popViewController(
-                animated: animated,
-                completion: completion
+                animated: animated
             )
         } else {
             vc.dismiss(

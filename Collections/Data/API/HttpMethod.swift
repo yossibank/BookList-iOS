@@ -7,7 +7,10 @@ enum HttpMethod: String {
     case delete = "DELETE"
     case patch = "PATCH"
 
-    func urlRequest(url: URL, data: Data?) throws -> URLRequest? {
+    func urlRequest(
+        url: URL,
+        data: Data?
+    ) throws -> URLRequest? {
         var request = URLRequest(url: url)
 
         switch self {
@@ -19,11 +22,13 @@ enum HttpMethod: String {
             }
 
             guard var components = URLComponents(url: url, resolvingAgainstBaseURL: true),
-                  let dictionary = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] else {
+                  let dictionary = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+            else {
                 return nil
             }
 
             components.queryItems = dictionary.map { URLQueryItem(name: $0.key, value: "\($0.value)") }
+
             guard let getUrl = components.url else {
                 return nil
             }

@@ -3,7 +3,7 @@ import UIKit
 struct HomeViewData {
     let title: String
     let image: UIImage?
-    
+
     enum HomeItem: CaseIterable {
         typealias RawValue = HomeViewData
 
@@ -12,6 +12,7 @@ struct HomeViewData {
         case wishList
 
         var rawValue: RawValue {
+
             switch self {
 
             case .bookList:
@@ -35,6 +36,7 @@ struct HomeViewData {
         }
 
         var routes: Route {
+
             switch self {
 
             case .bookList:

@@ -8,7 +8,6 @@ final class ImageLoader {
         case url(url: URL?)
     }
 
-    /* キャッシュのディスク容量200MB */
     private init() {
         URLCache.shared.diskCapacity = 200 * (1000 * 1000)
     }
@@ -113,7 +112,7 @@ final class ImageLoader {
 
             if let error = error {
                 Logger.error("finish image loading, but error occur, url: \(url.absoluteString), error: \(error)")
-                
+
                 self.finish(immediately: immediatery) {
                     if let noImage = Self.noImage {
                         completion((image: noImage, isCachedOnMemoryOrDisk: false))

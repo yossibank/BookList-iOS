@@ -11,12 +11,18 @@ final class BookListDataSource: NSObject {
 
 extension BookListDataSource: UITableViewDataSource {
 
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(
+        _ tableView: UITableView,
+        numberOfRowsInSection section: Int
+    ) -> Int {
         guard let cellData = viewModel?.books else { return 0 }
         return cellData.count
     }
 
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(
+        _ tableView: UITableView,
+        cellForRowAt indexPath: IndexPath
+    ) -> UITableViewCell {
         guard let cellData = viewModel?.books else {
             return UITableViewCell(style: .default, reuseIdentifier: nil)
         }
@@ -32,7 +38,9 @@ extension BookListDataSource: UITableViewDataSource {
             bookListCell.delegate = self
             bookListCell.tableView = tableView
             bookListCell.favoriteButton.tag = indexPath.row
-            bookListCell.setup(book: cellData[indexPath.row])
+            if let book = cellData.any(at: indexPath.row) {
+                bookListCell.setup(book: book)
+            }
         }
 
         return cell
@@ -44,20 +52,23 @@ extension BookListDataSource: BookListCellDelegate {
     func didSelectFavoriteButton(
         at index: Int,
         of cell: BookListTableViewCell,
-        tableView: UITableView
+        in tableView: UITableView?
     ) {
         guard let cellData = viewModel?.books,
-              let bookData = cellData.any(at: index)
+              let book = cellData.any(at: index)
         else {
             return
         }
 
-        if bookData.isFavorite {
-            viewModel?.removeFavoriteBookData(bookData: bookData)
+        if book.isFavorite {
+            viewModel?.removeFavoriteBook(book: book)
         } else {
-            viewModel?.saveFavoriteBookData(bookData: bookData)
+            viewModel?.saveFavoriteBook(book: book)
         }
 
-        tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .fade)
+        tableView?.reloadRows(
+            at: [IndexPath(row: index, section: 0)],
+            with: .fade
+        )
     }
 }

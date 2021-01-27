@@ -1,26 +1,21 @@
 import RxSwift
 import RxRelay
 
-final class EditBookUsecase {
-    private let bookId: Int
-    private let resultSubject: BehaviorRelay<Result<EditBookResponse, Error>?> = BehaviorRelay(value: nil)
+final class AddBookUsecase {
+    private let resultSubject: BehaviorRelay<Result<AddBookResponse, Error>?> = BehaviorRelay(value: nil)
     private let disposeBag: DisposeBag = DisposeBag()
 
-    var result: Observable<Result<EditBookResponse, Error>?> {
+    var result: Observable<Result<AddBookResponse, Error>?> {
         resultSubject.asObservable()
     }
 
-    init(bookId: Int) {
-        self.bookId = bookId
-    }
-
-    func editBook(
+    func addBook(
         name: String,
         image: String?,
         price: Int?,
         purchaseDate: String?
     ) {
-        EditBookRequest(id: bookId)
+        AddBookRequest()
             .request(.init(
                         name: name,
                         image: image,

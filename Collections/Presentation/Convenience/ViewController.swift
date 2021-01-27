@@ -29,7 +29,8 @@ extension Resources {
             }
 
             func home() -> HomeViewController {
-                let viewModel = HomeViewModel()
+                let usecase = HomeUsecase()
+                let viewModel = HomeViewModel(usecase: usecase)
                 let vc = HomeViewController.createInstance(viewModel: viewModel)
                 return vc
             }
@@ -42,15 +43,22 @@ extension Resources {
             }
 
             func addBook() -> AddBookViewController {
-                let viewModel = AddBookViewModel()
+                let usecase = AddBookUsecase()
+                let viewModel = AddBookViewModel(usecase: usecase)
                 let vc = AddBookViewController.createInstance(viewModel: viewModel)
                 return vc
             }
 
-            func editBook(bookId: Int, bookData: BookViewData) -> EditBookViewController {
+            func editBook(
+                bookId: Int,
+                bookViewData: BookViewData
+            ) -> EditBookViewController {
                 let usecase = EditBookUsecase(bookId: bookId)
-                let viewModel = EditBookViewModel(usecase: usecase, bookData: bookData)
-                let vc = EditBookViewController.createInstance(viewModel: viewModel)
+                let viewModel = EditBookViewModel(usecase: usecase)
+                let vc = EditBookViewController.createInstance(
+                    viewModel: viewModel,
+                    bookViewData: bookViewData
+                )
                 return vc
             }
 

@@ -10,7 +10,7 @@ final class HomeViewController: UIViewController {
     private let disposeBag: DisposeBag = DisposeBag()
 
     private var viewModel: HomeViewModel!
-    private var dataSource: HomeDataSource! = HomeDataSource()
+    private var dataSource: HomeDataSource!
 
     static func createInstance(viewModel: HomeViewModel) -> HomeViewController {
         let instance = HomeViewController.instantiateInitialViewController()
@@ -35,23 +35,25 @@ extension HomeViewController {
             target: nil,
             action: nil
         )
-        
+
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             image: Resources.Images.General.logout?.withRenderingMode(.alwaysOriginal),
             style: .plain,
             target: self,
-            action: #selector(tappedLogoutButton)
+            action: #selector(logoutButtonTapped)
         )
     }
 
     private func setupTableView() {
+        dataSource = HomeDataSource()
+
         tableView.register(HomeTableViewCell.xib(), forCellReuseIdentifier: HomeTableViewCell.resourceName)
         tableView.dataSource = dataSource
         tableView.delegate = self
         tableView.rowHeight = 100
     }
 
-    @objc private func tappedLogoutButton() {
+    @objc private func logoutButtonTapped() {
         showActionAlert(
             title: Resources.Strings.App.logout,
             message: Resources.Strings.Alert.didYouLogout)
@@ -92,7 +94,10 @@ extension HomeViewController {
 
 extension HomeViewController: UITableViewDelegate {
 
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(
+        _ tableView: UITableView,
+        didSelectRowAt indexPath: IndexPath
+    ) {
         tableView.deselectRow(at: indexPath, animated: true)
 
         let routes = HomeViewData.HomeItem.allCases.compactMap { $0.routes }

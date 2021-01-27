@@ -14,19 +14,26 @@ final class SignupUsecase {
         resultSubject.asObservable()
     }
 
-    func signup(email: String, password: String) {
-
+    func signup(
+        email: String,
+        password: String
+    ) {
         loadingSubject.accept(true)
 
-        SignupRequest().request(.init(email: email, password: password))
-            .subscribe(onSuccess: { response in
-                self.loadingSubject.accept(false)
-                self.resultSubject.accept(.success(response))
-                KeychainManager.shared.setToken(response.result.token)
-            }, onFailure: { error in
-                self.loadingSubject.accept(false)
-                self.resultSubject.accept(.failure(error))
-            })
+        SignupRequest()
+            .request(.init(
+                        email: email,
+                        password: password))
+            .subscribe(
+                onSuccess: { [weak self] response in
+                    self?.loadingSubject.accept(false)
+                    self?.resultSubject.accept(.success(response))
+                    KeychainManager.shared.setToken(response.result.token)
+                },
+                onFailure: { [weak self] error in
+                    self?.loadingSubject.accept(false)
+                    self?.resultSubject.accept(.failure(error))
+                })
             .disposed(by: disposeBag)
     }
 }

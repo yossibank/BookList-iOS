@@ -17,7 +17,9 @@ extension Date {
         return dateFormatter
     }
 
-    func toString(with dateFormatType: DateFormatType? = nil) -> String {
+    func toConvertString(
+        with dateFormatType: DateFormatType? = nil
+    ) -> String {
         let dateFormatter = self.dateFormatter
         dateFormatter.dateFormat = dateFormatType?.rawValue ?? dateFormatter.dateFormat
         return dateFormatter.string(from: self)
@@ -26,8 +28,11 @@ extension Date {
 
 extension Date {
 
-    static func toConvertDate(_ string: String, with dateFormatType: DateFormatType? = nil) -> Date? {
-        let dateFormatter = DateFormatter()
+    static func toConvertDate(
+        _ string: String,
+        with dateFormatType: DateFormatType? = nil
+    ) -> Date? {
+        let dateFormatter = Self().dateFormatter
         dateFormatter.dateFormat = dateFormatType?.rawValue ?? dateFormatter.dateFormat
         return dateFormatter.date(from: string)
     }

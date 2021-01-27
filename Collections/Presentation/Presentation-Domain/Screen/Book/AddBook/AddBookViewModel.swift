@@ -1,8 +1,8 @@
-import UIKit
 import RxSwift
 import RxRelay
 
 final class AddBookViewModel {
+    private let usecase: AddBookUsecase!
     private let resultSubject: BehaviorRelay<Result<AddBookResponse, Error>?> = BehaviorRelay(value: nil)
     private let disposeBag: DisposeBag = DisposeBag()
 
@@ -10,12 +10,28 @@ final class AddBookViewModel {
         resultSubject.asObservable()
     }
 
-    func addBook(name: String, image: String?, price: Int?, purchaseDate: String?) {
-        AddBookRequest().request(.init(name: name, image: image, price: price, purchaseDate: purchaseDate))
-            .subscribe(onSuccess: { response in
-                self.resultSubject.accept(.success(response))
-            }, onFailure: { error in
-                self.resultSubject.accept(.failure(error))
-            }).disposed(by: disposeBag)
+    init(usecase: AddBookUsecase) {
+        self.usecase = usecase
+        bindUsecase()
+    }
+
+    private func bindUsecase() {
+        usecase.result
+            .bind(to: resultSubject)
+            .disposed(by: disposeBag)
+    }
+
+    func addBook(
+        name: String,
+        image: String?,
+        price: Int?,
+        purchaseDate: String?
+    ) {
+        usecase.addBook(
+            name: name,
+            image: image,
+            price: price,
+            purchaseDate: purchaseDate
+        )
     }
 }

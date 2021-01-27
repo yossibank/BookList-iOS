@@ -2,7 +2,7 @@ import RxSwift
 import RxRelay
 
 final class BookListViewModel {
-    private let usecase: BookListUsecase
+    private let usecase: BookListUsecase!
     private let loadingSubject: BehaviorRelay<Bool> = BehaviorRelay(value: false)
     private let resultSubject: BehaviorRelay<Result<BookListResponse, Error>?> = BehaviorRelay(value: nil)
     private let disposeBag: DisposeBag = DisposeBag()
@@ -38,16 +38,16 @@ final class BookListViewModel {
         books.any(at: index)?.id
     }
 
-    func saveFavoriteBookData(bookData: BookViewData) {
-        BookFileManagement.shared.setData(
-            path: String(bookData.id),
-            data: bookData.json
+    func saveFavoriteBook(book: BookViewData) {
+        BookFileManager.shared.setData(
+            path: String(book.id),
+            data: book.json
         )
     }
 
-    func removeFavoriteBookData(bookData: BookViewData) {
-        BookFileManagement.shared.removeData(
-            path: String(bookData.id)
+    func removeFavoriteBook(book: BookViewData) {
+        BookFileManager.shared.removeData(
+            path: String(book.id)
         )
     }
 
@@ -70,7 +70,7 @@ extension BookListViewModel {
                 image: book.image,
                 price: book.price,
                 purchaseDate: book.purchaseDate,
-                isFavorite: BookFileManagement.shared.isFavorited(path: String(book.id))
+                isFavorite: BookFileManager.shared.isFavorite(path: String(book.id))
             )
         }
         return books

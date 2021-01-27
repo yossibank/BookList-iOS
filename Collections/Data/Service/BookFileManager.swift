@@ -1,8 +1,8 @@
 import Foundation
 
-final class BookFileManagement {
+final class BookFileManager {
 
-    static let shared = BookFileManagement()
+    static let shared = BookFileManager()
 
     private var fileManager: FileManager {
         FileManager.default
@@ -88,7 +88,7 @@ final class BookFileManagement {
         }
     }
     
-    func isFavorited(path: String) -> Bool {
+    func isFavorite(path: String) -> Bool {
         let documentDirectoryUrl = fileManager.urls(
                 for: .documentDirectory,
                 in: .userDomainMask

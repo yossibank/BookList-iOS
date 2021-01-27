@@ -21,18 +21,23 @@ final class EditBookViewController: UIViewController {
     private let disposeBag: DisposeBag = DisposeBag()
 
     private var viewModel: EditBookViewModel!
+    private var bookViewData: BookViewData!
 
     private lazy var toolbar: UIToolbar = {
         let toolbar = UIToolbar(frame: .init(x: 0, y: 0, width: view.frame.width, height: 35))
         let spaceItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
-        let doneItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(tappedDoneButton))
+        let doneItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonTapped))
         toolbar.setItems([spaceItem, doneItem], animated: true)
         return toolbar
     }()
 
-    static func createInstance(viewModel: EditBookViewModel) -> EditBookViewController {
+    static func createInstance(
+        viewModel: EditBookViewModel,
+        bookViewData: BookViewData
+    ) -> EditBookViewController {
         let instance = EditBookViewController.instantiateInitialViewController()
         instance.viewModel = viewModel
+        instance.bookViewData = bookViewData
         return instance
     }
 
@@ -41,10 +46,10 @@ final class EditBookViewController: UIViewController {
         setupNavigation()
         setupTextField()
         setupButton()
-        listenerKeyboard(keyboardNotifier: keyboardNotifier)
-        setupBookData()
+        setupBookViewData()
         bindValue()
         bindViewModel()
+        listenerKeyboard(keyboardNotifier: keyboardNotifier)
     }
 }
 
@@ -55,7 +60,7 @@ extension EditBookViewController {
             title: Resources.Strings.Navigation.done,
             style: .done,
             target: self,
-            action: #selector(tappedEditBookButton)
+            action: #selector(editBookButtonTapped)
         )
     }
 
@@ -81,27 +86,32 @@ extension EditBookViewController {
         )
     }
 
-    @objc private  func tappedEditBookButton(_ sender: UIButton) {
-        let imageString = bookImageView.image?.pngData()?.base64EncodedString()
-        let dateFormat = Date.toConvertDate(
-            bookPurchaseDateTextField.text ?? .blank,
-            with: .yearToDayOfWeekJapanese
-        )
+    @objc private  func editBookButtonTapped() {
+        if let name = bookTitleTextField.text,
+           let price = bookPriceTextField.text,
+           let purchaseDate = bookPurchaseDateTextField.text {
 
-        viewModel.editBook(
-            name: bookTitleTextField.text ?? .blank,
-            image: imageString,
-            price: Int(bookPriceTextField.text ?? .blank),
-            purchaseDate: dateFormat?.toString(with: .yearToDayOfWeek)
-        )
+            let imageString = bookImageView.image?.pngData()?.base64EncodedString()
+            let purchaseDateFormat = Date.toConvertDate(
+                purchaseDate,
+                with: .yearToDayOfWeekJapanese
+            )?.toConvertString(with: .yearToDayOfWeek)
+
+            viewModel.editBook(
+                name: name,
+                image: imageString,
+                price: Int(price),
+                purchaseDate: purchaseDateFormat
+            )
+        }
     }
 
-    @objc private func tappedDoneButton(_ sender: UIButton) {
-        bookPurchaseDateTextField.text = UIDatePicker.purchaseDatePicker.date.toString(with: .yearToDayOfWeekJapanese)
+    @objc private func doneButtonTapped() {
+        bookPurchaseDateTextField.text = UIDatePicker.purchaseDatePicker.date.toConvertString(with: .yearToDayOfWeekJapanese)
         bookPurchaseDateTextField.endEditing(true)
     }
 
-    @objc private func setupPhotoLibrary(_ sender: UIButton) {
+    @objc private func setupPhotoLibrary() {
         let photoLibrary = UIImagePickerController.SourceType.photoLibrary
 
         if UIImagePickerController.isSourceTypeAvailable(photoLibrary) {
@@ -112,7 +122,7 @@ extension EditBookViewController {
         }
     }
 
-    @objc private func setupLaunchCamera(_ sender: UIButton) {
+    @objc private func setupLaunchCamera() {
         let camera = UIImagePickerController.SourceType.camera
 
         if UIImagePickerController.isSourceTypeAvailable(camera) {
@@ -126,16 +136,25 @@ extension EditBookViewController {
 
 extension EditBookViewController {
 
-    private func setupBookData() {
-        let bookData = viewModel.getBookData()
-        bookTitleTextField.text = bookData.name
-        bookPriceTextField.text = bookData.price
-        bookPurchaseDateTextField.text = bookData.purchaseDate
+    private func setupBookViewData() {
+        bookTitleTextField.text = bookViewData.name
 
-        ImageLoader.shared.loadImage(
-            with: .string(urlString: bookData.image)
-        ) { [weak self] image, _ in
-            self?.bookImageView.image = image
+        if let price = bookViewData.price {
+            bookPriceTextField.text = price.description
+        }
+
+        if let purchaseDate = bookViewData.purchaseDate {
+            if let dateFormat = Date.toConvertDate(purchaseDate, with: .yearToDayOfWeek) {
+                bookPurchaseDateTextField.text = dateFormat.toConvertString(with: .yearToDayOfWeekJapanese)
+            }
+        }
+
+        if let imageUrl = bookViewData.image {
+            ImageLoader.shared.loadImage(
+                with: .string(urlString: imageUrl)
+            ) { [weak self] image, _ in
+                self?.bookImageView.image = image
+            }
         }
     }
 
@@ -180,7 +199,7 @@ extension EditBookViewController {
             })
             .disposed(by: disposeBag)
     }
-    
+
     private func bindViewModel() {
         viewModel.result
             .asDriver(onErrorJustReturn: nil)
@@ -195,20 +214,31 @@ extension EditBookViewController {
                     self.showAlert(
                         title: Resources.Strings.General.success,
                         message: Resources.Strings.Alert.successEditBook
-                    ) {
-                        if let viewControllers = self.navigationController?.viewControllers,
-                           let bookListVC = viewControllers.dropLast().last as? BookListViewController {
-                            bookListVC.reloadBookList()
-                        }
+                    ) { [weak self] in
+                        guard let self = self else { return }
 
                         if let viewControllers = self.navigationController?.viewControllers,
-                           let wishListVC = viewControllers.dropLast().last as? WishListViewController {
-                            self.viewModel.updateFavoriteBookData(
-                                bookData: self.viewModel.map(book: response.result)
-                            )
-                            wishListVC.reloadWishList()
-                        }
+                           let lastVC = viewControllers.dropLast().last {
+                            switch lastVC {
 
+                            case let bookListVC as BookListViewController:
+                                bookListVC.resetBookList()
+
+                            case let wishListVC as WishListViewController:
+                                self.viewModel.updateFavoriteBook(
+                                    book: self.viewModel.map(
+                                        book: response.result,
+                                        isFavorite: self.bookViewData.isFavorite
+                                    )
+                                )
+                                DispatchQueue.main.async {
+                                    wishListVC.reloadWishList()
+                                }
+
+                            default:
+                                break
+                            }
+                        }
                         self.router.dismiss(self)
                     }
 

@@ -49,12 +49,13 @@ extension WishListViewController {
 
 extension WishListViewController: UITableViewDelegate {
 
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(
+        _ tableView: UITableView,
+        didSelectRowAt indexPath: IndexPath
+    ) {
         tableView.deselectRow(at: indexPath, animated: true)
 
-        guard let bookId = viewModel.getBookId(index: indexPath.row),
-              let book = viewModel.books.any(at: indexPath.row)
-        else {
+        guard let book = viewModel.books.any(at: indexPath.row) else {
             return
         }
 
@@ -67,6 +68,6 @@ extension WishListViewController: UITableViewDelegate {
             isFavorite: book.isFavorite
         )
 
-        router.push(.editBook(bookId: bookId, bookData: bookData), from: self)
+        router.push(.editBook(bookId: book.id, bookData: bookData), from: self)
     }
 }

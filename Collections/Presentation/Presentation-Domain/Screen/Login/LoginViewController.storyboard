@@ -126,7 +126,7 @@
                         <outlet property="loadingIndicator" destination="VVT-MF-8nR" id="PAi-ef-svu"/>
                         <outlet property="loginButton" destination="1aq-gh-JfO" id="yOj-6G-Woo"/>
                         <outlet property="passwordTextField" destination="NvK-EG-EPS" id="pvr-4N-u34"/>
-                        <outlet property="secureTextChangeButton" destination="ABH-Ek-Eng" id="bAu-hf-Y5u"/>
+                        <outlet property="secureButton" destination="ABH-Ek-Eng" id="mXP-uQ-O7V"/>
                         <outlet property="signupButton" destination="q2f-Ro-sP8" id="6yR-Qf-qe7"/>
                         <outlet property="stackView" destination="ehu-uA-PNP" id="owm-6R-DrG"/>
                         <outlet property="validateEmailLabel" destination="vNZ-MM-Iyq" id="rNP-mk-1SW"/>
