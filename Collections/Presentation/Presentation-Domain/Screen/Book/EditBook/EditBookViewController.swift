@@ -95,7 +95,7 @@ extension EditBookViewController {
             let purchaseDateFormat = Date.toConvertDate(
                 purchaseDate,
                 with: .yearToDayOfWeekJapanese
-            )?.toString(with: .yearToDayOfWeek)
+            )?.toConvertString(with: .yearToDayOfWeek)
 
             viewModel.editBook(
                 name: name,
@@ -107,7 +107,7 @@ extension EditBookViewController {
     }
 
     @objc private func doneButtonTapped() {
-        bookPurchaseDateTextField.text = UIDatePicker.purchaseDatePicker.date.toString(with: .yearToDayOfWeekJapanese)
+        bookPurchaseDateTextField.text = UIDatePicker.purchaseDatePicker.date.toConvertString(with: .yearToDayOfWeekJapanese)
         bookPurchaseDateTextField.endEditing(true)
     }
 
@@ -145,7 +145,7 @@ extension EditBookViewController {
 
         if let purchaseDate = bookViewData.purchaseDate {
             if let dateFormat = Date.toConvertDate(purchaseDate, with: .yearToDayOfWeek) {
-                bookPurchaseDateTextField.text = dateFormat.toString(with: .yearToDayOfWeekJapanese)
+                bookPurchaseDateTextField.text = dateFormat.toConvertString(with: .yearToDayOfWeekJapanese)
             }
         }
 

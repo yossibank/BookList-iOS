@@ -90,7 +90,7 @@ extension AddBookViewController {
             let purchaseDateFormat = Date.toConvertDate(
                 purchaseDate,
                 with: .yearToDayOfWeekJapanese
-            )?.toString(with: .yearToDayOfWeek)
+            )?.toConvertString(with: .yearToDayOfWeek)
 
             viewModel.addBook(
                 name: name,
@@ -102,7 +102,7 @@ extension AddBookViewController {
     }
 
     @objc private func doneButtonTapped() {
-        bookPurchaseDateTextField.text = UIDatePicker.purchaseDatePicker.date.toString(with: .yearToDayOfWeekJapanese)
+        bookPurchaseDateTextField.text = UIDatePicker.purchaseDatePicker.date.toConvertString(with: .yearToDayOfWeekJapanese)
         bookPurchaseDateTextField.endEditing(true)
     }
 
