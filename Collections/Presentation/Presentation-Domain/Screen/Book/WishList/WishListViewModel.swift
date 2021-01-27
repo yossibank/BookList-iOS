@@ -1,6 +1,6 @@
 final class WishListViewModel {
 
     var books: [BookViewData] {
-        BookFileManagement.shared.fetchData()
+        BookFileManager.shared.fetchData()
     }
 }

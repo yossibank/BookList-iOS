@@ -39,14 +39,14 @@ final class BookListViewModel {
     }
 
     func saveFavoriteBook(book: BookViewData) {
-        BookFileManagement.shared.setData(
+        BookFileManager.shared.setData(
             path: String(book.id),
             data: book.json
         )
     }
 
     func removeFavoriteBook(book: BookViewData) {
-        BookFileManagement.shared.removeData(
+        BookFileManager.shared.removeData(
             path: String(book.id)
         )
     }
@@ -70,7 +70,7 @@ extension BookListViewModel {
                 image: book.image,
                 price: book.price,
                 purchaseDate: book.purchaseDate,
-                isFavorite: BookFileManagement.shared.isFavorite(path: String(book.id))
+                isFavorite: BookFileManager.shared.isFavorite(path: String(book.id))
             )
         }
         return books

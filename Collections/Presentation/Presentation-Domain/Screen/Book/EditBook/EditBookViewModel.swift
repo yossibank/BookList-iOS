@@ -22,7 +22,7 @@ final class EditBookViewModel {
     }
 
     func updateFavoriteBook(book: BookViewData) {
-        BookFileManagement.shared.setData(
+        BookFileManager.shared.setData(
             path: String(book.id),
             data: book.json
         )

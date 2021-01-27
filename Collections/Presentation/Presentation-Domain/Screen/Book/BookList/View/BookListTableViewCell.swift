@@ -60,7 +60,7 @@ final class BookListTableViewCell: UITableViewCell {
             }
         }
 
-        isFavorite = BookFileManagement.shared.isFavorite(path: String(book.id))
+        isFavorite = BookFileManager.shared.isFavorite(path: String(book.id))
 
         let image = isFavorite ?
             Resources.Images.BookList.favorite :

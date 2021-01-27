@@ -1,8 +1,8 @@
 import Foundation
 
-final class BookFileManagement {
+final class BookFileManager {
 
-    static let shared = BookFileManagement()
+    static let shared = BookFileManager()
 
     private var fileManager: FileManager {
         FileManager.default
