@@ -10,7 +10,6 @@ class IBDesignableTextField: UITextField {
         commonInit()
     }
 
-    /* IB設定時に呼ばれる */
     override func prepareForInterfaceBuilder() {
         super.prepareForInterfaceBuilder()
         commonInit()
@@ -22,7 +21,6 @@ class IBDesignableTextField: UITextField {
     }
 
     func commonInit() {
-        /* IBのみに反映させたい */
         #if TARGET_INTERFACE_BUIDLER
         self.setNeedsLayout()
         self.setNeedsDisplay()

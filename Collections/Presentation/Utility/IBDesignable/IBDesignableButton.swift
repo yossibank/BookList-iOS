@@ -15,7 +15,6 @@ class IBDesignableButton: UIButton {
         commonInit()
     }
 
-    /* IB設定時に呼ばれる */
     override func prepareForInterfaceBuilder() {
         super.prepareForInterfaceBuilder()
         commonInit()
@@ -27,7 +26,6 @@ class IBDesignableButton: UIButton {
     }
 
     func commonInit() {
-        /* IBのみに反映させたい */
         #if TARGET_INTERFACE_BUIDLER
         self.setNeedsLayout()
         self.setNeedsDisplay()

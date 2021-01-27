@@ -287,8 +287,7 @@ final class Router: RouterProtocol {
     ) {
         if let nc = vc.navigationController, nc.viewControllers.count > 1 {
             nc.popViewController(
-                animated: animated,
-                completion: completion
+                animated: animated
             )
         } else {
             vc.dismiss(

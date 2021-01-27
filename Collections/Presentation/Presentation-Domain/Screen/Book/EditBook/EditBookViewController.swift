@@ -88,7 +88,7 @@ extension EditBookViewController {
 
     @objc private  func editBookButtonTapped() {
         if let name = bookTitleTextField.text,
-           let price = bookTitleTextField.text,
+           let price = bookPriceTextField.text,
            let purchaseDate = bookPurchaseDateTextField.text {
 
             let imageString = bookImageView.image?.pngData()?.base64EncodedString()
