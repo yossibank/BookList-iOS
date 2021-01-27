@@ -87,7 +87,7 @@ extension BaseRequest {
 
                 var dataTask: URLSessionTask!
 
-                dataTask = URLSession.shared.dataTask(with: urlRequest, completionHandler: { data, response, error in
+                dataTask = URLSession.shared.dataTask(with: urlRequest) { data, response, error in
                     if let error = error {
                         observer(.failure(APIError.network(error: error)))
                         return
@@ -111,7 +111,7 @@ extension BaseRequest {
                     } catch {
                         observer(.failure(APIError.decode(error: error)))
                     }
-                })
+                }
                 dataTask.resume()
                 return Disposables.create()
             } catch {
