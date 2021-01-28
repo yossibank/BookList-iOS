@@ -71,23 +71,21 @@ extension BaseRequest {
                     return Disposables.create()
                 }
 
-//                if let cacheResponse = URLCache.shared.cachedResponse(for: urlRequest) {
-//                    do {
-//                        let entity = try decoder.decode(Response.self, from: cacheResponse.data)
-//                        observer(.success(entity))
-//                        return Disposables.create()
-//                    } catch {
-//                        observer(.failure(APIError.decode(error: error)))
-//                        return Disposables.create()
-//                    }
-//                }
+                if let cacheResponse = URLCache.shared.cachedResponse(for: urlRequest) {
+                    do {
+                        let cacheData = try decoder.decode(Response.self, from: cacheResponse.data)
+                        observer(.success(cacheData))
+                        return Disposables.create()
+                    } catch {
+                        observer(.failure(APIError.decode(error: error)))
+                        return Disposables.create()
+                    }
+                }
 
                 urlRequest.allHTTPHeaderFields = defaultHeaderFields.merging(headerFields) { $1 }
                 urlRequest.timeoutInterval = 8
 
-                var dataTask: URLSessionTask!
-
-                dataTask = URLSession.shared.dataTask(with: urlRequest) { data, response, error in
+                URLSession.shared.dataTask(with: urlRequest) { data, response, error in
                     if let error = error {
                         observer(.failure(APIError.network(error: error)))
                         return
@@ -111,8 +109,8 @@ extension BaseRequest {
                     } catch {
                         observer(.failure(APIError.decode(error: error)))
                     }
-                }
-                dataTask.resume()
+                }.resume()
+
                 return Disposables.create()
             } catch {
                 observer(.failure(APIError.request))
