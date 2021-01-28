@@ -1,3 +1,4 @@
+import Foundation
 import RxSwift
 import RxRelay
 
@@ -20,6 +21,8 @@ final class EditBookUsecase {
         price: Int?,
         purchaseDate: String?
     ) {
+        URLCache.shared.removeAllCachedResponses()
+
         EditBookRequest(id: bookId)
             .request(.init(
                         name: name,
