@@ -71,16 +71,20 @@ extension BaseRequest {
                     return Disposables.create()
                 }
 
-                if let cacheResponse = URLCache.shared.cachedResponse(for: urlRequest) {
-                    do {
-                        let cacheData = try decoder.decode(Response.self, from: cacheResponse.data)
-                        observer(.success(cacheData))
-                        return Disposables.create()
-                    } catch {
-                        observer(.failure(APIError.decode(error: error)))
-                        return Disposables.create()
-                    }
-                }
+                /**
+                 * キャッシュ処理をすると書籍一覧の追加取得と書籍編集後のデータの更新の際に
+                 * データが以前のもとと異なるが(limit:page)はキャッシュされているため挙動がおかしくなる
+                 */
+//                if let cacheResponse = URLCache.shared.cachedResponse(for: urlRequest) {
+//                    do {
+//                        let cacheData = try decoder.decode(Response.self, from: cacheResponse.data)
+//                        observer(.success(cacheData))
+//                        return Disposables.create()
+//                    } catch {
+//                        observer(.failure(APIError.decode(error: error)))
+//                        return Disposables.create()
+//                    }
+//                }
 
                 urlRequest.allHTTPHeaderFields = defaultHeaderFields.merging(headerFields) { $1 }
                 urlRequest.timeoutInterval = 8

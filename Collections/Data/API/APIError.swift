@@ -2,10 +2,18 @@ import Foundation
 
 enum APIError: Error {
     case request
-    case network(error: Error? = nil)
+    case network(error: Error)
     case emptyResponse
     case decode(error: Error)
     case http(status: Int)
+
+    enum ErrorCode: Int {
+        case badRequest = 400
+        case unAuthorized = 401
+        case forBidden = 403
+        case notFound = 404
+        case unknown = 500
+    }
 
     func description() -> String {
         switch self {
@@ -14,35 +22,40 @@ enum APIError: Error {
             return "リクエストエラー"
 
         case .network(let error):
-            if let error = error {
-                return "エラー:\n\(error)"
-            }
-            return "ネットワークエラー"
+            return "ネックワークエラー: \(error.localizedDescription)"
 
         case .emptyResponse:
-            return "レスポンスが空です"
+            return "空レスポンスエラー"
 
         case .decode(let error):
-            return "デコードエラー\n\(error)"
+            return "デコードエラー: \(error.localizedDescription)"
 
         case .http(let status):
-            switch status {
+            return httpErrorDescription(status: status)
+        }
+    }
 
-            case 400:
-                return "HTTPエラー: \(status)\n Bad Request."
+    func httpErrorDescription(status: Int) -> String {
 
-            case 401:
-                return "HTTPエラー: \(status)\n Anauthorized."
+        switch ErrorCode(rawValue: status) {
 
-            case 403:
-                return "HTTPエラー: \(status)\n Forbidden."
+        case .badRequest:
+            return "HTTPエラー: \(status) Bad Request."
 
-            case 404:
-                return "HTTPエラー: \(status)\n Not Found."
+        case .unAuthorized:
+            return "HTTPエラー: \(status) Anauthorized."
 
-            default:
-                return "HTTPエラー: \(status)\n Unknown Error."
-            }
+        case .forBidden:
+            return "HTTPエラー: \(status) Forbidden."
+
+        case .notFound:
+            return "HTTPエラー: \(status) Not Found."
+
+        case .unknown:
+            return "HTTPエラー: \(status) Unknown Error."
+
+        default:
+            return "HTTPエラー: \(status) Unknown Error."
         }
     }
 }
