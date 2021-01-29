@@ -105,6 +105,7 @@
 		78CF3B0725AC0E3500ADBB60 /* BookListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CF3B0625AC0E3500ADBB60 /* BookListViewModel.swift */; };
 		78CF3B1925AC320900ADBB60 /* BookListUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CF3B1825AC320900ADBB60 /* BookListUsecase.swift */; };
 		78CF3B3525AC48FD00ADBB60 /* BookListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CF3B3425AC48FD00ADBB60 /* BookListDataSource.swift */; };
+		78D17C7625C42A4400793310 /* FirebaseCrashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78D17C7525C42A4400793310 /* FirebaseCrashlytics.framework */; };
 		78DCC90025B7046F006FFF0F /* LogoutRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DCC8FF25B7046F006FFF0F /* LogoutRequest.swift */; };
 		78DCC90425B7048E006FFF0F /* LogoutResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DCC90325B7048E006FFF0F /* LogoutResponse.swift */; };
 		78DE1D6725BD423A00A2C0F2 /* WishListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DE1D6625BD423A00A2C0F2 /* WishListViewController.swift */; };
@@ -268,6 +269,7 @@
 		78CF3B0625AC0E3500ADBB60 /* BookListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListViewModel.swift; sourceTree = "<group>"; };
 		78CF3B1825AC320900ADBB60 /* BookListUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListUsecase.swift; sourceTree = "<group>"; };
 		78CF3B3425AC48FD00ADBB60 /* BookListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListDataSource.swift; sourceTree = "<group>"; };
+		78D17C7525C42A4400793310 /* FirebaseCrashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseCrashlytics.framework; path = Carthage/Build/iOS/FirebaseCrashlytics.framework; sourceTree = "<group>"; };
 		78DCC8FF25B7046F006FFF0F /* LogoutRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutRequest.swift; sourceTree = "<group>"; };
 		78DCC90325B7048E006FFF0F /* LogoutResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutResponse.swift; sourceTree = "<group>"; };
 		78DE1D6625BD423A00A2C0F2 /* WishListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListViewController.swift; sourceTree = "<group>"; };
@@ -307,6 +309,7 @@
 				78997E9D259C29D80076FF97 /* FirebaseAuth.framework in Frameworks */,
 				78997E95259C29D80076FF97 /* FirebaseCore.framework in Frameworks */,
 				78997E97259C29D80076FF97 /* FirebaseCoreDiagnostics.framework in Frameworks */,
+				78D17C7625C42A4400793310 /* FirebaseCrashlytics.framework in Frameworks */,
 				78997EA7259C29D80076FF97 /* FirebaseFirestore.framework in Frameworks */,
 				78997E99259C29D80076FF97 /* FirebaseInstallations.framework in Frameworks */,
 				78997E89259C29D80076FF97 /* FirebaseStorage.framework in Frameworks */,
@@ -421,6 +424,7 @@
 		78231232259C147900D9E723 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				78D17C7525C42A4400793310 /* FirebaseCrashlytics.framework */,
 				781C318025B5ACC100C11D77 /* KeychainAccess.framework */,
 				785A1AC625A9A989005E8A4B /* RxBlocking.framework */,
 				785A1AC425A9A989005E8A4B /* RxCocoa.framework */,
@@ -988,20 +992,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				78B29D2225B3311A00A7DC7F /* EditBookViewController.storyboard in Resources */,
 				78231203259C0D9300D9E723 /* Assets.xcassets in Resources */,
-				784B18F025BD48F80071C32E /* WishListTableViewCell.xib in Resources */,
-				78844C6525B0874100C9AEC0 /* AddBookViewController.storyboard in Resources */,
 				78DEE7B525AAD4D500219963 /* Localizable.strings in Resources */,
-				78DEE7DF25AB02A200219963 /* HomeTableViewCell.xib in Resources */,
-				78DEE7CC25AB006000219963 /* HomeViewController.storyboard in Resources */,
-				78DE1D6D25BD424800A2C0F2 /* WishListViewController.storyboard in Resources */,
-				78CF3AF925ABF85D00ADBB60 /* BookListTableViewCell.xib in Resources */,
-				78CF3AEF25ABF81400ADBB60 /* BookListViewController.storyboard in Resources */,
 				78997E69259C28970076FF97 /* GoogleService-Info.plist in Resources */,
-				78987B38259C8802008311DC /* LoginViewController.storyboard in Resources */,
 				78231206259C0D9300D9E723 /* LaunchScreen.storyboard in Resources */,
 				78231201259C0D9200D9E723 /* SignupViewController.storyboard in Resources */,
+				78987B38259C8802008311DC /* LoginViewController.storyboard in Resources */,
+				78DEE7CC25AB006000219963 /* HomeViewController.storyboard in Resources */,
+				78DEE7DF25AB02A200219963 /* HomeTableViewCell.xib in Resources */,
+				78CF3AEF25ABF81400ADBB60 /* BookListViewController.storyboard in Resources */,
+				78CF3AF925ABF85D00ADBB60 /* BookListTableViewCell.xib in Resources */,
+				78DE1D6D25BD424800A2C0F2 /* WishListViewController.storyboard in Resources */,
+				784B18F025BD48F80071C32E /* WishListTableViewCell.xib in Resources */,
+				78844C6525B0874100C9AEC0 /* AddBookViewController.storyboard in Resources */,
+				78B29D2225B3311A00A7DC7F /* EditBookViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1351,6 +1355,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yossibank.Collections;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1373,6 +1378,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yossibank.Collections;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
