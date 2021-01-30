@@ -80,7 +80,9 @@ extension BookListViewController {
                     self.showError(
                         title: Resources.Strings.General.error,
                         message: Resources.Strings.Alert.failedBookList
-                    )
+                    ) {
+                        self.router.dismiss(self, animated: true)
+                    }
                 }
             })
             .disposed(by: disposeBag)
