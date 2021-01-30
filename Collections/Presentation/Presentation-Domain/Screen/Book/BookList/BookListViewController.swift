@@ -25,6 +25,7 @@ final class BookListViewController: UIViewController {
         setupTableView()
         fetchBookList()
         bindViewModel()
+        sendScreenView()
     }
 }
 
@@ -79,7 +80,9 @@ extension BookListViewController {
                     self.showError(
                         title: Resources.Strings.General.error,
                         message: Resources.Strings.Alert.failedBookList
-                    )
+                    ) {
+                        self.router.dismiss(self, animated: true)
+                    }
                 }
             })
             .disposed(by: disposeBag)
@@ -131,4 +134,8 @@ extension BookListViewController: UITableViewDelegate {
             viewModel.fetchBookList(isInitial: false)
         }
     }
+}
+
+extension BookListViewController: AnalyticsConfiguration {
+    var screenName: AnalyticsScreenName? { .booklist }
 }

@@ -37,6 +37,7 @@ final class SignupViewController: UIViewController {
         bindValue()
         bindViewModel()
         listenerKeyboard(keyboardNotifier: keyboardNotifier)
+        sendScreenView()
     }
 }
 
@@ -206,4 +207,8 @@ extension SignupViewController: KeyboardDelegate {
     func keyboardDismiss(_ height: CGFloat) {
         view.frame.origin.y != 0 ? (view.frame.origin.y = 0) : ()
     }
+}
+
+extension SignupViewController: AnalyticsConfiguration {
+    var screenName: AnalyticsScreenName? { .signup }
 }
