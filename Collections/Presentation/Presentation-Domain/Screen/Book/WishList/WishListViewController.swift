@@ -19,6 +19,7 @@ final class WishListViewController: UIViewController {
         super.viewDidLoad()
         setupNavigation()
         setupTableView()
+        sendScreenView()
     }
 }
 
@@ -70,4 +71,8 @@ extension WishListViewController: UITableViewDelegate {
 
         router.push(.editBook(bookId: book.id, bookData: bookData), from: self)
     }
+}
+
+extension WishListViewController: AnalyticsConfiguration {
+    var screenName: AnalyticsScreenName? { .wishlist }
 }

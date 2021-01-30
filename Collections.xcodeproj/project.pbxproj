@@ -106,6 +106,9 @@
 		78CF3B1925AC320900ADBB60 /* BookListUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CF3B1825AC320900ADBB60 /* BookListUsecase.swift */; };
 		78CF3B3525AC48FD00ADBB60 /* BookListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CF3B3425AC48FD00ADBB60 /* BookListDataSource.swift */; };
 		78D17C7625C42A4400793310 /* FirebaseCrashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78D17C7525C42A4400793310 /* FirebaseCrashlytics.framework */; };
+		78D17C9225C501F700793310 /* FireBaseAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D17C9125C501F700793310 /* FireBaseAnalytics.swift */; };
+		78D17C9825C502A800793310 /* AnalyticsCategoriesAndEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D17C9725C502A800793310 /* AnalyticsCategoriesAndEvents.swift */; };
+		78D17C9C25C505B400793310 /* AnalyticsConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D17C9B25C505B400793310 /* AnalyticsConfiguration.swift */; };
 		78DCC90025B7046F006FFF0F /* LogoutRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DCC8FF25B7046F006FFF0F /* LogoutRequest.swift */; };
 		78DCC90425B7048E006FFF0F /* LogoutResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DCC90325B7048E006FFF0F /* LogoutResponse.swift */; };
 		78DE1D6725BD423A00A2C0F2 /* WishListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DE1D6625BD423A00A2C0F2 /* WishListViewController.swift */; };
@@ -270,6 +273,9 @@
 		78CF3B1825AC320900ADBB60 /* BookListUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListUsecase.swift; sourceTree = "<group>"; };
 		78CF3B3425AC48FD00ADBB60 /* BookListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListDataSource.swift; sourceTree = "<group>"; };
 		78D17C7525C42A4400793310 /* FirebaseCrashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseCrashlytics.framework; path = Carthage/Build/iOS/FirebaseCrashlytics.framework; sourceTree = "<group>"; };
+		78D17C9125C501F700793310 /* FireBaseAnalytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseAnalytics.swift; sourceTree = "<group>"; };
+		78D17C9725C502A800793310 /* AnalyticsCategoriesAndEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsCategoriesAndEvents.swift; sourceTree = "<group>"; };
+		78D17C9B25C505B400793310 /* AnalyticsConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsConfiguration.swift; sourceTree = "<group>"; };
 		78DCC8FF25B7046F006FFF0F /* LogoutRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutRequest.swift; sourceTree = "<group>"; };
 		78DCC90325B7048E006FFF0F /* LogoutResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutResponse.swift; sourceTree = "<group>"; };
 		78DE1D6625BD423A00A2C0F2 /* WishListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListViewController.swift; sourceTree = "<group>"; };
@@ -681,6 +687,7 @@
 		78997EC2259C350B0076FF97 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				78D17C9025C501A300793310 /* Analytics */,
 				78C61C2A25A1714B00DC78A6 /* AppUtil */,
 				7892EF48259C539B006F7315 /* IBDesignable */,
 				78997EE3259C4C4D0076FF97 /* Extension */,
@@ -819,6 +826,16 @@
 				78CF3AF725ABF85D00ADBB60 /* BookListTableViewCell.xib */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		78D17C9025C501A300793310 /* Analytics */ = {
+			isa = PBXGroup;
+			children = (
+				78D17C9125C501F700793310 /* FireBaseAnalytics.swift */,
+				78D17C9B25C505B400793310 /* AnalyticsConfiguration.swift */,
+				78D17C9725C502A800793310 /* AnalyticsCategoriesAndEvents.swift */,
+			);
+			path = Analytics;
 			sourceTree = "<group>";
 		};
 		78DE1D6525BD41D100A2C0F2 /* WishList */ = {
@@ -1130,12 +1147,14 @@
 				78CF3B0725AC0E3500ADBB60 /* BookListViewModel.swift in Sources */,
 				78B29D0125B3124A00A7DC7F /* TitleValidator.swift in Sources */,
 				785A1AB725A9A369005E8A4B /* SignupViewModel.swift in Sources */,
+				78D17C9225C501F700793310 /* FireBaseAnalytics.swift in Sources */,
 				78C61C1425A1692900DC78A6 /* APIError.swift in Sources */,
 				78CF3AFF25AC00C700ADBB60 /* BookListResponse.swift in Sources */,
 				78B29D1125B32A5D00A7DC7F /* EditBookRequest.swift in Sources */,
 				78DEE7D025AB006F00219963 /* HomeViewController.swift in Sources */,
 				78B97BEF25B8572300107C44 /* HomeViewModel.swift in Sources */,
 				78DEE7DE25AB02A200219963 /* HomeTableViewCell.swift in Sources */,
+				78D17C9C25C505B400793310 /* AnalyticsConfiguration.swift in Sources */,
 				784B18F625BD4D5F0071C32E /* WishListViewModel.swift in Sources */,
 				7892EF68259C720A006F7315 /* Strings.swift in Sources */,
 				78E609CF25AA018D0041B3D0 /* LoginResponse.swift in Sources */,
@@ -1176,6 +1195,7 @@
 				78209B4C25BEE66A00EC897C /* HomeUsecase.swift in Sources */,
 				78DEE7BD25AAE3AD00219963 /* UIViewController+Extension.swift in Sources */,
 				78DEE7B925AADFC600219963 /* UIAlertController+Extension.swift in Sources */,
+				78D17C9825C502A800793310 /* AnalyticsCategoriesAndEvents.swift in Sources */,
 				782311FA259C0D9200D9E723 /* AppDelegate.swift in Sources */,
 				78E609CB25AA015F0041B3D0 /* LoginRequest.swift in Sources */,
 				7820E0AB25AEFC1200A5E6D8 /* ImageLoader.swift in Sources */,

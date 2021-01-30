@@ -35,6 +35,7 @@ final class LoginViewController: UIViewController {
         bindValue()
         bindViewModel()
         listenerKeyboard(keyboardNotifier: keyboardNotifier)
+        sendScreenView()
     }
 }
 
@@ -186,4 +187,8 @@ extension LoginViewController: KeyboardDelegate {
     func keyboardDismiss(_ height: CGFloat) {
         view.frame.origin.y != 0 ? (view.frame.origin.y = 0) : ()
     }
+}
+
+extension LoginViewController: AnalyticsConfiguration {
+    var screenName: AnalyticsScreenName? { .login }
 }

@@ -50,6 +50,7 @@ final class EditBookViewController: UIViewController {
         bindValue()
         bindViewModel()
         listenerKeyboard(keyboardNotifier: keyboardNotifier)
+        sendScreenView()
     }
 }
 
@@ -307,4 +308,8 @@ extension EditBookViewController: UIImagePickerControllerDelegate, UINavigationC
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         self.dismiss(animated: true)
     }
+}
+
+extension EditBookViewController: AnalyticsConfiguration {
+    var screenName: AnalyticsScreenName? { .editBook }
 }

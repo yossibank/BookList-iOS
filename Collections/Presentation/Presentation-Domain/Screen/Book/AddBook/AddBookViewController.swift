@@ -44,6 +44,7 @@ final class AddBookViewController: UIViewController {
         bindValue()
         bindViewModel()
         listenerKeyboard(keyboardNotifier: keyboardNotifier)
+        sendScreenView()
     }
 }
 
@@ -256,4 +257,8 @@ extension AddBookViewController: UIImagePickerControllerDelegate, UINavigationCo
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         self.dismiss(animated: true)
     }
+}
+
+extension AddBookViewController: AnalyticsConfiguration {
+    var screenName: AnalyticsScreenName? { .addBook }
 }

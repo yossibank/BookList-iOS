@@ -25,6 +25,7 @@ final class BookListViewController: UIViewController {
         setupTableView()
         fetchBookList()
         bindViewModel()
+        sendScreenView()
     }
 }
 
@@ -131,4 +132,8 @@ extension BookListViewController: UITableViewDelegate {
             viewModel.fetchBookList(isInitial: false)
         }
     }
+}
+
+extension BookListViewController: AnalyticsConfiguration {
+    var screenName: AnalyticsScreenName? { .booklist }
 }
