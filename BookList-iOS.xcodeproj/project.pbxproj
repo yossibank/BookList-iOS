@@ -108,7 +108,7 @@
 		78D17C9225C501F700793310 /* FireBaseAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D17C9125C501F700793310 /* FireBaseAnalytics.swift */; };
 		78D17C9825C502A800793310 /* AnalyticsCategoriesAndEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D17C9725C502A800793310 /* AnalyticsCategoriesAndEvents.swift */; };
 		78D17C9C25C505B400793310 /* AnalyticsConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D17C9B25C505B400793310 /* AnalyticsConfiguration.swift */; };
-		78D3951525CE2F1600F1E157 /* ValidationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D3951425CE2F1600F1E157 /* ValidationTests.swift */; };
+		78D3951525CE2F1600F1E157 /* AccountValidationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D3951425CE2F1600F1E157 /* AccountValidationTests.swift */; };
 		78DCC90025B7046F006FFF0F /* LogoutRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DCC8FF25B7046F006FFF0F /* LogoutRequest.swift */; };
 		78DCC90425B7048E006FFF0F /* LogoutResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DCC90325B7048E006FFF0F /* LogoutResponse.swift */; };
 		78DE1D6725BD423A00A2C0F2 /* WishListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DE1D6625BD423A00A2C0F2 /* WishListViewController.swift */; };
@@ -266,7 +266,7 @@
 		78D17C9125C501F700793310 /* FireBaseAnalytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseAnalytics.swift; sourceTree = "<group>"; };
 		78D17C9725C502A800793310 /* AnalyticsCategoriesAndEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsCategoriesAndEvents.swift; sourceTree = "<group>"; };
 		78D17C9B25C505B400793310 /* AnalyticsConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsConfiguration.swift; sourceTree = "<group>"; };
-		78D3951425CE2F1600F1E157 /* ValidationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationTests.swift; sourceTree = "<group>"; };
+		78D3951425CE2F1600F1E157 /* AccountValidationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountValidationTests.swift; sourceTree = "<group>"; };
 		78DCC8FF25B7046F006FFF0F /* LogoutRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutRequest.swift; sourceTree = "<group>"; };
 		78DCC90325B7048E006FFF0F /* LogoutResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutResponse.swift; sourceTree = "<group>"; };
 		78DE1D6625BD423A00A2C0F2 /* WishListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListViewController.swift; sourceTree = "<group>"; };
@@ -394,8 +394,8 @@
 		7823120F259C0D9300D9E723 /* BookList-iOSTests */ = {
 			isa = PBXGroup;
 			children = (
+				788EA34825CE340900B998D7 /* Validation */,
 				78231210259C0D9300D9E723 /* BookListTests.swift */,
-				78D3951425CE2F1600F1E157 /* ValidationTests.swift */,
 				78231212259C0D9300D9E723 /* Info.plist */,
 			);
 			path = "BookList-iOSTests";
@@ -486,6 +486,14 @@
 				784E138125B2F555008FD947 /* NumberValidator.swift */,
 			);
 			path = Book;
+			sourceTree = "<group>";
+		};
+		788EA34825CE340900B998D7 /* Validation */ = {
+			isa = PBXGroup;
+			children = (
+				78D3951425CE2F1600F1E157 /* AccountValidationTests.swift */,
+			);
+			path = Validation;
 			sourceTree = "<group>";
 		};
 		788FF92925B41FBE00A1BF46 /* Account */ = {
@@ -1159,7 +1167,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				78D3951525CE2F1600F1E157 /* ValidationTests.swift in Sources */,
+				78D3951525CE2F1600F1E157 /* AccountValidationTests.swift in Sources */,
 				78231211259C0D9300D9E723 /* BookListTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1330,7 +1338,7 @@
 					"@executable_path/Frameworks",
 				);
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = com.yossibank.Collections;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yossibank.BookList;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1354,7 +1362,7 @@
 					"@executable_path/Frameworks",
 				);
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = com.yossibank.Collections;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yossibank.BookList;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1367,14 +1375,14 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = CollectionsTests/Info.plist;
+				INFOPLIST_FILE = "BookList-iOSTests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.yossibank.CollectionsTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yossibank.BookListTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1388,14 +1396,14 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = CollectionsTests/Info.plist;
+				INFOPLIST_FILE = "BookList-iOSTests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.yossibank.CollectionsTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yossibank.BookListTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
