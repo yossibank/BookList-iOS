@@ -1,14 +1,14 @@
 //
-//  CollectionsTests.swift
-//  CollectionsTests
+//  BookListTests.swift
+//  BookListTests
 //
 //  Created by KAMIYAMA YOSHIHITO on 2020/12/30.
 //
 
 import XCTest
-@testable import Collections
+@testable import BookList_iOS
 
-class CollectionsTests: XCTestCase {
+class BookListTests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
