@@ -51,7 +51,6 @@ extension BookListDataSource: BookListCellDelegate {
 
     func didSelectFavoriteButton(
         at index: Int,
-        of cell: BookListTableViewCell,
         in tableView: UITableView?
     ) {
         guard let cellData = viewModel?.books,

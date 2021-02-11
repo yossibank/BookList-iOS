@@ -1,9 +1,9 @@
 import UIKit
 
 protocol BookListCellDelegate: AnyObject {
+
     func didSelectFavoriteButton(
         at index: Int,
-        of cell: BookListTableViewCell,
         in tableView: UITableView?
     )
 }
@@ -72,7 +72,6 @@ final class BookListTableViewCell: UITableViewCell {
     @objc private func favoriteButtonTapped(_ sender: UIButton) {
         delegate?.didSelectFavoriteButton(
             at: sender.tag,
-            of: self,
             in: tableView
         )
     }
