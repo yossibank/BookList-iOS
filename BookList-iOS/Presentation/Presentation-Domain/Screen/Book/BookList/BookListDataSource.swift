@@ -1,6 +1,13 @@
 import UIKit
 
+protocol BookListDataSourceDelegate: AnyObject {
+    func didSelectFavoriteButton(index: Int)
+}
+
 final class BookListDataSource: NSObject {
+
+    weak var delegate: BookListDataSourceDelegate?
+
     private weak var viewModel: BookListViewModel?
 
     init(viewModel: BookListViewModel) {
@@ -34,9 +41,8 @@ extension BookListDataSource: UITableViewDataSource {
 
         if let bookListCell = cell as? BookListTableViewCell {
             bookListCell.accessoryType = .disclosureIndicator
-            bookListCell.bookImageView.image = nil
             bookListCell.delegate = self
-            bookListCell.tableView = tableView
+            bookListCell.bookImageView.image = nil
             bookListCell.favoriteButton.tag = indexPath.row
             if let book = cellData.any(at: indexPath.row) {
                 bookListCell.setup(book: book)
@@ -49,25 +55,7 @@ extension BookListDataSource: UITableViewDataSource {
 
 extension BookListDataSource: BookListCellDelegate {
 
-    func didSelectFavoriteButton(
-        at index: Int,
-        in tableView: UITableView?
-    ) {
-        guard let cellData = viewModel?.books,
-              let book = cellData.any(at: index)
-        else {
-            return
-        }
-
-        if book.isFavorite {
-            viewModel?.removeFavoriteBook(book: book)
-        } else {
-            viewModel?.saveFavoriteBook(book: book)
-        }
-
-        tableView?.reloadRows(
-            at: [IndexPath(row: index, section: 0)],
-            with: .fade
-        )
+    func didSelectFavoriteButton(at index: Int) {
+        delegate?.didSelectFavoriteButton(index: index)
     }
 }

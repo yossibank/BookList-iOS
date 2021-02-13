@@ -42,7 +42,7 @@ extension BookListViewController {
 
     private func setupTableView() {
         dataSource = BookListDataSource(viewModel: viewModel)
-
+        dataSource.delegate = self
         tableView.register(BookListTableViewCell.xib(), forCellReuseIdentifier: BookListTableViewCell.resourceName)
         tableView.dataSource = dataSource
         tableView.delegate = self
@@ -133,6 +133,26 @@ extension BookListViewController: UITableViewDelegate {
         if indexPath.section == lastSection && indexPath.row == lastIndex {
             viewModel.fetchBookList(isInitial: false)
         }
+    }
+}
+
+extension BookListViewController: BookListDataSourceDelegate {
+
+    func didSelectFavoriteButton(index: Int) {
+        guard let book = viewModel.books.any(at: index) else {
+            return
+        }
+
+        if book.isFavorite {
+            viewModel.removeFavoriteBook(book: book)
+        } else {
+            viewModel.saveFavoriteBook(book: book)
+        }
+
+        tableView.reloadRows(
+            at: [IndexPath(row: index, section: 0)],
+            with: .fade
+        )
     }
 }
 
