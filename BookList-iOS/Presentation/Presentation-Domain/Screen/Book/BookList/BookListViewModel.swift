@@ -70,7 +70,7 @@ extension BookListViewModel {
                 image: book.image,
                 price: book.price,
                 purchaseDate: book.purchaseDate,
-                isFavorite: BookFileManager.shared.isFavorite(path: String(book.id))
+                isFavorite: BookFileManager.shared.isFavoriteBook(path: String(book.id))
             )
         }
         return books

@@ -3,6 +3,7 @@ import UIKit
 import RxSwift
 
 protocol BaseRequest {
+
     associatedtype Request: Encodable
     associatedtype Response: Decodable
 

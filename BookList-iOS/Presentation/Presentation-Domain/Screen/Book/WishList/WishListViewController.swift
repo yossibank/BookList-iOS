@@ -36,7 +36,6 @@ extension WishListViewController {
 
     private func setupTableView() {
         dataSource = WishListDataSource(viewModel: viewModel)
-
         tableView.register(WishListTableViewCell.xib(), forCellReuseIdentifier: WishListTableViewCell.resourceName)
         tableView.dataSource = dataSource
         tableView.delegate = self

@@ -46,7 +46,6 @@ extension HomeViewController {
 
     private func setupTableView() {
         dataSource = HomeDataSource()
-
         tableView.register(HomeTableViewCell.xib(), forCellReuseIdentifier: HomeTableViewCell.resourceName)
         tableView.dataSource = dataSource
         tableView.delegate = self
@@ -100,7 +99,7 @@ extension HomeViewController: UITableViewDelegate {
     ) {
         tableView.deselectRow(at: indexPath, animated: true)
 
-        let routes = HomeViewData.HomeItem.allCases.compactMap { $0.routes }
-        router.push(routes[indexPath.row], from: self)
+        let route = HomeViewData.HomeItem.allCases.map { $0.routes }[indexPath.row]
+        router.push(route, from: self)
     }
 }

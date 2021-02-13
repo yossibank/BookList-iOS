@@ -24,10 +24,32 @@ final class EditBookViewController: UIViewController {
     private var bookViewData: BookViewData!
 
     private lazy var toolbar: UIToolbar = {
-        let toolbar = UIToolbar(frame: .init(x: 0, y: 0, width: view.frame.width, height: 35))
-        let spaceItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
-        let doneItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonTapped))
-        toolbar.setItems([spaceItem, doneItem], animated: true)
+        let toolbar = UIToolbar(
+            frame: .init(
+                x: 0,
+                y: 0,
+                width: view.frame.width,
+                height: 35
+            )
+        )
+
+        let spaceItem = UIBarButtonItem(
+            barButtonSystemItem: .flexibleSpace,
+            target: self,
+            action: nil
+        )
+
+        let doneItem = UIBarButtonItem(
+            barButtonSystemItem: .done,
+            target: self,
+            action: #selector(doneButtonTapped)
+        )
+
+        toolbar.setItems(
+            [spaceItem, doneItem],
+            animated: true
+        )
+
         return toolbar
     }()
 
@@ -217,6 +239,9 @@ extension EditBookViewController {
                         message: Resources.Strings.Alert.successEditBook
                     ) { [weak self] in
                         guard let self = self else { return }
+                        
+                        print("hoge", self.presentingViewController)
+                        print("hoge", self.presentedViewController)
 
                         if let viewControllers = self.navigationController?.viewControllers,
                            let lastVC = viewControllers.dropLast().last {

@@ -297,7 +297,11 @@ final class Router: RouterProtocol {
         }
     }
 
-    func initialWindow(_ route: Route, type: ControllerType) -> UIViewController {
+    func initialWindow(
+        _ route: Route,
+        type: ControllerType
+    ) -> UIViewController {
+
         var viewController: UIViewController
 
         switch type {

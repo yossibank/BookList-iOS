@@ -169,7 +169,9 @@ extension SignupViewController {
             .drive(onNext: { [weak self] loading in
                 guard let self = self else { return }
 
-                loading ? self.loadingIndicator.startAnimating() : self.loadingIndicator.stopAnimating()
+                loading
+                    ? self.loadingIndicator.startAnimating()
+                    : self.loadingIndicator.stopAnimating()
             }).disposed(by: disposeBag)
     }
 }

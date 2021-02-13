@@ -11,7 +11,7 @@ struct BookListRequest: BaseRequest {
 
     var method: HttpMethod { .get }
 
-    var headerFields: [String : String] {
+    var headerFields: [String: String] {
         [Resources.Strings.API.authorization: KeychainManager.shared.getToken() ?? .blank]
     }
 }

@@ -1,4 +1,3 @@
-import Foundation
 import RxSwift
 import RxRelay
 
@@ -24,11 +23,14 @@ final class EditBookUsecase {
 //        URLCache.shared.removeAllCachedResponses()
 
         EditBookRequest(id: bookId)
-            .request(.init(
-                        name: name,
-                        image: image,
-                        price: price,
-                        purchaseDate: purchaseDate))
+            .request(
+                .init(
+                    name: name,
+                    image: image,
+                    price: price,
+                    purchaseDate: purchaseDate
+                )
+            )
             .subscribe(
                 onSuccess: { [weak self] response in
                     self?.resultSubject.accept(.success(response))
