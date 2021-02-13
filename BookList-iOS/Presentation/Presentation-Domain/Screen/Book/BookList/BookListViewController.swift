@@ -23,7 +23,7 @@ final class BookListViewController: UIViewController {
         super.viewDidLoad()
         setupNavigation()
         setupTableView()
-        fetchBookList()
+        viewModel.fetchBookList(isInitial: true)
         bindViewModel()
         sendScreenView()
     }
@@ -41,7 +41,7 @@ extension BookListViewController {
     }
 
     private func setupTableView() {
-        dataSource = BookListDataSource(viewModel: viewModel)
+        dataSource = BookListDataSource()
         dataSource.delegate = self
         tableView.register(BookListTableViewCell.xib(), forCellReuseIdentifier: BookListTableViewCell.resourceName)
         tableView.dataSource = dataSource
@@ -49,12 +49,8 @@ extension BookListViewController {
         tableView.rowHeight = 150
     }
 
-    private func fetchBookList() {
-        viewModel.fetchBookList(isInitial: true)
-    }
-
     func resetBookList() {
-        viewModel.resetBookData()
+        dataSource.resetCellDataList()
         viewModel.fetchBookList(isInitial: true)
     }
 }
@@ -62,28 +58,15 @@ extension BookListViewController {
 extension BookListViewController {
 
     private func bindViewModel() {
-        viewModel.result
-            .asDriver(onErrorJustReturn: nil)
-            .drive(onNext: { [weak self] result in
-                guard let self = self,
-                      let result = result else { return }
 
-                switch result {
+        viewModel.getBookListStream()
+            .asDriver(onErrorJustReturn: [])
+            .skip(1)
+            .drive(onNext: { [weak self] bookList in
+                guard let self = self else { return }
 
-                case .success:
-                    self.tableView.reloadData()
-
-                case .failure(let error):
-                    if let error = error as? APIError {
-                        dump(error.description())
-                    }
-                    self.showError(
-                        title: Resources.Strings.General.error,
-                        message: Resources.Strings.Alert.failedBookList
-                    ) {
-                        self.router.dismiss(self, animated: true)
-                    }
-                }
+                self.dataSource.cellDataList.append(contentsOf: bookList)
+                self.tableView.reloadData()
             })
             .disposed(by: disposeBag)
 
@@ -97,6 +80,26 @@ extension BookListViewController {
                     : self.loadingIndicator.stopAnimating()
             })
             .disposed(by: disposeBag)
+
+        viewModel.error
+            .asDriver(onErrorJustReturn: nil)
+            .drive(onNext: { [weak self] error in
+                guard let self = self else { return }
+
+                if let error = error {
+                    if let apiError = error as? APIError {
+                        dump(apiError.description())
+                    }
+
+                    self.showError(
+                        title: Resources.Strings.General.error,
+                        message: Resources.Strings.Alert.failedBookList
+                    ) {
+                        self.router.dismiss(self, animated: true)
+                    }
+                }
+            })
+            .disposed(by: disposeBag)
     }
 }
 
@@ -108,7 +111,7 @@ extension BookListViewController: UITableViewDelegate {
     ) {
         tableView.deselectRow(at: indexPath, animated: true)
 
-        guard let book = viewModel.books.any(at: indexPath.row) else {
+        guard let book = dataSource.cellDataList.any(at: indexPath.row) else {
             return
         }
 
@@ -141,7 +144,7 @@ extension BookListViewController: UITableViewDelegate {
 extension BookListViewController: BookListDataSourceDelegate {
 
     func didSelectFavoriteButton(index: Int) {
-        guard let book = viewModel.books.any(at: index) else {
+        guard let book = dataSource.cellDataList.any(at: index) else {
             return
         }
 

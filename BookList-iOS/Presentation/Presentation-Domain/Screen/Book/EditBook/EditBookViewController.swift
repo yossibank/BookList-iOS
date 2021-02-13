@@ -239,9 +239,6 @@ extension EditBookViewController {
                         message: Resources.Strings.Alert.successEditBook
                     ) { [weak self] in
                         guard let self = self else { return }
-                        
-                        print("hoge", self.presentingViewController)
-                        print("hoge", self.presentedViewController)
 
                         if let viewControllers = self.navigationController?.viewControllers,
                            let lastVC = viewControllers.dropLast().last {

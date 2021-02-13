@@ -5,14 +5,11 @@ protocol BookListDataSourceDelegate: AnyObject {
 }
 
 final class BookListDataSource: NSObject {
-
+    var cellDataList: [BookViewData] = []
     weak var delegate: BookListDataSourceDelegate?
 
-    private weak var viewModel: BookListViewModel?
-
-    init(viewModel: BookListViewModel) {
-        super.init()
-        self.viewModel = viewModel
+    func resetCellDataList() {
+        self.cellDataList = []
     }
 }
 
@@ -22,18 +19,13 @@ extension BookListDataSource: UITableViewDataSource {
         _ tableView: UITableView,
         numberOfRowsInSection section: Int
     ) -> Int {
-        guard let cellData = viewModel?.books else { return 0 }
-        return cellData.count
+        cellDataList.count
     }
 
     func tableView(
         _ tableView: UITableView,
         cellForRowAt indexPath: IndexPath
     ) -> UITableViewCell {
-        guard let cellData = viewModel?.books else {
-            return UITableViewCell(style: .default, reuseIdentifier: nil)
-        }
-
         let cell = tableView.dequeueReusableCell(
             withIdentifier: BookListTableViewCell.resourceName,
             for: indexPath
@@ -44,7 +36,7 @@ extension BookListDataSource: UITableViewDataSource {
             bookListCell.delegate = self
             bookListCell.bookImageView.image = nil
             bookListCell.favoriteButton.tag = indexPath.row
-            if let book = cellData.any(at: indexPath.row) {
+            if let book = cellDataList.any(at: indexPath.row) {
                 bookListCell.setup(book: book)
             }
         }

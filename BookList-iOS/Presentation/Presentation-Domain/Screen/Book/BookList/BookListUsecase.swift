@@ -2,8 +2,9 @@ import RxSwift
 import RxRelay
 
 final class BookListUsecase {
-    private let loadingSubject: BehaviorRelay<Bool> = BehaviorRelay(value: false)
-    private let resultSubject: BehaviorRelay<Result<BookListResponse, Error>?> = BehaviorRelay(value: nil)
+    private let bookListRelay: BehaviorRelay<[BookListResponse.Book]> = BehaviorRelay(value: [])
+    private let loadingRelay: BehaviorRelay<Bool> = BehaviorRelay(value: false)
+    private let errorRelay: BehaviorRelay<Error?> = BehaviorRelay(value: nil)
     private let disposeBag: DisposeBag = DisposeBag()
 
     private var currentPage: Int = 1
@@ -14,15 +15,17 @@ final class BookListUsecase {
         currentPage > totalPage && totalPage != 0
     }
 
+    var bookList: Observable<[BookListResponse.Book]> {
+        bookListRelay.asObservable()
+    }
+
     var loading: Observable<Bool> {
-        loadingSubject.asObservable()
+        loadingRelay.asObservable()
     }
 
-    var result: Observable<Result<BookListResponse, Error>?> {
-        resultSubject.asObservable()
+    var error: Observable<Error?> {
+        errorRelay.asObservable()
     }
-
-    var books: [BookListResponse.Book] = []
 
     func fetchBookList(isInitial: Bool) {
 
@@ -30,22 +33,24 @@ final class BookListUsecase {
 
         if isNextPage { return }
 
-        loadingSubject.accept(true)
+        loadingRelay.accept(true)
 
         BookListRequest()
-            .request(.init(
-                        limit: limit,
-                        page: currentPage))
+            .request(
+                .init(
+                    limit: limit,
+                    page: currentPage
+                )
+            )
             .subscribe(
                 onSuccess: { [weak self] response in
-                    self?.loadingSubject.accept(false)
-                    self?.resultSubject.accept(.success(response))
+                    self?.bookListRelay.accept(response.result)
+                    self?.loadingRelay.accept(false)
                     self?.totalPage = response.totalPages
-                    self?.books.append(contentsOf: response.result)
                 },
                 onFailure: { [weak self] error in
-                    self?.loadingSubject.accept(false)
-                    self?.resultSubject.accept(.failure(error))
+                    self?.loadingRelay.accept(false)
+                    self?.errorRelay.accept(error)
                 })
             .disposed(by: disposeBag)
     }

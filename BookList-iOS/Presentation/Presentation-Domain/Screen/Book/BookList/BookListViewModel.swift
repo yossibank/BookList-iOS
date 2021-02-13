@@ -3,20 +3,21 @@ import RxRelay
 
 final class BookListViewModel {
     private let usecase: BookListUsecase!
-    private let loadingSubject: BehaviorRelay<Bool> = BehaviorRelay(value: false)
-    private let resultSubject: BehaviorRelay<Result<BookListResponse, Error>?> = BehaviorRelay(value: nil)
+    private let bookListRelay: BehaviorRelay<[BookListResponse.Book]> = BehaviorRelay(value: [])
+    private let loadingRelay: BehaviorRelay<Bool> = BehaviorRelay(value: false)
+    private let errorRelay: BehaviorRelay<Error?> = BehaviorRelay(value: nil)
     private let disposeBag: DisposeBag = DisposeBag()
 
+    var bookList: Observable<[BookListResponse.Book]> {
+        bookListRelay.asObservable()
+    }
+
     var loading: Observable<Bool> {
-        loadingSubject.asObservable()
+        loadingRelay.asObservable()
     }
 
-    var result: Observable<Result<BookListResponse, Error>?> {
-        resultSubject.asObservable()
-    }
-
-    var books: [BookViewData] {
-        map(book: usecase.books)
+    var error: Observable<Error?> {
+        errorRelay.asObservable()
     }
 
     init(usecase: BookListUsecase) {
@@ -25,17 +26,17 @@ final class BookListViewModel {
     }
 
     private func bindUsecase() {
+        usecase.bookList
+            .bind(to: bookListRelay)
+            .disposed(by: disposeBag)
+
         usecase.loading
-            .bind(to: loadingSubject)
+            .bind(to: loadingRelay)
             .disposed(by: disposeBag)
 
-        usecase.result
-            .bind(to: resultSubject)
+        usecase.error
+            .bind(to: errorRelay)
             .disposed(by: disposeBag)
-    }
-
-    func getBookId(index: Int) -> Int? {
-        books.any(at: index)?.id
     }
 
     func saveFavoriteBook(book: BookViewData) {
@@ -51,12 +52,15 @@ final class BookListViewModel {
         )
     }
 
-    func resetBookData() {
-        usecase.books = []
-    }
-
     func fetchBookList(isInitial: Bool) {
         usecase.fetchBookList(isInitial: isInitial)
+    }
+
+    func getBookListStream() -> Observable<[BookViewData]> {
+        bookList.asObservable()
+            .map { [weak self] book in
+                self?.map(book: book) ?? []
+        }
     }
 }
 
