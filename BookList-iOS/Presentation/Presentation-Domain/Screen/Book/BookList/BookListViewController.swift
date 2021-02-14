@@ -61,7 +61,6 @@ extension BookListViewController {
 
         viewModel.bookList
             .asDriver(onErrorJustReturn: [])
-            .skip(1)
             .drive(onNext: { [weak self] bookList in
                 guard let self = self else { return }
 
