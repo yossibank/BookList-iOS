@@ -8,8 +8,14 @@ final class BookListDataSource: NSObject {
     var cellDataList: [BookViewData] = []
     weak var delegate: BookListDataSourceDelegate?
 
-    func resetCellDataList() {
-        self.cellDataList = []
+    func updateCellDataList(book: BookViewData) {
+        if let index = cellDataList.firstIndex(where: { $0.id == book.id }) {
+            cellDataList[index] = book
+        }
+    }
+
+    func updateFavorite(index: Int, bookViewData: BookViewData) {
+        cellDataList[index].isFavorite = !bookViewData.isFavorite
     }
 }
 

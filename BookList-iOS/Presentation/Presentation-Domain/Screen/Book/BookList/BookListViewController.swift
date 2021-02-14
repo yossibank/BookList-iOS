@@ -49,9 +49,9 @@ extension BookListViewController {
         tableView.rowHeight = 150
     }
 
-    func resetBookList() {
-        dataSource.resetCellDataList()
-        viewModel.fetchBookList(isInitial: true)
+    func updateBookList(book: BookViewData) {
+        dataSource.updateCellDataList(book: book)
+        tableView.reloadData()
     }
 }
 
@@ -130,7 +130,7 @@ extension BookListViewController: UITableViewDelegate {
             .editBook(
                 bookId: book.id,
                 bookData: bookData,
-                successHandler: resetBookList
+                successHandler: updateBookList
             ),
             from: self
         )
@@ -165,8 +165,7 @@ extension BookListViewController: BookListDataSourceDelegate {
             viewModel.saveFavoriteBook(book: book)
         }
 
-        dataSource.cellDataList[index].isFavorite = !book.isFavorite
-
+        dataSource.updateFavorite(index: index, bookViewData: book)
         tableView.reloadRows(
             at: [IndexPath(row: index, section: 0)],
             with: .fade

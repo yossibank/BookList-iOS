@@ -129,7 +129,7 @@ enum Route {
     case editBook(
             bookId: Int,
             bookData: BookViewData,
-            successHandler: VoidBlock?
+            successHandler: ((BookViewData) -> Void)?
          )
     case wishList
 

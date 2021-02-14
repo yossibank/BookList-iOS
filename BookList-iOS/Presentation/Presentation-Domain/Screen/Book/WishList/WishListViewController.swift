@@ -42,7 +42,7 @@ extension WishListViewController {
         tableView.rowHeight = 150
     }
 
-    func reloadWishList() {
+    func reloadWishList(_: BookViewData) {
         tableView.reloadData()
     }
 }

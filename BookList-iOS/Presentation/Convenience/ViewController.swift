@@ -52,7 +52,7 @@ extension Resources {
             func editBook(
                 bookId: Int,
                 bookViewData: BookViewData,
-                successHandler: VoidBlock?
+                successHandler: ((BookViewData) -> Void)?
             ) -> EditBookViewController {
                 let usecase = EditBookUsecase(bookId: bookId)
                 let viewModel = EditBookViewModel(usecase: usecase)

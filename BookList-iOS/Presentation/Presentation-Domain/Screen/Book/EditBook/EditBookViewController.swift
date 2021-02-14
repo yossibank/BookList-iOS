@@ -22,7 +22,7 @@ final class EditBookViewController: UIViewController {
 
     private var viewModel: EditBookViewModel!
     private var bookViewData: BookViewData!
-    private var successHandler: VoidBlock?
+    private var successHandler: ((BookViewData) -> Void)?
 
     private lazy var toolbar: UIToolbar = {
         let toolbar = UIToolbar(
@@ -57,7 +57,7 @@ final class EditBookViewController: UIViewController {
     static func createInstance(
         viewModel: EditBookViewModel,
         bookViewData: BookViewData,
-        successHandler: VoidBlock?
+        successHandler: ((BookViewData) -> Void)?
     ) -> EditBookViewController {
         let instance = EditBookViewController.instantiateInitialViewController()
         instance.viewModel = viewModel
@@ -244,11 +244,14 @@ extension EditBookViewController {
                         message: Resources.Strings.Alert.successEditBook
                     ) { [weak self] in
                         guard let self = self else { return }
-                        self.viewModel.updateFavoriteBook(
+
+                        let bookData = self.viewModel.map(
                             book: response.result,
                             isFavorite: self.bookViewData.isFavorite
                         )
-                        self.successHandler?()
+
+                        self.viewModel.updateBook(book: bookData)
+                        self.successHandler?(bookData)
                         self.router.dismiss(self)
                     }
 
