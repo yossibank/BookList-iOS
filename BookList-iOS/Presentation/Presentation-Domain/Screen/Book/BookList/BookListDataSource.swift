@@ -1,11 +1,21 @@
 import UIKit
 
-final class BookListDataSource: NSObject {
-    private weak var viewModel: BookListViewModel?
+protocol BookListDataSourceDelegate: AnyObject {
+    func didSelectFavoriteButton(index: Int)
+}
 
-    init(viewModel: BookListViewModel) {
-        super.init()
-        self.viewModel = viewModel
+final class BookListDataSource: NSObject {
+    var cellDataList: [BookViewData] = []
+    weak var delegate: BookListDataSourceDelegate?
+
+    func updateCellDataList(book: BookViewData) {
+        if let index = cellDataList.firstIndex(where: { $0.id == book.id }) {
+            cellDataList[index] = book
+        }
+    }
+
+    func updateFavorite(index: Int, bookViewData: BookViewData) {
+        cellDataList[index].isFavorite = !bookViewData.isFavorite
     }
 }
 
@@ -15,18 +25,13 @@ extension BookListDataSource: UITableViewDataSource {
         _ tableView: UITableView,
         numberOfRowsInSection section: Int
     ) -> Int {
-        guard let cellData = viewModel?.books else { return 0 }
-        return cellData.count
+        cellDataList.count
     }
 
     func tableView(
         _ tableView: UITableView,
         cellForRowAt indexPath: IndexPath
     ) -> UITableViewCell {
-        guard let cellData = viewModel?.books else {
-            return UITableViewCell(style: .default, reuseIdentifier: nil)
-        }
-
         let cell = tableView.dequeueReusableCell(
             withIdentifier: BookListTableViewCell.resourceName,
             for: indexPath
@@ -34,11 +39,10 @@ extension BookListDataSource: UITableViewDataSource {
 
         if let bookListCell = cell as? BookListTableViewCell {
             bookListCell.accessoryType = .disclosureIndicator
-            bookListCell.bookImageView.image = nil
             bookListCell.delegate = self
-            bookListCell.tableView = tableView
             bookListCell.favoriteButton.tag = indexPath.row
-            if let book = cellData.any(at: indexPath.row) {
+            bookListCell.bookImageView.image = nil
+            if let book = cellDataList.any(at: indexPath.row) {
                 bookListCell.setup(book: book)
             }
         }
@@ -49,25 +53,7 @@ extension BookListDataSource: UITableViewDataSource {
 
 extension BookListDataSource: BookListCellDelegate {
 
-    func didSelectFavoriteButton(
-        at index: Int,
-        in tableView: UITableView?
-    ) {
-        guard let cellData = viewModel?.books,
-              let book = cellData.any(at: index)
-        else {
-            return
-        }
-
-        if book.isFavorite {
-            viewModel?.removeFavoriteBook(book: book)
-        } else {
-            viewModel?.saveFavoriteBook(book: book)
-        }
-
-        tableView?.reloadRows(
-            at: [IndexPath(row: index, section: 0)],
-            with: .fade
-        )
+    func didSelectFavoriteButton(at index: Int) {
+        delegate?.didSelectFavoriteButton(index: index)
     }
 }

@@ -8,8 +8,10 @@ final class KeychainManager {
     }
 
     private var keychain: Keychain = {
-        guard let identifier = Bundle.main.object(
-                forInfoDictionaryKey: Constant.identifier) as? String
+        guard
+            let identifier = Bundle.main.object(
+                forInfoDictionaryKey: Constant.identifier
+            ) as? String
         else {
             return Keychain(service: .blank)
         }

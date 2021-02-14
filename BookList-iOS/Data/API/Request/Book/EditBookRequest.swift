@@ -15,7 +15,7 @@ struct EditBookRequest: BaseRequest {
 
     var method: HttpMethod { .put }
 
-    var headerFields: [String : String] {
+    var headerFields: [String: String] {
         [Resources.Strings.API.authorization: KeychainManager.shared.getToken() ?? .blank]
     }
 }

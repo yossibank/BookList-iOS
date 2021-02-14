@@ -11,6 +11,7 @@ enum HttpMethod: String {
         url: URL,
         data: Data?
     ) throws -> URLRequest? {
+
         var request = URLRequest(url: url)
 
         switch self {
@@ -21,8 +22,9 @@ enum HttpMethod: String {
                 return request
             }
 
-            guard var components = URLComponents(url: url, resolvingAgainstBaseURL: true),
-                  let dictionary = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+            guard
+                var components = URLComponents(url: url, resolvingAgainstBaseURL: true),
+                let dictionary = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
             else {
                 return nil
             }

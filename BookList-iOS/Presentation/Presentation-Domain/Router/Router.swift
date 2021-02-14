@@ -128,7 +128,8 @@ enum Route {
     case addBook
     case editBook(
             bookId: Int,
-            bookData: BookViewData
+            bookData: BookViewData,
+            successHandler: ((BookViewData) -> Void)?
          )
     case wishList
 
@@ -155,12 +156,14 @@ enum Route {
 
         case .editBook(
             let bookId,
-            let bookViewData
+            let bookViewData,
+            let successHandler
         ):
 
             viewController = Resources.ViewControllers.App.editBook(
                 bookId: bookId,
-                bookViewData: bookViewData
+                bookViewData: bookViewData,
+                successHandler: successHandler
             )
 
         case .wishList:
@@ -297,7 +300,11 @@ final class Router: RouterProtocol {
         }
     }
 
-    func initialWindow(_ route: Route, type: ControllerType) -> UIViewController {
+    func initialWindow(
+        _ route: Route,
+        type: ControllerType
+    ) -> UIViewController {
+
         var viewController: UIViewController
 
         switch type {

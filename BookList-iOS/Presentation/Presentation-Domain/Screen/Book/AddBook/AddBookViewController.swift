@@ -23,10 +23,32 @@ final class AddBookViewController: UIViewController {
     private var viewModel: AddBookViewModel!
 
     private lazy var toolbar: UIToolbar = {
-        let toolbar = UIToolbar(frame: .init(x: 0, y: 0, width: view.frame.width, height: 35))
-        let spaceItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
-        let doneItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonTapped))
-        toolbar.setItems([spaceItem, doneItem], animated: true)
+        let toolbar = UIToolbar(
+            frame: .init(
+                x: 0,
+                y: 0,
+                width: view.frame.width,
+                height: 35
+            )
+        )
+
+        let spaceItem = UIBarButtonItem(
+            barButtonSystemItem: .flexibleSpace,
+            target: self,
+            action: nil
+        )
+
+        let doneItem = UIBarButtonItem(
+            barButtonSystemItem: .done,
+            target: self,
+            action: #selector(doneButtonTapped)
+        )
+
+        toolbar.setItems(
+            [spaceItem, doneItem],
+            animated: true
+        )
+
         return toolbar
     }()
 
@@ -103,7 +125,8 @@ extension AddBookViewController {
     }
 
     @objc private func doneButtonTapped() {
-        bookPurchaseDateTextField.text = UIDatePicker.purchaseDatePicker.date.toConvertString(with: .yearToDayOfWeekJapanese)
+        bookPurchaseDateTextField.text =
+            UIDatePicker.purchaseDatePicker.date.toConvertString(with: .yearToDayOfWeekJapanese)
         bookPurchaseDateTextField.endEditing(true)
     }
 
@@ -133,6 +156,7 @@ extension AddBookViewController {
 extension AddBookViewController {
 
     private func bindValue() {
+
         bookTitleTextField.rx.text
             .validate(TitleValidator.self)
             .map { validate in
@@ -177,7 +201,9 @@ extension AddBookViewController {
     }
 
     private func bindViewModel() {
-        viewModel.result.asDriver(onErrorJustReturn: nil)
+
+        viewModel.result
+            .asDriver(onErrorJustReturn: nil)
             .drive(onNext: { [weak self] result in
                 guard let self = self,
                       let result = result else { return }

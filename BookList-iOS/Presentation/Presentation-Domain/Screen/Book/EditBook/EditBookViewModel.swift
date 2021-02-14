@@ -3,11 +3,11 @@ import RxRelay
 
 final class EditBookViewModel {
     private let usecase: EditBookUsecase!
-    private let resultSubject: BehaviorRelay<Result<EditBookResponse, Error>?> = BehaviorRelay(value: nil)
+    private let resultRelay: BehaviorRelay<Result<EditBookResponse, Error>?> = BehaviorRelay(value: nil)
     private let disposeBag: DisposeBag = DisposeBag()
 
     var result: Observable<Result<EditBookResponse, Error>?> {
-        resultSubject.asObservable()
+        resultRelay.asObservable()
     }
 
     init(usecase: EditBookUsecase) {
@@ -17,11 +17,11 @@ final class EditBookViewModel {
 
     private func bindUsecase() {
         usecase.result
-            .bind(to: resultSubject)
+            .bind(to: resultRelay)
             .disposed(by: disposeBag)
     }
 
-    func updateFavoriteBook(book: BookViewData) {
+    func updateBook(book: BookViewData) {
         BookFileManager.shared.setData(
             path: String(book.id),
             data: book.json

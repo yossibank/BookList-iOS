@@ -2,23 +2,23 @@ import RxSwift
 import RxRelay
 
 final class SignupUsecase {
-    private let loadingSubject: BehaviorRelay<Bool> = BehaviorRelay(value: false)
-    private let resultSubject: BehaviorRelay<Result<SignupResponse, Error>?> = BehaviorRelay(value: nil)
+    private let loadingRelay: BehaviorRelay<Bool> = BehaviorRelay(value: false)
+    private let resultRelay: BehaviorRelay<Result<SignupResponse, Error>?> = BehaviorRelay(value: nil)
     private let disposeBag: DisposeBag = DisposeBag()
 
     var loading: Observable<Bool> {
-        loadingSubject.asObservable()
+        loadingRelay.asObservable()
     }
 
     var result: Observable<Result<SignupResponse, Error>?> {
-        resultSubject.asObservable()
+        resultRelay.asObservable()
     }
 
     func signup(
         email: String,
         password: String
     ) {
-        loadingSubject.accept(true)
+        loadingRelay.accept(true)
 
         SignupRequest()
             .request(.init(
@@ -26,13 +26,13 @@ final class SignupUsecase {
                         password: password))
             .subscribe(
                 onSuccess: { [weak self] response in
-                    self?.loadingSubject.accept(false)
-                    self?.resultSubject.accept(.success(response))
+                    self?.loadingRelay.accept(false)
+                    self?.resultRelay.accept(.success(response))
                     KeychainManager.shared.setToken(response.result.token)
                 },
                 onFailure: { [weak self] error in
-                    self?.loadingSubject.accept(false)
-                    self?.resultSubject.accept(.failure(error))
+                    self?.loadingRelay.accept(false)
+                    self?.resultRelay.accept(.failure(error))
                 })
             .disposed(by: disposeBag)
     }

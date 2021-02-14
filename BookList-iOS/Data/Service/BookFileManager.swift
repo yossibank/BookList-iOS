@@ -14,11 +14,13 @@ final class BookFileManager {
         path: String,
         data: Data?
     ) {
-        guard let url = try? fileManager.url(
+        guard
+            let url = try? fileManager.url(
                 for: .documentDirectory,
                 in: .userDomainMask,
                 appropriateFor: nil,
-                create: true).appendingPathComponent(path)
+                create: true
+            ).appendingPathComponent(path)
         else {
             return
         }
@@ -31,11 +33,13 @@ final class BookFileManager {
     }
 
     func removeData(path: String) {
-        guard let url = try? fileManager.url(
+        guard
+            let url = try? fileManager.url(
                 for: .documentDirectory,
                 in: .userDomainMask,
                 appropriateFor: nil,
-                create: true).appendingPathComponent(path)
+                create: true
+            ).appendingPathComponent(path)
         else {
             return
         }
@@ -48,6 +52,7 @@ final class BookFileManager {
     }
 
     func fetchData() -> [BookViewData] {
+
         var data: [BookViewData] = []
 
         let documentDirectoryUrl = fileManager.urls(
@@ -63,11 +68,13 @@ final class BookFileManager {
             let files = contentUrls.map { $0.lastPathComponent }
 
             files.forEach { file in
-                guard let url = try? fileManager.url(
+                guard
+                    let url = try? fileManager.url(
                         for: .documentDirectory,
                         in: .userDomainMask,
                         appropriateFor: nil,
-                        create: false).appendingPathComponent(file)
+                        create: false
+                    ).appendingPathComponent(file)
                 else {
                     return
                 }
@@ -88,7 +95,7 @@ final class BookFileManager {
         }
     }
     
-    func isFavorite(path: String) -> Bool {
+    func isFavoriteBook(path: String) -> Bool {
         let documentDirectoryUrl = fileManager.urls(
                 for: .documentDirectory,
                 in: .userDomainMask

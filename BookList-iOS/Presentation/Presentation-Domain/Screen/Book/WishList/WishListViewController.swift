@@ -36,14 +36,13 @@ extension WishListViewController {
 
     private func setupTableView() {
         dataSource = WishListDataSource(viewModel: viewModel)
-
         tableView.register(WishListTableViewCell.xib(), forCellReuseIdentifier: WishListTableViewCell.resourceName)
         tableView.dataSource = dataSource
         tableView.delegate = self
         tableView.rowHeight = 150
     }
 
-    func reloadWishList() {
+    func reloadWishList(_: BookViewData) {
         tableView.reloadData()
     }
 }
@@ -69,7 +68,14 @@ extension WishListViewController: UITableViewDelegate {
             isFavorite: book.isFavorite
         )
 
-        router.push(.editBook(bookId: book.id, bookData: bookData), from: self)
+        router.push(
+            .editBook(
+                bookId: book.id,
+                bookData: bookData,
+                successHandler: reloadWishList
+            ),
+            from: self
+        )
     }
 }
 

@@ -23,7 +23,7 @@ final class BookListViewController: UIViewController {
         super.viewDidLoad()
         setupNavigation()
         setupTableView()
-        fetchBookList()
+        viewModel.fetchBookList(isInitial: true)
         bindViewModel()
         sendScreenView()
     }
@@ -41,49 +41,31 @@ extension BookListViewController {
     }
 
     private func setupTableView() {
-        dataSource = BookListDataSource(viewModel: viewModel)
-
+        dataSource = BookListDataSource()
+        dataSource.delegate = self
         tableView.register(BookListTableViewCell.xib(), forCellReuseIdentifier: BookListTableViewCell.resourceName)
         tableView.dataSource = dataSource
         tableView.delegate = self
         tableView.rowHeight = 150
     }
 
-    private func fetchBookList() {
-        viewModel.fetchBookList(isInitial: true)
-    }
-
-    func resetBookList() {
-        viewModel.resetBookData()
-        viewModel.fetchBookList(isInitial: true)
+    func updateBookList(book: BookViewData) {
+        dataSource.updateCellDataList(book: book)
+        tableView.reloadData()
     }
 }
 
 extension BookListViewController {
 
     private func bindViewModel() {
-        viewModel.result
-            .asDriver(onErrorJustReturn: nil)
-            .drive(onNext: { [weak self] result in
-                guard let self = self,
-                      let result = result else { return }
 
-                switch result {
+        viewModel.bookList
+            .asDriver(onErrorJustReturn: [])
+            .drive(onNext: { [weak self] bookList in
+                guard let self = self else { return }
 
-                case .success:
-                    self.tableView.reloadData()
-
-                case .failure(let error):
-                    if let error = error as? APIError {
-                        dump(error.description())
-                    }
-                    self.showError(
-                        title: Resources.Strings.General.error,
-                        message: Resources.Strings.Alert.failedBookList
-                    ) {
-                        self.router.dismiss(self, animated: true)
-                    }
-                }
+                self.dataSource.cellDataList.append(contentsOf: bookList ?? [])
+                self.tableView.reloadData()
             })
             .disposed(by: disposeBag)
 
@@ -92,7 +74,29 @@ extension BookListViewController {
             .drive(onNext: { [weak self] loading in
                 guard let self = self else { return }
 
-                loading ? self.loadingIndicator.startAnimating() : self.loadingIndicator.stopAnimating()
+                loading ?
+                    self.loadingIndicator.startAnimating()
+                    : self.loadingIndicator.stopAnimating()
+            })
+            .disposed(by: disposeBag)
+
+        viewModel.error
+            .asDriver(onErrorJustReturn: nil)
+            .drive(onNext: { [weak self] error in
+                guard let self = self else { return }
+
+                if let error = error {
+                    if let apiError = error as? APIError {
+                        dump(apiError.description())
+                    }
+
+                    self.showError(
+                        title: Resources.Strings.General.error,
+                        message: Resources.Strings.Alert.failedBookList
+                    ) {
+                        self.router.dismiss(self, animated: true)
+                    }
+                }
             })
             .disposed(by: disposeBag)
     }
@@ -106,7 +110,9 @@ extension BookListViewController: UITableViewDelegate {
     ) {
         tableView.deselectRow(at: indexPath, animated: true)
 
-        guard let book = viewModel.books.any(at: indexPath.row) else {
+        guard
+            let book = dataSource.cellDataList.any(at: indexPath.row)
+        else {
             return
         }
 
@@ -119,7 +125,14 @@ extension BookListViewController: UITableViewDelegate {
             isFavorite: book.isFavorite
         )
 
-        router.push(.editBook(bookId: book.id, bookData: bookData), from: self)
+        router.push(
+            .editBook(
+                bookId: book.id,
+                bookData: bookData,
+                successHandler: updateBookList
+            ),
+            from: self
+        )
     }
 
     func tableView(
@@ -133,6 +146,29 @@ extension BookListViewController: UITableViewDelegate {
         if indexPath.section == lastSection && indexPath.row == lastIndex {
             viewModel.fetchBookList(isInitial: false)
         }
+    }
+}
+
+extension BookListViewController: BookListDataSourceDelegate {
+
+    func didSelectFavoriteButton(index: Int) {
+        guard
+            let book = dataSource.cellDataList.any(at: index)
+        else {
+            return
+        }
+
+        if book.isFavorite {
+            viewModel.removeFavoriteBook(book: book)
+        } else {
+            viewModel.saveFavoriteBook(book: book)
+        }
+
+        dataSource.updateFavorite(index: index, bookViewData: book)
+        tableView.reloadRows(
+            at: [IndexPath(row: index, section: 0)],
+            with: .fade
+        )
     }
 }
 

@@ -1,7 +1,7 @@
 import UIKit
 
 final class HomeDataSource: NSObject {
-    private let cellData = HomeViewData.HomeItem.allCases.compactMap { $0.rawValue }
+    private let cellData = HomeViewData.HomeItem.allCases.map { $0.rawValue }
 }
 
 extension HomeDataSource: UITableViewDataSource {
@@ -22,11 +22,9 @@ extension HomeDataSource: UITableViewDataSource {
             for: indexPath
         )
 
-        if let cell = cell as? HomeTableViewCell {
-            let item = cellData.any(at: indexPath.row)
-            if let item = item {
-                cell.setup(item: item)
-            }
+        if let homeCell = cell as? HomeTableViewCell,
+           let item = cellData.any(at: indexPath.row) {
+            homeCell.setup(item: item)
         }
 
         return cell

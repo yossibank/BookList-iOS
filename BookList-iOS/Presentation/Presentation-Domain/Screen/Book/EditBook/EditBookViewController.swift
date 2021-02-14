@@ -22,22 +22,47 @@ final class EditBookViewController: UIViewController {
 
     private var viewModel: EditBookViewModel!
     private var bookViewData: BookViewData!
+    private var successHandler: ((BookViewData) -> Void)?
 
     private lazy var toolbar: UIToolbar = {
-        let toolbar = UIToolbar(frame: .init(x: 0, y: 0, width: view.frame.width, height: 35))
-        let spaceItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
-        let doneItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonTapped))
-        toolbar.setItems([spaceItem, doneItem], animated: true)
+        let toolbar = UIToolbar(
+            frame: .init(
+                x: 0,
+                y: 0,
+                width: view.frame.width,
+                height: 35
+            )
+        )
+
+        let spaceItem = UIBarButtonItem(
+            barButtonSystemItem: .flexibleSpace,
+            target: self,
+            action: nil
+        )
+
+        let doneItem = UIBarButtonItem(
+            barButtonSystemItem: .done,
+            target: self,
+            action: #selector(doneButtonTapped)
+        )
+
+        toolbar.setItems(
+            [spaceItem, doneItem],
+            animated: true
+        )
+
         return toolbar
     }()
 
     static func createInstance(
         viewModel: EditBookViewModel,
-        bookViewData: BookViewData
+        bookViewData: BookViewData,
+        successHandler: ((BookViewData) -> Void)?
     ) -> EditBookViewController {
         let instance = EditBookViewController.instantiateInitialViewController()
         instance.viewModel = viewModel
         instance.bookViewData = bookViewData
+        instance.successHandler = successHandler
         return instance
     }
 
@@ -108,7 +133,8 @@ extension EditBookViewController {
     }
 
     @objc private func doneButtonTapped() {
-        bookPurchaseDateTextField.text = UIDatePicker.purchaseDatePicker.date.toConvertString(with: .yearToDayOfWeekJapanese)
+        bookPurchaseDateTextField.text =
+            UIDatePicker.purchaseDatePicker.date.toConvertString(with: .yearToDayOfWeekJapanese)
         bookPurchaseDateTextField.endEditing(true)
     }
 
@@ -160,6 +186,7 @@ extension EditBookViewController {
     }
 
     private func bindValue() {
+
         bookTitleTextField.rx.text
             .validate(TitleValidator.self)
             .map { validate in
@@ -202,6 +229,7 @@ extension EditBookViewController {
     }
 
     private func bindViewModel() {
+
         viewModel.result
             .asDriver(onErrorJustReturn: nil)
             .drive(onNext: { [weak self] result in
@@ -211,35 +239,19 @@ extension EditBookViewController {
                 switch result {
 
                 case .success(let response):
-
                     self.showAlert(
                         title: Resources.Strings.General.success,
                         message: Resources.Strings.Alert.successEditBook
                     ) { [weak self] in
                         guard let self = self else { return }
 
-                        if let viewControllers = self.navigationController?.viewControllers,
-                           let lastVC = viewControllers.dropLast().last {
-                            switch lastVC {
+                        let bookData = self.viewModel.map(
+                            book: response.result,
+                            isFavorite: self.bookViewData.isFavorite
+                        )
 
-                            case let bookListVC as BookListViewController:
-                                bookListVC.resetBookList()
-
-                            case let wishListVC as WishListViewController:
-                                self.viewModel.updateFavoriteBook(
-                                    book: self.viewModel.map(
-                                        book: response.result,
-                                        isFavorite: self.bookViewData.isFavorite
-                                    )
-                                )
-                                DispatchQueue.main.async {
-                                    wishListVC.reloadWishList()
-                                }
-
-                            default:
-                                break
-                            }
-                        }
+                        self.viewModel.updateBook(book: bookData)
+                        self.successHandler?(bookData)
                         self.router.dismiss(self)
                     }
 
