@@ -36,6 +36,11 @@
 		784E136225B2A209008FD947 /* AddBookResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784E136125B2A209008FD947 /* AddBookResponse.swift */; };
 		784E136C25B2A399008FD947 /* AddBookRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784E136B25B2A399008FD947 /* AddBookRequest.swift */; };
 		784E138225B2F555008FD947 /* NumberValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784E138125B2F555008FD947 /* NumberValidator.swift */; };
+		7854785C25D93ED000C5B923 /* AddBookTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7854785B25D93ED000C5B923 /* AddBookTests.swift */; };
+		7854785F25D93F3F00C5B923 /* RxBlocking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 785A1AC625A9A989005E8A4B /* RxBlocking.framework */; };
+		7854786025D93F3F00C5B923 /* RxBlocking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 785A1AC625A9A989005E8A4B /* RxBlocking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7854786125D93F3F00C5B923 /* RxTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 785A1AC825A9A989005E8A4B /* RxTest.framework */; };
+		7854786225D93F3F00C5B923 /* RxTest.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 785A1AC825A9A989005E8A4B /* RxTest.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		785A1AB725A9A369005E8A4B /* SignupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785A1AB625A9A369005E8A4B /* SignupViewModel.swift */; };
 		785A1ABD25A9A407005E8A4B /* SignupRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785A1ABC25A9A407005E8A4B /* SignupRequest.swift */; };
 		785A1AC125A9A416005E8A4B /* SignupResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785A1AC025A9A416005E8A4B /* SignupResponse.swift */; };
@@ -52,6 +57,7 @@
 		78772B5A25B3EE0900E6493E /* EditBookUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78772B5925B3EE0900E6493E /* EditBookUsecase.swift */; };
 		78844C6125B0873600C9AEC0 /* AddBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78844C6025B0873600C9AEC0 /* AddBookViewController.swift */; };
 		78844C6525B0874100C9AEC0 /* AddBookViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78844C6425B0874100C9AEC0 /* AddBookViewController.storyboard */; };
+		7892543625D9502400B84E6B /* OHHTTPStubs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7892543525D9502400B84E6B /* OHHTTPStubs.framework */; };
 		7892EF52259C58C0006F7315 /* IBDesignableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7892EF51259C58C0006F7315 /* IBDesignableButton.swift */; };
 		7892EF5C259C5DF0006F7315 /* IBDesignableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7892EF5B259C5DF0006F7315 /* IBDesignableTextField.swift */; };
 		7892EF62259C642C006F7315 /* IBDesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7892EF61259C642C006F7315 /* IBDesignableView.swift */; };
@@ -109,6 +115,8 @@
 		78D17C9825C502A800793310 /* AnalyticsCategoriesAndEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D17C9725C502A800793310 /* AnalyticsCategoriesAndEvents.swift */; };
 		78D17C9C25C505B400793310 /* AnalyticsConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D17C9B25C505B400793310 /* AnalyticsConfiguration.swift */; };
 		78D3951525CE2F1600F1E157 /* AccountValidationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D3951425CE2F1600F1E157 /* AccountValidationTests.swift */; };
+		78D6A2B925D9405E000B9FD6 /* RxBlocking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 785A1AC625A9A989005E8A4B /* RxBlocking.framework */; };
+		78D6A2BA25D9405E000B9FD6 /* RxTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 785A1AC825A9A989005E8A4B /* RxTest.framework */; };
 		78DCC90025B7046F006FFF0F /* LogoutRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DCC8FF25B7046F006FFF0F /* LogoutRequest.swift */; };
 		78DCC90425B7048E006FFF0F /* LogoutResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DCC90325B7048E006FFF0F /* LogoutResponse.swift */; };
 		78DE1D6725BD423A00A2C0F2 /* WishListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DE1D6625BD423A00A2C0F2 /* WishListViewController.swift */; };
@@ -152,11 +160,13 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				7854786025D93F3F00C5B923 /* RxBlocking.framework in Embed Frameworks */,
 				781C318225B5ACC100C11D77 /* KeychainAccess.framework in Embed Frameworks */,
 				78997EA0259C29D80076FF97 /* CodableFirebase.framework in Embed Frameworks */,
 				785A1ACC25A9A989005E8A4B /* RxRelay.framework in Embed Frameworks */,
 				785A1AD025A9A98A005E8A4B /* RxSwift.framework in Embed Frameworks */,
 				785A1ACA25A9A989005E8A4B /* RxCocoa.framework in Embed Frameworks */,
+				7854786225D93F3F00C5B923 /* RxTest.framework in Embed Frameworks */,
 				78231235259C147900D9E723 /* Rswift.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -196,6 +206,7 @@
 		784E136125B2A209008FD947 /* AddBookResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookResponse.swift; sourceTree = "<group>"; };
 		784E136B25B2A399008FD947 /* AddBookRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookRequest.swift; sourceTree = "<group>"; };
 		784E138125B2F555008FD947 /* NumberValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberValidator.swift; sourceTree = "<group>"; };
+		7854785B25D93ED000C5B923 /* AddBookTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookTests.swift; sourceTree = "<group>"; };
 		785A1AB625A9A369005E8A4B /* SignupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewModel.swift; sourceTree = "<group>"; };
 		785A1ABC25A9A407005E8A4B /* SignupRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupRequest.swift; sourceTree = "<group>"; };
 		785A1AC025A9A416005E8A4B /* SignupResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupResponse.swift; sourceTree = "<group>"; };
@@ -211,6 +222,7 @@
 		78772B5925B3EE0900E6493E /* EditBookUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBookUsecase.swift; sourceTree = "<group>"; };
 		78844C6025B0873600C9AEC0 /* AddBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookViewController.swift; sourceTree = "<group>"; };
 		78844C6425B0874100C9AEC0 /* AddBookViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddBookViewController.storyboard; sourceTree = "<group>"; };
+		7892543525D9502400B84E6B /* OHHTTPStubs.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OHHTTPStubs.framework; path = Carthage/Build/iOS/OHHTTPStubs.framework; sourceTree = "<group>"; };
 		7892EF51259C58C0006F7315 /* IBDesignableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBDesignableButton.swift; sourceTree = "<group>"; };
 		7892EF5B259C5DF0006F7315 /* IBDesignableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBDesignableTextField.swift; sourceTree = "<group>"; };
 		7892EF61259C642C006F7315 /* IBDesignableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBDesignableView.swift; sourceTree = "<group>"; };
@@ -299,7 +311,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				785A1ACF25A9A98A005E8A4B /* RxSwift.framework in Frameworks */,
 				78997E8D259C29D80076FF97 /* abseil.framework in Frameworks */,
 				78997EA3259C29D80076FF97 /* BoringSSL-GRPC.framework in Frameworks */,
 				78997E9F259C29D80076FF97 /* CodableFirebase.framework in Frameworks */,
@@ -320,11 +331,14 @@
 				78997EA1259C29D80076FF97 /* gRPC-C++.framework in Frameworks */,
 				78997E91259C29D80076FF97 /* GTMSessionFetcher.framework in Frameworks */,
 				78997EAB259C29D80076FF97 /* leveldb-library.framework in Frameworks */,
-				785A1ACB25A9A989005E8A4B /* RxRelay.framework in Frameworks */,
 				78997E83259C29D80076FF97 /* nanopb.framework in Frameworks */,
 				78997E8F259C29D80076FF97 /* PromisesObjC.framework in Frameworks */,
-				785A1AC925A9A989005E8A4B /* RxCocoa.framework in Frameworks */,
 				78231234259C147900D9E723 /* Rswift.framework in Frameworks */,
+				7854785F25D93F3F00C5B923 /* RxBlocking.framework in Frameworks */,
+				785A1AC925A9A989005E8A4B /* RxCocoa.framework in Frameworks */,
+				785A1ACB25A9A989005E8A4B /* RxRelay.framework in Frameworks */,
+				785A1ACF25A9A98A005E8A4B /* RxSwift.framework in Frameworks */,
+				7854786125D93F3F00C5B923 /* RxTest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -332,6 +346,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7892543625D9502400B84E6B /* OHHTTPStubs.framework in Frameworks */,
+				78D6A2B925D9405E000B9FD6 /* RxBlocking.framework in Frameworks */,
+				78D6A2BA25D9405E000B9FD6 /* RxTest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -398,6 +415,7 @@
 			children = (
 				78231212259C0D9300D9E723 /* Info.plist */,
 				78231210259C0D9300D9E723 /* BookListTests.swift */,
+				7854785A25D93EA700C5B923 /* AddBook */,
 				788EA34825CE340900B998D7 /* Validation */,
 			);
 			path = "BookList-iOSTests";
@@ -406,6 +424,7 @@
 		78231232259C147900D9E723 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7892543525D9502400B84E6B /* OHHTTPStubs.framework */,
 				78D17C7525C42A4400793310 /* FirebaseCrashlytics.framework */,
 				781C318025B5ACC100C11D77 /* KeychainAccess.framework */,
 				785A1AC625A9A989005E8A4B /* RxBlocking.framework */,
@@ -446,6 +465,14 @@
 				784B18EE25BD48F80071C32E /* WishListTableViewCell.xib */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		7854785A25D93EA700C5B923 /* AddBook */ = {
+			isa = PBXGroup;
+			children = (
+				7854785B25D93ED000C5B923 /* AddBookTests.swift */,
+			);
+			path = AddBook;
 			sourceTree = "<group>";
 		};
 		787052D225B06DC900CAAC3E /* Book */ = {
@@ -1170,6 +1197,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7854785C25D93ED000C5B923 /* AddBookTests.swift in Sources */,
 				78E80CA625CE4402006580A2 /* BookValidationTests.swift in Sources */,
 				78D3951525CE2F1600F1E157 /* AccountValidationTests.swift in Sources */,
 				78231211259C0D9300D9E723 /* BookListTests.swift in Sources */,
@@ -1379,6 +1407,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "BookList-iOSTests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1400,6 +1432,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "BookList-iOSTests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				LD_RUNPATH_SEARCH_PATHS = (
