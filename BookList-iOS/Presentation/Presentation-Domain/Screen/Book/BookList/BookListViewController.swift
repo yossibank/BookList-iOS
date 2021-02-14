@@ -59,13 +59,13 @@ extension BookListViewController {
 
     private func bindViewModel() {
 
-        viewModel.getBookListStream()
+        viewModel.bookList
             .asDriver(onErrorJustReturn: [])
             .skip(1)
             .drive(onNext: { [weak self] bookList in
                 guard let self = self else { return }
 
-                self.dataSource.cellDataList.append(contentsOf: bookList)
+                self.dataSource.cellDataList.append(contentsOf: bookList ?? [])
                 self.tableView.reloadData()
             })
             .disposed(by: disposeBag)
@@ -111,7 +111,9 @@ extension BookListViewController: UITableViewDelegate {
     ) {
         tableView.deselectRow(at: indexPath, animated: true)
 
-        guard let book = dataSource.cellDataList.any(at: indexPath.row) else {
+        guard
+            let book = dataSource.cellDataList.any(at: indexPath.row)
+        else {
             return
         }
 
@@ -144,7 +146,9 @@ extension BookListViewController: UITableViewDelegate {
 extension BookListViewController: BookListDataSourceDelegate {
 
     func didSelectFavoriteButton(index: Int) {
-        guard let book = dataSource.cellDataList.any(at: index) else {
+        guard
+            let book = dataSource.cellDataList.any(at: index)
+        else {
             return
         }
 

@@ -10,7 +10,6 @@ final class BookListUsecase {
     private var currentPage: Int = 1
     private var totalPage: Int = 0
     private var limit: Int = 20
-
     private var isNextPage: Bool {
         currentPage > totalPage && totalPage != 0
     }

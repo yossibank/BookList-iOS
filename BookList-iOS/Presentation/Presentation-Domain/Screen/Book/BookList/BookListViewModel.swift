@@ -8,8 +8,11 @@ final class BookListViewModel {
     private let errorRelay: BehaviorRelay<Error?> = BehaviorRelay(value: nil)
     private let disposeBag: DisposeBag = DisposeBag()
 
-    var bookList: Observable<[BookListResponse.Book]> {
+    var bookList: Observable<[BookViewData]?> {
         bookListRelay.asObservable()
+            .map { [weak self] book in
+                self?.map(book: book)
+        }
     }
 
     var loading: Observable<Bool> {
@@ -39,6 +42,20 @@ final class BookListViewModel {
             .disposed(by: disposeBag)
     }
 
+    private func map(book: [BookListResponse.Book]) -> [BookViewData] {
+        let books = book.map { book in
+            BookViewData(
+                id: book.id,
+                name: book.name,
+                image: book.image,
+                price: book.price,
+                purchaseDate: book.purchaseDate,
+                isFavorite: BookFileManager.shared.isFavoriteBook(path: String(book.id))
+            )
+        }
+        return books
+    }
+
     func saveFavoriteBook(book: BookViewData) {
         BookFileManager.shared.setData(
             path: String(book.id),
@@ -54,29 +71,5 @@ final class BookListViewModel {
 
     func fetchBookList(isInitial: Bool) {
         usecase.fetchBookList(isInitial: isInitial)
-    }
-
-    func getBookListStream() -> Observable<[BookViewData]> {
-        bookList.asObservable()
-            .map { [weak self] book in
-                self?.map(book: book) ?? []
-        }
-    }
-}
-
-extension BookListViewModel {
-
-    private func map(book: [BookListResponse.Book]) -> [BookViewData] {
-        let books = book.map { book in
-            BookViewData(
-                id: book.id,
-                name: book.name,
-                image: book.image,
-                price: book.price,
-                purchaseDate: book.purchaseDate,
-                isFavorite: BookFileManager.shared.isFavoriteBook(path: String(book.id))
-            )
-        }
-        return books
     }
 }
