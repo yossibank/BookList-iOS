@@ -158,6 +158,8 @@ extension BookListViewController: BookListDataSourceDelegate {
             viewModel.saveFavoriteBook(book: book)
         }
 
+        dataSource.cellDataList[index].isFavorite = !book.isFavorite
+
         tableView.reloadRows(
             at: [IndexPath(row: index, section: 0)],
             with: .fade

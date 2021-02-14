@@ -34,8 +34,8 @@ extension BookListDataSource: UITableViewDataSource {
         if let bookListCell = cell as? BookListTableViewCell {
             bookListCell.accessoryType = .disclosureIndicator
             bookListCell.delegate = self
-            bookListCell.bookImageView.image = nil
             bookListCell.favoriteButton.tag = indexPath.row
+            bookListCell.bookImageView.image = nil
             if let book = cellDataList.any(at: indexPath.row) {
                 bookListCell.setup(book: book)
             }
