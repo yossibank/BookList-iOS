@@ -130,7 +130,8 @@ extension EditBookViewController {
     }
 
     @objc private func doneButtonTapped() {
-        bookPurchaseDateTextField.text = UIDatePicker.purchaseDatePicker.date.toConvertString(with: .yearToDayOfWeekJapanese)
+        bookPurchaseDateTextField.text =
+            UIDatePicker.purchaseDatePicker.date.toConvertString(with: .yearToDayOfWeekJapanese)
         bookPurchaseDateTextField.endEditing(true)
     }
 
@@ -182,6 +183,7 @@ extension EditBookViewController {
     }
 
     private func bindValue() {
+
         bookTitleTextField.rx.text
             .validate(TitleValidator.self)
             .map { validate in
@@ -224,6 +226,7 @@ extension EditBookViewController {
     }
 
     private func bindViewModel() {
+
         viewModel.result
             .asDriver(onErrorJustReturn: nil)
             .drive(onNext: { [weak self] result in

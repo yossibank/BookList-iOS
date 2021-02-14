@@ -106,6 +106,7 @@ extension SignupViewController {
 extension SignupViewController {
 
     private func bindValue() {
+
         emailTextField.rx.text
             .validate(EmailValidator.self)
             .map { validate in
@@ -141,6 +142,7 @@ extension SignupViewController {
     }
 
     private func bindViewModel() {
+
         viewModel.result
             .asDriver(onErrorJustReturn: nil)
             .drive(onNext: { [weak self] result in
