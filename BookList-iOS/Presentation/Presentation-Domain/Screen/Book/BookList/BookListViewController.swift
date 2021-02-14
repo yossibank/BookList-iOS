@@ -126,7 +126,14 @@ extension BookListViewController: UITableViewDelegate {
             isFavorite: book.isFavorite
         )
 
-        router.push(.editBook(bookId: book.id, bookData: bookData), from: self)
+        router.push(
+            .editBook(
+                bookId: book.id,
+                bookData: bookData,
+                successHandler: resetBookList
+            ),
+            from: self
+        )
     }
 
     func tableView(

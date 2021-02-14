@@ -22,6 +22,7 @@ final class EditBookViewController: UIViewController {
 
     private var viewModel: EditBookViewModel!
     private var bookViewData: BookViewData!
+    private var successHandler: VoidBlock?
 
     private lazy var toolbar: UIToolbar = {
         let toolbar = UIToolbar(
@@ -55,11 +56,13 @@ final class EditBookViewController: UIViewController {
 
     static func createInstance(
         viewModel: EditBookViewModel,
-        bookViewData: BookViewData
+        bookViewData: BookViewData,
+        successHandler: VoidBlock?
     ) -> EditBookViewController {
         let instance = EditBookViewController.instantiateInitialViewController()
         instance.viewModel = viewModel
         instance.bookViewData = bookViewData
+        instance.successHandler = successHandler
         return instance
     }
 
@@ -236,35 +239,16 @@ extension EditBookViewController {
                 switch result {
 
                 case .success(let response):
-
                     self.showAlert(
                         title: Resources.Strings.General.success,
                         message: Resources.Strings.Alert.successEditBook
                     ) { [weak self] in
                         guard let self = self else { return }
-
-                        if let viewControllers = self.navigationController?.viewControllers,
-                           let lastVC = viewControllers.dropLast().last {
-                            switch lastVC {
-
-                            case let bookListVC as BookListViewController:
-                                bookListVC.resetBookList()
-
-                            case let wishListVC as WishListViewController:
-                                self.viewModel.updateFavoriteBook(
-                                    book: self.viewModel.map(
-                                        book: response.result,
-                                        isFavorite: self.bookViewData.isFavorite
-                                    )
-                                )
-                                DispatchQueue.main.async {
-                                    wishListVC.reloadWishList()
-                                }
-
-                            default:
-                                break
-                            }
-                        }
+                        self.viewModel.updateFavoriteBook(
+                            book: response.result,
+                            isFavorite: self.bookViewData.isFavorite
+                        )
+                        self.successHandler?()
                         self.router.dismiss(self)
                     }
 
