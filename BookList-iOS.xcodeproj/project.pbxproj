@@ -36,9 +36,7 @@
 		784E136225B2A209008FD947 /* AddBookResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784E136125B2A209008FD947 /* AddBookResponse.swift */; };
 		784E136C25B2A399008FD947 /* AddBookRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784E136B25B2A399008FD947 /* AddBookRequest.swift */; };
 		784E138225B2F555008FD947 /* NumberValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784E138125B2F555008FD947 /* NumberValidator.swift */; };
-		7854785F25D93F3F00C5B923 /* RxBlocking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 785A1AC625A9A989005E8A4B /* RxBlocking.framework */; };
 		7854786025D93F3F00C5B923 /* RxBlocking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 785A1AC625A9A989005E8A4B /* RxBlocking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		7854786125D93F3F00C5B923 /* RxTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 785A1AC825A9A989005E8A4B /* RxTest.framework */; };
 		7854786225D93F3F00C5B923 /* RxTest.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 785A1AC825A9A989005E8A4B /* RxTest.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		785A1AB725A9A369005E8A4B /* SignupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785A1AB625A9A369005E8A4B /* SignupViewModel.swift */; };
 		785A1ABD25A9A407005E8A4B /* SignupRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785A1ABC25A9A407005E8A4B /* SignupRequest.swift */; };
@@ -332,11 +330,9 @@
 				78997E83259C29D80076FF97 /* nanopb.framework in Frameworks */,
 				78997E8F259C29D80076FF97 /* PromisesObjC.framework in Frameworks */,
 				78231234259C147900D9E723 /* Rswift.framework in Frameworks */,
-				7854785F25D93F3F00C5B923 /* RxBlocking.framework in Frameworks */,
 				785A1AC925A9A989005E8A4B /* RxCocoa.framework in Frameworks */,
 				785A1ACB25A9A989005E8A4B /* RxRelay.framework in Frameworks */,
 				785A1ACF25A9A98A005E8A4B /* RxSwift.framework in Frameworks */,
-				7854786125D93F3F00C5B923 /* RxTest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
