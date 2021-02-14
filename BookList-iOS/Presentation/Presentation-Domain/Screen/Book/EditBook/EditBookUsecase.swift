@@ -3,11 +3,11 @@ import RxRelay
 
 final class EditBookUsecase {
     private let bookId: Int
-    private let resultSubject: BehaviorRelay<Result<EditBookResponse, Error>?> = BehaviorRelay(value: nil)
+    private let resultRelay: BehaviorRelay<Result<EditBookResponse, Error>?> = BehaviorRelay(value: nil)
     private let disposeBag: DisposeBag = DisposeBag()
 
     var result: Observable<Result<EditBookResponse, Error>?> {
-        resultSubject.asObservable()
+        resultRelay.asObservable()
     }
 
     init(bookId: Int) {
@@ -33,10 +33,10 @@ final class EditBookUsecase {
             )
             .subscribe(
                 onSuccess: { [weak self] response in
-                    self?.resultSubject.accept(.success(response))
+                    self?.resultRelay.accept(.success(response))
                 },
                 onFailure: { [weak self] error in
-                    self?.resultSubject.accept(.failure(error))
+                    self?.resultRelay.accept(.failure(error))
                 })
             .disposed(by: disposeBag)
     }

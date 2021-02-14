@@ -3,11 +3,11 @@ import RxRelay
 
 final class HomeViewModel {
     private let usecase: HomeUsecase!
-    private let resultSubject: BehaviorRelay<Result<LogoutResponse, Error>?> = BehaviorRelay(value: nil)
+    private let resultRelay: BehaviorRelay<Result<LogoutResponse, Error>?> = BehaviorRelay(value: nil)
     private let disposeBag: DisposeBag = DisposeBag()
 
     var result: Observable<Result<LogoutResponse, Error>?> {
-        resultSubject.asObservable()
+        resultRelay.asObservable()
     }
 
     init(usecase: HomeUsecase) {
@@ -17,7 +17,7 @@ final class HomeViewModel {
 
     private func bindUsecase() {
         usecase.result
-            .bind(to: resultSubject)
+            .bind(to: resultRelay)
             .disposed(by: disposeBag)
     }
 

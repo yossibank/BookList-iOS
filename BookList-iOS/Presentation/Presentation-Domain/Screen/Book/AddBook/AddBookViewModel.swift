@@ -3,11 +3,11 @@ import RxRelay
 
 final class AddBookViewModel {
     private let usecase: AddBookUsecase!
-    private let resultSubject: BehaviorRelay<Result<AddBookResponse, Error>?> = BehaviorRelay(value: nil)
+    private let resultRelay: BehaviorRelay<Result<AddBookResponse, Error>?> = BehaviorRelay(value: nil)
     private let disposeBag: DisposeBag = DisposeBag()
 
     var result: Observable<Result<AddBookResponse, Error>?> {
-        resultSubject.asObservable()
+        resultRelay.asObservable()
     }
 
     init(usecase: AddBookUsecase) {
@@ -17,7 +17,7 @@ final class AddBookViewModel {
 
     private func bindUsecase() {
         usecase.result
-            .bind(to: resultSubject)
+            .bind(to: resultRelay)
             .disposed(by: disposeBag)
     }
 

@@ -2,11 +2,11 @@ import RxSwift
 import RxRelay
 
 final class AddBookUsecase {
-    private let resultSubject: BehaviorRelay<Result<AddBookResponse, Error>?> = BehaviorRelay(value: nil)
+    private let resultRelay: BehaviorRelay<Result<AddBookResponse, Error>?> = BehaviorRelay(value: nil)
     private let disposeBag: DisposeBag = DisposeBag()
 
     var result: Observable<Result<AddBookResponse, Error>?> {
-        resultSubject.asObservable()
+        resultRelay.asObservable()
     }
 
     func addBook(
@@ -26,10 +26,10 @@ final class AddBookUsecase {
             )
             .subscribe(
                 onSuccess: { [weak self] response in
-                    self?.resultSubject.accept(.success(response))
+                    self?.resultRelay.accept(.success(response))
                 },
                 onFailure: { [weak self] error in
-                    self?.resultSubject.accept(.failure(error))
+                    self?.resultRelay.accept(.failure(error))
                 })
             .disposed(by: disposeBag)
     }

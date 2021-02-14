@@ -3,16 +3,16 @@ import RxRelay
 
 final class LoginViewModel {
     private let usecase: LoginUsecase!
-    private let loadingSubject: BehaviorRelay<Bool> = BehaviorRelay(value: false)
-    private let resultSubject: BehaviorRelay<Result<LoginResponse, Error>?> = BehaviorRelay(value: nil)
+    private let loadingRelay: BehaviorRelay<Bool> = BehaviorRelay(value: false)
+    private let resultRelay: BehaviorRelay<Result<LoginResponse, Error>?> = BehaviorRelay(value: nil)
     private let disposeBag: DisposeBag = DisposeBag()
 
     var loading: Observable<Bool> {
-        loadingSubject.asObservable()
+        loadingRelay.asObservable()
     }
 
     var result: Observable<Result<LoginResponse, Error>?> {
-        resultSubject.asObservable()
+        resultRelay.asObservable()
     }
 
     init(usecase: LoginUsecase) {
@@ -22,11 +22,11 @@ final class LoginViewModel {
 
     private func bindUsecase() {
         usecase.loading
-            .bind(to: loadingSubject)
+            .bind(to: loadingRelay)
             .disposed(by: disposeBag)
 
         usecase.result
-            .bind(to: resultSubject)
+            .bind(to: resultRelay)
             .disposed(by: disposeBag)
     }
 
