@@ -36,7 +36,6 @@
 		784E136225B2A209008FD947 /* AddBookResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784E136125B2A209008FD947 /* AddBookResponse.swift */; };
 		784E136C25B2A399008FD947 /* AddBookRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784E136B25B2A399008FD947 /* AddBookRequest.swift */; };
 		784E138225B2F555008FD947 /* NumberValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784E138125B2F555008FD947 /* NumberValidator.swift */; };
-		7854785C25D93ED000C5B923 /* AddBookTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7854785B25D93ED000C5B923 /* AddBookTests.swift */; };
 		7854785F25D93F3F00C5B923 /* RxBlocking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 785A1AC625A9A989005E8A4B /* RxBlocking.framework */; };
 		7854786025D93F3F00C5B923 /* RxBlocking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 785A1AC625A9A989005E8A4B /* RxBlocking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7854786125D93F3F00C5B923 /* RxTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 785A1AC825A9A989005E8A4B /* RxTest.framework */; };
@@ -206,7 +205,6 @@
 		784E136125B2A209008FD947 /* AddBookResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookResponse.swift; sourceTree = "<group>"; };
 		784E136B25B2A399008FD947 /* AddBookRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookRequest.swift; sourceTree = "<group>"; };
 		784E138125B2F555008FD947 /* NumberValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberValidator.swift; sourceTree = "<group>"; };
-		7854785B25D93ED000C5B923 /* AddBookTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookTests.swift; sourceTree = "<group>"; };
 		785A1AB625A9A369005E8A4B /* SignupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewModel.swift; sourceTree = "<group>"; };
 		785A1ABC25A9A407005E8A4B /* SignupRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupRequest.swift; sourceTree = "<group>"; };
 		785A1AC025A9A416005E8A4B /* SignupResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupResponse.swift; sourceTree = "<group>"; };
@@ -415,7 +413,6 @@
 			children = (
 				78231212259C0D9300D9E723 /* Info.plist */,
 				78231210259C0D9300D9E723 /* BookListTests.swift */,
-				7854785A25D93EA700C5B923 /* AddBook */,
 				788EA34825CE340900B998D7 /* Validation */,
 			);
 			path = "BookList-iOSTests";
@@ -465,14 +462,6 @@
 				784B18EE25BD48F80071C32E /* WishListTableViewCell.xib */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		7854785A25D93EA700C5B923 /* AddBook */ = {
-			isa = PBXGroup;
-			children = (
-				7854785B25D93ED000C5B923 /* AddBookTests.swift */,
-			);
-			path = AddBook;
 			sourceTree = "<group>";
 		};
 		787052D225B06DC900CAAC3E /* Book */ = {
@@ -1197,7 +1186,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7854785C25D93ED000C5B923 /* AddBookTests.swift in Sources */,
 				78E80CA625CE4402006580A2 /* BookValidationTests.swift in Sources */,
 				78D3951525CE2F1600F1E157 /* AccountValidationTests.swift in Sources */,
 				78231211259C0D9300D9E723 /* BookListTests.swift in Sources */,
