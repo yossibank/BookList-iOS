@@ -1,6 +1,8 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import FirebaseFirestore
+import FirebaseAuth
 
 final class SignupViewController: UIViewController {
 
@@ -160,7 +162,28 @@ extension SignupViewController {
 
                 switch result {
 
-                case .success:
+                case .success(let response):
+                    guard let email = self.emailTextField.text,
+                          let password = self.passwordTextField.text
+                    else {
+                        return
+                    }
+
+                    Auth.auth().createUser(withEmail: email, password: password) { result, error in
+                        if let result = result {
+                            print("ユーザー作成完了: \(result)")
+                            Firestore.firestore().collection("users").document(result.user.uid).setData(["id": response.result.id, "email": response.result.email]) { error in
+                                if let error = error {
+                                    print("user情報の保存に失敗しました: \(error)")
+                                    return
+                                }
+                            }
+                        }
+                        if let error = error {
+                            print("ユーザー登録失敗: \(error)")
+                        }
+                    }
+
                     let window = UIApplication.shared.windows.first { $0.isKeyWindow }
                     window?.rootViewController = self.router.initialWindow(.home, type: .navigation)
 
