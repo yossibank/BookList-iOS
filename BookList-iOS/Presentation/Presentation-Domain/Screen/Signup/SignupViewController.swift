@@ -169,20 +169,11 @@ extension SignupViewController {
                         return
                     }
 
-                    Auth.auth().createUser(withEmail: email, password: password) { result, error in
-                        if let result = result {
-                            print("ユーザー作成完了: \(result)")
-                            Firestore.firestore().collection("users").document(result.user.uid).setData(["id": response.result.id, "email": response.result.email]) { error in
-                                if let error = error {
-                                    print("user情報の保存に失敗しました: \(error)")
-                                    return
-                                }
-                            }
-                        }
-                        if let error = error {
-                            print("ユーザー登録失敗: \(error)")
-                        }
-                    }
+                    self.viewModel.createUserForFirebase(
+                        email: email,
+                        password: password,
+                        user: response.result
+                    )
 
                     let window = UIApplication.shared.windows.first { $0.isKeyWindow }
                     window?.rootViewController = self.router.initialWindow(.home, type: .navigation)
