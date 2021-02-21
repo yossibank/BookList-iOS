@@ -10,8 +10,8 @@ struct BookListResponse: Decodable {
         var purchaseDate: String?
     }
 
-    var totalCount: Int
-    var totalPages: Int
-    var currentPage: Int
-    var limit: Int
+    var totalCount: Int?
+    var totalPages: Int?
+    var currentPage: Int?
+    var limit: Int?
 }
