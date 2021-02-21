@@ -45,7 +45,7 @@ final class BookListUsecase {
                 onSuccess: { [weak self] response in
                     self?.bookListRelay.accept(response.result)
                     self?.loadingRelay.accept(false)
-                    self?.totalPage = response.totalPages
+                    self?.totalPage = response.totalPages ?? 0
                 },
                 onFailure: { [weak self] error in
                     self?.loadingRelay.accept(false)

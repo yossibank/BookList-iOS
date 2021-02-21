@@ -44,6 +44,7 @@ extension BookListViewController {
         dataSource = BookListDataSource()
         dataSource.delegate = self
         tableView.register(BookListTableViewCell.xib(), forCellReuseIdentifier: BookListTableViewCell.resourceName)
+        tableView.tableFooterView = UIView()
         tableView.dataSource = dataSource
         tableView.delegate = self
         tableView.rowHeight = 150

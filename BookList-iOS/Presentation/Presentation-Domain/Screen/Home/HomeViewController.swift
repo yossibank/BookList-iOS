@@ -47,6 +47,7 @@ extension HomeViewController {
     private func setupTableView() {
         dataSource = HomeDataSource()
         tableView.register(HomeTableViewCell.xib(), forCellReuseIdentifier: HomeTableViewCell.resourceName)
+        tableView.tableFooterView = UIView()
         tableView.dataSource = dataSource
         tableView.delegate = self
         tableView.rowHeight = 100
