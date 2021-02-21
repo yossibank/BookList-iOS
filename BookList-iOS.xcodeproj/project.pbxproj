@@ -84,7 +84,29 @@
 		78987B38259C8802008311DC /* LoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78987B37259C8802008311DC /* LoginViewController.storyboard */; };
 		78987B3C259C8813008311DC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78987B3B259C8813008311DC /* LoginViewController.swift */; };
 		78997E69259C28970076FF97 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 78997E68259C28970076FF97 /* GoogleService-Info.plist */; };
+		78997E83259C29D80076FF97 /* nanopb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78997E6E259C29D70076FF97 /* nanopb.framework */; };
+		78997E85259C29D80076FF97 /* GoogleDataTransport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78997E6F259C29D70076FF97 /* GoogleDataTransport.framework */; };
+		78997E87259C29D80076FF97 /* FIRAnalyticsConnector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78997E70259C29D70076FF97 /* FIRAnalyticsConnector.framework */; };
+		78997E89259C29D80076FF97 /* FirebaseStorage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78997E71259C29D70076FF97 /* FirebaseStorage.framework */; };
+		78997E8B259C29D80076FF97 /* GoogleUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78997E72259C29D70076FF97 /* GoogleUtilities.framework */; };
+		78997E8D259C29D80076FF97 /* abseil.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78997E73259C29D70076FF97 /* abseil.framework */; };
+		78997E8F259C29D80076FF97 /* PromisesObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78997E74259C29D70076FF97 /* PromisesObjC.framework */; };
+		78997E91259C29D80076FF97 /* GTMSessionFetcher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78997E75259C29D70076FF97 /* GTMSessionFetcher.framework */; };
+		78997E93259C29D80076FF97 /* gRPC-Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78997E76259C29D70076FF97 /* gRPC-Core.framework */; };
+		78997E95259C29D80076FF97 /* FirebaseCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78997E77259C29D70076FF97 /* FirebaseCore.framework */; };
+		78997E97259C29D80076FF97 /* FirebaseCoreDiagnostics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78997E78259C29D70076FF97 /* FirebaseCoreDiagnostics.framework */; };
+		78997E99259C29D80076FF97 /* FirebaseInstallations.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78997E79259C29D70076FF97 /* FirebaseInstallations.framework */; };
+		78997E9D259C29D80076FF97 /* FirebaseAuth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78997E7B259C29D80076FF97 /* FirebaseAuth.framework */; };
+		78997E9F259C29D80076FF97 /* CodableFirebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78997E7C259C29D80076FF97 /* CodableFirebase.framework */; };
+		78997EA0259C29D80076FF97 /* CodableFirebase.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 78997E7C259C29D80076FF97 /* CodableFirebase.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		78997EA1259C29D80076FF97 /* gRPC-C++.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78997E7D259C29D80076FF97 /* gRPC-C++.framework */; };
+		78997EA3259C29D80076FF97 /* BoringSSL-GRPC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78997E7E259C29D80076FF97 /* BoringSSL-GRPC.framework */; };
+		78997EA5259C29D80076FF97 /* GoogleAppMeasurement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78997E7F259C29D80076FF97 /* GoogleAppMeasurement.framework */; };
+		78997EA7259C29D80076FF97 /* FirebaseFirestore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78997E80259C29D80076FF97 /* FirebaseFirestore.framework */; };
+		78997EA9259C29D80076FF97 /* FirebaseAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78997E81259C29D80076FF97 /* FirebaseAnalytics.framework */; };
+		78997EAB259C29D80076FF97 /* leveldb-library.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78997E82259C29D80076FF97 /* leveldb-library.framework */; };
 		78997EE5259C4C5E0076FF97 /* UIView-IBInspectable-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78997EE4259C4C5E0076FF97 /* UIView-IBInspectable-Extensions.swift */; };
+		78A7D7CC25E2306400D854C4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 78A7D7CB25E2306400D854C4 /* GoogleService-Info.plist */; };
 		78B29D0125B3124A00A7DC7F /* TitleValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B29D0025B3124A00A7DC7F /* TitleValidator.swift */; };
 		78B29D0D25B3277700A7DC7F /* EditBookResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B29D0C25B3277700A7DC7F /* EditBookResponse.swift */; };
 		78B29D1125B32A5D00A7DC7F /* EditBookRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B29D1025B32A5D00A7DC7F /* EditBookRequest.swift */; };
@@ -220,7 +242,6 @@
 		7892EF78259C73C9006F7315 /* KeyboardNotifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardNotifier.swift; sourceTree = "<group>"; };
 		78987B37259C8802008311DC /* LoginViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginViewController.storyboard; sourceTree = "<group>"; };
 		78987B3B259C8813008311DC /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		78997E68259C28970076FF97 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		78997E6E259C29D70076FF97 /* nanopb.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = nanopb.framework; path = Carthage/Build/iOS/nanopb.framework; sourceTree = "<group>"; };
 		78997E6F259C29D70076FF97 /* GoogleDataTransport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleDataTransport.framework; path = Carthage/Build/iOS/GoogleDataTransport.framework; sourceTree = "<group>"; };
 		78997E70259C29D70076FF97 /* FIRAnalyticsConnector.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FIRAnalyticsConnector.framework; path = Carthage/Build/iOS/FIRAnalyticsConnector.framework; sourceTree = "<group>"; };
@@ -242,6 +263,7 @@
 		78997E81259C29D80076FF97 /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAnalytics.framework; path = Carthage/Build/iOS/FirebaseAnalytics.framework; sourceTree = "<group>"; };
 		78997E82259C29D80076FF97 /* leveldb-library.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "leveldb-library.framework"; path = "Carthage/Build/iOS/leveldb-library.framework"; sourceTree = "<group>"; };
 		78997EE4259C4C5E0076FF97 /* UIView-IBInspectable-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView-IBInspectable-Extensions.swift"; sourceTree = "<group>"; };
+		78A7D7CB25E2306400D854C4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		78B29D0025B3124A00A7DC7F /* TitleValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleValidator.swift; sourceTree = "<group>"; };
 		78B29D0C25B3277700A7DC7F /* EditBookResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBookResponse.swift; sourceTree = "<group>"; };
 		78B29D1025B32A5D00A7DC7F /* EditBookRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBookRequest.swift; sourceTree = "<group>"; };
@@ -654,7 +676,7 @@
 			isa = PBXGroup;
 			children = (
 				78231207259C0D9300D9E723 /* Info.plist */,
-				78997E68259C28970076FF97 /* GoogleService-Info.plist */,
+				78A7D7CB25E2306400D854C4 /* GoogleService-Info.plist */,
 			);
 			path = InfoPlist;
 			sourceTree = "<group>";
@@ -971,7 +993,6 @@
 			files = (
 				78231203259C0D9300D9E723 /* Assets.xcassets in Resources */,
 				78DEE7B525AAD4D500219963 /* Localizable.strings in Resources */,
-				78997E69259C28970076FF97 /* GoogleService-Info.plist in Resources */,
 				78231206259C0D9300D9E723 /* LaunchScreen.storyboard in Resources */,
 				78231201259C0D9200D9E723 /* SignupViewController.storyboard in Resources */,
 				78987B38259C8802008311DC /* LoginViewController.storyboard in Resources */,
@@ -983,6 +1004,7 @@
 				784B18F025BD48F80071C32E /* WishListTableViewCell.xib in Resources */,
 				78844C6525B0874100C9AEC0 /* AddBookViewController.storyboard in Resources */,
 				78B29D2225B3311A00A7DC7F /* EditBookViewController.storyboard in Resources */,
+				78A7D7CC25E2306400D854C4 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
