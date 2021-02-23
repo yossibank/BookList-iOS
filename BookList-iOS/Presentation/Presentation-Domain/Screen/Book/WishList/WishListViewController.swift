@@ -37,12 +37,14 @@ extension WishListViewController {
     private func setupTableView() {
         dataSource = WishListDataSource(viewModel: viewModel)
         tableView.register(WishListTableViewCell.xib(), forCellReuseIdentifier: WishListTableViewCell.resourceName)
+        tableView.tableFooterView = UIView()
         tableView.dataSource = dataSource
         tableView.delegate = self
         tableView.rowHeight = 150
     }
 
-    func reloadWishList(_: BookViewData) {
+    func reloadWishList(book: BookViewData) {
+        viewModel.updateBook(book: book)
         tableView.reloadData()
     }
 }
