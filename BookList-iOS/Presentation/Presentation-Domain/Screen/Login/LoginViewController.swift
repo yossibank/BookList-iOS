@@ -48,36 +48,30 @@ extension LoginViewController {
     }
 
     private func setupButton() {
-        secureButton.addTarget(
-            self,
-            action: #selector(secureButtonTapped),
-            for: .touchUpInside
-        )
+        secureButton.rx.tap.subscribe { [weak self] _ in
+            self?.secureButtonTapped()
+        }.disposed(by: disposeBag)
 
-        loginButton.addTarget(
-            self,
-            action: #selector(loginButtonTapped),
-            for: .touchUpInside
-        )
-
-        signupButton.addTarget(
-            self,
-            action: #selector(signupButtonTapped),
-            for: .touchUpInside
-        )
+        loginButton.rx.tap.subscribe { [weak self] _ in
+            self?.loginButtonTapped()
+        }.disposed(by: disposeBag)
+        
+        signupButton.rx.tap.subscribe { [weak self] _ in
+            self?.signupButtonTapped()
+        }.disposed(by: disposeBag)
     }
 
-    @objc private func secureButtonTapped(_ sender: UIButton) {
+    private func secureButtonTapped() {
         let secureImage = isSecureCheck
             ? Resources.Images.Account.checkInBox
             : Resources.Images.Account.checkOffBox
-        sender.setImage(secureImage, for: .normal)
+        secureButton.setImage(secureImage, for: .normal)
 
         passwordTextField.isSecureTextEntry = isSecureCheck ? false : true
         isSecureCheck = !isSecureCheck
     }
 
-    @objc private func loginButtonTapped(_ sender: UIButton) {
+    private func loginButtonTapped() {
         if let email = emailTextField.text,
            let password = passwordTextField.text {
             viewModel.login(
@@ -87,7 +81,7 @@ extension LoginViewController {
         }
     }
 
-    @objc private func signupButtonTapped(_ sender: UIButton) {
+    private func signupButtonTapped() {
         if presentingViewController is SignupViewController {
             self.dismiss(animated: true)
         } else {
