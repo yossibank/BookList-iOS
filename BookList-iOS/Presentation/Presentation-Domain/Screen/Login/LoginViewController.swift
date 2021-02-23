@@ -124,6 +124,10 @@ extension LoginViewController {
                 return !(isEmailEmpty || isPasswordEmpty)
             }
             .subscribe(onNext: { [weak self] isEnabled in
+                let isEnabled = isEnabled
+                    && self?.validateEmailLabel.text == nil
+                    && self?.validatePasswordLabel.text == nil
+
                 self?.loginButton.alpha = isEnabled ? 1.0 : 0.5
                 self?.loginButton.isEnabled = isEnabled
             })
