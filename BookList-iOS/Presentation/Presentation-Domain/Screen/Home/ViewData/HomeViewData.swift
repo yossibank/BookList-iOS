@@ -10,6 +10,7 @@ struct HomeViewData {
         case bookList
         case addBook
         case wishList
+        case chatSelect
 
         var rawValue: RawValue {
 
@@ -32,6 +33,12 @@ struct HomeViewData {
                     title: Resources.Strings.App.wishList,
                     image: Resources.Images.Home.wishList
                 )
+
+            case .chatSelect:
+                return HomeViewData(
+                    title: Resources.Strings.App.chat,
+                    image: Resources.Images.Home.chat
+                )
             }
         }
 
@@ -47,6 +54,9 @@ struct HomeViewData {
 
             case .wishList:
                 return .wishList
+
+            case .chatSelect:
+                return .chatSelect
             }
         }
     }

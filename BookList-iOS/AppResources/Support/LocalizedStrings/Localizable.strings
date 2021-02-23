@@ -26,6 +26,7 @@
 "book_list" = "書籍一覧";
 "add_book" = "書籍追加";
 "wish_list_book" = "お気に入り書籍";
+"chat" = "チャット";
 
 // MARK: - バリデーション
 "not_filled" = "%@が入力されていません";
