@@ -29,4 +29,21 @@ final class FirebaseAuthManager {
             }
         }
     }
+
+    func signIn(
+        email: String,
+        password: String
+    ) {
+        Auth.auth().signIn(
+            withEmail: email,
+            password: password
+        ) { user, error in
+            if user == nil, let error = error {
+                print("userがログインに失敗しました: \(error)")
+            }
+            if let user = user {
+                Logger.info("success signIn user: \(String(describing: user.user.email))")
+            }
+        }
+    }
 }

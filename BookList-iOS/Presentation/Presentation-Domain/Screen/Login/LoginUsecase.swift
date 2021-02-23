@@ -28,6 +28,7 @@ final class LoginUsecase {
                 onSuccess: { [weak self] response in
                     self?.loadingRelay.accept(false)
                     self?.resultRelay.accept(.success(response))
+                    self?.signInForFirebase(email: email, password: password)
                     KeychainManager.shared.setToken(response.result.token)
                 },
                 onFailure: { [weak self] error in
@@ -35,5 +36,15 @@ final class LoginUsecase {
                     self?.resultRelay.accept(.failure(error))
                 })
             .disposed(by: disposeBag)
+    }
+
+    private func signInForFirebase(
+        email: String,
+        password: String
+    ) {
+        FirebaseAuthManager.shared.signIn(
+            email: email,
+            password: password
+        )
     }
 }
