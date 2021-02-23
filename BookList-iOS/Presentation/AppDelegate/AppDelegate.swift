@@ -1,10 +1,3 @@
-//
-//  AppDelegate.swift
-//  Collections
-//
-//  Created by KAMIYAMA YOSHIHITO on 2020/12/30.
-//
-
 import UIKit
 import Firebase
 
@@ -20,11 +13,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
 
+        FirebaseApp.configure()
+
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = router.initialWindow(.login, type: .normal)
         window?.makeKeyAndVisible()
-
-        FirebaseApp.configure()
 
         return true
     }

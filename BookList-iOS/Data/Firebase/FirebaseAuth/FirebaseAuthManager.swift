@@ -2,16 +2,20 @@ import FirebaseAuth
 
 final class FirebaseAuthManager {
 
-    typealias User = SignupResponse.User
+    typealias SignupUser = SignupResponse.User
 
     static let shared = FirebaseAuthManager()
+
+    var currentUser: User? {
+        Auth.auth().currentUser
+    }
 
     private init() { }
 
     func createUserWithFirestore(
         email: String,
         password: String,
-        user: User
+        user: SignupUser
     ) {
         Auth.auth().createUser(
             withEmail: email,
@@ -44,6 +48,18 @@ final class FirebaseAuthManager {
             if let user = user {
                 Logger.info("success signIn user: \(String(describing: user.user.email))")
             }
+        }
+    }
+
+    func logout() {
+        if Auth.auth().currentUser != nil {
+            do {
+                try Auth.auth().signOut()
+            } catch {
+                Logger.error("failed logout \(error.localizedDescription)")
+            }
+        } else {
+            return
         }
     }
 }

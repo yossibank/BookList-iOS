@@ -14,12 +14,17 @@ final class HomeUsecase {
             .request(.init())
             .subscribe(
                 onSuccess: { [weak self] response in
-                    self?.resultRelay.accept(.success(response))
                     KeychainManager.shared.removeToken()
+                    self?.resultRelay.accept(.success(response))
+                    self?.logoutForFirebase()
                 },
                 onFailure: { [weak self] error in
                     self?.resultRelay.accept(.failure(error))
                 })
             .disposed(by: disposeBag)
+    }
+
+    private func logoutForFirebase() {
+        FirebaseAuthManager.shared.logout()
     }
 }
