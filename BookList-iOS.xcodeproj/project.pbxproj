@@ -66,6 +66,8 @@
 		784E136225B2A209008FD947 /* AddBookResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784E136125B2A209008FD947 /* AddBookResponse.swift */; };
 		784E136C25B2A399008FD947 /* AddBookRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784E136B25B2A399008FD947 /* AddBookRequest.swift */; };
 		784E138225B2F555008FD947 /* NumberValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784E138125B2F555008FD947 /* NumberValidator.swift */; };
+		78524FC925E533E3002AEF87 /* ChatRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78524FC825E533E3002AEF87 /* ChatRoomViewController.swift */; };
+		78524FCD25E533FA002AEF87 /* ChatRoomViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78524FCC25E533FA002AEF87 /* ChatRoomViewController.storyboard */; };
 		785A1AB725A9A369005E8A4B /* SignupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785A1AB625A9A369005E8A4B /* SignupViewModel.swift */; };
 		785A1ABD25A9A407005E8A4B /* SignupRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785A1ABC25A9A407005E8A4B /* SignupRequest.swift */; };
 		785A1AC125A9A416005E8A4B /* SignupResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785A1AC025A9A416005E8A4B /* SignupResponse.swift */; };
@@ -233,6 +235,8 @@
 		784E136125B2A209008FD947 /* AddBookResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookResponse.swift; sourceTree = "<group>"; };
 		784E136B25B2A399008FD947 /* AddBookRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookRequest.swift; sourceTree = "<group>"; };
 		784E138125B2F555008FD947 /* NumberValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberValidator.swift; sourceTree = "<group>"; };
+		78524FC825E533E3002AEF87 /* ChatRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomViewController.swift; sourceTree = "<group>"; };
+		78524FCC25E533FA002AEF87 /* ChatRoomViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChatRoomViewController.storyboard; sourceTree = "<group>"; };
 		785A1AB625A9A369005E8A4B /* SignupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewModel.swift; sourceTree = "<group>"; };
 		785A1ABC25A9A407005E8A4B /* SignupRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupRequest.swift; sourceTree = "<group>"; };
 		785A1AC025A9A416005E8A4B /* SignupResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupResponse.swift; sourceTree = "<group>"; };
@@ -499,6 +503,24 @@
 				784B18EE25BD48F80071C32E /* WishListTableViewCell.xib */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		78524FC625E533A6002AEF87 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				78C7F3A525E52597005E9E2B /* ChatSelect */,
+				78524FC725E533BE002AEF87 /* ChatRoom */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		78524FC725E533BE002AEF87 /* ChatRoom */ = {
+			isa = PBXGroup;
+			children = (
+				78524FC825E533E3002AEF87 /* ChatRoomViewController.swift */,
+				78524FCC25E533FA002AEF87 /* ChatRoomViewController.storyboard */,
+			);
+			path = ChatRoom;
 			sourceTree = "<group>";
 		};
 		7862C15225E2591800F1645A /* Firebase */ = {
@@ -790,7 +812,7 @@
 				78987B36259C87EE008311DC /* Login */,
 				78DEE7CA25AB004800219963 /* Home */,
 				787052D225B06DC900CAAC3E /* Book */,
-				78C7F3A525E52597005E9E2B /* ChatSelect */,
+				78524FC625E533A6002AEF87 /* Chat */,
 			);
 			path = Screen;
 			sourceTree = "<group>";
@@ -1082,6 +1104,7 @@
 				78DEE7DF25AB02A200219963 /* HomeTableViewCell.xib in Resources */,
 				78CF3AEF25ABF81400ADBB60 /* BookListViewController.storyboard in Resources */,
 				78CF3AF925ABF85D00ADBB60 /* BookListTableViewCell.xib in Resources */,
+				78524FCD25E533FA002AEF87 /* ChatRoomViewController.storyboard in Resources */,
 				78DE1D6D25BD424800A2C0F2 /* WishListViewController.storyboard in Resources */,
 				784B18F025BD48F80071C32E /* WishListTableViewCell.xib in Resources */,
 				78844C6525B0874100C9AEC0 /* AddBookViewController.storyboard in Resources */,
@@ -1203,6 +1226,7 @@
 				78E609D325AA04300041B3D0 /* LoginViewModel.swift in Sources */,
 				78DCC90425B7048E006FFF0F /* LogoutResponse.swift in Sources */,
 				7821A5D025E25C5B0006DE50 /* FirebaseAuthManager.swift in Sources */,
+				78524FC925E533E3002AEF87 /* ChatRoomViewController.swift in Sources */,
 				781C318725B5AFE100C11D77 /* KeychainManager.swift in Sources */,
 				78DEE7E625AB0BD800219963 /* HomeViewData.swift in Sources */,
 				78E609FB25AAABF80041B3D0 /* PasswordValidator.swift in Sources */,

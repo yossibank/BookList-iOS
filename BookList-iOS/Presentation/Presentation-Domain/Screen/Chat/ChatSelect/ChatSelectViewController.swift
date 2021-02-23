@@ -4,6 +4,8 @@ final class ChatSelectViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
 
+    private let router: RouterProtocol = Router()
+
     static func createInstance() -> ChatSelectViewController {
         let instance = ChatSelectViewController.instantiateInitialViewController()
         return instance
@@ -25,6 +27,13 @@ final class ChatSelectViewController: UIViewController {
 
 extension ChatSelectViewController: UITableViewDelegate {
 
+    func tableView(
+        _ tableView: UITableView,
+        didSelectRowAt indexPath: IndexPath
+    ) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        router.push(.chatRoom, from: self)
+    }
 }
 
 extension ChatSelectViewController: UITableViewDataSource {

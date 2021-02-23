@@ -133,6 +133,7 @@ enum Route {
          )
     case wishList
     case chatSelect
+    case chatRoom
 
     fileprivate func viewController() -> UIViewController {
 
@@ -172,6 +173,9 @@ enum Route {
 
         case .chatSelect:
             viewController = Resources.ViewControllers.App.chatSelect()
+
+        case .chatRoom:
+            viewController = Resources.ViewControllers.App.chatRoom()
 
         }
 

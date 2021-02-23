@@ -74,6 +74,11 @@ extension Resources {
                 let vc = ChatSelectViewController.createInstance()
                 return vc
             }
+
+            func chatRoom() -> ChatRoomViewController {
+                let vc = ChatRoomViewController.createInstance()
+                return vc
+            }
         }
     }
 }
