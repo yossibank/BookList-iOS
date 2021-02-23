@@ -50,30 +50,24 @@ extension SignupViewController {
     }
 
     private func setupButton() {
-        secureButton.addTarget(
-            self,
-            action: #selector(secureButtonTapped),
-            for: .touchUpInside
-        )
+        secureButton.rx.tap.subscribe { [weak self] _ in
+            self?.secureButtonTapped()
+        }.disposed(by: disposeBag)
 
-        signupButton.addTarget(
-            self,
-            action: #selector(signupButtonTapped),
-            for: .touchUpInside
-        )
+        signupButton.rx.tap.subscribe { [weak self] _ in
+            self?.signupButtonTapped()
+        }.disposed(by: disposeBag)
 
-        loginButton.addTarget(
-            self,
-            action: #selector(loginButtonTapped),
-            for: .touchUpInside
-        )
+        loginButton.rx.tap.subscribe { [weak self] _ in
+            self?.loginButtonTapped()
+        }.disposed(by: disposeBag)
     }
 
-    @objc private func secureButtonTapped(_ sender: UIButton) {
+    private func secureButtonTapped() {
         let secureImage = isSecureCheck
             ? Resources.Images.Account.checkInBox
             : Resources.Images.Account.checkOffBox
-        sender.setImage(secureImage, for: .normal)
+        secureButton.setImage(secureImage, for: .normal)
 
         [passwordTextField, passwordConfirmationTextField].forEach {
             $0?.isSecureTextEntry = isSecureCheck ? false : true
@@ -81,7 +75,7 @@ extension SignupViewController {
         isSecureCheck = !isSecureCheck
     }
 
-    @objc private func signupButtonTapped(_ sender: UIButton) {
+    private func signupButtonTapped() {
         if let email = emailTextField.text,
            let password = passwordTextField.text {
             viewModel.signup(
@@ -91,9 +85,9 @@ extension SignupViewController {
         }
     }
 
-    @objc private func loginButtonTapped(_ sender: UIButton) {
+    private func loginButtonTapped() {
         if presentingViewController is LoginViewController {
-            self.dismiss(animated: true)
+            dismiss(animated: true)
         } else {
             router.present(
                 .login,
