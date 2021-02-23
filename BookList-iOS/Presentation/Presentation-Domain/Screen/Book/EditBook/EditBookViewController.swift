@@ -99,17 +99,35 @@ extension EditBookViewController {
     }
 
     private func setupButton() {
-        imageSelectButton.addTarget(
-            self,
-            action: #selector(setupPhotoLibrary),
-            for: .touchUpInside
-        )
+        imageSelectButton.rx.tap.subscribe { [weak self] _ in
+            self?.setupPhotoLibrary()
+        }.disposed(by: disposeBag)
 
-        takingPictureButton.addTarget(
-            self,
-            action: #selector(setupLaunchCamera),
-            for: .touchUpInside
-        )
+        takingPictureButton.rx.tap.subscribe { [weak self] _ in
+            self?.setupLaunchCamera()
+        }.disposed(by: disposeBag)
+    }
+
+    private func setupPhotoLibrary() {
+        let photoLibrary = UIImagePickerController.SourceType.photoLibrary
+
+        if UIImagePickerController.isSourceTypeAvailable(photoLibrary) {
+            let picker = UIImagePickerController()
+            picker.sourceType = .photoLibrary
+            picker.delegate = self
+            self.present(picker, animated: true)
+        }
+    }
+
+    private func setupLaunchCamera() {
+        let camera = UIImagePickerController.SourceType.camera
+
+        if UIImagePickerController.isSourceTypeAvailable(camera) {
+            let picker = UIImagePickerController()
+            picker.sourceType = .camera
+            picker.delegate = self
+            self.present(picker, animated: true)
+        }
     }
 
     @objc private  func editBookButtonTapped() {
@@ -136,28 +154,6 @@ extension EditBookViewController {
         bookPurchaseDateTextField.text =
             UIDatePicker.purchaseDatePicker.date.toConvertString(with: .yearToDayOfWeekJapanese)
         bookPurchaseDateTextField.endEditing(true)
-    }
-
-    @objc private func setupPhotoLibrary() {
-        let photoLibrary = UIImagePickerController.SourceType.photoLibrary
-
-        if UIImagePickerController.isSourceTypeAvailable(photoLibrary) {
-            let picker = UIImagePickerController()
-            picker.sourceType = .photoLibrary
-            picker.delegate = self
-            self.present(picker, animated: true)
-        }
-    }
-
-    @objc private func setupLaunchCamera() {
-        let camera = UIImagePickerController.SourceType.camera
-
-        if UIImagePickerController.isSourceTypeAvailable(camera) {
-            let picker = UIImagePickerController()
-            picker.sourceType = .camera
-            picker.delegate = self
-            self.present(picker, animated: true)
-        }
     }
 }
 
