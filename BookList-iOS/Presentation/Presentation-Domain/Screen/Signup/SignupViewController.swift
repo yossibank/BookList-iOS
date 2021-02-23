@@ -162,19 +162,7 @@ extension SignupViewController {
 
                 switch result {
 
-                case .success(let response):
-                    guard let email = self.emailTextField.text,
-                          let password = self.passwordTextField.text
-                    else {
-                        return
-                    }
-
-                    self.viewModel.createUserForFirebase(
-                        email: email,
-                        password: password,
-                        user: response.result
-                    )
-
+                case .success:
                     let window = UIApplication.shared.windows.first { $0.isKeyWindow }
                     window?.rootViewController = self.router.initialWindow(.home, type: .navigation)
 

@@ -26,14 +26,31 @@ final class SignupUsecase {
                         password: password))
             .subscribe(
                 onSuccess: { [weak self] response in
+                    KeychainManager.shared.setToken(response.result.token)
                     self?.loadingRelay.accept(false)
                     self?.resultRelay.accept(.success(response))
-                    KeychainManager.shared.setToken(response.result.token)
+                    self?.createUserForFirebase(
+                        email: email,
+                        password: password,
+                        user: response.result
+                    )
                 },
                 onFailure: { [weak self] error in
                     self?.loadingRelay.accept(false)
                     self?.resultRelay.accept(.failure(error))
                 })
             .disposed(by: disposeBag)
+    }
+
+    private func createUserForFirebase(
+        email: String,
+        password: String,
+        user: SignupResponse.User
+    ) {
+        FirebaseAuthManager.shared.createUserWithFirestore(
+            email: email,
+            password: password,
+            user: user
+        )
     }
 }

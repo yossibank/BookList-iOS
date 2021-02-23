@@ -39,16 +39,4 @@ final class SignupViewModel {
             password: password
         )
     }
-
-    func createUserForFirebase(
-        email: String,
-        password: String,
-        user: SignupResponse.User
-    ) {
-        FirebaseAuthManager.shared.createUserWithFirestore(
-            email: email,
-            password: password,
-            user: user
-        )
-    }
 }

@@ -26,10 +26,13 @@ final class LoginUsecase {
                         password: password))
             .subscribe(
                 onSuccess: { [weak self] response in
+                    KeychainManager.shared.setToken(response.result.token)
                     self?.loadingRelay.accept(false)
                     self?.resultRelay.accept(.success(response))
-                    self?.signInForFirebase(email: email, password: password)
-                    KeychainManager.shared.setToken(response.result.token)
+                    self?.signInForFirebase(
+                        email: email,
+                        password: password
+                    )
                 },
                 onFailure: { [weak self] error in
                     self?.loadingRelay.accept(false)
