@@ -8,5 +8,18 @@ final class ChatRoomTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+
+        userIconImageView.backgroundColor = .white
+
+        addSubview(
+            BalloonView(
+                frame: CGRect(
+                    x: userMessageTextView.frame.minX - 10,
+                    y: userMessageTextView.frame.minY - 5,
+                    width: 30,
+                    height: 30
+                )
+            )
+        )
     }
 }
