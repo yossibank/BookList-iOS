@@ -246,7 +246,6 @@ extension EditBookViewController {
                             isFavorite: self.bookViewData.isFavorite
                         )
 
-                        self.viewModel.updateBook(book: bookData)
                         self.successHandler?(bookData)
                         self.router.dismiss(self)
                     }
