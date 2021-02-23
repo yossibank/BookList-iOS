@@ -77,7 +77,8 @@ extension SignupViewController {
 
     private func signupButtonTapped() {
         if let email = emailTextField.text,
-           let password = passwordTextField.text {
+           let password = passwordTextField.text
+        {
             viewModel.signup(
                 email: email,
                 password: password
@@ -139,8 +140,8 @@ extension SignupViewController {
                 emailTextField.rx.text.orEmpty.map { $0.isEmpty },
                 passwordTextField.rx.text.orEmpty.map { $0.isEmpty },
                 passwordConfirmationTextField.rx.text.orEmpty.map { $0.isEmpty })
-            .map { isEmailEmpty, isPasswordEmpty, isPasswordConfirmationEmpty -> Bool in
-                return !(isEmailEmpty ||  isPasswordEmpty || isPasswordConfirmationEmpty)
+            .map { isEmailEmpty, isPasswordEmpty, isPasswordConfirmationEmpty in
+                !(isEmailEmpty ||  isPasswordEmpty || isPasswordConfirmationEmpty)
             }
             .subscribe(onNext: { [weak self] isEnabled in
                 self?.signupButton.alpha = isEnabled ? 1.0 : 0.5

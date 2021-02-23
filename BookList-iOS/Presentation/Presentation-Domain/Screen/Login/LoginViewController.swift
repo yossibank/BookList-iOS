@@ -73,7 +73,8 @@ extension LoginViewController {
 
     private func loginButtonTapped() {
         if let email = emailTextField.text,
-           let password = passwordTextField.text {
+           let password = passwordTextField.text
+        {
             viewModel.login(
                 email: email,
                 password: password
@@ -113,6 +114,19 @@ extension LoginViewController {
             }
             .skip(2)
             .bind(to: validatePasswordLabel.rx.text)
+            .disposed(by: disposeBag)
+
+        Observable
+            .combineLatest(
+                emailTextField.rx.text.orEmpty.map { $0.isEmpty },
+                passwordTextField.rx.text.orEmpty.map { $0.isEmpty })
+            .map { isEmailEmpty, isPasswordEmpty in
+                return !(isEmailEmpty || isPasswordEmpty)
+            }
+            .subscribe(onNext: { [weak self] isEnabled in
+                self?.loginButton.alpha = isEnabled ? 1.0 : 0.5
+                self?.loginButton.isEnabled = isEnabled
+            })
             .disposed(by: disposeBag)
     }
 
