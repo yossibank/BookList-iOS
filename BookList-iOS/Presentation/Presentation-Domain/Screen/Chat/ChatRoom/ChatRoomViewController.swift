@@ -15,7 +15,7 @@ final class ChatRoomViewController: UIViewController {
     }
 
     private func setupTableView() {
-        tableView.register(ChatRoomTableViewCell.xib(), forCellReuseIdentifier: ChatRoomTableViewCell.resourceName)
+        tableView.register(OtherMessageTableViewCell.xib(), forCellReuseIdentifier: OtherMessageTableViewCell.resourceName)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.estimatedRowHeight = 80
@@ -41,11 +41,11 @@ extension ChatRoomViewController: UITableViewDataSource {
         cellForRowAt indexPath: IndexPath
     ) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(
-            withIdentifier: ChatRoomTableViewCell.resourceName,
+            withIdentifier: OtherMessageTableViewCell.resourceName,
             for: indexPath
         )
 
-        if let chatRoomCell = cell as? ChatRoomTableViewCell {
+        if let chatRoomCell = cell as? OtherMessageTableViewCell {
             chatRoomCell.backgroundColor = .clear
         }
 

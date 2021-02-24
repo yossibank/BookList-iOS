@@ -1,6 +1,6 @@
 import UIKit
 
-final class BalloonView: UIView {
+final class MyMessageBalloonView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)

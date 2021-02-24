@@ -1,6 +1,6 @@
 import UIKit
 
-final class ChatRoomTableViewCell: UITableViewCell {
+final class OtherMessageTableViewCell: UITableViewCell {
 
     @IBOutlet weak var userIconImageView: UIImageView!
     @IBOutlet weak var userMessageTextView: UITextView!
@@ -12,7 +12,7 @@ final class ChatRoomTableViewCell: UITableViewCell {
         userIconImageView.backgroundColor = .white
 
         addSubview(
-            BalloonView(
+            MyMessageBalloonView(
                 frame: CGRect(
                     x: userMessageTextView.frame.minX - 10,
                     y: userMessageTextView.frame.minY - 5,
