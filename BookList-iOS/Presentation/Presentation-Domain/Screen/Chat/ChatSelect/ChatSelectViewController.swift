@@ -21,7 +21,7 @@ final class ChatSelectViewController: UIViewController {
         tableView.tableFooterView = UIView()
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.rowHeight = 100
+        tableView.rowHeight = 80
     }
 }
 

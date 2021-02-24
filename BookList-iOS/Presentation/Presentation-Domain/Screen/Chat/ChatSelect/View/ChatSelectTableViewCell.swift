@@ -9,5 +9,7 @@ final class ChatSelectTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        userIconImageView.backgroundColor = .white
     }
 }
