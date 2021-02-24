@@ -403,6 +403,7 @@
 		781B121B25E69A75006968ED /* OtherMessageCell */ = {
 			isa = PBXGroup;
 			children = (
+				78299CED25E69E15001868FB /* OtherMessageBalloonView.swift */,
 				78B8A68E25E54021005BCB16 /* OtherMessageTableViewCell.swift */,
 				78B8A68F25E54021005BCB16 /* OtherMessageTableViewCell.xib */,
 			);
@@ -520,6 +521,7 @@
 		78299CE625E69CFD001868FB /* MyMessageCell */ = {
 			isa = PBXGroup;
 			children = (
+				78B8A69525E54AEB005BCB16 /* MyMessageBalloonView.swift */,
 				78299CE725E69D0D001868FB /* MyMessageTableViewCell.swift */,
 				78299CE825E69D0D001868FB /* MyMessageTableViewCell.xib */,
 			);
@@ -883,18 +885,8 @@
 			children = (
 				78299CE625E69CFD001868FB /* MyMessageCell */,
 				781B121B25E69A75006968ED /* OtherMessageCell */,
-				78B8A69425E54A99005BCB16 /* Balloon */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		78B8A69425E54A99005BCB16 /* Balloon */ = {
-			isa = PBXGroup;
-			children = (
-				78B8A69525E54AEB005BCB16 /* MyMessageBalloonView.swift */,
-				78299CED25E69E15001868FB /* OtherMessageBalloonView.swift */,
-			);
-			path = Balloon;
 			sourceTree = "<group>";
 		};
 		78C61C0C25A1654600DC78A6 /* API */ = {
