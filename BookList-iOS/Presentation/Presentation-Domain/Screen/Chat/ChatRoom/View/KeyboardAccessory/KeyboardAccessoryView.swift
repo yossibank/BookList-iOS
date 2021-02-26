@@ -2,6 +2,9 @@ import UIKit
 
 final class KeyboardAccessoryView: UIView {
 
+    @IBOutlet weak var sendTextView: UITextView!
+    @IBOutlet weak var sendButton: UIButton!
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         initializeLayout()

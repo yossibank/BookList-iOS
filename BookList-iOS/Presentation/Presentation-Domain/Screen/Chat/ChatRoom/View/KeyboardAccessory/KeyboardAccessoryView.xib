@@ -42,6 +42,10 @@
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="RiC-Ge-Lc6" secondAttribute="trailing" constant="10" id="aEa-IH-4OK"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="sendButton" destination="RiC-Ge-Lc6" id="bQa-ir-DcE"/>
+                <outlet property="sendTextView" destination="tmY-AB-acX" id="rDS-zZ-UMh"/>
+            </connections>
             <point key="canvasLocation" x="147.82608695652175" y="-130.91517857142856"/>
         </view>
     </objects>
