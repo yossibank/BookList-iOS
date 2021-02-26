@@ -4,6 +4,12 @@ final class ChatRoomViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
 
+    private var keyboardAccessoryView: KeyboardAccessoryView = {
+        let view = KeyboardAccessoryView()
+        view.frame = .init(x: 0, y: 0, width: view.frame.width, height: 80)
+        return view
+    }()
+
     static func createInstance() -> ChatRoomViewController {
         let instance = ChatRoomViewController.instantiateInitialViewController()
         return instance
@@ -12,6 +18,14 @@ final class ChatRoomViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
+    }
+
+    override var inputAccessoryView: UIView? {
+        keyboardAccessoryView
+    }
+
+    override var canBecomeFirstResponder: Bool {
+        true
     }
 
     private func setupTableView() {
