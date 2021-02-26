@@ -15,9 +15,9 @@ final class OtherMessageTableViewCell: UITableViewCell {
             OtherMessageBalloonView(
                 frame: CGRect(
                     x: userMessageTextView.frame.minX - 10,
-                    y: userMessageTextView.frame.minY - 5,
-                    width: 30,
-                    height: 30
+                    y: userMessageTextView.frame.minY - 10,
+                    width: 50,
+                    height: 50
                 )
             )
         )
