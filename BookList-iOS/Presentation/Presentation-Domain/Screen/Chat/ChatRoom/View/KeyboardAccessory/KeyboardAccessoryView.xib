@@ -15,7 +15,7 @@
             <rect key="frame" x="0.0" y="0.0" width="500" height="95"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="メッセージ送信用" translatesAutoresizingMaskIntoConstraints="NO" id="tmY-AB-acX">
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="メッセージ送信用" translatesAutoresizingMaskIntoConstraints="NO" id="tmY-AB-acX" customClass="IBDesignableTextView" customModule="BookList_iOS" customModuleProvider="target">
                     <rect key="frame" x="10" y="10" width="406" height="75"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <color key="textColor" systemColor="labelColor"/>
