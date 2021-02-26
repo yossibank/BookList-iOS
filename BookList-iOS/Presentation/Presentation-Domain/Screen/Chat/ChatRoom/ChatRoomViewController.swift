@@ -6,7 +6,7 @@ final class ChatRoomViewController: UIViewController {
 
     private var keyboardAccessoryView: KeyboardAccessoryView = {
         let view = KeyboardAccessoryView()
-        view.frame = .init(x: 0, y: 0, width: view.frame.width, height: 80)
+        view.frame = .init(x: 0, y: 0, width: view.frame.width, height: 50)
         return view
     }()
 
