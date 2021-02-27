@@ -64,14 +64,14 @@ extension Initializable where Self: UIView {
         fromXibOrNil customXib: String? = nil,
         ownerOrNil owner: Any? = nil,
         optionsOrNil options: [UINib.OptionsKey: Any]? = nil
-    ) -> Self? {
+    ) -> UIView? {
 
         let firstView = self.xib(fromXibOrNil: customXib).instantiate(
             withOwner: owner,
             options: options
         ).first
 
-        return firstView as? Self
+        return firstView as? UIView
     }
 
     /**

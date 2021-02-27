@@ -9,9 +9,14 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="KeyboardAccessoryView" customModule="BookList_iOS" customModuleProvider="target">
+            <connections>
+                <outlet property="sendButton" destination="RiC-Ge-Lc6" id="3iM-w3-JWa"/>
+                <outlet property="sendTextView" destination="tmY-AB-acX" id="yYg-jD-U08"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="KeyboardAccessoryView" customModule="BookList_iOS" customModuleProvider="target">
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="396" height="95"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -61,10 +66,6 @@
                 <constraint firstItem="tmY-AB-acX" firstAttribute="bottom" secondItem="RiC-Ge-Lc6" secondAttribute="bottom" id="bPl-tb-5O5"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <connections>
-                <outlet property="sendButton" destination="RiC-Ge-Lc6" id="bQa-ir-DcE"/>
-                <outlet property="sendTextView" destination="tmY-AB-acX" id="rDS-zZ-UMh"/>
-            </connections>
             <point key="canvasLocation" x="72.463768115942031" y="-130.91517857142856"/>
         </view>
     </objects>

@@ -4,9 +4,10 @@ final class ChatRoomViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
 
-    private var keyboardAccessoryView: KeyboardAccessoryView = {
+    private lazy var keyboardAccessoryView: KeyboardAccessoryView = {
         let view = KeyboardAccessoryView()
         view.frame = .init(x: 0, y: 0, width: view.frame.width, height: 50)
+        view.delegate = self
         return view
     }()
 
@@ -64,5 +65,11 @@ extension ChatRoomViewController: UITableViewDataSource {
         }
 
         return cell
+    }
+}
+
+extension ChatRoomViewController: KeyboardAccessoryViewDelegate {
+    func didTappedSendButton(text: String) {
+        print("hogehoge", text)
     }
 }
