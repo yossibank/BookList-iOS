@@ -17,7 +17,7 @@ final class MyMessageTableViewCell: UITableViewCell {
         addSubview(
             MyMessageBalloonView(
                 frame: CGRect(
-                    x: frame.size.width + 30,
+                    x: UIScreen.main.bounds.width - 25,
                     y: 0,
                     width: 30,
                     height: 30
