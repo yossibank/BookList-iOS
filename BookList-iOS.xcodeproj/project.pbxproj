@@ -578,10 +578,10 @@
 		7862C15225E2591800F1645A /* Firebase */ = {
 			isa = PBXGroup;
 			children = (
+				7862C15A25E25B6300F1645A /* Model */,
 				78CB209025EA48DD00D4E22D /* FirebaseConfiguration */,
 				7821A5CD25E25BEE0006DE50 /* FirebaseAuth */,
 				7821A5CE25E25C090006DE50 /* Firestore */,
-				7862C15A25E25B6300F1645A /* Model */,
 			);
 			path = Firebase;
 			sourceTree = "<group>";
