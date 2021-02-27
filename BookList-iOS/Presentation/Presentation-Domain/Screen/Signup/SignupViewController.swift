@@ -1,8 +1,6 @@
 import UIKit
 import RxSwift
 import RxCocoa
-import FirebaseFirestore
-import FirebaseAuth
 
 final class SignupViewController: UIViewController {
 
