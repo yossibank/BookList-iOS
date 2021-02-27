@@ -17,98 +17,108 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="ehu-uA-PNP">
-                                <rect key="frame" x="56" y="314" width="302" height="268"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="Geu-On-Adz">
+                                <rect key="frame" x="56" y="279" width="302" height="338"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="mLd-s0-qfb">
-                                        <rect key="frame" x="0.0" y="0.0" width="302" height="42"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="ehu-uA-PNP">
+                                        <rect key="frame" x="0.0" y="0.0" width="302" height="268"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="メールアドレス" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rS5-U3-gai" customClass="BorderBottomTextField" customModule="BookList_iOS" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="302" height="32"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="mLd-s0-qfb">
+                                                <rect key="frame" x="0.0" y="0.0" width="302" height="42"/>
+                                                <subviews>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="メールアドレス" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rS5-U3-gai" customClass="BorderBottomTextField" customModule="BookList_iOS" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="302" height="32"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="32" id="xgC-Ku-qbv"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                                                    </textField>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vNZ-MM-Iyq">
+                                                        <rect key="frame" x="0.0" y="42" width="302" height="0.0"/>
+                                                        <fontDescription key="fontDescription" name="HiraMinProN-W6" family="Hiragino Mincho ProN" pointSize="12"/>
+                                                        <color key="textColor" systemColor="systemRedColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="vK7-Qx-4PW">
+                                                <rect key="frame" x="0.0" y="82" width="302" height="42"/>
+                                                <subviews>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="パスワード" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NvK-EG-EPS" customClass="BorderBottomTextField" customModule="BookList_iOS" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="302" height="32"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="32" id="z4B-je-a6y"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" secureTextEntry="YES"/>
+                                                    </textField>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dnm-Rz-UQU">
+                                                        <rect key="frame" x="0.0" y="42" width="302" height="0.0"/>
+                                                        <fontDescription key="fontDescription" name="HiraMinProN-W6" family="Hiragino Mincho ProN" pointSize="12"/>
+                                                        <color key="textColor" systemColor="systemRedColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="tAg-0E-XoJ">
+                                                <rect key="frame" x="0.0" y="164" width="302" height="24"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ABH-Ek-Eng">
+                                                        <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="24" id="YZr-LY-5yv"/>
+                                                            <constraint firstAttribute="width" constant="24" id="mXh-74-Cjt"/>
+                                                        </constraints>
+                                                        <state key="normal" image="Check_Off_Box"/>
+                                                    </button>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="パスワードを表示する" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j4c-jk-SIR">
+                                                        <rect key="frame" x="32" y="0.0" width="270" height="24"/>
+                                                        <fontDescription key="fontDescription" name="HiraMinProN-W6" family="Hiragino Mincho ProN" pointSize="15"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1aq-gh-JfO" customClass="IBDesignableButton" customModule="BookList_iOS" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="228" width="302" height="40"/>
+                                                <color key="backgroundColor" systemColor="systemGreenColor"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="32" id="xgC-Ku-qbv"/>
+                                                    <constraint firstAttribute="height" constant="40" id="cmT-Pi-Lpt"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
-                                            </textField>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vNZ-MM-Iyq">
-                                                <rect key="frame" x="0.0" y="42" width="302" height="0.0"/>
-                                                <fontDescription key="fontDescription" name="HiraMinProN-W6" family="Hiragino Mincho ProN" pointSize="12"/>
-                                                <color key="textColor" systemColor="systemRedColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="vK7-Qx-4PW">
-                                        <rect key="frame" x="0.0" y="82" width="302" height="42"/>
-                                        <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="パスワード" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NvK-EG-EPS" customClass="BorderBottomTextField" customModule="BookList_iOS" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="302" height="32"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="32" id="z4B-je-a6y"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" secureTextEntry="YES"/>
-                                            </textField>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dnm-Rz-UQU">
-                                                <rect key="frame" x="0.0" y="42" width="302" height="0.0"/>
-                                                <fontDescription key="fontDescription" name="HiraMinProN-W6" family="Hiragino Mincho ProN" pointSize="12"/>
-                                                <color key="textColor" systemColor="systemRedColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="tAg-0E-XoJ">
-                                        <rect key="frame" x="0.0" y="164" width="302" height="24"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ABH-Ek-Eng">
-                                                <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="24" id="YZr-LY-5yv"/>
-                                                    <constraint firstAttribute="width" constant="24" id="mXh-74-Cjt"/>
-                                                </constraints>
-                                                <state key="normal" image="Check_Off_Box"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                                <state key="normal" title="ログイン">
+                                                    <color key="titleColor" systemColor="systemBackgroundColor"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="パスワードを表示する" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j4c-jk-SIR">
-                                                <rect key="frame" x="32" y="0.0" width="270" height="24"/>
-                                                <fontDescription key="fontDescription" name="HiraMinProN-W6" family="Hiragino Mincho ProN" pointSize="15"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                         </subviews>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1aq-gh-JfO" customClass="IBDesignableButton" customModule="BookList_iOS" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="228" width="302" height="40"/>
-                                        <color key="backgroundColor" systemColor="systemGreenColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="cmT-Pi-Lpt"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                                        <state key="normal" title="ログイン">
-                                            <color key="titleColor" systemColor="systemBackgroundColor"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="10"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="Iw6-b2-xfx">
+                                        <rect key="frame" x="0.0" y="298" width="302" height="40"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q2f-Ro-sP8" customClass="IBDesignableButton" customModule="BookList_iOS" customModuleProvider="target">
+                                                <rect key="frame" x="167" y="0.0" width="135" height="40"/>
+                                                <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                                <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                                                <state key="normal" title="アカウント作成">
+                                                    <color key="titleColor" systemColor="systemBackgroundColor"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q2f-Ro-sP8" customClass="IBDesignableButton" customModule="BookList_iOS" customModuleProvider="target">
-                                <rect key="frame" x="243" y="638" width="135" height="40"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                                <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
-                                <state key="normal" title="アカウント作成">
-                                    <color key="titleColor" systemColor="systemBackgroundColor"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </button>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="VVT-MF-8nR">
                                 <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
                                 <color key="color" systemColor="systemGrayColor"/>
@@ -117,13 +127,11 @@
                         <viewLayoutGuide key="safeArea" id="JOl-Lw-EHW"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="ehu-uA-PNP" firstAttribute="centerY" secondItem="jlf-NY-6cF" secondAttribute="centerY" id="7NX-oq-Tgq"/>
-                            <constraint firstItem="q2f-Ro-sP8" firstAttribute="centerX" secondItem="jlf-NY-6cF" secondAttribute="centerX" multiplier="1.5" id="8Tz-T1-aHk"/>
-                            <constraint firstItem="JOl-Lw-EHW" firstAttribute="trailing" secondItem="ehu-uA-PNP" secondAttribute="trailing" constant="56" id="FYn-Gy-1bR"/>
+                            <constraint firstItem="Geu-On-Adz" firstAttribute="leading" secondItem="jlf-NY-6cF" secondAttribute="leading" constant="56" id="F9E-kN-Y8a"/>
                             <constraint firstItem="VVT-MF-8nR" firstAttribute="centerY" secondItem="jlf-NY-6cF" secondAttribute="centerY" id="LCi-hO-fTL"/>
+                            <constraint firstItem="Geu-On-Adz" firstAttribute="centerY" secondItem="jlf-NY-6cF" secondAttribute="centerY" id="l8p-qj-2Xb"/>
                             <constraint firstItem="VVT-MF-8nR" firstAttribute="centerX" secondItem="jlf-NY-6cF" secondAttribute="centerX" id="nAW-eY-zP5"/>
-                            <constraint firstItem="ehu-uA-PNP" firstAttribute="leading" secondItem="jlf-NY-6cF" secondAttribute="leading" constant="56" id="wEm-nW-GAz"/>
-                            <constraint firstItem="q2f-Ro-sP8" firstAttribute="top" secondItem="ehu-uA-PNP" secondAttribute="bottom" constant="56" id="y2g-gQ-zsW"/>
+                            <constraint firstAttribute="trailing" secondItem="Geu-On-Adz" secondAttribute="trailing" constant="56" id="tlp-n0-tnl"/>
                         </constraints>
                     </view>
                     <connections>
