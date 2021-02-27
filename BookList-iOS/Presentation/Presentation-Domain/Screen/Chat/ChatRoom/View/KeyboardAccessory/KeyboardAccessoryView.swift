@@ -63,6 +63,11 @@ final class KeyboardAccessoryView: UIView {
 
         autoresizingMask = .flexibleHeight
     }
+
+    func didSendText() {
+        sendTextView.text = .blank
+        sendButton.isEnabled = false
+    }
 }
 
 extension KeyboardAccessoryView: UITextViewDelegate {

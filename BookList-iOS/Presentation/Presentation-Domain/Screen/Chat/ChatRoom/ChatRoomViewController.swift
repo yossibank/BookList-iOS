@@ -4,6 +4,8 @@ final class ChatRoomViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
 
+    private var messages: [String] = []
+
     private lazy var keyboardAccessoryView: KeyboardAccessoryView = {
         let view = KeyboardAccessoryView()
         view.frame = .init(x: 0, y: 0, width: view.frame.width, height: 50)
@@ -48,7 +50,7 @@ extension ChatRoomViewController: UITableViewDataSource {
         _ tableView: UITableView,
         numberOfRowsInSection section: Int
     ) -> Int {
-        10
+        messages.count
     }
 
     func tableView(
@@ -62,6 +64,7 @@ extension ChatRoomViewController: UITableViewDataSource {
 
         if let chatRoomCell = cell as? MyMessageTableViewCell {
             chatRoomCell.backgroundColor = .clear
+            chatRoomCell.userMessageTextView.text = messages[indexPath.row]
         }
 
         return cell
@@ -69,7 +72,10 @@ extension ChatRoomViewController: UITableViewDataSource {
 }
 
 extension ChatRoomViewController: KeyboardAccessoryViewDelegate {
+
     func didTappedSendButton(text: String) {
-        print("hogehoge", text)
+        messages.append(text)
+        keyboardAccessoryView.didSendText()
+        tableView.reloadData()
     }
 }
