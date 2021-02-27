@@ -54,6 +54,10 @@ extension SignupViewController {
     }
 
     private func setupButton() {
+        userIconButton.rx.tap.subscribe { [weak self] _ in
+            self?.userIconButtonTapped()
+        }.disposed(by: disposeBag)
+
         secureButton.rx.tap.subscribe { [weak self] _ in
             self?.secureButtonTapped()
         }.disposed(by: disposeBag)
@@ -65,6 +69,18 @@ extension SignupViewController {
         loginButton.rx.tap.subscribe { [weak self] _ in
             self?.loginButtonTapped()
         }.disposed(by: disposeBag)
+    }
+
+    private func userIconButtonTapped() {
+        let photoLibrary = UIImagePickerController.SourceType.photoLibrary
+
+        if UIImagePickerController.isSourceTypeAvailable(photoLibrary) {
+            let picker = UIImagePickerController()
+            picker.sourceType = .photoLibrary
+            picker.allowsEditing = true
+            picker.delegate = self
+            self.present(picker, animated: true)
+        }
     }
 
     private func secureButtonTapped() {
@@ -249,6 +265,22 @@ extension SignupViewController: KeyboardDelegate {
 
     func keyboardDismiss(_ height: CGFloat) {
         view.frame.origin.y != 0 ? (view.frame.origin.y = 0) : ()
+    }
+}
+
+extension SignupViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let image = info[.editedImage] as? UIImage {
+            userIconImageView.image = image
+        } else if let originalImage = info[.originalImage] as? UIImage {
+            userIconImageView.image = originalImage
+        }
+        self.dismiss(animated: true)
+    }
+
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        self.dismiss(animated: true)
     }
 }
 
