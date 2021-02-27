@@ -7,6 +7,7 @@ struct StringResources {
     }
 
     struct App {
+        static var nickName: String { Internal.localizable.nick_name() }
         static var email: String { Internal.localizable.mail_address() }
         static var password: String { Internal.localizable.password() }
         static var logout: String { Internal.localizable.logout() }
@@ -46,6 +47,7 @@ struct StringResources {
         private static let minimumLength = "6"
         private static let maxLength = "30"
 
+        static var nameEmpty: String { Internal.localizable.not_filled(Resources.Strings.App.nickName) }
         static var emailEmpty: String { Internal.localizable.not_filled(Resources.Strings.App.email) }
         static var passwordEmpty: String { Internal.localizable.not_filled(Resources.Strings.App.password) }
         static var titleEmpty: String { Internal.localizable.not_filled(Resources.Strings.App.title) }

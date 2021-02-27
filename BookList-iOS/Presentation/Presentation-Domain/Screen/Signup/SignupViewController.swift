@@ -106,6 +106,15 @@ extension SignupViewController {
 
     private func bindValue() {
 
+        userNameTextField.rx.text
+            .validate(NameValidator.self)
+            .map { validate in
+                validate.errorDescription
+            }
+            .skip(2)
+            .bind(to: validateUserNameLabel.rx.text)
+            .disposed(by: disposeBag)
+
         emailTextField.rx.text
             .validate(EmailValidator.self)
             .map { validate in
