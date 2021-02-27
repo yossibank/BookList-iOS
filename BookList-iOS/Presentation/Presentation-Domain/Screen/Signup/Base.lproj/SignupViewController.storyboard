@@ -23,18 +23,29 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="QZU-5F-nop">
                                         <rect key="frame" x="0.0" y="0.0" width="302" height="80"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Launch_Image" translatesAutoresizingMaskIntoConstraints="NO" id="J0e-qL-XVB">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="No_Image" translatesAutoresizingMaskIntoConstraints="NO" id="J0e-qL-XVB">
                                                 <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="80" id="ABm-T2-7nW"/>
                                                     <constraint firstAttribute="width" secondItem="J0e-qL-XVB" secondAttribute="height" id="zAg-fY-3fa"/>
                                                 </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <real key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="40"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7lY-jc-U89" customClass="IBDesignableButton" customModule="BookList_iOS" customModuleProvider="target">
                                                 <rect key="frame" x="120" y="24" width="182" height="32"/>
                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                                                <state key="normal" title="チャット画像">
+                                                <state key="normal" title="チャット画像設定">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
@@ -228,7 +239,7 @@
             <size key="intrinsicContentSize" width="98" height="21"/>
         </designable>
         <designable name="7lY-jc-U89">
-            <size key="intrinsicContentSize" width="98" height="32"/>
+            <size key="intrinsicContentSize" width="131" height="32"/>
         </designable>
         <designable name="BS3-2F-isb">
             <size key="intrinsicContentSize" width="82" height="20"/>
@@ -248,7 +259,7 @@
     </designables>
     <resources>
         <image name="Check_Off_Box" width="15" height="15"/>
-        <image name="Launch_Image" width="150" height="150"/>
+        <image name="No_Image" width="150" height="150"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
