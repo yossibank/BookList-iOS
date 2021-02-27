@@ -5,10 +5,14 @@ import RxCocoa
 final class SignupViewController: UIViewController {
 
     @IBOutlet weak var stackView: UIStackView!
+    @IBOutlet weak var userIconImageView: UIImageView!
+    @IBOutlet weak var userIconButton: IBDesignableButton!
+    @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var passwordConfirmationTextField: UITextField!
     @IBOutlet weak var secureButton: UIButton!
+    @IBOutlet weak var validateUserNameLabel: UILabel!
     @IBOutlet weak var validateEmailLabel: UILabel!
     @IBOutlet weak var validatePasswordLabel: UILabel!
     @IBOutlet weak var validatePasswordConfirmationLabel: UILabel!
