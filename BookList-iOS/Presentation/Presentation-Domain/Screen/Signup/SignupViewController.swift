@@ -48,7 +48,10 @@ final class SignupViewController: UIViewController {
 extension SignupViewController {
 
     private func setupTextField() {
-        [emailTextField, passwordTextField, passwordConfirmationTextField].forEach {
+        [
+            userNameTextField, emailTextField,
+            passwordTextField, passwordConfirmationTextField
+        ].forEach {
             $0?.delegate = self
         }
     }
@@ -247,7 +250,9 @@ extension SignupViewController: UITextFieldDelegate {
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if emailTextField == textField {
+        if userNameTextField == textField {
+            emailTextField.becomeFirstResponder()
+        } else if emailTextField == textField {
             passwordTextField.becomeFirstResponder()
         } else if passwordTextField == textField {
             passwordConfirmationTextField.becomeFirstResponder()
