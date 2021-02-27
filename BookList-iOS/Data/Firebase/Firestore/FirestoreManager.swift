@@ -2,6 +2,8 @@ import FirebaseFirestore
 
 final class FirestoreManager {
 
+    typealias timeStamp = Timestamp
+
     private let database = Firestore.firestore()
 
     static let shared = FirestoreManager()
@@ -10,13 +12,14 @@ final class FirestoreManager {
 
     func createUser(
         documentPath: String,
-        id: Int,
-        email: String
+        user: FirestoreUser
     ) {
         guard
             let user = FirestoreUser(
-                id: id,
-                email: email
+                id: user.id,
+                name: user.name,
+                email: user.email,
+                createdAt: timeStamp()
             ).toDictionary()
         else {
             return

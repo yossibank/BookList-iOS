@@ -195,16 +195,23 @@ extension SignupViewController {
                 switch result {
 
                 case .success(let response):
-                    guard let email = self.emailTextField.text,
-                          let password = self.passwordTextField.text
+                    guard
+                        let name = self.userNameTextField.text,
+                        let email = self.emailTextField.text,
+                        let password = self.passwordTextField.text
                     else {
                         return
                     }
 
+                    let user = FirestoreUser(
+                        id: response.result.id,
+                        name: name,
+                        email: email
+                    )
                     self.viewModel.createUserForFirebase(
                         email: email,
                         password: password,
-                        user: response.result
+                        user: user
                     )
 
                     let window = UIApplication.shared.windows.first { $0.isKeyWindow }
