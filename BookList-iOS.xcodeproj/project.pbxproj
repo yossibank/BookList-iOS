@@ -173,6 +173,7 @@
 		78E609FB25AAABF80041B3D0 /* PasswordValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E609FA25AAABF80041B3D0 /* PasswordValidator.swift */; };
 		78E60A0025AAAEAC0041B3D0 /* ObservableType+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E609FF25AAAEAC0041B3D0 /* ObservableType+Extension.swift */; };
 		78E80CA625CE4402006580A2 /* BookValidationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E80CA525CE4402006580A2 /* BookValidationTests.swift */; };
+		78ED505725EB5C8B0045089C /* FirebaseStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78ED505625EB5C8B0045089C /* FirebaseStorageManager.swift */; };
 		78F940E6259D7E42007C972A /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F940E5259D7E42007C972A /* Router.swift */; };
 		78F940EA259D7EEF007C972A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F940E9259D7EEF007C972A /* ViewController.swift */; };
 		78F940EE259D995F007C972A /* ResourcesSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F940ED259D995F007C972A /* ResourcesSupport.swift */; };
@@ -353,6 +354,7 @@
 		78E609FA25AAABF80041B3D0 /* PasswordValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordValidator.swift; sourceTree = "<group>"; };
 		78E609FF25AAAEAC0041B3D0 /* ObservableType+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ObservableType+Extension.swift"; sourceTree = "<group>"; };
 		78E80CA525CE4402006580A2 /* BookValidationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookValidationTests.swift; sourceTree = "<group>"; };
+		78ED505625EB5C8B0045089C /* FirebaseStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStorageManager.swift; sourceTree = "<group>"; };
 		78F940E5259D7E42007C972A /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		78F940E9259D7EEF007C972A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		78F940ED259D995F007C972A /* ResourcesSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourcesSupport.swift; sourceTree = "<group>"; };
@@ -581,6 +583,7 @@
 				7862C15A25E25B6300F1645A /* Model */,
 				78CB209025EA48DD00D4E22D /* FirebaseConfiguration */,
 				7821A5CD25E25BEE0006DE50 /* FirebaseAuth */,
+				78ED505525EB5C7A0045089C /* FirebaseStorage */,
 				7821A5CE25E25C090006DE50 /* Firestore */,
 			);
 			path = Firebase;
@@ -1076,6 +1079,14 @@
 			path = Validator;
 			sourceTree = "<group>";
 		};
+		78ED505525EB5C7A0045089C /* FirebaseStorage */ = {
+			isa = PBXGroup;
+			children = (
+				78ED505625EB5C8B0045089C /* FirebaseStorageManager.swift */,
+			);
+			path = FirebaseStorage;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1302,6 +1313,7 @@
 				78DEE7E625AB0BD800219963 /* HomeViewData.swift in Sources */,
 				78E609FB25AAABF80041B3D0 /* PasswordValidator.swift in Sources */,
 				78772B5425B3E48B00E6493E /* EditBookViewModel.swift in Sources */,
+				78ED505725EB5C8B0045089C /* FirebaseStorageManager.swift in Sources */,
 				784B18EF25BD48F80071C32E /* WishListTableViewCell.swift in Sources */,
 				78299CE925E69D0D001868FB /* MyMessageTableViewCell.swift in Sources */,
 				7892EF70259C721F006F7315 /* Resources.swift in Sources */,

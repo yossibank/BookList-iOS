@@ -1,3 +1,4 @@
+import Foundation
 import RxSwift
 import RxRelay
 
@@ -46,6 +47,26 @@ final class SignupUsecase {
             email: email,
             password: password,
             user: user
+        )
+    }
+
+    func saveUserIconImage(
+        path: String,
+        uploadImage: Data
+    ) {
+        FirebaseStorageManager.shared.saveUserIconImage(
+            path: path,
+            uploadImage: uploadImage
+        )
+    }
+
+    func fetchDownloadUrlString(
+        path: String,
+        completion: @escaping (String) -> Void
+    ) {
+        FirebaseStorageManager.shared.fetchDownloadUrlString(
+            path: path,
+            completion: completion
         )
     }
 }

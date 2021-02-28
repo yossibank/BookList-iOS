@@ -201,21 +201,35 @@ extension SignupViewController {
                     guard
                         let name = self.userNameTextField.text,
                         let email = self.emailTextField.text,
-                        let password = self.passwordTextField.text
+                        let password = self.passwordTextField.text,
+                        let uploadImage = self.userIconImageView.image?.jpegData(compressionQuality: 0.5)
                     else {
                         return
                     }
 
-                    let user = FirestoreUser(
-                        id: response.result.id,
-                        name: name,
-                        email: email
+                    self.viewModel.saveUserIconImage(
+                        path: email,
+                        uploadImage: uploadImage
                     )
-                    self.viewModel.createUserForFirebase(
-                        email: email,
-                        password: password,
-                        user: user
-                    )
+
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                        self.viewModel.fetchDownloadUrlString(path: email) { [weak self] urlString in
+                            guard let self = self else { return }
+
+                            let user = FirestoreUser(
+                                id: response.result.id,
+                                name: name,
+                                email: email,
+                                imageUrl: urlString
+                            )
+
+                            self.viewModel.createUserForFirebase(
+                                email: email,
+                                password: password,
+                                user: user
+                            )
+                        }
+                    }
 
                     let window = UIApplication.shared.windows.first { $0.isKeyWindow }
                     window?.rootViewController = self.router.initialWindow(.home, type: .navigation)
@@ -282,7 +296,10 @@ extension SignupViewController: KeyboardDelegate {
 
 extension SignupViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+    func imagePickerController(
+        _ picker: UIImagePickerController,
+        didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]
+    ) {
         if let image = info[.editedImage] as? UIImage {
             userIconImageView.image = image
         } else if let originalImage = info[.originalImage] as? UIImage {

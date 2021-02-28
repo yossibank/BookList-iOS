@@ -4,7 +4,7 @@ final class FirebaseManager {
 
     static let shared = FirebaseManager()
 
-    private init() { }
+    private init() {}
 
     func configure() {
         FirebaseConfiguration.shared.setLoggerLevel(.min)

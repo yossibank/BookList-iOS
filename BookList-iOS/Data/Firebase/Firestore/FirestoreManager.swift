@@ -8,7 +8,7 @@ final class FirestoreManager {
 
     static let shared = FirestoreManager()
 
-    private init() { }
+    private init() {}
 
     func createUser(
         documentPath: String,
@@ -19,6 +19,7 @@ final class FirestoreManager {
                 id: user.id,
                 name: user.name,
                 email: user.email,
+                imageUrl: user.imageUrl,
                 createdAt: timeStamp()
             ).toDictionary()
         else {

@@ -10,7 +10,7 @@ final class FirebaseAuthManager {
         Auth.auth().currentUser
     }
 
-    private init() { }
+    private init() {}
 
     func createUser(
         email: String,

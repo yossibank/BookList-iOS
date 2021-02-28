@@ -64,4 +64,9 @@ struct StringResources {
         static let apiBaseUrl = "http://54.250.239.8"
         static let authorization = "Authorization"
     }
+
+    struct Firebase {
+        static let metaDataType = "image/jpeg"
+        static let userIconPath = "user_icon"
+    }
 }

@@ -1,3 +1,4 @@
+import Foundation
 import RxSwift
 import RxRelay
 
@@ -49,6 +50,26 @@ final class SignupViewModel {
             email: email,
             password: password,
             user: user
+        )
+    }
+
+    func saveUserIconImage(
+        path: String,
+        uploadImage: Data
+    ) {
+        usecase.saveUserIconImage(
+            path: path,
+            uploadImage: uploadImage
+        )
+    }
+
+    func fetchDownloadUrlString(
+        path: String,
+        completion: @escaping (String) -> Void
+    ) {
+        usecase.fetchDownloadUrlString(
+            path: path,
+            completion: completion
         )
     }
 }
