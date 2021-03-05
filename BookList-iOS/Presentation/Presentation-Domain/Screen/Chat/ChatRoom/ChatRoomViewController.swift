@@ -4,6 +4,15 @@ final class ChatRoomViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
 
+    private var messages: [String] = []
+
+    private lazy var keyboardAccessoryView: KeyboardAccessoryView = {
+        let view = KeyboardAccessoryView()
+        view.frame = .init(x: 0, y: 0, width: view.frame.width, height: 50)
+        view.delegate = self
+        return view
+    }()
+
     static func createInstance() -> ChatRoomViewController {
         let instance = ChatRoomViewController.instantiateInitialViewController()
         return instance
@@ -12,6 +21,14 @@ final class ChatRoomViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
+    }
+
+    override var inputAccessoryView: UIView? {
+        keyboardAccessoryView
+    }
+
+    override var canBecomeFirstResponder: Bool {
+        true
     }
 
     private func setupTableView() {
@@ -33,7 +50,7 @@ extension ChatRoomViewController: UITableViewDataSource {
         _ tableView: UITableView,
         numberOfRowsInSection section: Int
     ) -> Int {
-        10
+        messages.count
     }
 
     func tableView(
@@ -47,8 +64,18 @@ extension ChatRoomViewController: UITableViewDataSource {
 
         if let chatRoomCell = cell as? MyMessageTableViewCell {
             chatRoomCell.backgroundColor = .clear
+            chatRoomCell.userMessageTextView.text = messages[indexPath.row]
         }
 
         return cell
+    }
+}
+
+extension ChatRoomViewController: KeyboardAccessoryViewDelegate {
+
+    func didTappedSendButton(text: String) {
+        messages.append(text)
+        keyboardAccessoryView.didSendText()
+        tableView.reloadData()
     }
 }

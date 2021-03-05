@@ -54,12 +54,15 @@
 		78231203259C0D9300D9E723 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78231202259C0D9300D9E723 /* Assets.xcassets */; };
 		78231206259C0D9300D9E723 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78231204259C0D9300D9E723 /* LaunchScreen.storyboard */; };
 		78231211259C0D9300D9E723 /* BookListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78231210259C0D9300D9E723 /* BookListTests.swift */; };
+		7824042425E92A040001AB52 /* KeyboardAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7824042325E92A040001AB52 /* KeyboardAccessoryView.swift */; };
+		7824042F25E9374D0001AB52 /* IBDesignableTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7824042E25E9374D0001AB52 /* IBDesignableTextView.swift */; };
 		78299CE925E69D0D001868FB /* MyMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78299CE725E69D0D001868FB /* MyMessageTableViewCell.swift */; };
 		78299CEA25E69D0D001868FB /* MyMessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78299CE825E69D0D001868FB /* MyMessageTableViewCell.xib */; };
 		78299CEE25E69E15001868FB /* OtherMessageBalloonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78299CED25E69E15001868FB /* OtherMessageBalloonView.swift */; };
 		783231A625B056C200EB178B /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783231A525B056C200EB178B /* Logger.swift */; };
 		783231BC25B05C1400EB178B /* HomeDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783231BB25B05C1400EB178B /* HomeDataSource.swift */; };
 		783FCCE925BEEB17000D18EA /* AddBookUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783FCCE825BEEB17000D18EA /* AddBookUsecase.swift */; };
+		78421CE125E9273500950F62 /* KeyboardAccessoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78421CE025E9273500950F62 /* KeyboardAccessoryView.xib */; };
 		784B18EF25BD48F80071C32E /* WishListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784B18ED25BD48F80071C32E /* WishListTableViewCell.swift */; };
 		784B18F025BD48F80071C32E /* WishListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 784B18EE25BD48F80071C32E /* WishListTableViewCell.xib */; };
 		784B18F625BD4D5F0071C32E /* WishListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784B18F525BD4D5F0071C32E /* WishListViewModel.swift */; };
@@ -75,6 +78,7 @@
 		785A1ABD25A9A407005E8A4B /* SignupRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785A1ABC25A9A407005E8A4B /* SignupRequest.swift */; };
 		785A1AC125A9A416005E8A4B /* SignupResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785A1AC025A9A416005E8A4B /* SignupResponse.swift */; };
 		785A1ADE25A9CC1A005E8A4B /* SignupUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785A1ADD25A9CC1A005E8A4B /* SignupUsecase.swift */; };
+		785AB27225E9C527000FEEFE /* TapAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785AB27125E9C527000FEEFE /* TapAction.swift */; };
 		7862C15425E2596D00F1645A /* FirebaseModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7862C15325E2596D00F1645A /* FirebaseModelProtocol.swift */; };
 		7862C15825E25B5C00F1645A /* FirestoreUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7862C15725E25B5C00F1645A /* FirestoreUser.swift */; };
 		78772B3C25B3D37300E6493E /* PurchaseDateValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78772B3B25B3D37300E6493E /* PurchaseDateValidator.swift */; };
@@ -229,12 +233,15 @@
 		7823120C259C0D9300D9E723 /* BookList-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "BookList-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		78231210259C0D9300D9E723 /* BookListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListTests.swift; sourceTree = "<group>"; };
 		78231212259C0D9300D9E723 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7824042325E92A040001AB52 /* KeyboardAccessoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardAccessoryView.swift; sourceTree = "<group>"; };
+		7824042E25E9374D0001AB52 /* IBDesignableTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBDesignableTextView.swift; sourceTree = "<group>"; };
 		78299CE725E69D0D001868FB /* MyMessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMessageTableViewCell.swift; sourceTree = "<group>"; };
 		78299CE825E69D0D001868FB /* MyMessageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyMessageTableViewCell.xib; sourceTree = "<group>"; };
 		78299CED25E69E15001868FB /* OtherMessageBalloonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherMessageBalloonView.swift; sourceTree = "<group>"; };
 		783231A525B056C200EB178B /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		783231BB25B05C1400EB178B /* HomeDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDataSource.swift; sourceTree = "<group>"; };
 		783FCCE825BEEB17000D18EA /* AddBookUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookUsecase.swift; sourceTree = "<group>"; };
+		78421CE025E9273500950F62 /* KeyboardAccessoryView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KeyboardAccessoryView.xib; sourceTree = "<group>"; };
 		784B18ED25BD48F80071C32E /* WishListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListTableViewCell.swift; sourceTree = "<group>"; };
 		784B18EE25BD48F80071C32E /* WishListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WishListTableViewCell.xib; sourceTree = "<group>"; };
 		784B18F525BD4D5F0071C32E /* WishListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListViewModel.swift; sourceTree = "<group>"; };
@@ -250,6 +257,7 @@
 		785A1ABC25A9A407005E8A4B /* SignupRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupRequest.swift; sourceTree = "<group>"; };
 		785A1AC025A9A416005E8A4B /* SignupResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupResponse.swift; sourceTree = "<group>"; };
 		785A1ADD25A9CC1A005E8A4B /* SignupUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupUsecase.swift; sourceTree = "<group>"; };
+		785AB27125E9C527000FEEFE /* TapAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapAction.swift; sourceTree = "<group>"; };
 		7862C15325E2596D00F1645A /* FirebaseModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseModelProtocol.swift; sourceTree = "<group>"; };
 		7862C15725E25B5C00F1645A /* FirestoreUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreUser.swift; sourceTree = "<group>"; };
 		78772B3B25B3D37300E6493E /* PurchaseDateValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseDateValidator.swift; sourceTree = "<group>"; };
@@ -528,6 +536,15 @@
 			path = MyMessageCell;
 			sourceTree = "<group>";
 		};
+		78421CDF25E926FD00950F62 /* KeyboardAccessory */ = {
+			isa = PBXGroup;
+			children = (
+				7824042325E92A040001AB52 /* KeyboardAccessoryView.swift */,
+				78421CE025E9273500950F62 /* KeyboardAccessoryView.xib */,
+			);
+			path = KeyboardAccessory;
+			sourceTree = "<group>";
+		};
 		784B18EC25BD48E00071C32E /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -671,6 +688,7 @@
 			isa = PBXGroup;
 			children = (
 				7892EF61259C642C006F7315 /* IBDesignableView.swift */,
+				7824042E25E9374D0001AB52 /* IBDesignableTextView.swift */,
 				7892EF5B259C5DF0006F7315 /* IBDesignableTextField.swift */,
 				7892EF51259C58C0006F7315 /* IBDesignableButton.swift */,
 			);
@@ -865,6 +883,7 @@
 				78DEE7BC25AAE3AD00219963 /* UIViewController+Extension.swift */,
 				78DEE7B825AADFC600219963 /* UIAlertController+Extension.swift */,
 				78E609FF25AAAEAC0041B3D0 /* ObservableType+Extension.swift */,
+				785AB27125E9C527000FEEFE /* TapAction.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -883,6 +902,7 @@
 		78B8A68D25E54003005BCB16 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				78421CDF25E926FD00950F62 /* KeyboardAccessory */,
 				78299CE625E69CFD001868FB /* MyMessageCell */,
 				781B121B25E69A75006968ED /* OtherMessageCell */,
 			);
@@ -1142,6 +1162,7 @@
 				78231206259C0D9300D9E723 /* LaunchScreen.storyboard in Resources */,
 				78231201259C0D9200D9E723 /* SignupViewController.storyboard in Resources */,
 				78987B38259C8802008311DC /* LoginViewController.storyboard in Resources */,
+				78421CE125E9273500950F62 /* KeyboardAccessoryView.xib in Resources */,
 				78DEE7CC25AB006000219963 /* HomeViewController.storyboard in Resources */,
 				78DEE7DF25AB02A200219963 /* HomeTableViewCell.xib in Resources */,
 				78CF3AEF25ABF81400ADBB60 /* BookListViewController.storyboard in Resources */,
@@ -1239,6 +1260,7 @@
 				78DE1D6725BD423A00A2C0F2 /* WishListViewController.swift in Sources */,
 				7862C15825E25B5C00F1645A /* FirestoreUser.swift in Sources */,
 				78987B3C259C8813008311DC /* LoginViewController.swift in Sources */,
+				7824042425E92A040001AB52 /* KeyboardAccessoryView.swift in Sources */,
 				784E135E25B2A13D008FD947 /* AddBookViewModel.swift in Sources */,
 				78772B5A25B3EE0900E6493E /* EditBookUsecase.swift in Sources */,
 				78CF3B1925AC320900ADBB60 /* BookListUsecase.swift in Sources */,
@@ -1249,6 +1271,7 @@
 				783231A625B056C200EB178B /* Logger.swift in Sources */,
 				7892EF52259C58C0006F7315 /* IBDesignableButton.swift in Sources */,
 				78CF3AF325ABF82900ADBB60 /* BookListViewController.swift in Sources */,
+				785AB27225E9C527000FEEFE /* TapAction.swift in Sources */,
 				78CF3B0725AC0E3500ADBB60 /* BookListViewModel.swift in Sources */,
 				78B29D0125B3124A00A7DC7F /* TitleValidator.swift in Sources */,
 				785A1AB725A9A369005E8A4B /* SignupViewModel.swift in Sources */,
@@ -1282,6 +1305,7 @@
 				78F940EE259D995F007C972A /* ResourcesSupport.swift in Sources */,
 				78E609D925AA0EE60041B3D0 /* LoginUsecase.swift in Sources */,
 				78CF3B0325AC031700ADBB60 /* BookListRequest.swift in Sources */,
+				7824042F25E9374D0001AB52 /* IBDesignableTextView.swift in Sources */,
 				783231BC25B05C1400EB178B /* HomeDataSource.swift in Sources */,
 				78C7F3B125E52C94005E9E2B /* ChatSelectTableViewCell.swift in Sources */,
 				78844C6125B0873600C9AEC0 /* AddBookViewController.swift in Sources */,
