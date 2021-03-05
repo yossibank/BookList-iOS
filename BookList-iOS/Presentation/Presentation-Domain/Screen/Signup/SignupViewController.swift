@@ -126,7 +126,7 @@ extension SignupViewController {
                 passwordConfirmationTextField.rx.text.map { $0 })
             .map { passwordText, passwordConfirmationText in
                 if passwordText == passwordConfirmationText {
-                    return .blank
+                    return nil
                 }
                 return Resources.Strings.Validator.notMatchingPassword
             }
@@ -144,6 +144,11 @@ extension SignupViewController {
                 !(isEmailEmpty ||  isPasswordEmpty || isPasswordConfirmationEmpty)
             }
             .subscribe(onNext: { [weak self] isEnabled in
+                let isEnabled = isEnabled
+                    && self?.validateEmailLabel.text == nil
+                    && self?.validatePasswordLabel.text == nil
+                    && self?.validatePasswordConfirmationLabel.text == nil
+
                 self?.signupButton.alpha = isEnabled ? 1.0 : 0.5
                 self?.signupButton.isEnabled = isEnabled
             })
