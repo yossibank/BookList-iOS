@@ -132,6 +132,8 @@ enum Route {
             successHandler: ((BookViewData) -> Void)?
          )
     case wishList
+    case chatSelect
+    case chatRoom
 
     fileprivate func viewController() -> UIViewController {
 
@@ -168,6 +170,12 @@ enum Route {
 
         case .wishList:
             viewController = Resources.ViewControllers.App.wishList()
+
+        case .chatSelect:
+            viewController = Resources.ViewControllers.App.chatSelect()
+
+        case .chatRoom:
+            viewController = Resources.ViewControllers.App.chatRoom()
 
         }
 

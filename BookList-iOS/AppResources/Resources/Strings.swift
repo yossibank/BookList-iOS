@@ -16,6 +16,7 @@ struct StringResources {
         static var bookList: String { Internal.localizable.book_list() }
         static var addBook: String { Internal.localizable.add_book() }
         static var wishList: String { Internal.localizable.wish_list_book() }
+        static var chat: String { Internal.localizable.chat() }
         static var yen: String { Internal.localizable.yen() }
         static var taxText: String { Internal.localizable.plus() + Internal.localizable.tax() }
     }

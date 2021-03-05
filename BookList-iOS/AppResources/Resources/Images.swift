@@ -13,6 +13,7 @@ struct ImageResources {
         static var bookList: UIImage? { Internal.book_list() }
         static var addBook: UIImage? { Internal.add_book() }
         static var wishList: UIImage? { Internal.wish_list() }
+        static var chat: UIImage? { Internal.chat() }
     }
 
     struct BookList {
