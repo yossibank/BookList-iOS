@@ -1,3 +1,4 @@
+import Foundation
 import RxSwift
 import RxRelay
 
@@ -29,11 +30,6 @@ final class SignupUsecase {
                     KeychainManager.shared.setToken(response.result.token)
                     self?.loadingRelay.accept(false)
                     self?.resultRelay.accept(.success(response))
-                    self?.createUserForFirebase(
-                        email: email,
-                        password: password,
-                        user: response.result
-                    )
                 },
                 onFailure: { [weak self] error in
                     self?.loadingRelay.accept(false)
@@ -42,15 +38,35 @@ final class SignupUsecase {
             .disposed(by: disposeBag)
     }
 
-    private func createUserForFirebase(
+    func createUserForFirebase(
         email: String,
         password: String,
-        user: SignupResponse.User
+        user: FirestoreUser
     ) {
-        FirebaseAuthManager.shared.createUserWithFirestore(
+        FirebaseAuthManager.shared.createUser(
             email: email,
             password: password,
             user: user
+        )
+    }
+
+    func saveUserIconImage(
+        path: String,
+        uploadImage: Data
+    ) {
+        FirebaseStorageManager.shared.saveUserIconImage(
+            path: path,
+            uploadImage: uploadImage
+        )
+    }
+
+    func fetchDownloadUrlString(
+        path: String,
+        completion: @escaping (String) -> Void
+    ) {
+        FirebaseStorageManager.shared.fetchDownloadUrlString(
+            path: path,
+            completion: completion
         )
     }
 }

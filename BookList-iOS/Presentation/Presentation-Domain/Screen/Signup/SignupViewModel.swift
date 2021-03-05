@@ -1,3 +1,4 @@
+import Foundation
 import RxSwift
 import RxRelay
 
@@ -43,12 +44,32 @@ final class SignupViewModel {
     func createUserForFirebase(
         email: String,
         password: String,
-        user: SignupResponse.User
+        user: FirestoreUser
     ) {
-        FirebaseAuthManager.shared.createUserWithFirestore(
+        usecase.createUserForFirebase(
             email: email,
             password: password,
             user: user
+        )
+    }
+
+    func saveUserIconImage(
+        path: String,
+        uploadImage: Data
+    ) {
+        usecase.saveUserIconImage(
+            path: path,
+            uploadImage: uploadImage
+        )
+    }
+
+    func fetchDownloadUrlString(
+        path: String,
+        completion: @escaping (String) -> Void
+    ) {
+        usecase.fetchDownloadUrlString(
+            path: path,
+            completion: completion
         )
     }
 }

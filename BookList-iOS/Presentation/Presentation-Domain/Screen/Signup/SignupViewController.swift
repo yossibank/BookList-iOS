@@ -5,10 +5,14 @@ import RxCocoa
 final class SignupViewController: UIViewController {
 
     @IBOutlet weak var stackView: UIStackView!
+    @IBOutlet weak var userIconImageView: UIImageView!
+    @IBOutlet weak var userIconButton: IBDesignableButton!
+    @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var passwordConfirmationTextField: UITextField!
     @IBOutlet weak var secureButton: UIButton!
+    @IBOutlet weak var validateUserNameLabel: UILabel!
     @IBOutlet weak var validateEmailLabel: UILabel!
     @IBOutlet weak var validatePasswordLabel: UILabel!
     @IBOutlet weak var validatePasswordConfirmationLabel: UILabel!
@@ -44,12 +48,19 @@ final class SignupViewController: UIViewController {
 extension SignupViewController {
 
     private func setupTextField() {
-        [emailTextField, passwordTextField, passwordConfirmationTextField].forEach {
+        [
+            userNameTextField, emailTextField,
+            passwordTextField, passwordConfirmationTextField
+        ].forEach {
             $0?.delegate = self
         }
     }
 
     private func setupButton() {
+        userIconButton.rx.tap.subscribe { [weak self] _ in
+            self?.userIconButtonTapped()
+        }.disposed(by: disposeBag)
+
         secureButton.rx.tap.subscribe { [weak self] _ in
             self?.secureButtonTapped()
         }.disposed(by: disposeBag)
@@ -61,6 +72,18 @@ extension SignupViewController {
         loginButton.rx.tap.subscribe { [weak self] _ in
             self?.loginButtonTapped()
         }.disposed(by: disposeBag)
+    }
+
+    private func userIconButtonTapped() {
+        let photoLibrary = UIImagePickerController.SourceType.photoLibrary
+
+        if UIImagePickerController.isSourceTypeAvailable(photoLibrary) {
+            let picker = UIImagePickerController()
+            picker.sourceType = .photoLibrary
+            picker.allowsEditing = true
+            picker.delegate = self
+            self.present(picker, animated: true)
+        }
     }
 
     private func secureButtonTapped() {
@@ -101,6 +124,15 @@ extension SignupViewController {
 extension SignupViewController {
 
     private func bindValue() {
+
+        userNameTextField.rx.text
+            .validate(NameValidator.self)
+            .map { validate in
+                validate.errorDescription
+            }
+            .skip(2)
+            .bind(to: validateUserNameLabel.rx.text)
+            .disposed(by: disposeBag)
 
         emailTextField.rx.text
             .validate(EmailValidator.self)
@@ -166,17 +198,38 @@ extension SignupViewController {
                 switch result {
 
                 case .success(let response):
-                    guard let email = self.emailTextField.text,
-                          let password = self.passwordTextField.text
+                    guard
+                        let name = self.userNameTextField.text,
+                        let email = self.emailTextField.text,
+                        let password = self.passwordTextField.text,
+                        let uploadImage = self.userIconImageView.image?.jpegData(compressionQuality: 0.5)
                     else {
                         return
                     }
 
-                    self.viewModel.createUserForFirebase(
-                        email: email,
-                        password: password,
-                        user: response.result
+                    self.viewModel.saveUserIconImage(
+                        path: email,
+                        uploadImage: uploadImage
                     )
+
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                        self.viewModel.fetchDownloadUrlString(path: email) { [weak self] urlString in
+                            guard let self = self else { return }
+
+                            let user = FirestoreUser(
+                                id: response.result.id,
+                                name: name,
+                                email: email,
+                                imageUrl: urlString
+                            )
+
+                            self.viewModel.createUserForFirebase(
+                                email: email,
+                                password: password,
+                                user: user
+                            )
+                        }
+                    }
 
                     let window = UIApplication.shared.windows.first { $0.isKeyWindow }
                     window?.rootViewController = self.router.initialWindow(.home, type: .navigation)
@@ -211,7 +264,9 @@ extension SignupViewController: UITextFieldDelegate {
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if emailTextField == textField {
+        if userNameTextField == textField {
+            emailTextField.becomeFirstResponder()
+        } else if emailTextField == textField {
             passwordTextField.becomeFirstResponder()
         } else if passwordTextField == textField {
             passwordConfirmationTextField.becomeFirstResponder()
@@ -236,6 +291,25 @@ extension SignupViewController: KeyboardDelegate {
 
     func keyboardDismiss(_ height: CGFloat) {
         view.frame.origin.y != 0 ? (view.frame.origin.y = 0) : ()
+    }
+}
+
+extension SignupViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+
+    func imagePickerController(
+        _ picker: UIImagePickerController,
+        didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]
+    ) {
+        if let image = info[.editedImage] as? UIImage {
+            userIconImageView.image = image
+        } else if let originalImage = info[.originalImage] as? UIImage {
+            userIconImageView.image = originalImage
+        }
+        self.dismiss(animated: true)
+    }
+
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        self.dismiss(animated: true)
     }
 }
 

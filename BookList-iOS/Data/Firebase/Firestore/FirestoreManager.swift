@@ -2,21 +2,25 @@ import FirebaseFirestore
 
 final class FirestoreManager {
 
+    typealias timeStamp = Timestamp
+
     private let database = Firestore.firestore()
 
     static let shared = FirestoreManager()
 
-    private init() { }
+    private init() {}
 
     func createUser(
         documentPath: String,
-        id: Int,
-        email: String
+        user: FirestoreUser
     ) {
         guard
             let user = FirestoreUser(
-                id: id,
-                email: email
+                id: user.id,
+                name: user.name,
+                email: user.email,
+                imageUrl: user.imageUrl,
+                createdAt: timeStamp()
             ).toDictionary()
         else {
             return

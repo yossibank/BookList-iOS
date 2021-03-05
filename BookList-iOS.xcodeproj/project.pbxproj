@@ -81,6 +81,7 @@
 		785AB27225E9C527000FEEFE /* TapAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785AB27125E9C527000FEEFE /* TapAction.swift */; };
 		7862C15425E2596D00F1645A /* FirebaseModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7862C15325E2596D00F1645A /* FirebaseModelProtocol.swift */; };
 		7862C15825E25B5C00F1645A /* FirestoreUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7862C15725E25B5C00F1645A /* FirestoreUser.swift */; };
+		78769C4425EA28A6007791E0 /* NameValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78769C4325EA28A6007791E0 /* NameValidator.swift */; };
 		78772B3C25B3D37300E6493E /* PurchaseDateValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78772B3B25B3D37300E6493E /* PurchaseDateValidator.swift */; };
 		78772B4E25B3DEBD00E6493E /* Array+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78772B4D25B3DEBD00E6493E /* Array+Util.swift */; };
 		78772B5425B3E48B00E6493E /* EditBookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78772B5325B3E48B00E6493E /* EditBookViewModel.swift */; };
@@ -172,6 +173,7 @@
 		78E609FB25AAABF80041B3D0 /* PasswordValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E609FA25AAABF80041B3D0 /* PasswordValidator.swift */; };
 		78E60A0025AAAEAC0041B3D0 /* ObservableType+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E609FF25AAAEAC0041B3D0 /* ObservableType+Extension.swift */; };
 		78E80CA625CE4402006580A2 /* BookValidationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E80CA525CE4402006580A2 /* BookValidationTests.swift */; };
+		78ED505725EB5C8B0045089C /* FirebaseStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78ED505625EB5C8B0045089C /* FirebaseStorageManager.swift */; };
 		78F940E6259D7E42007C972A /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F940E5259D7E42007C972A /* Router.swift */; };
 		78F940EA259D7EEF007C972A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F940E9259D7EEF007C972A /* ViewController.swift */; };
 		78F940EE259D995F007C972A /* ResourcesSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F940ED259D995F007C972A /* ResourcesSupport.swift */; };
@@ -260,6 +262,7 @@
 		785AB27125E9C527000FEEFE /* TapAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapAction.swift; sourceTree = "<group>"; };
 		7862C15325E2596D00F1645A /* FirebaseModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseModelProtocol.swift; sourceTree = "<group>"; };
 		7862C15725E25B5C00F1645A /* FirestoreUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreUser.swift; sourceTree = "<group>"; };
+		78769C4325EA28A6007791E0 /* NameValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameValidator.swift; sourceTree = "<group>"; };
 		78772B3B25B3D37300E6493E /* PurchaseDateValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseDateValidator.swift; sourceTree = "<group>"; };
 		78772B4D25B3DEBD00E6493E /* Array+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Util.swift"; sourceTree = "<group>"; };
 		78772B5325B3E48B00E6493E /* EditBookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBookViewModel.swift; sourceTree = "<group>"; };
@@ -351,6 +354,7 @@
 		78E609FA25AAABF80041B3D0 /* PasswordValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordValidator.swift; sourceTree = "<group>"; };
 		78E609FF25AAAEAC0041B3D0 /* ObservableType+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ObservableType+Extension.swift"; sourceTree = "<group>"; };
 		78E80CA525CE4402006580A2 /* BookValidationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookValidationTests.swift; sourceTree = "<group>"; };
+		78ED505625EB5C8B0045089C /* FirebaseStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStorageManager.swift; sourceTree = "<group>"; };
 		78F940E5259D7E42007C972A /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		78F940E9259D7EEF007C972A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		78F940ED259D995F007C972A /* ResourcesSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourcesSupport.swift; sourceTree = "<group>"; };
@@ -576,10 +580,11 @@
 		7862C15225E2591800F1645A /* Firebase */ = {
 			isa = PBXGroup;
 			children = (
+				7862C15A25E25B6300F1645A /* Model */,
 				78CB209025EA48DD00D4E22D /* FirebaseConfiguration */,
 				7821A5CD25E25BEE0006DE50 /* FirebaseAuth */,
+				78ED505525EB5C7A0045089C /* FirebaseStorage */,
 				7821A5CE25E25C090006DE50 /* Firestore */,
-				7862C15A25E25B6300F1645A /* Model */,
 			);
 			path = Firebase;
 			sourceTree = "<group>";
@@ -619,6 +624,7 @@
 		78772B4125B3D56200E6493E /* Account */ = {
 			isa = PBXGroup;
 			children = (
+				78769C4325EA28A6007791E0 /* NameValidator.swift */,
 				78E609F625AAABEA0041B3D0 /* EmailValidator.swift */,
 				78E609FA25AAABF80041B3D0 /* PasswordValidator.swift */,
 			);
@@ -1073,6 +1079,14 @@
 			path = Validator;
 			sourceTree = "<group>";
 		};
+		78ED505525EB5C7A0045089C /* FirebaseStorage */ = {
+			isa = PBXGroup;
+			children = (
+				78ED505625EB5C8B0045089C /* FirebaseStorageManager.swift */,
+			);
+			path = FirebaseStorage;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1299,6 +1313,7 @@
 				78DEE7E625AB0BD800219963 /* HomeViewData.swift in Sources */,
 				78E609FB25AAABF80041B3D0 /* PasswordValidator.swift in Sources */,
 				78772B5425B3E48B00E6493E /* EditBookViewModel.swift in Sources */,
+				78ED505725EB5C8B0045089C /* FirebaseStorageManager.swift in Sources */,
 				784B18EF25BD48F80071C32E /* WishListTableViewCell.swift in Sources */,
 				78299CE925E69D0D001868FB /* MyMessageTableViewCell.swift in Sources */,
 				7892EF70259C721F006F7315 /* Resources.swift in Sources */,
@@ -1335,6 +1350,7 @@
 				78E609CB25AA015F0041B3D0 /* LoginRequest.swift in Sources */,
 				78C7F3A725E525C5005E9E2B /* ChatSelectViewController.swift in Sources */,
 				7821A5D425E25C630006DE50 /* FirestoreManager.swift in Sources */,
+				78769C4425EA28A6007791E0 /* NameValidator.swift in Sources */,
 				7862C15425E2596D00F1645A /* FirebaseModelProtocol.swift in Sources */,
 				7820E0AB25AEFC1200A5E6D8 /* ImageLoader.swift in Sources */,
 				78CF3B3525AC48FD00ADBB60 /* BookListDataSource.swift in Sources */,

@@ -1,4 +1,5 @@
 // MARK: - アプリ
+"nick_name" = "ニックネーム";
 "mail_address" = "メールアドレス";
 "password" = "パスワード";
 "logout" = "ログアウト";

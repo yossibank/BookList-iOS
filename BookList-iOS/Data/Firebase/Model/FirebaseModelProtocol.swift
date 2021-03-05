@@ -1,5 +1,7 @@
 import CodableFirebase
 
+extension FirestoreManager.timeStamp: TimestampType {}
+
 protocol FirebaseModelProtocol: Codable {
     func toDictionary() -> [String: Any]?
 }
