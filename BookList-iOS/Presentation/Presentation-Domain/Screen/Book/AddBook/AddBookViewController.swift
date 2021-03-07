@@ -73,12 +73,12 @@ final class AddBookViewController: UIViewController {
 extension AddBookViewController {
 
     private func setupNavigation() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(
-            title: Resources.Strings.Navigation.done,
-            style: .done,
+        let tapGesture = UITapGestureRecognizer(
             target: self,
             action: #selector(addBookButtonTapped)
         )
+        tapGesture.numberOfTapsRequired = 1
+        navigationItem.rightBarButtonItem?.customView?.addGestureRecognizer(tapGesture)
     }
 
     private func setupTextField() {
@@ -278,6 +278,17 @@ extension AddBookViewController: UIImagePickerControllerDelegate, UINavigationCo
 
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         self.dismiss(animated: true)
+    }
+}
+
+extension AddBookViewController: NavigationBarConfiguration {
+
+    var navigationTitle: String? {
+        Resources.Strings.App.addBook
+    }
+
+    var rightBarButton: [NavigationBarButton] {
+        [.done]
     }
 }
 

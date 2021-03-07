@@ -1,4 +1,11 @@
 // MARK: - アプリ
+"home" = "ホーム";
+"book_list" = "書籍一覧";
+"add_book" = "書籍追加";
+"edit_book" = "書籍編集";
+"wish_list_book" = "お気に入り書籍";
+"chat" = "チャット";
+"talk_list" = "トーク一覧";
 "nick_name" = "ニックネーム";
 "mail_address" = "メールアドレス";
 "password" = "パスワード";
@@ -23,12 +30,6 @@
 "success_edit_book" = "書籍編集が完了しました";
 "did_you_logout" = "ログアウトしますか？";
 
-// MARK: - ホーム
-"book_list" = "書籍一覧";
-"add_book" = "書籍追加";
-"wish_list_book" = "お気に入り書籍";
-"chat" = "チャット";
-
 // MARK: - バリデーション
 "not_filled" = "%@が入力されていません";
 "not_longer_title_text" = "タイトル名は%@文字以下でご入力ください";
@@ -40,6 +41,7 @@
 
 // MARK: - ナビゲーションバー
 "done" = "完了";
+"cancel" = "キャンセル";
 
 // MARK: - 一般
 "yes" = "はい";

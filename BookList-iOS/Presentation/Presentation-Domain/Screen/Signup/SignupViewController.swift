@@ -314,5 +314,8 @@ extension SignupViewController: UIImagePickerControllerDelegate, UINavigationCon
 }
 
 extension SignupViewController: AnalyticsConfiguration {
-    var screenName: AnalyticsScreenName? { .signup }
+
+    var screenName: AnalyticsScreenName? {
+        .signup
+    }
 }
