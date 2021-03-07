@@ -4,6 +4,13 @@ final class ChatUserListViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
 
+    private let router: RouterProtocol = Router()
+
+    static func createInstance() -> ChatUserListViewController {
+        let instance = ChatUserListViewController.instantiateInitialViewController()
+        return instance
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
     }
