@@ -321,7 +321,7 @@ final class Router: RouterProtocol {
             viewController = route.viewController()
 
         case .navigation:
-            viewController = UINavigationController(rootViewController: route.viewController())
+            viewController = MainNavigationController(rootViewController: route.viewController())
         }
 
         return viewController
