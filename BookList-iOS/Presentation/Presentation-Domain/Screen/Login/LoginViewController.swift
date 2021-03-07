@@ -206,5 +206,8 @@ extension LoginViewController: KeyboardDelegate {
 }
 
 extension LoginViewController: AnalyticsConfiguration {
-    var screenName: AnalyticsScreenName? { .login }
+
+    var screenName: AnalyticsScreenName? {
+        .login
+    }
 }

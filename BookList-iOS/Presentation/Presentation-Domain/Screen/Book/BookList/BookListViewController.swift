@@ -164,9 +164,15 @@ extension BookListViewController: BookListDataSourceDelegate {
 }
 
 extension BookListViewController: NavigationBarConfiguration {
-    var navigationTitle: String? { Resources.Strings.App.bookList }
+
+    var navigationTitle: String? {
+        Resources.Strings.App.bookList
+    }
 }
 
 extension BookListViewController: AnalyticsConfiguration {
-    var screenName: AnalyticsScreenName? { .booklist }
+
+    var screenName: AnalyticsScreenName? {
+        .booklist
+    }
 }

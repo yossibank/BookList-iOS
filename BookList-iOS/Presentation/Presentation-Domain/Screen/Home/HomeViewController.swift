@@ -29,12 +29,12 @@ final class HomeViewController: UIViewController {
 extension HomeViewController {
 
     private func setupNavigation() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(
-            image: Resources.Images.General.logout?.withRenderingMode(.alwaysOriginal),
-            style: .plain,
+        let tapGesture = UITapGestureRecognizer(
             target: self,
             action: #selector(logoutButtonTapped)
         )
+        tapGesture.numberOfTapsRequired = 1
+        navigationItem.rightBarButtonItem?.customView?.addGestureRecognizer(tapGesture)
     }
 
     private func setupTableView() {
@@ -99,5 +99,12 @@ extension HomeViewController: UITableViewDelegate {
 }
 
 extension HomeViewController: NavigationBarConfiguration {
-    var navigationTitle: String? { Resources.Strings.App.home }
+
+    var navigationTitle: String? {
+        Resources.Strings.App.home
+    }
+
+    var rightBarButton: [NavigationBarButton] {
+        [.logout]
+    }
 }

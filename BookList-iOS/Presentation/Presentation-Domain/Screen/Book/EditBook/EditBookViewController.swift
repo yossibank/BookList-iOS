@@ -82,12 +82,12 @@ final class EditBookViewController: UIViewController {
 extension EditBookViewController {
 
     private func setupNavigation() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(
-            title: Resources.Strings.Navigation.done,
-            style: .done,
+        let tapGesuture = UITapGestureRecognizer(
             target: self,
             action: #selector(editBookButtonTapped)
         )
+        tapGesuture.numberOfTapsRequired = 1
+        navigationItem.rightBarButtonItem?.customView?.addGestureRecognizer(tapGesuture)
     }
 
     private func setupTextField() {
@@ -318,9 +318,19 @@ extension EditBookViewController: UIImagePickerControllerDelegate, UINavigationC
 }
 
 extension EditBookViewController: NavigationBarConfiguration {
-    var navigationTitle: String? { Resources.Strings.App.editBook }
+
+    var navigationTitle: String? {
+        Resources.Strings.App.editBook
+    }
+
+    var rightBarButton: [NavigationBarButton] {
+        [.done]
+    }
 }
 
 extension EditBookViewController: AnalyticsConfiguration {
-    var screenName: AnalyticsScreenName? { .editBook }
+
+    var screenName: AnalyticsScreenName? {
+        .editBook
+    }
 }
