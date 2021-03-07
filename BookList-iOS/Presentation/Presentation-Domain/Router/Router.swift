@@ -222,7 +222,14 @@ final class Router: RouterProtocol {
         animated:                 Bool
     ) {
         let vc = resolvedViewController
-        let navVC = from.navigationController
+        let navVC =
+            from as? MainNavigationController ??
+            from.navigationController as? MainNavigationController
+
+        navVC?.setupNavigationBar(
+            forVC: vc,
+            config: vc as? NavigationBarConfiguration
+        )
 
         navVC?.pushViewController(
             vc,
@@ -321,7 +328,16 @@ final class Router: RouterProtocol {
             viewController = route.viewController()
 
         case .navigation:
-            viewController = MainNavigationController(rootViewController: route.viewController())
+            let navVC = MainNavigationController.instantiateInitialViewController()
+            let vc = route.viewController()
+
+            navVC.viewControllers.insert(vc, at: 0)
+            navVC.setupNavigationBar(
+                forVC: vc,
+                config: vc as? NavigationBarConfiguration
+            )
+
+            viewController = navVC
         }
 
         return viewController

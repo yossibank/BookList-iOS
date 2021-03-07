@@ -104,3 +104,7 @@ extension HomeViewController: UITableViewDelegate {
         router.push(route, from: self)
     }
 }
+
+extension HomeViewController: NavigationBarConfiguration {
+    var navigationTitle: String? { Resources.Strings.App.home }
+}

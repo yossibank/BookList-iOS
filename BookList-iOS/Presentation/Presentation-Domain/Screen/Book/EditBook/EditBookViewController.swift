@@ -317,6 +317,10 @@ extension EditBookViewController: UIImagePickerControllerDelegate, UINavigationC
     }
 }
 
+extension EditBookViewController: NavigationBarConfiguration {
+    var navigationTitle: String? { Resources.Strings.App.editBook }
+}
+
 extension EditBookViewController: AnalyticsConfiguration {
     var screenName: AnalyticsScreenName? { .editBook }
 }

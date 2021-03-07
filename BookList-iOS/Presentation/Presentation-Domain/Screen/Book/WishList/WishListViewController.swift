@@ -81,6 +81,10 @@ extension WishListViewController: UITableViewDelegate {
     }
 }
 
+extension WishListViewController: NavigationBarConfiguration {
+    var navigationTitle: String? { Resources.Strings.App.wishList }
+}
+
 extension WishListViewController: AnalyticsConfiguration {
     var screenName: AnalyticsScreenName? { .wishlist }
 }

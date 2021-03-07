@@ -14,10 +14,13 @@ struct StringResources {
         static var title: String { Internal.localizable.title() }
         static var price: String { Internal.localizable.price() }
         static var purchaseDate: String { Internal.localizable.purchase_date() }
+        static var home: String { Internal.localizable.home() }
         static var bookList: String { Internal.localizable.book_list() }
         static var addBook: String { Internal.localizable.add_book() }
+        static var editBook: String { Internal.localizable.edit_book() }
         static var wishList: String { Internal.localizable.wish_list_book() }
         static var chat: String { Internal.localizable.chat() }
+        static var talkList: String { Internal.localizable.talk_list() }
         static var yen: String { Internal.localizable.yen() }
         static var taxText: String { Internal.localizable.plus() + Internal.localizable.tax() }
     }

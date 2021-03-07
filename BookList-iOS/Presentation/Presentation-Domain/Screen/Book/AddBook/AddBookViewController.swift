@@ -281,6 +281,10 @@ extension AddBookViewController: UIImagePickerControllerDelegate, UINavigationCo
     }
 }
 
+extension AddBookViewController: NavigationBarConfiguration {
+    var navigationTitle: String? { Resources.Strings.App.addBook }
+}
+
 extension AddBookViewController: AnalyticsConfiguration {
     var screenName: AnalyticsScreenName? { .addBook }
 }

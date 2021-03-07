@@ -56,6 +56,7 @@
 		78231211259C0D9300D9E723 /* BookListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78231210259C0D9300D9E723 /* BookListTests.swift */; };
 		7824042425E92A040001AB52 /* KeyboardAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7824042325E92A040001AB52 /* KeyboardAccessoryView.swift */; };
 		7824042F25E9374D0001AB52 /* IBDesignableTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7824042E25E9374D0001AB52 /* IBDesignableTextView.swift */; };
+		782572AD25F4B2FE007962D0 /* NavigationBarConfigration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782572AC25F4B2FE007962D0 /* NavigationBarConfigration.swift */; };
 		78299CE925E69D0D001868FB /* MyMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78299CE725E69D0D001868FB /* MyMessageTableViewCell.swift */; };
 		78299CEA25E69D0D001868FB /* MyMessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78299CE825E69D0D001868FB /* MyMessageTableViewCell.xib */; };
 		78299CEE25E69E15001868FB /* OtherMessageBalloonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78299CED25E69E15001868FB /* OtherMessageBalloonView.swift */; };
@@ -218,6 +219,7 @@
 		78231212259C0D9300D9E723 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7824042325E92A040001AB52 /* KeyboardAccessoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardAccessoryView.swift; sourceTree = "<group>"; };
 		7824042E25E9374D0001AB52 /* IBDesignableTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBDesignableTextView.swift; sourceTree = "<group>"; };
+		782572AC25F4B2FE007962D0 /* NavigationBarConfigration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarConfigration.swift; sourceTree = "<group>"; };
 		78299CE725E69D0D001868FB /* MyMessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMessageTableViewCell.swift; sourceTree = "<group>"; };
 		78299CE825E69D0D001868FB /* MyMessageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyMessageTableViewCell.xib; sourceTree = "<group>"; };
 		78299CED25E69E15001868FB /* OtherMessageBalloonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherMessageBalloonView.swift; sourceTree = "<group>"; };
@@ -511,6 +513,15 @@
 				78997E74259C29D70076FF97 /* PromisesObjC.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		782572A625F4B29B007962D0 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				782572AC25F4B2FE007962D0 /* NavigationBarConfigration.swift */,
+				78E609F025AAAA530041B3D0 /* Validator+Protocol.swift */,
+			);
+			path = Protocol;
 			sourceTree = "<group>";
 		};
 		78299CE625E69CFD001868FB /* MyMessageCell */ = {
@@ -812,6 +823,7 @@
 				78C61C2A25A1714B00DC78A6 /* AppUtil */,
 				7892EF48259C539B006F7315 /* IBDesignable */,
 				78997EE3259C4C4D0076FF97 /* Extension */,
+				782572A625F4B29B007962D0 /* Protocol */,
 				7892EF77259C73B2006F7315 /* Service */,
 				7820E0A925AEFBFF00A5E6D8 /* ImageLoader */,
 				78E609EF25AAAA210041B3D0 /* Validator */,
@@ -1058,7 +1070,6 @@
 			children = (
 				78772B4125B3D56200E6493E /* Account */,
 				78772B4225B3D56800E6493E /* Book */,
-				78E609F025AAAA530041B3D0 /* Validator+Protocol.swift */,
 			);
 			path = Validator;
 			sourceTree = "<group>";
@@ -1265,6 +1276,7 @@
 			files = (
 				783FCCE925BEEB17000D18EA /* AddBookUsecase.swift in Sources */,
 				781936C025BC752D00309FB7 /* BookViewData.swift in Sources */,
+				782572AD25F4B2FE007962D0 /* NavigationBarConfigration.swift in Sources */,
 				78DE1D6725BD423A00A2C0F2 /* WishListViewController.swift in Sources */,
 				7862C15825E25B5C00F1645A /* FirestoreUser.swift in Sources */,
 				78987B3C259C8813008311DC /* LoginViewController.swift in Sources */,
