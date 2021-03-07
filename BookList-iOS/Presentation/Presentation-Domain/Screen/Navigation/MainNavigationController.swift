@@ -14,5 +14,11 @@ extension MainNavigationController {
         config: NavigationBarConfiguration?
     ) {
         vc.navigationItem.title = config?.navigationTitle
+        vc.navigationItem.backBarButtonItem = UIBarButtonItem(
+            title: config?.backButtonTitle,
+            style: .plain,
+            target: nil,
+            action: nil
+        )
     }
 }

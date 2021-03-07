@@ -29,13 +29,6 @@ final class HomeViewController: UIViewController {
 extension HomeViewController {
 
     private func setupNavigation() {
-        navigationItem.backBarButtonItem = UIBarButtonItem(
-            title: .blank,
-            style: .plain,
-            target: nil,
-            action: nil
-        )
-
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             image: Resources.Images.General.logout?.withRenderingMode(.alwaysOriginal),
             style: .plain,

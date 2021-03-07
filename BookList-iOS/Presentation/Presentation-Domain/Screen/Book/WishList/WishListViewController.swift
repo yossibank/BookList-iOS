@@ -17,22 +17,12 @@ final class WishListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupNavigation()
         setupTableView()
         sendScreenView()
     }
 }
 
 extension WishListViewController {
-
-    private func setupNavigation() {
-        navigationItem.backBarButtonItem = UIBarButtonItem(
-            title: .blank,
-            style: .plain,
-            target: nil,
-            action: nil
-        )
-    }
 
     private func setupTableView() {
         dataSource = WishListDataSource(viewModel: viewModel)

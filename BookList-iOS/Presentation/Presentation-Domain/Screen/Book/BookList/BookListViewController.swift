@@ -21,7 +21,6 @@ final class BookListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupNavigation()
         setupTableView()
         viewModel.fetchBookList(isInitial: true)
         bindViewModel()
@@ -30,15 +29,6 @@ final class BookListViewController: UIViewController {
 }
 
 extension BookListViewController {
-
-    private func setupNavigation() {
-        navigationItem.backBarButtonItem = UIBarButtonItem(
-            title: .blank,
-            style: .plain,
-            target: nil,
-            action: nil
-        )
-    }
 
     private func setupTableView() {
         dataSource = BookListDataSource()

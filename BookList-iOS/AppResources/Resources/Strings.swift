@@ -4,6 +4,7 @@ struct StringResources {
 
     struct Navigation {
         static var done: String { Internal.localizable.done() }
+        static var cancel: String { Internal.localizable.cancel() }
     }
 
     struct App {
