@@ -13,19 +13,15 @@ final class ChatUserListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupTableView()
     }
-    
+
     private func setupTableView() {
         tableView.register(ChatUserListTableViewCell.xib(), forCellReuseIdentifier: ChatUserListTableViewCell.resourceName)
         tableView.tableFooterView = UIView()
-        tableView.delegate = self
         tableView.dataSource = self
         tableView.rowHeight = 80
     }
-}
-
-extension ChatUserListViewController: UITableViewDelegate {
-    
 }
 
 extension ChatUserListViewController: UITableViewDataSource {

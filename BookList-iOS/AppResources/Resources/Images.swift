@@ -21,6 +21,10 @@ struct ImageResources {
         static var nonFavorite: UIImage? { Internal.no_favorite() }
     }
 
+    struct Chat {
+        static var addChatUser: UIImage? { Internal.add_chat_user() }
+    }
+
     struct General {
         static var noImage: UIImage? { Internal.no_Image() }
         static var logout: UIImage? { Internal.logout() }

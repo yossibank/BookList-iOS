@@ -3,7 +3,7 @@ import UIKit
 final class MainNavigationButton: UIButton {
 
     private struct Constant {
-        static let buttonSize: CGSize = CGSize(width: 40, height: 40)
+        static let buttonSize: CGSize = CGSize(width: 48, height: 48)
     }
 
     init(image: UIImage?) {

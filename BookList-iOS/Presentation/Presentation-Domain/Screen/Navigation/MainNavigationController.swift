@@ -10,6 +10,10 @@ final class MainNavigationController: UINavigationController {
         customView: MainNavigationButton(text: Resources.Strings.Navigation.done)
     )
 
+    private let addUserItem: UIBarButtonItem = UIBarButtonItem(
+        customView: MainNavigationButton(image: Resources.Images.Chat.addChatUser)
+    )
+
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -49,6 +53,9 @@ extension MainNavigationController {
 
             case .done:
                 return doneItem
+
+            case .addUser:
+                return addUserItem
             }
         }
     }

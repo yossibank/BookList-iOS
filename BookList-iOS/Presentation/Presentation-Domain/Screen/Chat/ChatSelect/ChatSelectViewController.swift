@@ -13,7 +13,17 @@ final class ChatSelectViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupNavigation()
         setupTableView()
+    }
+
+    private func setupNavigation() {
+        let tapGesture = UITapGestureRecognizer(
+            target: self,
+            action: #selector(addChatUserTapped)
+        )
+        tapGesture.numberOfTapsRequired = 1
+        navigationItem.rightBarButtonItem?.customView?.addGestureRecognizer(tapGesture)
     }
 
     private func setupTableView() {
@@ -22,6 +32,10 @@ final class ChatSelectViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.rowHeight = 80
+    }
+
+    @objc private func addChatUserTapped() {
+        router.present(.chatUserList, from: self, isModalInPresentation: false)
     }
 }
 
@@ -66,5 +80,9 @@ extension ChatSelectViewController: NavigationBarConfiguration {
 
     var navigationTitle: String? {
         Resources.Strings.App.talkList
+    }
+
+    var rightBarButton: [NavigationBarButton] {
+        [.addUser]
     }
 }

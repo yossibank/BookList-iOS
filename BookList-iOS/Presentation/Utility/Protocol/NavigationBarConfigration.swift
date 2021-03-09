@@ -13,4 +13,5 @@ extension NavigationBarConfiguration {
 enum NavigationBarButton {
     case logout
     case done
+    case addUser
 }
