@@ -49,8 +49,8 @@ extension HomeViewController {
     @objc private func logoutButtonTapped() {
         showActionAlert(
             title: Resources.Strings.App.logout,
-            message: Resources.Strings.Alert.didYouLogout)
-        { [weak self] in
+            message: Resources.Strings.Alert.didYouLogout
+        ) { [weak self] in
             self?.viewModel.logout()
         }
     }

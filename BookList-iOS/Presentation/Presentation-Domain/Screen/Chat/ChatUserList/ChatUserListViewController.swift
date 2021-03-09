@@ -53,3 +53,10 @@ extension ChatUserListViewController: UITableViewDataSource {
         return cell
     }
 }
+
+extension ChatUserListViewController: NavigationBarConfiguration {
+
+    var navigationTitle: String? {
+        Resources.Strings.App.talkList
+    }
+}

@@ -63,5 +63,8 @@ extension ChatSelectViewController: UITableViewDataSource {
 }
 
 extension ChatSelectViewController: NavigationBarConfiguration {
-    var navigationTitle: String? { Resources.Strings.App.talkList }
+
+    var navigationTitle: String? {
+        Resources.Strings.App.talkList
+    }
 }
