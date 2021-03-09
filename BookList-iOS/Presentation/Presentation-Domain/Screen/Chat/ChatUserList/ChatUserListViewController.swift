@@ -1,19 +1,29 @@
 import UIKit
+import RxSwift
+import RxCocoa
 
 final class ChatUserListViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
 
-    private let router: RouterProtocol = Router()
+    private var users: [FirestoreUser] = []
 
-    static func createInstance() -> ChatUserListViewController {
+    private let router: RouterProtocol = Router()
+    private let disposeBag: DisposeBag = DisposeBag()
+
+    private var viewModel: ChatUserListViewModel!
+
+    static func createInstance(viewModel: ChatUserListViewModel) -> ChatUserListViewController {
         let instance = ChatUserListViewController.instantiateInitialViewController()
+        instance.viewModel = viewModel
         return instance
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
+        viewModel.fetchUsers()
+        bindViewModel()
     }
 
     private func setupTableView() {
@@ -24,13 +34,28 @@ final class ChatUserListViewController: UIViewController {
     }
 }
 
+extension ChatUserListViewController {
+
+    private func bindViewModel() {
+        viewModel.userList
+            .asDriver(onErrorJustReturn: [])
+            .drive(onNext: { [weak self] users in
+                guard let self = self else { return }
+
+                self.users = users
+                self.tableView.reloadData()
+            })
+            .disposed(by: disposeBag)
+    }
+}
+
 extension ChatUserListViewController: UITableViewDataSource {
 
     func tableView(
         _ tableView: UITableView,
         numberOfRowsInSection section: Int
     ) -> Int {
-        10
+        users.count
     }
 
     func tableView(
@@ -42,8 +67,10 @@ extension ChatUserListViewController: UITableViewDataSource {
             for: indexPath
         )
 
-        if let chatUserListCell = cell as? ChatUserListViewController {
-            
+        if let chatUserListCell = cell as? ChatUserListTableViewCell {
+            if let user = users.any(at: indexPath.row) {
+                chatUserListCell.setup(user: user)
+            }
         }
 
         return cell

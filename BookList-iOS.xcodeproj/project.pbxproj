@@ -62,6 +62,8 @@
 		7824042F25E9374D0001AB52 /* IBDesignableTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7824042E25E9374D0001AB52 /* IBDesignableTextView.swift */; };
 		782572AD25F4B2FE007962D0 /* NavigationBarConfigration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782572AC25F4B2FE007962D0 /* NavigationBarConfigration.swift */; };
 		782572B725F4D130007962D0 /* MainNavigationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782572B625F4D130007962D0 /* MainNavigationItem.swift */; };
+		7826A73D25F7A885006F23AD /* ChatUserListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7826A73C25F7A885006F23AD /* ChatUserListViewModel.swift */; };
+		7826A74625F7AF03006F23AD /* ChatUserListUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7826A74525F7AF03006F23AD /* ChatUserListUsecase.swift */; };
 		78299CE925E69D0D001868FB /* MyMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78299CE725E69D0D001868FB /* MyMessageTableViewCell.swift */; };
 		78299CEA25E69D0D001868FB /* MyMessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78299CE825E69D0D001868FB /* MyMessageTableViewCell.xib */; };
 		78299CEE25E69E15001868FB /* OtherMessageBalloonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78299CED25E69E15001868FB /* OtherMessageBalloonView.swift */; };
@@ -230,6 +232,8 @@
 		7824042E25E9374D0001AB52 /* IBDesignableTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBDesignableTextView.swift; sourceTree = "<group>"; };
 		782572AC25F4B2FE007962D0 /* NavigationBarConfigration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarConfigration.swift; sourceTree = "<group>"; };
 		782572B625F4D130007962D0 /* MainNavigationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationItem.swift; sourceTree = "<group>"; };
+		7826A73C25F7A885006F23AD /* ChatUserListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatUserListViewModel.swift; sourceTree = "<group>"; };
+		7826A74525F7AF03006F23AD /* ChatUserListUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatUserListUsecase.swift; sourceTree = "<group>"; };
 		78299CE725E69D0D001868FB /* MyMessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMessageTableViewCell.swift; sourceTree = "<group>"; };
 		78299CE825E69D0D001868FB /* MyMessageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyMessageTableViewCell.xib; sourceTree = "<group>"; };
 		78299CED25E69E15001868FB /* OtherMessageBalloonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherMessageBalloonView.swift; sourceTree = "<group>"; };
@@ -403,6 +407,8 @@
 			isa = PBXGroup;
 			children = (
 				7805908B25F48ABF002B5296 /* View */,
+				7826A74525F7AF03006F23AD /* ChatUserListUsecase.swift */,
+				7826A73C25F7A885006F23AD /* ChatUserListViewModel.swift */,
 				7805908725F48A94002B5296 /* ChatUserListViewController.swift */,
 				7805908425F48A82002B5296 /* ChatUserListViewController.storyboard */,
 			);
@@ -1319,6 +1325,7 @@
 				78CF3B1925AC320900ADBB60 /* BookListUsecase.swift in Sources */,
 				78B8A69025E54021005BCB16 /* OtherMessageTableViewCell.swift in Sources */,
 				78CF3AF825ABF85D00ADBB60 /* BookListTableViewCell.swift in Sources */,
+				7826A74625F7AF03006F23AD /* ChatUserListUsecase.swift in Sources */,
 				7892EF5C259C5DF0006F7315 /* IBDesignableTextField.swift in Sources */,
 				784E135625B29952008FD947 /* DatePicker+Util.swift in Sources */,
 				783231A625B056C200EB178B /* Logger.swift in Sources */,
@@ -1328,6 +1335,7 @@
 				78CF3B0725AC0E3500ADBB60 /* BookListViewModel.swift in Sources */,
 				78B29D0125B3124A00A7DC7F /* TitleValidator.swift in Sources */,
 				785A1AB725A9A369005E8A4B /* SignupViewModel.swift in Sources */,
+				7826A73D25F7A885006F23AD /* ChatUserListViewModel.swift in Sources */,
 				78D17C9225C501F700793310 /* FireBaseAnalytics.swift in Sources */,
 				78C61C1425A1692900DC78A6 /* APIError.swift in Sources */,
 				78CF3AFF25AC00C700ADBB60 /* BookListResponse.swift in Sources */,
