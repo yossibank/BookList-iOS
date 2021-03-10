@@ -94,6 +94,7 @@
 		78772B4E25B3DEBD00E6493E /* Array+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78772B4D25B3DEBD00E6493E /* Array+Util.swift */; };
 		78772B5425B3E48B00E6493E /* EditBookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78772B5325B3E48B00E6493E /* EditBookViewModel.swift */; };
 		78772B5A25B3EE0900E6493E /* EditBookUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78772B5925B3EE0900E6493E /* EditBookUsecase.swift */; };
+		787FD0B925F9072800FBE386 /* ChatUserListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787FD0B825F9072800FBE386 /* ChatUserListDataSource.swift */; };
 		78844C6125B0873600C9AEC0 /* AddBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78844C6025B0873600C9AEC0 /* AddBookViewController.swift */; };
 		78844C6525B0874100C9AEC0 /* AddBookViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78844C6425B0874100C9AEC0 /* AddBookViewController.storyboard */; };
 		7892EF52259C58C0006F7315 /* IBDesignableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7892EF51259C58C0006F7315 /* IBDesignableButton.swift */; };
@@ -264,6 +265,7 @@
 		78772B4D25B3DEBD00E6493E /* Array+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Util.swift"; sourceTree = "<group>"; };
 		78772B5325B3E48B00E6493E /* EditBookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBookViewModel.swift; sourceTree = "<group>"; };
 		78772B5925B3EE0900E6493E /* EditBookUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBookUsecase.swift; sourceTree = "<group>"; };
+		787FD0B825F9072800FBE386 /* ChatUserListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatUserListDataSource.swift; sourceTree = "<group>"; };
 		78844C6025B0873600C9AEC0 /* AddBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookViewController.swift; sourceTree = "<group>"; };
 		78844C6425B0874100C9AEC0 /* AddBookViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddBookViewController.storyboard; sourceTree = "<group>"; };
 		7892EF51259C58C0006F7315 /* IBDesignableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBDesignableButton.swift; sourceTree = "<group>"; };
@@ -409,6 +411,7 @@
 				7805908B25F48ABF002B5296 /* View */,
 				7826A74525F7AF03006F23AD /* ChatUserListUsecase.swift */,
 				7826A73C25F7A885006F23AD /* ChatUserListViewModel.swift */,
+				787FD0B825F9072800FBE386 /* ChatUserListDataSource.swift */,
 				7805908725F48A94002B5296 /* ChatUserListViewController.swift */,
 				7805908425F48A82002B5296 /* ChatUserListViewController.storyboard */,
 			);
@@ -1354,6 +1357,7 @@
 				78DCC90025B7046F006FFF0F /* LogoutRequest.swift in Sources */,
 				78F940EA259D7EEF007C972A /* ViewController.swift in Sources */,
 				78E60A0025AAAEAC0041B3D0 /* ObservableType+Extension.swift in Sources */,
+				787FD0B925F9072800FBE386 /* ChatUserListDataSource.swift in Sources */,
 				78E609D325AA04300041B3D0 /* LoginViewModel.swift in Sources */,
 				78DCC90425B7048E006FFF0F /* LogoutResponse.swift in Sources */,
 				7821A5D025E25C5B0006DE50 /* FirebaseAuthManager.swift in Sources */,
