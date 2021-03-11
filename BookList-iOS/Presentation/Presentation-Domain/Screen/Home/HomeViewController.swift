@@ -20,7 +20,7 @@ final class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupNavigation()
+        setupNavigationAction()
         setupTableView()
         bindViewModel()
     }
@@ -28,13 +28,17 @@ final class HomeViewController: UIViewController {
 
 extension HomeViewController {
 
-    private func setupNavigation() {
-        let tapGesture = UITapGestureRecognizer(
-            target: self,
-            action: #selector(logoutButtonTapped)
-        )
-        tapGesture.numberOfTapsRequired = 1
-        navigationItem.rightBarButtonItem?.customView?.addGestureRecognizer(tapGesture)
+    private func setupNavigationAction() {
+        navigationItem.rightBarButtonItem?.rx.tap.subscribe(onNext: { [weak self] in
+            guard let self = self else { return }
+
+            self.showActionAlert(
+                title: Resources.Strings.App.logout,
+                message: Resources.Strings.Alert.didYouLogout
+            ) { [weak self] in
+                self?.viewModel.logout()
+            }
+        }).disposed(by: disposeBag)
     }
 
     private func setupTableView() {
@@ -44,15 +48,6 @@ extension HomeViewController {
         tableView.dataSource = dataSource
         tableView.delegate = self
         tableView.rowHeight = 100
-    }
-
-    @objc private func logoutButtonTapped() {
-        showActionAlert(
-            title: Resources.Strings.App.logout,
-            message: Resources.Strings.Alert.didYouLogout
-        ) { [weak self] in
-            self?.viewModel.logout()
-        }
     }
 }
 

@@ -1,10 +1,13 @@
 import UIKit
+import RxSwift
+import RxCocoa
 
 final class ChatSelectViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
 
     private let router: RouterProtocol = Router()
+    private let disposeBag: DisposeBag = DisposeBag()
 
     static func createInstance() -> ChatSelectViewController {
         let instance = ChatSelectViewController.instantiateInitialViewController()
@@ -13,17 +16,16 @@ final class ChatSelectViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupNavigation()
+        setupButton()
         setupTableView()
     }
 
-    private func setupNavigation() {
-        let tapGesture = UITapGestureRecognizer(
-            target: self,
-            action: #selector(addChatUserTapped)
-        )
-        tapGesture.numberOfTapsRequired = 1
-        navigationItem.rightBarButtonItem?.customView?.addGestureRecognizer(tapGesture)
+    private func setupButton() {
+        navigationItem.rightBarButtonItem?.rx.tap.subscribe { [weak self] _ in
+            guard let self = self else { return }
+
+            self.router.present(.chatUserList, from: self, isModalInPresentation: false)
+        }.disposed(by: disposeBag)
     }
 
     private func setupTableView() {
@@ -32,10 +34,6 @@ final class ChatSelectViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.rowHeight = 80
-    }
-
-    @objc private func addChatUserTapped() {
-        router.present(.chatUserList, from: self, isModalInPresentation: false)
     }
 }
 

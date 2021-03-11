@@ -49,7 +49,6 @@ extension BookListViewController {
 extension BookListViewController {
 
     private func bindViewModel() {
-
         viewModel.bookList
             .asDriver(onErrorJustReturn: [])
             .drive(onNext: { [weak self] bookList in

@@ -20,9 +20,18 @@ final class ChatUserListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupButton()
         setupTableView()
         viewModel.fetchUsers()
         bindViewModel()
+    }
+
+    private func setupButton() {
+        navigationItem.rightBarButtonItem?.rx.tap.subscribe { [weak self] _ in
+            guard let self = self else { return }
+
+            /* firestoreへ部屋作成 */
+        }.disposed(by: disposeBag)
     }
 
     private func setupTableView() {
@@ -53,5 +62,9 @@ extension ChatUserListViewController: NavigationBarConfiguration {
 
     var navigationTitle: String? {
         Resources.Strings.App.selectUser
+    }
+
+    var rightBarButton: [NavigationBarButton] {
+        [.startTalk]
     }
 }
