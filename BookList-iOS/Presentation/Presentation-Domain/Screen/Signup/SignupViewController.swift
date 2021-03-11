@@ -115,7 +115,8 @@ extension SignupViewController {
         } else {
             router.present(
                 .login,
-                from: self
+                from: self,
+                wrapInNavigationController: false
             )
         }
     }

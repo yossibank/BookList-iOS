@@ -88,7 +88,8 @@ extension LoginViewController {
         } else {
             router.present(
                 .signup,
-                from: self
+                from: self,
+                wrapInNavigationController: false
             )
         }
     }

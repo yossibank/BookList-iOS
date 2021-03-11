@@ -15,21 +15,23 @@ protocol RouterProtocol: class {
     )
 
     func present(
-        _ route:               Route,
-        from:                  UIViewController,
-        presentationStyle:     UIModalPresentationStyle,
-        animated:              Bool,
-        isModalInPresentation: Bool,
-        completion:            VoidBlock?
+        _ route:                    Route,
+        from:                       UIViewController,
+        presentationStyle:          UIModalPresentationStyle,
+        wrapInNavigationController: Bool,
+        animated:                   Bool,
+        isModalInPresentation:      Bool,
+        completion:                 VoidBlock?
     )
 
     func present(
-        _ viewController:      UIViewController,
-        from:                  UIViewController,
-        presentationStyle:     UIModalPresentationStyle,
-        animated:              Bool,
-        isModalInPresentation: Bool,
-        completion:            VoidBlock?
+        _ viewController:           UIViewController,
+        from:                       UIViewController,
+        presentationStyle:          UIModalPresentationStyle,
+        wrapInNavigationController: Bool,
+        animated:                   Bool,
+        isModalInPresentation:      Bool,
+        completion:                 VoidBlock?
     )
 
     func dismiss(
@@ -71,20 +73,22 @@ extension RouterProtocol {
     }
 
     func present(
-        _ route:               Route,
-        from:                  UIViewController,
-        presentationStyle:     UIModalPresentationStyle = .pageSheet,
-        animated:              Bool = true,
-        isModalInPresentation: Bool = true,
-        completion:            VoidBlock? = nil
+        _ route:                    Route,
+        from:                       UIViewController,
+        presentationStyle:          UIModalPresentationStyle = .pageSheet,
+        wrapInNavigationController: Bool = true,
+        animated:                   Bool = true,
+        isModalInPresentation:      Bool = true,
+        completion:                 VoidBlock? = nil
     ) {
         return present(
             route,
-            from:                  from,
-            presentationStyle:     presentationStyle,
-            animated:              animated,
+            from: from,
+            presentationStyle: presentationStyle,
+            wrapInNavigationController: wrapInNavigationController,
+            animated: animated,
             isModalInPresentation: isModalInPresentation,
-            completion:            completion
+            completion: completion
         )
     }
 
@@ -92,17 +96,19 @@ extension RouterProtocol {
         _ viewController:      UIViewController,
         from:                  UIViewController,
         presentationStyle:     UIModalPresentationStyle = .pageSheet,
+        wrapInNavigationController: Bool = true,
         animated:              Bool = true,
         isModalInPresentation: Bool = true,
         completion:            VoidBlock? = nil
     ) {
         return present(
             viewController,
-            from:                  from,
-            presentationStyle:     presentationStyle,
-            animated:              animated,
-            isModalInPresentation: isModalInPresentation,
-            completion:            completion
+            from:                       from,
+            presentationStyle:          presentationStyle,
+            wrapInNavigationController: wrapInNavigationController,
+            animated:                   animated,
+            isModalInPresentation:      isModalInPresentation,
+            completion:                 completion
         )
     }
 
@@ -242,64 +248,92 @@ final class Router: RouterProtocol {
     }
 
     func present(
-        _ route:               Route,
-        from:                  UIViewController,
-        presentationStyle:     UIModalPresentationStyle,
-        animated:              Bool,
-        isModalInPresentation: Bool,
-        completion:            VoidBlock?
+        _ route:                    Route,
+        from:                       UIViewController,
+        presentationStyle:          UIModalPresentationStyle,
+        wrapInNavigationController: Bool,
+        animated:                   Bool,
+        isModalInPresentation:      Bool,
+        completion:                 VoidBlock?
     ) {
         let vc = route.viewController()
 
         internalPresent(
             vc,
-            from:                  from,
-            presentationStyle:     presentationStyle,
-            animated:              animated,
-            isModalInPresentation: isModalInPresentation,
-            completion:            completion
+            from:                       from,
+            presentationStyle:          presentationStyle,
+            wrapInNavigationController: wrapInNavigationController,
+            animated:                   animated,
+            isModalInPresentation:      isModalInPresentation,
+            completion:                 completion
         )
     }
 
     func present(
-        _ viewController:      UIViewController,
-        from:                  UIViewController,
-        presentationStyle:     UIModalPresentationStyle,
-        animated:              Bool,
-        isModalInPresentation: Bool,
-        completion:            VoidBlock?
+        _ viewController:           UIViewController,
+        from:                       UIViewController,
+        presentationStyle:          UIModalPresentationStyle,
+        wrapInNavigationController: Bool,
+        animated:                   Bool,
+        isModalInPresentation:      Bool,
+        completion:                 VoidBlock?
     ) {
         internalPresent(
             viewController,
-            from:                  from,
-            presentationStyle:     presentationStyle,
-            animated:              animated,
-            isModalInPresentation: isModalInPresentation,
-            completion:            completion
+            from:                       from,
+            presentationStyle:          presentationStyle,
+            wrapInNavigationController: wrapInNavigationController,
+            animated:                   animated,
+            isModalInPresentation:      isModalInPresentation,
+            completion:                 completion
         )
     }
 
     private func internalPresent(
-        _ resolvedViewController: UIViewController,
-        from:                     UIViewController,
-        presentationStyle:        UIModalPresentationStyle,
-        animated:                 Bool,
-        isModalInPresentation:    Bool,
-        completion:               VoidBlock?
+        _ resolvedViewController:   UIViewController,
+        from:                       UIViewController,
+        presentationStyle:          UIModalPresentationStyle,
+        wrapInNavigationController: Bool,
+        animated:                   Bool,
+        isModalInPresentation:      Bool,
+        completion:                 VoidBlock?
     ) {
         let vc = resolvedViewController
 
-        vc.modalPresentationStyle = presentationStyle
+        if wrapInNavigationController {
 
-        if #available(iOS 13, *) {
-            vc.isModalInPresentation = isModalInPresentation
+            let navVC = MainNavigationController.instantiateInitialViewController()
+
+            navVC.modalPresentationStyle = presentationStyle
+            navVC.viewControllers = [vc]
+            navVC.setupNavigationBar(
+                forVC: vc,
+                config: vc as? NavigationBarConfiguration
+            )
+
+            if #available(iOS 13, *) {
+                navVC.isModalInPresentation = isModalInPresentation
+            }
+
+            from.present(
+                navVC,
+                animated:   animated,
+                completion: completion
+            )
+        } else {
+
+            vc.modalPresentationStyle = presentationStyle
+
+            if #available(iOS 13, *) {
+                vc.isModalInPresentation = isModalInPresentation
+            }
+
+            from.present(
+                vc,
+                animated:   animated,
+                completion: completion
+            )
         }
-
-        from.present(
-            vc,
-            animated:   animated,
-            completion: completion
-        )
     }
 
     func dismiss(
