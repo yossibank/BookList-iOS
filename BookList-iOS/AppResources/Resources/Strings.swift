@@ -22,6 +22,7 @@ struct StringResources {
         static var wishList: String { Internal.localizable.wish_list_book() }
         static var chat: String { Internal.localizable.chat() }
         static var talkList: String { Internal.localizable.talk_list() }
+        static var selectUser: String { Internal.localizable.select_user() }
         static var yen: String { Internal.localizable.yen() }
         static var taxText: String { Internal.localizable.plus() + Internal.localizable.tax() }
     }

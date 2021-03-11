@@ -52,6 +52,6 @@ extension ChatUserListViewController {
 extension ChatUserListViewController: NavigationBarConfiguration {
 
     var navigationTitle: String? {
-        Resources.Strings.App.talkList
+        Resources.Strings.App.selectUser
     }
 }
