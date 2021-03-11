@@ -11,10 +11,6 @@ final class WishListTableViewCell: UITableViewCell {
         super.awakeFromNib()
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-    }
-
     func setup(book: BookViewData) {
         bookTitleLabel.text = book.name
 

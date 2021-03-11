@@ -23,6 +23,8 @@ extension ChatUserListDataSource: UITableViewDataSource {
         )
 
         if let chatUserListCell = cell as? ChatUserListTableViewCell {
+            chatUserListCell.selectionStyle = .none
+
             if let user = chatUserList.any(at: indexPath.row) {
                 chatUserListCell.setup(user: user)
             }

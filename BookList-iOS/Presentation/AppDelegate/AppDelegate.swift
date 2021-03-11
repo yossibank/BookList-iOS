@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseManager.shared.configure()
 
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = router.initialWindow(.login, type: .normal)
+        window?.rootViewController = router.initialWindow(.chatSelect, type: .navigation)
         window?.makeKeyAndVisible()
 
         return true

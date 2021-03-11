@@ -20,13 +20,14 @@ final class ChatUserListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupButton()
+        setupNavigationItem()
         setupTableView()
         viewModel.fetchUsers()
         bindViewModel()
     }
 
-    private func setupButton() {
+    private func setupNavigationItem() {
+        navigationItem.rightBarButtonItem?.isEnabled = false
         navigationItem.rightBarButtonItem?.rx.tap.subscribe { [weak self] _ in
             guard let self = self else { return }
 
@@ -39,6 +40,7 @@ final class ChatUserListViewController: UIViewController {
         tableView.register(ChatUserListTableViewCell.xib(), forCellReuseIdentifier: ChatUserListTableViewCell.resourceName)
         tableView.tableFooterView = UIView()
         tableView.dataSource = dataSource
+        tableView.delegate = self
         tableView.rowHeight = 80
     }
 }
@@ -55,6 +57,25 @@ extension ChatUserListViewController {
                 self.tableView.reloadData()
             })
             .disposed(by: disposeBag)
+    }
+}
+
+extension ChatUserListViewController: UITableViewDelegate {
+
+    func tableView(
+        _ tableView: UITableView,
+        didSelectRowAt indexPath: IndexPath
+    ) {
+        tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
+        navigationItem.rightBarButtonItem?.isEnabled = true
+    }
+
+    func tableView(
+        _ tableView: UITableView,
+        didDeselectRowAt indexPath: IndexPath
+    ) {
+        tableView.cellForRow(at: indexPath)?.accessoryType = .none
+        navigationItem.rightBarButtonItem?.isEnabled = false
     }
 }
 
