@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "782311F5259C0D9200D9E723"
-               BuildableName = "BookList-iOS.app"
-               BlueprintName = "BookList-iOS"
-               ReferencedContainer = "container:BookList-iOS.xcodeproj">
+               BuildableName = "BookList.app"
+               BlueprintName = "BookList"
+               ReferencedContainer = "container:BookList.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "7823120B259C0D9300D9E723"
-               BuildableName = "BookList-iOSTests.xctest"
-               BlueprintName = "BookList-iOSTests"
-               ReferencedContainer = "container:BookList-iOS.xcodeproj">
+               BuildableName = "BookListTests.xctest"
+               BlueprintName = "BookListTests"
+               ReferencedContainer = "container:BookList.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -45,7 +45,7 @@
                BlueprintIdentifier = "78231216259C0D9300D9E723"
                BuildableName = "BookList-iOSUITests.xctest"
                BlueprintName = "BookList-iOSUITests"
-               ReferencedContainer = "container:BookList-iOS.xcodeproj">
+               ReferencedContainer = "container:BookList.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -65,9 +65,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "782311F5259C0D9200D9E723"
-            BuildableName = "BookList-iOS.app"
-            BlueprintName = "BookList-iOS"
-            ReferencedContainer = "container:BookList-iOS.xcodeproj">
+            BuildableName = "BookList.app"
+            BlueprintName = "BookList"
+            ReferencedContainer = "container:BookList.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <CommandLineArguments>
@@ -92,9 +92,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "782311F5259C0D9200D9E723"
-            BuildableName = "BookList-iOS.app"
-            BlueprintName = "BookList-iOS"
-            ReferencedContainer = "container:BookList-iOS.xcodeproj">
+            BuildableName = "BookList.app"
+            BlueprintName = "BookList"
+            ReferencedContainer = "container:BookList.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
