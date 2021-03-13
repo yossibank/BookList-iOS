@@ -1,4 +1,5 @@
 import FirebaseFirestore
+import RxSwift
 
 final class FirestoreManager {
 
@@ -34,5 +35,34 @@ final class FirestoreManager {
                     print("user情報の登録に失敗しました: \(error)")
                 }
         }
+    }
+
+    func fetchUsers() -> Single<[FirestoreUser]> {
+        return Single.create(subscribe: { [weak self] observer -> Disposable in
+            self?.database
+                .collection(FirestoreUser.collectionName)
+                .getDocuments { querySnapshot, error in
+                    if let error = error {
+                        print("user情報の取得に失敗しました: \(error)")
+                        observer(.failure(error))
+                        return
+                    }
+
+                    guard
+                        let querySnapshot = querySnapshot
+                    else {
+                        return
+                    }
+
+                    let users = querySnapshot
+                        .documents
+                        .compactMap {
+                            FirestoreUser.initialize(json: $0.data())
+                        }
+
+                    return observer(.success(users))
+                }
+            return Disposables.create()
+        })
     }
 }

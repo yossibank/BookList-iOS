@@ -68,7 +68,6 @@ final class EditBookViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupNavigation()
         setupTextField()
         setupButton()
         setupBookViewData()
@@ -81,15 +80,6 @@ final class EditBookViewController: UIViewController {
 
 extension EditBookViewController {
 
-    private func setupNavigation() {
-        let tapGesuture = UITapGestureRecognizer(
-            target: self,
-            action: #selector(editBookButtonTapped)
-        )
-        tapGesuture.numberOfTapsRequired = 1
-        navigationItem.rightBarButtonItem?.customView?.addGestureRecognizer(tapGesuture)
-    }
-
     private func setupTextField() {
         bookPurchaseDateTextField.inputAccessoryView = toolbar
         bookPurchaseDateTextField.inputView = UIDatePicker.purchaseDatePicker
@@ -99,55 +89,54 @@ extension EditBookViewController {
     }
 
     private func setupButton() {
+        navigationItem.rightBarButtonItem?.rx.tap.subscribe { [weak self] _ in
+            guard let self = self else { return }
+
+            if
+                let name = self.bookTitleTextField.text,
+                let price = self.bookPriceTextField.text,
+                let purchaseDate = self.bookPurchaseDateTextField.text
+            {
+                let imageString = self.bookImageView.image?.pngData()?.base64EncodedString()
+                let purchaseDateFormat = Date.toConvertDate(
+                    purchaseDate,
+                    with: .yearToDayOfWeekJapanese
+                )?.toConvertString(with: .yearToDayOfWeek)
+
+                self.viewModel.editBook(
+                    name: name,
+                    image: imageString,
+                    price: Int(price),
+                    purchaseDate: purchaseDateFormat
+                )
+            }
+        }.disposed(by: disposeBag)
+        
         imageSelectButton.rx.tap.subscribe { [weak self] _ in
-            self?.setupPhotoLibrary()
+            guard let self = self else { return }
+
+            let photoLibrary = UIImagePickerController.SourceType.photoLibrary
+
+            if UIImagePickerController.isSourceTypeAvailable(photoLibrary) {
+                let picker = UIImagePickerController()
+                picker.sourceType = .photoLibrary
+                picker.delegate = self
+                self.present(picker, animated: true)
+            }
         }.disposed(by: disposeBag)
 
         takingPictureButton.rx.tap.subscribe { [weak self] _ in
-            self?.setupLaunchCamera()
+            guard let self = self else { return }
+
+            let camera = UIImagePickerController.SourceType.camera
+
+            if UIImagePickerController.isSourceTypeAvailable(camera) {
+                let picker = UIImagePickerController()
+                picker.sourceType = .camera
+                picker.delegate = self
+                self.present(picker, animated: true)
+            }
         }.disposed(by: disposeBag)
-    }
-
-    private func setupPhotoLibrary() {
-        let photoLibrary = UIImagePickerController.SourceType.photoLibrary
-
-        if UIImagePickerController.isSourceTypeAvailable(photoLibrary) {
-            let picker = UIImagePickerController()
-            picker.sourceType = .photoLibrary
-            picker.delegate = self
-            self.present(picker, animated: true)
-        }
-    }
-
-    private func setupLaunchCamera() {
-        let camera = UIImagePickerController.SourceType.camera
-
-        if UIImagePickerController.isSourceTypeAvailable(camera) {
-            let picker = UIImagePickerController()
-            picker.sourceType = .camera
-            picker.delegate = self
-            self.present(picker, animated: true)
-        }
-    }
-
-    @objc private  func editBookButtonTapped() {
-        if let name = bookTitleTextField.text,
-           let price = bookPriceTextField.text,
-           let purchaseDate = bookPurchaseDateTextField.text {
-
-            let imageString = bookImageView.image?.pngData()?.base64EncodedString()
-            let purchaseDateFormat = Date.toConvertDate(
-                purchaseDate,
-                with: .yearToDayOfWeekJapanese
-            )?.toConvertString(with: .yearToDayOfWeek)
-
-            viewModel.editBook(
-                name: name,
-                image: imageString,
-                price: Int(price),
-                purchaseDate: purchaseDateFormat
-            )
-        }
     }
 
     @objc private func doneButtonTapped() {
@@ -182,7 +171,6 @@ extension EditBookViewController {
     }
 
     private func bindValue() {
-
         bookTitleTextField.rx.text
             .validate(TitleValidator.self)
             .map { validate in
@@ -225,7 +213,6 @@ extension EditBookViewController {
     }
 
     private func bindViewModel() {
-
         viewModel.result
             .asDriver(onErrorJustReturn: nil)
             .drive(onNext: { [weak self] result in

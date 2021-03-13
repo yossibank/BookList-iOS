@@ -5,6 +5,7 @@ struct StringResources {
     struct Navigation {
         static var done: String { Internal.localizable.done() }
         static var cancel: String { Internal.localizable.cancel() }
+        static var startTalk: String { Internal.localizable.start_talk() }
     }
 
     struct App {
@@ -22,6 +23,7 @@ struct StringResources {
         static var wishList: String { Internal.localizable.wish_list_book() }
         static var chat: String { Internal.localizable.chat() }
         static var talkList: String { Internal.localizable.talk_list() }
+        static var selectUser: String { Internal.localizable.select_user() }
         static var yen: String { Internal.localizable.yen() }
         static var taxText: String { Internal.localizable.plus() + Internal.localizable.tax() }
     }

@@ -6,6 +6,7 @@
 "wish_list_book" = "お気に入り書籍";
 "chat" = "チャット";
 "talk_list" = "トーク一覧";
+"select_user" = "ユーザー選択";
 "nick_name" = "ニックネーム";
 "mail_address" = "メールアドレス";
 "password" = "パスワード";
@@ -42,6 +43,7 @@
 // MARK: - ナビゲーションバー
 "done" = "完了";
 "cancel" = "キャンセル";
+"start_talk" = "トーク開始";
 
 // MARK: - 一般
 "yes" = "はい";

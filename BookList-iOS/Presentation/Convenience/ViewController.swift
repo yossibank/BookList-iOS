@@ -75,6 +75,13 @@ extension Resources {
                 return vc
             }
 
+            func chatUserList() -> ChatUserListViewController {
+                let usecase = ChatUserListUsecase()
+                let viewModel = ChatUserListViewModel(usecase: usecase)
+                let vc = ChatUserListViewController.createInstance(viewModel: viewModel)
+                return vc
+            }
+
             func chatRoom() -> ChatRoomViewController {
                 let vc = ChatRoomViewController.createInstance()
                 return vc
