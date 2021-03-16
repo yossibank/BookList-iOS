@@ -38,6 +38,30 @@ final class FirestoreManager {
         }
     }
 
+    func findUser(
+        documentPath: String,
+        completion: @escaping (FirestoreUser) -> Void
+    ) {
+        database
+            .collection(FirestoreUser.collectionName)
+            .document(documentPath)
+            .getDocument { querySnapshot, error in
+                if let error = error {
+                    print("user情報の取得に失敗しました: \(error)")
+                    return
+                }
+
+                guard
+                    let querySanpshot = querySnapshot,
+                    let data = querySanpshot.data(),
+                    let user = FirestoreUser.initialize(json: data)
+                else {
+                    return
+                }
+                completion(user)
+            }
+    }
+
     func fetchUsers() -> Single<[FirestoreUser]> {
         return Single.create(subscribe: { [weak self] observer -> Disposable in
             self?.database
@@ -68,6 +92,31 @@ final class FirestoreManager {
                 }
             return Disposables.create()
         })
+    }
+
+    // MARK: - Access for Room
+    func createRoom(partnerUser: FirestoreUser) {
+        findUser(documentPath: FirebaseAuthManager.shared.currentUserId) { [weak self] user in
+            guard
+                let self = self,
+                let data = Room(
+                    users: [user, partnerUser],
+                    lastMessage: .blank,
+                    createdAt: timeStamp()
+                ).toDictionary()
+            else {
+                return
+            }
+
+            self.database
+                .collection(Room.collectionName)
+                .addDocument(data: data) { error in
+                    if let error = error {
+                        print("room情報の作成に失敗しました: \(error)")
+                        return
+                    }
+                }
+        }
     }
 
     // MARK: - Access for ChatMessage
