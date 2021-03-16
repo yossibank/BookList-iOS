@@ -83,7 +83,8 @@ extension Resources {
             }
 
             func chatRoom() -> ChatRoomViewController {
-                let vc = ChatRoomViewController.createInstance()
+                let viewModel = ChatRoomViewModel()
+                let vc = ChatRoomViewController.createInstance(viewModel: viewModel)
                 return vc
             }
         }

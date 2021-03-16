@@ -94,6 +94,7 @@
 		78772B5425B3E48B00E6493E /* EditBookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78772B5325B3E48B00E6493E /* EditBookViewModel.swift */; };
 		78772B5A25B3EE0900E6493E /* EditBookUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78772B5925B3EE0900E6493E /* EditBookUsecase.swift */; };
 		787CB2EC2600C3AD003B8CC9 /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787CB2EB2600C3AD003B8CC9 /* ChatMessage.swift */; };
+		787CB2EF2600C50E003B8CC9 /* ChatRoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787CB2EE2600C50E003B8CC9 /* ChatRoomViewModel.swift */; };
 		787FD0B925F9072800FBE386 /* ChatUserListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787FD0B825F9072800FBE386 /* ChatUserListDataSource.swift */; };
 		78844C6125B0873600C9AEC0 /* AddBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78844C6025B0873600C9AEC0 /* AddBookViewController.swift */; };
 		78844C6525B0874100C9AEC0 /* AddBookViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78844C6425B0874100C9AEC0 /* AddBookViewController.storyboard */; };
@@ -265,6 +266,7 @@
 		78772B5325B3E48B00E6493E /* EditBookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBookViewModel.swift; sourceTree = "<group>"; };
 		78772B5925B3EE0900E6493E /* EditBookUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBookUsecase.swift; sourceTree = "<group>"; };
 		787CB2EB2600C3AD003B8CC9 /* ChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
+		787CB2EE2600C50E003B8CC9 /* ChatRoomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomViewModel.swift; sourceTree = "<group>"; };
 		787FD0B825F9072800FBE386 /* ChatUserListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatUserListDataSource.swift; sourceTree = "<group>"; };
 		78844C6025B0873600C9AEC0 /* AddBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookViewController.swift; sourceTree = "<group>"; };
 		78844C6425B0874100C9AEC0 /* AddBookViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddBookViewController.storyboard; sourceTree = "<group>"; };
@@ -604,6 +606,7 @@
 			isa = PBXGroup;
 			children = (
 				78B8A68D25E54003005BCB16 /* View */,
+				787CB2EE2600C50E003B8CC9 /* ChatRoomViewModel.swift */,
 				78524FC825E533E3002AEF87 /* ChatRoomViewController.swift */,
 				78524FCC25E533FA002AEF87 /* ChatRoomViewController.storyboard */,
 			);
@@ -1334,6 +1337,7 @@
 				783231A625B056C200EB178B /* Logger.swift in Sources */,
 				7892EF52259C58C0006F7315 /* IBDesignableButton.swift in Sources */,
 				78CF3AF325ABF82900ADBB60 /* BookListViewController.swift in Sources */,
+				787CB2EF2600C50E003B8CC9 /* ChatRoomViewModel.swift in Sources */,
 				785AB27225E9C527000FEEFE /* TapAction.swift in Sources */,
 				78CF3B0725AC0E3500ADBB60 /* BookListViewModel.swift in Sources */,
 				78B29D0125B3124A00A7DC7F /* TitleValidator.swift in Sources */,

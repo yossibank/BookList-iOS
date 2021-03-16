@@ -1,7 +1,7 @@
 import UIKit
 
 protocol KeyboardAccessoryViewDelegate: class {
-    func didTappedSendButton(text: String)
+    func didTappedSendButton(message: String)
 }
 
 final class KeyboardAccessoryView: UIView {
@@ -24,12 +24,12 @@ final class KeyboardAccessoryView: UIView {
             sendButton.onTap { [weak self] in
                 guard
                     let self = self,
-                    let text = self.sendTextView.text
+                    let message = self.sendTextView.text
                 else {
                     return
                 }
 
-                self.delegate?.didTappedSendButton(text: text)
+                self.delegate?.didTappedSendButton(message: message)
             }
         }
     }

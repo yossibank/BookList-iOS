@@ -8,5 +8,5 @@
 struct ChatMessage: FirebaseModelProtocol {
     var message: String
     
-    static let collecitonName = "chatMessage"
+    static let collecitonName = "chatMessages"
 }
