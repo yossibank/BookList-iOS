@@ -11,6 +11,7 @@ final class FirestoreManager {
 
     private init() {}
 
+    // MARK: - Access for User
     func createUser(
         documentPath: String,
         user: FirestoreUser
@@ -59,10 +60,31 @@ final class FirestoreManager {
                         .compactMap {
                             FirestoreUser.initialize(json: $0.data())
                         }
+                        .filter {
+                            $0.email != FirebaseAuthManager.shared.currentUser?.email
+                        }
 
                     return observer(.success(users))
                 }
             return Disposables.create()
         })
+    }
+
+    // MARK: - Access for ChatMessage
+    func createChatMessage(message: String) {
+        guard
+            let chatMessage = ChatMessage(message: message).toDictionary()
+        else {
+            return
+        }
+
+        database
+            .collection(ChatMessage.collecitonName)
+            .document()
+            .setData(chatMessage) { error in
+                if let error = error {
+                    print("chatMessage情報の登録に失敗しました: \(error)")
+                }
+            }
     }
 }
