@@ -60,6 +60,9 @@ final class FirestoreManager {
                         .compactMap {
                             FirestoreUser.initialize(json: $0.data())
                         }
+                        .filter {
+                            $0.email != FirebaseAuthManager.shared.currentUser?.email
+                        }
 
                     return observer(.success(users))
                 }
