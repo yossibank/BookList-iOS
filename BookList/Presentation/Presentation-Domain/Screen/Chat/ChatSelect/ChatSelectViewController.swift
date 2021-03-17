@@ -10,6 +10,7 @@ final class ChatSelectViewController: UIViewController {
     private let disposeBag: DisposeBag = DisposeBag()
 
     private var viewModel: ChatSelectViewModel!
+    private var dataSource: ChatSelectDataSource!
 
     static func createInstance(viewModel: ChatSelectViewModel) -> ChatSelectViewController {
         let instance = ChatSelectViewController.instantiateInitialViewController()
@@ -21,8 +22,7 @@ final class ChatSelectViewController: UIViewController {
         super.viewDidLoad()
         setupButton()
         setupTableView()
-        viewModel.fetchRooms()
-        bindViewModel()
+        fetchRooms()
     }
 
     private func setupButton() {
@@ -34,23 +34,34 @@ final class ChatSelectViewController: UIViewController {
     }
 
     private func setupTableView() {
+        dataSource = ChatSelectDataSource()
         tableView.register(ChatSelectTableViewCell.xib(), forCellReuseIdentifier: ChatSelectTableViewCell.resourceName)
         tableView.tableFooterView = UIView()
-        tableView.dataSource = self
+        tableView.dataSource = dataSource
         tableView.delegate = self
         tableView.rowHeight = 80
     }
-}
 
-extension ChatSelectViewController {
+    private func fetchRooms() {
+        viewModel.fetchRooms { [weak self] documentChange, room in
+            guard let self = self else { return }
 
-    private func bindViewModel() {
-        viewModel.roomList
-            .asDriver(onErrorJustReturn: [])
-            .drive(onNext: { [weak self] rooms in
-                print("rooms:", rooms)
-            })
-            .disposed(by: disposeBag)
+            switch documentChange.type {
+
+            case .added:
+                self.dataSource.roomList.append(room)
+
+            case .removed:
+                self.dataSource.roomList = self.dataSource.roomList.filter { $0.id != room.id }
+
+            case .modified: break
+
+            }
+
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
     }
 }
 
@@ -62,32 +73,6 @@ extension ChatSelectViewController: UITableViewDelegate {
     ) {
         tableView.deselectRow(at: indexPath, animated: true)
         router.push(.chatRoom, from: self)
-    }
-}
-
-extension ChatSelectViewController: UITableViewDataSource {
-
-    func tableView(
-        _ tableView: UITableView,
-        numberOfRowsInSection section: Int
-    ) -> Int {
-        10
-    }
-
-    func tableView(
-        _ tableView: UITableView,
-        cellForRowAt indexPath: IndexPath
-    ) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(
-            withIdentifier: ChatSelectTableViewCell.resourceName,
-            for: indexPath
-        )
-
-        if let chatSelectCell = cell as? ChatSelectTableViewCell {
-            
-        }
-
-        return cell
     }
 }
 

@@ -69,7 +69,7 @@
 		783231A625B056C200EB178B /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783231A525B056C200EB178B /* Logger.swift */; };
 		783231BC25B05C1400EB178B /* HomeDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783231BB25B05C1400EB178B /* HomeDataSource.swift */; };
 		7833D0BA26022624005DFB79 /* ChatSelectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7833D0B926022624005DFB79 /* ChatSelectViewModel.swift */; };
-		7833D0BF2602287F005DFB79 /* ChatSelectUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7833D0BE2602287F005DFB79 /* ChatSelectUsecase.swift */; };
+		7833D0C3260229E4005DFB79 /* ChatSelectDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7833D0C2260229E4005DFB79 /* ChatSelectDataSource.swift */; };
 		783FCCE925BEEB17000D18EA /* AddBookUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783FCCE825BEEB17000D18EA /* AddBookUsecase.swift */; };
 		78421CE125E9273500950F62 /* KeyboardAccessoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78421CE025E9273500950F62 /* KeyboardAccessoryView.xib */; };
 		784B18EF25BD48F80071C32E /* WishListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784B18ED25BD48F80071C32E /* WishListTableViewCell.swift */; };
@@ -245,7 +245,7 @@
 		783231A525B056C200EB178B /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		783231BB25B05C1400EB178B /* HomeDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDataSource.swift; sourceTree = "<group>"; };
 		7833D0B926022624005DFB79 /* ChatSelectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatSelectViewModel.swift; sourceTree = "<group>"; };
-		7833D0BE2602287F005DFB79 /* ChatSelectUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatSelectUsecase.swift; sourceTree = "<group>"; };
+		7833D0C2260229E4005DFB79 /* ChatSelectDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatSelectDataSource.swift; sourceTree = "<group>"; };
 		783FCCE825BEEB17000D18EA /* AddBookUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookUsecase.swift; sourceTree = "<group>"; };
 		78421CE025E9273500950F62 /* KeyboardAccessoryView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KeyboardAccessoryView.xib; sourceTree = "<group>"; };
 		784B18ED25BD48F80071C32E /* WishListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListTableViewCell.swift; sourceTree = "<group>"; };
@@ -1009,8 +1009,8 @@
 			isa = PBXGroup;
 			children = (
 				78C7F3AE25E52C7E005E9E2B /* View */,
-				7833D0BE2602287F005DFB79 /* ChatSelectUsecase.swift */,
 				7833D0B926022624005DFB79 /* ChatSelectViewModel.swift */,
+				7833D0C2260229E4005DFB79 /* ChatSelectDataSource.swift */,
 				78C7F3A625E525C5005E9E2B /* ChatSelectViewController.swift */,
 				78C7F3AA25E525E5005E9E2B /* ChatSelectViewController.storyboard */,
 			);
@@ -1381,7 +1381,6 @@
 				781C318725B5AFE100C11D77 /* KeychainManager.swift in Sources */,
 				78DEE7E625AB0BD800219963 /* HomeViewData.swift in Sources */,
 				78E609FB25AAABF80041B3D0 /* PasswordValidator.swift in Sources */,
-				7833D0BF2602287F005DFB79 /* ChatSelectUsecase.swift in Sources */,
 				78772B5425B3E48B00E6493E /* EditBookViewModel.swift in Sources */,
 				78ED505725EB5C8B0045089C /* FirebaseStorageManager.swift in Sources */,
 				787CB2F32600C7B2003B8CC9 /* ChatRoomDataSource.swift in Sources */,
@@ -1415,6 +1414,7 @@
 				78B29D1C25B3310000A7DC7F /* EditBookViewController.swift in Sources */,
 				78209B4C25BEE66A00EC897C /* HomeUsecase.swift in Sources */,
 				78DEE7BD25AAE3AD00219963 /* UIViewController+Extension.swift in Sources */,
+				7833D0C3260229E4005DFB79 /* ChatSelectDataSource.swift in Sources */,
 				78DEE7B925AADFC600219963 /* UIAlertController+Extension.swift in Sources */,
 				780E712725C69AA8002EE6CB /* R.generated.swift in Sources */,
 				78D17C9825C502A800793310 /* AnalyticsCategoriesAndEvents.swift in Sources */,

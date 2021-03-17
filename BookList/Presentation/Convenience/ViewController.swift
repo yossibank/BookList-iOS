@@ -69,10 +69,9 @@ extension Resources {
                 let vc = WishListViewController.createInstance(viewModel: viewModel)
                 return vc
             }
-            
+
             func chatSelect() -> ChatSelectViewController {
-                let usecase = ChatSelectUsecase()
-                let viewModel = ChatSelectViewModel(usecase: usecase)
+                let viewModel = ChatSelectViewModel()
                 let vc = ChatSelectViewController.createInstance(viewModel: viewModel)
                 return vc
             }

@@ -1,4 +1,5 @@
 struct Room: FirebaseModelProtocol  {
+    var id: String
     var users: [FirestoreUser]
     var lastMessage: String
     var createdAt: FirestoreManager.timeStamp

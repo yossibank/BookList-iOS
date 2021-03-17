@@ -4,6 +4,7 @@ import RxSwift
 final class FirestoreManager {
 
     typealias timeStamp = Timestamp
+    typealias documentChange = DocumentChange
 
     private let database = Firestore.firestore()
 
@@ -100,6 +101,7 @@ final class FirestoreManager {
             guard
                 let self = self,
                 let data = Room(
+                    id: "\(user.id)\(partnerUser.id)",
                     users: [user, partnerUser],
                     lastMessage: .blank,
                     createdAt: timeStamp()
@@ -119,33 +121,28 @@ final class FirestoreManager {
         }
     }
 
-    func fetchRooms() -> Single<[Room]> {
-        return Single.create(subscribe: { [weak self] observer -> Disposable in
-            self?.database
-                .collection(Room.collectionName)
-                .addSnapshotListener { querySnapshot, error in
-                    if let error = error {
-                        print("room情報の取得に失敗しました: \(error)")
-                        observer(.failure(error))
-                        return
-                    }
-
-                    guard let querySnapshot = querySnapshot else { return }
-
-                    let rooms = querySnapshot
-                        .documentChanges
-                        .compactMap {
-                            Room.initialize(json: $0.document.data())
-                        }
-                        .filter {
-                            $0.users.contains { $0.email == FirebaseAuthManager.shared.currentUser?.email }
-                        }
-
-                    return observer(.success(rooms))
+    func fetchRooms(
+        completion: @escaping ((DocumentChange, Room) -> Void)
+    ) {
+        database
+            .collection(Room.collectionName)
+            .addSnapshotListener { querySnapshot, error in
+                if let error = error {
+                    print("room情報の取得に失敗しました: \(error)")
+                    return
                 }
 
-            return Disposables.create()
-        })
+                guard let querySnapshot = querySnapshot else { return }
+
+                querySnapshot.documentChanges.forEach { snapshot in
+                    guard
+                        let room = Room.initialize(json: snapshot.document.data())
+                    else {
+                        return
+                    }
+                    completion(snapshot, room)
+                }
+            }
     }
 
     // MARK: - Access for ChatMessage
