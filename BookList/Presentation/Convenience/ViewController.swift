@@ -71,7 +71,8 @@ extension Resources {
             }
             
             func chatSelect() -> ChatSelectViewController {
-                let vc = ChatSelectViewController.createInstance()
+                let viewModel = ChatSelectViewModel()
+                let vc = ChatSelectViewController.createInstance(viewModel: viewModel)
                 return vc
             }
 

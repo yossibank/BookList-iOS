@@ -119,6 +119,35 @@ final class FirestoreManager {
         }
     }
 
+    func fetchRooms() -> Single<[Room]> {
+        return Single.create(subscribe: { [weak self] observer -> Disposable in
+            self?.database
+                .collection(Room.collectionName)
+                .addSnapshotListener { querySnapshot, error in
+                    if let error = error {
+                        print("room情報の取得に失敗しました: \(error)")
+                        observer(.failure(error))
+                        return
+                    }
+
+                    guard let querySnapshot = querySnapshot else { return }
+
+                    let rooms = querySnapshot
+                        .documentChanges
+                        .compactMap {
+                            Room.initialize(json: $0.document.data())
+                        }
+                        .filter {
+                            $0.users.contains { $0.email == FirebaseAuthManager.shared.currentUser?.email }
+                        }
+
+                    return observer(.success(rooms))
+                }
+
+            return Disposables.create()
+        })
+    }
+
     // MARK: - Access for ChatMessage
     func createChatMessage(message: String) {
         guard

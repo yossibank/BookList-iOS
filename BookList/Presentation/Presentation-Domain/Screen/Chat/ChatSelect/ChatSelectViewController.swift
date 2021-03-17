@@ -9,8 +9,11 @@ final class ChatSelectViewController: UIViewController {
     private let router: RouterProtocol = Router()
     private let disposeBag: DisposeBag = DisposeBag()
 
-    static func createInstance() -> ChatSelectViewController {
+    private var viewModel: ChatSelectViewModel!
+
+    static func createInstance(viewModel: ChatSelectViewModel) -> ChatSelectViewController {
         let instance = ChatSelectViewController.instantiateInitialViewController()
+        instance.viewModel = viewModel
         return instance
     }
 
@@ -18,6 +21,8 @@ final class ChatSelectViewController: UIViewController {
         super.viewDidLoad()
         setupButton()
         setupTableView()
+        viewModel.fetchRooms()
+        bindViewModel()
     }
 
     private func setupButton() {
@@ -34,6 +39,18 @@ final class ChatSelectViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.rowHeight = 80
+    }
+}
+
+extension ChatSelectViewController {
+
+    private func bindViewModel() {
+        viewModel.roomList
+            .asDriver(onErrorJustReturn: [])
+            .drive(onNext: { [weak self] rooms in
+                print("rooms:", rooms)
+            })
+            .disposed(by: disposeBag)
     }
 }
 
