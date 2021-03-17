@@ -1,8 +1,7 @@
 import RxSwift
 import RxRelay
 
-final class ChatSelectViewModel {
-    private let usecase: ChatSelectUsecase
+final class ChatSelectUsecase {
     private let roomListRelay: BehaviorRelay<[Room]> = BehaviorRelay(value: [])
     private let errorRelay: BehaviorRelay<Error?> = BehaviorRelay(value: nil)
     private let disposeBag: DisposeBag = DisposeBag()
@@ -13,21 +12,6 @@ final class ChatSelectViewModel {
 
     var error: Observable<Error?> {
         errorRelay.asObservable()
-    }
-
-    init(usecase: ChatSelectUsecase) {
-        self.usecase = usecase
-        bindUsecase()
-    }
-
-    private func bindUsecase() {
-        usecase.roomList
-            .bind(to: roomListRelay)
-            .disposed(by: disposeBag)
-
-        usecase.error
-            .bind(to: errorRelay)
-            .disposed(by: disposeBag)
     }
 
     func fetchRooms() {
