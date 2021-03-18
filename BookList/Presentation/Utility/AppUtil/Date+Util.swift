@@ -3,6 +3,8 @@ import Foundation
 enum DateFormatType: String {
     case yearToDayOfWeek = "yyyy-MM-dd"
     case yearToDayOfWeekJapanese = "yyyy年MM月dd日"
+    case timeStamp = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
+    case hourToMinitue = "HH:mm"
 }
 
 extension Date {

@@ -18,6 +18,10 @@ final class ChatSelectTableViewCell: UITableViewCell {
             $0.email != FirebaseAuthManager.shared.currentUser?.email
         }.first
 
+        let lastMessageSendAt = room.lastMessageSendAt?.dateValue().toConvertString(
+            with: .hourToMinitue
+        )
+
         guard let user = partnerUser else { return }
 
         ImageLoader.shared.loadImage(
@@ -30,6 +34,6 @@ final class ChatSelectTableViewCell: UITableViewCell {
 
         userNameLabel.text = user.name
         lastMessageLabel.text = room.lastMessage
-//        sendTimeLabel.text = room.lastMessageSendAt timeStampをDate型にしてstringに変換する
+        sendTimeLabel.text = lastMessageSendAt
     }
 }
