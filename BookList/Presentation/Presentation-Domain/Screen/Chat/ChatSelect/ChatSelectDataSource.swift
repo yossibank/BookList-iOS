@@ -23,7 +23,9 @@ extension ChatSelectDataSource: UITableViewDataSource {
         )
 
         if let chatSelectCell = cell as? ChatSelectTableViewCell {
-            chatSelectCell.userNameLabel.text = "hogehoge"
+            if let room = roomList.any(at: indexPath.row) {
+                chatSelectCell.setup(room: room)
+            }
         }
 
         return cell

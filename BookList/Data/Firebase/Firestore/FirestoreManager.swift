@@ -103,7 +103,8 @@ final class FirestoreManager {
                 let data = Room(
                     id: "\(user.id)\(partnerUser.id)",
                     users: [user, partnerUser],
-                    lastMessage: .blank,
+                    lastMessage: nil,
+                    lastMessageSendAt: nil,
                     createdAt: timeStamp()
                 ).toDictionary()
             else {

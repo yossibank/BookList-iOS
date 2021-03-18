@@ -12,4 +12,24 @@ final class ChatSelectTableViewCell: UITableViewCell {
         
         userIconImageView.backgroundColor = .white
     }
+
+    func setup(room: Room) {
+        let partnerUser = room.users.filter {
+            $0.email != FirebaseAuthManager.shared.currentUser?.email
+        }.first
+
+        guard let user = partnerUser else { return }
+
+        ImageLoader.shared.loadImage(
+            with: .string(urlString: user.imageUrl)
+        ) { [weak self] image, _ in
+            guard let self = self else { return }
+
+            self.userIconImageView.image = image
+        }
+
+        userNameLabel.text = user.name
+        lastMessageLabel.text = room.lastMessage
+//        sendTimeLabel.text = room.lastMessageSendAt timeStampをDate型にしてstringに変換する
+    }
 }
