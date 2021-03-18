@@ -109,7 +109,8 @@ final class FirestoreManager {
 
             self.database
                 .collection(Room.collectionName)
-                .addDocument(data: data) { error in
+                .document("\(user.id)\(partnerUser.id)")
+                .setData(data, merge: true) { error in
                     if let error = error {
                         print("room情報の作成に失敗しました: \(error)")
                         return
