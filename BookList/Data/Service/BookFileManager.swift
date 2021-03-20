@@ -94,7 +94,7 @@ final class BookFileManager {
             return []
         }
     }
-    
+
     func isFavoriteBook(path: String) -> Bool {
         let documentDirectoryUrl = fileManager.urls(
                 for: .documentDirectory,

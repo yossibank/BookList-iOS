@@ -46,7 +46,7 @@ extension ChatSelectViewController: UITableViewDataSource {
         )
 
         if let chatSelectCell = cell as? ChatSelectTableViewCell {
-            
+
         }
 
         return cell

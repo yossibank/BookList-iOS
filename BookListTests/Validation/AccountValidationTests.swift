@@ -20,7 +20,7 @@ class AccountValidationTests: XCTestCase {
         XCTContext.runActivity(named: "password") { _ in
 
             XCTAssertFalse(PasswordValidator.validate(.blank).isValid)
-            
+
             XCTContext.runActivity(named: "error message") { _ in
                 XCTAssertEqual(
                     PasswordValidator.validate(.blank).errorDescription,

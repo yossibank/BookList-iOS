@@ -111,7 +111,7 @@ extension EditBookViewController {
                 )
             }
         }.disposed(by: disposeBag)
-        
+
         imageSelectButton.rx.tap.subscribe { [weak self] _ in
             guard let self = self else { return }
 
@@ -290,7 +290,7 @@ extension EditBookViewController: UIImagePickerControllerDelegate, UINavigationC
 
     func imagePickerController(
         _ picker: UIImagePickerController,
-        didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]
+        didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]
     ) {
         if let image = info[.originalImage] as? UIImage {
             bookImageView.contentMode = .scaleAspectFill
