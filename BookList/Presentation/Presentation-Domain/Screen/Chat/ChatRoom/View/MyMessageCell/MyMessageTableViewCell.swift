@@ -25,4 +25,13 @@ final class MyMessageTableViewCell: UITableViewCell {
             )
         )
     }
+
+    func setup(chat: ChatMessage) {
+        let sendAt = chat.sendAt.dateValue().toConvertString(
+            with: .hourToMinitue
+        )
+
+        userMessageTextView.text = chat.message
+        sendTimeLabel.text = sendAt
+    }
 }

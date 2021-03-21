@@ -10,6 +10,10 @@ final class FirebaseAuthManager {
         Auth.auth().currentUser
     }
 
+    var currentUserId: String {
+        currentUser?.uid ?? .blank
+    }
+
     private init() {}
 
     func createUser(

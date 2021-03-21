@@ -32,6 +32,4 @@ extension ChatUserListDataSource: UITableViewDataSource {
 
         return cell
     }
-    
-    
 }

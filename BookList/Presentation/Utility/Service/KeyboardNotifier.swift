@@ -29,22 +29,22 @@ final class KeyboardNotifier {
 }
 
 protocol KeyboardDelegate: class {
-    
+
     var keyboardNotifier: KeyboardNotifier { get set }
-    
+
     func keyboardPresent(_ height: CGFloat)
     func keyboardDismiss(_ height: CGFloat)
 }
 
 extension KeyboardDelegate {
-    
+
     func listenerKeyboard(keyboardNotifier: KeyboardNotifier) {
         keyboardNotifier.listenKeyboard()
-        
+
         keyboardNotifier.keyboardPresent = { height in
             self.keyboardPresent(height)
         }
-        
+
         keyboardNotifier.keyboardDismiss = { height in
             self.keyboardDismiss(height)
         }

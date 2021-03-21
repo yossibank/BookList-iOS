@@ -11,6 +11,7 @@ final class ChatUserListViewController: UIViewController {
 
     private var viewModel: ChatUserListViewModel!
     private var dataSource: ChatUserListDataSource!
+    private var selectedUser: FirestoreUser?
 
     static func createInstance(viewModel: ChatUserListViewModel) -> ChatUserListViewController {
         let instance = ChatUserListViewController.instantiateInitialViewController()
@@ -29,9 +30,16 @@ final class ChatUserListViewController: UIViewController {
     private func setupNavigationItem() {
         navigationItem.rightBarButtonItem?.isEnabled = false
         navigationItem.rightBarButtonItem?.rx.tap.subscribe { [weak self] _ in
-            guard let self = self else { return }
+            guard
+                let self = self,
+                let partnerUser = self.selectedUser
+            else {
+                return
+            }
 
-            /* firestoreへ部屋作成 */
+            self.viewModel.createRoom(partnerUser: partnerUser)
+            self.router.dismiss(self, animated: true)
+
         }.disposed(by: disposeBag)
     }
 
@@ -68,6 +76,10 @@ extension ChatUserListViewController: UITableViewDelegate {
     ) {
         tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
         navigationItem.rightBarButtonItem?.isEnabled = true
+
+        if let user = dataSource.chatUserList.any(at: indexPath.row) {
+            selectedUser = user
+        }
     }
 
     func tableView(

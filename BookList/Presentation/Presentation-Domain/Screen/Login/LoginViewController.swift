@@ -55,7 +55,7 @@ extension LoginViewController {
         loginButton.rx.tap.subscribe { [weak self] _ in
             self?.loginButtonTapped()
         }.disposed(by: disposeBag)
-        
+
         signupButton.rx.tap.subscribe { [weak self] _ in
             self?.signupButtonTapped()
         }.disposed(by: disposeBag)
@@ -72,8 +72,9 @@ extension LoginViewController {
     }
 
     private func loginButtonTapped() {
-        if let email = emailTextField.text,
-           let password = passwordTextField.text
+        if
+            let email = emailTextField.text,
+            let password = passwordTextField.text
         {
             viewModel.login(
                 email: email,

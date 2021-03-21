@@ -34,7 +34,7 @@ extension Resources {
                 let vc = HomeViewController.createInstance(viewModel: viewModel)
                 return vc
             }
-            
+
             func bookList() -> BookListViewController {
                 let usecase = BookListUsecase()
                 let viewModel = BookListViewModel(usecase: usecase)
@@ -69,9 +69,10 @@ extension Resources {
                 let vc = WishListViewController.createInstance(viewModel: viewModel)
                 return vc
             }
-            
+
             func chatSelect() -> ChatSelectViewController {
-                let vc = ChatSelectViewController.createInstance()
+                let viewModel = ChatSelectViewModel()
+                let vc = ChatSelectViewController.createInstance(viewModel: viewModel)
                 return vc
             }
 
@@ -82,8 +83,8 @@ extension Resources {
                 return vc
             }
 
-            func chatRoom() -> ChatRoomViewController {
-                let viewModel = ChatRoomViewModel()
+            func chatRoom(roomId: String, user: FirestoreUser) -> ChatRoomViewController {
+                let viewModel = ChatRoomViewModel(roomId: roomId, user: user)
                 let vc = ChatRoomViewController.createInstance(viewModel: viewModel)
                 return vc
             }

@@ -99,8 +99,9 @@ extension SignupViewController {
     }
 
     private func signupButtonTapped() {
-        if let email = emailTextField.text,
-           let password = passwordTextField.text
+        if
+            let email = emailTextField.text,
+            let password = passwordTextField.text
         {
             viewModel.signup(
                 email: email,
@@ -297,7 +298,7 @@ extension SignupViewController: UIImagePickerControllerDelegate, UINavigationCon
 
     func imagePickerController(
         _ picker: UIImagePickerController,
-        didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]
+        didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]
     ) {
         if let image = info[.editedImage] as? UIImage {
             userIconImageView.image = image

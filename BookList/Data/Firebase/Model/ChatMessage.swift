@@ -1,12 +1,9 @@
-//
-//  ChatMessage.swift
-//  BookList
-//
-//  Created by KAMIYAMA YOSHIHITO on 2021/03/16.
-//
-
 struct ChatMessage: FirebaseModelProtocol {
+    var id: Int
+    var name: String
+    var iconUrl: String
     var message: String
-    
+    var sendAt: FirestoreManager.timeStamp
+
     static let collecitonName = "chatMessages"
 }

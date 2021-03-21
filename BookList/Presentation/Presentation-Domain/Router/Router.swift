@@ -140,7 +140,7 @@ enum Route {
     case wishList
     case chatSelect
     case chatUserList
-    case chatRoom
+    case chatRoom(roomId: String, user: FirestoreUser)
 
     fileprivate func viewController() -> UIViewController {
 
@@ -184,8 +184,8 @@ enum Route {
         case .chatUserList:
             viewController = Resources.ViewControllers.App.chatUserList()
 
-        case .chatRoom:
-            viewController = Resources.ViewControllers.App.chatRoom()
+        case .chatRoom(let roomId, let user):
+            viewController = Resources.ViewControllers.App.chatRoom(roomId: roomId, user: user)
 
         }
 

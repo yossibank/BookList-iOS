@@ -1,11 +1,12 @@
 import UIKit
 
 final class ChatRoomDataSource: NSObject {
-    private weak var viewModel: ChatRoomViewModel?
+    var chatMessages: [ChatMessage] = []
+    weak var viewModel: ChatRoomViewModel?
 
     init(viewModel: ChatRoomViewModel) {
-        super.init()
         self.viewModel = viewModel
+        super.init()
     }
 }
 
@@ -15,31 +16,37 @@ extension ChatRoomDataSource: UITableViewDataSource {
         _ tableView: UITableView,
         numberOfRowsInSection section: Int
     ) -> Int {
-        guard let cellData = viewModel?.messages else { return 0 }
-        return cellData.count
+        chatMessages.count
     }
 
     func tableView(
         _ tableView: UITableView,
         cellForRowAt indexPath: IndexPath
     ) -> UITableViewCell {
-        guard let cellData = viewModel?.messages else {
-            return UITableViewCell(style: .default, reuseIdentifier: nil)
-        }
+        let chatMessage = chatMessages[indexPath.row]
 
-        let cell = tableView.dequeueReusableCell(
+        let myMessageCell = tableView.dequeueReusableCell(
             withIdentifier: MyMessageTableViewCell.resourceName,
             for: indexPath
         )
 
-        if let myMessageCell = cell as? MyMessageTableViewCell {
-            myMessageCell.backgroundColor = .clear
+        let otherMessageCell = tableView.dequeueReusableCell(
+            withIdentifier: OtherMessageTableViewCell.resourceName,
+            for: indexPath
+        )
 
-            if let message = cellData.any(at: indexPath.row) {
-                myMessageCell.userMessageTextView.text = message
+        if chatMessage.id == viewModel?.currentUserId {
+            if let cell = myMessageCell as? MyMessageTableViewCell {
+                cell.setup(chat: chatMessage)
+                return cell
+            }
+        } else {
+            if let cell = otherMessageCell as? OtherMessageTableViewCell {
+                cell.setup(chat: chatMessage)
+                return cell
             }
         }
 
-        return cell
+        return UITableViewCell()
     }
 }

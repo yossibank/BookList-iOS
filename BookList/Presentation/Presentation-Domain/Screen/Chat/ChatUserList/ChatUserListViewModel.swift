@@ -30,6 +30,10 @@ final class ChatUserListViewModel {
             .disposed(by: disposeBag)
     }
 
+    func createRoom(partnerUser: FirestoreUser) {
+        FirestoreManager.shared.createRoom(partnerUser: partnerUser)
+    }
+
     func fetchUsers() {
         usecase.fetchUserList()
     }

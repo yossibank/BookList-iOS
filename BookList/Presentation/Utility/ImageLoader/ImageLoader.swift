@@ -13,7 +13,7 @@ final class ImageLoader {
     }
 
     static var noImage = Resources.Images.General.noImage
-    
+
     static let shared = ImageLoader()
 
     typealias DownloadImageItem = (image: UIImage, isCachedOnMemoryOrDisk: Bool)
@@ -91,8 +91,9 @@ final class ImageLoader {
 
         let request = URLRequest(url: url)
 
-        if let cachedResponse = URLCache.shared.cachedResponse(for: request),
-           let image = UIImage(data: cachedResponse.data)
+        if
+            let cachedResponse = URLCache.shared.cachedResponse(for: request),
+            let image = UIImage(data: cachedResponse.data)
         {
             self.finish(immediately: immediatery) {
                 completion((image, true))
