@@ -2,17 +2,30 @@ final class ChatRoomViewModel {
 
     private let roomId: String
     private let user: FirestoreUser
-
-    var messages: [String] = []
+    private let firestore = FirestoreManager.shared
 
     init(roomId: String, user: FirestoreUser) {
         self.roomId = roomId
         self.user = user
     }
 
-    func sendChatMessage(message: String) {
-        FirestoreManager.shared.createChatMessage(
+    func removeListener() {
+        firestore.removeListner()
+    }
+
+    func fetchChatMessages(
+        completion: @escaping ((FirestoreManager.documentChange, ChatMessage) -> Void)
+    ) {
+        firestore.fetchChatMessages(
             roomId: roomId,
+            completion: completion
+        )
+    }
+
+    func sendChatMessage(message: String) {
+        firestore.createChatMessage(
+            roomId: roomId,
+            user: user,
             message: message
         )
     }

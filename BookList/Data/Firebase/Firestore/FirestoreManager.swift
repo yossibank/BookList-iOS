@@ -149,9 +149,18 @@ final class FirestoreManager {
     }
 
     // MARK: - Access for ChatMessage
-    func createChatMessage(roomId: String, message: String) {
+    func createChatMessage(
+        roomId: String,
+        user: FirestoreUser,
+        message: String
+    ) {
         guard
-            let chatMessage = ChatMessage(message: message).toDictionary()
+            let chatMessage = ChatMessage(
+                id: user.id,
+                name: user.name,
+                message: message,
+                sendAt: timeStamp()
+            ).toDictionary()
         else {
             return
         }
@@ -164,6 +173,33 @@ final class FirestoreManager {
             .setData(chatMessage) { error in
                 if let error = error {
                     print("chatMessage情報の登録に失敗しました: \(error)")
+                }
+            }
+    }
+
+    func fetchChatMessages(
+        roomId: String,
+        completion: @escaping ((DocumentChange, ChatMessage) -> Void)
+    ) {
+        listner = database
+            .collection(Room.collectionName)
+            .document(roomId)
+            .collection(ChatMessage.collecitonName)
+            .addSnapshotListener { querySnapshot, error in
+                if let error = error {
+                    print("chatMessage情報の取得に失敗しました: \(error)")
+                    return
+                }
+
+                guard let querySnapshot = querySnapshot else { return }
+
+                querySnapshot.documentChanges.forEach { snapshot in
+                    guard
+                        let chatMessage = ChatMessage.initialize(json: snapshot.document.data())
+                    else {
+                        return
+                    }
+                    completion(snapshot, chatMessage)
                 }
             }
     }

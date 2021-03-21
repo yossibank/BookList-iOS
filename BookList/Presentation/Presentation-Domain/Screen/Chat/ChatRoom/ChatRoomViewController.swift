@@ -20,9 +20,14 @@ final class ChatRoomViewController: UIViewController {
         return instance
     }
 
+    deinit {
+        viewModel.removeListener()
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
+        fetchChatMessages()
     }
 
     override var inputAccessoryView: UIView? {
@@ -34,11 +39,30 @@ final class ChatRoomViewController: UIViewController {
     }
 
     private func setupTableView() {
-        dataSource = ChatRoomDataSource(viewModel: viewModel)
+        dataSource = ChatRoomDataSource()
         tableView.register(MyMessageTableViewCell.xib(), forCellReuseIdentifier: MyMessageTableViewCell.resourceName)
         tableView.dataSource = dataSource
         tableView.estimatedRowHeight = 80
         tableView.rowHeight = UITableView.automaticDimension
+    }
+
+    private func fetchChatMessages() {
+        viewModel.fetchChatMessages { [weak self] documentChange, chatMessage in
+            guard let self = self else { return }
+
+            switch documentChange.type {
+
+            case .added:
+                self.dataSource.chatMessages.append(chatMessage)
+
+            case .modified, .removed: break
+
+            }
+
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
     }
 }
 
@@ -46,8 +70,6 @@ extension ChatRoomViewController: KeyboardAccessoryViewDelegate {
 
     func didTappedSendButton(message: String) {
         keyboardAccessoryView.didSendText()
-        viewModel.messages.append(message)
         viewModel.sendChatMessage(message: message)
-        tableView.reloadData()
     }
 }
