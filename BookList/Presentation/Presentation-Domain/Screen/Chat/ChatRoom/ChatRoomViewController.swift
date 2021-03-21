@@ -45,6 +45,8 @@ final class ChatRoomViewController: UIViewController {
         tableView.dataSource = dataSource
         tableView.estimatedRowHeight = 80
         tableView.rowHeight = UITableView.automaticDimension
+        tableView.contentInset = .init(top: 0, left: 0, bottom: 60, right: 0)
+        tableView.scrollIndicatorInsets = .init(top: 0, left: 0, bottom: 60, right: 0)
     }
 
     private func fetchChatMessages() {
@@ -55,13 +57,20 @@ final class ChatRoomViewController: UIViewController {
 
             case .added:
                 self.dataSource.chatMessages.append(chatMessage)
+                self.dataSource.chatMessages.sort { $0.sendAt.dateValue() < $1.sendAt.dateValue() }
 
             case .modified, .removed: break
 
             }
 
             DispatchQueue.main.async {
+                let lastMessageCell = self.dataSource.chatMessages.count - 1
                 self.tableView.reloadData()
+                self.tableView.scrollToRow(
+                    at: IndexPath(row: lastMessageCell, section: 0),
+                    at: .bottom,
+                    animated: false
+                )
             }
         }
     }

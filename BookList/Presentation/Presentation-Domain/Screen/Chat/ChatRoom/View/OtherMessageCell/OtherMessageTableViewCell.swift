@@ -31,7 +31,7 @@ final class OtherMessageTableViewCell: UITableViewCell {
     }
 
     func setup(chat: ChatMessage) {
-        let sendAt = chat.sendAt?.dateValue().toConvertString(
+        let sendAt = chat.sendAt.dateValue().toConvertString(
             with: .hourToMinitue
         )
 

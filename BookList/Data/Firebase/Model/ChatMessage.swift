@@ -3,7 +3,7 @@ struct ChatMessage: FirebaseModelProtocol {
     var name: String
     var iconUrl: String
     var message: String
-    var sendAt: FirestoreManager.timeStamp?
+    var sendAt: FirestoreManager.timeStamp
 
     static let collecitonName = "chatMessages"
 }
