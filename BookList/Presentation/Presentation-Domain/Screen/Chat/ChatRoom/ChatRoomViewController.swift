@@ -39,8 +39,9 @@ final class ChatRoomViewController: UIViewController {
     }
 
     private func setupTableView() {
-        dataSource = ChatRoomDataSource()
+        dataSource = ChatRoomDataSource(viewModel: viewModel)
         tableView.register(MyMessageTableViewCell.xib(), forCellReuseIdentifier: MyMessageTableViewCell.resourceName)
+        tableView.register(OtherMessageTableViewCell.xib(), forCellReuseIdentifier: OtherMessageTableViewCell.resourceName)
         tableView.dataSource = dataSource
         tableView.estimatedRowHeight = 80
         tableView.rowHeight = UITableView.automaticDimension

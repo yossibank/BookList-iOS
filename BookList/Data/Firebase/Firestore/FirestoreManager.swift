@@ -158,6 +158,7 @@ final class FirestoreManager {
             let chatMessage = ChatMessage(
                 id: user.id,
                 name: user.name,
+                iconUrl: user.imageUrl,
                 message: message,
                 sendAt: timeStamp()
             ).toDictionary()

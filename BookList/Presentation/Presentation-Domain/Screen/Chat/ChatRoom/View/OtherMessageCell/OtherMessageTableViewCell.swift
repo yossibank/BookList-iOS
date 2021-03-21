@@ -29,4 +29,19 @@ final class OtherMessageTableViewCell: UITableViewCell {
             )
         )
     }
+
+    func setup(chat: ChatMessage) {
+        let sendAt = chat.sendAt?.dateValue().toConvertString(
+            with: .hourToMinitue
+        )
+
+        ImageLoader.shared.loadImage(with: .string(urlString: chat.iconUrl)) { [weak self] image, _ in
+            guard let self = self else { return }
+
+            self.userIconImageView.image = image
+        }
+
+        userMessageTextView.text = chat.message
+        sendTimeLabel.text = sendAt
+    }
 }

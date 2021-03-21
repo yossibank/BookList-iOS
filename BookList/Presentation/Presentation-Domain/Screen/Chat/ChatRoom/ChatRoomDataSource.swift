@@ -2,6 +2,12 @@ import UIKit
 
 final class ChatRoomDataSource: NSObject {
     var chatMessages: [ChatMessage] = []
+    weak var viewModel: ChatRoomViewModel?
+
+    init(viewModel: ChatRoomViewModel) {
+        self.viewModel = viewModel
+        super.init()
+    }
 }
 
 extension ChatRoomDataSource: UITableViewDataSource {
@@ -17,19 +23,30 @@ extension ChatRoomDataSource: UITableViewDataSource {
         _ tableView: UITableView,
         cellForRowAt indexPath: IndexPath
     ) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(
+        let chatMessage = chatMessages[indexPath.row]
+
+        let myMessageCell = tableView.dequeueReusableCell(
             withIdentifier: MyMessageTableViewCell.resourceName,
             for: indexPath
         )
 
-        if let myMessageCell = cell as? MyMessageTableViewCell {
-            myMessageCell.backgroundColor = .clear
+        let otherMessageCell = tableView.dequeueReusableCell(
+            withIdentifier: OtherMessageTableViewCell.resourceName,
+            for: indexPath
+        )
 
-            if let chat = chatMessages.any(at: indexPath.row) {
-                myMessageCell.setup(chat: chat)
+        if chatMessage.id == viewModel?.currentUserId {
+            if let cell = myMessageCell as? MyMessageTableViewCell {
+                cell.setup(chat: chatMessage)
+                return cell
+            }
+        } else {
+            if let cell = otherMessageCell as? OtherMessageTableViewCell {
+                cell.setup(chat: chatMessage)
+                return cell
             }
         }
 
-        return cell
+        return UITableViewCell()
     }
 }
