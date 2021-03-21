@@ -69,7 +69,7 @@ final class ChatRoomViewController: UIViewController {
                 self.tableView.scrollToRow(
                     at: IndexPath(row: lastMessageCell, section: 0),
                     at: .bottom,
-                    animated: false
+                    animated: true
                 )
             }
         }

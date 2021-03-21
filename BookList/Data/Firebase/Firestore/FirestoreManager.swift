@@ -176,6 +176,20 @@ final class FirestoreManager {
                     print("chatMessage情報の登録に失敗しました: \(error)")
                 }
             }
+
+        database
+            .collection(Room.collectionName)
+            .document(roomId)
+            .updateData(
+                [
+                    "lastMessage": message,
+                    "lastMessageSendAt": chatMessage["sendAt"] ?? timeStamp()
+                ]
+            ) { error in
+                if let error = error {
+                    print("room情報の更新に失敗しました: \(error)")
+                }
+            }
     }
 
     func fetchChatMessages(

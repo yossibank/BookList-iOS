@@ -58,7 +58,9 @@ final class ChatSelectViewController: UIViewController {
             case .removed:
                 self.dataSource.roomList = self.dataSource.roomList.filter { $0.id != room.id }
 
-            case .modified: break
+            case .modified:
+                self.dataSource.roomList = []
+                self.dataSource.roomList.append(room)
 
             }
 
