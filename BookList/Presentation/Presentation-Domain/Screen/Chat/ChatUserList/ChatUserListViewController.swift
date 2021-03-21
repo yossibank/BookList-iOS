@@ -32,12 +32,12 @@ final class ChatUserListViewController: UIViewController {
         navigationItem.rightBarButtonItem?.rx.tap.subscribe { [weak self] _ in
             guard
                 let self = self,
-                let user = self.selectedUser
+                let partnerUser = self.selectedUser
             else {
                 return
             }
 
-            FirestoreManager.shared.createRoom(partnerUser: user)
+            self.viewModel.createRoom(partnerUser: partnerUser)
             self.router.dismiss(self, animated: true)
 
         }.disposed(by: disposeBag)

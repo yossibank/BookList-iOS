@@ -33,4 +33,8 @@ final class ChatUserListViewModel {
     func fetchUsers() {
         usecase.fetchUserList()
     }
+
+    func createRoom(partnerUser: FirestoreUser) {
+        FirestoreManager.shared.createRoom(partnerUser: partnerUser)
+    }
 }

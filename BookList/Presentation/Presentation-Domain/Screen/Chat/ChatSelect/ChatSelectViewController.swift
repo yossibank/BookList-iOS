@@ -18,6 +18,10 @@ final class ChatSelectViewController: UIViewController {
         return instance
     }
 
+    deinit {
+        viewModel.removeListener()
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupButton()
@@ -72,7 +76,16 @@ extension ChatSelectViewController: UITableViewDelegate {
         didSelectRowAt indexPath: IndexPath
     ) {
         tableView.deselectRow(at: indexPath, animated: true)
-        router.push(.chatRoom, from: self)
+
+        if let room = dataSource.roomList.any(at: indexPath.row) {
+            let roomId = room.users.map { String($0.id) }.joined()
+
+            viewModel.findUser { [weak self] user in
+                guard let self = self else { return }
+
+                self.router.push(.chatRoom(roomId: roomId, user: user), from: self)
+            }
+        }
     }
 }
 

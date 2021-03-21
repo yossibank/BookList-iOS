@@ -7,10 +7,15 @@ final class FirestoreManager {
     typealias documentChange = DocumentChange
 
     private let database = Firestore.firestore()
+    private var listner: ListenerRegistration?
 
     static let shared = FirestoreManager()
 
     private init() {}
+
+    func removeListner() {
+        listner?.remove()
+    }
 
     // MARK: - Access for User
     func createUser(
@@ -122,7 +127,7 @@ final class FirestoreManager {
     func fetchRooms(
         completion: @escaping ((DocumentChange, Room) -> Void)
     ) {
-        database
+        listner = database
             .collection(Room.collectionName)
             .addSnapshotListener { querySnapshot, error in
                 if let error = error {
@@ -144,7 +149,7 @@ final class FirestoreManager {
     }
 
     // MARK: - Access for ChatMessage
-    func createChatMessage(message: String) {
+    func createChatMessage(roomId: String, message: String) {
         guard
             let chatMessage = ChatMessage(message: message).toDictionary()
         else {
@@ -152,6 +157,8 @@ final class FirestoreManager {
         }
 
         database
+            .collection(Room.collectionName)
+            .document(roomId)
             .collection(ChatMessage.collecitonName)
             .document()
             .setData(chatMessage) { error in

@@ -83,8 +83,8 @@ extension Resources {
                 return vc
             }
 
-            func chatRoom() -> ChatRoomViewController {
-                let viewModel = ChatRoomViewModel()
+            func chatRoom(roomId: String, user: FirestoreUser) -> ChatRoomViewController {
+                let viewModel = ChatRoomViewModel(roomId: roomId, user: user)
                 let vc = ChatRoomViewController.createInstance(viewModel: viewModel)
                 return vc
             }
