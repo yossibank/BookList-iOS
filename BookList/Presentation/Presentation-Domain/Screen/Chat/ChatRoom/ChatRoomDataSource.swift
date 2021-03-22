@@ -37,11 +37,13 @@ extension ChatRoomDataSource: UITableViewDataSource {
 
         if chatMessage.id == viewModel?.currentUserId {
             if let cell = myMessageCell as? MyMessageTableViewCell {
+                cell.transform = .init(a: 1, b: 0, c: 0, d: -1, tx: 0, ty: 0)
                 cell.setup(chat: chatMessage)
                 return cell
             }
         } else {
             if let cell = otherMessageCell as? OtherMessageTableViewCell {
+                cell.transform = .init(a: 1, b: 0, c: 0, d: -1, tx: 0, ty: 0)
                 cell.setup(chat: chatMessage)
                 return cell
             }
