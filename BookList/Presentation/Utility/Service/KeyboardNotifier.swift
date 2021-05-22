@@ -28,7 +28,7 @@ final class KeyboardNotifier {
     }
 }
 
-protocol KeyboardDelegate: class {
+protocol KeyboardDelegate: AnyObject {
 
     var keyboardNotifier: KeyboardNotifier { get set }
 

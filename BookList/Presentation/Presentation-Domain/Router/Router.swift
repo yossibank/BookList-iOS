@@ -1,6 +1,6 @@
 import UIKit
 
-protocol RouterProtocol: class {
+protocol RouterProtocol: AnyObject {
 
     func push(
         _ route:  Route,

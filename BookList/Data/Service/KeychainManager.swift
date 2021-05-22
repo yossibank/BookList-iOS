@@ -1,4 +1,5 @@
 import KeychainAccess
+import Foundation
 
 final class KeychainManager {
 

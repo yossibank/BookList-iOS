@@ -1,6 +1,6 @@
 import UIKit
 
-protocol KeyboardAccessoryViewDelegate: class {
+protocol KeyboardAccessoryViewDelegate: AnyObject {
     func didTappedSendButton(message: String)
 }
 
