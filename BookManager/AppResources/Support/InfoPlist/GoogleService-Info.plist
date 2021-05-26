@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>397763131414-hlvtnrr2ngeitp1d0cam5rv1ofn536lm.apps.googleusercontent.com</string>
+	<string>397763131414-l18hde3b29jk34a3h8qtukkt2c66ehju.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.397763131414-hlvtnrr2ngeitp1d0cam5rv1ofn536lm</string>
+	<string>com.googleusercontent.apps.397763131414-l18hde3b29jk34a3h8qtukkt2c66ehju</string>
 	<key>API_KEY</key>
 	<string>AIzaSyDi2-jI5WLGC87JELc4WN-67PxF_fkIBk4</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +13,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.yossibank.BookList</string>
+	<string>com.yossibank.BookManager</string>
 	<key>PROJECT_ID</key>
 	<string>booklist-ios</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:397763131414:ios:35179ead3c3a2788721d37</string>
+	<string>1:397763131414:ios:f57cf7a8c6660927721d37</string>
 </dict>
 </plist>

@@ -1,12 +1,12 @@
 //
-//  BookListTests.swift
-//  BookListTests
+//  BookManagerTests.swift
+//  BookManagerTests
 //
 //  Created by KAMIYAMA YOSHIHITO on 2020/12/30.
 //
 
 import XCTest
-@testable import BookList_iOS
+@testable import BookManager
 
 class BookListTests: XCTestCase {
 

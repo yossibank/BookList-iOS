@@ -1,5 +1,5 @@
 import XCTest
-@testable import BookList_iOS
+@testable import BookManager
 
 class BookValidationTests: XCTestCase {
 
