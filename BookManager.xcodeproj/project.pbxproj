@@ -445,7 +445,7 @@
 				782E636B2675DC7A0029E940 /* Utility */,
 				78997EB7259C34550076FF97 /* AppConfig */,
 				78997EB8259C345F0076FF97 /* AppResources */,
-				78997EB9259C34670076FF97 /* Data */,
+				78997EB9259C34670076FF97 /* Datas */,
 				78997EBA259C346B0076FF97 /* Presentation */,
 			);
 			path = BookManager;
@@ -684,14 +684,14 @@
 			path = AppResources;
 			sourceTree = "<group>";
 		};
-		78997EB9259C34670076FF97 /* Data */ = {
+		78997EB9259C34670076FF97 /* Datas */ = {
 			isa = PBXGroup;
 			children = (
 				78C61C0C25A1654600DC78A6 /* API */,
 				7862C15225E2591800F1645A /* Firebase */,
 				781C318525B5AFC900C11D77 /* Service */,
 			);
-			path = Data;
+			path = Datas;
 			sourceTree = "<group>";
 		};
 		78997EBA259C346B0076FF97 /* Presentation */ = {
