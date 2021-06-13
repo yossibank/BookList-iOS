@@ -10,4 +10,5 @@ disabled_rules:
   - line_length
   - nesting
   - type_name
+  - trailing_comma
   - force_cast
