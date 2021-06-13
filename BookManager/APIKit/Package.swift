@@ -3,35 +3,32 @@
 import PackageDescription
 
 let package = Package(
-    name: "Data",
+    name: "APIKit",
     platforms: [
-        .iOS(.v13),
+        .iOS(.v13)
     ],
     products: [
         .library(
-            name: "Data",
+            name: "APIKit",
             targets: [
-                "Data"
+                "APIKit"
             ]
         ),
     ],
     dependencies: [
-        .package(url: "./Utility", from: "1.0.0"),
+        .package(url: "./Utility", from: "1.0.0")
     ],
     targets: [
         .target(
-            name: "Data",
+            name: "APIKit",
             dependencies: [
                 .product(name: "Utility", package: "Utility")
-            ],
-            resources: [
-                .process("TestData")
             ]
         ),
         .testTarget(
-            name: "DataTests",
+            name: "APIKitTests",
             dependencies: [
-                "Data"
+                "APIKit"
             ]
         ),
     ]
