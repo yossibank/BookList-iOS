@@ -209,6 +209,7 @@
 		78299CE725E69D0D001868FB /* MyMessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMessageTableViewCell.swift; sourceTree = "<group>"; };
 		78299CE825E69D0D001868FB /* MyMessageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyMessageTableViewCell.xib; sourceTree = "<group>"; };
 		78299CED25E69E15001868FB /* OtherMessageBalloonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherMessageBalloonView.swift; sourceTree = "<group>"; };
+		782E636B2675DC7A0029E940 /* Utility */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Utility; sourceTree = "<group>"; };
 		783231A525B056C200EB178B /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		783231BB25B05C1400EB178B /* HomeDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDataSource.swift; sourceTree = "<group>"; };
 		7833D0B926022624005DFB79 /* ChatSelectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatSelectViewModel.swift; sourceTree = "<group>"; };
@@ -441,6 +442,7 @@
 		782311F8259C0D9200D9E723 /* BookManager */ = {
 			isa = PBXGroup;
 			children = (
+				782E636B2675DC7A0029E940 /* Utility */,
 				78997EB7259C34550076FF97 /* AppConfig */,
 				78997EB8259C345F0076FF97 /* AppResources */,
 				78997EB9259C34670076FF97 /* Data */,
