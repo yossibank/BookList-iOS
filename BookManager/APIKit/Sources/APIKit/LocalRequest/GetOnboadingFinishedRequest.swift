@@ -5,7 +5,7 @@ public struct GetOnboardingFinishedRequest: LocalRequest {
     public typealias Parameters = EmptyParameters
     public typealias PathComponent = EmptyPathComponent
 
-    public var localDataInterceptor: (EmptyParameters) -> Response? {
+    public var localDataInterceptor: (Parameters) -> Response? {
         { _ in
             PersistedDataHolder.onboardingFinished
         }
