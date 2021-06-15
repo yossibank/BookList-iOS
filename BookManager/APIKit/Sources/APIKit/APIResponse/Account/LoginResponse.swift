@@ -1,8 +1,8 @@
-struct LoginResponse: DataStructure {
+public struct LoginResponse: DataStructure {
     var status: Int
     var result: User
 
-    struct User: DataStructure {
+    public struct User: DataStructure {
         var id: Int
         var email: String
         var token: String

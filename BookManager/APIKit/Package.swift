@@ -23,6 +23,9 @@ let package = Package(
             name: "APIKit",
             dependencies: [
                 .product(name: "Utility", package: "Utility")
+            ],
+            resources: [
+                .process("TestData")
             ]
         ),
         .testTarget(

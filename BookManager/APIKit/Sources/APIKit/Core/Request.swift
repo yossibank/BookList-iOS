@@ -14,11 +14,15 @@ public struct EmptyPathComponent {
 
 enum APIRequestHeader: String, CaseIterable {
     case contentType = "Content-Type"
+    case authorization = "Authorization"
 
     var value: String? {
         switch self {
         case .contentType:
             return "application/json"
+
+        case .authorization:
+            return SecretDataHolder.accessToken
         }
     }
 }

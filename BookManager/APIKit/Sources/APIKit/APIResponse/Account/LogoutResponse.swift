@@ -1,3 +1,3 @@
-struct LogoutResponse: DataStructure {
+public struct LogoutResponse: DataStructure {
     var status: Int
 }
