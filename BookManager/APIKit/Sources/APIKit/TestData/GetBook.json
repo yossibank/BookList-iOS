@@ -1,0 +1,23 @@
+{
+  "status": 200,
+  "result": [
+    {
+      "id": 8,
+      "name": "sample",
+      "image": "http://example/hoge.png",
+      "price": 4345,
+      "purchase_date": "2001-01-01"
+    },
+    {
+      "id": 7,
+      "name": "テスト本2",
+      "image": "http://example/hoge.png",
+      "price": 123,
+      "purchase_date": "2017-01-03"
+    }
+  ],
+  "total_count": 3,
+  "total_pages": 2,
+  "current_page": 1,
+  "limit": 2
+}

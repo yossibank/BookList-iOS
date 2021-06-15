@@ -10,7 +10,10 @@ public struct LogoutRequest: Request {
     public var method: HTTPMethod { .delete }
     public var path: String { "/logout" }
     public var body: Data?
-    public var testDataPath: URL? { nil }
+
+    public var testDataPath: URL? {
+        Bundle.module.url(forResource: "DeleteLogout", withExtension: "json")
+    }
 
     public init(
         parameters: Parameters,
