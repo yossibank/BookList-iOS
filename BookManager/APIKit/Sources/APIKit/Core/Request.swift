@@ -76,7 +76,7 @@ public protocol Request {
 
 public extension Request {
     var baseURL: String {
-        ""
+        DataConfig.baseURL
     }
 
     var queryItems: [URLQueryItem]? {
