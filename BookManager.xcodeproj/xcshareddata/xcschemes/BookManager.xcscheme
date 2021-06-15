@@ -42,10 +42,10 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "78231216259C0D9300D9E723"
-               BuildableName = "BookList-iOSUITests.xctest"
-               BlueprintName = "BookList-iOSUITests"
-               ReferencedContainer = "container:BookManager.xcodeproj">
+               BlueprintIdentifier = "APIKitTests"
+               BuildableName = "APIKitTests"
+               BlueprintName = "APIKitTests"
+               ReferencedContainer = "container:BookManager/APIKit">
             </BuildableReference>
          </TestableReference>
       </Testables>

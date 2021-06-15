@@ -1,0 +1,10 @@
+{
+  "status": 200,
+  "result": {
+    "id": 6,
+    "name": "テスト本",
+    "image": "http://example/hoge.png",
+    "price": 100,
+    "purchase_date": "2017-06-06"
+  }
+}

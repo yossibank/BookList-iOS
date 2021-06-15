@@ -44,6 +44,8 @@
 		78299CE925E69D0D001868FB /* MyMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78299CE725E69D0D001868FB /* MyMessageTableViewCell.swift */; };
 		78299CEA25E69D0D001868FB /* MyMessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78299CE825E69D0D001868FB /* MyMessageTableViewCell.xib */; };
 		78299CEE25E69E15001868FB /* OtherMessageBalloonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78299CED25E69E15001868FB /* OtherMessageBalloonView.swift */; };
+		782E63712675E5D40029E940 /* Utility in Frameworks */ = {isa = PBXBuildFile; productRef = 782E63702675E5D40029E940 /* Utility */; };
+		782E63722675E5D40029E940 /* Utility in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 782E63702675E5D40029E940 /* Utility */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		783231A625B056C200EB178B /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783231A525B056C200EB178B /* Logger.swift */; };
 		783231BC25B05C1400EB178B /* HomeDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783231BB25B05C1400EB178B /* HomeDataSource.swift */; };
 		7833D0BA26022624005DFB79 /* ChatSelectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7833D0B926022624005DFB79 /* ChatSelectViewModel.swift */; };
@@ -146,6 +148,7 @@
 		78E609FB25AAABF80041B3D0 /* PasswordValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E609FA25AAABF80041B3D0 /* PasswordValidator.swift */; };
 		78E60A0025AAAEAC0041B3D0 /* ObservableType+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E609FF25AAAEAC0041B3D0 /* ObservableType+Extension.swift */; };
 		78E80CA625CE4402006580A2 /* BookValidationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E80CA525CE4402006580A2 /* BookValidationTests.swift */; };
+		78EB164F267620CE00777F32 /* APIKit in Frameworks */ = {isa = PBXBuildFile; productRef = 78EB164E267620CE00777F32 /* APIKit */; };
 		78EC97CB25F491E4007E80FD /* MainNavigationController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78EC97CA25F491E4007E80FD /* MainNavigationController.storyboard */; };
 		78EC97CE25F4923F007E80FD /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78EC97CD25F4923F007E80FD /* MainNavigationController.swift */; };
 		78ED505725EB5C8B0045089C /* FirebaseStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78ED505625EB5C8B0045089C /* FirebaseStorageManager.swift */; };
@@ -171,6 +174,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				782E63722675E5D40029E940 /* Utility in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -310,6 +314,7 @@
 		78E609FA25AAABF80041B3D0 /* PasswordValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordValidator.swift; sourceTree = "<group>"; };
 		78E609FF25AAAEAC0041B3D0 /* ObservableType+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ObservableType+Extension.swift"; sourceTree = "<group>"; };
 		78E80CA525CE4402006580A2 /* BookValidationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookValidationTests.swift; sourceTree = "<group>"; };
+		78EB164D2676201C00777F32 /* APIKit */ = {isa = PBXFileReference; lastKnownFileType = folder; path = APIKit; sourceTree = "<group>"; };
 		78EC97CA25F491E4007E80FD /* MainNavigationController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainNavigationController.storyboard; sourceTree = "<group>"; };
 		78EC97CD25F4923F007E80FD /* MainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
 		78ED505625EB5C8B0045089C /* FirebaseStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStorageManager.swift; sourceTree = "<group>"; };
@@ -327,6 +332,7 @@
 				78B6B4DC2658EBF000AE45E5 /* Rswift in Frameworks */,
 				781CC3982658E4550075D260 /* FirebaseStorageSwift-Beta in Frameworks */,
 				781CC39E2658E4550075D260 /* FirebaseAuth in Frameworks */,
+				782E63712675E5D40029E940 /* Utility in Frameworks */,
 				781CC3942658E4550075D260 /* FirebaseFirestoreSwift-Beta in Frameworks */,
 				781CC3922658E4550075D260 /* FirebaseFirestore in Frameworks */,
 				781CC3A12658E6E00075D260 /* RxSwift in Frameworks */,
@@ -334,6 +340,7 @@
 				781CC39C2658E4550075D260 /* FirebaseCrashlytics in Frameworks */,
 				781CC3962658E4550075D260 /* FirebaseAnalytics in Frameworks */,
 				781CC3A52658E6E00075D260 /* RxRelay in Frameworks */,
+				78EB164F267620CE00777F32 /* APIKit in Frameworks */,
 				78B6B4D82658EA3000AE45E5 /* KeychainAccess in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -427,6 +434,7 @@
 				782311F8259C0D9200D9E723 /* BookManager */,
 				7823120F259C0D9300D9E723 /* BookManagerTests */,
 				782311F7259C0D9200D9E723 /* Products */,
+				782E636D2675E5D40029E940 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -442,10 +450,11 @@
 		782311F8259C0D9200D9E723 /* BookManager */ = {
 			isa = PBXGroup;
 			children = (
+				78EB164D2676201C00777F32 /* APIKit */,
 				782E636B2675DC7A0029E940 /* Utility */,
 				78997EB7259C34550076FF97 /* AppConfig */,
 				78997EB8259C345F0076FF97 /* AppResources */,
-				78997EB9259C34670076FF97 /* Data */,
+				78997EB9259C34670076FF97 /* Datas */,
 				78997EBA259C346B0076FF97 /* Presentation */,
 			);
 			path = BookManager;
@@ -478,6 +487,13 @@
 				78299CE825E69D0D001868FB /* MyMessageTableViewCell.xib */,
 			);
 			path = MyMessageCell;
+			sourceTree = "<group>";
+		};
+		782E636D2675E5D40029E940 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		78421CDF25E926FD00950F62 /* KeyboardAccessory */ = {
@@ -684,14 +700,14 @@
 			path = AppResources;
 			sourceTree = "<group>";
 		};
-		78997EB9259C34670076FF97 /* Data */ = {
+		78997EB9259C34670076FF97 /* Datas */ = {
 			isa = PBXGroup;
 			children = (
 				78C61C0C25A1654600DC78A6 /* API */,
 				7862C15225E2591800F1645A /* Firebase */,
 				781C318525B5AFC900C11D77 /* Service */,
 			);
-			path = Data;
+			path = Datas;
 			sourceTree = "<group>";
 		};
 		78997EBA259C346B0076FF97 /* Presentation */ = {
@@ -1057,7 +1073,6 @@
 				7800202A25EFD0E00000BCEB /* Embed Frameworks */,
 				782311F4259C0D9200D9E723 /* Resources */,
 				78D17C7F25C4369000793310 /* Crashlytics */,
-				785D27A0259C195400F7C9A6 /* Swiftlint */,
 			);
 			buildRules = (
 			);
@@ -1077,6 +1092,8 @@
 				781CC3A62658E6E00075D260 /* RxCocoa */,
 				78B6B4D72658EA3000AE45E5 /* KeychainAccess */,
 				78B6B4DB2658EBF000AE45E5 /* Rswift */,
+				782E63702675E5D40029E940 /* Utility */,
+				78EB164E267620CE00777F32 /* APIKit */,
 			);
 			productName = Collections;
 			productReference = 782311F6259C0D9200D9E723 /* BookManager.app */;
@@ -1131,7 +1148,6 @@
 				781CC3902658E4550075D260 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				781CC39F2658E6E00075D260 /* XCRemoteSwiftPackageReference "RxSwift" */,
 				78B6B4D62658EA2F00AE45E5 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
-				78B6B4D92658EA9600AE45E5 /* XCRemoteSwiftPackageReference "R.swift" */,
 				78B6B4DA2658EBF000AE45E5 /* XCRemoteSwiftPackageReference "R.swift" */,
 			);
 			productRefGroup = 782311F7259C0D9200D9E723 /* Products */;
@@ -1204,24 +1220,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"rswift\" generate \"$SRCROOT/$PROJECT_NAME/AppResources/R/R.generated.swift\"\n";
-		};
-		785D27A0259C195400F7C9A6 /* Swiftlint */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = Swiftlint;
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"SwiftLint does not exist, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 		78D17C7F25C4369000793310 /* Crashlytics */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1450,7 +1448,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1506,7 +1504,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -1660,14 +1658,6 @@
 				minimumVersion = 4.2.2;
 			};
 		};
-		78B6B4D92658EA9600AE45E5 /* XCRemoteSwiftPackageReference "R.swift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/mac-cain13/R.swift.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.4.0;
-			};
-		};
 		78B6B4DA2658EBF000AE45E5 /* XCRemoteSwiftPackageReference "R.swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/mac-cain13/R.swift.Library";
@@ -1729,6 +1719,10 @@
 			package = 781CC39F2658E6E00075D260 /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxCocoa;
 		};
+		782E63702675E5D40029E940 /* Utility */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Utility;
+		};
 		78B6B4D72658EA3000AE45E5 /* KeychainAccess */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 78B6B4D62658EA2F00AE45E5 /* XCRemoteSwiftPackageReference "KeychainAccess" */;
@@ -1738,6 +1732,10 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 78B6B4DA2658EBF000AE45E5 /* XCRemoteSwiftPackageReference "R.swift" */;
 			productName = Rswift;
+		};
+		78EB164E267620CE00777F32 /* APIKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = APIKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
