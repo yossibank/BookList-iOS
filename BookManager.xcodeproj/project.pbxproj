@@ -155,6 +155,7 @@
 		78F940E6259D7E42007C972A /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F940E5259D7E42007C972A /* Router.swift */; };
 		78F940EA259D7EEF007C972A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F940E9259D7EEF007C972A /* ViewController.swift */; };
 		78F940EE259D995F007C972A /* ResourcesSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F940ED259D995F007C972A /* ResourcesSupport.swift */; };
+		78FFC6992678FCA500957F9C /* DomainKit in Frameworks */ = {isa = PBXBuildFile; productRef = 78FFC6982678FCA500957F9C /* DomainKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -334,6 +335,7 @@
 				781CC3982658E4550075D260 /* FirebaseStorageSwift-Beta in Frameworks */,
 				781CC39E2658E4550075D260 /* FirebaseAuth in Frameworks */,
 				782E63712675E5D40029E940 /* Utility in Frameworks */,
+				78FFC6992678FCA500957F9C /* DomainKit in Frameworks */,
 				781CC3942658E4550075D260 /* FirebaseFirestoreSwift-Beta in Frameworks */,
 				781CC3922658E4550075D260 /* FirebaseFirestore in Frameworks */,
 				781CC3A12658E6E00075D260 /* RxSwift in Frameworks */,
@@ -1096,6 +1098,7 @@
 				78B6B4DB2658EBF000AE45E5 /* Rswift */,
 				782E63702675E5D40029E940 /* Utility */,
 				78EB164E267620CE00777F32 /* APIKit */,
+				78FFC6982678FCA500957F9C /* DomainKit */,
 			);
 			productName = Collections;
 			productReference = 782311F6259C0D9200D9E723 /* BookManager.app */;
@@ -1738,6 +1741,10 @@
 		78EB164E267620CE00777F32 /* APIKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = APIKit;
+		};
+		78FFC6982678FCA500957F9C /* DomainKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DomainKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
