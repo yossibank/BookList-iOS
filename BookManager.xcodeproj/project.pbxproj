@@ -321,6 +321,7 @@
 		78F940E5259D7E42007C972A /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		78F940E9259D7EEF007C972A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		78F940ED259D995F007C972A /* ResourcesSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourcesSupport.swift; sourceTree = "<group>"; };
+		78FFC6972678F8F300957F9C /* DomainKit */ = {isa = PBXFileReference; lastKnownFileType = folder; path = DomainKit; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -451,6 +452,7 @@
 			isa = PBXGroup;
 			children = (
 				78EB164D2676201C00777F32 /* APIKit */,
+				78FFC6972678F8F300957F9C /* DomainKit */,
 				782E636B2675DC7A0029E940 /* Utility */,
 				78997EB7259C34550076FF97 /* AppConfig */,
 				78997EB8259C345F0076FF97 /* AppResources */,
