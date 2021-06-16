@@ -8,6 +8,18 @@ public struct EditBookRequest: Request {
         let image: String?
         let price: Int?
         let purchaseDate: String?
+
+        public init(
+            name: String,
+            image: String?,
+            price: Int?,
+            purchaseDate: String?
+        ) {
+            self.name = name
+            self.image = image
+            self.price = price
+            self.purchaseDate = purchaseDate
+        }
     }
 
     private let id: Int

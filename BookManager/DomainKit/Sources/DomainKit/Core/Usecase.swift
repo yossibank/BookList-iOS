@@ -12,6 +12,10 @@ protocol Usecase {
     var analytics: Analytics { get }
 }
 
+public struct NoEntity: Equatable {}
+
+public struct NoMapper {}
+
 public struct UsecaseImpl<R, M>: Usecase {
     var repository: R
     var mapper: M

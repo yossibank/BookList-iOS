@@ -1,6 +1,6 @@
 import Foundation
 
-public struct Book: DataStructure {
+public struct BookEntity: Equatable {
     let id: Int
     let name: String
     let image: String?

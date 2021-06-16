@@ -1,7 +1,7 @@
 import Foundation
 
 public struct SignupRequest: Request {
-    public typealias Response = SignupResponse
+    public typealias Response = UserResponse
     public typealias PathComponent = EmptyPathComponent
 
     public struct Parameters: Codable {

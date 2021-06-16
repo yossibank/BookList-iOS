@@ -1,7 +1,7 @@
 import Foundation
 
 public struct LoginRequest: Request {
-    public typealias Response = LoginResponse
+    public typealias Response = UserResponse
     public typealias PathComponent = EmptyPathComponent
 
     public struct Parameters: Codable {

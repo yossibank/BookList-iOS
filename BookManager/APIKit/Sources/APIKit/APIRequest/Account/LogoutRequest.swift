@@ -2,7 +2,7 @@ import Foundation
 
 public struct LogoutRequest: Request {
     public typealias Parameters = EmptyParameters
-    public typealias Response = LogoutResponse
+    public typealias Response = EmptyResponse
     public typealias PathComponent = EmptyPathComponent
 
     public var parameters: Parameters

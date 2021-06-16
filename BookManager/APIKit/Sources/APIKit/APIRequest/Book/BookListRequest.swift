@@ -1,7 +1,7 @@
 import Foundation
 
 public struct BookListRequest: Request {
-    public typealias Response = BookListResponse
+    public typealias Response = [BookResponse]
     public typealias PathComponent = EmptyPathComponent
 
     public struct Parameters: Codable {
@@ -9,8 +9,8 @@ public struct BookListRequest: Request {
         let page: Int
 
         public init(
-            limit: Int,
-            page: Int
+            limit: Int = 20,
+            page: Int = 1
         ) {
             self.limit = limit
             self.page = page
