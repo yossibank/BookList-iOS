@@ -474,12 +474,9 @@
 				782E636B2675DC7A0029E940 /* Utility */,
 				78FE8CD0267B73FE0006612E /* Configuration */,
 				78997EBA259C346B0076FF97 /* Presentation */,
-				78997EC2259C350B0076FF97 /* Utility */,
 				78FE8CD7267B79480006612E /* Resource */,
-				78997EB7259C34550076FF97 /* AppConfig */,
-				78997EB8259C345F0076FF97 /* AppResources */,
-				78997EC4259C351C0076FF97 /* Convenience */,
-				78997EB9259C34670076FF97 /* Datas */,
+				78997EC2259C350B0076FF97 /* Utility */,
+				78B2A169267B87B600D9EA0E /* Before */,
 			);
 			path = BookManager;
 			sourceTree = "<group>";
@@ -901,6 +898,17 @@
 				78EC97CA25F491E4007E80FD /* MainNavigationController.storyboard */,
 			);
 			path = Container;
+			sourceTree = "<group>";
+		};
+		78B2A169267B87B600D9EA0E /* Before */ = {
+			isa = PBXGroup;
+			children = (
+				78997EB7259C34550076FF97 /* AppConfig */,
+				78997EB8259C345F0076FF97 /* AppResources */,
+				78997EC4259C351C0076FF97 /* Convenience */,
+				78997EB9259C34670076FF97 /* Datas */,
+			);
+			path = Before;
 			sourceTree = "<group>";
 		};
 		78B8A68D25E54003005BCB16 /* View */ = {
