@@ -97,6 +97,9 @@
 		78B29D1125B32A5D00A7DC7F /* EditBookRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B29D1025B32A5D00A7DC7F /* EditBookRequest.swift */; };
 		78B29D1C25B3310000A7DC7F /* EditBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B29D1B25B3310000A7DC7F /* EditBookViewController.swift */; };
 		78B29D2225B3311A00A7DC7F /* EditBookViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78B29D2125B3311A00A7DC7F /* EditBookViewController.storyboard */; };
+		78B2A163267B7F6B00D9EA0E /* Routing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B2A162267B7F6B00D9EA0E /* Routing.swift */; };
+		78B2A165267B7F7100D9EA0E /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B2A164267B7F7100D9EA0E /* ViewModel.swift */; };
+		78B2A167267B7F7900D9EA0E /* VCInjectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B2A166267B7F7900D9EA0E /* VCInjectable.swift */; };
 		78B6B4D82658EA3000AE45E5 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 78B6B4D72658EA3000AE45E5 /* KeychainAccess */; };
 		78B6B4DC2658EBF000AE45E5 /* Rswift in Frameworks */ = {isa = PBXBuildFile; productRef = 78B6B4DB2658EBF000AE45E5 /* Rswift */; };
 		78B8A69025E54021005BCB16 /* OtherMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B8A68E25E54021005BCB16 /* OtherMessageTableViewCell.swift */; };
@@ -271,6 +274,9 @@
 		78B29D1025B32A5D00A7DC7F /* EditBookRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBookRequest.swift; sourceTree = "<group>"; };
 		78B29D1B25B3310000A7DC7F /* EditBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBookViewController.swift; sourceTree = "<group>"; };
 		78B29D2125B3311A00A7DC7F /* EditBookViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditBookViewController.storyboard; sourceTree = "<group>"; };
+		78B2A162267B7F6B00D9EA0E /* Routing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routing.swift; sourceTree = "<group>"; };
+		78B2A164267B7F7100D9EA0E /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		78B2A166267B7F7900D9EA0E /* VCInjectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCInjectable.swift; sourceTree = "<group>"; };
 		78B8A68E25E54021005BCB16 /* OtherMessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherMessageTableViewCell.swift; sourceTree = "<group>"; };
 		78B8A68F25E54021005BCB16 /* OtherMessageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OtherMessageTableViewCell.xib; sourceTree = "<group>"; };
 		78B8A69525E54AEB005BCB16 /* MyMessageBalloonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMessageBalloonView.swift; sourceTree = "<group>"; };
@@ -732,6 +738,7 @@
 			children = (
 				78997EC1259C34F70076FF97 /* AppDelegate */,
 				78997EC4259C351C0076FF97 /* Convenience */,
+				78B2A161267B7EB000D9EA0E /* Core */,
 				78997EC3259C35100076FF97 /* Presentation-Domain */,
 			);
 			path = Presentation;
@@ -883,6 +890,16 @@
 				78B29D2125B3311A00A7DC7F /* EditBookViewController.storyboard */,
 			);
 			path = EditBook;
+			sourceTree = "<group>";
+		};
+		78B2A161267B7EB000D9EA0E /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				78B2A162267B7F6B00D9EA0E /* Routing.swift */,
+				78B2A166267B7F7900D9EA0E /* VCInjectable.swift */,
+				78B2A164267B7F7100D9EA0E /* ViewModel.swift */,
+			);
+			path = Core;
 			sourceTree = "<group>";
 		};
 		78B8A68D25E54003005BCB16 /* View */ = {
@@ -1330,6 +1347,7 @@
 				78E609D325AA04300041B3D0 /* LoginViewModel.swift in Sources */,
 				78DCC90425B7048E006FFF0F /* LogoutResponse.swift in Sources */,
 				787CB2F92600E0C5003B8CC9 /* Room.swift in Sources */,
+				78B2A167267B7F7900D9EA0E /* VCInjectable.swift in Sources */,
 				7821A5D025E25C5B0006DE50 /* FirebaseAuthManager.swift in Sources */,
 				78524FC925E533E3002AEF87 /* ChatRoomViewController.swift in Sources */,
 				781C318725B5AFE100C11D77 /* KeychainManager.swift in Sources */,
@@ -1363,6 +1381,7 @@
 				785A1ADE25A9CC1A005E8A4B /* SignupUsecase.swift in Sources */,
 				784E136C25B2A399008FD947 /* AddBookRequest.swift in Sources */,
 				7892EF6C259C7212006F7315 /* Images.swift in Sources */,
+				78B2A163267B7F6B00D9EA0E /* Routing.swift in Sources */,
 				7892EF62259C642C006F7315 /* IBDesignableView.swift in Sources */,
 				78C61C2725A170E000DC78A6 /* AppConfigurator.swift in Sources */,
 				781936B325BC5B2B00309FB7 /* BookFileManager.swift in Sources */,
@@ -1388,6 +1407,7 @@
 				78997EE5259C4C5E0076FF97 /* UIView-IBInspectable-Extensions.swift in Sources */,
 				78C61C0E25A1655600DC78A6 /* HttpMethod.swift in Sources */,
 				78299CEE25E69E15001868FB /* OtherMessageBalloonView.swift in Sources */,
+				78B2A165267B7F7100D9EA0E /* ViewModel.swift in Sources */,
 				785A1ABD25A9A407005E8A4B /* SignupRequest.swift in Sources */,
 				784B18FC25BD50FC0071C32E /* WishListDataSource.swift in Sources */,
 				7892EF79259C73C9006F7315 /* KeyboardNotifier.swift in Sources */,
