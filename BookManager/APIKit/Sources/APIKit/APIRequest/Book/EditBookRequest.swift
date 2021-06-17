@@ -1,7 +1,7 @@
 import Foundation
 
 public struct EditBookRequest: Request {
-    public typealias Response = BookResponse
+    public typealias Response = Repos.Result<BookResponse>
 
     public struct Parameters: Codable {
         let name: String

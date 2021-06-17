@@ -2,7 +2,7 @@ import APIKit
 import Foundation
 
 public struct BookMapper {
-    func convert(response: BookResponse) -> BookEntity {
+    func convert(response: Repos.Result<BookResponse>) -> BookEntity {
         BookEntity(
             id: response.result.id,
             name: response.result.name,

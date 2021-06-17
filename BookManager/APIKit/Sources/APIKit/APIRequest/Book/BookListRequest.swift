@@ -1,7 +1,7 @@
 import Foundation
 
 public struct BookListRequest: Request {
-    public typealias Response = [BookResponse]
+    public typealias Response = BookListResponse
     public typealias PathComponent = EmptyPathComponent
 
     public struct Parameters: Codable {

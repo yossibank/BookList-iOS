@@ -1,7 +1,7 @@
 import Foundation
 
 public struct SignupRequest: Request {
-    public typealias Response = UserResponse
+    public typealias Response = Repos.Result<UserResponse>
     public typealias PathComponent = EmptyPathComponent
 
     public struct Parameters: Codable {
@@ -21,6 +21,12 @@ public struct SignupRequest: Request {
     public var method: HTTPMethod { .post }
     public var path: String { "/sign_up" }
     public var body: Data?
+
+    public var successHandler: (Response) -> Void {
+        { response in
+            SecretDataHolder.accessToken = response.result.token
+        }
+    }
 
     public var testDataPath: URL? {
         Bundle.module.url(forResource: "PostSignup", withExtension: "json")

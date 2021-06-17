@@ -1,7 +1,7 @@
 import Foundation
 
 public struct AddBookRequest: Request {
-    public typealias Response = BookResponse
+    public typealias Response = Repos.Result<BookResponse>
     public typealias PathComponent = EmptyPathComponent
 
     public struct Parameters: Codable {

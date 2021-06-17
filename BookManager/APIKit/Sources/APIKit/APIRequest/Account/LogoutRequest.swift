@@ -11,6 +11,12 @@ public struct LogoutRequest: Request {
     public var path: String { "/logout" }
     public var body: Data?
 
+    public var successHandler: (EmptyResponse) -> Void {
+        { _ in
+            SecretDataHolder.accessToken = nil
+        }
+    }
+
     public var testDataPath: URL? {
         Bundle.module.url(forResource: "DeleteLogout", withExtension: "json")
     }

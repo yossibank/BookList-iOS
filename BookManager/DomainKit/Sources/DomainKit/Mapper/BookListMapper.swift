@@ -2,14 +2,14 @@ import APIKit
 import Foundation
 
 public struct BookListMapper {
-    func convert(response: [BookResponse]) -> [BookEntity] {
-        response.map { response in
+    func convert(response: BookListResponse) -> [BookEntity] {
+        response.result.map { response in
             BookEntity(
-                id: response.result.id,
-                name: response.result.name,
-                image: response.result.image,
-                price: response.result.price,
-                purchaseDate: response.result.purchaseDate
+                id: response.id,
+                name: response.name,
+                image: response.image,
+                price: response.price,
+                purchaseDate: response.purchaseDate
             )
         }
     }

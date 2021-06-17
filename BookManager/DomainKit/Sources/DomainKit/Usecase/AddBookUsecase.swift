@@ -12,7 +12,7 @@ public protocol AddBookUsecase {
 }
 
 extension UsecaseImpl where R == Repos.Book.Post, M == BookMapper {
-    public func updateBook(
+    public func addBook(
         name: String,
         image: String,
         price: Int,
