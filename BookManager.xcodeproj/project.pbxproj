@@ -85,7 +85,7 @@
 		7892EF52259C58C0006F7315 /* IBDesignableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7892EF51259C58C0006F7315 /* IBDesignableButton.swift */; };
 		7892EF5C259C5DF0006F7315 /* IBDesignableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7892EF5B259C5DF0006F7315 /* IBDesignableTextField.swift */; };
 		7892EF62259C642C006F7315 /* IBDesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7892EF61259C642C006F7315 /* IBDesignableView.swift */; };
-		7892EF68259C720A006F7315 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7892EF67259C720A006F7315 /* Strings.swift */; };
+		7892EF68259C720A006F7315 /* SubStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7892EF67259C720A006F7315 /* SubStrings.swift */; };
 		7892EF6C259C7212006F7315 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7892EF6B259C7212006F7315 /* Images.swift */; };
 		7892EF70259C721F006F7315 /* Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7892EF6F259C721F006F7315 /* Resources.swift */; };
 		7892EF79259C73C9006F7315 /* KeyboardNotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7892EF78259C73C9006F7315 /* KeyboardNotifier.swift */; };
@@ -158,6 +158,8 @@
 		78FE8CD2267B740C0006612E /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FE8CD1267B740C0006612E /* API.swift */; };
 		78FE8CD4267B74130006612E /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FE8CD3267B74130006612E /* Package.swift */; };
 		78FE8CD6267B76750006612E /* FirebaseProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FE8CD5267B76750006612E /* FirebaseProvider.swift */; };
+		78FE8CD9267B79650006612E /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FE8CD8267B79650006612E /* Localizable.swift */; };
+		78FE8CDB267B79720006612E /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FE8CDA267B79720006612E /* Strings.swift */; };
 		78FFC6992678FCA500957F9C /* DomainKit in Frameworks */ = {isa = PBXBuildFile; productRef = 78FFC6982678FCA500957F9C /* DomainKit */; };
 /* End PBXBuildFile section */
 
@@ -257,7 +259,7 @@
 		7892EF51259C58C0006F7315 /* IBDesignableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBDesignableButton.swift; sourceTree = "<group>"; };
 		7892EF5B259C5DF0006F7315 /* IBDesignableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBDesignableTextField.swift; sourceTree = "<group>"; };
 		7892EF61259C642C006F7315 /* IBDesignableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBDesignableView.swift; sourceTree = "<group>"; };
-		7892EF67259C720A006F7315 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
+		7892EF67259C720A006F7315 /* SubStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubStrings.swift; sourceTree = "<group>"; };
 		7892EF6B259C7212006F7315 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		7892EF6F259C721F006F7315 /* Resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resources.swift; sourceTree = "<group>"; };
 		7892EF78259C73C9006F7315 /* KeyboardNotifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardNotifier.swift; sourceTree = "<group>"; };
@@ -328,6 +330,8 @@
 		78FE8CD1267B740C0006612E /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		78FE8CD3267B74130006612E /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		78FE8CD5267B76750006612E /* FirebaseProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseProvider.swift; sourceTree = "<group>"; };
+		78FE8CD8267B79650006612E /* Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localizable.swift; sourceTree = "<group>"; };
+		78FE8CDA267B79720006612E /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		78FFC6972678F8F300957F9C /* DomainKit */ = {isa = PBXFileReference; lastKnownFileType = folder; path = DomainKit; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -727,6 +731,7 @@
 				78997EC1259C34F70076FF97 /* AppDelegate */,
 				78997EC4259C351C0076FF97 /* Convenience */,
 				78997EC3259C35100076FF97 /* Presentation-Domain */,
+				78FE8CD7267B79480006612E /* Resource */,
 				78997EC2259C350B0076FF97 /* Utility */,
 			);
 			path = Presentation;
@@ -736,7 +741,7 @@
 			isa = PBXGroup;
 			children = (
 				7892EF6F259C721F006F7315 /* Resources.swift */,
-				7892EF67259C720A006F7315 /* Strings.swift */,
+				7892EF67259C720A006F7315 /* SubStrings.swift */,
 				7892EF6B259C7212006F7315 /* Images.swift */,
 				78997EBE259C34AD0076FF97 /* ResourcesSupport */,
 			);
@@ -754,7 +759,6 @@
 		78997EBD259C34A00076FF97 /* Support */ = {
 			isa = PBXGroup;
 			children = (
-				78231202259C0D9300D9E723 /* Assets.xcassets */,
 				78997EC0259C34CB0076FF97 /* InfoPlist */,
 				78997EBF259C34C40076FF97 /* LocalizedStrings */,
 			);
@@ -1081,6 +1085,16 @@
 			path = Configuration;
 			sourceTree = "<group>";
 		};
+		78FE8CD7267B79480006612E /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				78231202259C0D9300D9E723 /* Assets.xcassets */,
+				78FE8CD8267B79650006612E /* Localizable.swift */,
+				78FE8CDA267B79720006612E /* Strings.swift */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1302,9 +1316,10 @@
 				78DEE7DE25AB02A200219963 /* HomeTableViewCell.swift in Sources */,
 				78CB209225EA48EB00D4E22D /* FirebaseManager.swift in Sources */,
 				78D17C9C25C505B400793310 /* AnalyticsConfiguration.swift in Sources */,
+				78FE8CDB267B79720006612E /* Strings.swift in Sources */,
 				78FE8CD2267B740C0006612E /* API.swift in Sources */,
 				784B18F625BD4D5F0071C32E /* WishListViewModel.swift in Sources */,
-				7892EF68259C720A006F7315 /* Strings.swift in Sources */,
+				7892EF68259C720A006F7315 /* SubStrings.swift in Sources */,
 				78E609CF25AA018D0041B3D0 /* LoginResponse.swift in Sources */,
 				7802FBB425BBC91D00565A16 /* Date+Util.swift in Sources */,
 				78DCC90025B7046F006FFF0F /* LogoutRequest.swift in Sources */,
@@ -1377,6 +1392,7 @@
 				7892EF79259C73C9006F7315 /* KeyboardNotifier.swift in Sources */,
 				78F940E6259D7E42007C972A /* Router.swift in Sources */,
 				78B8A69625E54AEB005BCB16 /* MyMessageBalloonView.swift in Sources */,
+				78FE8CD9267B79650006612E /* Localizable.swift in Sources */,
 				784E136225B2A209008FD947 /* AddBookResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
