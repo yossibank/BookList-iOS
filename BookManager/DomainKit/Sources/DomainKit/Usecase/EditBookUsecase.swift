@@ -12,7 +12,7 @@ public protocol EditBookUsecase {
     ) -> AnyPublisher<BookEntity, APIError>
 }
 
-extension UsecaseImpl where R == Repos.Book.Put, M == BookMapper {
+extension UsecaseImpl: EditBookUsecase where R == Repos.Book.Put, M == BookMapper {
     public func updateBook(
         id: Int,
         name: String,

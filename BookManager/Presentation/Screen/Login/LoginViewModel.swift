@@ -1,42 +1,49 @@
-import RxSwift
-import RxRelay
+import Combine
+import DomainKit
+import Utility
 
-final class LoginViewModel {
-    private let usecase: LoginUsecase!
-    private let loadingRelay: BehaviorRelay<Bool> = BehaviorRelay(value: false)
-    private let resultRelay: BehaviorRelay<Result<LoginResponse, Error>?> = BehaviorRelay(value: nil)
-    private let disposeBag: DisposeBag = DisposeBag()
+final class LoginViewModel: ViewModel {
+    typealias State = LoadingState<UserEntity, APPError>
 
-    var loading: Observable<Bool> {
-        loadingRelay.asObservable()
-    }
+    private let usecase: LoginUsecase
 
-    var result: Observable<Result<LoginResponse, Error>?> {
-        resultRelay.asObservable()
-    }
+    private var cancellables: Set<AnyCancellable> = []
 
-    init(usecase: LoginUsecase) {
+    @Published private(set) var state: State = .standby
+    @Published var email: String = String.blank
+    @Published var password: String = String.blank
+
+    init(usecase: LoginUsecase = Domain.Usecase.Account.Login()) {
         self.usecase = usecase
-        bindUsecase()
     }
+}
 
-    private func bindUsecase() {
-        usecase.loading
-            .bind(to: loadingRelay)
-            .disposed(by: disposeBag)
+// MARK: - internal method
 
-        usecase.result
-            .bind(to: resultRelay)
-            .disposed(by: disposeBag)
-    }
+extension LoginViewModel {
+    func login() {
+        self.state = .loading
 
-    func login(
-        email: String,
-        password: String
-    ) {
-        usecase.login(
-            email: email,
-            password: password
-        )
+        self.usecase
+            .login(email: email, password: password)
+            .sink { [weak self] completion in
+                guard let self = self else { return }
+
+                switch completion {
+                case let .failure(error):
+                    Logger.debug(error.localizedDescription)
+                    self.state = .failed(.init(error: error))
+
+                case .finished:
+                    Logger.debug("finished")
+                    FirebaseAuthManager.shared.signIn(
+                        email: self.email,
+                        password: self.password
+                    )
+                }
+            } receiveValue: { [weak self] state in
+                self?.state = .done(state)
+            }
+            .store(in: &cancellables)
     }
 }

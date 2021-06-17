@@ -111,15 +111,15 @@ extension SignupViewController {
     }
 
     private func loginButtonTapped() {
-        if presentingViewController is LoginViewController {
-            dismiss(animated: true)
-        } else {
-            router.present(
-                .login,
-                from: self,
-                wrapInNavigationController: false
-            )
-        }
+//        if presentingViewController is LoginViewController {
+//            dismiss(animated: true)
+//        } else {
+//            router.present(
+//                .login,
+//                from: self,
+//                wrapInNavigationController: false
+//            )
+//        }
     }
 }
 

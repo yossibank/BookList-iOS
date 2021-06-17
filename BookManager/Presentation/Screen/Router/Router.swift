@@ -128,7 +128,7 @@ extension RouterProtocol {
 enum Route {
 
     case signup
-    case login
+//    case login
     case home
     case bookList
     case addBook
@@ -151,8 +151,8 @@ enum Route {
         case .signup:
             viewController = Resources.ViewControllers.App.signup()
 
-        case .login:
-            viewController = Resources.ViewControllers.App.login()
+//        case .login:
+//            viewController = Resources.ViewControllers.App.login()
 
         case .home:
             viewController = Resources.ViewControllers.App.home()

@@ -1,8 +1,31 @@
+import Combine
+import CombineCocoa
 import UIKit
-import RxSwift
-import RxCocoa
+import Utility
+
+extension LoginViewController: VCInjectable {
+    typealias R = LoginRouting
+    typealias VM = LoginViewModel
+}
+
+// MARK: - properties
 
 final class LoginViewController: UIViewController {
+    var routing: R! { didSet { self.routing.viewController = self } }
+    var viewModel: VM!
+    var keyboardNotifier: KeyboardNotifier = KeyboardNotifier()
+
+    private var cancellables: Set<AnyCancellable> = []
+    private var isSecureCheck: Bool = false {
+        didSet {
+            let image = isSecureCheck
+                ? Resources.Images.Account.checkInBox
+                : Resources.Images.Account.checkOffBox
+
+            secureButton.setImage(image, for: .normal)
+            passwordTextField.isSecureTextEntry = !isSecureCheck
+        }
+    }
 
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var emailTextField: UITextField!
@@ -13,184 +36,120 @@ final class LoginViewController: UIViewController {
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var signupButton: UIButton!
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
+}
 
-    var keyboardNotifier: KeyboardNotifier = KeyboardNotifier()
+// MARK: - override methods
 
-    private let router: RouterProtocol = Router()
-    private let disposeBag: DisposeBag = DisposeBag()
-
-    private var viewModel: LoginViewModel!
-    private var isSecureCheck: Bool = true
-
-    static func createInstance(viewModel: LoginViewModel) -> LoginViewController {
-        let instance = LoginViewController.instantiateInitialViewController()
-        instance.viewModel = viewModel
-        return instance
-    }
-
+extension LoginViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
+        listenerKeyboard(keyboardNotifier: keyboardNotifier)
         setupTextField()
         setupButton()
-        bindValue()
         bindViewModel()
-        listenerKeyboard(keyboardNotifier: keyboardNotifier)
         sendScreenView()
+    }
+
+    override func touchesBegan(
+        _ touches: Set<UITouch>,
+        with event: UIEvent?
+    ) {
+        view.endEditing(true)
     }
 }
 
-extension LoginViewController {
+// MARK: - private methods
 
-    private func setupTextField() {
+private extension LoginViewController {
+    func setupTextField() {
         [emailTextField, passwordTextField].forEach {
             $0?.delegate = self
         }
+
+        emailTextField.textPublisher
+            .receive(on: DispatchQueue.main)
+            .compactMap { $0 }
+            .removeDuplicates()
+            .assign(to: \.email, on: viewModel)
+            .store(in: &cancellables)
+
+        passwordTextField.textPublisher
+            .receive(on: DispatchQueue.main)
+            .compactMap { $0 }
+            .removeDuplicates()
+            .assign(to: \.password, on: viewModel)
+            .store(in: &cancellables)
     }
 
-    private func setupButton() {
-        secureButton.rx.tap.subscribe { [weak self] _ in
-            self?.secureButtonTapped()
-        }.disposed(by: disposeBag)
-
-        loginButton.rx.tap.subscribe { [weak self] _ in
-            self?.loginButtonTapped()
-        }.disposed(by: disposeBag)
-
-        signupButton.rx.tap.subscribe { [weak self] _ in
-            self?.signupButtonTapped()
-        }.disposed(by: disposeBag)
-    }
-
-    private func secureButtonTapped() {
-        let secureImage = isSecureCheck
-            ? Resources.Images.Account.checkInBox
-            : Resources.Images.Account.checkOffBox
-        secureButton.setImage(secureImage, for: .normal)
-
-        passwordTextField.isSecureTextEntry = isSecureCheck ? false : true
-        isSecureCheck = !isSecureCheck
-    }
-
-    private func loginButtonTapped() {
-        if
-            let email = emailTextField.text,
-            let password = passwordTextField.text
-        {
-            viewModel.login(
-                email: email,
-                password: password
-            )
-        }
-    }
-
-    private func signupButtonTapped() {
-        if presentingViewController is SignupViewController {
-            self.dismiss(animated: true)
-        } else {
-            router.present(
-                .signup,
-                from: self,
-                wrapInNavigationController: false
-            )
-        }
-    }
-}
-
-extension LoginViewController {
-
-    private func bindValue() {
-        emailTextField.rx.text
-            .validate(EmailValidator.self)
-            .map { validate in
-                validate.errorDescription
-            }
-            .skip(2)
-            .bind(to: validateEmailLabel.rx.text)
-            .disposed(by: disposeBag)
-
-        passwordTextField.rx.text
-            .validate(PasswordValidator.self)
-            .map { validate in
-                validate.errorDescription
-            }
-            .skip(2)
-            .bind(to: validatePasswordLabel.rx.text)
-            .disposed(by: disposeBag)
-
-        Observable
-            .combineLatest(
-                emailTextField.rx.text.orEmpty.map { $0.isEmpty },
-                passwordTextField.rx.text.orEmpty.map { $0.isEmpty })
-            .map { isEmailEmpty, isPasswordEmpty in
-                return !(isEmailEmpty || isPasswordEmpty)
-            }
-            .subscribe(onNext: { [weak self] isEnabled in
-                let isEnabled = isEnabled
-                    && self?.validateEmailLabel.text == nil
-                    && self?.validatePasswordLabel.text == nil
-
-                self?.loginButton.alpha = isEnabled ? 1.0 : 0.5
-                self?.loginButton.isEnabled = isEnabled
-            })
-            .disposed(by: disposeBag)
-    }
-
-    private func bindViewModel() {
-        viewModel.result
-            .asDriver(onErrorJustReturn: nil)
-            .drive(onNext: { [weak self] result in
-                guard let self = self,
-                      let result = result else { return }
-
-                switch result {
-
-                case .success:
-                    let window = UIApplication.shared.windows.first { $0.isKeyWindow }
-                    window?.rootViewController = self.router.initialWindow(.home, type: .navigation)
-
-                case .failure(let error):
-                    if let error = error as? APIError {
-                        dump(error.description())
-                    }
-                    self.showError(
-                        title: Resources.Strings.General.error,
-                        message: Resources.Strings.Alert.failedLogin
-                    )
-                }
-            })
-            .disposed(by: disposeBag)
-
-        viewModel.loading
-            .asDriver(onErrorJustReturn: false)
-            .drive(onNext: { [weak self] loading in
+    func setupButton() {
+        secureButton.tapPublisher
+            .sink { [weak self] _ in
                 guard let self = self else { return }
+                self.isSecureCheck = !self.isSecureCheck
+            }
+            .store(in: &cancellables)
 
-                loading
-                    ? self.loadingIndicator.startAnimating()
-                    : self.loadingIndicator.stopAnimating()
-            })
-            .disposed(by: disposeBag)
+        loginButton.tapPublisher
+            .sink { [weak self] _ in
+                self?.viewModel.login()
+            }
+            .store(in: &cancellables)
+
+        signupButton.tapPublisher
+            .sink { [weak self] _ in
+                self?.loginButtonTapped()
+            }
+            .store(in: &cancellables)
     }
+
+    func bindViewModel() {
+        viewModel.$state
+            .receive(on: DispatchQueue.main)
+            .sink { state in
+                switch state {
+                case .standby:
+                    Logger.debug("standby")
+
+                case .loading:
+                    Logger.debug("loading")
+
+                case let .done(entities):
+                    Logger.debug("\(entities)")
+
+                case let .failed(error):
+                    Logger.debug("\(error.localizedDescription)")
+                }
+            }
+            .store(in: &cancellables)
+    }
+
+    func loginButtonTapped() {}
+    func signupButtonTapped() {}
 }
+
+// MARK: - Delegate
 
 extension LoginViewController: UITextFieldDelegate {
-
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        view.endEditing(true)
-    }
-
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if emailTextField == textField {
-            passwordTextField.becomeFirstResponder()
-        } else {
-            textField.resignFirstResponder()
+        let textFields = [emailTextField, passwordTextField]
+
+        guard
+            let currentTextFieldIndex = textFields.firstIndex(of: textField)
+        else {
+            return false
         }
+
+        if currentTextFieldIndex + 1 == textFields.endIndex {
+            textField.resignFirstResponder()
+        } else {
+            textFields[currentTextFieldIndex + 1]?.becomeFirstResponder()
+        }
+
         return true
     }
 }
 
 extension LoginViewController: KeyboardDelegate {
-
     func keyboardPresent(_ height: CGFloat) {
         let displayHeight = view.frame.height - height
         let bottomOffsetY = stackView.convert(
@@ -205,8 +164,9 @@ extension LoginViewController: KeyboardDelegate {
     }
 }
 
-extension LoginViewController: AnalyticsConfiguration {
+// MARK: - Protocol
 
+extension LoginViewController: AnalyticsConfiguration {
     var screenName: AnalyticsScreenName? {
         .login
     }

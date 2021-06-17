@@ -21,12 +21,12 @@ extension Resources {
                 return vc
             }
 
-            func login() -> LoginViewController {
-                let usecase = LoginUsecase()
-                let viewModel = LoginViewModel(usecase: usecase)
-                let vc = LoginViewController.createInstance(viewModel: viewModel)
-                return vc
-            }
+//            func login() -> LoginViewController {
+//                let usecase = LoginUsecase()
+//                let viewModel = LoginViewModel(usecase: usecase)
+//                let vc = LoginViewController.createInstance(viewModel: viewModel)
+//                return vc
+//            }
 
             func home() -> HomeViewController {
                 let usecase = HomeUsecase()
