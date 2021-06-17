@@ -155,6 +155,9 @@
 		78F940E6259D7E42007C972A /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F940E5259D7E42007C972A /* Router.swift */; };
 		78F940EA259D7EEF007C972A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F940E9259D7EEF007C972A /* ViewController.swift */; };
 		78F940EE259D995F007C972A /* ResourcesSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F940ED259D995F007C972A /* ResourcesSupport.swift */; };
+		78FE8CD2267B740C0006612E /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FE8CD1267B740C0006612E /* API.swift */; };
+		78FE8CD4267B74130006612E /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FE8CD3267B74130006612E /* Package.swift */; };
+		78FE8CD6267B76750006612E /* FirebaseProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FE8CD5267B76750006612E /* FirebaseProvider.swift */; };
 		78FFC6992678FCA500957F9C /* DomainKit in Frameworks */ = {isa = PBXBuildFile; productRef = 78FFC6982678FCA500957F9C /* DomainKit */; };
 /* End PBXBuildFile section */
 
@@ -322,6 +325,9 @@
 		78F940E5259D7E42007C972A /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		78F940E9259D7EEF007C972A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		78F940ED259D995F007C972A /* ResourcesSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourcesSupport.swift; sourceTree = "<group>"; };
+		78FE8CD1267B740C0006612E /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		78FE8CD3267B74130006612E /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
+		78FE8CD5267B76750006612E /* FirebaseProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseProvider.swift; sourceTree = "<group>"; };
 		78FFC6972678F8F300957F9C /* DomainKit */ = {isa = PBXFileReference; lastKnownFileType = folder; path = DomainKit; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -458,6 +464,7 @@
 				782E636B2675DC7A0029E940 /* Utility */,
 				78997EB7259C34550076FF97 /* AppConfig */,
 				78997EB8259C345F0076FF97 /* AppResources */,
+				78FE8CD0267B73FE0006612E /* Configuration */,
 				78997EB9259C34670076FF97 /* Datas */,
 				78997EBA259C346B0076FF97 /* Presentation */,
 			);
@@ -790,6 +797,7 @@
 		78997EC2259C350B0076FF97 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				78FE8CD5267B76750006612E /* FirebaseProvider.swift */,
 				78D17C9025C501A300793310 /* Analytics */,
 				78C61C2A25A1714B00DC78A6 /* AppUtil */,
 				7892EF48259C539B006F7315 /* IBDesignable */,
@@ -1064,6 +1072,15 @@
 			path = FirebaseStorage;
 			sourceTree = "<group>";
 		};
+		78FE8CD0267B73FE0006612E /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				78FE8CD1267B740C0006612E /* API.swift */,
+				78FE8CD3267B74130006612E /* Package.swift */,
+			);
+			path = Configuration;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1285,6 +1302,7 @@
 				78DEE7DE25AB02A200219963 /* HomeTableViewCell.swift in Sources */,
 				78CB209225EA48EB00D4E22D /* FirebaseManager.swift in Sources */,
 				78D17C9C25C505B400793310 /* AnalyticsConfiguration.swift in Sources */,
+				78FE8CD2267B740C0006612E /* API.swift in Sources */,
 				784B18F625BD4D5F0071C32E /* WishListViewModel.swift in Sources */,
 				7892EF68259C720A006F7315 /* Strings.swift in Sources */,
 				78E609CF25AA018D0041B3D0 /* LoginResponse.swift in Sources */,
@@ -1311,6 +1329,7 @@
 				78F940EE259D995F007C972A /* ResourcesSupport.swift in Sources */,
 				78E609D925AA0EE60041B3D0 /* LoginUsecase.swift in Sources */,
 				78CF3B0325AC031700ADBB60 /* BookListRequest.swift in Sources */,
+				78FE8CD6267B76750006612E /* FirebaseProvider.swift in Sources */,
 				7824042F25E9374D0001AB52 /* IBDesignableTextView.swift in Sources */,
 				783231BC25B05C1400EB178B /* HomeDataSource.swift in Sources */,
 				78C7F3B125E52C94005E9E2B /* ChatSelectTableViewCell.swift in Sources */,
@@ -1322,6 +1341,7 @@
 				782311FE259C0D9200D9E723 /* SignupViewController.swift in Sources */,
 				78772B4E25B3DEBD00E6493E /* Array+Util.swift in Sources */,
 				784E138225B2F555008FD947 /* NumberValidator.swift in Sources */,
+				78FE8CD4267B74130006612E /* Package.swift in Sources */,
 				78772B3C25B3D37300E6493E /* PurchaseDateValidator.swift in Sources */,
 				78E609F725AAABEA0041B3D0 /* EmailValidator.swift in Sources */,
 				785A1ADE25A9CC1A005E8A4B /* SignupUsecase.swift in Sources */,

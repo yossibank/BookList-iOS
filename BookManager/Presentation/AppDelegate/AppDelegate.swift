@@ -11,8 +11,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
-
-        FirebaseManager.shared.configure()
+        PackageConfig.setup()
 
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = router.initialWindow(.login, type: .normal)
