@@ -466,11 +466,13 @@
 				78EB164D2676201C00777F32 /* APIKit */,
 				78FFC6972678F8F300957F9C /* DomainKit */,
 				782E636B2675DC7A0029E940 /* Utility */,
+				78FE8CD0267B73FE0006612E /* Configuration */,
+				78997EBA259C346B0076FF97 /* Presentation */,
+				78997EC2259C350B0076FF97 /* Utility */,
+				78FE8CD7267B79480006612E /* Resource */,
 				78997EB7259C34550076FF97 /* AppConfig */,
 				78997EB8259C345F0076FF97 /* AppResources */,
-				78FE8CD0267B73FE0006612E /* Configuration */,
 				78997EB9259C34670076FF97 /* Datas */,
-				78997EBA259C346B0076FF97 /* Presentation */,
 			);
 			path = BookManager;
 			sourceTree = "<group>";
@@ -731,8 +733,6 @@
 				78997EC1259C34F70076FF97 /* AppDelegate */,
 				78997EC4259C351C0076FF97 /* Convenience */,
 				78997EC3259C35100076FF97 /* Presentation-Domain */,
-				78FE8CD7267B79480006612E /* Resource */,
-				78997EC2259C350B0076FF97 /* Utility */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -811,7 +811,8 @@
 				7820E0A925AEFBFF00A5E6D8 /* ImageLoader */,
 				78E609EF25AAAA210041B3D0 /* Validator */,
 			);
-			path = Utility;
+			name = Utility;
+			path = Presentation/Utility;
 			sourceTree = "<group>";
 		};
 		78997EC3259C35100076FF97 /* Presentation-Domain */ = {
