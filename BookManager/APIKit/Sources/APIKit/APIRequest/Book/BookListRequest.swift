@@ -9,8 +9,8 @@ public struct BookListRequest: Request {
         let page: Int
 
         public init(
-            limit: Int,
-            page: Int
+            limit: Int = 20,
+            page: Int = 1
         ) {
             self.limit = limit
             self.page = page

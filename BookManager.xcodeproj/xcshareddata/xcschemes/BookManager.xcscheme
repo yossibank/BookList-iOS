@@ -48,6 +48,16 @@
                ReferencedContainer = "container:BookManager/APIKit">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "DomainKitTests"
+               BuildableName = "DomainKitTests"
+               BlueprintName = "DomainKitTests"
+               ReferencedContainer = "container:BookManager/DomainKit">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

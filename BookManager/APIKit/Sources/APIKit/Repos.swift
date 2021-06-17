@@ -1,5 +1,3 @@
-import Foundation
-
 public struct Repos {
     public struct Account {
         public typealias Signup = Repository<SignupRequest>
@@ -16,5 +14,12 @@ public struct Repos {
     public struct Onboarding {
         public typealias GetIsFinished = Repository<GetOnboardingFinishedRequest>
         public typealias SetIsFinished = Repository<SetOnboardingFinishedRequest>
+    }
+}
+
+extension Repos {
+    public struct Result<T: DataStructure>: DataStructure {
+        public var status: Int
+        public var result: T
     }
 }

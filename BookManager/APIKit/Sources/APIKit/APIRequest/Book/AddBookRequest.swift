@@ -1,7 +1,7 @@
 import Foundation
 
 public struct AddBookRequest: Request {
-    public typealias Response = BookResponse
+    public typealias Response = Repos.Result<BookResponse>
     public typealias PathComponent = EmptyPathComponent
 
     public struct Parameters: Codable {
@@ -9,6 +9,18 @@ public struct AddBookRequest: Request {
         let image: String?
         let price: Int?
         let purchaseDate: String?
+
+        public init(
+            name: String,
+            image: String?,
+            price: Int?,
+            purchaseDate: String?
+        ) {
+            self.name = name
+            self.image = image
+            self.price = price
+            self.purchaseDate = purchaseDate
+        }
     }
 
     public var parameters: Parameters
