@@ -18,9 +18,10 @@ final class LoginViewModel: ViewModel {
     }
 }
 
-// MARK: - internal method
+// MARK: - internal methods
 
 extension LoginViewModel {
+
     func login() {
         self.state = .loading
 

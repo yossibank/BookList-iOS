@@ -1,52 +1,54 @@
+import Combine
+import DomainKit
 import Foundation
-import RxSwift
-import RxRelay
+import Utility
 
-final class SignupViewModel {
-    private let usecase: SignupUsecase!
-    private let loadingRelay: BehaviorRelay<Bool> = BehaviorRelay(value: false)
-    private let resultRelay: BehaviorRelay<Result<SignupResponse, Error>?> = BehaviorRelay(value: nil)
-    private let disposeBag: DisposeBag = DisposeBag()
+final class SignupViewModel: ViewModel {
+    typealias State = LoadingState<UserEntity, APPError>
 
-    var loading: Observable<Bool> {
-        loadingRelay.asObservable()
-    }
+    private let usecase: SignupUsecase
 
-    var result: Observable<Result<SignupResponse, Error>?> {
-        resultRelay.asObservable()
-    }
+    private var cancellables: Set<AnyCancellable> = []
 
-    init(usecase: SignupUsecase) {
+    @Published private(set) var state: State = .standby
+    @Published var userName: String = String.blank
+    @Published var email: String = String.blank
+    @Published var password: String = String.blank
+    @Published var passwordConfirmation: String = String.blank
+
+    init(usecase: SignupUsecase = Domain.Usecase.Account.Signup()) {
         self.usecase = usecase
-        bindUsecase()
+    }
+}
+
+// MARK: - internal methods
+
+extension SignupViewModel {
+
+    func signup() {
+        self.state = .loading
+
+        self.usecase
+            .signup(email: email, password: password)
+            .sink { [weak self] completion in
+                guard let self = self else { return }
+
+                switch completion {
+                case let .failure(error):
+                    Logger.debug(error.localizedDescription)
+                    self.state = .failed(.init(error: error))
+
+                case .finished:
+                    Logger.debug("finished")
+                }
+            } receiveValue: { [weak self] state in
+                self?.state = .done(state)
+            }
+            .store(in: &cancellables)
     }
 
-    private func bindUsecase() {
-        usecase.loading
-            .bind(to: loadingRelay)
-            .disposed(by: disposeBag)
-
-        usecase.result
-            .bind(to: resultRelay)
-            .disposed(by: disposeBag)
-    }
-
-    func signup(
-        email: String,
-        password: String
-    ) {
-        usecase.signup(
-            email: email,
-            password: password
-        )
-    }
-
-    func createUserForFirebase(
-        email: String,
-        password: String,
-        user: FirestoreUser
-    ) {
-        usecase.createUserForFirebase(
+    func createUserForFirebase(user: FirestoreUser) {
+        FirebaseAuthManager.shared.createUser(
             email: email,
             password: password,
             user: user
@@ -57,7 +59,7 @@ final class SignupViewModel {
         path: String,
         uploadImage: Data
     ) {
-        usecase.saveUserIconImage(
+        FirebaseStorageManager.shared.saveUserIconImage(
             path: path,
             uploadImage: uploadImage
         )
@@ -67,7 +69,7 @@ final class SignupViewModel {
         path: String,
         completion: @escaping (String) -> Void
     ) {
-        usecase.fetchDownloadUrlString(
+        FirebaseStorageManager.shared.fetchDownloadUrlString(
             path: path,
             completion: completion
         )

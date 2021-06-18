@@ -1,8 +1,34 @@
+import Combine
+import CombineCocoa
 import UIKit
-import RxSwift
-import RxCocoa
+import Utility
+
+extension SignupViewController: VCInjectable {
+    typealias R = SignupRouting
+    typealias VM = SignupViewModel
+}
+
+// MARK: - properties
 
 final class SignupViewController: UIViewController {
+    var routing: R! { didSet { self.routing.viewController = self } }
+    var viewModel: VM!
+    var keyboardNotifier: KeyboardNotifier = KeyboardNotifier()
+
+    private var cancellables: Set<AnyCancellable> = []
+    private var isSecureCheck: Bool = false {
+        didSet {
+            let image = isSecureCheck
+                ? Resources.Images.Account.checkInBox
+                : Resources.Images.Account.checkOffBox
+
+            secureButton.setImage(image, for: .normal)
+
+            [passwordTextField, passwordConfirmationTextField].forEach {
+                $0?.isSecureTextEntry = !isSecureCheck
+            }
+        }
+    }
 
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var userIconImageView: UIImageView!
@@ -19,260 +45,150 @@ final class SignupViewController: UIViewController {
     @IBOutlet weak var signupButton: UIButton!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
+}
 
-    var keyboardNotifier: KeyboardNotifier = KeyboardNotifier()
+// MARK: - override methods
 
-    private let router: RouterProtocol = Router()
-    private let disposeBag: DisposeBag = DisposeBag()
-
-    private var viewModel: SignupViewModel!
-    private var isSecureCheck: Bool = true
-
-    static func createInstance(viewModel: SignupViewModel) -> SignupViewController {
-        let instance = SignupViewController.instantiateInitialViewController()
-        instance.viewModel = viewModel
-        return instance
-    }
+extension SignupViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        listenerKeyboard(keyboardNotifier: keyboardNotifier)
         setupTextField()
         setupButton()
-        bindValue()
         bindViewModel()
-        listenerKeyboard(keyboardNotifier: keyboardNotifier)
         sendScreenView()
     }
-}
 
-extension SignupViewController {
-
-    private func setupTextField() {
-        [
-            userNameTextField, emailTextField,
-            passwordTextField, passwordConfirmationTextField
-        ].forEach {
-            $0?.delegate = self
-        }
-    }
-
-    private func setupButton() {
-        userIconButton.rx.tap.subscribe { [weak self] _ in
-            self?.userIconButtonTapped()
-        }.disposed(by: disposeBag)
-
-        secureButton.rx.tap.subscribe { [weak self] _ in
-            self?.secureButtonTapped()
-        }.disposed(by: disposeBag)
-
-        signupButton.rx.tap.subscribe { [weak self] _ in
-            self?.signupButtonTapped()
-        }.disposed(by: disposeBag)
-
-        loginButton.rx.tap.subscribe { [weak self] _ in
-            self?.loginButtonTapped()
-        }.disposed(by: disposeBag)
-    }
-
-    private func userIconButtonTapped() {
-        let photoLibrary = UIImagePickerController.SourceType.photoLibrary
-
-        if UIImagePickerController.isSourceTypeAvailable(photoLibrary) {
-            let picker = UIImagePickerController()
-            picker.sourceType = .photoLibrary
-            picker.allowsEditing = true
-            picker.delegate = self
-            self.present(picker, animated: true)
-        }
-    }
-
-    private func secureButtonTapped() {
-        let secureImage = isSecureCheck
-            ? Resources.Images.Account.checkInBox
-            : Resources.Images.Account.checkOffBox
-        secureButton.setImage(secureImage, for: .normal)
-
-        [passwordTextField, passwordConfirmationTextField].forEach {
-            $0?.isSecureTextEntry = isSecureCheck ? false : true
-        }
-        isSecureCheck = !isSecureCheck
-    }
-
-    private func signupButtonTapped() {
-        if
-            let email = emailTextField.text,
-            let password = passwordTextField.text
-        {
-            viewModel.signup(
-                email: email,
-                password: password
-            )
-        }
-    }
-
-    private func loginButtonTapped() {
-//        if presentingViewController is LoginViewController {
-//            dismiss(animated: true)
-//        } else {
-//            router.present(
-//                .login,
-//                from: self,
-//                wrapInNavigationController: false
-//            )
-//        }
+    override func touchesBegan(
+        _ touches: Set<UITouch>,
+        with event: UIEvent?
+    ) {
+        view.endEditing(true)
     }
 }
 
-extension SignupViewController {
+// MARK: - private methods
 
-    private func bindValue() {
-        userNameTextField.rx.text
-            .validate(NameValidator.self)
-            .map { validate in
-                validate.errorDescription
-            }
-            .skip(2)
-            .bind(to: validateUserNameLabel.rx.text)
-            .disposed(by: disposeBag)
+private extension SignupViewController {
 
-        emailTextField.rx.text
-            .validate(EmailValidator.self)
-            .map { validate in
-                validate.errorDescription
-            }
-            .skip(2)
-            .bind(to: validateEmailLabel.rx.text)
-            .disposed(by: disposeBag)
+    func setupTextField() {
+        let textFields = [
+            userNameTextField,
+            emailTextField,
+            passwordTextField,
+            passwordConfirmationTextField
+        ]
 
-        passwordTextField.rx.text
-            .validate(PasswordValidator.self)
-            .map { validate in
-                validate.errorDescription
-            }
-            .skip(2)
-            .bind(to: validatePasswordLabel.rx.text)
-            .disposed(by: disposeBag)
+        textFields.forEach { $0?.delegate = self }
 
-        Observable
-            .combineLatest(
-                passwordTextField.rx.text.orEmpty.map { $0 },
-                passwordConfirmationTextField.rx.text.map { $0 })
-            .map { passwordText, passwordConfirmationText in
-                if passwordText == passwordConfirmationText {
-                    return nil
-                }
-                return Resources.Strings.Validator.notMatchingPassword
-            }
-            .subscribe(onNext: { [weak self] text in
-                self?.validatePasswordConfirmationLabel.text = text
-            })
-            .disposed(by: disposeBag)
+        userNameTextField.textPublisher
+            .receive(on: DispatchQueue.main)
+            .compactMap { $0 }
+            .removeDuplicates()
+            .assign(to: \.userName, on: viewModel)
+            .store(in: &cancellables)
 
-        Observable
-            .combineLatest(
-                emailTextField.rx.text.orEmpty.map { $0.isEmpty },
-                passwordTextField.rx.text.orEmpty.map { $0.isEmpty },
-                passwordConfirmationTextField.rx.text.orEmpty.map { $0.isEmpty })
-            .map { isEmailEmpty, isPasswordEmpty, isPasswordConfirmationEmpty in
-                !(isEmailEmpty ||  isPasswordEmpty || isPasswordConfirmationEmpty)
-            }
-            .subscribe(onNext: { [weak self] isEnabled in
-                let isEnabled = isEnabled
-                    && self?.validateEmailLabel.text == nil
-                    && self?.validatePasswordLabel.text == nil
-                    && self?.validatePasswordConfirmationLabel.text == nil
+        emailTextField.textPublisher
+            .receive(on: DispatchQueue.main)
+            .compactMap { $0 }
+            .removeDuplicates()
+            .assign(to: \.email, on: viewModel)
+            .store(in: &cancellables)
 
-                self?.signupButton.alpha = isEnabled ? 1.0 : 0.5
-                self?.signupButton.isEnabled = isEnabled
-            })
-            .disposed(by: disposeBag)
+        passwordTextField.textPublisher
+            .receive(on: DispatchQueue.main)
+            .compactMap { $0 }
+            .removeDuplicates()
+            .assign(to: \.password, on: viewModel)
+            .store(in: &cancellables)
+
+        passwordConfirmationTextField.textPublisher
+            .receive(on: DispatchQueue.main)
+            .compactMap { $0 }
+            .removeDuplicates()
+            .assign(to: \.passwordConfirmation, on: viewModel)
+            .store(in: &cancellables)
     }
 
-    private func bindViewModel() {
-        viewModel.result
-            .asDriver(onErrorJustReturn: nil)
-            .drive(onNext: { [weak self] result in
-                guard let self = self,
-                      let result = result else { return }
+    func setupButton() {
+        userIconButton.tapPublisher
+            .sink { [weak self] in
+                let photoLibrary = UIImagePickerController.SourceType.photoLibrary
 
-                switch result {
-
-                case .success(let response):
-                    guard
-                        let name = self.userNameTextField.text,
-                        let email = self.emailTextField.text,
-                        let password = self.passwordTextField.text,
-                        let uploadImage = self.userIconImageView.image?.jpegData(compressionQuality: 0.5)
-                    else {
-                        return
-                    }
-
-                    self.viewModel.saveUserIconImage(
-                        path: email,
-                        uploadImage: uploadImage
-                    )
-
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                        self.viewModel.fetchDownloadUrlString(path: email) { [weak self] urlString in
-                            guard let self = self else { return }
-
-                            let user = FirestoreUser(
-                                id: response.result.id,
-                                name: name,
-                                email: email,
-                                imageUrl: urlString
-                            )
-
-                            self.viewModel.createUserForFirebase(
-                                email: email,
-                                password: password,
-                                user: user
-                            )
-                        }
-                    }
-
-                    let window = UIApplication.shared.windows.first { $0.isKeyWindow }
-                    window?.rootViewController = self.router.initialWindow(.home, type: .navigation)
-
-                case .failure(let error):
-                    if let error = error as? APIError {
-                        dump(error.description())
-                    }
-                    self.showError(
-                        title: Resources.Strings.General.error,
-                        message: Resources.Strings.Alert.failedSignup
-                    )
+                if UIImagePickerController.isSourceTypeAvailable(photoLibrary) {
+                    let picker = UIImagePickerController()
+                    picker.sourceType = .photoLibrary
+                    picker.allowsEditing = true
+                    picker.delegate = self
+                    self?.present(picker, animated: true)
                 }
-            }).disposed(by: disposeBag)
+            }
+            .store(in: &cancellables)
 
-        viewModel.loading
-            .asDriver(onErrorJustReturn: false)
-            .drive(onNext: { [weak self] loading in
+        secureButton.tapPublisher
+            .sink { [weak self] in
                 guard let self = self else { return }
+                self.isSecureCheck = !self.isSecureCheck
+            }
+            .store(in: &cancellables)
 
-                loading
-                    ? self.loadingIndicator.startAnimating()
-                    : self.loadingIndicator.stopAnimating()
-            }).disposed(by: disposeBag)
+        signupButton.tapPublisher
+            .sink { [weak self] in
+                self?.viewModel.signup()
+            }
+            .store(in: &cancellables)
+
+        loginButton.tapPublisher
+            .sink { [weak self] in
+                self?.routing.showLoginScreen()
+            }
+            .store(in: &cancellables)
+    }
+
+    func bindViewModel() {
+        viewModel.$state
+            .sink { state in
+                switch state {
+                case .standby:
+                    Logger.debug("standby")
+
+                case .loading:
+                    Logger.debug("loading")
+
+                case let .done(entities):
+                    Logger.debug("\(entities)")
+
+                case let .failed(error):
+                    Logger.debug("\(error.localizedDescription)")
+                }
+            }
+            .store(in: &cancellables)
     }
 }
 
 extension SignupViewController: UITextFieldDelegate {
 
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        view.endEditing(true)
-    }
-
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if userNameTextField == textField {
-            emailTextField.becomeFirstResponder()
-        } else if emailTextField == textField {
-            passwordTextField.becomeFirstResponder()
-        } else if passwordTextField == textField {
-            passwordConfirmationTextField.becomeFirstResponder()
-        } else {
-            textField.resignFirstResponder()
+        let textFields = [
+            userNameTextField,
+            emailTextField,
+            passwordTextField,
+            passwordConfirmationTextField
+        ]
+
+        guard
+            let currentTextFieldIndex = textFields.firstIndex(of: textField)
+        else {
+            return false
         }
+
+        if currentTextFieldIndex + 1 == textFields.endIndex {
+            textField.resignFirstResponder()
+        } else {
+            textFields[currentTextFieldIndex + 1]?.becomeFirstResponder()
+        }
+
         return true
     }
 }

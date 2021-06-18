@@ -14,12 +14,12 @@ extension Resources {
 
         struct AppControllers {
 
-            func signup() -> SignupViewController {
-                let usecase = SignupUsecase()
-                let viewModel = SignupViewModel(usecase: usecase)
-                let vc = SignupViewController.createInstance(viewModel: viewModel)
-                return vc
-            }
+//            func signup() -> SignupViewController {
+//                let usecase = SignupUsecase()
+//                let viewModel = SignupViewModel(usecase: usecase)
+//                let vc = SignupViewController.createInstance(viewModel: viewModel)
+//                return vc
+//            }
 
 //            func login() -> LoginViewController {
 //                let usecase = LoginUsecase()

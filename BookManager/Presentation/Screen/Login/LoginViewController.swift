@@ -23,6 +23,7 @@ final class LoginViewController: UIViewController {
                 : Resources.Images.Account.checkOffBox
 
             secureButton.setImage(image, for: .normal)
+
             passwordTextField.isSecureTextEntry = !isSecureCheck
         }
     }
@@ -41,6 +42,7 @@ final class LoginViewController: UIViewController {
 // MARK: - override methods
 
 extension LoginViewController {
+
     override func viewDidLoad() {
         super.viewDidLoad()
         listenerKeyboard(keyboardNotifier: keyboardNotifier)
@@ -61,6 +63,7 @@ extension LoginViewController {
 // MARK: - private methods
 
 private extension LoginViewController {
+
     func setupTextField() {
         [emailTextField, passwordTextField].forEach {
             $0?.delegate = self
@@ -97,7 +100,7 @@ private extension LoginViewController {
 
         signupButton.tapPublisher
             .sink { [weak self] _ in
-                self?.loginButtonTapped()
+                self?.routing.showSignupScreen()
             }
             .store(in: &cancellables)
     }
@@ -122,14 +125,12 @@ private extension LoginViewController {
             }
             .store(in: &cancellables)
     }
-
-    func loginButtonTapped() {}
-    func signupButtonTapped() {}
 }
 
 // MARK: - Delegate
 
 extension LoginViewController: UITextFieldDelegate {
+
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         let textFields = [emailTextField, passwordTextField]
 
@@ -150,6 +151,7 @@ extension LoginViewController: UITextFieldDelegate {
 }
 
 extension LoginViewController: KeyboardDelegate {
+
     func keyboardPresent(_ height: CGFloat) {
         let displayHeight = view.frame.height - height
         let bottomOffsetY = stackView.convert(
@@ -167,6 +169,7 @@ extension LoginViewController: KeyboardDelegate {
 // MARK: - Protocol
 
 extension LoginViewController: AnalyticsConfiguration {
+
     var screenName: AnalyticsScreenName? {
         .login
     }
