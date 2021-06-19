@@ -92,15 +92,15 @@ private extension LoginViewController {
             }
             .store(in: &cancellables)
 
-        loginButton.tapPublisher
-            .sink { [weak self] _ in
-                self?.viewModel.login()
-            }
-            .store(in: &cancellables)
-
         signupButton.tapPublisher
             .sink { [weak self] _ in
                 self?.routing.showSignupScreen()
+            }
+            .store(in: &cancellables)
+
+        loginButton.tapPublisher
+            .sink { [weak self] _ in
+                self?.viewModel.login()
             }
             .store(in: &cancellables)
     }

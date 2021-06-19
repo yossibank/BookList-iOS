@@ -133,15 +133,15 @@ private extension SignupViewController {
             }
             .store(in: &cancellables)
 
-        signupButton.tapPublisher
-            .sink { [weak self] in
-                self?.viewModel.signup()
-            }
-            .store(in: &cancellables)
-
         loginButton.tapPublisher
             .sink { [weak self] in
                 self?.routing.showLoginScreen()
+            }
+            .store(in: &cancellables)
+
+        signupButton.tapPublisher
+            .sink { [weak self] in
+                self?.viewModel.signup()
             }
             .store(in: &cancellables)
     }
@@ -222,11 +222,12 @@ extension SignupViewController: UIImagePickerControllerDelegate, UINavigationCon
         } else if let originalImage = info[.originalImage] as? UIImage {
             userIconImageView.image = originalImage
         }
-        self.dismiss(animated: true)
+
+        routing.dismiss()
     }
 
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        self.dismiss(animated: true)
+        routing.dismiss()
     }
 }
 
