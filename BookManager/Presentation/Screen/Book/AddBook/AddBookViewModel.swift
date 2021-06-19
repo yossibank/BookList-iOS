@@ -1,37 +1,48 @@
-import RxSwift
-import RxRelay
+import Combine
+import DomainKit
+import Utility
 
-final class AddBookViewModel {
-    private let usecase: AddBookUsecase!
-    private let resultRelay: BehaviorRelay<Result<AddBookResponse, Error>?> = BehaviorRelay(value: nil)
-    private let disposeBag: DisposeBag = DisposeBag()
+final class AddBookViewModel: ViewModel {
+    typealias State = LoadingState<BookEntity, APPError>
 
-    var result: Observable<Result<AddBookResponse, Error>?> {
-        resultRelay.asObservable()
-    }
+    private let usecase: AddBookUsecase
 
-    init(usecase: AddBookUsecase) {
+    private var cancellables: Set<AnyCancellable> = []
+
+    @Published var bookName: String = String.blank
+    @Published var bookImage: String = String.blank
+    @Published var bookPrice: String = String.blank
+    @Published var bookPurchaseDate: String = String.blank
+    @Published private(set) var state: State = .standby
+
+    init(usecase: AddBookUsecase = Domain.Usecase.Book.AddBook()) {
         self.usecase = usecase
-        bindUsecase()
     }
+}
 
-    private func bindUsecase() {
-        usecase.result
-            .bind(to: resultRelay)
-            .disposed(by: disposeBag)
-    }
+// MARK: - internal methods
 
-    func addBook(
-        name: String,
-        image: String?,
-        price: Int?,
-        purchaseDate: String?
-    ) {
+extension AddBookViewModel {
+
+    func addBook() {
         usecase.addBook(
-            name: name,
-            image: image,
-            price: price,
-            purchaseDate: purchaseDate
+            name: bookName,
+            image: bookImage,
+            price: Int(bookPrice),
+            purchaseDate: bookPurchaseDate
         )
+        .sink { [weak self] completion in
+            switch completion {
+            case let .failure(error):
+                Logger.debug(error.localizedDescription)
+                self?.state = .failed(.init(error: error))
+
+            case .finished:
+                Logger.debug("finished")
+            }
+        } receiveValue: { [weak self] state in
+            self?.state = .done(state)
+        }
+        .store(in: &cancellables)
     }
 }

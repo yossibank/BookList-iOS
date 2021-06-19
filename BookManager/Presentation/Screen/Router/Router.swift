@@ -131,7 +131,7 @@ enum Route {
 //    case login
     case home
 //    case bookList
-    case addBook
+//    case addBook
     case editBook(
             bookId: Int,
             bookData: BookViewData,
@@ -160,8 +160,8 @@ enum Route {
 //        case .bookList:
 //            viewController = Resources.ViewControllers.App.bookList()
 
-        case .addBook:
-            viewController = Resources.ViewControllers.App.addBook()
+//        case .addBook:
+//            viewController = Resources.ViewControllers.App.addBook()
 
         case .editBook(
             let bookId,

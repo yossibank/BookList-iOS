@@ -6,7 +6,7 @@ public protocol AddBookUsecase {
     func addBook(
         name: String,
         image: String,
-        price: Int,
+        price: Int?,
         purchaseDate: String
     ) -> AnyPublisher<BookEntity, APIError>
 }
@@ -15,7 +15,7 @@ extension UsecaseImpl: AddBookUsecase where R == Repos.Book.Post, M == BookMappe
     public func addBook(
         name: String,
         image: String,
-        price: Int,
+        price: Int?,
         purchaseDate: String
     ) -> AnyPublisher<BookEntity, APIError> {
         self.toPublisher { promise in

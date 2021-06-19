@@ -29,6 +29,7 @@ extension BookListViewController {
         super.viewDidLoad()
         viewModel.fetchBookList()
         setupTableView()
+        setupButton()
         bindViewModel()
         sendScreenView()
     }
@@ -60,6 +61,14 @@ private extension BookListViewController {
         tableView.dataSource = dataSource
         tableView.delegate = self
         tableView.rowHeight = 150
+    }
+
+    func setupButton() {
+        navigationItem.rightBarButtonItem?.tapPublisher
+            .sink { [weak self] in
+                self?.routing.showAddBookScreen()
+            }
+            .store(in: &cancellables)
     }
 
     func bindViewModel() {

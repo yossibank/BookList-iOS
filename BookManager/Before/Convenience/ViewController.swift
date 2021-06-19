@@ -42,12 +42,12 @@ extension Resources {
 //                return vc
 //            }
 
-            func addBook() -> AddBookViewController {
-                let usecase = AddBookUsecase()
-                let viewModel = AddBookViewModel(usecase: usecase)
-                let vc = AddBookViewController.createInstance(viewModel: viewModel)
-                return vc
-            }
+//            func addBook() -> AddBookViewController {
+//                let usecase = AddBookUsecase()
+//                let viewModel = AddBookViewModel(usecase: usecase)
+//                let vc = AddBookViewController.createInstance(viewModel: viewModel)
+//                return vc
+//            }
 
             func editBook(
                 bookId: Int,

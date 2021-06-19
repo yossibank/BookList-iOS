@@ -8,7 +8,7 @@ struct HomeViewData {
         typealias RawValue = HomeViewData
 
 //        case bookList
-        case addBook
+//        case addBook
         case wishList
         case chatSelect
 
@@ -22,11 +22,11 @@ struct HomeViewData {
 //                    image: Resources.Images.Home.bookList
 //                )
 
-            case .addBook:
-                return HomeViewData(
-                    title: Resources.Strings.App.addBook,
-                    image: Resources.Images.Home.addBook
-                )
+//            case .addBook:
+//                return HomeViewData(
+//                    title: Resources.Strings.App.addBook,
+//                    image: Resources.Images.Home.addBook
+//                )
 
             case .wishList:
                 return HomeViewData(
@@ -49,8 +49,8 @@ struct HomeViewData {
 //            case .bookList:
 //                return .bookList
 
-            case .addBook:
-                return .addBook
+//            case .addBook:
+//                return .addBook
 
             case .wishList:
                 return .wishList

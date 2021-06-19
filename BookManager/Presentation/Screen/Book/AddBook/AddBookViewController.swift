@@ -1,26 +1,21 @@
+import Combine
+import CombineCocoa
 import UIKit
-import RxSwift
-import RxCocoa
+import Utility
+
+extension AddBookViewController: VCInjectable {
+    typealias R = NoRouting
+    typealias VM = AddBookViewModel
+}
+
+// MARK: - properties
 
 final class AddBookViewController: UIViewController {
-
-    @IBOutlet weak var stackView: UIStackView!
-    @IBOutlet weak var bookImageView: UIImageView!
-    @IBOutlet weak var imageSelectButton: UIButton!
-    @IBOutlet weak var takingPictureButton: UIButton!
-    @IBOutlet weak var bookTitleTextField: UITextField!
-    @IBOutlet weak var bookPriceTextField: UITextField!
-    @IBOutlet weak var bookPurchaseDateTextField: UITextField!
-    @IBOutlet weak var validateTitleLabel: UILabel!
-    @IBOutlet weak var validatePriceLabel: UILabel!
-    @IBOutlet weak var validatePurchaseDateLabel: UILabel!
-
+    var routing: NoRouting!
+    var viewModel: VM!
     var keyboardNotifier: KeyboardNotifier = KeyboardNotifier()
 
-    private let router: RouterProtocol = Router()
-    private let disposeBag: DisposeBag = DisposeBag()
-
-    private var viewModel: AddBookViewModel!
+    private var cancellables: Set<AnyCancellable> = []
 
     private lazy var toolbar: UIToolbar = {
         let toolbar = UIToolbar(
@@ -41,195 +36,164 @@ final class AddBookViewController: UIViewController {
         let doneItem = UIBarButtonItem(
             barButtonSystemItem: .done,
             target: self,
-            action: #selector(doneButtonTapped)
+            action: nil
         )
 
-        toolbar.setItems(
-            [spaceItem, doneItem],
-            animated: true
-        )
+        doneItem.tapPublisher
+            .sink { [weak self] in
+                self?.bookPurchaseDateTextField.endEditing(true)
+                self?.bookPurchaseDateTextField.text = UIDatePicker.purchaseDatePicker.date.toConvertString(
+                    with: .yearToDayOfWeekJapanese
+                )
+            }
+            .store(in: &cancellables)
+
+        toolbar.setItems([spaceItem, doneItem], animated: true)
 
         return toolbar
     }()
 
-    static func createInstance(viewModel: AddBookViewModel) -> AddBookViewController {
-        let instance = AddBookViewController.instantiateInitialViewController()
-        instance.viewModel = viewModel
-        return instance
-    }
+    @IBOutlet weak var stackView: UIStackView!
+    @IBOutlet weak var bookImageView: UIImageView!
+    @IBOutlet weak var imageSelectButton: UIButton!
+    @IBOutlet weak var takingPictureButton: UIButton!
+    @IBOutlet weak var bookTitleTextField: UITextField!
+    @IBOutlet weak var bookPriceTextField: UITextField!
+    @IBOutlet weak var bookPurchaseDateTextField: UITextField!
+    @IBOutlet weak var validateTitleLabel: UILabel!
+    @IBOutlet weak var validatePriceLabel: UILabel!
+    @IBOutlet weak var validatePurchaseDateLabel: UILabel!
+}
+
+// MARK: - override methods
+
+extension AddBookViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        listenerKeyboard(keyboardNotifier: keyboardNotifier)
         setupTextField()
         setupButton()
-        bindValue()
-        bindViewModel()
-        listenerKeyboard(keyboardNotifier: keyboardNotifier)
         sendScreenView()
+    }
+
+    override func touchesBegan(
+        _ touches: Set<UITouch>,
+        with event: UIEvent?
+    ) {
+        view.endEditing(true)
     }
 }
 
+// MARK: - private methods
+
 extension AddBookViewController {
 
-    private func setupTextField() {
-        bookPurchaseDateTextField.inputAccessoryView = toolbar
-        bookPurchaseDateTextField.inputView = UIDatePicker.purchaseDatePicker
-
+    func setupTextField() {
         [bookTitleTextField, bookPriceTextField, bookPurchaseDateTextField].forEach {
             $0?.delegate = self
         }
+
+        bookPurchaseDateTextField.inputAccessoryView = toolbar
+        bookPurchaseDateTextField.inputView = UIDatePicker.purchaseDatePicker
+
+        bookTitleTextField.textPublisher
+            .receive(on: DispatchQueue.main)
+            .compactMap { $0 }
+            .removeDuplicates()
+            .assign(to: \.bookName, on: viewModel)
+            .store(in: &cancellables)
+
+        bookPriceTextField.textPublisher
+            .receive(on: DispatchQueue.main)
+            .compactMap { $0 }
+            .removeDuplicates()
+            .assign(to: \.bookPrice, on: viewModel)
+            .store(in: &cancellables)
+
+        bookPurchaseDateTextField.textPublisher
+            .receive(on: DispatchQueue.main)
+            .compactMap { $0 }
+            .removeDuplicates()
+            .assign(to: \.bookPurchaseDate, on: viewModel)
+            .store(in: &cancellables)
     }
 
-    private func setupButton() {
-        navigationItem.rightBarButtonItem?.rx.tap.subscribe { [weak self] _ in
-            guard let self = self else { return }
-
-            if
-                let name = self.bookTitleTextField.text,
-                let price = self.bookPriceTextField.text,
-                let purchaseDate = self.bookPurchaseDateTextField.text
-            {
-                let imageString = self.bookImageView.image?.pngData()?.base64EncodedString()
-                let purchaseDateFormat = Date.toConvertDate(
-                    purchaseDate,
-                    with: .yearToDayOfWeekJapanese
-                )?.toConvertString(with: .yearToDayOfWeek)
-
-                self.viewModel.addBook(
-                    name: name,
-                    image: imageString,
-                    price: Int(price),
-                    purchaseDate: purchaseDateFormat
-                )
+    func setupButton() {
+        navigationItem.rightBarButtonItem?.tapPublisher
+            .sink { [weak self] in
+                self?.viewModel.addBook()
             }
-        }.disposed(by: disposeBag)
+            .store(in: &cancellables)
 
-        imageSelectButton.rx.tap.subscribe { [weak self] _ in
-            guard let self = self else { return }
+        imageSelectButton.tapPublisher
+            .sink { [weak self] in
+                let photoLibrary = UIImagePickerController.SourceType.photoLibrary
 
-            let photoLibrary = UIImagePickerController.SourceType.photoLibrary
-
-            if UIImagePickerController.isSourceTypeAvailable(photoLibrary) {
-                let picker = UIImagePickerController()
-                picker.sourceType = .photoLibrary
-                picker.delegate = self
-                self.present(picker, animated: true)
-            }
-        }.disposed(by: disposeBag)
-
-        takingPictureButton.rx.tap.subscribe { [weak self] _ in
-            guard let self = self else { return }
-
-            let camera = UIImagePickerController.SourceType.camera
-
-            if UIImagePickerController.isSourceTypeAvailable(camera) {
-                let picker = UIImagePickerController()
-                picker.sourceType = .camera
-                picker.delegate = self
-                self.present(picker, animated: true)
-            }
-        }.disposed(by: disposeBag)
-    }
-
-    @objc private func doneButtonTapped() {
-        bookPurchaseDateTextField.text =
-            UIDatePicker.purchaseDatePicker.date.toConvertString(with: .yearToDayOfWeekJapanese)
-        bookPurchaseDateTextField.endEditing(true)
-    }
-}
-
-extension AddBookViewController {
-
-    private func bindValue() {
-        bookTitleTextField.rx.text
-            .validate(TitleValidator.self)
-            .map { validate in
-                validate.errorDescription
-            }
-            .skip(2)
-            .bind(to: validateTitleLabel.rx.text)
-            .disposed(by: disposeBag)
-
-        bookPriceTextField.rx.text
-            .validate(NumberValidator.self)
-            .map { validate in
-                validate.errorDescription
-            }
-            .skip(2)
-            .bind(to: validatePriceLabel.rx.text)
-            .disposed(by: disposeBag)
-
-        bookPurchaseDateTextField.rx.text
-            .validate(PurchaseDateValidator.self)
-            .map { validate in
-                validate.errorDescription
-            }
-            .skip(2)
-            .bind(to: validatePurchaseDateLabel.rx.text)
-            .disposed(by: disposeBag)
-
-        Observable
-            .combineLatest(
-                bookTitleTextField.rx.text.orEmpty.map { $0.isEmpty },
-                bookPriceTextField.rx.text.orEmpty.map { $0.isEmpty },
-                bookPurchaseDateTextField.rx.text.orEmpty.map { $0.isEmpty })
-            .map { isbookTitleEmpty, isBookPriceEmpty, isBookPurchaseDateEmpty in
-                !(isbookTitleEmpty || isBookPriceEmpty || isBookPurchaseDateEmpty)
-            }
-            .subscribe(onNext: { [weak self] isEnabled in
-                guard let self = self else { return }
-
-                self.navigationItem.rightBarButtonItem?.isEnabled = isEnabled
-            })
-            .disposed(by: disposeBag)
-    }
-
-    private func bindViewModel() {
-        viewModel.result
-            .asDriver(onErrorJustReturn: nil)
-            .drive(onNext: { [weak self] result in
-                guard let self = self,
-                      let result = result else { return }
-
-                switch result {
-
-                case .success:
-
-                    self.showAlert(
-                        title: Resources.Strings.General.success,
-                        message: Resources.Strings.Alert.successAddBook
-                    ) {
-                        self.router.dismiss(self)
-                    }
-
-                case .failure(let error):
-                    if let error = error as? APIError {
-                        dump(error.description())
-                    }
-                    self.showError(
-                        title: Resources.Strings.General.error,
-                        message: Resources.Strings.Alert.failedAddBook
-                    )
+                if UIImagePickerController.isSourceTypeAvailable(photoLibrary) {
+                    let picker = UIImagePickerController()
+                    picker.sourceType = .photoLibrary
+                    picker.delegate = self
+                    self?.present(picker, animated: true)
                 }
-            })
-            .disposed(by: disposeBag)
+            }
+            .store(in: &cancellables)
+
+        takingPictureButton.tapPublisher
+            .sink { [weak self] in
+                let camera = UIImagePickerController.SourceType.camera
+
+                if UIImagePickerController.isSourceTypeAvailable(camera) {
+                    let picker = UIImagePickerController()
+                    picker.sourceType = .camera
+                    picker.delegate = self
+                    self?.present(picker, animated: true)
+                }
+            }
+            .store(in: &cancellables)
+    }
+
+    func bindViewModel() {
+        viewModel.$state
+            .sink { [weak self] state in
+                switch state {
+                case .standby:
+                    Logger.debug("standby")
+
+                case .loading:
+                    Logger.debug("loading")
+
+                case let .done(entity):
+                    Logger.debug("\(entity)")
+                    self?.dismiss(animated: true)
+
+                case let .failed(error):
+                    Logger.debug("\(error.localizedDescription)")
+                }
+            }
+            .store(in: &cancellables)
     }
 }
+
+// MARK: - Delegate
 
 extension AddBookViewController: UITextFieldDelegate {
 
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        view.endEditing(true)
-    }
-
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if bookTitleTextField == textField {
-            bookPriceTextField.becomeFirstResponder()
-        } else if bookPriceTextField == textField {
-            bookPurchaseDateTextField.becomeFirstResponder()
-        } else {
-            textField.resignFirstResponder()
+        let textFields = [bookTitleTextField, bookPriceTextField, bookPurchaseDateTextField]
+
+        guard
+            let currentTextFieldIndex = textFields.firstIndex(of: textField)
+        else {
+            return false
         }
+
+        if currentTextFieldIndex + 1 == textFields.endIndex {
+            textField.resignFirstResponder()
+        } else {
+            textFields[currentTextFieldIndex + 1]?.becomeFirstResponder()
+        }
+
         return true
     }
 }
@@ -268,6 +232,8 @@ extension AddBookViewController: UIImagePickerControllerDelegate, UINavigationCo
     }
 }
 
+// MARK: - Protocol
+
 extension AddBookViewController: NavigationBarConfiguration {
 
     var navigationTitle: String? {
@@ -280,5 +246,8 @@ extension AddBookViewController: NavigationBarConfiguration {
 }
 
 extension AddBookViewController: AnalyticsConfiguration {
-    var screenName: AnalyticsScreenName? { .addBook }
+
+    var screenName: AnalyticsScreenName? {
+        .addBook
+    }
 }

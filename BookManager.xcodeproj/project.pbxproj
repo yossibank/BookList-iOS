@@ -51,7 +51,6 @@
 		783231BC25B05C1400EB178B /* HomeDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783231BB25B05C1400EB178B /* HomeDataSource.swift */; };
 		7833D0BA26022624005DFB79 /* ChatSelectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7833D0B926022624005DFB79 /* ChatSelectViewModel.swift */; };
 		7833D0C3260229E4005DFB79 /* ChatSelectDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7833D0C2260229E4005DFB79 /* ChatSelectDataSource.swift */; };
-		783FCCE925BEEB17000D18EA /* AddBookUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783FCCE825BEEB17000D18EA /* AddBookUsecase.swift */; };
 		78421CE125E9273500950F62 /* KeyboardAccessoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78421CE025E9273500950F62 /* KeyboardAccessoryView.xib */; };
 		784B18EF25BD48F80071C32E /* WishListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784B18ED25BD48F80071C32E /* WishListTableViewCell.swift */; };
 		784B18F025BD48F80071C32E /* WishListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 784B18EE25BD48F80071C32E /* WishListTableViewCell.xib */; };
@@ -230,7 +229,6 @@
 		783231BB25B05C1400EB178B /* HomeDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDataSource.swift; sourceTree = "<group>"; };
 		7833D0B926022624005DFB79 /* ChatSelectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatSelectViewModel.swift; sourceTree = "<group>"; };
 		7833D0C2260229E4005DFB79 /* ChatSelectDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatSelectDataSource.swift; sourceTree = "<group>"; };
-		783FCCE825BEEB17000D18EA /* AddBookUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookUsecase.swift; sourceTree = "<group>"; };
 		78421CE025E9273500950F62 /* KeyboardAccessoryView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KeyboardAccessoryView.xib; sourceTree = "<group>"; };
 		784B18ED25BD48F80071C32E /* WishListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListTableViewCell.swift; sourceTree = "<group>"; };
 		784B18EE25BD48F80071C32E /* WishListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WishListTableViewCell.xib; sourceTree = "<group>"; };
@@ -601,7 +599,6 @@
 		787052D325B06DD800CAAC3E /* AddBook */ = {
 			isa = PBXGroup;
 			children = (
-				783FCCE825BEEB17000D18EA /* AddBookUsecase.swift */,
 				784E135D25B2A13D008FD947 /* AddBookViewModel.swift */,
 				78844C6025B0873600C9AEC0 /* AddBookViewController.swift */,
 				78844C6425B0874100C9AEC0 /* AddBookViewController.storyboard */,
@@ -821,11 +818,11 @@
 			isa = PBXGroup;
 			children = (
 				78997EC7259C353E0076FF97 /* Launch */,
+				78DF9170259C7D77007E5D9A /* Signup */,
+				78987B36259C87EE008311DC /* Login */,
 				787052D225B06DC900CAAC3E /* Book */,
 				78524FC625E533A6002AEF87 /* Chat */,
 				78DEE7CA25AB004800219963 /* Home */,
-				78987B36259C87EE008311DC /* Login */,
-				78DF9170259C7D77007E5D9A /* Signup */,
 				78997EC5259C35230076FF97 /* Router */,
 			);
 			path = Screen;
@@ -1280,7 +1277,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				783FCCE925BEEB17000D18EA /* AddBookUsecase.swift in Sources */,
 				781936C025BC752D00309FB7 /* BookViewData.swift in Sources */,
 				782572AD25F4B2FE007962D0 /* NavigationBarConfigration.swift in Sources */,
 				78DE1D6725BD423A00A2C0F2 /* WishListViewController.swift in Sources */,
