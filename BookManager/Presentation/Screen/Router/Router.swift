@@ -137,7 +137,7 @@ enum Route {
 //            bookData: BookViewData,
 //            successHandler: ((BookViewData) -> Void)?
 //         )
-    case wishList
+//    case wishList
     case chatSelect
     case chatUserList
     case chatRoom(roomId: String, user: FirestoreUser)
@@ -174,9 +174,9 @@ enum Route {
 //                bookViewData: bookViewData,
 //                successHandler: successHandler
 //            )
-
-        case .wishList:
-            viewController = Resources.ViewControllers.App.wishList()
+//
+//        case .wishList:
+//            viewController = Resources.ViewControllers.App.wishList()
 
         case .chatSelect:
             viewController = Resources.ViewControllers.App.chatSelect()

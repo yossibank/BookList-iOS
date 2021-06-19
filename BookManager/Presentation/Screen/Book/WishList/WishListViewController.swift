@@ -1,19 +1,28 @@
+import Combine
+import CombineCocoa
 import UIKit
+import Utility
+
+extension WishListViewController: VCInjectable {
+    typealias R = WishListRouting
+    typealias VM = WishListViewModel
+}
+
+// MARK: - properties
 
 final class WishListViewController: UIViewController {
+    var routing: R!
+    var viewModel: VM!
 
-    private let router: RouterProtocol = Router()
-
-    private var viewModel: WishListViewModel!
+    private var cancellables: Set<AnyCancellable> = []
     private var dataSource: WishListDataSource!
 
     @IBOutlet weak var tableView: UITableView!
+}
 
-    static func createInstance(viewModel: WishListViewModel) -> WishListViewController {
-        let instance = WishListViewController.instantiateInitialViewController()
-        instance.viewModel = viewModel
-        return instance
-    }
+// MARK: - override methods
+
+extension WishListViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,9 +31,21 @@ final class WishListViewController: UIViewController {
     }
 }
 
+// MARK: - internal methods
+
 extension WishListViewController {
 
-    private func setupTableView() {
+    func reloadWishList(book: BookViewData) {
+        viewModel.updateBook(book: book)
+        tableView.reloadData()
+    }
+}
+
+// MARK: - private methods
+
+private extension WishListViewController {
+
+    func setupTableView() {
         dataSource = WishListDataSource(viewModel: viewModel)
         tableView.register(WishListTableViewCell.xib(), forCellReuseIdentifier: WishListTableViewCell.resourceName)
         tableView.tableFooterView = UIView()
@@ -32,12 +53,9 @@ extension WishListViewController {
         tableView.delegate = self
         tableView.rowHeight = 150
     }
-
-    func reloadWishList(book: BookViewData) {
-        viewModel.updateBook(book: book)
-        tableView.reloadData()
-    }
 }
+
+// MARK: - Delegate
 
 extension WishListViewController: UITableViewDelegate {
 
@@ -51,25 +69,11 @@ extension WishListViewController: UITableViewDelegate {
             return
         }
 
-        let bookData = BookViewData(
-            id: book.id,
-            name: book.name,
-            image: book.image,
-            price: book.price,
-            purchaseDate: book.purchaseDate,
-            isFavorite: book.isFavorite
-        )
-
-//        router.push(
-//            .editBook(
-//                bookId: book.id,
-//                bookData: bookData,
-//                successHandler: reloadWishList
-//            ),
-//            from: self
-//        )
+        routing.showEditBookScreen(id: book.id)
     }
 }
+
+// MARK: - Protocol
 
 extension WishListViewController: NavigationBarConfiguration {
 

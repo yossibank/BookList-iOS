@@ -87,7 +87,7 @@ extension AddBookViewController {
 
 // MARK: - private methods
 
-extension AddBookViewController {
+private extension AddBookViewController {
 
     func setupTextField() {
         [bookTitleTextField, bookPriceTextField, bookPurchaseDateTextField].forEach {

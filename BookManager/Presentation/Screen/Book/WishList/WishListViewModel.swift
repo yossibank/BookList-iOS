@@ -1,4 +1,8 @@
-final class WishListViewModel {
+import Combine
+import DomainKit
+import Utility
+
+final class WishListViewModel: ViewModel {
 
     var books: [BookViewData] {
         BookFileManager.shared.fetchData()

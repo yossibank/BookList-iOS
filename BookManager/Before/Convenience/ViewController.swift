@@ -63,12 +63,12 @@ extension Resources {
 //                )
 //                return vc
 //            }
-
-            func wishList() -> WishListViewController {
-                let viewModel = WishListViewModel()
-                let vc = WishListViewController.createInstance(viewModel: viewModel)
-                return vc
-            }
+//
+//            func wishList() -> WishListViewController {
+//                let viewModel = WishListViewModel()
+//                let vc = WishListViewController.createInstance(viewModel: viewModel)
+//                return vc
+//            }
 
             func chatSelect() -> ChatSelectViewController {
                 let viewModel = ChatSelectViewModel()

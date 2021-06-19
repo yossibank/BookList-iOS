@@ -67,6 +67,7 @@
 		785AB27225E9C527000FEEFE /* TapAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785AB27125E9C527000FEEFE /* TapAction.swift */; };
 		7862C15425E2596D00F1645A /* FirebaseModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7862C15325E2596D00F1645A /* FirebaseModelProtocol.swift */; };
 		7862C15825E25B5C00F1645A /* FirestoreUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7862C15725E25B5C00F1645A /* FirestoreUser.swift */; };
+		7873D27A267E0C65007F7B31 /* WishListRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7873D279267E0C65007F7B31 /* WishListRouting.swift */; };
 		78769C4425EA28A6007791E0 /* NameValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78769C4325EA28A6007791E0 /* NameValidator.swift */; };
 		78772B3C25B3D37300E6493E /* PurchaseDateValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78772B3B25B3D37300E6493E /* PurchaseDateValidator.swift */; };
 		78772B4E25B3DEBD00E6493E /* Array+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78772B4D25B3DEBD00E6493E /* Array+Util.swift */; };
@@ -236,6 +237,7 @@
 		785AB27125E9C527000FEEFE /* TapAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapAction.swift; sourceTree = "<group>"; };
 		7862C15325E2596D00F1645A /* FirebaseModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseModelProtocol.swift; sourceTree = "<group>"; };
 		7862C15725E25B5C00F1645A /* FirestoreUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreUser.swift; sourceTree = "<group>"; };
+		7873D279267E0C65007F7B31 /* WishListRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListRouting.swift; sourceTree = "<group>"; };
 		78769C4325EA28A6007791E0 /* NameValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameValidator.swift; sourceTree = "<group>"; };
 		78772B3B25B3D37300E6493E /* PurchaseDateValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseDateValidator.swift; sourceTree = "<group>"; };
 		78772B4D25B3DEBD00E6493E /* Array+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Util.swift"; sourceTree = "<group>"; };
@@ -510,15 +512,6 @@
 				78421CE025E9273500950F62 /* KeyboardAccessoryView.xib */,
 			);
 			path = KeyboardAccessory;
-			sourceTree = "<group>";
-		};
-		784B18EC25BD48E00071C32E /* View */ = {
-			isa = PBXGroup;
-			children = (
-				784B18ED25BD48F80071C32E /* WishListTableViewCell.swift */,
-				784B18EE25BD48F80071C32E /* WishListTableViewCell.xib */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		78524FC625E533A6002AEF87 /* Chat */ = {
@@ -983,6 +976,8 @@
 			children = (
 				78CF3AF625ABF85D00ADBB60 /* BookListTableViewCell.swift */,
 				78CF3AF725ABF85D00ADBB60 /* BookListTableViewCell.xib */,
+				784B18ED25BD48F80071C32E /* WishListTableViewCell.swift */,
+				784B18EE25BD48F80071C32E /* WishListTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1000,10 +995,10 @@
 		78DE1D6525BD41D100A2C0F2 /* WishList */ = {
 			isa = PBXGroup;
 			children = (
-				784B18EC25BD48E00071C32E /* View */,
-				784B18F525BD4D5F0071C32E /* WishListViewModel.swift */,
+				7873D279267E0C65007F7B31 /* WishListRouting.swift */,
 				784B18FB25BD50FC0071C32E /* WishListDataSource.swift */,
 				78DE1D6625BD423A00A2C0F2 /* WishListViewController.swift */,
+				784B18F525BD4D5F0071C32E /* WishListViewModel.swift */,
 				78DE1D6C25BD424800A2C0F2 /* WishListViewController.storyboard */,
 			);
 			path = WishList;
@@ -1251,6 +1246,7 @@
 				78CF3AFF25AC00C700ADBB60 /* BookListResponse.swift in Sources */,
 				78B29D1125B32A5D00A7DC7F /* EditBookRequest.swift in Sources */,
 				7805908E25F48ADA002B5296 /* ChatUserListTableViewCell.swift in Sources */,
+				7873D27A267E0C65007F7B31 /* WishListRouting.swift in Sources */,
 				78CB209225EA48EB00D4E22D /* FirebaseManager.swift in Sources */,
 				78D17C9C25C505B400793310 /* AnalyticsConfiguration.swift in Sources */,
 				78FE8CDB267B79720006612E /* Strings.swift in Sources */,

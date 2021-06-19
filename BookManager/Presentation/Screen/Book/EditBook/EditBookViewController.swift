@@ -91,9 +91,9 @@ extension EditBookViewController {
 
 // MARK: - private methods
 
-extension EditBookViewController {
+private extension EditBookViewController {
 
-    private func setupTextField() {
+    func setupTextField() {
         [bookTitleTextField, bookPriceTextField, bookPurchaseDateTextField].forEach {
             $0?.delegate = self
         }
@@ -123,7 +123,7 @@ extension EditBookViewController {
             .store(in: &cancellables)
     }
 
-    private func setupButton() {
+    func setupButton() {
         navigationItem.rightBarButtonItem?.tapPublisher
             .sink { [weak self] in
                 self?.viewModel.editBook()
