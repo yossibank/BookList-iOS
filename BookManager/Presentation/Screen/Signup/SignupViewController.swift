@@ -158,7 +158,7 @@ private extension SignupViewController {
 
                 case .done:
                     self?.loadingIndicator.stopAnimating()
-                    self?.routing.showHomeScreen()
+                    self?.routing.showRootScreen()
 
                 case .failed:
                     self?.loadingIndicator.stopAnimating()

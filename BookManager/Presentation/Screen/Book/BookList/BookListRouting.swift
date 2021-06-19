@@ -7,9 +7,7 @@ final class BookListRouting: Routing {
 extension BookListRouting {
 
     func showAddBookScreen() {
-        let addBookVC = AddBookViewController.instantiateInitialViewController()
-        addBookVC.inject(viewModel: AddBookViewModel())
-
+        let addBookVC = Resources.ViewControllers.App.addBook()
         let navVC = viewController?.navigationController as? MainNavigationController
         navVC?.setupNavigationBar(
             forVC: addBookVC,
@@ -20,9 +18,7 @@ extension BookListRouting {
     }
 
     func showEditBookScreen(id: Int) {
-        let editBookVC = EditBookViewController.instantiateInitialViewController()
-        editBookVC.inject(viewModel: EditBookViewModel(id: id))
-
+        let editBookVC = Resources.ViewControllers.App.editBook(id: id)
         let navVC = viewController?.navigationController as? MainNavigationController
         navVC?.setupNavigationBar(
             forVC: editBookVC,
