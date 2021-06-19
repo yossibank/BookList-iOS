@@ -242,7 +242,7 @@ extension EditBookViewController: UIImagePickerControllerDelegate, UINavigationC
 extension EditBookViewController: NavigationBarConfiguration {
 
     var navigationTitle: String? {
-        Resources.Strings.App.editBook
+        Resources.Strings.Navigation.Title.bookEdit
     }
 
     var rightBarButton: [NavigationBarButton] {

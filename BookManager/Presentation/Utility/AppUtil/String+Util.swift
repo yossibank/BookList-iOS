@@ -6,7 +6,7 @@ public extension String {
 
     static func toTaxText(_ price: Int) -> String {
         String(price)
-            + Resources.Strings.App.yen
-            + Resources.Strings.App.taxText
+            + Resources.Strings.Book.yen
+            + Resources.Strings.Book.tax
     }
 }

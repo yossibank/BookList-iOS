@@ -83,7 +83,6 @@
 		7892EF52259C58C0006F7315 /* IBDesignableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7892EF51259C58C0006F7315 /* IBDesignableButton.swift */; };
 		7892EF5C259C5DF0006F7315 /* IBDesignableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7892EF5B259C5DF0006F7315 /* IBDesignableTextField.swift */; };
 		7892EF62259C642C006F7315 /* IBDesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7892EF61259C642C006F7315 /* IBDesignableView.swift */; };
-		7892EF68259C720A006F7315 /* SubStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7892EF67259C720A006F7315 /* SubStrings.swift */; };
 		7892EF6C259C7212006F7315 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7892EF6B259C7212006F7315 /* Images.swift */; };
 		7892EF70259C721F006F7315 /* Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7892EF6F259C721F006F7315 /* Resources.swift */; };
 		7892EF79259C73C9006F7315 /* KeyboardNotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7892EF78259C73C9006F7315 /* KeyboardNotifier.swift */; };
@@ -254,7 +253,6 @@
 		7892EF51259C58C0006F7315 /* IBDesignableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBDesignableButton.swift; sourceTree = "<group>"; };
 		7892EF5B259C5DF0006F7315 /* IBDesignableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBDesignableTextField.swift; sourceTree = "<group>"; };
 		7892EF61259C642C006F7315 /* IBDesignableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBDesignableView.swift; sourceTree = "<group>"; };
-		7892EF67259C720A006F7315 /* SubStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubStrings.swift; sourceTree = "<group>"; };
 		7892EF6B259C7212006F7315 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		7892EF6F259C721F006F7315 /* Resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resources.swift; sourceTree = "<group>"; };
 		7892EF78259C73C9006F7315 /* KeyboardNotifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardNotifier.swift; sourceTree = "<group>"; };
@@ -682,9 +680,8 @@
 		78997EB8259C345F0076FF97 /* AppResources */ = {
 			isa = PBXGroup;
 			children = (
-				78997EBD259C34A00076FF97 /* Support */,
+				78F940ED259D995F007C972A /* ResourcesSupport.swift */,
 				78997EBC259C349C0076FF97 /* R */,
-				78997EBB259C34940076FF97 /* Resources */,
 			);
 			path = AppResources;
 			sourceTree = "<group>";
@@ -712,15 +709,6 @@
 			path = Presentation;
 			sourceTree = "<group>";
 		};
-		78997EBB259C34940076FF97 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				7892EF67259C720A006F7315 /* SubStrings.swift */,
-				78997EBE259C34AD0076FF97 /* ResourcesSupport */,
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
 		78997EBC259C349C0076FF97 /* R */ = {
 			isa = PBXGroup;
 			children = (
@@ -735,14 +723,6 @@
 				78997EBF259C34C40076FF97 /* LocalizedStrings */,
 			);
 			path = Support;
-			sourceTree = "<group>";
-		};
-		78997EBE259C34AD0076FF97 /* ResourcesSupport */ = {
-			isa = PBXGroup;
-			children = (
-				78F940ED259D995F007C972A /* ResourcesSupport.swift */,
-			);
-			path = ResourcesSupport;
 			sourceTree = "<group>";
 		};
 		78997EBF259C34C40076FF97 /* LocalizedStrings */ = {
@@ -1021,6 +1001,7 @@
 		78FE8CD7267B79480006612E /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				78997EBD259C34A00076FF97 /* Support */,
 				78231202259C0D9300D9E723 /* Assets.xcassets */,
 				78FE8CD8267B79650006612E /* Localizable.swift */,
 				7892EF6F259C721F006F7315 /* Resources.swift */,
@@ -1232,7 +1213,6 @@
 				78FE8CDB267B79720006612E /* Strings.swift in Sources */,
 				78FE8CD2267B740C0006612E /* API.swift in Sources */,
 				784B18F625BD4D5F0071C32E /* WishListViewModel.swift in Sources */,
-				7892EF68259C720A006F7315 /* SubStrings.swift in Sources */,
 				78E609CF25AA018D0041B3D0 /* LoginResponse.swift in Sources */,
 				7802FBB425BBC91D00565A16 /* Date+Util.swift in Sources */,
 				78DCC90025B7046F006FFF0F /* LogoutRequest.swift in Sources */,

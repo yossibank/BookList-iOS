@@ -25,7 +25,7 @@ enum NameError: LocalizedError {
         switch self {
 
         case .empty:
-            return Resources.Strings.Validator.nameEmpty
+            return Resources.Strings.Validation.notFilled
         }
     }
 }

@@ -30,13 +30,13 @@ enum Tabs: Int, CaseIterable {
     private var title: String {
         switch self {
         case .bookList:
-            return Resources.Strings.App.bookList
+            return Resources.Strings.TabBar.bookList
 
         case .wishList:
-            return Resources.Strings.App.wishList
+            return Resources.Strings.TabBar.wishList
 
         case .chatList:
-            return "チャット"
+            return Resources.Strings.TabBar.chat
         }
     }
 

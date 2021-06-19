@@ -36,10 +36,10 @@ enum EmailError: LocalizedError {
         switch self {
 
         case .empty:
-            return Resources.Strings.Validator.emailEmpty
+            return Resources.Strings.Validation.notFilled
 
         case .format:
-            return Resources.Strings.Validator.invalidEmailFormat
+            return Resources.Strings.Validation.notFilled
         }
     }
 }

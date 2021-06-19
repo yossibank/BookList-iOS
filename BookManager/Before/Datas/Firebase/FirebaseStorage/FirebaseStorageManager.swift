@@ -8,7 +8,7 @@ final class FirebaseStorageManager {
 
     private let metaData: StorageMetadata = {
         let metaData = StorageMetadata()
-        metaData.contentType = Resources.Strings.Firebase.metaDataType
+        metaData.contentType = ""
         return metaData
     }()
 
@@ -20,7 +20,7 @@ final class FirebaseStorageManager {
     ) {
         database
             .reference()
-            .child(Resources.Strings.Firebase.userIconPath)
+            .child("")
             .child(path)
             .putData(
                 uploadImage,
@@ -39,7 +39,7 @@ final class FirebaseStorageManager {
     ) {
         database
             .reference()
-            .child(Resources.Strings.Firebase.userIconPath)
+            .child("")
             .child(path)
             .downloadURL { url, error in
                 if let error = error {

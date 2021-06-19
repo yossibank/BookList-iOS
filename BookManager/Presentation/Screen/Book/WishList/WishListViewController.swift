@@ -78,7 +78,7 @@ extension WishListViewController: UITableViewDelegate {
 extension WishListViewController: NavigationBarConfiguration {
 
     var navigationTitle: String? {
-        Resources.Strings.App.wishList
+        Resources.Strings.Navigation.Title.bookEdit
     }
 }
 
