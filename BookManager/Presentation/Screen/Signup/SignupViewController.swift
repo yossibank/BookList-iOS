@@ -156,11 +156,11 @@ private extension SignupViewController {
                 case .loading:
                     self?.loadingIndicator.startAnimating()
 
-                case let .done(entities):
+                case .done:
                     self?.loadingIndicator.stopAnimating()
                     self?.routing.showHomeScreen()
 
-                case let .failed(error):
+                case .failed:
                     self?.loadingIndicator.stopAnimating()
                 }
             }

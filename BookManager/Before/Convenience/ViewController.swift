@@ -49,20 +49,20 @@ extension Resources {
 //                return vc
 //            }
 
-            func editBook(
-                bookId: Int,
-                bookViewData: BookViewData,
-                successHandler: ((BookViewData) -> Void)?
-            ) -> EditBookViewController {
-                let usecase = EditBookUsecase(bookId: bookId)
-                let viewModel = EditBookViewModel(usecase: usecase)
-                let vc = EditBookViewController.createInstance(
-                    viewModel: viewModel,
-                    bookViewData: bookViewData,
-                    successHandler: successHandler
-                )
-                return vc
-            }
+//            func editBook(
+//                bookId: Int,
+//                bookViewData: BookViewData,
+//                successHandler: ((BookViewData) -> Void)?
+//            ) -> EditBookViewController {
+//                let usecase = EditBookUsecase(bookId: bookId)
+//                let viewModel = EditBookViewModel(usecase: usecase)
+//                let vc = EditBookViewController.createInstance(
+//                    viewModel: viewModel,
+//                    bookViewData: bookViewData,
+//                    successHandler: successHandler
+//                )
+//                return vc
+//            }
 
             func wishList() -> WishListViewController {
                 let viewModel = WishListViewModel()

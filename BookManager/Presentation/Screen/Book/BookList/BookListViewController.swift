@@ -110,14 +110,7 @@ extension BookListViewController: UITableViewDelegate {
             return
         }
 
-        let bookData = BookViewData(
-            id: book.id,
-            name: book.name,
-            image: book.image,
-            price: book.price,
-            purchaseDate: book.purchaseDate,
-            isFavorite: book.isFavorite
-        )
+        self.routing.showEditBookScreen(id: book.id)
     }
 
     func tableView(

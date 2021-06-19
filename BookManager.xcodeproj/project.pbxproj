@@ -71,7 +71,6 @@
 		78772B3C25B3D37300E6493E /* PurchaseDateValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78772B3B25B3D37300E6493E /* PurchaseDateValidator.swift */; };
 		78772B4E25B3DEBD00E6493E /* Array+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78772B4D25B3DEBD00E6493E /* Array+Util.swift */; };
 		78772B5425B3E48B00E6493E /* EditBookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78772B5325B3E48B00E6493E /* EditBookViewModel.swift */; };
-		78772B5A25B3EE0900E6493E /* EditBookUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78772B5925B3EE0900E6493E /* EditBookUsecase.swift */; };
 		787CB2EC2600C3AD003B8CC9 /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787CB2EB2600C3AD003B8CC9 /* ChatMessage.swift */; };
 		787CB2EF2600C50E003B8CC9 /* ChatRoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787CB2EE2600C50E003B8CC9 /* ChatRoomViewModel.swift */; };
 		787CB2F32600C7B2003B8CC9 /* ChatRoomDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787CB2F22600C7B2003B8CC9 /* ChatRoomDataSource.swift */; };
@@ -241,7 +240,6 @@
 		78772B3B25B3D37300E6493E /* PurchaseDateValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseDateValidator.swift; sourceTree = "<group>"; };
 		78772B4D25B3DEBD00E6493E /* Array+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Util.swift"; sourceTree = "<group>"; };
 		78772B5325B3E48B00E6493E /* EditBookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBookViewModel.swift; sourceTree = "<group>"; };
-		78772B5925B3EE0900E6493E /* EditBookUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBookUsecase.swift; sourceTree = "<group>"; };
 		787CB2EB2600C3AD003B8CC9 /* ChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
 		787CB2EE2600C50E003B8CC9 /* ChatRoomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomViewModel.swift; sourceTree = "<group>"; };
 		787CB2F22600C7B2003B8CC9 /* ChatRoomDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomDataSource.swift; sourceTree = "<group>"; };
@@ -851,7 +849,6 @@
 		78B29D1A25B330D600A7DC7F /* EditBook */ = {
 			isa = PBXGroup;
 			children = (
-				78772B5925B3EE0900E6493E /* EditBookUsecase.swift */,
 				78772B5325B3E48B00E6493E /* EditBookViewModel.swift */,
 				78B29D1B25B3310000A7DC7F /* EditBookViewController.swift */,
 				78B29D2125B3311A00A7DC7F /* EditBookViewController.storyboard */,
@@ -1234,7 +1231,6 @@
 				78987B3C259C8813008311DC /* LoginViewController.swift in Sources */,
 				7824042425E92A040001AB52 /* KeyboardAccessoryView.swift in Sources */,
 				784E135E25B2A13D008FD947 /* AddBookViewModel.swift in Sources */,
-				78772B5A25B3EE0900E6493E /* EditBookUsecase.swift in Sources */,
 				78B8A69025E54021005BCB16 /* OtherMessageTableViewCell.swift in Sources */,
 				78CF3AF825ABF85D00ADBB60 /* BookListTableViewCell.swift in Sources */,
 				7826A74625F7AF03006F23AD /* ChatUserListUsecase.swift in Sources */,

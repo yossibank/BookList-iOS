@@ -132,11 +132,11 @@ enum Route {
 //    case home
 //    case bookList
 //    case addBook
-    case editBook(
-            bookId: Int,
-            bookData: BookViewData,
-            successHandler: ((BookViewData) -> Void)?
-         )
+//    case editBook(
+//            bookId: Int,
+//            bookData: BookViewData,
+//            successHandler: ((BookViewData) -> Void)?
+//         )
     case wishList
     case chatSelect
     case chatUserList
@@ -163,17 +163,17 @@ enum Route {
 //        case .addBook:
 //            viewController = Resources.ViewControllers.App.addBook()
 
-        case .editBook(
-            let bookId,
-            let bookViewData,
-            let successHandler
-        ):
-
-            viewController = Resources.ViewControllers.App.editBook(
-                bookId: bookId,
-                bookViewData: bookViewData,
-                successHandler: successHandler
-            )
+//        case .editBook(
+//            let bookId,
+//            let bookViewData,
+//            let successHandler
+//        ):
+//
+//            viewController = Resources.ViewControllers.App.editBook(
+//                bookId: bookId,
+//                bookViewData: bookViewData,
+//                successHandler: successHandler
+//            )
 
         case .wishList:
             viewController = Resources.ViewControllers.App.wishList()
