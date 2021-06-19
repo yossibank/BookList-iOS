@@ -42,7 +42,9 @@ struct APIClinet {
         completion: @escaping (Result<T, APIError>) -> Void
     ) {
         do {
-            let value = try JSONDecoder().decode(T.self, from: data)
+            let decoder = JSONDecoder()
+            decoder.keyDecodingStrategy = .convertFromSnakeCase
+            let value = try decoder.decode(T.self, from: data)
             completion(.success(value))
         } catch {
             completion(.failure(.decodingError(error.localizedDescription)))

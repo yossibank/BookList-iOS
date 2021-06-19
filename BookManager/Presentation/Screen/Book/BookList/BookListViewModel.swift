@@ -8,6 +8,7 @@ final class BookListViewModel: ViewModel {
     private let usecase: BookListUsecase
 
     private var cancellables: Set<AnyCancellable> = []
+    private var pageRequest: Int = 1
 
     private(set) var bookList: [BookViewData] = []
     @Published private(set) var state: State = .standby
@@ -21,11 +22,11 @@ final class BookListViewModel: ViewModel {
 
 extension BookListViewModel {
 
-    func fetchBookList(isAdditional: Bool) {
+    func fetchBookList() {
         self.state = .loading
 
         self.usecase
-            .fetchBookList(isAdditional: isAdditional)
+            .fetchBookList(pageRequest: pageRequest)
             .sink { [weak self] completion in
                 switch completion {
                 case let .failure(error):
@@ -34,11 +35,12 @@ extension BookListViewModel {
 
                 case .finished:
                     Logger.debug("finished")
+                    self?.pageRequest += 1
                 }
             } receiveValue: { [weak self] state in
                 guard let self = self else { return }
+                self.bookList.append(contentsOf: self.map(book: state))
                 self.state = .done(state)
-                self.bookList = self.map(book: state)
             }
             .store(in: &cancellables)
     }
