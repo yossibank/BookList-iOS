@@ -155,6 +155,10 @@ extension BookListViewController: NavigationBarConfiguration {
     var navigationTitle: String? {
         Resources.Strings.App.bookList
     }
+
+    var rightBarButton: [NavigationBarButton] {
+        [.addBook]
+    }
 }
 
 extension BookListViewController: AnalyticsConfiguration {

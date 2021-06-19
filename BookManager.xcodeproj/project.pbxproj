@@ -1122,7 +1122,6 @@
 				782311F3259C0D9200D9E723 /* Frameworks */,
 				7800202A25EFD0E00000BCEB /* Embed Frameworks */,
 				782311F4259C0D9200D9E723 /* Resources */,
-				78D17C7F25C4369000793310 /* Crashlytics */,
 			);
 			buildRules = (
 			);
@@ -1268,29 +1267,11 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				$SRCROOT/$PROJECT_NAME/AppResources/R/R.generated.swift,
+				$SRCROOT/$PROJECT_NAME/Before/AppResources/R/R.generated.swift,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"rswift\" generate \"$SRCROOT/$PROJECT_NAME/AppResources/R/R.generated.swift\"\n";
-		};
-		78D17C7F25C4369000793310 /* Crashlytics */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = Crashlytics;
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${BUILD_DIR%Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\"\n";
+			shellScript = "\"rswift\" generate \"$SRCROOT/$PROJECT_NAME/Before/AppResources/R/R.generated.swift\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

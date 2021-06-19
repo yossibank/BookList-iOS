@@ -16,6 +16,13 @@ final class MainNavigationController: UINavigationController {
         action: nil
     )
 
+    private let addBookItem: UIBarButtonItem = UIBarButtonItem(
+        title: Resources.Strings.Navigation.add,
+        style: .done,
+        target: nil,
+        action: nil
+    )
+
     private let addUserItem: UIBarButtonItem = UIBarButtonItem(
         image: Resources.Images.Chat.addChatUser?.withRenderingMode(.alwaysOriginal),
         style: .plain,
@@ -69,6 +76,9 @@ extension MainNavigationController {
 
             case .done:
                 return doneItem
+
+            case .addBook:
+                return addBookItem
 
             case .addUser:
                 return addUserItem
