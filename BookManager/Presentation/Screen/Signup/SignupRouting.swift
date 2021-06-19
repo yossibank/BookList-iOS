@@ -21,14 +21,9 @@ extension SignupRouting {
         let bookListVC = BookListViewController.instantiateInitialViewController()
         bookListVC.inject(routing: BookListRouting(), viewModel: BookListViewModel())
 
-        let nc = MainNavigationController(rootViewController: bookListVC)
-        nc.setupNavigationBar(
-            forVC: bookListVC,
-            config: bookListVC as NavigationBarConfiguration
-        )
-        
+        let tc = RootTabBarController()
         let window = UIApplication.shared.windows.first { $0.isKeyWindow }
-        window?.rootViewController = nc
+        window?.rootViewController = tc
     }
 
     func dismiss() {
