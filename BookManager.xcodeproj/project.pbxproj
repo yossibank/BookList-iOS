@@ -12,7 +12,6 @@
 		7805908825F48A94002B5296 /* ChatUserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7805908725F48A94002B5296 /* ChatUserListViewController.swift */; };
 		7805908E25F48ADA002B5296 /* ChatUserListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7805908C25F48ADA002B5296 /* ChatUserListTableViewCell.swift */; };
 		7805908F25F48ADA002B5296 /* ChatUserListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7805908D25F48ADA002B5296 /* ChatUserListTableViewCell.xib */; };
-		780E712725C69AA8002EE6CB /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780E712625C69AA8002EE6CB /* R.generated.swift */; };
 		781936B325BC5B2B00309FB7 /* BookFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781936B225BC5B2B00309FB7 /* BookFileManager.swift */; };
 		781936C025BC752D00309FB7 /* BookViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781936BF25BC752D00309FB7 /* BookViewData.swift */; };
 		781C318725B5AFE100C11D77 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781C318625B5AFE100C11D77 /* KeychainManager.swift */; };
@@ -100,7 +99,6 @@
 		78B2A16B267B89D300D9EA0E /* LoginRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B2A16A267B89D300D9EA0E /* LoginRouting.swift */; };
 		78B2A16D267B8A6100D9EA0E /* LoadingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B2A16C267B8A6100D9EA0E /* LoadingState.swift */; };
 		78B6B4D82658EA3000AE45E5 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 78B6B4D72658EA3000AE45E5 /* KeychainAccess */; };
-		78B6B4DC2658EBF000AE45E5 /* Rswift in Frameworks */ = {isa = PBXBuildFile; productRef = 78B6B4DB2658EBF000AE45E5 /* Rswift */; };
 		78B8A69025E54021005BCB16 /* OtherMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B8A68E25E54021005BCB16 /* OtherMessageTableViewCell.swift */; };
 		78B8A69125E54021005BCB16 /* OtherMessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78B8A68F25E54021005BCB16 /* OtherMessageTableViewCell.xib */; };
 		78B8A69625E54AEB005BCB16 /* MyMessageBalloonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B8A69525E54AEB005BCB16 /* MyMessageBalloonView.swift */; };
@@ -189,7 +187,6 @@
 		7805908725F48A94002B5296 /* ChatUserListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatUserListViewController.swift; sourceTree = "<group>"; };
 		7805908C25F48ADA002B5296 /* ChatUserListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatUserListTableViewCell.swift; sourceTree = "<group>"; };
 		7805908D25F48ADA002B5296 /* ChatUserListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatUserListTableViewCell.xib; sourceTree = "<group>"; };
-		780E712625C69AA8002EE6CB /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		781936B225BC5B2B00309FB7 /* BookFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookFileManager.swift; sourceTree = "<group>"; };
 		781936BF25BC752D00309FB7 /* BookViewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookViewData.swift; sourceTree = "<group>"; };
 		781C318625B5AFE100C11D77 /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
@@ -332,7 +329,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				781CC39A2658E4550075D260 /* FirebaseStorage in Frameworks */,
-				78B6B4DC2658EBF000AE45E5 /* Rswift in Frameworks */,
 				781CC3982658E4550075D260 /* FirebaseStorageSwift-Beta in Frameworks */,
 				781CC39E2658E4550075D260 /* FirebaseAuth in Frameworks */,
 				782E63712675E5D40029E940 /* Utility in Frameworks */,
@@ -681,7 +677,6 @@
 			isa = PBXGroup;
 			children = (
 				78F940ED259D995F007C972A /* ResourcesSupport.swift */,
-				78997EBC259C349C0076FF97 /* R */,
 			);
 			path = AppResources;
 			sourceTree = "<group>";
@@ -707,14 +702,6 @@
 				781936BE25BC752000309FB7 /* ViewData */,
 			);
 			path = Presentation;
-			sourceTree = "<group>";
-		};
-		78997EBC259C349C0076FF97 /* R */ = {
-			isa = PBXGroup;
-			children = (
-				780E712625C69AA8002EE6CB /* R.generated.swift */,
-			);
-			path = R;
 			sourceTree = "<group>";
 		};
 		78997EBD259C34A00076FF97 /* Support */ = {
@@ -1018,7 +1005,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 78231220259C0D9300D9E723 /* Build configuration list for PBXNativeTarget "BookManager" */;
 			buildPhases = (
-				781B131B259C14C300D0AE80 /* Rswift */,
 				782311F2259C0D9200D9E723 /* Sources */,
 				782311F3259C0D9200D9E723 /* Frameworks */,
 				7800202A25EFD0E00000BCEB /* Embed Frameworks */,
@@ -1041,7 +1027,6 @@
 				781CC3A42658E6E00075D260 /* RxRelay */,
 				781CC3A62658E6E00075D260 /* RxCocoa */,
 				78B6B4D72658EA3000AE45E5 /* KeychainAccess */,
-				78B6B4DB2658EBF000AE45E5 /* Rswift */,
 				782E63702675E5D40029E940 /* Utility */,
 				78EB164E267620CE00777F32 /* APIKit */,
 				78FFC6982678FCA500957F9C /* DomainKit */,
@@ -1100,7 +1085,6 @@
 				781CC3902658E4550075D260 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				781CC39F2658E6E00075D260 /* XCRemoteSwiftPackageReference "RxSwift" */,
 				78B6B4D62658EA2F00AE45E5 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
-				78B6B4DA2658EBF000AE45E5 /* XCRemoteSwiftPackageReference "R.swift" */,
 				78DC0BA0267B92F10085F5E7 /* XCRemoteSwiftPackageReference "CombineCocoa" */,
 			);
 			productRefGroup = 782311F7259C0D9200D9E723 /* Products */;
@@ -1150,29 +1134,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		781B131B259C14C300D0AE80 /* Rswift */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"$TEMP_DIR/rswift-lastrun",
-			);
-			name = Rswift;
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				$SRCROOT/$PROJECT_NAME/Before/AppResources/R/R.generated.swift,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"rswift\" generate \"$SRCROOT/$PROJECT_NAME/Before/AppResources/R/R.generated.swift\"\n";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		782311F2259C0D9200D9E723 /* Sources */ = {
@@ -1263,7 +1224,6 @@
 				78DEE7BD25AAE3AD00219963 /* UIViewController+Extension.swift in Sources */,
 				7833D0C3260229E4005DFB79 /* ChatSelectDataSource.swift in Sources */,
 				78DEE7B925AADFC600219963 /* UIAlertController+Extension.swift in Sources */,
-				780E712725C69AA8002EE6CB /* R.generated.swift in Sources */,
 				78D17C9825C502A800793310 /* AnalyticsCategoriesAndEvents.swift in Sources */,
 				782311FA259C0D9200D9E723 /* AppDelegate.swift in Sources */,
 				78E609CB25AA015F0041B3D0 /* LoginRequest.swift in Sources */,
@@ -1593,14 +1553,6 @@
 				minimumVersion = 4.2.2;
 			};
 		};
-		78B6B4DA2658EBF000AE45E5 /* XCRemoteSwiftPackageReference "R.swift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/mac-cain13/R.swift.Library";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.4.0;
-			};
-		};
 		78DC0BA0267B92F10085F5E7 /* XCRemoteSwiftPackageReference "CombineCocoa" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/CombineCommunity/CombineCocoa.git";
@@ -1670,11 +1622,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 78B6B4D62658EA2F00AE45E5 /* XCRemoteSwiftPackageReference "KeychainAccess" */;
 			productName = KeychainAccess;
-		};
-		78B6B4DB2658EBF000AE45E5 /* Rswift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 78B6B4DA2658EBF000AE45E5 /* XCRemoteSwiftPackageReference "R.swift" */;
-			productName = Rswift;
 		};
 		78DC0BA1267B92F10085F5E7 /* CombineCocoa */ = {
 			isa = XCSwiftPackageProductDependency;
