@@ -28,12 +28,12 @@ extension Resources {
 //                return vc
 //            }
 
-            func home() -> HomeViewController {
-                let usecase = HomeUsecase()
-                let viewModel = HomeViewModel(usecase: usecase)
-                let vc = HomeViewController.createInstance(viewModel: viewModel)
-                return vc
-            }
+//            func home() -> HomeViewController {
+//                let usecase = HomeUsecase()
+//                let viewModel = HomeViewModel(usecase: usecase)
+//                let vc = HomeViewController.createInstance(viewModel: viewModel)
+//                return vc
+//            }
 
 //            func bookList() -> BookListViewController {
 //                let usecase = BookListUsecase()
