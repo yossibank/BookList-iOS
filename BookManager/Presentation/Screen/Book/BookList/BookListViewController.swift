@@ -1,44 +1,42 @@
+import Combine
+import CombineCocoa
 import UIKit
-import RxSwift
-import RxCocoa
+import Utility
+
+extension BookListViewController: VCInjectable {
+    typealias R = BookListRouting
+    typealias VM = BookListViewModel
+}
+
+// MARK: - properties
 
 final class BookListViewController: UIViewController {
+    var routing: R! { didSet { self.routing.viewController = self } }
+    var viewModel: VM!
+
+    private var dataSource: BookListDataSource!
+    private var cancellables: Set<AnyCancellable> = []
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
+}
 
-    private let router: RouterProtocol = Router()
-    private let disposeBag: DisposeBag = DisposeBag()
+// MARK: - override methods
 
-    private var viewModel: BookListViewModel!
-    private var dataSource: BookListDataSource!
-
-    static func createInstance(viewModel: BookListViewModel) -> BookListViewController {
-        let instance = BookListViewController.instantiateInitialViewController()
-        instance.viewModel = viewModel
-        return instance
-    }
+extension BookListViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
-        viewModel.fetchBookList(isInitial: true)
         bindViewModel()
         sendScreenView()
+        viewModel.fetchBookList(isAdditional: false)
     }
 }
 
-extension BookListViewController {
+// MARK: - internal methods
 
-    private func setupTableView() {
-        dataSource = BookListDataSource()
-        dataSource.delegate = self
-        tableView.register(BookListTableViewCell.xib(), forCellReuseIdentifier: BookListTableViewCell.resourceName)
-        tableView.tableFooterView = UIView()
-        tableView.dataSource = dataSource
-        tableView.delegate = self
-        tableView.rowHeight = 150
-    }
+extension BookListViewController {
 
     func updateBookList(book: BookViewData) {
         dataSource.updateCellDataList(book: book)
@@ -46,51 +44,48 @@ extension BookListViewController {
     }
 }
 
-extension BookListViewController {
 
-    private func bindViewModel() {
-        viewModel.bookList
-            .asDriver(onErrorJustReturn: [])
-            .drive(onNext: { [weak self] bookList in
-                guard let self = self else { return }
+// MARK: private methods
 
-                self.dataSource.cellDataList.append(contentsOf: bookList ?? [])
-                self.tableView.reloadData()
-            })
-            .disposed(by: disposeBag)
+private extension BookListViewController {
 
-        viewModel.loading
-            .asDriver(onErrorJustReturn: false)
-            .drive(onNext: { [weak self] loading in
-                guard let self = self else { return }
+    func setupTableView() {
+        dataSource = BookListDataSource(viewModel: viewModel)
+        dataSource.delegate = self
+        tableView.register(
+            BookListTableViewCell.xib(),
+            forCellReuseIdentifier: BookListTableViewCell.resourceName
+        )
+        tableView.tableFooterView = UIView()
+        tableView.dataSource = dataSource
+        tableView.delegate = self
+        tableView.rowHeight = 150
+    }
 
-                loading ?
-                    self.loadingIndicator.startAnimating()
-                    : self.loadingIndicator.stopAnimating()
-            })
-            .disposed(by: disposeBag)
+    func bindViewModel() {
+        viewModel.$state
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] state in
+                switch state {
+                case .standby:
+                    Logger.debug("standby")
 
-        viewModel.error
-            .asDriver(onErrorJustReturn: nil)
-            .drive(onNext: { [weak self] error in
-                guard let self = self else { return }
+                case .loading:
+                    Logger.debug("loading")
 
-                if let error = error {
-                    if let apiError = error as? APIError {
-                        dump(apiError.description())
-                    }
+                case let .done(entities):
+                    Logger.debug("\(entities)")
+                    self?.tableView.reloadData()
 
-                    self.showError(
-                        title: Resources.Strings.General.error,
-                        message: Resources.Strings.Alert.failedBookList
-                    ) {
-                        self.router.dismiss(self, animated: true)
-                    }
+                case let .failed(error):
+                    Logger.debug(error.localizedDescription)
                 }
-            })
-            .disposed(by: disposeBag)
+            }
+            .store(in: &cancellables)
     }
 }
+
+// MARK: - Delegate
 
 extension BookListViewController: UITableViewDelegate {
 
@@ -101,7 +96,7 @@ extension BookListViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
 
         guard
-            let book = dataSource.cellDataList.any(at: indexPath.row)
+            let book = viewModel.bookList.any(at: indexPath.row)
         else {
             return
         }
@@ -114,15 +109,6 @@ extension BookListViewController: UITableViewDelegate {
             purchaseDate: book.purchaseDate,
             isFavorite: book.isFavorite
         )
-
-        router.push(
-            .editBook(
-                bookId: book.id,
-                bookData: bookData,
-                successHandler: updateBookList
-            ),
-            from: self
-        )
     }
 
     func tableView(
@@ -134,7 +120,7 @@ extension BookListViewController: UITableViewDelegate {
         let lastIndex = tableView.numberOfRows(inSection: lastSection) - 1
 
         if indexPath.section == lastSection && indexPath.row == lastIndex {
-            viewModel.fetchBookList(isInitial: false)
+            viewModel.fetchBookList(isAdditional: true)
         }
     }
 }
@@ -143,7 +129,7 @@ extension BookListViewController: BookListDataSourceDelegate {
 
     func didSelectFavoriteButton(index: Int) {
         guard
-            let book = dataSource.cellDataList.any(at: index)
+            let book = viewModel.bookList.any(at: index)
         else {
             return
         }
@@ -161,6 +147,8 @@ extension BookListViewController: BookListDataSourceDelegate {
         )
     }
 }
+
+// MARK: - Protocol
 
 extension BookListViewController: NavigationBarConfiguration {
 

@@ -7,7 +7,7 @@ struct HomeViewData {
     enum HomeItem: CaseIterable {
         typealias RawValue = HomeViewData
 
-        case bookList
+//        case bookList
         case addBook
         case wishList
         case chatSelect
@@ -16,11 +16,11 @@ struct HomeViewData {
 
             switch self {
 
-            case .bookList:
-                return HomeViewData(
-                    title: Resources.Strings.App.bookList,
-                    image: Resources.Images.Home.bookList
-                )
+//            case .bookList:
+//                return HomeViewData(
+//                    title: Resources.Strings.App.bookList,
+//                    image: Resources.Images.Home.bookList
+//                )
 
             case .addBook:
                 return HomeViewData(
@@ -46,8 +46,8 @@ struct HomeViewData {
 
             switch self {
 
-            case .bookList:
-                return .bookList
+//            case .bookList:
+//                return .bookList
 
             case .addBook:
                 return .addBook

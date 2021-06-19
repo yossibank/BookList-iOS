@@ -35,12 +35,12 @@ extension Resources {
                 return vc
             }
 
-            func bookList() -> BookListViewController {
-                let usecase = BookListUsecase()
-                let viewModel = BookListViewModel(usecase: usecase)
-                let vc = BookListViewController.createInstance(viewModel: viewModel)
-                return vc
-            }
+//            func bookList() -> BookListViewController {
+//                let usecase = BookListUsecase()
+//                let viewModel = BookListViewModel(usecase: usecase)
+//                let vc = BookListViewController.createInstance(viewModel: viewModel)
+//                return vc
+//            }
 
             func addBook() -> AddBookViewController {
                 let usecase = AddBookUsecase()

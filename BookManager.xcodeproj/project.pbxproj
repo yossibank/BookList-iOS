@@ -118,6 +118,7 @@
 		78C7F3B125E52C94005E9E2B /* ChatSelectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C7F3AF25E52C94005E9E2B /* ChatSelectTableViewCell.swift */; };
 		78C7F3B225E52C94005E9E2B /* ChatSelectTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78C7F3B025E52C94005E9E2B /* ChatSelectTableViewCell.xib */; };
 		78CB209225EA48EB00D4E22D /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CB209125EA48EB00D4E22D /* FirebaseManager.swift */; };
+		78CC0ED5267DBE3D003489E1 /* BookListRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CC0ED4267DBE3D003489E1 /* BookListRouting.swift */; };
 		78CF3AEF25ABF81400ADBB60 /* BookListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78CF3AEE25ABF81400ADBB60 /* BookListViewController.storyboard */; };
 		78CF3AF325ABF82900ADBB60 /* BookListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CF3AF225ABF82900ADBB60 /* BookListViewController.swift */; };
 		78CF3AF825ABF85D00ADBB60 /* BookListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CF3AF625ABF85D00ADBB60 /* BookListTableViewCell.swift */; };
@@ -125,7 +126,6 @@
 		78CF3AFF25AC00C700ADBB60 /* BookListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CF3AFE25AC00C700ADBB60 /* BookListResponse.swift */; };
 		78CF3B0325AC031700ADBB60 /* BookListRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CF3B0225AC031700ADBB60 /* BookListRequest.swift */; };
 		78CF3B0725AC0E3500ADBB60 /* BookListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CF3B0625AC0E3500ADBB60 /* BookListViewModel.swift */; };
-		78CF3B1925AC320900ADBB60 /* BookListUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CF3B1825AC320900ADBB60 /* BookListUsecase.swift */; };
 		78CF3B3525AC48FD00ADBB60 /* BookListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CF3B3425AC48FD00ADBB60 /* BookListDataSource.swift */; };
 		78D17C9225C501F700793310 /* FireBaseAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D17C9125C501F700793310 /* FireBaseAnalytics.swift */; };
 		78D17C9825C502A800793310 /* AnalyticsCategoriesAndEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D17C9725C502A800793310 /* AnalyticsCategoriesAndEvents.swift */; };
@@ -295,6 +295,7 @@
 		78C7F3AF25E52C94005E9E2B /* ChatSelectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatSelectTableViewCell.swift; sourceTree = "<group>"; };
 		78C7F3B025E52C94005E9E2B /* ChatSelectTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatSelectTableViewCell.xib; sourceTree = "<group>"; };
 		78CB209125EA48EB00D4E22D /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
+		78CC0ED4267DBE3D003489E1 /* BookListRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListRouting.swift; sourceTree = "<group>"; };
 		78CF3AEE25ABF81400ADBB60 /* BookListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BookListViewController.storyboard; sourceTree = "<group>"; };
 		78CF3AF225ABF82900ADBB60 /* BookListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListViewController.swift; sourceTree = "<group>"; };
 		78CF3AF625ABF85D00ADBB60 /* BookListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListTableViewCell.swift; sourceTree = "<group>"; };
@@ -302,7 +303,6 @@
 		78CF3AFE25AC00C700ADBB60 /* BookListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListResponse.swift; sourceTree = "<group>"; };
 		78CF3B0225AC031700ADBB60 /* BookListRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListRequest.swift; sourceTree = "<group>"; };
 		78CF3B0625AC0E3500ADBB60 /* BookListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListViewModel.swift; sourceTree = "<group>"; };
-		78CF3B1825AC320900ADBB60 /* BookListUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListUsecase.swift; sourceTree = "<group>"; };
 		78CF3B3425AC48FD00ADBB60 /* BookListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListDataSource.swift; sourceTree = "<group>"; };
 		78D17C9125C501F700793310 /* FireBaseAnalytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseAnalytics.swift; sourceTree = "<group>"; };
 		78D17C9725C502A800793310 /* AnalyticsCategoriesAndEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsCategoriesAndEvents.swift; sourceTree = "<group>"; };
@@ -992,7 +992,7 @@
 			isa = PBXGroup;
 			children = (
 				78CF3AED25ABF80700ADBB60 /* View */,
-				78CF3B1825AC320900ADBB60 /* BookListUsecase.swift */,
+				78CC0ED4267DBE3D003489E1 /* BookListRouting.swift */,
 				78CF3B0625AC0E3500ADBB60 /* BookListViewModel.swift */,
 				78CF3B3425AC48FD00ADBB60 /* BookListDataSource.swift */,
 				78CF3AF225ABF82900ADBB60 /* BookListViewController.swift */,
@@ -1308,7 +1308,6 @@
 				7824042425E92A040001AB52 /* KeyboardAccessoryView.swift in Sources */,
 				784E135E25B2A13D008FD947 /* AddBookViewModel.swift in Sources */,
 				78772B5A25B3EE0900E6493E /* EditBookUsecase.swift in Sources */,
-				78CF3B1925AC320900ADBB60 /* BookListUsecase.swift in Sources */,
 				78B8A69025E54021005BCB16 /* OtherMessageTableViewCell.swift in Sources */,
 				78CF3AF825ABF85D00ADBB60 /* BookListTableViewCell.swift in Sources */,
 				7826A74625F7AF03006F23AD /* ChatUserListUsecase.swift in Sources */,
@@ -1359,6 +1358,7 @@
 				787CB2F32600C7B2003B8CC9 /* ChatRoomDataSource.swift in Sources */,
 				784B18EF25BD48F80071C32E /* WishListTableViewCell.swift in Sources */,
 				787CB2EC2600C3AD003B8CC9 /* ChatMessage.swift in Sources */,
+				78CC0ED5267DBE3D003489E1 /* BookListRouting.swift in Sources */,
 				78299CE925E69D0D001868FB /* MyMessageTableViewCell.swift in Sources */,
 				7892EF70259C721F006F7315 /* Resources.swift in Sources */,
 				78F940EE259D995F007C972A /* ResourcesSupport.swift in Sources */,

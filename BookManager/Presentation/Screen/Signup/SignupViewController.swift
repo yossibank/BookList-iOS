@@ -158,6 +158,7 @@ private extension SignupViewController {
 
                 case let .done(entities):
                     Logger.debug("\(entities)")
+                    self.routing.showHomeScreen()
 
                 case let .failed(error):
                     Logger.debug("\(error.localizedDescription)")

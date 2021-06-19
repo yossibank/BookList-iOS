@@ -5,17 +5,21 @@ protocol BookListDataSourceDelegate: AnyObject {
 }
 
 final class BookListDataSource: NSObject {
-    var cellDataList: [BookViewData] = []
+    var viewModel: BookListViewModel!
     weak var delegate: BookListDataSourceDelegate?
 
+    init(viewModel: BookListViewModel) {
+        self.viewModel = viewModel
+    }
+
     func updateCellDataList(book: BookViewData) {
-        if let index = cellDataList.firstIndex(where: { $0.id == book.id }) {
-            cellDataList[index] = book
-        }
+//        if let index = viewModel.bookList.firstIndex(where: { $0.id == book.id }) {
+//
+//        }
     }
 
     func updateFavorite(index: Int, bookViewData: BookViewData) {
-        cellDataList[index].isFavorite = !bookViewData.isFavorite
+//        viewModel.bookList[index].isFavorite = !bookViewData.isFavorite
     }
 }
 
@@ -25,7 +29,7 @@ extension BookListDataSource: UITableViewDataSource {
         _ tableView: UITableView,
         numberOfRowsInSection section: Int
     ) -> Int {
-        cellDataList.count
+        viewModel.bookList.count
     }
 
     func tableView(
@@ -42,7 +46,7 @@ extension BookListDataSource: UITableViewDataSource {
             bookListCell.delegate = self
             bookListCell.favoriteButton.tag = indexPath.row
             bookListCell.bookImageView.image = nil
-            if let book = cellDataList.any(at: indexPath.row) {
+            if let book = viewModel.bookList.any(at: indexPath.row) {
                 bookListCell.setup(book: book)
             }
         }
