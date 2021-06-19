@@ -7,17 +7,17 @@ public protocol EditBookUsecase {
         id: Int,
         name: String,
         image: String,
-        price: Int,
+        price: Int?,
         purchaseDate: String
     ) -> AnyPublisher<BookEntity, APIError>
 }
 
-extension UsecaseImpl where R == Repos.Book.Put, M == BookMapper {
+extension UsecaseImpl: EditBookUsecase where R == Repos.Book.Put, M == BookMapper {
     public func updateBook(
         id: Int,
         name: String,
         image: String,
-        price: Int,
+        price: Int?,
         purchaseDate: String
     ) -> AnyPublisher<BookEntity, APIError> {
         self.toPublisher { promise in

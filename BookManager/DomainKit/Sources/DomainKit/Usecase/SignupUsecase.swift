@@ -9,7 +9,7 @@ public protocol SignupUsecase {
     ) -> AnyPublisher<UserEntity, APIError>
 }
 
-extension UsecaseImpl where R == Repos.Account.Signup, M == UserMapper {
+extension UsecaseImpl: SignupUsecase where R == Repos.Account.Signup, M == UserMapper {
     public func signup(
         email: String,
         password: String

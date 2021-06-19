@@ -13,6 +13,7 @@ extension NavigationBarConfiguration {
 enum NavigationBarButton {
     case logout
     case done
+    case addBook
     case addUser
     case startTalk
 }

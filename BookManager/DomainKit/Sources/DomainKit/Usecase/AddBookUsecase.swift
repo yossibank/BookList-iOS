@@ -6,16 +6,16 @@ public protocol AddBookUsecase {
     func addBook(
         name: String,
         image: String,
-        price: Int,
+        price: Int?,
         purchaseDate: String
     ) -> AnyPublisher<BookEntity, APIError>
 }
 
-extension UsecaseImpl where R == Repos.Book.Post, M == BookMapper {
+extension UsecaseImpl: AddBookUsecase where R == Repos.Book.Post, M == BookMapper {
     public func addBook(
         name: String,
         image: String,
-        price: Int,
+        price: Int?,
         purchaseDate: String
     ) -> AnyPublisher<BookEntity, APIError> {
         self.toPublisher { promise in

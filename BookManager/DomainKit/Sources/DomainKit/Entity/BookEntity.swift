@@ -1,9 +1,9 @@
 import Foundation
 
 public struct BookEntity: Equatable {
-    let id: Int
-    let name: String
-    let image: String?
-    let price: Int?
-    let purchaseDate: String?
+    public let id: Int
+    public let name: String
+    public let image: String?
+    public let price: Int?
+    public let purchaseDate: String?
 }

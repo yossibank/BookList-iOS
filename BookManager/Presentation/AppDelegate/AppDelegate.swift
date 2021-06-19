@@ -2,20 +2,19 @@ import UIKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-    private let router: RouterProtocol = Router()
-
     var window: UIWindow?
 
     func application(
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
+        PackageConfig.setup()
 
-        FirebaseManager.shared.configure()
+        let initialVC = LoginViewController.instantiateInitialViewController()
+        initialVC.inject(routing: LoginRouting(), viewModel: LoginViewModel())
 
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = router.initialWindow(.login, type: .normal)
+        window?.rootViewController = initialVC
         window?.makeKeyAndVisible()
 
         return true
