@@ -158,17 +158,17 @@ private extension AddBookViewController {
             .sink { [weak self] state in
                 switch state {
                 case .standby:
-                    Logger.debug("standby")
+                    Logger.debug(message: "standby")
 
                 case .loading:
-                    Logger.debug("loading")
+                    Logger.debug(message: "loading")
 
                 case let .done(entity):
-                    Logger.debug("\(entity)")
+                    Logger.debug(message: "\(entity)")
                     self?.dismiss(animated: true)
 
                 case let .failed(error):
-                    Logger.debug("\(error.localizedDescription)")
+                    Logger.debug(message: "\(error.localizedDescription)")
                 }
             }
             .store(in: &cancellables)

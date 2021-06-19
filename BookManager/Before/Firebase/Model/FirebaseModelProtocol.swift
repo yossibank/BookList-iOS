@@ -1,5 +1,6 @@
 import FirebaseFirestore
 import FirebaseFirestoreSwift
+import Utility
 
 protocol FirebaseModelProtocol: Codable {
     func toDictionary() -> [String: Any]?
@@ -11,7 +12,7 @@ extension FirebaseModelProtocol {
         do {
             return try Firestore.Decoder().decode(Self.self, from: json)
         } catch {
-            Logger.error(error.localizedDescription)
+            Logger.debug(message: error.localizedDescription)
             return nil
         }
     }
@@ -20,7 +21,7 @@ extension FirebaseModelProtocol {
         do {
             return try Firestore.Encoder().encode(self)
         } catch {
-            Logger.error(error.localizedDescription)
+            Logger.debug(message: error.localizedDescription)
             return nil
         }
     }

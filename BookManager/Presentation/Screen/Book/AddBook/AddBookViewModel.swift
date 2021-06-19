@@ -34,11 +34,11 @@ extension AddBookViewModel {
         .sink { [weak self] completion in
             switch completion {
             case let .failure(error):
-                Logger.debug(error.localizedDescription)
+                Logger.debug(message: error.localizedDescription)
                 self?.state = .failed(.init(error: error))
 
             case .finished:
-                Logger.debug("finished")
+                Logger.debug(message: "finished")
             }
         } receiveValue: { [weak self] state in
             self?.state = .done(state)

@@ -1,5 +1,6 @@
 import KeychainAccess
 import Foundation
+import Utility
 
 final class KeychainManager {
 
@@ -27,7 +28,7 @@ final class KeychainManager {
         do {
             try keychain.set(token, key: Constant.token)
         } catch {
-            Logger.error("can't set \(Constant.token)")
+            Logger.debug(message: "can't set \(Constant.token)")
         }
     }
 
@@ -39,7 +40,7 @@ final class KeychainManager {
         do {
             try keychain.remove(Constant.token)
         } catch {
-            Logger.error("can't remove \(Constant.token)")
+            Logger.debug(message: "can't remove \(Constant.token)")
         }
     }
 }

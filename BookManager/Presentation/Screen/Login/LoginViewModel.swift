@@ -32,11 +32,11 @@ extension LoginViewModel {
 
                 switch completion {
                 case let .failure(error):
-                    Logger.debug(error.localizedDescription)
+                    Logger.debug(message: error.localizedDescription)
                     self.state = .failed(.init(error: error))
 
                 case .finished:
-                    Logger.debug("finished")
+                    Logger.debug(message: "finished")
                     FirebaseAuthManager.shared.signIn(
                         email: self.email,
                         password: self.password
