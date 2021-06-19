@@ -32,10 +32,10 @@ enum PasswordError: LocalizedError {
         switch self {
 
         case .empty:
-            return Resources.Strings.Validator.passwordEmpty
+            return Resources.Strings.Validation.notFilled
 
         case .tooShort:
-            return Resources.Strings.Validator.notFilledPassword
+            return Resources.Strings.Validation.notFilled
         }
     }
 }

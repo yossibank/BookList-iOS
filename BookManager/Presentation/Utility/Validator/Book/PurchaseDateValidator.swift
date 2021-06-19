@@ -25,7 +25,7 @@ enum PurchaseDateError: LocalizedError {
         switch self {
 
         case .empty:
-            return Resources.Strings.Validator.purchaseDateEmpty
+            return Resources.Strings.Validation.notFilled
         }
     }
 }

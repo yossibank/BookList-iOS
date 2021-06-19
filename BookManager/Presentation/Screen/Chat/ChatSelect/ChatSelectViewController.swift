@@ -94,7 +94,7 @@ extension ChatSelectViewController: UITableViewDelegate {
 extension ChatSelectViewController: NavigationBarConfiguration {
 
     var navigationTitle: String? {
-        Resources.Strings.App.talkList
+        Resources.Strings.Navigation.Title.talkList
     }
 
     var rightBarButton: [NavigationBarButton] {

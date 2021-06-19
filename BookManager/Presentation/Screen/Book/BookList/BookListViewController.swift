@@ -155,7 +155,7 @@ extension BookListViewController: BookListDataSourceDelegate {
 extension BookListViewController: NavigationBarConfiguration {
 
     var navigationTitle: String? {
-        Resources.Strings.App.bookList
+        Resources.Strings.Navigation.Title.bookList
     }
 
     var rightBarButton: [NavigationBarButton] {

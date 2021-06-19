@@ -94,7 +94,7 @@ extension ChatUserListViewController: UITableViewDelegate {
 extension ChatUserListViewController: NavigationBarConfiguration {
 
     var navigationTitle: String? {
-        Resources.Strings.App.selectUser
+        Resources.Strings.General.selectUser
     }
 
     var rightBarButton: [NavigationBarButton] {

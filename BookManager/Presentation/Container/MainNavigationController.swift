@@ -3,7 +3,7 @@ import UIKit
 final class MainNavigationController: UINavigationController {
 
     private let logoutItem: UIBarButtonItem = UIBarButtonItem(
-        image: Resources.Images.General.logout?.withRenderingMode(.alwaysOriginal),
+        image: Resources.Images.Navigation.logout.withRenderingMode(.alwaysOriginal),
         style: .plain,
         target: nil,
         action: nil
@@ -24,7 +24,7 @@ final class MainNavigationController: UINavigationController {
     )
 
     private let addUserItem: UIBarButtonItem = UIBarButtonItem(
-        image: Resources.Images.Chat.addChatUser?.withRenderingMode(.alwaysOriginal),
+        image: Resources.Images.Navigation.addUser.withRenderingMode(.alwaysOriginal),
         style: .plain,
         target: nil,
         action: nil

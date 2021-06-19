@@ -30,10 +30,10 @@ enum TitleError: LocalizedError {
         switch self {
 
         case .empty:
-            return Resources.Strings.Validator.titleEmpty
+            return Resources.Strings.Validation.notFilled
 
         case .longer:
-            return Resources.Strings.Validator.notLognerTitleText
+            return Resources.Strings.Validation.notLongerTitleText
         }
     }
 }

@@ -9,6 +9,6 @@ struct LogoutRequest: BaseRequest {
     var method: HttpMethod { .delete }
 
     var headerFields: [String: String] {
-        [Resources.Strings.API.authorization: KeychainManager.shared.getToken() ?? .blank]
+        ["Authorization": KeychainManager.shared.getToken() ?? .blank]
     }
 }

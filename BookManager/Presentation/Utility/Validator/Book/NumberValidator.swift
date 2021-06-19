@@ -36,10 +36,10 @@ enum NumberError: LocalizedError {
         switch self {
 
         case .empty:
-            return Resources.Strings.Validator.priceEmpty
+            return Resources.Strings.Validation.notFilled
 
         case .format:
-            return Resources.Strings.Validator.onlyNumber
+            return Resources.Strings.Validation.onlyInputNumber
         }
     }
 }
