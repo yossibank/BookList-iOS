@@ -148,20 +148,20 @@ private extension SignupViewController {
 
     func bindViewModel() {
         viewModel.$state
-            .sink { state in
+            .sink { [weak self] state in
                 switch state {
                 case .standby:
-                    Logger.debug("standby")
+                    self?.loadingIndicator.stopAnimating()
 
                 case .loading:
-                    Logger.debug("loading")
+                    self?.loadingIndicator.startAnimating()
 
                 case let .done(entities):
-                    Logger.debug("\(entities)")
-                    self.routing.showHomeScreen()
+                    self?.loadingIndicator.stopAnimating()
+                    self?.routing.showHomeScreen()
 
                 case let .failed(error):
-                    Logger.debug("\(error.localizedDescription)")
+                    self?.loadingIndicator.stopAnimating()
                 }
             }
             .store(in: &cancellables)

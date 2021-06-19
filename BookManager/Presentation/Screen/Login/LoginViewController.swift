@@ -108,20 +108,20 @@ private extension LoginViewController {
     func bindViewModel() {
         viewModel.$state
             .receive(on: DispatchQueue.main)
-            .sink { state in
+            .sink { [weak self] state in
                 switch state {
                 case .standby:
-                    Logger.debug("standby")
+                    self?.loadingIndicator.stopAnimating()
 
                 case .loading:
-                    Logger.debug("loading")
+                    self?.loadingIndicator.startAnimating()
 
-                case let .done(entities):
-                    Logger.debug("\(entities)")
-                    self.routing.showHomeScreen()
+                case .done:
+                    self?.loadingIndicator.stopAnimating()
+                    self?.routing.showHomeScreen()
 
-                case let .failed(error):
-                    Logger.debug("\(error.localizedDescription)")
+                case .failed:
+                    self?.loadingIndicator.stopAnimating()
                 }
             }
             .store(in: &cancellables)

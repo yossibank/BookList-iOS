@@ -993,9 +993,9 @@
 			children = (
 				78CF3AED25ABF80700ADBB60 /* View */,
 				78CC0ED4267DBE3D003489E1 /* BookListRouting.swift */,
-				78CF3B0625AC0E3500ADBB60 /* BookListViewModel.swift */,
 				78CF3B3425AC48FD00ADBB60 /* BookListDataSource.swift */,
 				78CF3AF225ABF82900ADBB60 /* BookListViewController.swift */,
+				78CF3B0625AC0E3500ADBB60 /* BookListViewModel.swift */,
 				78CF3AEE25ABF81400ADBB60 /* BookListViewController.storyboard */,
 			);
 			path = BookList;
