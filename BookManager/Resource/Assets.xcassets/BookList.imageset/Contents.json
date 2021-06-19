@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Favorite.png",
+      "filename" : "BookList.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Favorite-1.png",
+      "filename" : "BookList-1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Favorite-2.png",
+      "filename" : "BookList-2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

@@ -19,8 +19,8 @@ final class SignupViewController: UIViewController {
     private var isSecureCheck: Bool = false {
         didSet {
             let image = isSecureCheck
-                ? Resources.Images.Account.checkInBox
-                : Resources.Images.Account.checkOffBox
+                ? Resources.Images.App.check
+                : Resources.Images.App.nonCheck
 
             secureButton.setImage(image, for: .normal)
 

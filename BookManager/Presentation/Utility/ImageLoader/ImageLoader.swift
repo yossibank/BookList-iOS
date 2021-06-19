@@ -12,7 +12,7 @@ final class ImageLoader {
         URLCache.shared.diskCapacity = 200 * (1000 * 1000)
     }
 
-    static var noImage = Resources.Images.General.noImage
+    static var noImage = Resources.Images.App.noImage
 
     static let shared = ImageLoader()
 
@@ -82,9 +82,7 @@ final class ImageLoader {
 
         guard let url = imageUrl else {
             self.finish(immediately: immediatery) {
-                if let noImage = Self.noImage {
-                    completion((noImage, true))
-                }
+                completion((Self.noImage, true))
             }
             return
         }
@@ -115,9 +113,7 @@ final class ImageLoader {
                 Logger.error("finish image loading, but error occur, url: \(url.absoluteString), error: \(error)")
 
                 self.finish(immediately: immediatery) {
-                    if let noImage = Self.noImage {
-                        completion((image: noImage, isCachedOnMemoryOrDisk: false))
-                    }
+                    completion((image: Self.noImage, isCachedOnMemoryOrDisk: false))
                 }
                 return
             }
@@ -126,9 +122,7 @@ final class ImageLoader {
                   let image = UIImage(data: data)
             else {
                 self.finish(immediately: immediatery) {
-                    if let noImage = Self.noImage {
-                        completion((image: noImage, isCachedOnMemoryOrDisk: false))
-                    }
+                    completion((image: Self.noImage, isCachedOnMemoryOrDisk: false))
                 }
                 return
             }

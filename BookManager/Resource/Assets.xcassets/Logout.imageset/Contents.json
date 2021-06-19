@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "ログアウト・サインアウトのアイコン素材 3-3.png",
+      "filename" : "Logout.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "ログアウト・サインアウトのアイコン素材 3-4.png",
+      "filename" : "Logout-1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "ログアウト・サインアウトのアイコン素材 3.png",
+      "filename" : "Logout-2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

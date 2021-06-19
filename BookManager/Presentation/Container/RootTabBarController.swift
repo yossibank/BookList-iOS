@@ -43,13 +43,13 @@ enum Tabs: Int, CaseIterable {
     private var image: UIImage? {
         switch self {
         case .bookList:
-            return Resources.Images.Home.bookList
+            return Resources.Images.TabBar.bookList
 
         case .wishList:
-            return Resources.Images.Home.wishList
+            return Resources.Images.TabBar.wishList
 
         case .chatList:
-            return Resources.Images.Home.chat
+            return Resources.Images.TabBar.chat
         }
     }
 
