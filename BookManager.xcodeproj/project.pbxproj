@@ -115,6 +115,7 @@
 		78D18A88265E251500396D19 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 78D18A87265E251500396D19 /* GoogleService-Info.plist */; };
 		78D3951525CE2F1600F1E157 /* AccountValidationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D3951425CE2F1600F1E157 /* AccountValidationTests.swift */; };
 		78DC0BA2267B92F10085F5E7 /* CombineCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 78DC0BA1267B92F10085F5E7 /* CombineCocoa */; };
+		78DC0E4E267F4B710083EBC0 /* IndicatorStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DC0E4D267F4B710083EBC0 /* IndicatorStyle.swift */; };
 		78DE1D6725BD423A00A2C0F2 /* WishListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DE1D6625BD423A00A2C0F2 /* WishListViewController.swift */; };
 		78DE1D6D25BD424800A2C0F2 /* WishListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78DE1D6C25BD424800A2C0F2 /* WishListViewController.storyboard */; };
 		78DEE7B525AAD4D500219963 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 78DEE7B425AAD4D500219963 /* Localizable.strings */; };
@@ -264,6 +265,7 @@
 		78CF3B3425AC48FD00ADBB60 /* BookListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListDataSource.swift; sourceTree = "<group>"; };
 		78D18A87265E251500396D19 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		78D3951425CE2F1600F1E157 /* AccountValidationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountValidationTests.swift; sourceTree = "<group>"; };
+		78DC0E4D267F4B710083EBC0 /* IndicatorStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorStyle.swift; sourceTree = "<group>"; };
 		78DE1D6625BD423A00A2C0F2 /* WishListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListViewController.swift; sourceTree = "<group>"; };
 		78DE1D6C25BD424800A2C0F2 /* WishListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WishListViewController.storyboard; sourceTree = "<group>"; };
 		78DEE7B425AAD4D500219963 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
@@ -524,9 +526,10 @@
 		78752AA7267EF010000B87AC /* Component */ = {
 			isa = PBXGroup;
 			children = (
-				78752AA8267EF0D0000B87AC /* TextFieldStyle.swift */,
-				78752AAE267EF412000B87AC /* LabelStyle.swift */,
 				78752AAA267EF0D9000B87AC /* ButtonStyle.swift */,
+				78752AAE267EF412000B87AC /* LabelStyle.swift */,
+				78DC0E4D267F4B710083EBC0 /* IndicatorStyle.swift */,
+				78752AA8267EF0D0000B87AC /* TextFieldStyle.swift */,
 				78752AAC267EF39D000B87AC /* StackViewStyle.swift */,
 			);
 			path = Component;
@@ -1060,6 +1063,7 @@
 				78C61C2C25A1716800DC78A6 /* String+Util.swift in Sources */,
 				782311FE259C0D9200D9E723 /* SignupViewController.swift in Sources */,
 				78772B4E25B3DEBD00E6493E /* Array+Util.swift in Sources */,
+				78DC0E4E267F4B710083EBC0 /* IndicatorStyle.swift in Sources */,
 				784E138225B2F555008FD947 /* NumberValidator.swift in Sources */,
 				78752AAD267EF39D000B87AC /* StackViewStyle.swift in Sources */,
 				78FE8CD4267B74130006612E /* Package.swift in Sources */,
@@ -1272,6 +1276,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TVOS_DEPLOYMENT_TARGET = 13.0;
 			};
 			name = Debug;
 		};
@@ -1293,6 +1298,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TVOS_DEPLOYMENT_TARGET = 13.0;
 			};
 			name = Release;
 		};

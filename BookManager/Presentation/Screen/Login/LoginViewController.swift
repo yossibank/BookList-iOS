@@ -22,12 +22,13 @@ final class LoginViewController: UIViewController {
 
     private let emailTextField: UITextField = .init(
         placeholder: Resources.Strings.General.mailAddress,
+        keyboardType: .emailAddress,
         style: .borderBottomStyle
     )
 
     private let passwordTextField: UITextField = .init(
         placeholder: Resources.Strings.General.password,
-        style: .borderBottomStyle
+        style: .securePassword
     )
 
     private let secureStackView: UIStackView = .init(
@@ -57,7 +58,7 @@ final class LoginViewController: UIViewController {
     )
 
     private let loadingIndicator: UIActivityIndicatorView = .init(
-        style: .large
+        style: .largeStyle
     )
 
     private var cancellables: Set<AnyCancellable> = []
@@ -124,6 +125,7 @@ private extension LoginViewController {
             stackView.addArrangedSubview($0)
         }
 
+        view.addSubview(loadingIndicator)
         view.addSubview(stackView)
     }
 
@@ -173,6 +175,11 @@ private extension LoginViewController {
             $0.centerY == view.centerYAnchor
             $0.leading.equal(to: view.leadingAnchor, offsetBy: 48)
             $0.trailing.equal(to: view.trailingAnchor, offsetBy: -48)
+        }
+
+        self.loadingIndicator.layout {
+            $0.centerX == view.centerXAnchor
+            $0.centerY == view.centerYAnchor
         }
 
         [emailTextField, passwordTextField].forEach {
