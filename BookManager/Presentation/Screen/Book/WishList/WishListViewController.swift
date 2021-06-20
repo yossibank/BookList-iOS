@@ -27,7 +27,6 @@ extension WishListViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
-        sendScreenView()
     }
 }
 
@@ -79,12 +78,5 @@ extension WishListViewController: NavigationBarConfiguration {
 
     var navigationTitle: String? {
         Resources.Strings.Navigation.Title.bookEdit
-    }
-}
-
-extension WishListViewController: AnalyticsConfiguration {
-
-    var screenName: AnalyticsScreenName? {
-        .wishlist
     }
 }

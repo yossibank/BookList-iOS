@@ -49,7 +49,6 @@ extension LoginViewController {
         setupTextField()
         setupButton()
         bindViewModel()
-        sendScreenView()
     }
 
     override func touchesBegan(
@@ -164,14 +163,5 @@ extension LoginViewController: KeyboardDelegate {
 
     func keyboardDismiss(_ height: CGFloat) {
         view.frame.origin.y != 0 ? (view.frame.origin.y = 0) : ()
-    }
-}
-
-// MARK: - Protocol
-
-extension LoginViewController: AnalyticsConfiguration {
-
-    var screenName: AnalyticsScreenName? {
-        .login
     }
 }

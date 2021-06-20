@@ -108,9 +108,6 @@
 		78CF3AF925ABF85D00ADBB60 /* BookListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78CF3AF725ABF85D00ADBB60 /* BookListTableViewCell.xib */; };
 		78CF3B0725AC0E3500ADBB60 /* BookListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CF3B0625AC0E3500ADBB60 /* BookListViewModel.swift */; };
 		78CF3B3525AC48FD00ADBB60 /* BookListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CF3B3425AC48FD00ADBB60 /* BookListDataSource.swift */; };
-		78D17C9225C501F700793310 /* FireBaseAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D17C9125C501F700793310 /* FireBaseAnalytics.swift */; };
-		78D17C9825C502A800793310 /* AnalyticsCategoriesAndEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D17C9725C502A800793310 /* AnalyticsCategoriesAndEvents.swift */; };
-		78D17C9C25C505B400793310 /* AnalyticsConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D17C9B25C505B400793310 /* AnalyticsConfiguration.swift */; };
 		78D18A88265E251500396D19 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 78D18A87265E251500396D19 /* GoogleService-Info.plist */; };
 		78D3951525CE2F1600F1E157 /* AccountValidationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D3951425CE2F1600F1E157 /* AccountValidationTests.swift */; };
 		78DC0BA2267B92F10085F5E7 /* CombineCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 78DC0BA1267B92F10085F5E7 /* CombineCocoa */; };
@@ -126,8 +123,7 @@
 		78E60A0025AAAEAC0041B3D0 /* ObservableType+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E609FF25AAAEAC0041B3D0 /* ObservableType+Extension.swift */; };
 		78E80CA625CE4402006580A2 /* BookValidationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E80CA525CE4402006580A2 /* BookValidationTests.swift */; };
 		78EB164F267620CE00777F32 /* APIKit in Frameworks */ = {isa = PBXBuildFile; productRef = 78EB164E267620CE00777F32 /* APIKit */; };
-		78EC97CB25F491E4007E80FD /* MainNavigationController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78EC97CA25F491E4007E80FD /* MainNavigationController.storyboard */; };
-		78EC97CE25F4923F007E80FD /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78EC97CD25F4923F007E80FD /* MainNavigationController.swift */; };
+		78EC97CE25F4923F007E80FD /* RootNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78EC97CD25F4923F007E80FD /* RootNavigationController.swift */; };
 		78ED505725EB5C8B0045089C /* FirebaseStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78ED505625EB5C8B0045089C /* FirebaseStorageManager.swift */; };
 		78F940E6259D7E42007C972A /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F940E5259D7E42007C972A /* Router.swift */; };
 		78F940EA259D7EEF007C972A /* ViewControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F940E9259D7EEF007C972A /* ViewControllers.swift */; };
@@ -258,9 +254,6 @@
 		78CF3AF725ABF85D00ADBB60 /* BookListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookListTableViewCell.xib; sourceTree = "<group>"; };
 		78CF3B0625AC0E3500ADBB60 /* BookListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListViewModel.swift; sourceTree = "<group>"; };
 		78CF3B3425AC48FD00ADBB60 /* BookListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListDataSource.swift; sourceTree = "<group>"; };
-		78D17C9125C501F700793310 /* FireBaseAnalytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseAnalytics.swift; sourceTree = "<group>"; };
-		78D17C9725C502A800793310 /* AnalyticsCategoriesAndEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsCategoriesAndEvents.swift; sourceTree = "<group>"; };
-		78D17C9B25C505B400793310 /* AnalyticsConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsConfiguration.swift; sourceTree = "<group>"; };
 		78D18A87265E251500396D19 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		78D3951425CE2F1600F1E157 /* AccountValidationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountValidationTests.swift; sourceTree = "<group>"; };
 		78DE1D6625BD423A00A2C0F2 /* WishListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListViewController.swift; sourceTree = "<group>"; };
@@ -275,8 +268,7 @@
 		78E609FF25AAAEAC0041B3D0 /* ObservableType+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ObservableType+Extension.swift"; sourceTree = "<group>"; };
 		78E80CA525CE4402006580A2 /* BookValidationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookValidationTests.swift; sourceTree = "<group>"; };
 		78EB164D2676201C00777F32 /* APIKit */ = {isa = PBXFileReference; lastKnownFileType = folder; path = APIKit; sourceTree = "<group>"; };
-		78EC97CA25F491E4007E80FD /* MainNavigationController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainNavigationController.storyboard; sourceTree = "<group>"; };
-		78EC97CD25F4923F007E80FD /* MainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
+		78EC97CD25F4923F007E80FD /* RootNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootNavigationController.swift; sourceTree = "<group>"; };
 		78ED505625EB5C8B0045089C /* FirebaseStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStorageManager.swift; sourceTree = "<group>"; };
 		78F940E5259D7E42007C972A /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		78F940E9259D7EEF007C972A /* ViewControllers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllers.swift; sourceTree = "<group>"; };
@@ -434,7 +426,6 @@
 		782572A625F4B29B007962D0 /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
-				782572AC25F4B2FE007962D0 /* NavigationBarConfigration.swift */,
 				78E609F025AAAA530041B3D0 /* Validator+Protocol.swift */,
 			);
 			path = Protocol;
@@ -640,7 +631,6 @@
 			children = (
 				78FE8CD5267B76750006612E /* FirebaseProvider.swift */,
 				78B2A16C267B8A6100D9EA0E /* LoadingState.swift */,
-				78D17C9025C501A300793310 /* Analytics */,
 				78C61C2A25A1714B00DC78A6 /* AppUtil */,
 				7892EF48259C539B006F7315 /* IBDesignable */,
 				78997EE3259C4C4D0076FF97 /* Extension */,
@@ -717,8 +707,8 @@
 		78B2A168267B863000D9EA0E /* Container */ = {
 			isa = PBXGroup;
 			children = (
-				78EC97CD25F4923F007E80FD /* MainNavigationController.swift */,
-				78EC97CA25F491E4007E80FD /* MainNavigationController.storyboard */,
+				782572AC25F4B2FE007962D0 /* NavigationBarConfigration.swift */,
+				78EC97CD25F4923F007E80FD /* RootNavigationController.swift */,
 				7873D27B267E1046007F7B31 /* RootTabBarController.swift */,
 			);
 			path = Container;
@@ -792,16 +782,6 @@
 				784B18EE25BD48F80071C32E /* WishListTableViewCell.xib */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		78D17C9025C501A300793310 /* Analytics */ = {
-			isa = PBXGroup;
-			children = (
-				78D17C9125C501F700793310 /* FireBaseAnalytics.swift */,
-				78D17C9B25C505B400793310 /* AnalyticsConfiguration.swift */,
-				78D17C9725C502A800793310 /* AnalyticsCategoriesAndEvents.swift */,
-			);
-			path = Analytics;
 			sourceTree = "<group>";
 		};
 		78DE1D6525BD41D100A2C0F2 /* WishList */ = {
@@ -979,7 +959,6 @@
 				7805908525F48A82002B5296 /* ChatUserListViewController.storyboard in Resources */,
 				78987B38259C8802008311DC /* LoginViewController.storyboard in Resources */,
 				78421CE125E9273500950F62 /* KeyboardAccessoryView.xib in Resources */,
-				78EC97CB25F491E4007E80FD /* MainNavigationController.storyboard in Resources */,
 				78CF3AEF25ABF81400ADBB60 /* BookListViewController.storyboard in Resources */,
 				7805908F25F48ADA002B5296 /* ChatUserListTableViewCell.xib in Resources */,
 				78CF3AF925ABF85D00ADBB60 /* BookListTableViewCell.xib in Resources */,
@@ -1031,11 +1010,9 @@
 				785A1AB725A9A369005E8A4B /* SignupViewModel.swift in Sources */,
 				7873D27C267E1046007F7B31 /* RootTabBarController.swift in Sources */,
 				7826A73D25F7A885006F23AD /* ChatUserListViewModel.swift in Sources */,
-				78D17C9225C501F700793310 /* FireBaseAnalytics.swift in Sources */,
 				7805908E25F48ADA002B5296 /* ChatUserListTableViewCell.swift in Sources */,
 				7873D27A267E0C65007F7B31 /* WishListRouting.swift in Sources */,
 				78CB209225EA48EB00D4E22D /* FirebaseManager.swift in Sources */,
-				78D17C9C25C505B400793310 /* AnalyticsConfiguration.swift in Sources */,
 				78FE8CDB267B79720006612E /* Strings.swift in Sources */,
 				78FE8CD2267B740C0006612E /* API.swift in Sources */,
 				784B18F625BD4D5F0071C32E /* WishListViewModel.swift in Sources */,
@@ -1080,7 +1057,6 @@
 				78DEE7BD25AAE3AD00219963 /* UIViewController+Extension.swift in Sources */,
 				7833D0C3260229E4005DFB79 /* ChatSelectDataSource.swift in Sources */,
 				78DEE7B925AADFC600219963 /* UIAlertController+Extension.swift in Sources */,
-				78D17C9825C502A800793310 /* AnalyticsCategoriesAndEvents.swift in Sources */,
 				782311FA259C0D9200D9E723 /* AppDelegate.swift in Sources */,
 				78B2A16D267B8A6100D9EA0E /* LoadingState.swift in Sources */,
 				78C7F3A725E525C5005E9E2B /* ChatSelectViewController.swift in Sources */,
@@ -1091,7 +1067,7 @@
 				7862C15425E2596D00F1645A /* FirebaseModelProtocol.swift in Sources */,
 				7820E0AB25AEFC1200A5E6D8 /* ImageLoader.swift in Sources */,
 				78CF3B3525AC48FD00ADBB60 /* BookListDataSource.swift in Sources */,
-				78EC97CE25F4923F007E80FD /* MainNavigationController.swift in Sources */,
+				78EC97CE25F4923F007E80FD /* RootNavigationController.swift in Sources */,
 				78997EE5259C4C5E0076FF97 /* UIView-IBInspectable-Extensions.swift in Sources */,
 				78299CEE25E69E15001868FB /* OtherMessageBalloonView.swift in Sources */,
 				78B2A165267B7F7100D9EA0E /* ViewModel.swift in Sources */,

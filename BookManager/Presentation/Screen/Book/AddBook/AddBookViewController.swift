@@ -74,7 +74,6 @@ extension AddBookViewController {
         listenerKeyboard(keyboardNotifier: keyboardNotifier)
         setupTextField()
         setupButton()
-        sendScreenView()
     }
 
     override func touchesBegan(
@@ -242,12 +241,5 @@ extension AddBookViewController: NavigationBarConfiguration {
 
     var rightBarButton: [NavigationBarButton] {
         [.done]
-    }
-}
-
-extension AddBookViewController: AnalyticsConfiguration {
-
-    var screenName: AnalyticsScreenName? {
-        .addBook
     }
 }

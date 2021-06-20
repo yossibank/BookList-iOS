@@ -8,7 +8,7 @@ extension BookListRouting {
 
     func showAddBookScreen() {
         let addBookVC = Resources.ViewControllers.App.addBook()
-        let navVC = viewController?.navigationController as? MainNavigationController
+        let navVC = viewController?.navigationController as? RootNavigationController
         navVC?.setupNavigationBar(
             forVC: addBookVC,
             config: addBookVC as NavigationBarConfiguration
@@ -19,7 +19,7 @@ extension BookListRouting {
 
     func showEditBookScreen(id: Int) {
         let editBookVC = Resources.ViewControllers.App.editBook(id: id)
-        let navVC = viewController?.navigationController as? MainNavigationController
+        let navVC = viewController?.navigationController as? RootNavigationController
         navVC?.setupNavigationBar(
             forVC: editBookVC,
             config: editBookVC as NavigationBarConfiguration

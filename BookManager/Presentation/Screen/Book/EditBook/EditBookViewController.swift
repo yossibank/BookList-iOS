@@ -78,7 +78,6 @@ extension EditBookViewController {
         setupTextField()
         setupButton()
         bindViewModel()
-        sendScreenView()
     }
 
     override func touchesBegan(
@@ -247,12 +246,5 @@ extension EditBookViewController: NavigationBarConfiguration {
 
     var rightBarButton: [NavigationBarButton] {
         [.done]
-    }
-}
-
-extension EditBookViewController: AnalyticsConfiguration {
-
-    var screenName: AnalyticsScreenName? {
-        .editBook
     }
 }

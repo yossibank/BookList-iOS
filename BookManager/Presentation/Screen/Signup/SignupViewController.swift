@@ -57,7 +57,6 @@ extension SignupViewController {
         setupTextField()
         setupButton()
         bindViewModel()
-        sendScreenView()
     }
 
     override func touchesBegan(
@@ -228,12 +227,5 @@ extension SignupViewController: UIImagePickerControllerDelegate, UINavigationCon
 
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         routing.dismiss()
-    }
-}
-
-extension SignupViewController: AnalyticsConfiguration {
-
-    var screenName: AnalyticsScreenName? {
-        .signup
     }
 }
