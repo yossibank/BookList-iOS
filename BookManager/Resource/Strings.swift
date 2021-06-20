@@ -15,6 +15,12 @@ struct StringResources {
         @Localizable static var nickName = "nick_name"
     }
 
+    struct Account {
+        @Localizable static var login = "login"
+        @Localizable static var createAccount = "create_account"
+        @Localizable static var showPassword = "show_password"
+    }
+
     struct Book {
         @Localizable static var title = "title"
         @Localizable static var price = "price"

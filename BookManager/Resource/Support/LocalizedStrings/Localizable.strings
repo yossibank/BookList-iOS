@@ -12,6 +12,10 @@
 "select_user" = "ユーザー選択";
 "nick_name" = "ニックネーム";
 
+// MARK: - アカウント関連
+"login" = "ログイン";
+"create_account" = "アカウント作成";
+"show_password" = "パスワードを表示する";
 
 // MARK: - 書籍関連
 "title" = "タイトル";

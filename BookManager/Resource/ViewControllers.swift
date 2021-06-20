@@ -21,7 +21,7 @@ extension Resources {
             }
 
             func login() -> LoginViewController {
-                let vc = LoginViewController.instantiateInitialViewController()
+                let vc = LoginViewController()
                 vc.inject(routing: LoginRouting(), viewModel: LoginViewModel())
                 return vc
             }

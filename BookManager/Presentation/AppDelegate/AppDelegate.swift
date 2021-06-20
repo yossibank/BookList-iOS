@@ -10,11 +10,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     ) -> Bool {
         PackageConfig.setup()
 
-        let initialVC = LoginViewController.instantiateInitialViewController()
-        initialVC.inject(routing: LoginRouting(), viewModel: LoginViewModel())
-
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = initialVC
+        window?.rootViewController = Resources.ViewControllers.App.login()
         window?.makeKeyAndVisible()
 
         return true

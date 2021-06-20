@@ -15,6 +15,51 @@ final class LoginViewController: UIViewController {
     var viewModel: VM!
     var keyboardNotifier: KeyboardNotifier = KeyboardNotifier()
 
+    private let stackView = UIStackView(
+        style: .verticalStyle,
+        spacing: 32
+    )
+
+    private let emailTextField: UITextField = .init(
+        placeholder: Resources.Strings.General.mailAddress,
+        style: .borderBottomStyle
+    )
+
+    private let passwordTextField: UITextField = .init(
+        placeholder: Resources.Strings.General.password,
+        style: .borderBottomStyle
+    )
+
+    private let secureStackView: UIStackView = .init(
+        style: .horizontalStyle,
+        spacing: 0
+    )
+
+    private let secureButton: UIButton = .init(
+        image: Resources.Images.App.nonCheck
+    )
+
+    private let secureLabel: UILabel = .init(
+        text: Resources.Strings.Account.showPassword,
+        style:  .fontBoldStyle
+    )
+
+    private let loginButton: UIButton = .init(
+        title: Resources.Strings.Account.login,
+        backgroundColor: .systemGreen,
+        style: .fontBoldStyle
+    )
+
+    private let signupButton: UIButton = .init(
+        title: Resources.Strings.Account.createAccount,
+        backgroundColor: .systemBlue,
+        style: .fontBoldStyle
+    )
+
+    private let loadingIndicator: UIActivityIndicatorView = .init(
+        style: .large
+    )
+
     private var cancellables: Set<AnyCancellable> = []
     private var isSecureCheck: Bool = false {
         didSet {
@@ -27,16 +72,6 @@ final class LoginViewController: UIViewController {
             passwordTextField.isSecureTextEntry = !isSecureCheck
         }
     }
-
-    @IBOutlet weak var stackView: UIStackView!
-    @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var secureButton: UIButton!
-    @IBOutlet weak var validateEmailLabel: UILabel!
-    @IBOutlet weak var validatePasswordLabel: UILabel!
-    @IBOutlet weak var loginButton: UIButton!
-    @IBOutlet weak var signupButton: UIButton!
-    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
 }
 
 // MARK: - override methods
@@ -46,8 +81,10 @@ extension LoginViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         listenerKeyboard(keyboardNotifier: keyboardNotifier)
+        setupView()
         setupTextField()
         setupButton()
+        setupLayout()
         bindViewModel()
     }
 
@@ -62,6 +99,33 @@ extension LoginViewController {
 // MARK: - private methods
 
 private extension LoginViewController {
+
+    func setupView() {
+        view.backgroundColor = .white
+
+        let secureStackViewList = [
+            secureButton,
+            secureLabel
+        ]
+
+        secureStackViewList.forEach {
+            secureStackView.addArrangedSubview($0)
+        }
+
+        let stackViewList = [
+            emailTextField,
+            passwordTextField,
+            secureStackView,
+            loginButton,
+            signupButton
+        ]
+
+        stackViewList.forEach {
+            stackView.addArrangedSubview($0)
+        }
+
+        view.addSubview(stackView)
+    }
 
     func setupTextField() {
         [emailTextField, passwordTextField].forEach {
@@ -104,6 +168,26 @@ private extension LoginViewController {
             .store(in: &cancellables)
     }
 
+    func setupLayout() {
+        stackView.layout {
+            $0.centerY == view.centerYAnchor
+            $0.leading.equal(to: view.leadingAnchor, offsetBy: 48)
+            $0.trailing.equal(to: view.trailingAnchor, offsetBy: -48)
+        }
+
+        [emailTextField, passwordTextField].forEach {
+            $0.layout {
+                $0.heightConstant == 30
+            }
+        }
+
+        [loginButton, signupButton].forEach {
+            $0.layout {
+                $0.heightConstant == 50
+            }
+        }
+    }
+
     func bindViewModel() {
         viewModel.$state
             .receive(on: DispatchQueue.main)
@@ -143,7 +227,7 @@ extension LoginViewController: UITextFieldDelegate {
         if currentTextFieldIndex + 1 == textFields.endIndex {
             textField.resignFirstResponder()
         } else {
-            textFields[currentTextFieldIndex + 1]?.becomeFirstResponder()
+            textFields[currentTextFieldIndex + 1].becomeFirstResponder()
         }
 
         return true
