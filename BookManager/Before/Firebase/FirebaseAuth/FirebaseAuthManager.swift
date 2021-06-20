@@ -1,8 +1,10 @@
 import FirebaseAuth
+import DomainKit
+import Utility
 
 final class FirebaseAuthManager {
 
-    typealias SignupUser = SignupResponse.User
+    typealias SignupUser = UserEntity
 
     static let shared = FirebaseAuthManager()
 
@@ -49,7 +51,7 @@ final class FirebaseAuthManager {
                 print("userがログインに失敗しました: \(error)")
             }
             if let user = user {
-                Logger.info("success signIn user: \(String(describing: user.user.email))")
+                Logger.debug(message: "success signIn user: \(String(describing: user.user.email))")
             }
         }
     }
@@ -59,7 +61,7 @@ final class FirebaseAuthManager {
             do {
                 try Auth.auth().signOut()
             } catch {
-                Logger.error("failed logout \(error.localizedDescription)")
+                Logger.debug(message: "failed logout \(error.localizedDescription)")
             }
         } else {
             return

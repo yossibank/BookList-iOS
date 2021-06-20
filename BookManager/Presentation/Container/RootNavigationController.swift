@@ -1,6 +1,6 @@
 import UIKit
 
-final class MainNavigationController: UINavigationController {
+final class RootNavigationController: UINavigationController {
 
     private let logoutItem: UIBarButtonItem = UIBarButtonItem(
         image: Resources.Images.Navigation.logout.withRenderingMode(.alwaysOriginal),
@@ -42,7 +42,7 @@ final class MainNavigationController: UINavigationController {
     }
 }
 
-extension MainNavigationController {
+extension RootNavigationController {
 
     func setupNavigationBar(
         forVC vc: UIViewController,

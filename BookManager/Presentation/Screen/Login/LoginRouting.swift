@@ -17,12 +17,9 @@ extension LoginRouting {
         }
     }
 
-    func showHomeScreen() {
-        let bookListVC = BookListViewController.instantiateInitialViewController()
-        bookListVC.inject(routing: BookListRouting(), viewModel: BookListViewModel())
-
-        let tc = RootTabBarController()
+    func showRootScreen() {
+        let tabVC = RootTabBarController()
         let window = UIApplication.shared.windows.first { $0.isKeyWindow }
-        window?.rootViewController = tc
+        window?.rootViewController = tabVC
     }
 }

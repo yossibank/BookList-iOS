@@ -79,7 +79,7 @@ enum Tabs: Int, CaseIterable {
             viewController = chatListVC
         }
 
-        let nc = MainNavigationController(rootViewController: viewController)
+        let nc = RootNavigationController(rootViewController: viewController)
         nc.setupNavigationBar(
             forVC: viewController,
             config: viewController as? NavigationBarConfiguration

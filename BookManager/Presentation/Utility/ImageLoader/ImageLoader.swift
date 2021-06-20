@@ -1,5 +1,6 @@
 import Foundation
 import UIKit
+import Utility
 
 final class ImageLoader {
 
@@ -110,7 +111,7 @@ final class ImageLoader {
             guard let self = self else { return }
 
             if let error = error {
-                Logger.error("finish image loading, but error occur, url: \(url.absoluteString), error: \(error)")
+                Logger.debug(message: "finish image loading, but error occur, url: \(url.absoluteString), error: \(error)")
 
                 self.finish(immediately: immediatery) {
                     completion((image: Self.noImage, isCachedOnMemoryOrDisk: false))

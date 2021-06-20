@@ -78,7 +78,6 @@ extension EditBookViewController {
         setupTextField()
         setupButton()
         bindViewModel()
-        sendScreenView()
     }
 
     override func touchesBegan(
@@ -162,17 +161,17 @@ private extension EditBookViewController {
             .sink { [weak self] state in
                 switch state {
                 case .standby:
-                    Logger.debug("standby")
+                    Logger.debug(message: "standby")
 
                 case .loading:
-                    Logger.debug("loading")
+                    Logger.debug(message: "loading")
 
                 case let .done(entity):
-                    Logger.debug("\(entity)")
+                    Logger.debug(message: "\(entity)")
                     self?.dismiss(animated: true)
 
                 case let .failed(error):
-                    Logger.debug("\(error.localizedDescription)")
+                    Logger.debug(message: "\(error.localizedDescription)")
                 }
             }
             .store(in: &cancellables)
@@ -247,12 +246,5 @@ extension EditBookViewController: NavigationBarConfiguration {
 
     var rightBarButton: [NavigationBarButton] {
         [.done]
-    }
-}
-
-extension EditBookViewController: AnalyticsConfiguration {
-
-    var screenName: AnalyticsScreenName? {
-        .editBook
     }
 }

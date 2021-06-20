@@ -31,7 +31,6 @@ extension BookListViewController {
         setupTableView()
         setupButton()
         bindViewModel()
-        sendScreenView()
     }
 }
 
@@ -160,12 +159,5 @@ extension BookListViewController: NavigationBarConfiguration {
 
     var rightBarButton: [NavigationBarButton] {
         [.addBook]
-    }
-}
-
-extension BookListViewController: AnalyticsConfiguration {
-
-    var screenName: AnalyticsScreenName? {
-        .booklist
     }
 }

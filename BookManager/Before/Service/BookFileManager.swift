@@ -1,4 +1,5 @@
 import Foundation
+import Utility
 
 final class BookFileManager {
 
@@ -28,7 +29,7 @@ final class BookFileManager {
         do {
             try data?.write(to: url)
         } catch {
-            Logger.error("couldn't write in file manager \(error.localizedDescription)")
+            Logger.debug(message: "couldn't write in file manager \(error.localizedDescription)")
         }
     }
 
@@ -47,7 +48,7 @@ final class BookFileManager {
         do {
             try fileManager.removeItem(at: url)
         } catch {
-            Logger.error("couldn't delete in file manager \(error.localizedDescription)")
+            Logger.debug(message: "couldn't delete in file manager \(error.localizedDescription)")
         }
     }
 
@@ -85,12 +86,12 @@ final class BookFileManager {
                         data.append(bookListCellData)
                     }
                 } catch {
-                    Logger.error("couldn't create json data \(error.localizedDescription)")
+                    Logger.debug(message: "couldn't create json data \(error.localizedDescription)")
                 }
             }
             return data
         } catch {
-            Logger.error("couldn't fetch in file manager \(error.localizedDescription)")
+            Logger.debug(message: "couldn't fetch in file manager \(error.localizedDescription)")
             return []
         }
     }
@@ -110,7 +111,7 @@ final class BookFileManager {
 
             return files.contains(path) ? true : false
         } catch {
-            Logger.error("couldn't fetch in file manager \(error.localizedDescription)")
+            Logger.debug(message: "couldn't fetch in file manager \(error.localizedDescription)")
             return false
         }
     }

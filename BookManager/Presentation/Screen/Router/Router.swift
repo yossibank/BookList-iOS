@@ -233,8 +233,8 @@ final class Router: RouterProtocol {
     ) {
         let vc = resolvedViewController
         let navVC =
-            from as? MainNavigationController ??
-            from.navigationController as? MainNavigationController
+            from as? RootNavigationController ??
+            from.navigationController as? RootNavigationController
 
         navVC?.setupNavigationBar(
             forVC: vc,
@@ -302,7 +302,7 @@ final class Router: RouterProtocol {
 
         if wrapInNavigationController {
 
-            let navVC = MainNavigationController.instantiateInitialViewController()
+            let navVC = RootNavigationController.instantiateInitialViewController()
 
             navVC.modalPresentationStyle = presentationStyle
             navVC.viewControllers = [vc]
@@ -366,7 +366,7 @@ final class Router: RouterProtocol {
             viewController = route.viewController()
 
         case .navigation:
-            let navVC = MainNavigationController.instantiateInitialViewController()
+            let navVC = RootNavigationController.instantiateInitialViewController()
             let vc = route.viewController()
 
             navVC.viewControllers.insert(vc, at: 0)

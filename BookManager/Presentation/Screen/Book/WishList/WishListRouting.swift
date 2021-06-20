@@ -7,10 +7,8 @@ final class WishListRouting: Routing {
 extension WishListRouting {
 
     func showEditBookScreen(id: Int) {
-        let editBookVC = EditBookViewController.instantiateInitialViewController()
-        editBookVC.inject(viewModel: EditBookViewModel(id: id))
-
-        let navVC = viewController?.navigationController as? MainNavigationController
+        let editBookVC = Resources.ViewControllers.App.editBook(id: id)
+        let navVC = viewController?.navigationController as? RootNavigationController
         navVC?.setupNavigationBar(
             forVC: editBookVC,
             config: editBookVC as NavigationBarConfiguration
