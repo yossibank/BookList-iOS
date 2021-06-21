@@ -15,7 +15,7 @@ extension Resources {
         struct AppControllers {
 
             func signup() -> SignupViewController {
-                let vc = SignupViewController.instantiateInitialViewController()
+                let vc = SignupViewController()
                 vc.inject(routing: SignupRouting(), viewModel: SignupViewModel())
                 return vc
             }

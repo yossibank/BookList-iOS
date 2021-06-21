@@ -14,7 +14,7 @@ final class LoginViewController: UIViewController {
     var routing: R! { didSet { self.routing.viewController = self } }
     var viewModel: VM!
 
-    private let mainStackView = UIStackView(
+    private let mainStackView: UIStackView = .init(
         style: .verticalStyle,
         spacing: 32
     )
@@ -96,9 +96,9 @@ extension LoginViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        setupLayout()
         setupTextField()
         setupButton()
-        setupLayout()
         bindViewModel()
     }
 
@@ -153,6 +153,36 @@ private extension LoginViewController {
         view.addSubview(mainStackView)
     }
 
+    func setupLayout() {
+        mainStackView.layout {
+            $0.centerY == view.centerYAnchor
+            $0.leading.equal(to: view.leadingAnchor, offsetBy: 48)
+            $0.trailing.equal(to: view.trailingAnchor, offsetBy: -48)
+        }
+
+        loadingIndicator.layout {
+            $0.centerX == view.centerXAnchor
+            $0.centerY == view.centerYAnchor
+        }
+
+        secureButton.layout {
+            $0.widthConstant == 15
+            $0.heightConstant == 15
+        }
+
+        [emailTextField, passwordTextField].forEach {
+            $0.layout {
+                $0.heightConstant == 30
+            }
+        }
+
+        [loginButton, signupButton].forEach {
+            $0.layout {
+                $0.heightConstant == 40
+            }
+        }
+    }
+
     func setupTextField() {
         [emailTextField, passwordTextField].forEach {
             $0?.delegate = self
@@ -192,36 +222,6 @@ private extension LoginViewController {
                 self?.viewModel.login()
             }
             .store(in: &cancellables)
-    }
-
-    func setupLayout() {
-        mainStackView.layout {
-            $0.centerY == view.centerYAnchor
-            $0.leading.equal(to: view.leadingAnchor, offsetBy: 48)
-            $0.trailing.equal(to: view.trailingAnchor, offsetBy: -48)
-        }
-
-        loadingIndicator.layout {
-            $0.centerX == view.centerXAnchor
-            $0.centerY == view.centerYAnchor
-        }
-
-        secureButton.layout {
-            $0.widthConstant == 15
-            $0.heightConstant == 15
-        }
-
-        [emailTextField, passwordTextField].forEach {
-            $0.layout {
-                $0.heightConstant == 30
-            }
-        }
-
-        [loginButton, signupButton].forEach {
-            $0.layout {
-                $0.heightConstant == 40
-            }
-        }
     }
 
     func bindViewModel() {
