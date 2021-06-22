@@ -87,7 +87,6 @@
 		78997EE5259C4C5E0076FF97 /* UIView-IBInspectable-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78997EE4259C4C5E0076FF97 /* UIView-IBInspectable-Extensions.swift */; };
 		78B29D0125B3124A00A7DC7F /* TitleValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B29D0025B3124A00A7DC7F /* TitleValidator.swift */; };
 		78B29D1C25B3310000A7DC7F /* EditBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B29D1B25B3310000A7DC7F /* EditBookViewController.swift */; };
-		78B29D2225B3311A00A7DC7F /* EditBookViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78B29D2125B3311A00A7DC7F /* EditBookViewController.storyboard */; };
 		78B2A163267B7F6B00D9EA0E /* Routing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B2A162267B7F6B00D9EA0E /* Routing.swift */; };
 		78B2A165267B7F7100D9EA0E /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B2A164267B7F7100D9EA0E /* ViewModel.swift */; };
 		78B2A167267B7F7900D9EA0E /* VCInjectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B2A166267B7F7900D9EA0E /* VCInjectable.swift */; };
@@ -237,7 +236,6 @@
 		78997EE4259C4C5E0076FF97 /* UIView-IBInspectable-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView-IBInspectable-Extensions.swift"; sourceTree = "<group>"; };
 		78B29D0025B3124A00A7DC7F /* TitleValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleValidator.swift; sourceTree = "<group>"; };
 		78B29D1B25B3310000A7DC7F /* EditBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBookViewController.swift; sourceTree = "<group>"; };
-		78B29D2125B3311A00A7DC7F /* EditBookViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditBookViewController.storyboard; sourceTree = "<group>"; };
 		78B2A162267B7F6B00D9EA0E /* Routing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routing.swift; sourceTree = "<group>"; };
 		78B2A164267B7F7100D9EA0E /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		78B2A166267B7F7900D9EA0E /* VCInjectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCInjectable.swift; sourceTree = "<group>"; };
@@ -699,7 +697,6 @@
 			children = (
 				78772B5325B3E48B00E6493E /* EditBookViewModel.swift */,
 				78B29D1B25B3310000A7DC7F /* EditBookViewController.swift */,
-				78B29D2125B3311A00A7DC7F /* EditBookViewController.storyboard */,
 			);
 			path = EditBook;
 			sourceTree = "<group>";
@@ -971,7 +968,6 @@
 				78524FCD25E533FA002AEF87 /* ChatRoomViewController.storyboard in Resources */,
 				78DE1D6D25BD424800A2C0F2 /* WishListViewController.storyboard in Resources */,
 				784B18F025BD48F80071C32E /* WishListTableViewCell.xib in Resources */,
-				78B29D2225B3311A00A7DC7F /* EditBookViewController.storyboard in Resources */,
 				78C7F3AB25E525E5005E9E2B /* ChatSelectViewController.storyboard in Resources */,
 				78B8A69125E54021005BCB16 /* OtherMessageTableViewCell.xib in Resources */,
 				78299CEA25E69D0D001868FB /* MyMessageTableViewCell.xib in Resources */,

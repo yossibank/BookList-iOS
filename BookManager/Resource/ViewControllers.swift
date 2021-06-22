@@ -39,7 +39,7 @@ extension Resources {
             }
 
             func editBook(id: Int) -> EditBookViewController {
-                let vc = EditBookViewController.instantiateInitialViewController()
+                let vc = EditBookViewController()
                 vc.inject(routing: NoRouting(), viewModel: EditBookViewModel(id: id))
                 return vc
             }

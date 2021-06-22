@@ -13,7 +13,6 @@ extension AddBookViewController: VCInjectable {
 final class AddBookViewController: UIViewController {
     var routing: NoRouting!
     var viewModel: VM!
-    var keyboardNotifier: KeyboardNotifier = KeyboardNotifier()
 
     private let mainStackView: UIStackView = .init(
         style: .verticalStyle,
@@ -120,7 +119,7 @@ extension AddBookViewController {
         setupLayout()
         setupTextField()
         setupButton()
-        listenerKeyboard(keyboardNotifier: keyboardNotifier)
+        bindViewModel()
     }
 
     override func touchesBegan(
@@ -290,23 +289,6 @@ extension AddBookViewController: UITextFieldDelegate {
         }
 
         return true
-    }
-}
-
-extension AddBookViewController: KeyboardDelegate {
-
-    func keyboardPresent(_ height: CGFloat) {
-        let displayHeight = view.frame.height - height
-        let bottomOffsetY = mainStackView.convert(
-            bookPurchaseDateTextField.frame,
-            to: self.view
-        ).maxY + 20 - displayHeight
-
-        view.frame.origin.y == 0 ? (view.frame.origin.y -= bottomOffsetY) : ()
-    }
-
-    func keyboardDismiss(_ height: CGFloat) {
-        view.frame.origin.y != 0 ? (view.frame.origin.y = 0) : ()
     }
 }
 
