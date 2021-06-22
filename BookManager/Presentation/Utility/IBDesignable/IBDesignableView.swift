@@ -13,20 +13,20 @@ class IBDesignableView: UIView {
         commonInit()
     }
 
-    required public init?(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         commonInit()
     }
 
     public init() {
         super.init(frame: CGRect.zero)
-        self.commonInit()
+        commonInit()
     }
 
     open func commonInit() {
         #if TARGET_INTERFACE_BUILDER
-        self.setNeedsLayout()
-        self.setNeedsDisplay()
+        setNeedsLayout()
+        setNeedsDisplay()
         #endif
     }
 }

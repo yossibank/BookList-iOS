@@ -1,4 +1,3 @@
-import Foundation
 import OSLog
 
 public struct Logger {
@@ -10,9 +9,9 @@ public struct Logger {
         function: String = #function,
         line: Int = #line
     ) {
-        self.doLog(
+        doLog(
             message: message,
-            osLog: self.osLog,
+            osLog: osLog,
             logType: .info,
             file: file,
             function: function,
@@ -26,9 +25,9 @@ public struct Logger {
         function: String = #function,
         line: Int = #line
     ) {
-        self.doLog(
+        doLog(
             message: message,
-            osLog: self.osLog,
+            osLog: osLog,
             logType: .debug,
             file: file,
             function: function,
@@ -42,9 +41,9 @@ public struct Logger {
         function: String = #function,
         line: Int = #line
     ) {
-        self.doLog(
+        doLog(
             message: message,
-            osLog: self.osLog,
+            osLog: osLog,
             logType: .error,
             file: file,
             function: function,
@@ -58,9 +57,9 @@ public struct Logger {
         function: String = #function,
         line: Int = #line
     ) {
-        self.doLog(
+        doLog(
             message: message,
-            osLog: self.osLog,
+            osLog: osLog,
             logType: .fault,
             file: file,
             function: function,
@@ -70,6 +69,7 @@ public struct Logger {
 }
 
 extension Logger {
+
     private static func doLog(
         message: String,
         osLog: OSLog,
@@ -93,22 +93,23 @@ extension Logger {
 }
 
 extension OSLogType: CustomStringConvertible {
+
     public var description: String {
         switch self {
-        case .info:
-            return "INFO"
+            case .info:
+                return "INFO"
 
-        case .debug:
-            return "DEBUG"
+            case .debug:
+                return "DEBUG"
 
-        case .error:
-            return "ERROR"
+            case .error:
+                return "ERROR"
 
-        case .fault:
-            return "FAULT"
+            case .fault:
+                return "FAULT"
 
-        default:
-            return "DEFAULT"
+            default:
+                return "DEFAULT"
         }
     }
 }

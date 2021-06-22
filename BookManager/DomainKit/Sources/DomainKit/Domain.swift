@@ -1,12 +1,13 @@
 import APIKit
-import Foundation
-import Utility
 
 public struct EmptyRepository {}
 
 public struct Domain {
+
     public struct Usecase {
+
         public struct Account {
+
             public static func Signup(
                 useTestData: Bool = false
             ) -> UsecaseImpl<Repos.Account.Signup, UserMapper> {
@@ -39,6 +40,7 @@ public struct Domain {
         }
 
         public struct Book {
+
             public static func FetchBookList(
                 useTestData: Bool = false
             ) -> UsecaseImpl<Repos.Book.Get, BookListMapper> {

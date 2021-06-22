@@ -7,8 +7,9 @@ enum PurchaseDateValidator: ValidatorProtocol {
     static func validate(
         _ value: String?
     ) -> ValidationResult<PurchaseDateError> {
-        guard let value = value,
-              !value.isEmpty
+        guard
+            let value = value,
+            !value.isEmpty
         else {
             return .invalid(.empty)
         }
@@ -24,8 +25,8 @@ enum PurchaseDateError: LocalizedError {
 
         switch self {
 
-        case .empty:
-            return Resources.Strings.Validation.notFilled
+            case .empty:
+                return Resources.Strings.Validation.notFilled
         }
     }
 }

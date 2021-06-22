@@ -6,11 +6,11 @@ protocol BookListCellDelegate: AnyObject {
 
 final class BookListTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var bookImageView: UIImageView!
-    @IBOutlet weak var bookTitleLabel: UILabel!
-    @IBOutlet weak var bookPriceLabel: UILabel!
-    @IBOutlet weak var bookPurchaseLabel: UILabel!
-    @IBOutlet weak var favoriteButton: UIButton! {
+    @IBOutlet var bookImageView: UIImageView!
+    @IBOutlet var bookTitleLabel: UILabel!
+    @IBOutlet var bookPriceLabel: UILabel!
+    @IBOutlet var bookPurchaseLabel: UILabel!
+    @IBOutlet var favoriteButton: UIButton! {
         didSet {
             favoriteButton.addTarget(
                 self,
@@ -35,7 +35,8 @@ final class BookListTableViewCell: UITableViewCell {
 
         if let purchaseDate = book.purchaseDate {
             if let purchaseDateFormat = Date.toConvertDate(purchaseDate, with: .yearToDayOfWeek) {
-                bookPurchaseLabel.text = purchaseDateFormat.toConvertString(with: .yearToDayOfWeekJapanese)
+                bookPurchaseLabel.text = purchaseDateFormat
+                    .toConvertString(with: .yearToDayOfWeekJapanese)
             }
         }
 

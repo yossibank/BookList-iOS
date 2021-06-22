@@ -11,18 +11,12 @@ final class WishListDataSource: NSObject {
 
 extension WishListDataSource: UITableViewDataSource {
 
-    func tableView(
-        _ tableView: UITableView,
-        numberOfRowsInSection section: Int
-    ) -> Int {
+    func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
         guard let cellData = viewModel?.books else { return 0 }
         return cellData.count
     }
 
-    func tableView(
-        _ tableView: UITableView,
-        cellForRowAt indexPath: IndexPath
-    ) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cellData = viewModel?.books else {
             return UITableViewCell(style: .default, reuseIdentifier: nil)
         }

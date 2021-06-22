@@ -16,7 +16,7 @@ enum ValidationResult<E: Error> {
     }
 
     var errorDescription: String? {
-        if case .invalid(let error) = self {
+        if case let .invalid(error) = self {
             return error.localizedDescription
         }
         return nil

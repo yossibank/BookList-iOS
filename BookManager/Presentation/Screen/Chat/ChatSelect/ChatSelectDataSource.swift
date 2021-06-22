@@ -7,8 +7,8 @@ final class ChatSelectDataSource: NSObject {
 extension ChatSelectDataSource: UITableViewDataSource {
 
     func tableView(
-        _ tableView: UITableView,
-        numberOfRowsInSection section: Int
+        _: UITableView,
+        numberOfRowsInSection _: Int
     ) -> Int {
         roomList.count
     }

@@ -22,8 +22,8 @@ class IBDesignableTextField: UITextField {
 
     func commonInit() {
         #if TARGET_INTERFACE_BUIDLER
-        self.setNeedsLayout()
-        self.setNeedsDisplay()
+        setNeedsLayout()
+        setNeedsDisplay()
         #endif
     }
 }

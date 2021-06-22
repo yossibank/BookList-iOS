@@ -11,7 +11,7 @@ extension WishListViewController: VCInjectable {
 // MARK: - properties
 
 final class WishListViewController: UIViewController {
-    var routing: R! { didSet { self.routing.viewController = self } }
+    var routing: R! { didSet { routing.viewController = self } }
     var viewModel: VM!
 
     private let tableView: UITableView = .init(frame: .zero)

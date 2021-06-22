@@ -12,30 +12,24 @@ final class BookListDataSource: NSObject {
         self.viewModel = viewModel
     }
 
-    func updateCellDataList(book: BookViewData) {
+    func updateCellDataList(book _: BookViewData) {
 //        if let index = viewModel.bookList.firstIndex(where: { $0.id == book.id }) {
 //
 //        }
     }
 
-    func updateFavorite(index: Int, bookViewData: BookViewData) {
+    func updateFavorite(index _: Int, bookViewData _: BookViewData) {
 //        viewModel.bookList[index].isFavorite = !bookViewData.isFavorite
     }
 }
 
 extension BookListDataSource: UITableViewDataSource {
 
-    func tableView(
-        _ tableView: UITableView,
-        numberOfRowsInSection section: Int
-    ) -> Int {
+    func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
         viewModel.bookList.count
     }
 
-    func tableView(
-        _ tableView: UITableView,
-        cellForRowAt indexPath: IndexPath
-    ) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(
             withIdentifier: BookListTableViewCell.resourceName,
             for: indexPath

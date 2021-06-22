@@ -11,9 +11,8 @@ extension SignupViewController: VCInjectable {
 // MARK: - properties
 
 final class SignupViewController: UIViewController {
-    var routing: R! { didSet { self.routing.viewController = self } }
+    var routing: R! { didSet { routing.viewController = self } }
     var viewModel: VM!
-    var keyboardNotifier: KeyboardNotifier = KeyboardNotifier()
 
     private let mainStackView: UIStackView = .init(
         style: .verticalStyle,
@@ -145,8 +144,8 @@ extension SignupViewController {
     }
 
     override func touchesBegan(
-        _ touches: Set<UITouch>,
-        with event: UIEvent?
+        _: Set<UITouch>,
+        with _: UIEvent?
     ) {
         view.endEditing(true)
     }
@@ -240,10 +239,11 @@ private extension SignupViewController {
             $0.heightConstant == 15
         }
 
-        [userNameTextField,
-         emailTextField,
-         passwordTextField,
-         passwordConfirmationTextField
+        [
+            userNameTextField,
+            emailTextField,
+            passwordTextField,
+            passwordConfirmationTextField
         ].forEach {
             $0.layout {
                 $0.heightConstant == 30
@@ -335,18 +335,18 @@ private extension SignupViewController {
         viewModel.$state
             .sink { [weak self] state in
                 switch state {
-                case .standby:
-                    self?.loadingIndicator.stopAnimating()
+                    case .standby:
+                        self?.loadingIndicator.stopAnimating()
 
-                case .loading:
-                    self?.loadingIndicator.startAnimating()
+                    case .loading:
+                        self?.loadingIndicator.startAnimating()
 
-                case .done:
-                    self?.loadingIndicator.stopAnimating()
-                    self?.routing.showRootScreen()
+                    case .done:
+                        self?.loadingIndicator.stopAnimating()
+                        self?.routing.showRootScreen()
 
-                case .failed:
-                    self?.loadingIndicator.stopAnimating()
+                    case .failed:
+                        self?.loadingIndicator.stopAnimating()
                 }
             }
             .store(in: &cancellables)
@@ -382,7 +382,7 @@ extension SignupViewController: UITextFieldDelegate {
 extension SignupViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     func imagePickerController(
-        _ picker: UIImagePickerController,
+        _: UIImagePickerController,
         didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]
     ) {
         if let image = info[.editedImage] as? UIImage {
@@ -394,7 +394,7 @@ extension SignupViewController: UIImagePickerControllerDelegate, UINavigationCon
         routing.dismiss()
     }
 
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+    func imagePickerControllerDidCancel(_: UIImagePickerController) {
         routing.dismiss()
     }
 }

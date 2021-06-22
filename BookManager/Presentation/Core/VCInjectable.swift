@@ -43,7 +43,7 @@ extension VCInjectable where VM == NoViewModel {
 extension VCInjectable where R == NoRouting, VM == NoViewModel {
 
     func inject() {
-        self.routing = R()
-        self.viewModel = VM()
+        routing = R()
+        viewModel = VM()
     }
 }

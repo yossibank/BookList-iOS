@@ -1,7 +1,7 @@
 extension Array where Element: Any {
 
     func any(at position: Int) -> Element? {
-        if position < self.startIndex || position >= self.endIndex {
+        if position < startIndex || position >= endIndex {
             return nil
         }
         return self[position]
@@ -9,7 +9,7 @@ extension Array where Element: Any {
 
     func any(at position: Int?) -> Element? {
         if let position = position {
-            return self.any(at: position)
+            return any(at: position)
         }
         return nil
     }

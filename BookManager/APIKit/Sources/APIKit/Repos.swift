@@ -1,4 +1,5 @@
 public struct Repos {
+
     public struct Account {
         public typealias Signup = Repository<SignupRequest>
         public typealias Login = Repository<LoginRequest>
@@ -17,8 +18,9 @@ public struct Repos {
     }
 }
 
-extension Repos {
-    public struct Result<T: DataStructure>: DataStructure {
+public extension Repos {
+
+    struct Result<T: DataStructure>: DataStructure {
         public var status: Int
         public var result: T
     }

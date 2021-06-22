@@ -15,13 +15,13 @@ final class RequestTests: XCTestCase {
             pathComponent: .init()
         ) { result in
             switch result {
-            case let .success(response):
-                XCTAssertNotNil(response)
-                XCTAssertEqual(response.result.email, "test@test.com")
-                expectation.fulfill()
+                case let .success(response):
+                    XCTAssertNotNil(response)
+                    XCTAssertEqual(response.result.email, "test@test.com")
+                    expectation.fulfill()
 
-            case let .failure(error):
-                XCTFail(error.localizedDescription)
+                case let .failure(error):
+                    XCTFail(error.localizedDescription)
             }
         }
 
@@ -37,13 +37,13 @@ final class RequestTests: XCTestCase {
             pathComponent: .init()
         ) { result in
             switch result {
-            case let .success(response):
-                XCTAssertNotNil(response)
-                XCTAssertEqual(response.result.email, "test@test.com")
-                expectation.fulfill()
+                case let .success(response):
+                    XCTAssertNotNil(response)
+                    XCTAssertEqual(response.result.email, "test@test.com")
+                    expectation.fulfill()
 
-            case let .failure(error):
-                XCTFail(error.localizedDescription)
+                case let .failure(error):
+                    XCTFail(error.localizedDescription)
             }
         }
 
@@ -59,12 +59,12 @@ final class RequestTests: XCTestCase {
             pathComponent: .init()
         ) { result in
             switch result {
-            case let .success(response):
-                XCTAssertNotNil(response)
-                expectation.fulfill()
+                case let .success(response):
+                    XCTAssertNotNil(response)
+                    expectation.fulfill()
 
-            case let .failure(error):
-                XCTFail(error.localizedDescription)
+                case let .failure(error):
+                    XCTFail(error.localizedDescription)
             }
         }
 
@@ -80,13 +80,13 @@ final class RequestTests: XCTestCase {
             pathComponent: .init()
         ) { result in
             switch result {
-            case let .success(response):
-                XCTAssertNotNil(response)
-                XCTAssertEqual(response.result.count, 2)
-                expectation.fulfill()
+                case let .success(response):
+                    XCTAssertNotNil(response)
+                    XCTAssertEqual(response.result.count, 2)
+                    expectation.fulfill()
 
-            case let .failure(error):
-                XCTFail(error.localizedDescription)
+                case let .failure(error):
+                    XCTFail(error.localizedDescription)
             }
         }
 
@@ -98,17 +98,22 @@ final class RequestTests: XCTestCase {
 
         Repos.Book.Post().request(
             useTestData: true,
-            parameters: .init(name: "テスト本", image: "http://example/hoge.png", price: 100, purchaseDate: "2017-06-06"),
+            parameters: .init(
+                name: "テスト本",
+                image: "http://example/hoge.png",
+                price: 100,
+                purchaseDate: "2017-06-06"
+            ),
             pathComponent: .init()
         ) { result in
             switch result {
-            case let .success(response):
-                XCTAssertNotNil(response)
-                XCTAssertEqual(response.result.name, "テスト本")
-                expectation.fulfill()
+                case let .success(response):
+                    XCTAssertNotNil(response)
+                    XCTAssertEqual(response.result.name, "テスト本")
+                    expectation.fulfill()
 
-            case let .failure(error):
-                XCTFail(error.localizedDescription)
+                case let .failure(error):
+                    XCTFail(error.localizedDescription)
             }
         }
 
@@ -120,17 +125,22 @@ final class RequestTests: XCTestCase {
 
         Repos.Book.Put().request(
             useTestData: true,
-            parameters: .init(name: "sample", image: "http://example/hoge.png", price: 4345, purchaseDate: "2001-01-01"),
+            parameters: .init(
+                name: "sample",
+                image: "http://example/hoge.png",
+                price: 4345,
+                purchaseDate: "2001-01-01"
+            ),
             pathComponent: .init()
         ) { result in
             switch result {
-            case let .success(response):
-                XCTAssertNotNil(response)
-                XCTAssertEqual(response.result.name, "sample")
-                expectation.fulfill()
+                case let .success(response):
+                    XCTAssertNotNil(response)
+                    XCTAssertEqual(response.result.name, "sample")
+                    expectation.fulfill()
 
-            case let .failure(error):
-                XCTFail(error.localizedDescription)
+                case let .failure(error):
+                    XCTFail(error.localizedDescription)
             }
         }
 

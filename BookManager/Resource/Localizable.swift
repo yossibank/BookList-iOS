@@ -4,7 +4,7 @@ import Foundation
 struct Localizable {
     var wrappedValue: String {
         didSet {
-            self.wrappedValue = NSLocalizedString(self.wrappedValue, comment: "")
+            wrappedValue = NSLocalizedString(wrappedValue, comment: "")
         }
     }
 

@@ -2,16 +2,21 @@ import UIKit
 
 final class OtherMessageTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var userIconImageView: UIImageView!
+    @IBOutlet var userIconImageView: UIImageView!
 
-    @IBOutlet weak var userMessageTextView: UITextView! {
+    @IBOutlet var userMessageTextView: UITextView! {
         didSet {
-            userMessageTextView.textContainerInset = .init(top: 8, left: 4, bottom: 4, right: 4)
+            userMessageTextView.textContainerInset = .init(
+                top: 8,
+                left: 4,
+                bottom: 4,
+                right: 4
+            )
             userMessageTextView.sizeToFit()
         }
     }
 
-    @IBOutlet weak var sendTimeLabel: UILabel!
+    @IBOutlet var sendTimeLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -35,11 +40,12 @@ final class OtherMessageTableViewCell: UITableViewCell {
             with: .hourToMinitue
         )
 
-        ImageLoader.shared.loadImage(with: .string(urlString: chat.iconUrl)) { [weak self] image, _ in
-            guard let self = self else { return }
+        ImageLoader.shared
+            .loadImage(with: .string(urlString: chat.iconUrl)) { [weak self] image, _ in
+                guard let self = self else { return }
 
-            self.userIconImageView.image = image
-        }
+                self.userIconImageView.image = image
+            }
 
         userMessageTextView.text = chat.message
         sendTimeLabel.text = sendAt

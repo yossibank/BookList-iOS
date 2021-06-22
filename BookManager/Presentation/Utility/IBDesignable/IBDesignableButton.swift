@@ -10,7 +10,7 @@ class IBDesignableButton: UIButton {
         commonInit()
     }
 
-    convenience init(type buttonType: UIButton.ButtonType) {
+    convenience init(type _: UIButton.ButtonType) {
         self.init(frame: .zero)
         commonInit()
     }
@@ -27,8 +27,8 @@ class IBDesignableButton: UIButton {
 
     func commonInit() {
         #if TARGET_INTERFACE_BUIDLER
-        self.setNeedsLayout()
-        self.setNeedsDisplay()
+        setNeedsLayout()
+        setNeedsDisplay()
         #endif
     }
 }

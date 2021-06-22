@@ -53,7 +53,7 @@ extension RouterProtocol {
         from:     UIViewController,
         animated: Bool = true
     ) {
-        return push(
+        push(
             route,
             from:     from,
             animated: animated
@@ -65,7 +65,7 @@ extension RouterProtocol {
         from:             UIViewController,
         animated:         Bool = true
     ) {
-        return push(
+        push(
             viewController,
             from:     from,
             animated: animated
@@ -81,7 +81,7 @@ extension RouterProtocol {
         isModalInPresentation:      Bool = true,
         completion:                 VoidBlock? = nil
     ) {
-        return present(
+        present(
             route,
             from: from,
             presentationStyle: presentationStyle,
@@ -101,7 +101,7 @@ extension RouterProtocol {
         isModalInPresentation: Bool = true,
         completion:            VoidBlock? = nil
     ) {
-        return present(
+        present(
             viewController,
             from:                       from,
             presentationStyle:          presentationStyle,
@@ -117,7 +117,7 @@ extension RouterProtocol {
         animated:   Bool = true,
         completion: VoidBlock? = nil
     ) {
-        return dismiss(
+        dismiss(
             vc,
             animated:   animated,
             completion: completion
@@ -178,15 +178,14 @@ enum Route {
 //        case .wishList:
 //            viewController = Resources.ViewControllers.App.wishList()
 
-        case .chatSelect:
-            viewController = Resources.ViewControllers.App.chatSelect()
+            case .chatSelect:
+                viewController = Resources.ViewControllers.App.chatSelect()
 
-        case .chatUserList:
-            viewController = Resources.ViewControllers.App.chatUserList()
+            case .chatUserList:
+                viewController = Resources.ViewControllers.App.chatUserList()
 
-        case .chatRoom(let roomId, let user):
-            viewController = Resources.ViewControllers.App.chatRoom(roomId: roomId, user: user)
-
+            case let .chatRoom(roomId, user):
+                viewController = Resources.ViewControllers.App.chatRoom(roomId: roomId, user: user)
         }
 
         return viewController
@@ -362,20 +361,20 @@ final class Router: RouterProtocol {
 
         switch type {
 
-        case .normal:
-            viewController = route.viewController()
+            case .normal:
+                viewController = route.viewController()
 
-        case .navigation:
-            let navVC = RootNavigationController.instantiateInitialViewController()
-            let vc = route.viewController()
+            case .navigation:
+                let navVC = RootNavigationController.instantiateInitialViewController()
+                let vc = route.viewController()
 
-            navVC.viewControllers.insert(vc, at: 0)
-            navVC.setupNavigationBar(
-                forVC: vc,
-                config: vc as? NavigationBarConfiguration
-            )
+                navVC.viewControllers.insert(vc, at: 0)
+                navVC.setupNavigationBar(
+                    forVC: vc,
+                    config: vc as? NavigationBarConfiguration
+                )
 
-            viewController = navVC
+                viewController = navVC
         }
 
         return viewController

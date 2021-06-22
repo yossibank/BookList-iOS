@@ -32,11 +32,11 @@ public struct Repository<T: Request>: Repo {
 
         APIClinet().request(item: item, useTestData: useTestData) { result in
             switch result {
-            case let .success(value):
-                item.successHandler(value)
+                case let .success(value):
+                    item.successHandler(value)
 
-            case let .failure(error):
-                item.failureHandler(error)
+                case let .failure(error):
+                    item.failureHandler(error)
             }
 
             completion(result)
@@ -58,12 +58,13 @@ public struct Repository<T: Request>: Repo {
 }
 
 public extension Repository where T.Parameters == EmptyParameters {
+
     func request(
         useTestData: Bool = false,
         pathComponent: T.PathComponent,
         completion: @escaping (Result<T.Response, APIError>) -> Void
     ) {
-        self.request(
+        request(
             useTestData: useTestData,
             parameters: .init(),
             pathComponent: pathComponent,
@@ -85,12 +86,13 @@ public extension Repository where T.Parameters == EmptyParameters {
 }
 
 public extension Repository where T.PathComponent == EmptyPathComponent {
+
     func request(
         useTestData: Bool = false,
         parameters: T.Parameters,
         completion: @escaping (Result<T.Response, APIError>) -> Void
     ) {
-        self.request(
+        request(
             useTestData: useTestData,
             parameters: parameters,
             pathComponent: .init(),
@@ -119,7 +121,7 @@ public extension Repository where
         useTestData: Bool = false,
         completion: @escaping (Result<T.Response, APIError>) -> Void
     ) {
-        self.request(
+        request(
             useTestData: useTestData,
             parameters: .init(),
             pathComponent: .init(),

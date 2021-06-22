@@ -10,23 +10,23 @@ public enum APIError: LocalizedError, Equatable {
 
     public var errorDescription: String? {
         switch self {
-        case .unknown:
-            return "unknown error occurred"
+            case .unknown:
+                return "unknown error occurred"
 
-        case .missingTestJsonDataPath:
-            return "missing test json data path"
+            case .missingTestJsonDataPath:
+                return "missing test json data path"
 
-        case .invalidRequest:
-            return "invalid Request"
+            case .invalidRequest:
+                return "invalid Request"
 
-        case .offline:
-            return "offline error occurred"
+            case .offline:
+                return "offline error occurred"
 
-        case let .decodingError(error):
-            return "decode error occurred \(error)"
+            case let .decodingError(error):
+                return "decode error occurred \(error)"
 
-        case .responseError:
-            return "response error occurred"
+            case .responseError:
+                return "response error occurred"
         }
     }
 }

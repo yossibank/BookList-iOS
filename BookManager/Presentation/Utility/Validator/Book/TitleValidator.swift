@@ -7,8 +7,9 @@ enum TitleValidator: ValidatorProtocol {
     static func validate(
         _ value: String?
     ) -> ValidationResult<TitleError> {
-        guard let value = value,
-              !value.isEmpty
+        guard
+            let value = value,
+            !value.isEmpty
         else {
             return .invalid(.empty)
         }
@@ -29,11 +30,11 @@ enum TitleError: LocalizedError {
 
         switch self {
 
-        case .empty:
-            return Resources.Strings.Validation.notFilled
+            case .empty:
+                return Resources.Strings.Validation.notFilled
 
-        case .longer:
-            return Resources.Strings.Validation.notLongerTitleText
+            case .longer:
+                return Resources.Strings.Validation.notLongerTitleText
         }
     }
 }

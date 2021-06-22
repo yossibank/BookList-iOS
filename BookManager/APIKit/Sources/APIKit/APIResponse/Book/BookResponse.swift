@@ -1,5 +1,3 @@
-import Foundation
-
 public struct BookListResponse: DataStructure {
     public let status: Int
     public let result: [BookResponse]

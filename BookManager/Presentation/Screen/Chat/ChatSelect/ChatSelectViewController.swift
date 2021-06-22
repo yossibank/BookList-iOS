@@ -4,10 +4,10 @@ import RxCocoa
 
 final class ChatSelectViewController: UIViewController {
 
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet var tableView: UITableView!
 
     private let router: RouterProtocol = Router()
-    private let disposeBag: DisposeBag = DisposeBag()
+    private let disposeBag = DisposeBag()
 
     private var viewModel: ChatSelectViewModel!
     private var dataSource: ChatSelectDataSource!
@@ -39,7 +39,10 @@ final class ChatSelectViewController: UIViewController {
 
     private func setupTableView() {
         dataSource = ChatSelectDataSource()
-        tableView.register(ChatSelectTableViewCell.xib(), forCellReuseIdentifier: ChatSelectTableViewCell.resourceName)
+        tableView.register(
+            ChatSelectTableViewCell.xib(),
+            forCellReuseIdentifier: ChatSelectTableViewCell.resourceName
+        )
         tableView.tableFooterView = UIView()
         tableView.dataSource = dataSource
         tableView.delegate = self
@@ -52,16 +55,15 @@ final class ChatSelectViewController: UIViewController {
 
             switch documentChange.type {
 
-            case .added:
-                self.dataSource.roomList.append(room)
+                case .added:
+                    self.dataSource.roomList.append(room)
 
-            case .removed:
-                self.dataSource.roomList = self.dataSource.roomList.filter { $0.id != room.id }
+                case .removed:
+                    self.dataSource.roomList = self.dataSource.roomList.filter { $0.id != room.id }
 
-            case .modified:
-                self.dataSource.roomList = []
-                self.dataSource.roomList.append(room)
-
+                case .modified:
+                    self.dataSource.roomList = []
+                    self.dataSource.roomList.append(room)
             }
 
             DispatchQueue.main.async {

@@ -2,10 +2,10 @@ import UIKit
 
 final class WishListTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var bookImageView: UIImageView!
-    @IBOutlet weak var bookTitleLabel: UILabel!
-    @IBOutlet weak var bookPriceLabel: UILabel!
-    @IBOutlet weak var bookPurchaseLabel: UILabel!
+    @IBOutlet var bookImageView: UIImageView!
+    @IBOutlet var bookTitleLabel: UILabel!
+    @IBOutlet var bookPriceLabel: UILabel!
+    @IBOutlet var bookPurchaseLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -16,7 +16,8 @@ final class WishListTableViewCell: UITableViewCell {
 
         if let purchaseDate = book.purchaseDate {
             if let purchaseDateFormat = Date.toConvertDate(purchaseDate, with: .yearToDayOfWeek) {
-                bookPurchaseLabel.text = purchaseDateFormat.toConvertString(with: .yearToDayOfWeekJapanese)
+                bookPurchaseLabel.text = purchaseDateFormat
+                    .toConvertString(with: .yearToDayOfWeekJapanese)
             }
         }
 

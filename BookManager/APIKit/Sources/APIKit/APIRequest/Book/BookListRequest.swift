@@ -29,7 +29,7 @@ public struct BookListRequest: Request {
 
     public init(
         parameters: Parameters,
-        pathComponent: EmptyPathComponent = .init()
+        pathComponent _: EmptyPathComponent = .init()
     ) {
         self.parameters = parameters
     }

@@ -23,7 +23,7 @@ public struct LogoutRequest: Request {
 
     public init(
         parameters: Parameters,
-        pathComponent: EmptyPathComponent = .init()
+        pathComponent _: EmptyPathComponent = .init()
     ) {
         self.parameters = parameters
     }

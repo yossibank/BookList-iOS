@@ -80,6 +80,6 @@ extension UIAlertController {
             style: style,
             handler: handler
         )
-        self.addAction(action)
+        addAction(action)
     }
 }

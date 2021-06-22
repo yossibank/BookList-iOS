@@ -11,10 +11,10 @@ final class SignupViewModel: ViewModel {
     private var cancellables: Set<AnyCancellable> = []
 
     @Published private(set) var state: State = .standby
-    @Published var userName: String = String.blank
-    @Published var email: String = String.blank
-    @Published var password: String = String.blank
-    @Published var passwordConfirmation: String = String.blank
+    @Published var userName = String.blank
+    @Published var email = String.blank
+    @Published var password = String.blank
+    @Published var passwordConfirmation = String.blank
 
     init(usecase: SignupUsecase = Domain.Usecase.Account.Signup()) {
         self.usecase = usecase
@@ -26,20 +26,20 @@ final class SignupViewModel: ViewModel {
 extension SignupViewModel {
 
     func signup() {
-        self.state = .loading
+        state = .loading
 
-        self.usecase
+        usecase
             .signup(email: email, password: password)
             .sink { [weak self] completion in
                 guard let self = self else { return }
 
                 switch completion {
-                case let .failure(error):
-                    Logger.debug(message: error.localizedDescription)
-                    self.state = .failed(.init(error: error))
+                    case let .failure(error):
+                        Logger.debug(message: error.localizedDescription)
+                        self.state = .failed(.init(error: error))
 
-                case .finished:
-                    Logger.debug(message: "finished")
+                    case .finished:
+                        Logger.debug(message: "finished")
                 }
             } receiveValue: { [weak self] state in
                 self?.state = .done(state)

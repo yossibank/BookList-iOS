@@ -2,9 +2,7 @@ import UIKit
 
 extension Stylable where Self == UIImageView {
 
-    init(
-        style: ViewStyle<Self>
-    ) {
+    init(style: ViewStyle<Self>) {
         self.init()
         self.apply(style)
     }

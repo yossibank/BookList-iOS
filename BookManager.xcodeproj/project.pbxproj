@@ -110,7 +110,6 @@
 		78CF3B0725AC0E3500ADBB60 /* BookListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CF3B0625AC0E3500ADBB60 /* BookListViewModel.swift */; };
 		78CF3B3525AC48FD00ADBB60 /* BookListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CF3B3425AC48FD00ADBB60 /* BookListDataSource.swift */; };
 		78D18A88265E251500396D19 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 78D18A87265E251500396D19 /* GoogleService-Info.plist */; };
-		78D3951525CE2F1600F1E157 /* AccountValidationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D3951425CE2F1600F1E157 /* AccountValidationTests.swift */; };
 		78DC0BA2267B92F10085F5E7 /* CombineCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 78DC0BA1267B92F10085F5E7 /* CombineCocoa */; };
 		78DC0E4E267F4B710083EBC0 /* IndicatorStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DC0E4D267F4B710083EBC0 /* IndicatorStyle.swift */; };
 		78DE1D6725BD423A00A2C0F2 /* WishListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DE1D6625BD423A00A2C0F2 /* WishListViewController.swift */; };
@@ -122,7 +121,6 @@
 		78E609F725AAABEA0041B3D0 /* EmailValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E609F625AAABEA0041B3D0 /* EmailValidator.swift */; };
 		78E609FB25AAABF80041B3D0 /* PasswordValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E609FA25AAABF80041B3D0 /* PasswordValidator.swift */; };
 		78E60A0025AAAEAC0041B3D0 /* ObservableType+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E609FF25AAAEAC0041B3D0 /* ObservableType+Extension.swift */; };
-		78E80CA625CE4402006580A2 /* BookValidationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E80CA525CE4402006580A2 /* BookValidationTests.swift */; };
 		78EB164F267620CE00777F32 /* APIKit in Frameworks */ = {isa = PBXBuildFile; productRef = 78EB164E267620CE00777F32 /* APIKit */; };
 		78EC97CE25F4923F007E80FD /* RootNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78EC97CD25F4923F007E80FD /* RootNavigationController.swift */; };
 		78ED505725EB5C8B0045089C /* FirebaseStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78ED505625EB5C8B0045089C /* FirebaseStorageManager.swift */; };
@@ -257,7 +255,6 @@
 		78CF3B0625AC0E3500ADBB60 /* BookListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListViewModel.swift; sourceTree = "<group>"; };
 		78CF3B3425AC48FD00ADBB60 /* BookListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListDataSource.swift; sourceTree = "<group>"; };
 		78D18A87265E251500396D19 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		78D3951425CE2F1600F1E157 /* AccountValidationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountValidationTests.swift; sourceTree = "<group>"; };
 		78DC0E4D267F4B710083EBC0 /* IndicatorStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorStyle.swift; sourceTree = "<group>"; };
 		78DE1D6625BD423A00A2C0F2 /* WishListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListViewController.swift; sourceTree = "<group>"; };
 		78DEE7B425AAD4D500219963 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
@@ -268,7 +265,6 @@
 		78E609F625AAABEA0041B3D0 /* EmailValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailValidator.swift; sourceTree = "<group>"; };
 		78E609FA25AAABF80041B3D0 /* PasswordValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordValidator.swift; sourceTree = "<group>"; };
 		78E609FF25AAAEAC0041B3D0 /* ObservableType+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ObservableType+Extension.swift"; sourceTree = "<group>"; };
-		78E80CA525CE4402006580A2 /* BookValidationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookValidationTests.swift; sourceTree = "<group>"; };
 		78EB164D2676201C00777F32 /* APIKit */ = {isa = PBXFileReference; lastKnownFileType = folder; path = APIKit; sourceTree = "<group>"; };
 		78EC97CD25F4923F007E80FD /* RootNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootNavigationController.swift; sourceTree = "<group>"; };
 		78ED505625EB5C8B0045089C /* FirebaseStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStorageManager.swift; sourceTree = "<group>"; };
@@ -419,7 +415,6 @@
 			children = (
 				78231212259C0D9300D9E723 /* Info.plist */,
 				78231210259C0D9300D9E723 /* BookListTests.swift */,
-				788EA34825CE340900B998D7 /* Validation */,
 			);
 			path = BookManagerTests;
 			sourceTree = "<group>";
@@ -545,15 +540,6 @@
 				784E138125B2F555008FD947 /* NumberValidator.swift */,
 			);
 			path = Book;
-			sourceTree = "<group>";
-		};
-		788EA34825CE340900B998D7 /* Validation */ = {
-			isa = PBXGroup;
-			children = (
-				78D3951425CE2F1600F1E157 /* AccountValidationTests.swift */,
-				78E80CA525CE4402006580A2 /* BookValidationTests.swift */,
-			);
-			path = Validation;
 			sourceTree = "<group>";
 		};
 		7892EF48259C539B006F7315 /* IBDesignable */ = {
@@ -861,6 +847,7 @@
 				782311F3259C0D9200D9E723 /* Frameworks */,
 				7800202A25EFD0E00000BCEB /* Embed Frameworks */,
 				782311F4259C0D9200D9E723 /* Resources */,
+				7882755026820FAD00FDFD0D /* SwiftFormat */,
 			);
 			buildRules = (
 			);
@@ -980,6 +967,27 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		7882755026820FAD00FDFD0D /* SwiftFormat */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftFormat;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftformat >/dev/null; then\n  swiftformat .\nelse\n  echo \"warning: SwiftFormat not installed, download from https://github.com/nicklockwood/SwiftFormat\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		782311F2259C0D9200D9E723 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -1087,8 +1095,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				78E80CA625CE4402006580A2 /* BookValidationTests.swift in Sources */,
-				78D3951525CE2F1600F1E157 /* AccountValidationTests.swift in Sources */,
 				78231211259C0D9300D9E723 /* BookListTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

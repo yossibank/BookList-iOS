@@ -1,3 +1,5 @@
+import Foundation
+
 protocol NavigationBarConfiguration {
     var navigationTitle: String? { get }
     var backButtonTitle: String? { get }

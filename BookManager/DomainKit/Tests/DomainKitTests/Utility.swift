@@ -1,8 +1,8 @@
 import Combine
-import Foundation
 import XCTest
 
 extension XCTestCase {
+
     func awaitPublisher<T: Publisher>(
         _ publisher: T,
         timeout: TimeInterval = 10,
@@ -15,11 +15,11 @@ extension XCTestCase {
         let cancellables = publisher.sink(
             receiveCompletion: { completion in
                 switch completion {
-                case let .failure(error):
-                    result = .failure(error)
+                    case let .failure(error):
+                        result = .failure(error)
 
-                case .finished:
-                    break
+                    case .finished:
+                        break
                 }
 
                 expectation.fulfill()

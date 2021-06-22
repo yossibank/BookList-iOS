@@ -18,11 +18,11 @@ enum APIRequestHeader: String, CaseIterable {
 
     var value: String? {
         switch self {
-        case .contentType:
-            return "application/json"
+            case .contentType:
+                return "application/json"
 
-        case .authorization:
-            return SecretDataHolder.accessToken
+            case .authorization:
+                return SecretDataHolder.accessToken
         }
     }
 }
@@ -75,6 +75,7 @@ public protocol Request {
 }
 
 public extension Request {
+
     var baseURL: String {
         DataConfig.baseURL
     }
@@ -121,6 +122,7 @@ public extension Request {
 }
 
 private extension Encodable {
+
     var dictionary: [String: CustomStringConvertible?] {
         (
             try? JSONSerialization.jsonObject(

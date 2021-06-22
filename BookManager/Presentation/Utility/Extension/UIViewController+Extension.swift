@@ -16,7 +16,7 @@ extension UIViewController {
             }
         }
 
-        self.present(alert, animated: true)
+        present(alert, animated: true)
     }
 
     func showAlert(
@@ -33,7 +33,7 @@ extension UIViewController {
             }
         }
 
-        self.present(alert, animated: true)
+        present(alert, animated: true)
     }
 
     func showActionAlert(
@@ -48,6 +48,6 @@ extension UIViewController {
             completion()
         }
 
-        self.present(alert, animated: true)
+        present(alert, animated: true)
     }
 }

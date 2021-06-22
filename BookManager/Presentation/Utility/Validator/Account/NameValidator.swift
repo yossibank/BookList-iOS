@@ -7,8 +7,9 @@ enum NameValidator: ValidatorProtocol {
     static func validate(
         _ value: String?
     ) -> ValidationResult<NameError> {
-        guard let value = value,
-              !value.isEmpty
+        guard
+            let value = value,
+            !value.isEmpty
         else {
             return .invalid(.empty)
         }
@@ -24,8 +25,8 @@ enum NameError: LocalizedError {
 
         switch self {
 
-        case .empty:
-            return Resources.Strings.Validation.notFilled
+            case .empty:
+                return Resources.Strings.Validation.notFilled
         }
     }
 }

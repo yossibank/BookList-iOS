@@ -12,6 +12,6 @@ public final class Analytics {
     var provider: AnalyticsProvider?
 
     public func sendEvent(title: String = #function) {
-        self.provider?.sendEvent(title: title)
+        provider?.sendEvent(title: title)
     }
 }

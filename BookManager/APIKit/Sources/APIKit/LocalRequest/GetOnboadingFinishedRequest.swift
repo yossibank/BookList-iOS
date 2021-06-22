@@ -11,5 +11,5 @@ public struct GetOnboardingFinishedRequest: LocalRequest {
         }
     }
 
-    public init(parameters: EmptyParameters, pathComponent: EmptyPathComponent) {}
+    public init(parameters _: EmptyParameters, pathComponent _: EmptyPathComponent) {}
 }
