@@ -114,7 +114,6 @@
 		78DC0BA2267B92F10085F5E7 /* CombineCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 78DC0BA1267B92F10085F5E7 /* CombineCocoa */; };
 		78DC0E4E267F4B710083EBC0 /* IndicatorStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DC0E4D267F4B710083EBC0 /* IndicatorStyle.swift */; };
 		78DE1D6725BD423A00A2C0F2 /* WishListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DE1D6625BD423A00A2C0F2 /* WishListViewController.swift */; };
-		78DE1D6D25BD424800A2C0F2 /* WishListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78DE1D6C25BD424800A2C0F2 /* WishListViewController.storyboard */; };
 		78DEE7B525AAD4D500219963 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 78DEE7B425AAD4D500219963 /* Localizable.strings */; };
 		78DEE7B925AADFC600219963 /* UIAlertController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DEE7B825AADFC600219963 /* UIAlertController+Extension.swift */; };
 		78DEE7BD25AAE3AD00219963 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DEE7BC25AAE3AD00219963 /* UIViewController+Extension.swift */; };
@@ -261,7 +260,6 @@
 		78D3951425CE2F1600F1E157 /* AccountValidationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountValidationTests.swift; sourceTree = "<group>"; };
 		78DC0E4D267F4B710083EBC0 /* IndicatorStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorStyle.swift; sourceTree = "<group>"; };
 		78DE1D6625BD423A00A2C0F2 /* WishListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListViewController.swift; sourceTree = "<group>"; };
-		78DE1D6C25BD424800A2C0F2 /* WishListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WishListViewController.storyboard; sourceTree = "<group>"; };
 		78DEE7B425AAD4D500219963 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		78DEE7B825AADFC600219963 /* UIAlertController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extension.swift"; sourceTree = "<group>"; };
 		78DEE7BC25AAE3AD00219963 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
@@ -797,7 +795,6 @@
 				784B18FB25BD50FC0071C32E /* WishListDataSource.swift */,
 				78DE1D6625BD423A00A2C0F2 /* WishListViewController.swift */,
 				784B18F525BD4D5F0071C32E /* WishListViewModel.swift */,
-				78DE1D6C25BD424800A2C0F2 /* WishListViewController.storyboard */,
 			);
 			path = WishList;
 			sourceTree = "<group>";
@@ -966,7 +963,6 @@
 				7805908F25F48ADA002B5296 /* ChatUserListTableViewCell.xib in Resources */,
 				78CF3AF925ABF85D00ADBB60 /* BookListTableViewCell.xib in Resources */,
 				78524FCD25E533FA002AEF87 /* ChatRoomViewController.storyboard in Resources */,
-				78DE1D6D25BD424800A2C0F2 /* WishListViewController.storyboard in Resources */,
 				784B18F025BD48F80071C32E /* WishListTableViewCell.xib in Resources */,
 				78C7F3AB25E525E5005E9E2B /* ChatSelectViewController.storyboard in Resources */,
 				78B8A69125E54021005BCB16 /* OtherMessageTableViewCell.xib in Resources */,

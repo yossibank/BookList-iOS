@@ -11,13 +11,13 @@ extension WishListViewController: VCInjectable {
 // MARK: - properties
 
 final class WishListViewController: UIViewController {
-    var routing: R!
+    var routing: R! { didSet { self.routing.viewController = self } }
     var viewModel: VM!
+
+    private let tableView: UITableView = .init(frame: .zero)
 
     private var cancellables: Set<AnyCancellable> = []
     private var dataSource: WishListDataSource!
-
-    @IBOutlet weak var tableView: UITableView!
 }
 
 // MARK: - override methods
@@ -26,6 +26,8 @@ extension WishListViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupView()
+        setupLayout()
         setupTableView()
     }
 }
@@ -44,9 +46,27 @@ extension WishListViewController {
 
 private extension WishListViewController {
 
+    func setupView() {
+        view.backgroundColor = .white
+        view.addSubview(tableView)
+    }
+
+    func setupLayout() {
+        tableView.layout {
+            $0.top == view.topAnchor
+            $0.bottom == view.bottomAnchor
+            $0.leading == view.leadingAnchor
+            $0.trailing == view.trailingAnchor
+        }
+    }
+
     func setupTableView() {
         dataSource = WishListDataSource(viewModel: viewModel)
-        tableView.register(WishListTableViewCell.xib(), forCellReuseIdentifier: WishListTableViewCell.resourceName)
+
+        tableView.register(
+            WishListTableViewCell.xib(),
+            forCellReuseIdentifier: WishListTableViewCell.resourceName
+        )
         tableView.tableFooterView = UIView()
         tableView.dataSource = dataSource
         tableView.delegate = self
@@ -64,7 +84,9 @@ extension WishListViewController: UITableViewDelegate {
     ) {
         tableView.deselectRow(at: indexPath, animated: true)
 
-        guard let book = viewModel.books.any(at: indexPath.row) else {
+        guard
+            let book = viewModel.books.any(at: indexPath.row)
+        else {
             return
         }
 
@@ -77,6 +99,6 @@ extension WishListViewController: UITableViewDelegate {
 extension WishListViewController: NavigationBarConfiguration {
 
     var navigationTitle: String? {
-        Resources.Strings.Navigation.Title.bookEdit
+        Resources.Strings.Navigation.Title.wishList
     }
 }

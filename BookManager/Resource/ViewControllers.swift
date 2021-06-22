@@ -45,7 +45,7 @@ extension Resources {
             }
 
             func wishList() -> WishListViewController {
-                let vc = WishListViewController.instantiateInitialViewController()
+                let vc = WishListViewController()
                 vc.inject(routing: WishListRouting(), viewModel: WishListViewModel())
                 return vc
             }

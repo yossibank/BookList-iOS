@@ -79,6 +79,7 @@ private extension BookListViewController {
     func setupTableView() {
         dataSource = BookListDataSource(viewModel: viewModel)
         dataSource.delegate = self
+
         tableView.register(
             BookListTableViewCell.xib(),
             forCellReuseIdentifier: BookListTableViewCell.resourceName
