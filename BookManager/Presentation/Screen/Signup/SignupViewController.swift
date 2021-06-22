@@ -137,7 +137,6 @@ extension SignupViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        listenerKeyboard(keyboardNotifier: keyboardNotifier)
         setupView()
         setupLayout()
         setupTextField()
@@ -241,7 +240,11 @@ private extension SignupViewController {
             $0.heightConstant == 15
         }
 
-        [userNameTextField, emailTextField, passwordTextField, passwordConfirmationTextField].forEach {
+        [userNameTextField,
+         emailTextField,
+         passwordTextField,
+         passwordConfirmationTextField
+        ].forEach {
             $0.layout {
                 $0.heightConstant == 30
             }
@@ -373,23 +376,6 @@ extension SignupViewController: UITextFieldDelegate {
         }
 
         return true
-    }
-}
-
-extension SignupViewController: KeyboardDelegate {
-
-    func keyboardPresent(_ height: CGFloat) {
-        let displayHeight = view.frame.height - height
-        let bottomOffsetY = mainStackView.convert(
-            signupButton.frame,
-            to: self.view
-        ).maxY + 20 - displayHeight
-
-        view.frame.origin.y == 0 ? (view.frame.origin.y -= bottomOffsetY) : ()
-    }
-
-    func keyboardDismiss(_ height: CGFloat) {
-        view.frame.origin.y != 0 ? (view.frame.origin.y = 0) : ()
     }
 }
 
