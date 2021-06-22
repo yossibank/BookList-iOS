@@ -7,8 +7,7 @@ final class LoginRouting: Routing {
 extension LoginRouting {
 
     func showSignupScreen() {
-        let signupVC = SignupViewController.instantiateInitialViewController()
-        signupVC.inject(routing: SignupRouting(), viewModel: SignupViewModel())
+        let signupVC = Resources.ViewControllers.App.signup()
 
         if viewController?.presentingViewController is SignupViewController {
             viewController?.dismiss(animated: true)

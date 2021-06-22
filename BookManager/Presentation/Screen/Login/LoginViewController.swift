@@ -13,9 +13,70 @@ extension LoginViewController: VCInjectable {
 final class LoginViewController: UIViewController {
     var routing: R! { didSet { self.routing.viewController = self } }
     var viewModel: VM!
-    var keyboardNotifier: KeyboardNotifier = KeyboardNotifier()
+
+    private let mainStackView: UIStackView = .init(
+        style: .verticalStyle,
+        spacing: 32
+    )
+
+    private let emailStackView: UIStackView = .init(
+        style: .verticalStyle,
+        spacing: 4
+    )
+
+    private let emailTextField: UITextField = .init(
+        placeholder: Resources.Strings.General.mailAddress,
+        keyboardType: .emailAddress,
+        style: .borderBottomStyle
+    )
+
+    private let passwordStackView: UIStackView = .init(
+        style: .verticalStyle,
+        spacing: 4
+    )
+
+    private let passwordTextField: UITextField = .init(
+        placeholder: Resources.Strings.General.password,
+        style: .securePassword
+    )
+
+    private let secureStackView: UIStackView = .init(
+        style: .horizontalStyle,
+        spacing: 8
+    )
+
+    private let secureButton: UIButton = .init(
+        image: Resources.Images.App.nonCheck
+    )
+
+    private let secureLabel: UILabel = .init(
+        text: Resources.Strings.Account.showPassword,
+        style:  .fontBoldStyle
+    )
+
+    private let buttonStackView: UIStackView = .init(
+        style: .verticalStyle,
+        spacing: 16
+    )
+
+    private let loginButton: UIButton = .init(
+        title: Resources.Strings.Account.login,
+        backgroundColor: .systemGreen,
+        style: .fontBoldStyle
+    )
+
+    private let signupButton: UIButton = .init(
+        title: Resources.Strings.Account.createAccount,
+        backgroundColor: .systemBlue,
+        style: .fontBoldStyle
+    )
+
+    private let loadingIndicator: UIActivityIndicatorView = .init(
+        style: .largeStyle
+    )
 
     private var cancellables: Set<AnyCancellable> = []
+
     private var isSecureCheck: Bool = false {
         didSet {
             let image = isSecureCheck
@@ -27,16 +88,6 @@ final class LoginViewController: UIViewController {
             passwordTextField.isSecureTextEntry = !isSecureCheck
         }
     }
-
-    @IBOutlet weak var stackView: UIStackView!
-    @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var secureButton: UIButton!
-    @IBOutlet weak var validateEmailLabel: UILabel!
-    @IBOutlet weak var validatePasswordLabel: UILabel!
-    @IBOutlet weak var loginButton: UIButton!
-    @IBOutlet weak var signupButton: UIButton!
-    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
 }
 
 // MARK: - override methods
@@ -45,7 +96,8 @@ extension LoginViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        listenerKeyboard(keyboardNotifier: keyboardNotifier)
+        setupView()
+        setupLayout()
         setupTextField()
         setupButton()
         bindViewModel()
@@ -62,6 +114,75 @@ extension LoginViewController {
 // MARK: - private methods
 
 private extension LoginViewController {
+
+    func setupView() {
+        view.backgroundColor = .white
+
+        emailStackView.addArrangedSubview(emailTextField)
+        passwordStackView.addArrangedSubview(passwordTextField)
+
+        let secureStackViewList = [
+            secureButton,
+            secureLabel
+        ]
+
+        secureStackViewList.forEach {
+            secureStackView.addArrangedSubview($0)
+        }
+
+        let buttonStackViewList = [
+            loginButton,
+            signupButton
+        ]
+
+        buttonStackViewList.forEach {
+            buttonStackView.addArrangedSubview($0)
+        }
+
+        let stackViewList = [
+            emailStackView,
+            passwordStackView,
+            secureStackView,
+            buttonStackView
+        ]
+
+        stackViewList.forEach {
+            mainStackView.addArrangedSubview($0)
+        }
+
+        view.addSubview(mainStackView)
+        view.addSubview(loadingIndicator)
+    }
+
+    func setupLayout() {
+        mainStackView.layout {
+            $0.centerY == view.centerYAnchor
+            $0.leading.equal(to: view.leadingAnchor, offsetBy: 48)
+            $0.trailing.equal(to: view.trailingAnchor, offsetBy: -48)
+        }
+
+        loadingIndicator.layout {
+            $0.centerX == view.centerXAnchor
+            $0.centerY == view.centerYAnchor
+        }
+
+        secureButton.layout {
+            $0.widthConstant == 15
+            $0.heightConstant == 15
+        }
+
+        [emailTextField, passwordTextField].forEach {
+            $0.layout {
+                $0.heightConstant == 30
+            }
+        }
+
+        [loginButton, signupButton].forEach {
+            $0.layout {
+                $0.heightConstant == 40
+            }
+        }
+    }
 
     func setupTextField() {
         [emailTextField, passwordTextField].forEach {
@@ -143,25 +264,9 @@ extension LoginViewController: UITextFieldDelegate {
         if currentTextFieldIndex + 1 == textFields.endIndex {
             textField.resignFirstResponder()
         } else {
-            textFields[currentTextFieldIndex + 1]?.becomeFirstResponder()
+            textFields[currentTextFieldIndex + 1].becomeFirstResponder()
         }
 
         return true
-    }
-}
-
-extension LoginViewController: KeyboardDelegate {
-
-    func keyboardPresent(_ height: CGFloat) {
-        let displayHeight = view.frame.height - height
-        let bottomOffsetY = stackView.convert(
-            loginButton.frame, to: self.view
-        ).maxY + 20 - displayHeight
-
-        view.frame.origin.y == 0 ? (view.frame.origin.y -= bottomOffsetY) : ()
-    }
-
-    func keyboardDismiss(_ height: CGFloat) {
-        view.frame.origin.y != 0 ? (view.frame.origin.y = 0) : ()
     }
 }

@@ -14,11 +14,16 @@ final class BookListViewController: UIViewController {
     var routing: R! { didSet { self.routing.viewController = self } }
     var viewModel: VM!
 
+    private let tableView: UITableView = .init(
+        frame: .zero
+    )
+
+    private let loadingIndicator: UIActivityIndicatorView = .init(
+        style: .largeStyle
+    )
+
     private var dataSource: BookListDataSource!
     private var cancellables: Set<AnyCancellable> = []
-
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
 }
 
 // MARK: - override methods
@@ -28,6 +33,8 @@ extension BookListViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.fetchBookList()
+        setupView()
+        setupLayout()
         setupTableView()
         setupButton()
         bindViewModel()
@@ -49,9 +56,30 @@ extension BookListViewController {
 
 private extension BookListViewController {
 
+    func setupView() {
+        view.backgroundColor = .white
+        view.addSubview(tableView)
+        view.addSubview(loadingIndicator)
+    }
+
+    func setupLayout() {
+        tableView.layout {
+            $0.top == view.topAnchor
+            $0.bottom == view.bottomAnchor
+            $0.leading == view.leadingAnchor
+            $0.trailing == view.trailingAnchor
+        }
+
+        loadingIndicator.layout {
+            $0.centerX == view.centerXAnchor
+            $0.centerY == view.centerYAnchor
+        }
+    }
+
     func setupTableView() {
         dataSource = BookListDataSource(viewModel: viewModel)
         dataSource.delegate = self
+
         tableView.register(
             BookListTableViewCell.xib(),
             forCellReuseIdentifier: BookListTableViewCell.resourceName

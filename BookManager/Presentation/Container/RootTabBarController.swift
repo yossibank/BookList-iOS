@@ -62,21 +62,13 @@ enum Tabs: Int, CaseIterable {
 
         switch self {
         case .bookList:
-            let bookListVC = BookListViewController.instantiateInitialViewController()
-            bookListVC.inject(routing: BookListRouting(), viewModel: BookListViewModel())
-
-            viewController = bookListVC
+            viewController = Resources.ViewControllers.App.bookList()
 
         case .wishList:
-            let wishListVC = WishListViewController.instantiateInitialViewController()
-            wishListVC.inject(routing: WishListRouting(), viewModel: WishListViewModel())
-
-            viewController = wishListVC
+            viewController = Resources.ViewControllers.App.wishList()
 
         case .chatList:
-            let chatListVC = ChatUserListViewController.instantiateInitialViewController()
-
-            viewController = chatListVC
+            viewController = Resources.ViewControllers.App.chatUserList()
         }
 
         let nc = RootNavigationController(rootViewController: viewController)

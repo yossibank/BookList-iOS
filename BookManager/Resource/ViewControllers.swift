@@ -15,37 +15,37 @@ extension Resources {
         struct AppControllers {
 
             func signup() -> SignupViewController {
-                let vc = SignupViewController.instantiateInitialViewController()
+                let vc = SignupViewController()
                 vc.inject(routing: SignupRouting(), viewModel: SignupViewModel())
                 return vc
             }
 
             func login() -> LoginViewController {
-                let vc = LoginViewController.instantiateInitialViewController()
+                let vc = LoginViewController()
                 vc.inject(routing: LoginRouting(), viewModel: LoginViewModel())
                 return vc
             }
 
             func bookList() -> BookListViewController {
-                let vc = BookListViewController.instantiateInitialViewController()
+                let vc = BookListViewController()
                 vc.inject(routing: BookListRouting(), viewModel: BookListViewModel())
                 return vc
             }
 
             func addBook() -> AddBookViewController {
-                let vc = AddBookViewController.instantiateInitialViewController()
+                let vc = AddBookViewController()
                 vc.inject(routing: NoRouting(), viewModel: AddBookViewModel())
                 return vc
             }
 
             func editBook(id: Int) -> EditBookViewController {
-                let vc = EditBookViewController.instantiateInitialViewController()
+                let vc = EditBookViewController()
                 vc.inject(routing: NoRouting(), viewModel: EditBookViewModel(id: id))
                 return vc
             }
 
             func wishList() -> WishListViewController {
-                let vc = WishListViewController.instantiateInitialViewController()
+                let vc = WishListViewController()
                 vc.inject(routing: WishListRouting(), viewModel: WishListViewModel())
                 return vc
             }
