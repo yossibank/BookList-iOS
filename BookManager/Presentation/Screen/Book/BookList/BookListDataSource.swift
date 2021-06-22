@@ -37,21 +37,11 @@ extension BookListDataSource: UITableViewDataSource {
 
         if let bookListCell = cell as? BookListTableViewCell {
             bookListCell.accessoryType = .disclosureIndicator
-            bookListCell.delegate = self
-            bookListCell.favoriteButton.tag = indexPath.row
-            bookListCell.bookImageView.image = nil
             if let book = viewModel.bookList.any(at: indexPath.row) {
                 bookListCell.setup(book: book)
             }
         }
 
         return cell
-    }
-}
-
-extension BookListDataSource: BookListCellDelegate {
-
-    func didSelectFavoriteButton(at index: Int) {
-        delegate?.didSelectFavoriteButton(index: index)
     }
 }

@@ -106,7 +106,6 @@
 		78CE46BB26808E920086837B /* ImageViewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CE46BA26808E920086837B /* ImageViewStyle.swift */; };
 		78CF3AF325ABF82900ADBB60 /* BookListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CF3AF225ABF82900ADBB60 /* BookListViewController.swift */; };
 		78CF3AF825ABF85D00ADBB60 /* BookListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CF3AF625ABF85D00ADBB60 /* BookListTableViewCell.swift */; };
-		78CF3AF925ABF85D00ADBB60 /* BookListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78CF3AF725ABF85D00ADBB60 /* BookListTableViewCell.xib */; };
 		78CF3B0725AC0E3500ADBB60 /* BookListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CF3B0625AC0E3500ADBB60 /* BookListViewModel.swift */; };
 		78CF3B3525AC48FD00ADBB60 /* BookListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CF3B3425AC48FD00ADBB60 /* BookListDataSource.swift */; };
 		78D18A88265E251500396D19 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 78D18A87265E251500396D19 /* GoogleService-Info.plist */; };
@@ -251,7 +250,6 @@
 		78CE46BA26808E920086837B /* ImageViewStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewStyle.swift; sourceTree = "<group>"; };
 		78CF3AF225ABF82900ADBB60 /* BookListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListViewController.swift; sourceTree = "<group>"; };
 		78CF3AF625ABF85D00ADBB60 /* BookListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListTableViewCell.swift; sourceTree = "<group>"; };
-		78CF3AF725ABF85D00ADBB60 /* BookListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookListTableViewCell.xib; sourceTree = "<group>"; };
 		78CF3B0625AC0E3500ADBB60 /* BookListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListViewModel.swift; sourceTree = "<group>"; };
 		78CF3B3425AC48FD00ADBB60 /* BookListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListDataSource.swift; sourceTree = "<group>"; };
 		78D18A87265E251500396D19 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -322,6 +320,14 @@
 				7805908425F48A82002B5296 /* ChatUserListViewController.storyboard */,
 			);
 			path = ChatUserList;
+			sourceTree = "<group>";
+		};
+		780F6B8D268238B5002D7513 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				78CF3AF625ABF85D00ADBB60 /* BookListTableViewCell.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		781936BE25BC752000309FB7 /* ViewData */ = {
@@ -740,6 +746,7 @@
 		78CF3AEC25ABF7EA00ADBB60 /* BookList */ = {
 			isa = PBXGroup;
 			children = (
+				780F6B8D268238B5002D7513 /* View */,
 				78CC0ED4267DBE3D003489E1 /* BookListRouting.swift */,
 				78CF3B3425AC48FD00ADBB60 /* BookListDataSource.swift */,
 				78CF3AF225ABF82900ADBB60 /* BookListViewController.swift */,
@@ -754,8 +761,6 @@
 				78421CDF25E926FD00950F62 /* KeyboardAccessory */,
 				78299CE625E69CFD001868FB /* MyMessageCell */,
 				781B121B25E69A75006968ED /* OtherMessageCell */,
-				78CF3AF625ABF85D00ADBB60 /* BookListTableViewCell.swift */,
-				78CF3AF725ABF85D00ADBB60 /* BookListTableViewCell.xib */,
 				78C7F3AF25E52C94005E9E2B /* ChatSelectTableViewCell.swift */,
 				78C7F3B025E52C94005E9E2B /* ChatSelectTableViewCell.xib */,
 				7805908C25F48ADA002B5296 /* ChatUserListTableViewCell.swift */,
@@ -940,7 +945,6 @@
 				7805908525F48A82002B5296 /* ChatUserListViewController.storyboard in Resources */,
 				78421CE125E9273500950F62 /* KeyboardAccessoryView.xib in Resources */,
 				7805908F25F48ADA002B5296 /* ChatUserListTableViewCell.xib in Resources */,
-				78CF3AF925ABF85D00ADBB60 /* BookListTableViewCell.xib in Resources */,
 				78524FCD25E533FA002AEF87 /* ChatRoomViewController.storyboard in Resources */,
 				784B18F025BD48F80071C32E /* WishListTableViewCell.xib in Resources */,
 				78C7F3AB25E525E5005E9E2B /* ChatSelectViewController.storyboard in Resources */,
