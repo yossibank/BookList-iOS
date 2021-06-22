@@ -2,7 +2,7 @@ import UIKit
 
 final class ChatSelectViewController: UIViewController {
 
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet var tableView: UITableView!
 
     static func createInstance() -> ChatSelectViewController {
         let instance = ChatSelectViewController.instantiateInitialViewController()
@@ -15,7 +15,10 @@ final class ChatSelectViewController: UIViewController {
     }
 
     private func setupTableView() {
-        tableView.register(ChatSelectTableViewCell.xib(), forCellReuseIdentifier: ChatSelectTableViewCell.resourceName)
+        tableView.register(
+            ChatSelectTableViewCell.xib(),
+            forCellReuseIdentifier: ChatSelectTableViewCell.resourceName
+        )
         tableView.tableFooterView = UIView()
         tableView.dataSource = self
         tableView.delegate = self
@@ -23,15 +26,13 @@ final class ChatSelectViewController: UIViewController {
     }
 }
 
-extension ChatSelectViewController: UITableViewDelegate {
-
-}
+extension ChatSelectViewController: UITableViewDelegate {}
 
 extension ChatSelectViewController: UITableViewDataSource {
 
     func tableView(
-        _ tableView: UITableView,
-        numberOfRowsInSection section: Int
+        _: UITableView,
+        numberOfRowsInSection _: Int
     ) -> Int {
         10
     }
@@ -45,9 +46,7 @@ extension ChatSelectViewController: UITableViewDataSource {
             for: indexPath
         )
 
-        if let chatSelectCell = cell as? ChatSelectTableViewCell {
-
-        }
+        if let chatSelectCell = cell as? ChatSelectTableViewCell {}
 
         return cell
     }

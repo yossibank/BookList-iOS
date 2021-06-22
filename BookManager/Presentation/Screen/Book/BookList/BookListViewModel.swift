@@ -23,19 +23,19 @@ final class BookListViewModel: ViewModel {
 extension BookListViewModel {
 
     func fetchBookList() {
-        self.state = .loading
+        state = .loading
 
-        self.usecase
+        usecase
             .fetchBookList(pageRequest: pageRequest)
             .sink { [weak self] completion in
                 switch completion {
-                case let .failure(error):
-                    Logger.debug(message: error.localizedDescription)
-                    self?.state = .failed(.init(error: error))
+                    case let .failure(error):
+                        Logger.debug(message: error.localizedDescription)
+                        self?.state = .failed(.init(error: error))
 
-                case .finished:
-                    Logger.debug(message: "finished")
-                    self?.pageRequest += 1
+                    case .finished:
+                        Logger.debug(message: "finished")
+                        self?.pageRequest += 1
                 }
             } receiveValue: { [weak self] state in
                 guard let self = self else { return }

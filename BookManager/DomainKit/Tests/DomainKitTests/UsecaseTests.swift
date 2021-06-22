@@ -4,6 +4,7 @@ import Combine
 import XCTest
 
 final class UsecaseTests: XCTestCase {
+
     func testSignupUsecase() throws {
         let expect = try TestDataFetchRequest(
             testDataJsonPath: SignupRequest(
@@ -45,7 +46,12 @@ final class UsecaseTests: XCTestCase {
     func testAddBookUsecase() throws {
         let expect = try TestDataFetchRequest(
             testDataJsonPath: AddBookRequest(
-                parameters: .init(name: "test", image: "test.png", price: 100, purchaseDate: "2020-01-01")
+                parameters: .init(
+                    name: "test",
+                    image: "test.png",
+                    price: 100,
+                    purchaseDate: "2020-01-01"
+                )
             ).testDataPath
         )
         .fetchLocalTestData(responseType: Repos.Result<BookResponse>.self)
@@ -64,7 +70,12 @@ final class UsecaseTests: XCTestCase {
     func testEditBookUsecase() throws {
         let expect = try TestDataFetchRequest(
             testDataJsonPath: EditBookRequest(
-                parameters: .init(name: "test", image: "test.png", price: 100, purchaseDate: "2020-01-01"),
+                parameters: .init(
+                    name: "test",
+                    image: "test.png",
+                    price: 100,
+                    purchaseDate: "2020-01-01"
+                ),
                 pathComponent: 1
             ).testDataPath
         )
@@ -75,7 +86,13 @@ final class UsecaseTests: XCTestCase {
         let result = try awaitPublisher(
             Domain.Usecase.Book
                 .EditBook(useTestData: true)
-                .updateBook(id: 1, name: "test", image: "test.png", price: 100, purchaseDate: "2020-01-01")
+                .updateBook(
+                    id: 1,
+                    name: "test",
+                    image: "test.png",
+                    price: 100,
+                    purchaseDate: "2020-01-01"
+                )
         )
 
         XCTAssertEqual(expect, result)
@@ -94,7 +111,7 @@ final class UsecaseTests: XCTestCase {
         let result = try awaitPublisher(
             Domain.Usecase.Book
                 .FetchBookList(useTestData: true)
-                .fetchBookList(isAdditional: false)
+                .fetchBookList(pageRequest: 1)
         )
 
         XCTAssertEqual(expect, result)

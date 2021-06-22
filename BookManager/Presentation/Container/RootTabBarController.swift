@@ -29,46 +29,46 @@ enum Tabs: Int, CaseIterable {
 
     private var title: String {
         switch self {
-        case .bookList:
-            return Resources.Strings.TabBar.bookList
+            case .bookList:
+                return Resources.Strings.TabBar.bookList
 
-        case .wishList:
-            return Resources.Strings.TabBar.wishList
+            case .wishList:
+                return Resources.Strings.TabBar.wishList
 
-        case .chatList:
-            return Resources.Strings.TabBar.chat
+            case .chatList:
+                return Resources.Strings.TabBar.chat
         }
     }
 
     private var image: UIImage? {
         switch self {
-        case .bookList:
-            return Resources.Images.TabBar.bookList
+            case .bookList:
+                return Resources.Images.TabBar.bookList
 
-        case .wishList:
-            return Resources.Images.TabBar.wishList
+            case .wishList:
+                return Resources.Images.TabBar.wishList
 
-        case .chatList:
-            return Resources.Images.TabBar.chat
+            case .chatList:
+                return Resources.Images.TabBar.chat
         }
     }
 
     private var tabBarItem: UITabBarItem {
-        .init(title: title, image: image, tag: self.rawValue)
+        .init(title: title, image: image, tag: rawValue)
     }
 
     private var baseViewController: UIViewController {
         let viewController: UIViewController
 
         switch self {
-        case .bookList:
-            viewController = Resources.ViewControllers.App.bookList()
+            case .bookList:
+                viewController = Resources.ViewControllers.App.bookList()
 
-        case .wishList:
-            viewController = Resources.ViewControllers.App.wishList()
+            case .wishList:
+                viewController = Resources.ViewControllers.App.wishList()
 
-        case .chatList:
-            viewController = Resources.ViewControllers.App.chatUserList()
+            case .chatList:
+                viewController = Resources.ViewControllers.App.chatUserList()
         }
 
         let nc = RootNavigationController(rootViewController: viewController)

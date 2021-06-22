@@ -11,7 +11,7 @@ final class MyMessageBalloonView: UIView {
         super.init(coder: aDecoder)
     }
 
-    override func draw(_ rect: CGRect) {
+    override func draw(_: CGRect) {
         let bezierPath = UIBezierPath()
         UIColor.systemGreen.setFill()
         UIColor.clear.setStroke()

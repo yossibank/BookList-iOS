@@ -4,10 +4,10 @@ import RxCocoa
 
 final class ChatUserListViewController: UIViewController {
 
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet var tableView: UITableView!
 
     private let router: RouterProtocol = Router()
-    private let disposeBag: DisposeBag = DisposeBag()
+    private let disposeBag = DisposeBag()
 
     private var viewModel: ChatUserListViewModel!
     private var dataSource: ChatUserListDataSource!
@@ -45,7 +45,10 @@ final class ChatUserListViewController: UIViewController {
 
     private func setupTableView() {
         dataSource = ChatUserListDataSource()
-        tableView.register(ChatUserListTableViewCell.xib(), forCellReuseIdentifier: ChatUserListTableViewCell.resourceName)
+        tableView.register(
+            ChatUserListTableViewCell.xib(),
+            forCellReuseIdentifier: ChatUserListTableViewCell.resourceName
+        )
         tableView.tableFooterView = UIView()
         tableView.dataSource = dataSource
         tableView.delegate = self

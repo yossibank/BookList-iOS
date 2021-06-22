@@ -1,6 +1,5 @@
 import APIKit
 import Combine
-import Foundation
 
 public protocol SignupUsecase {
     func signup(
@@ -10,11 +9,12 @@ public protocol SignupUsecase {
 }
 
 extension UsecaseImpl: SignupUsecase where R == Repos.Account.Signup, M == UserMapper {
+
     public func signup(
         email: String,
         password: String
     ) -> AnyPublisher<UserEntity, APIError> {
-        self.toPublisher { promise in
+        toPublisher { promise in
             analytics.sendEvent()
 
             repository.request(
@@ -23,12 +23,12 @@ extension UsecaseImpl: SignupUsecase where R == Repos.Account.Signup, M == UserM
                 pathComponent: .init()
             ) { result in
                 switch result {
-                case let .success(response):
-                    let entity = mapper.convert(response: response)
-                    promise(.success(entity))
+                    case let .success(response):
+                        let entity = mapper.convert(response: response)
+                        promise(.success(entity))
 
-                case let .failure(error):
-                    promise(.failure(error))
+                    case let .failure(error):
+                        promise(.failure(error))
                 }
             }
         }

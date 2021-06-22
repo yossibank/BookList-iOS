@@ -9,7 +9,7 @@ final class BookFileManager {
         FileManager.default
     }
 
-    private init() { }
+    private init() {}
 
     func setData(
         path: String,
@@ -80,7 +80,7 @@ final class BookFileManager {
                     return
                 }
 
-                 do {
+                do {
                     let json = try Data(contentsOf: url)
                     if let bookListCellData = BookViewData(json: json) {
                         data.append(bookListCellData)
@@ -98,8 +98,8 @@ final class BookFileManager {
 
     func isFavoriteBook(path: String) -> Bool {
         let documentDirectoryUrl = fileManager.urls(
-                for: .documentDirectory,
-                in: .userDomainMask
+            for: .documentDirectory,
+            in: .userDomainMask
         )[0]
 
         do {

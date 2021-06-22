@@ -67,7 +67,7 @@ extension LayoutProperty {
         to otherAnchor: Anchor,
         offsetBy constant: CGFloat = 0
     ) {
-        self.anchor.constraint(
+        anchor.constraint(
             equalTo: otherAnchor,
             constant: constant
         ).isActive = true
@@ -77,7 +77,7 @@ extension LayoutProperty {
         to otherAnchor: Anchor,
         offsetBy constant: CGFloat = 0
     ) {
-        self.anchor.constraint(
+        anchor.constraint(
             greaterThanOrEqualTo: otherAnchor,
             constant: constant
         ).isActive = true
@@ -87,7 +87,7 @@ extension LayoutProperty {
         to otherAnchor: Anchor,
         offsetBy constant: CGFloat = 0
     ) {
-        self.anchor.constraint(
+        anchor.constraint(
             lessThanOrEqualTo: otherAnchor,
             constant: constant
         ).isActive = true
@@ -97,7 +97,7 @@ extension LayoutProperty {
 extension LayoutDimensionProperty {
 
     func equal(constant: CGFloat = 0) {
-        self.dimension.constraint(
+        dimension.constraint(
             equalToConstant: constant
         ).isActive = true
     }

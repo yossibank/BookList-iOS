@@ -11,7 +11,7 @@ extension LoginViewController: VCInjectable {
 // MARK: - properties
 
 final class LoginViewController: UIViewController {
-    var routing: R! { didSet { self.routing.viewController = self } }
+    var routing: R! { didSet { routing.viewController = self } }
     var viewModel: VM!
 
     private let mainStackView: UIStackView = .init(
@@ -104,8 +104,8 @@ extension LoginViewController {
     }
 
     override func touchesBegan(
-        _ touches: Set<UITouch>,
-        with event: UIEvent?
+        _: Set<UITouch>,
+        with _: UIEvent?
     ) {
         view.endEditing(true)
     }
@@ -230,18 +230,18 @@ private extension LoginViewController {
             .receive(on: DispatchQueue.main)
             .sink { [weak self] state in
                 switch state {
-                case .standby:
-                    self?.loadingIndicator.stopAnimating()
+                    case .standby:
+                        self?.loadingIndicator.stopAnimating()
 
-                case .loading:
-                    self?.loadingIndicator.startAnimating()
+                    case .loading:
+                        self?.loadingIndicator.startAnimating()
 
-                case .done:
-                    self?.loadingIndicator.stopAnimating()
-                    self?.routing.showRootScreen()
+                    case .done:
+                        self?.loadingIndicator.stopAnimating()
+                        self?.routing.showRootScreen()
 
-                case .failed:
-                    self?.loadingIndicator.stopAnimating()
+                    case .failed:
+                        self?.loadingIndicator.stopAnimating()
                 }
             }
             .store(in: &cancellables)

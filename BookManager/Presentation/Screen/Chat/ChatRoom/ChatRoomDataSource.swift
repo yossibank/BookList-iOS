@@ -13,8 +13,8 @@ final class ChatRoomDataSource: NSObject {
 extension ChatRoomDataSource: UITableViewDataSource {
 
     func tableView(
-        _ tableView: UITableView,
-        numberOfRowsInSection section: Int
+        _: UITableView,
+        numberOfRowsInSection _: Int
     ) -> Int {
         chatMessages.count
     }

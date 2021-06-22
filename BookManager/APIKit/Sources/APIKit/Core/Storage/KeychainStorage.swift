@@ -22,16 +22,17 @@ class KeychainStorage<T: LosslessStringConvertible> {
             guard
                 let new = newValue
             else {
-                Keychain().remove(self.key)
+                Keychain().remove(key)
                 return
             }
 
-            Keychain().set(String(new), key: self.key)
+            Keychain().set(String(new), key: key)
         }
     }
 }
 
 private struct Keychain {
+
     func get(_ key: String) -> String? {
         var query = query(key: key)
         query[String(kSecMatchLimit)] = kSecMatchLimitOne
@@ -67,17 +68,17 @@ private struct Keychain {
         let status = SecItemCopyMatching(query as CFDictionary, nil)
 
         switch status {
-        case errSecSuccess, errSecInteractionNotAllowed:
-            let query = self.query(key: key)
-            let attributes = self.attributes(key: nil, value: data)
-            SecItemUpdate(query as CFDictionary, attributes as CFDictionary)
+            case errSecSuccess, errSecInteractionNotAllowed:
+                let query = self.query(key: key)
+                let attributes = self.attributes(key: nil, value: data)
+                SecItemUpdate(query as CFDictionary, attributes as CFDictionary)
 
-        case errSecItemNotFound:
-            let attributes = self.attributes(key: key, value: data)
-            SecItemAdd(attributes as CFDictionary, nil)
+            case errSecItemNotFound:
+                let attributes = self.attributes(key: key, value: data)
+                SecItemAdd(attributes as CFDictionary, nil)
 
-        default:
-            return
+            default:
+                return
         }
     }
 
@@ -94,7 +95,7 @@ private struct Keychain {
         var attributes: [String: Any] = [:]
 
         if let key = key {
-            attributes = self.query(key: key)
+            attributes = query(key: key)
         }
 
         attributes[String(kSecValueData)] = value

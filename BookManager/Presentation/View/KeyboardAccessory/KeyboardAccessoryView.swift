@@ -6,7 +6,7 @@ protocol KeyboardAccessoryViewDelegate: AnyObject {
 
 final class KeyboardAccessoryView: UIView {
 
-    @IBOutlet weak var sendTextView: UITextView! {
+    @IBOutlet var sendTextView: UITextView! {
         didSet {
             sendTextView.text = .blank
             sendTextView.textContainerInset = .init(top: 8, left: 8, bottom: 4, right: 4)
@@ -15,7 +15,7 @@ final class KeyboardAccessoryView: UIView {
         }
     }
 
-    @IBOutlet weak var sendButton: UIButton! {
+    @IBOutlet var sendButton: UIButton! {
         didSet {
             sendButton.isEnabled = false
             sendButton.imageView?.contentMode = .scaleAspectFill
@@ -57,7 +57,7 @@ final class KeyboardAccessoryView: UIView {
             return
         }
 
-        view.frame = self.bounds
+        view.frame = bounds
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         addSubview(view)
 

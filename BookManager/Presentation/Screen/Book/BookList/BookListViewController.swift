@@ -11,7 +11,7 @@ extension BookListViewController: VCInjectable {
 // MARK: - properties
 
 final class BookListViewController: UIViewController {
-    var routing: R! { didSet { self.routing.viewController = self } }
+    var routing: R! { didSet { routing.viewController = self } }
     var viewModel: VM!
 
     private let tableView: UITableView = .init(
@@ -103,18 +103,18 @@ private extension BookListViewController {
             .receive(on: DispatchQueue.main)
             .sink { [weak self] state in
                 switch state {
-                case .standby:
-                    self?.loadingIndicator.stopAnimating()
+                    case .standby:
+                        self?.loadingIndicator.stopAnimating()
 
-                case .loading:
-                    self?.loadingIndicator.startAnimating()
+                    case .loading:
+                        self?.loadingIndicator.startAnimating()
 
-                case .done:
-                    self?.loadingIndicator.stopAnimating()
-                    self?.tableView.reloadData()
+                    case .done:
+                        self?.loadingIndicator.stopAnimating()
+                        self?.tableView.reloadData()
 
-                case .failed:
-                    self?.loadingIndicator.stopAnimating()
+                    case .failed:
+                        self?.loadingIndicator.stopAnimating()
                 }
             }
             .store(in: &cancellables)
@@ -137,12 +137,12 @@ extension BookListViewController: UITableViewDelegate {
             return
         }
 
-        self.routing.showEditBookScreen(id: book.id)
+        routing.showEditBookScreen(id: book.id)
     }
 
     func tableView(
         _ tableView: UITableView,
-        willDisplay cell: UITableViewCell,
+        willDisplay _: UITableViewCell,
         forRowAt indexPath: IndexPath
     ) {
         let lastSection = tableView.numberOfSections - 1

@@ -29,7 +29,7 @@ final class TapAction {
         }
     }
 
-    @objc private func touchUpInside(sender: AnyObject) {
+    @objc private func touchUpInside(sender _: AnyObject) {
         onTouchUpInside?()
     }
 }
@@ -37,22 +37,22 @@ final class TapAction {
 extension UIControl {
 
     func onTap(_ closure: @escaping VoidBlock) {
-        self.removeTarget(nil, action: nil, for: .touchUpInside)
+        removeTarget(nil, action: nil, for: .touchUpInside)
 
         tapAction.onTouchUpInside = closure
     }
 
     var onTap: (target: Any?, action: Selector)? {
         get {
-            return nil
+            nil
         }
         set {
-            self.removeTarget(nil, action: nil, for: .touchUpInside)
+            removeTarget(nil, action: nil, for: .touchUpInside)
 
-            self.tapAction.onTouchUpInside = nil
+            tapAction.onTouchUpInside = nil
 
             if let value = newValue {
-                self.addTarget(
+                addTarget(
                     value.target,
                     action: value.action,
                     for: .touchUpInside

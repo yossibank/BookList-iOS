@@ -1,5 +1,3 @@
-import Foundation
-
 public struct UserEntity: Equatable {
     public let id: Int
     public let email: String

@@ -13,7 +13,7 @@ let package = Package(
             targets: [
                 "APIKit"
             ]
-        ),
+        )
     ],
     dependencies: [
         .package(url: "./Utility", from: "1.0.0")
@@ -33,6 +33,6 @@ let package = Package(
             dependencies: [
                 "APIKit"
             ]
-        ),
+        )
     ]
 )

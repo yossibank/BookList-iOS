@@ -10,8 +10,8 @@ final class LoginViewModel: ViewModel {
     private var cancellables: Set<AnyCancellable> = []
 
     @Published private(set) var state: State = .standby
-    @Published var email: String = String.blank
-    @Published var password: String = String.blank
+    @Published var email = String.blank
+    @Published var password = String.blank
 
     init(usecase: LoginUsecase = Domain.Usecase.Account.Login()) {
         self.usecase = usecase
@@ -23,24 +23,24 @@ final class LoginViewModel: ViewModel {
 extension LoginViewModel {
 
     func login() {
-        self.state = .loading
+        state = .loading
 
-        self.usecase
+        usecase
             .login(email: email, password: password)
             .sink { [weak self] completion in
                 guard let self = self else { return }
 
                 switch completion {
-                case let .failure(error):
-                    Logger.debug(message: error.localizedDescription)
-                    self.state = .failed(.init(error: error))
+                    case let .failure(error):
+                        Logger.debug(message: error.localizedDescription)
+                        self.state = .failed(.init(error: error))
 
-                case .finished:
-                    Logger.debug(message: "finished")
-                    FirebaseAuthManager.shared.signIn(
-                        email: self.email,
-                        password: self.password
-                    )
+                    case .finished:
+                        Logger.debug(message: "finished")
+                        FirebaseAuthManager.shared.signIn(
+                            email: self.email,
+                            password: self.password
+                        )
                 }
             } receiveValue: { [weak self] state in
                 self?.state = .done(state)

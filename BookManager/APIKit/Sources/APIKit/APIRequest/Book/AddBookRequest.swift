@@ -27,14 +27,14 @@ public struct AddBookRequest: Request {
     public var method: HTTPMethod { .post }
     public var path: String { "/books" }
     public var body: Data?
-    
+
     public var testDataPath: URL? {
         Bundle.module.url(forResource: "PostBook", withExtension: "json")
     }
 
     public init(
         parameters: Parameters,
-        pathComponent: EmptyPathComponent = .init()
+        pathComponent _: EmptyPathComponent = .init()
     ) {
         self.parameters = parameters
     }

@@ -7,12 +7,12 @@ final class ChatRoomViewController: UIViewController {
         static let contentInset: UIEdgeInsets = .init(top: 60, left: 0, bottom: 0, right: 0)
     }
 
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet var tableView: UITableView!
 
     private var viewModel: ChatRoomViewModel!
     private var dataSource: ChatRoomDataSource!
     private var safeAreaBottom: CGFloat {
-        self.view.safeAreaInsets.bottom
+        view.safeAreaInsets.bottom
     }
 
     private lazy var keyboardAccessoryView: KeyboardAccessoryView = {
@@ -49,8 +49,14 @@ final class ChatRoomViewController: UIViewController {
 
     private func setupTableView() {
         dataSource = ChatRoomDataSource(viewModel: viewModel)
-        tableView.register(MyMessageTableViewCell.xib(), forCellReuseIdentifier: MyMessageTableViewCell.resourceName)
-        tableView.register(OtherMessageTableViewCell.xib(), forCellReuseIdentifier: OtherMessageTableViewCell.resourceName)
+        tableView.register(
+            MyMessageTableViewCell.xib(),
+            forCellReuseIdentifier: MyMessageTableViewCell.resourceName
+        )
+        tableView.register(
+            OtherMessageTableViewCell.xib(),
+            forCellReuseIdentifier: OtherMessageTableViewCell.resourceName
+        )
         tableView.dataSource = dataSource
         tableView.estimatedRowHeight = 80
         tableView.rowHeight = UITableView.automaticDimension
@@ -82,12 +88,12 @@ final class ChatRoomViewController: UIViewController {
 
             switch documentChange.type {
 
-            case .added:
-                self.dataSource.chatMessages.insert(chatMessage, at: 0)
-                self.dataSource.chatMessages.sort { $0.sendAt.dateValue() > $1.sendAt.dateValue() }
+                case .added:
+                    self.dataSource.chatMessages.insert(chatMessage, at: 0)
+                    self.dataSource.chatMessages
+                        .sort { $0.sendAt.dateValue() > $1.sendAt.dateValue() }
 
-            case .modified, .removed: break
-
+                case .modified, .removed: break
             }
 
             DispatchQueue.main.async {
@@ -97,7 +103,11 @@ final class ChatRoomViewController: UIViewController {
     }
 
     @objc private func keyboardWillShow(notification: NSNotification) {
-        if let endFrame = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+        if
+            let endFrame = (
+                notification
+                    .userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue
+            )?.cgRectValue {
             guard endFrame.height >= Constants.accessoryHeight else { return }
 
             let top = endFrame.height - safeAreaBottom

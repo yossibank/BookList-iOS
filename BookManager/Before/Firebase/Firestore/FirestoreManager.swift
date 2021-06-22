@@ -41,7 +41,7 @@ final class FirestoreManager {
                 if let error = error {
                     print("user情報の登録に失敗しました: \(error)")
                 }
-        }
+            }
     }
 
     func findUser(
@@ -69,7 +69,7 @@ final class FirestoreManager {
     }
 
     func fetchUsers() -> Single<[FirestoreUser]> {
-        return Single.create(subscribe: { [weak self] observer -> Disposable in
+        Single.create(subscribe: { [weak self] observer -> Disposable in
             self?.database
                 .collection(FirestoreUser.collectionName)
                 .getDocuments { querySnapshot, error in

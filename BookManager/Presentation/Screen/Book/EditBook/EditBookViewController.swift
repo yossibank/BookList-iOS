@@ -95,9 +95,10 @@ final class EditBookViewController: UIViewController {
         doneItem.tapPublisher
             .sink { [weak self] in
                 self?.bookPurchaseDateTextField.endEditing(true)
-                self?.bookPurchaseDateTextField.text = UIDatePicker.purchaseDatePicker.date.toConvertString(
-                    with: .yearToDayOfWeekJapanese
-                )
+                self?.bookPurchaseDateTextField.text = UIDatePicker
+                    .purchaseDatePicker.date.toConvertString(
+                        with: .yearToDayOfWeekJapanese
+                    )
             }
             .store(in: &cancellables)
 
@@ -126,8 +127,8 @@ extension EditBookViewController {
     }
 
     override func touchesBegan(
-        _ touches: Set<UITouch>,
-        with event: UIEvent?
+        _: Set<UITouch>,
+        with _: UIEvent?
     ) {
         view.endEditing(true)
     }
@@ -254,18 +255,18 @@ private extension EditBookViewController {
         viewModel.$state
             .sink { [weak self] state in
                 switch state {
-                case .standby:
-                    Logger.debug(message: "standby")
+                    case .standby:
+                        Logger.debug(message: "standby")
 
-                case .loading:
-                    Logger.debug(message: "loading")
+                    case .loading:
+                        Logger.debug(message: "loading")
 
-                case let .done(entity):
-                    Logger.debug(message: "\(entity)")
-                    self?.dismiss(animated: true)
+                    case let .done(entity):
+                        Logger.debug(message: "\(entity)")
+                        self?.dismiss(animated: true)
 
-                case let .failed(error):
-                    Logger.debug(message: "\(error.localizedDescription)")
+                    case let .failed(error):
+                        Logger.debug(message: "\(error.localizedDescription)")
                 }
             }
             .store(in: &cancellables)
@@ -298,18 +299,18 @@ extension EditBookViewController: UITextFieldDelegate {
 extension EditBookViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     func imagePickerController(
-        _ picker: UIImagePickerController,
+        _: UIImagePickerController,
         didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]
     ) {
         if let image = info[.originalImage] as? UIImage {
             bookImageView.contentMode = .scaleAspectFill
             bookImageView.image = image
         }
-        self.dismiss(animated: true)
+        dismiss(animated: true)
     }
 
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        self.dismiss(animated: true)
+    func imagePickerControllerDidCancel(_: UIImagePickerController) {
+        dismiss(animated: true)
     }
 }
 

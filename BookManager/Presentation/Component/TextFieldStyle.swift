@@ -5,8 +5,8 @@ extension Stylable where Self == UITextField {
     init(
         placeholder: String = String.blank,
         keyboardType: UIKeyboardType = .default,
-        style: ViewStyle<Self>)
-    {
+        style: ViewStyle<Self>
+    ) {
         self.init()
         self.autocapitalizationType = .none
         self.placeholder = placeholder
@@ -27,7 +27,7 @@ extension ViewStyle where T: UITextField {
             $0.layer.shadowOffset = .init(width: 0, height: 0.4)
         }
     }
-    
+
     static var securePassword: ViewStyle<T> {
         ViewStyle<T> {
             $0.isSecureTextEntry = true

@@ -20,14 +20,14 @@ final class ImageLoader {
     typealias DownloadImageItem = (image: UIImage, isCachedOnMemoryOrDisk: Bool)
     typealias Completion = (DownloadImageItem) -> Void
 
-    private let tasksQueue: DispatchQueue = DispatchQueue(label: "imageLoader")
+    private let tasksQueue = DispatchQueue(label: "imageLoader")
 
     private var _tasks: [URL : [Completion]] = [:]
 
     private var tasks: [URL : [Completion]] {
         get {
             tasksQueue.sync {
-                return _tasks
+                _tasks
             }
         }
 
@@ -49,18 +49,18 @@ final class ImageLoader {
     func loadImage(
         immediatery: Bool = false,
         with type: ImageType,
-        forceUsingNoImage: Bool = false,
+        forceUsingNoImage _: Bool = false,
         completion: @escaping Completion
     ) {
         assert(Thread.current == Thread.main)
 
         var imageUrl: URL? {
 
-            if case .string(let string) = type {
+            if case let .string(string) = type {
 
                 return URL(string: string)
 
-            } else if case .url(let imageUrl) = type {
+            } else if case let .url(imageUrl) = type {
 
                 if let string = imageUrl?.absoluteString {
 
@@ -73,16 +73,14 @@ final class ImageLoader {
                 } else {
 
                     return imageUrl
-
                 }
             }
 
             return nil
-
         }
 
         guard let url = imageUrl else {
-            self.finish(immediately: immediatery) {
+            finish(immediately: immediatery) {
                 completion((Self.noImage, true))
             }
             return
@@ -92,26 +90,28 @@ final class ImageLoader {
 
         if
             let cachedResponse = URLCache.shared.cachedResponse(for: request),
-            let image = UIImage(data: cachedResponse.data)
-        {
-            self.finish(immediately: immediatery) {
+            let image = UIImage(data: cachedResponse.data) {
+            finish(immediately: immediatery) {
                 completion((image, true))
             }
             return
         }
 
-        if let completions = self.tasks[url], completions.isEmpty == false {
-            self.tasks[url] = completions + [completion]
+        if let completions = tasks[url], completions.isEmpty == false {
+            tasks[url] = completions + [completion]
             return
         } else {
-            self.tasks[url] = [completion]
+            tasks[url] = [completion]
         }
 
         URLSession.shared.retryDataTask(request: request) { [weak self] data, _, error in
             guard let self = self else { return }
 
             if let error = error {
-                Logger.debug(message: "finish image loading, but error occur, url: \(url.absoluteString), error: \(error)")
+                Logger
+                    .debug(
+                        message: "finish image loading, but error occur, url: \(url.absoluteString), error: \(error)"
+                    )
 
                 self.finish(immediately: immediatery) {
                     completion((image: Self.noImage, isCachedOnMemoryOrDisk: false))
@@ -119,8 +119,9 @@ final class ImageLoader {
                 return
             }
 
-            guard let data = data,
-                  let image = UIImage(data: data)
+            guard
+                let data = data,
+                let image = UIImage(data: data)
             else {
                 self.finish(immediately: immediatery) {
                     completion((image: Self.noImage, isCachedOnMemoryOrDisk: false))
@@ -166,7 +167,7 @@ private extension URLSession {
         completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void
     ) -> URLSessionDataTask {
 
-        self.dataTask(with: request) { data, response, error in
+        dataTask(with: request) { data, response, error in
             if error != nil, times > 0 {
                 usleep(wait)
 

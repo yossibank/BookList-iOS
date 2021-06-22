@@ -30,7 +30,7 @@ final class FirebaseStorageManager {
                     print("FirebaseStorageへのデータの保存に失敗しました: \(error)")
                     return
                 }
-        }
+            }
     }
 
     func fetchDownloadUrlString(

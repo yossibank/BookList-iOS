@@ -2,6 +2,7 @@ import Foundation
 import Utility
 
 struct APIClinet {
+
     func request<R: Request, T>(
         item: R,
         useTestData: Bool = false,
@@ -21,7 +22,7 @@ struct APIClinet {
         }
 
         if let cache = URLCache.shared.cachedResponse(for: urlRequest), item.wantCache {
-            self.decode(data: cache.data, completion: completion)
+            decode(data: cache.data, completion: completion)
             return
         }
 

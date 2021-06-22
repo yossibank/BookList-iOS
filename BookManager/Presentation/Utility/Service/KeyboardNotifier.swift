@@ -15,14 +15,15 @@ final class KeyboardNotifier {
     }
 
     @objc private func keyboardWillChangeFrameX(_ notification: Notification) {
-        if let endFrame = (
-            notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue
-        )?.cgRectValue {
+        if
+            let endFrame = (
+                notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue
+            )?.cgRectValue {
             let keyboardHeight = UIScreen.main.bounds.height - endFrame.origin.y
             if keyboardHeight > 0 {
-                self.keyboardPresent?(keyboardHeight)
+                keyboardPresent?(keyboardHeight)
             } else {
-                self.keyboardDismiss?(keyboardHeight)
+                keyboardDismiss?(keyboardHeight)
             }
         }
     }

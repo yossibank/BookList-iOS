@@ -1,6 +1,5 @@
 import APIKit
 import Combine
-import Foundation
 
 public protocol BookListUsecase {
     func fetchBookList(
@@ -9,10 +8,11 @@ public protocol BookListUsecase {
 }
 
 extension UsecaseImpl: BookListUsecase where R == Repos.Book.Get, M == BookListMapper {
+
     public func fetchBookList(
         pageRequest: Int
     ) -> AnyPublisher<[BookEntity], APIError> {
-        self.toPublisher { promise in
+        toPublisher { promise in
             analytics.sendEvent()
 
             repository.request(
@@ -21,12 +21,12 @@ extension UsecaseImpl: BookListUsecase where R == Repos.Book.Get, M == BookListM
                 pathComponent: .init()
             ) { result in
                 switch result {
-                case let .success(response):
-                    let entity = mapper.convert(response: response)
-                    promise(.success(entity))
+                    case let .success(response):
+                        let entity = mapper.convert(response: response)
+                        promise(.success(entity))
 
-                case let .failure(error):
-                    promise(.failure(error))
+                    case let .failure(error):
+                        promise(.failure(error))
                 }
             }
         }

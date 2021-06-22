@@ -7,7 +7,7 @@ public struct TestDataFetchRequest {
         self.testDataJsonPath = testDataJsonPath
     }
 
-    public func fetchLocalTestData<T: Decodable>(responseType: T.Type) -> Result<T, APIError> {
+    public func fetchLocalTestData<T: Decodable>(responseType _: T.Type) -> Result<T, APIError> {
         do {
             if let result = EmptyResponse() as? T {
                 return .success(result)

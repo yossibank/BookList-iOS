@@ -22,7 +22,7 @@ extension NSObject: ClassInitializable {
     }
 
     class var resourceName: String {
-        self.className
+        className
     }
 }
 
@@ -38,7 +38,7 @@ extension Initializable where Self: UIViewController {
         fromStoryboardOrNil customStoryboard: String? = nil
     ) -> Self {
 
-        let finalStoryboardName = customStoryboard ?? self.resourceName
+        let finalStoryboardName = customStoryboard ?? resourceName
 
         let storyboard = UIStoryboard(name: finalStoryboardName, bundle: Bundle(for: self))
         let controller = storyboard.instantiateInitialViewController()
@@ -66,7 +66,7 @@ extension Initializable where Self: UIView {
         optionsOrNil options: [UINib.OptionsKey: Any]? = nil
     ) -> UIView? {
 
-        let firstView = self.xib(fromXibOrNil: customXib).instantiate(
+        let firstView = xib(fromXibOrNil: customXib).instantiate(
             withOwner: owner,
             options: options
         ).first
@@ -84,7 +84,7 @@ extension Initializable where Self: UIView {
         fromXibOrNil customXib: String? = nil
     ) -> UINib {
 
-        let finalXibsName = customXib ?? self.resourceName
+        let finalXibsName = customXib ?? resourceName
 
         return UINib(nibName: finalXibsName, bundle: Bundle(for: self))
     }

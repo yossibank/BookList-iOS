@@ -10,10 +10,10 @@ final class EditBookViewModel: ViewModel {
 
     private var cancellables: Set<AnyCancellable> = []
 
-    @Published var bookName: String = String.blank
-    @Published var bookImage: String = String.blank
-    @Published var bookPrice: String = String.blank
-    @Published var bookPurchaseDate: String = String.blank
+    @Published var bookName = String.blank
+    @Published var bookImage = String.blank
+    @Published var bookPrice = String.blank
+    @Published var bookPurchaseDate = String.blank
     @Published private(set) var state: State = .standby
 
     init(id: Int, usecase: EditBookUsecase = Domain.Usecase.Book.EditBook()) {
@@ -36,12 +36,12 @@ extension EditBookViewModel {
         )
         .sink { [weak self] completion in
             switch completion {
-            case let .failure(error):
-                Logger.debug(message: error.localizedDescription)
-                self?.state = .failed(.init(error: error))
+                case let .failure(error):
+                    Logger.debug(message: error.localizedDescription)
+                    self?.state = .failed(.init(error: error))
 
-            case .finished:
-                Logger.debug(message: "finished")
+                case .finished:
+                    Logger.debug(message: "finished")
             }
         } receiveValue: { [weak self] state in
             self?.state = .done(state)

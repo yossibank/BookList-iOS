@@ -8,7 +8,7 @@ struct FirebaseProvider: AnalyticsProvider {
         Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
             AnalyticsParameterItemID: "id-\(title)",
             AnalyticsParameterItemName: title,
-            AnalyticsParameterContentType: "content",
+            AnalyticsParameterContentType: "content"
         ])
     }
 }

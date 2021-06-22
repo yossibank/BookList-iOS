@@ -4,7 +4,7 @@ final class ChatRoomViewModel {
     private let firestore = FirestoreManager.shared
 
     var currentUserId: Int {
-        return user.id
+        user.id
     }
 
     init(roomId: String, user: FirestoreUser) {

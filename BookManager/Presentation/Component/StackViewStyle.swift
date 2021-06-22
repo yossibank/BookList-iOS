@@ -10,12 +10,14 @@ extension Stylable where Self == UIStackView {
     ) {
         self.init()
         self.spacing = spacing
+        self.alignment = alignment
+        self.distribution = distribution
         self.apply(style)
     }
 }
 
 extension ViewStyle where T == UIStackView {
-    
+
     static var horizontalStyle: ViewStyle<T> {
         ViewStyle<T> {
             $0.axis = .horizontal

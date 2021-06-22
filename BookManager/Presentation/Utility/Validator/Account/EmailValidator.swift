@@ -7,8 +7,9 @@ enum EmailValidator: ValidatorProtocol {
     static func validate(
         _ value: String?
     ) -> ValidationResult<EmailError> {
-        guard let value = value,
-              !value.isEmpty
+        guard
+            let value = value,
+            !value.isEmpty
         else {
             return .invalid(.empty)
         }
@@ -35,11 +36,11 @@ enum EmailError: LocalizedError {
 
         switch self {
 
-        case .empty:
-            return Resources.Strings.Validation.notFilled
+            case .empty:
+                return Resources.Strings.Validation.notFilled
 
-        case .format:
-            return Resources.Strings.Validation.notFilled
+            case .format:
+                return Resources.Strings.Validation.notFilled
         }
     }
 }

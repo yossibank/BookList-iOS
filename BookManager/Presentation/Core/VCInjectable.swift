@@ -14,6 +14,7 @@ protocol VCInjectable: UIViewController {
 }
 
 extension VCInjectable {
+
     func inject(
         routing: R,
         viewModel: VM
@@ -24,6 +25,7 @@ extension VCInjectable {
 }
 
 extension VCInjectable where R == NoRouting {
+
     func inject(viewModel: VM) {
         routing = R()
         self.viewModel = viewModel
@@ -31,6 +33,7 @@ extension VCInjectable where R == NoRouting {
 }
 
 extension VCInjectable where VM == NoViewModel {
+
     func inject(routing: R) {
         self.routing = routing
         viewModel = VM()
@@ -38,8 +41,9 @@ extension VCInjectable where VM == NoViewModel {
 }
 
 extension VCInjectable where R == NoRouting, VM == NoViewModel {
+
     func inject() {
-        self.routing = R()
-        self.viewModel = VM()
+        routing = R()
+        viewModel = VM()
     }
 }
