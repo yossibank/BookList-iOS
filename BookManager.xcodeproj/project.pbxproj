@@ -77,7 +77,6 @@
 		787CB2F92600E0C5003B8CC9 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787CB2F82600E0C5003B8CC9 /* Room.swift */; };
 		787FD0B925F9072800FBE386 /* ChatUserListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787FD0B825F9072800FBE386 /* ChatUserListDataSource.swift */; };
 		78844C6125B0873600C9AEC0 /* AddBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78844C6025B0873600C9AEC0 /* AddBookViewController.swift */; };
-		78844C6525B0874100C9AEC0 /* AddBookViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78844C6425B0874100C9AEC0 /* AddBookViewController.storyboard */; };
 		7892EF52259C58C0006F7315 /* IBDesignableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7892EF51259C58C0006F7315 /* IBDesignableButton.swift */; };
 		7892EF5C259C5DF0006F7315 /* IBDesignableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7892EF5B259C5DF0006F7315 /* IBDesignableTextField.swift */; };
 		7892EF62259C642C006F7315 /* IBDesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7892EF61259C642C006F7315 /* IBDesignableView.swift */; };
@@ -228,7 +227,6 @@
 		787CB2F82600E0C5003B8CC9 /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		787FD0B825F9072800FBE386 /* ChatUserListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatUserListDataSource.swift; sourceTree = "<group>"; };
 		78844C6025B0873600C9AEC0 /* AddBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookViewController.swift; sourceTree = "<group>"; };
-		78844C6425B0874100C9AEC0 /* AddBookViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddBookViewController.storyboard; sourceTree = "<group>"; };
 		7892EF51259C58C0006F7315 /* IBDesignableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBDesignableButton.swift; sourceTree = "<group>"; };
 		7892EF5B259C5DF0006F7315 /* IBDesignableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBDesignableTextField.swift; sourceTree = "<group>"; };
 		7892EF61259C642C006F7315 /* IBDesignableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBDesignableView.swift; sourceTree = "<group>"; };
@@ -516,7 +514,6 @@
 			children = (
 				784E135D25B2A13D008FD947 /* AddBookViewModel.swift */,
 				78844C6025B0873600C9AEC0 /* AddBookViewController.swift */,
-				78844C6425B0874100C9AEC0 /* AddBookViewController.storyboard */,
 			);
 			path = AddBook;
 			sourceTree = "<group>";
@@ -974,7 +971,6 @@
 				78524FCD25E533FA002AEF87 /* ChatRoomViewController.storyboard in Resources */,
 				78DE1D6D25BD424800A2C0F2 /* WishListViewController.storyboard in Resources */,
 				784B18F025BD48F80071C32E /* WishListTableViewCell.xib in Resources */,
-				78844C6525B0874100C9AEC0 /* AddBookViewController.storyboard in Resources */,
 				78B29D2225B3311A00A7DC7F /* EditBookViewController.storyboard in Resources */,
 				78C7F3AB25E525E5005E9E2B /* ChatSelectViewController.storyboard in Resources */,
 				78B8A69125E54021005BCB16 /* OtherMessageTableViewCell.xib in Resources */,

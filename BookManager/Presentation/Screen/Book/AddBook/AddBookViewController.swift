@@ -15,7 +15,61 @@ final class AddBookViewController: UIViewController {
     var viewModel: VM!
     var keyboardNotifier: KeyboardNotifier = KeyboardNotifier()
 
-    private var cancellables: Set<AnyCancellable> = []
+    private let mainStackView: UIStackView = .init(
+        style: .verticalStyle,
+        spacing: 32
+    )
+
+    private let bookImageView: UIImageView = .init(
+        style: .bookImageStyle
+    )
+
+    private let buttonStackView: UIStackView = .init(
+        style: .verticalStyle,
+        spacing: 16
+    )
+
+    private let bookImageSelectButton: UIButton = .init(
+        title: "画像を選択",
+        backgroundColor: .darkGray,
+        style: .fontBoldStyle
+    )
+
+    private let takingPictureButton: UIButton = .init(
+        title: "写真を撮る",
+        backgroundColor: .darkGray,
+        style: .fontBoldStyle
+    )
+
+    private let bookTitleStackView: UIStackView = .init(
+        style: .verticalStyle,
+        spacing: 4
+    )
+
+    private let bookTitleTextField: UITextField = .init(
+        placeholder: "書籍名",
+        style: .borderBottomStyle
+    )
+
+    private let bookPriceStackView: UIStackView = .init(
+        style: .verticalStyle,
+        spacing: 4
+    )
+
+    private let bookPriceTextField: UITextField = .init(
+        placeholder: "金額",
+        style: .borderBottomStyle
+    )
+
+    private let bookPurchaseDateStackView: UIStackView = .init(
+        style: .verticalStyle,
+        spacing: 4
+    )
+
+    private let bookPurchaseDateTextField: UITextField = .init(
+        placeholder: "購入日",
+        style: .borderBottomStyle
+    )
 
     private lazy var toolbar: UIToolbar = {
         let toolbar = UIToolbar(
@@ -53,16 +107,7 @@ final class AddBookViewController: UIViewController {
         return toolbar
     }()
 
-    @IBOutlet weak var stackView: UIStackView!
-    @IBOutlet weak var bookImageView: UIImageView!
-    @IBOutlet weak var imageSelectButton: UIButton!
-    @IBOutlet weak var takingPictureButton: UIButton!
-    @IBOutlet weak var bookTitleTextField: UITextField!
-    @IBOutlet weak var bookPriceTextField: UITextField!
-    @IBOutlet weak var bookPurchaseDateTextField: UITextField!
-    @IBOutlet weak var validateTitleLabel: UILabel!
-    @IBOutlet weak var validatePriceLabel: UILabel!
-    @IBOutlet weak var validatePurchaseDateLabel: UILabel!
+    private var cancellables: Set<AnyCancellable> = []
 }
 
 // MARK: - override methods
@@ -71,9 +116,11 @@ extension AddBookViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        listenerKeyboard(keyboardNotifier: keyboardNotifier)
+        setupView()
+        setupLayout()
         setupTextField()
         setupButton()
+        listenerKeyboard(keyboardNotifier: keyboardNotifier)
     }
 
     override func touchesBegan(
@@ -87,6 +134,55 @@ extension AddBookViewController {
 // MARK: - private methods
 
 private extension AddBookViewController {
+
+    func setupView() {
+        view.backgroundColor = .white
+
+        bookTitleStackView.addArrangedSubview(bookTitleTextField)
+        bookPriceStackView.addArrangedSubview(bookPriceTextField)
+        bookPurchaseDateStackView.addArrangedSubview(bookPurchaseDateTextField)
+
+        let buttonStackViewList = [
+            bookImageSelectButton,
+            takingPictureButton
+        ]
+
+        buttonStackViewList.forEach {
+            buttonStackView.addArrangedSubview($0)
+        }
+
+        let stackViewList = [
+            bookImageView,
+            buttonStackView,
+            bookTitleStackView,
+            bookPriceStackView,
+            bookPurchaseDateStackView
+        ]
+
+        stackViewList.forEach {
+            mainStackView.addArrangedSubview($0)
+        }
+
+        view.addSubview(mainStackView)
+    }
+
+    func setupLayout() {
+        mainStackView.layout {
+            $0.centerY == view.centerYAnchor
+            $0.leading.equal(to: view.leadingAnchor, offsetBy: 64)
+            $0.trailing.equal(to: view.trailingAnchor, offsetBy: -64)
+        }
+
+        bookImageView.layout {
+            $0.heightConstant == 200
+        }
+
+        [bookTitleTextField, bookPriceTextField, bookPurchaseDateTextField].forEach {
+            $0.layout {
+                $0.heightConstant == 30
+            }
+        }
+    }
 
     func setupTextField() {
         [bookTitleTextField, bookPriceTextField, bookPurchaseDateTextField].forEach {
@@ -125,7 +221,7 @@ private extension AddBookViewController {
             }
             .store(in: &cancellables)
 
-        imageSelectButton.tapPublisher
+        bookImageSelectButton.tapPublisher
             .sink { [weak self] in
                 let photoLibrary = UIImagePickerController.SourceType.photoLibrary
 
@@ -190,7 +286,7 @@ extension AddBookViewController: UITextFieldDelegate {
         if currentTextFieldIndex + 1 == textFields.endIndex {
             textField.resignFirstResponder()
         } else {
-            textFields[currentTextFieldIndex + 1]?.becomeFirstResponder()
+            textFields[currentTextFieldIndex + 1].becomeFirstResponder()
         }
 
         return true
@@ -201,7 +297,7 @@ extension AddBookViewController: KeyboardDelegate {
 
     func keyboardPresent(_ height: CGFloat) {
         let displayHeight = view.frame.height - height
-        let bottomOffsetY = stackView.convert(
+        let bottomOffsetY = mainStackView.convert(
             bookPurchaseDateTextField.frame,
             to: self.view
         ).maxY + 20 - displayHeight

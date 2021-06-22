@@ -33,7 +33,7 @@ extension Resources {
             }
 
             func addBook() -> AddBookViewController {
-                let vc = AddBookViewController.instantiateInitialViewController()
+                let vc = AddBookViewController()
                 vc.inject(routing: NoRouting(), viewModel: AddBookViewModel())
                 return vc
             }

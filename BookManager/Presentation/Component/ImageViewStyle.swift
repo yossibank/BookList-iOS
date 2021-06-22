@@ -21,4 +21,12 @@ extension ViewStyle where T == UIImageView {
             $0.clipsToBounds = true
         }
     }
+
+    static var bookImageStyle: ViewStyle<T> {
+        ViewStyle<T> {
+            $0.image = Resources.Images.App.noImage
+            $0.layer.cornerRadius = 20
+            $0.clipsToBounds = true
+        }
+    }
 }
