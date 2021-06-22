@@ -32,7 +32,7 @@ extension BookListViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.fetchBookList()
+        viewModel.fetchBookList(isAdditional: false)
         setupView()
         setupLayout()
         setupTableView()
@@ -149,7 +149,7 @@ extension BookListViewController: UITableViewDelegate {
         let lastIndex = tableView.numberOfRows(inSection: lastSection) - 1
 
         if indexPath.section == lastSection && indexPath.row == lastIndex {
-            viewModel.fetchBookList()
+            viewModel.fetchBookList(isAdditional: true)
         }
     }
 }

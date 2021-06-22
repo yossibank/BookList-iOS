@@ -22,8 +22,12 @@ final class BookListViewModel: ViewModel {
 
 extension BookListViewModel {
 
-    func fetchBookList() {
+    func fetchBookList(isAdditional: Bool) {
         state = .loading
+
+        if !isAdditional {
+            pageRequest = 1
+        }
 
         usecase
             .fetchBookList(pageRequest: pageRequest)
@@ -46,14 +50,14 @@ extension BookListViewModel {
     }
 
     func saveFavoriteBook(book: BookViewData) {
-        BookFileManager.shared.setData(
+        BookFileManager.setData(
             path: String(book.id),
             data: book.json
         )
     }
 
     func removeFavoriteBook(book: BookViewData) {
-        BookFileManager.shared.removeData(
+        BookFileManager.removeData(
             path: String(book.id)
         )
     }
@@ -71,7 +75,7 @@ private extension BookListViewModel {
                 image: book.image,
                 price: book.price,
                 purchaseDate: book.purchaseDate,
-                isFavorite: BookFileManager.shared.isFavoriteBook(path: String(book.id))
+                isFavorite: BookFileManager.isContainPath(path: String(book.id))
             )
         }
         return books

@@ -342,14 +342,6 @@
 			path = OtherMessageCell;
 			sourceTree = "<group>";
 		};
-		781C318525B5AFC900C11D77 /* Service */ = {
-			isa = PBXGroup;
-			children = (
-				781936B225BC5B2B00309FB7 /* BookFileManager.swift */,
-			);
-			path = Service;
-			sourceTree = "<group>";
-		};
 		7820E0A925AEFBFF00A5E6D8 /* ImageLoader */ = {
 			isa = PBXGroup;
 			children = (
@@ -403,6 +395,7 @@
 				78997EBA259C346B0076FF97 /* Presentation */,
 				78FE8CD7267B79480006612E /* Resource */,
 				78997EC2259C350B0076FF97 /* Utility */,
+				781936B225BC5B2B00309FB7 /* BookFileManager.swift */,
 				78231207259C0D9300D9E723 /* Info.plist */,
 				78D18A87265E251500396D19 /* GoogleService-Info.plist */,
 				78B2A169267B87B600D9EA0E /* Before */,
@@ -709,7 +702,6 @@
 			isa = PBXGroup;
 			children = (
 				7862C15225E2591800F1645A /* Firebase */,
-				781C318525B5AFC900C11D77 /* Service */,
 				78997EB8259C345F0076FF97 /* AppResources */,
 			);
 			path = Before;

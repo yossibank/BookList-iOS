@@ -54,7 +54,7 @@ final class BookListTableViewCell: UITableViewCell {
             }
         }
 
-        let image = BookFileManager.shared.isFavoriteBook(path: String(book.id))
+        let image = BookFileManager.isContainPath(path: String(book.id))
             ? Resources.Images.App.favorite
             : Resources.Images.App.nonFavorite
 
