@@ -106,7 +106,6 @@
 		78CB209225EA48EB00D4E22D /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CB209125EA48EB00D4E22D /* FirebaseManager.swift */; };
 		78CC0ED5267DBE3D003489E1 /* BookListRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CC0ED4267DBE3D003489E1 /* BookListRouting.swift */; };
 		78CE46BB26808E920086837B /* ImageViewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CE46BA26808E920086837B /* ImageViewStyle.swift */; };
-		78CF3AEF25ABF81400ADBB60 /* BookListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78CF3AEE25ABF81400ADBB60 /* BookListViewController.storyboard */; };
 		78CF3AF325ABF82900ADBB60 /* BookListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CF3AF225ABF82900ADBB60 /* BookListViewController.swift */; };
 		78CF3AF825ABF85D00ADBB60 /* BookListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CF3AF625ABF85D00ADBB60 /* BookListTableViewCell.swift */; };
 		78CF3AF925ABF85D00ADBB60 /* BookListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78CF3AF725ABF85D00ADBB60 /* BookListTableViewCell.xib */; };
@@ -257,7 +256,6 @@
 		78CB209125EA48EB00D4E22D /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		78CC0ED4267DBE3D003489E1 /* BookListRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListRouting.swift; sourceTree = "<group>"; };
 		78CE46BA26808E920086837B /* ImageViewStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewStyle.swift; sourceTree = "<group>"; };
-		78CF3AEE25ABF81400ADBB60 /* BookListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BookListViewController.storyboard; sourceTree = "<group>"; };
 		78CF3AF225ABF82900ADBB60 /* BookListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListViewController.swift; sourceTree = "<group>"; };
 		78CF3AF625ABF85D00ADBB60 /* BookListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListTableViewCell.swift; sourceTree = "<group>"; };
 		78CF3AF725ABF85D00ADBB60 /* BookListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookListTableViewCell.xib; sourceTree = "<group>"; };
@@ -776,7 +774,6 @@
 				78CF3B3425AC48FD00ADBB60 /* BookListDataSource.swift */,
 				78CF3AF225ABF82900ADBB60 /* BookListViewController.swift */,
 				78CF3B0625AC0E3500ADBB60 /* BookListViewModel.swift */,
-				78CF3AEE25ABF81400ADBB60 /* BookListViewController.storyboard */,
 			);
 			path = BookList;
 			sourceTree = "<group>";
@@ -972,7 +969,6 @@
 				78231206259C0D9300D9E723 /* LaunchScreen.storyboard in Resources */,
 				7805908525F48A82002B5296 /* ChatUserListViewController.storyboard in Resources */,
 				78421CE125E9273500950F62 /* KeyboardAccessoryView.xib in Resources */,
-				78CF3AEF25ABF81400ADBB60 /* BookListViewController.storyboard in Resources */,
 				7805908F25F48ADA002B5296 /* ChatUserListTableViewCell.xib in Resources */,
 				78CF3AF925ABF85D00ADBB60 /* BookListTableViewCell.xib in Resources */,
 				78524FCD25E533FA002AEF87 /* ChatRoomViewController.storyboard in Resources */,

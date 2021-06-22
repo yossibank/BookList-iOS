@@ -27,7 +27,7 @@ extension Resources {
             }
 
             func bookList() -> BookListViewController {
-                let vc = BookListViewController.instantiateInitialViewController()
+                let vc = BookListViewController()
                 vc.inject(routing: BookListRouting(), viewModel: BookListViewModel())
                 return vc
             }

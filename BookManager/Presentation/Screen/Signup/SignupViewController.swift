@@ -115,6 +115,7 @@ final class SignupViewController: UIViewController {
     )
 
     private var cancellables: Set<AnyCancellable> = []
+
     private var isSecureCheck: Bool = false {
         didSet {
             let image = isSecureCheck
@@ -206,8 +207,8 @@ private extension SignupViewController {
             mainStackView.addArrangedSubview($0)
         }
 
-        view.addSubview(loadingIndicator)
         view.addSubview(mainStackView)
+        view.addSubview(loadingIndicator)
     }
 
     func setupLayout() {
