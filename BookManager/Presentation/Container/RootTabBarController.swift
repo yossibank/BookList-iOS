@@ -22,6 +22,15 @@ extension RootTabBarController {
     }
 }
 
+// MARK: - internal methods
+
+extension RootTabBarController {
+
+    func getViewController(tag: Tabs) -> UIViewController? {
+        viewControllers?.any(at: tag.rawValue)?.children.any(at: 0)
+    }
+}
+
 enum Tabs: Int, CaseIterable {
     case bookList
     case wishList

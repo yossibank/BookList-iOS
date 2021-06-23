@@ -6,15 +6,15 @@ import Utility
 final class SignupViewModel: ViewModel {
     typealias State = LoadingState<UserEntity, APPError>
 
-    private let usecase: SignupUsecase
-
-    private var cancellables: Set<AnyCancellable> = []
-
-    @Published private(set) var state: State = .standby
     @Published var userName = String.blank
     @Published var email = String.blank
     @Published var password = String.blank
     @Published var passwordConfirmation = String.blank
+    @Published private(set) var state: State = .standby
+
+    private let usecase: SignupUsecase
+
+    private var cancellables: Set<AnyCancellable> = []
 
     init(usecase: SignupUsecase = Domain.Usecase.Account.Signup()) {
         self.usecase = usecase

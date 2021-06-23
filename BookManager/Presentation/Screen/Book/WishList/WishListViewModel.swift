@@ -4,12 +4,12 @@ import Utility
 
 final class WishListViewModel: ViewModel {
 
-    var books: [BookViewData] {
-        BookFileManager.shared.fetchData()
+    var bookList: [BookBusinessModel] {
+        BookFileManager.fetchData()
     }
 
-    func updateBook(book: BookViewData) {
-        BookFileManager.shared.setData(
+    func updateBook(book: BookBusinessModel) {
+        BookFileManager.setData(
             path: String(book.id),
             data: book.json
         )

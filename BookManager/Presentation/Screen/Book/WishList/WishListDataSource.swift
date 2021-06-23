@@ -1,7 +1,7 @@
 import UIKit
 
 final class WishListDataSource: NSObject {
-    private weak var viewModel: WishListViewModel?
+    private weak var viewModel: WishListViewModel!
 
     init(viewModel: WishListViewModel) {
         super.init()
@@ -12,26 +12,19 @@ final class WishListDataSource: NSObject {
 extension WishListDataSource: UITableViewDataSource {
 
     func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
-        guard let cellData = viewModel?.books else { return 0 }
-        return cellData.count
+        viewModel.bookList.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cellData = viewModel?.books else {
-            return UITableViewCell(style: .default, reuseIdentifier: nil)
-        }
-
         let cell = tableView.dequeueReusableCell(
-            withIdentifier: WishListTableViewCell.resourceName,
+            withIdentifier: BookCell.resourceName,
             for: indexPath
         )
 
-        if let wishListCell = cell as? WishListTableViewCell {
-            wishListCell.accessoryType = .disclosureIndicator
-            wishListCell.bookImageView.image = nil
-            if let book = cellData.any(at: indexPath.row) {
-                wishListCell.setup(book: book)
-            }
+        if
+            let wishListCell = cell as? BookCell,
+            let book = viewModel.bookList.any(at: indexPath.row) {
+            wishListCell.setup(book: book, type: .wishList)
         }
 
         return cell

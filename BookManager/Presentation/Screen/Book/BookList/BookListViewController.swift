@@ -32,7 +32,7 @@ extension BookListViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.fetchBookList()
+        viewModel.fetchBookList(isAdditional: false)
         setupView()
         setupLayout()
         setupTableView()
@@ -43,13 +43,7 @@ extension BookListViewController {
 
 // MARK: - internal methods
 
-extension BookListViewController {
-
-    func updateBookList(book: BookViewData) {
-        dataSource.updateCellDataList(book: book)
-        tableView.reloadData()
-    }
-}
+extension BookListViewController {}
 
 
 // MARK: private methods
@@ -81,8 +75,8 @@ private extension BookListViewController {
         dataSource.delegate = self
 
         tableView.register(
-            BookListTableViewCell.xib(),
-            forCellReuseIdentifier: BookListTableViewCell.resourceName
+            BookCell.self,
+            forCellReuseIdentifier: BookCell.resourceName
         )
         tableView.tableFooterView = UIView()
         tableView.dataSource = dataSource
@@ -137,7 +131,14 @@ extension BookListViewController: UITableViewDelegate {
             return
         }
 
-        routing.showEditBookScreen(id: book.id)
+        var successHandler: VoidBlock {{
+            print("OK")
+        }}
+
+        routing.showEditBookScreen(
+            id: book.id,
+            successHandler: successHandler
+        )
     }
 
     func tableView(
@@ -149,31 +150,19 @@ extension BookListViewController: UITableViewDelegate {
         let lastIndex = tableView.numberOfRows(inSection: lastSection) - 1
 
         if indexPath.section == lastSection && indexPath.row == lastIndex {
-            viewModel.fetchBookList()
+            viewModel.fetchBookList(isAdditional: true)
         }
     }
 }
 
 extension BookListViewController: BookListDataSourceDelegate {
 
-    func didSelectFavoriteButton(index: Int) {
-        guard
-            let book = viewModel.bookList.any(at: index)
-        else {
-            return
-        }
+    func tappedFavoriteButton() {
+        let wishListVC = getRootTabBarController()?.getViewController(
+            tag: .wishList
+        ) as? WishListViewController
 
-        if book.isFavorite {
-            viewModel.removeFavoriteBook(book: book)
-        } else {
-            viewModel.saveFavoriteBook(book: book)
-        }
-
-        dataSource.updateFavorite(index: index, bookViewData: book)
-        tableView.reloadRows(
-            at: [IndexPath(row: index, section: 0)],
-            with: .fade
-        )
+        wishListVC?.reload()
     }
 }
 

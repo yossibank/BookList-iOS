@@ -38,4 +38,14 @@ extension Date {
         dateFormatter.dateFormat = dateFormatType?.rawValue ?? dateFormatter.dateFormat
         return dateFormatter.date(from: string)
     }
+
+    static func convertBookPurchaseDate(dateString: String?) -> String {
+        if let dateString = dateString {
+            if let date = toConvertDate(dateString, with: .yearToDayOfWeek) {
+                return date.toConvertString(with: .yearToDayOfWeekJapanese)
+            }
+        }
+
+        return .blank
+    }
 }

@@ -1,27 +1,20 @@
 import UIKit
 
 protocol BookListDataSourceDelegate: AnyObject {
-    func didSelectFavoriteButton(index: Int)
+    func tappedFavoriteButton()
 }
 
 final class BookListDataSource: NSObject {
-    var viewModel: BookListViewModel!
     weak var delegate: BookListDataSourceDelegate?
+    private weak var viewModel: BookListViewModel!
 
     init(viewModel: BookListViewModel) {
+        super.init()
         self.viewModel = viewModel
     }
-
-    func updateCellDataList(book _: BookViewData) {
-//        if let index = viewModel.bookList.firstIndex(where: { $0.id == book.id }) {
-//
-//        }
-    }
-
-    func updateFavorite(index _: Int, bookViewData _: BookViewData) {
-//        viewModel.bookList[index].isFavorite = !bookViewData.isFavorite
-    }
 }
+
+// MARK: - Delegate
 
 extension BookListDataSource: UITableViewDataSource {
 
@@ -31,27 +24,29 @@ extension BookListDataSource: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(
-            withIdentifier: BookListTableViewCell.resourceName,
+            withIdentifier: BookCell.resourceName,
             for: indexPath
         )
 
-        if let bookListCell = cell as? BookListTableViewCell {
-            bookListCell.accessoryType = .disclosureIndicator
-            bookListCell.delegate = self
-            bookListCell.favoriteButton.tag = indexPath.row
-            bookListCell.bookImageView.image = nil
-            if let book = viewModel.bookList.any(at: indexPath.row) {
-                bookListCell.setup(book: book)
+        if
+            let bookListCell = cell as? BookCell,
+            let book = viewModel.bookList.any(at: indexPath.row) {
+
+            bookListCell.setup(book: book, type: .bookList)
+            bookListCell.favoriteHandler = { [weak self] in
+                book.isFavorite
+                    ? self?.viewModel.removeFavoriteBook(book: book)
+                    : self?.viewModel.saveFavoriteBook(book: book)
+
+                tableView.reloadRows(
+                    at: [.init(row: indexPath.row, section: 0)],
+                    with: .automatic
+                )
+
+                self?.delegate?.tappedFavoriteButton()
             }
         }
 
         return cell
-    }
-}
-
-extension BookListDataSource: BookListCellDelegate {
-
-    func didSelectFavoriteButton(at index: Int) {
-        delegate?.didSelectFavoriteButton(index: index)
     }
 }
