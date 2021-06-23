@@ -40,9 +40,9 @@ final class BookListTableViewCell: UITableViewCell {
         image: Resources.Images.App.favorite
     )
 
-    private var isFavorite: Bool = false {
+    private var isBookFavorite: Bool = false {
         didSet {
-            let image = isFavorite
+            let image = isBookFavorite
                 ? Resources.Images.App.favorite
                 : Resources.Images.App.nonFavorite
 
@@ -76,7 +76,8 @@ final class BookListTableViewCell: UITableViewCell {
 
 extension BookListTableViewCell {
 
-    func setup(book: BookViewData) {
+    func setup(book: BookBusinessModel) {
+        isBookFavorite = book.isFavorite
         bookTitleLabel.text = book.name
         bookPriceLabel.text = String.toTaxText(book.price)
         bookPurchaseLabel.text = Date.convertBookPurchaseDate(dateString: book.purchaseDate)
@@ -89,8 +90,6 @@ extension BookListTableViewCell {
                 self.bookImageView.image = image
             }
         }
-
-        isFavorite = book.isFavorite
     }
 }
 

@@ -27,11 +27,9 @@ extension BookListDataSource: UITableViewDataSource {
             for: indexPath
         )
 
-        let cellData = viewModel.bookListMap()
-
         if
             let bookListCell = cell as? BookListTableViewCell,
-            let book = cellData.any(at: indexPath.row) {
+            let book = viewModel.bookList.any(at: indexPath.row) {
 
             bookListCell.setup(book: book)
             bookListCell.favoriteHandler = { [weak self] in

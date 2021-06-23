@@ -1,6 +1,6 @@
 import Foundation
 
-struct BookViewData: Codable {
+struct BookBusinessModel: Codable {
     var id: Int
     var name: String
     var image: String?
@@ -9,14 +9,14 @@ struct BookViewData: Codable {
     var isFavorite: Bool
 }
 
-extension BookViewData {
+extension BookBusinessModel {
 
     var json: Data? {
         try? JSONEncoder().encode(self)
     }
 
     init?(json: Data) {
-        if let newValue = try? JSONDecoder().decode(BookViewData.self, from: json) {
+        if let newValue = try? JSONDecoder().decode(BookBusinessModel.self, from: json) {
             self = newValue
         } else {
             return nil

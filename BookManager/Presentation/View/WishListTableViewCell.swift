@@ -11,7 +11,7 @@ final class WishListTableViewCell: UITableViewCell {
         super.awakeFromNib()
     }
 
-    func setup(book: BookViewData) {
+    func setup(book: BookBusinessModel) {
         bookTitleLabel.text = book.name
 
         if let purchaseDate = book.purchaseDate {
