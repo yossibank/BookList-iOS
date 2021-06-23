@@ -24,15 +24,15 @@ extension BookListDataSource: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(
-            withIdentifier: BookListTableViewCell.resourceName,
+            withIdentifier: BookCell.resourceName,
             for: indexPath
         )
 
         if
-            let bookListCell = cell as? BookListTableViewCell,
+            let bookListCell = cell as? BookCell,
             let book = viewModel.bookList.any(at: indexPath.row) {
 
-            bookListCell.setup(book: book)
+            bookListCell.setup(book: book, type: .bookList)
             bookListCell.favoriteHandler = { [weak self] in
                 book.isFavorite
                     ? self?.viewModel.removeFavoriteBook(book: book)

@@ -17,14 +17,14 @@ extension WishListDataSource: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(
-            withIdentifier: WishListTableViewCell.resourceName,
+            withIdentifier: BookCell.resourceName,
             for: indexPath
         )
 
         if
-            let wishListCell = cell as? WishListTableViewCell,
+            let wishListCell = cell as? BookCell,
             let book = viewModel.bookList.any(at: indexPath.row) {
-            wishListCell.setup(book: book)
+            wishListCell.setup(book: book, type: .wishList)
         }
 
         return cell

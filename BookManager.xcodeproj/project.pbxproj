@@ -46,8 +46,6 @@
 		7833D0BA26022624005DFB79 /* ChatSelectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7833D0B926022624005DFB79 /* ChatSelectViewModel.swift */; };
 		7833D0C3260229E4005DFB79 /* ChatSelectDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7833D0C2260229E4005DFB79 /* ChatSelectDataSource.swift */; };
 		78421CE125E9273500950F62 /* KeyboardAccessoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78421CE025E9273500950F62 /* KeyboardAccessoryView.xib */; };
-		784B18EF25BD48F80071C32E /* WishListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784B18ED25BD48F80071C32E /* WishListTableViewCell.swift */; };
-		784B18F025BD48F80071C32E /* WishListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 784B18EE25BD48F80071C32E /* WishListTableViewCell.xib */; };
 		784B18F625BD4D5F0071C32E /* WishListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784B18F525BD4D5F0071C32E /* WishListViewModel.swift */; };
 		784B18FC25BD50FC0071C32E /* WishListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784B18FB25BD50FC0071C32E /* WishListDataSource.swift */; };
 		784E135625B29952008FD947 /* DatePicker+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784E135525B29952008FD947 /* DatePicker+Util.swift */; };
@@ -105,7 +103,7 @@
 		78CC0ED5267DBE3D003489E1 /* BookListRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CC0ED4267DBE3D003489E1 /* BookListRouting.swift */; };
 		78CE46BB26808E920086837B /* ImageViewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CE46BA26808E920086837B /* ImageViewStyle.swift */; };
 		78CF3AF325ABF82900ADBB60 /* BookListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CF3AF225ABF82900ADBB60 /* BookListViewController.swift */; };
-		78CF3AF825ABF85D00ADBB60 /* BookListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CF3AF625ABF85D00ADBB60 /* BookListTableViewCell.swift */; };
+		78CF3AF825ABF85D00ADBB60 /* BookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CF3AF625ABF85D00ADBB60 /* BookCell.swift */; };
 		78CF3B0725AC0E3500ADBB60 /* BookListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CF3B0625AC0E3500ADBB60 /* BookListViewModel.swift */; };
 		78CF3B3525AC48FD00ADBB60 /* BookListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CF3B3425AC48FD00ADBB60 /* BookListDataSource.swift */; };
 		78D18A88265E251500396D19 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 78D18A87265E251500396D19 /* GoogleService-Info.plist */; };
@@ -191,8 +189,6 @@
 		7833D0B926022624005DFB79 /* ChatSelectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatSelectViewModel.swift; sourceTree = "<group>"; };
 		7833D0C2260229E4005DFB79 /* ChatSelectDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatSelectDataSource.swift; sourceTree = "<group>"; };
 		78421CE025E9273500950F62 /* KeyboardAccessoryView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KeyboardAccessoryView.xib; sourceTree = "<group>"; };
-		784B18ED25BD48F80071C32E /* WishListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListTableViewCell.swift; sourceTree = "<group>"; };
-		784B18EE25BD48F80071C32E /* WishListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WishListTableViewCell.xib; sourceTree = "<group>"; };
 		784B18F525BD4D5F0071C32E /* WishListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListViewModel.swift; sourceTree = "<group>"; };
 		784B18FB25BD50FC0071C32E /* WishListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListDataSource.swift; sourceTree = "<group>"; };
 		784E135525B29952008FD947 /* DatePicker+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DatePicker+Util.swift"; sourceTree = "<group>"; };
@@ -249,7 +245,7 @@
 		78CC0ED4267DBE3D003489E1 /* BookListRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListRouting.swift; sourceTree = "<group>"; };
 		78CE46BA26808E920086837B /* ImageViewStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewStyle.swift; sourceTree = "<group>"; };
 		78CF3AF225ABF82900ADBB60 /* BookListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListViewController.swift; sourceTree = "<group>"; };
-		78CF3AF625ABF85D00ADBB60 /* BookListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListTableViewCell.swift; sourceTree = "<group>"; };
+		78CF3AF625ABF85D00ADBB60 /* BookCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCell.swift; sourceTree = "<group>"; };
 		78CF3B0625AC0E3500ADBB60 /* BookListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListViewModel.swift; sourceTree = "<group>"; };
 		78CF3B3425AC48FD00ADBB60 /* BookListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListDataSource.swift; sourceTree = "<group>"; };
 		78D18A87265E251500396D19 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -320,14 +316,6 @@
 				7805908425F48A82002B5296 /* ChatUserListViewController.storyboard */,
 			);
 			path = ChatUserList;
-			sourceTree = "<group>";
-		};
-		780F6B8D268238B5002D7513 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				78CF3AF625ABF85D00ADBB60 /* BookListTableViewCell.swift */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		781B121B25E69A75006968ED /* OtherMessageCell */ = {
@@ -675,6 +663,14 @@
 			path = BusinessModel;
 			sourceTree = "<group>";
 		};
+		789BC9222683812000C9EC0F /* Book */ = {
+			isa = PBXGroup;
+			children = (
+				78CF3AF625ABF85D00ADBB60 /* BookCell.swift */,
+			);
+			path = Book;
+			sourceTree = "<group>";
+		};
 		78B29D1A25B330D600A7DC7F /* EditBook */ = {
 			isa = PBXGroup;
 			children = (
@@ -746,7 +742,6 @@
 		78CF3AEC25ABF7EA00ADBB60 /* BookList */ = {
 			isa = PBXGroup;
 			children = (
-				780F6B8D268238B5002D7513 /* View */,
 				78CC0ED4267DBE3D003489E1 /* BookListRouting.swift */,
 				78CF3B3425AC48FD00ADBB60 /* BookListDataSource.swift */,
 				78CF3AF225ABF82900ADBB60 /* BookListViewController.swift */,
@@ -758,6 +753,7 @@
 		78CF3AED25ABF80700ADBB60 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				789BC9222683812000C9EC0F /* Book */,
 				78421CDF25E926FD00950F62 /* KeyboardAccessory */,
 				78299CE625E69CFD001868FB /* MyMessageCell */,
 				781B121B25E69A75006968ED /* OtherMessageCell */,
@@ -765,8 +761,6 @@
 				78C7F3B025E52C94005E9E2B /* ChatSelectTableViewCell.xib */,
 				7805908C25F48ADA002B5296 /* ChatUserListTableViewCell.swift */,
 				7805908D25F48ADA002B5296 /* ChatUserListTableViewCell.xib */,
-				784B18ED25BD48F80071C32E /* WishListTableViewCell.swift */,
-				784B18EE25BD48F80071C32E /* WishListTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -946,7 +940,6 @@
 				78421CE125E9273500950F62 /* KeyboardAccessoryView.xib in Resources */,
 				7805908F25F48ADA002B5296 /* ChatUserListTableViewCell.xib in Resources */,
 				78524FCD25E533FA002AEF87 /* ChatRoomViewController.storyboard in Resources */,
-				784B18F025BD48F80071C32E /* WishListTableViewCell.xib in Resources */,
 				78C7F3AB25E525E5005E9E2B /* ChatSelectViewController.storyboard in Resources */,
 				78B8A69125E54021005BCB16 /* OtherMessageTableViewCell.xib in Resources */,
 				78299CEA25E69D0D001868FB /* MyMessageTableViewCell.xib in Resources */,
@@ -997,7 +990,7 @@
 				7824042425E92A040001AB52 /* KeyboardAccessoryView.swift in Sources */,
 				784E135E25B2A13D008FD947 /* AddBookViewModel.swift in Sources */,
 				78B8A69025E54021005BCB16 /* OtherMessageTableViewCell.swift in Sources */,
-				78CF3AF825ABF85D00ADBB60 /* BookListTableViewCell.swift in Sources */,
+				78CF3AF825ABF85D00ADBB60 /* BookCell.swift in Sources */,
 				7826A74625F7AF03006F23AD /* ChatUserListUsecase.swift in Sources */,
 				7892EF5C259C5DF0006F7315 /* IBDesignableTextField.swift in Sources */,
 				78752AA6267EEE92000B87AC /* Style.swift in Sources */,
@@ -1035,7 +1028,6 @@
 				78772B5425B3E48B00E6493E /* EditBookViewModel.swift in Sources */,
 				78ED505725EB5C8B0045089C /* FirebaseStorageManager.swift in Sources */,
 				787CB2F32600C7B2003B8CC9 /* ChatRoomDataSource.swift in Sources */,
-				784B18EF25BD48F80071C32E /* WishListTableViewCell.swift in Sources */,
 				787CB2EC2600C3AD003B8CC9 /* ChatMessage.swift in Sources */,
 				78CC0ED5267DBE3D003489E1 /* BookListRouting.swift in Sources */,
 				78299CE925E69D0D001868FB /* MyMessageTableViewCell.swift in Sources */,

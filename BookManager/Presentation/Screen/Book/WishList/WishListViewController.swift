@@ -66,8 +66,8 @@ private extension WishListViewController {
         dataSource = WishListDataSource(viewModel: viewModel)
 
         tableView.register(
-            WishListTableViewCell.xib(),
-            forCellReuseIdentifier: WishListTableViewCell.resourceName
+            BookCell.self,
+            forCellReuseIdentifier: BookCell.resourceName
         )
         tableView.tableFooterView = UIView()
         tableView.dataSource = dataSource

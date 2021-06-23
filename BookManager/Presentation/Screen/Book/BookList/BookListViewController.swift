@@ -75,8 +75,8 @@ private extension BookListViewController {
         dataSource.delegate = self
 
         tableView.register(
-            BookListTableViewCell.self,
-            forCellReuseIdentifier: BookListTableViewCell.resourceName
+            BookCell.self,
+            forCellReuseIdentifier: BookCell.resourceName
         )
         tableView.tableFooterView = UIView()
         tableView.dataSource = dataSource

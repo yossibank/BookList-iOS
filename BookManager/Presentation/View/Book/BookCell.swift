@@ -2,9 +2,14 @@ import Combine
 import CombineCocoa
 import UIKit
 
+enum DisplayType {
+    case bookList
+    case wishList
+}
+
 // MARK: - properties
 
-final class BookListTableViewCell: UITableViewCell {
+final class BookCell: UITableViewCell {
     var favoriteHandler: VoidBlock?
 
     private let mainStackView: UIStackView = .init(
@@ -74,9 +79,19 @@ final class BookListTableViewCell: UITableViewCell {
 
 // MARK: - internal methods
 
-extension BookListTableViewCell {
+extension BookCell {
 
-    func setup(book: BookBusinessModel) {
+    func setup(book: BookBusinessModel, type: DisplayType) {
+        switch type {
+            case .bookList:
+                favoriteButton.isHidden = false
+                accessoryType = .none
+
+            case .wishList:
+                favoriteButton.isHidden = true
+                accessoryType = .disclosureIndicator
+        }
+
         isBookFavorite = book.isFavorite
         bookTitleLabel.text = book.name
         bookPriceLabel.text = String.toTaxText(book.price)
@@ -95,7 +110,7 @@ extension BookListTableViewCell {
 
 // MARK: - private methods
 
-private extension BookListTableViewCell {
+private extension BookCell {
 
     func setupView() {
         backgroundColor = .white
