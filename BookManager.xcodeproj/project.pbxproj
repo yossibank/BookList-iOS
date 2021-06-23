@@ -525,6 +525,9 @@
 		7892EF48259C539B006F7315 /* IBDesignable */ = {
 			isa = PBXGroup;
 			children = (
+				785AB27125E9C527000FEEFE /* TapAction.swift */,
+				78E609FF25AAAEAC0041B3D0 /* ObservableType+Extension.swift */,
+				78997EE4259C4C5E0076FF97 /* UIView-IBInspectable-Extensions.swift */,
 				7892EF61259C642C006F7315 /* IBDesignableView.swift */,
 				7824042E25E9374D0001AB52 /* IBDesignableTextView.swift */,
 				7892EF5B259C5DF0006F7315 /* IBDesignableTextField.swift */,
@@ -646,11 +649,8 @@
 		78997EE3259C4C4D0076FF97 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				78997EE4259C4C5E0076FF97 /* UIView-IBInspectable-Extensions.swift */,
 				78DEE7BC25AAE3AD00219963 /* UIViewController+Extension.swift */,
 				78DEE7B825AADFC600219963 /* UIAlertController+Extension.swift */,
-				78E609FF25AAAEAC0041B3D0 /* ObservableType+Extension.swift */,
-				785AB27125E9C527000FEEFE /* TapAction.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";

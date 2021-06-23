@@ -38,8 +38,7 @@ extension WishListViewController {
 
 extension WishListViewController {
 
-    func reloadWishList(book: BookBusinessModel) {
-        viewModel.updateBook(book: book)
+    func reload() {
         tableView.reloadData()
     }
 }

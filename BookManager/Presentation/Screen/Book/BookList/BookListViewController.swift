@@ -151,7 +151,11 @@ extension BookListViewController: UITableViewDelegate {
 extension BookListViewController: BookListDataSourceDelegate {
 
     func tappedFavoriteButton() {
-        // お気に入り画面のリロード
+        let wishListVC = getRootTabBarController()?.getViewController(
+            tag: .wishList
+        ) as? WishListViewController
+
+        wishListVC?.reload()
     }
 }
 

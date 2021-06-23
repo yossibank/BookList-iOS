@@ -51,3 +51,14 @@ extension UIViewController {
         present(alert, animated: true)
     }
 }
+
+extension UIViewController {
+
+    var rootViewController: UIViewController? {
+        UIApplication.shared.windows.first { $0.isKeyWindow }?.rootViewController
+    }
+
+    func getRootTabBarController() -> RootTabBarController? {
+        self.rootViewController as? RootTabBarController
+    }
+}
