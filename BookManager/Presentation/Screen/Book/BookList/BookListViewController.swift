@@ -131,7 +131,14 @@ extension BookListViewController: UITableViewDelegate {
             return
         }
 
-        routing.showEditBookScreen(id: book.id)
+        var successHandler: VoidBlock {{
+            print("OK")
+        }}
+
+        routing.showEditBookScreen(
+            id: book.id,
+            successHandler: successHandler
+        )
     }
 
     func tableView(

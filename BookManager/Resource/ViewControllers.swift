@@ -38,8 +38,8 @@ extension Resources {
                 return vc
             }
 
-            func editBook(id: Int) -> EditBookViewController {
-                let vc = EditBookViewController()
+            func editBook(id: Int, successHandler: VoidBlock?) -> EditBookViewController {
+                let vc = EditBookViewController(successHandler: successHandler)
                 vc.inject(routing: NoRouting(), viewModel: EditBookViewModel(id: id))
                 return vc
             }

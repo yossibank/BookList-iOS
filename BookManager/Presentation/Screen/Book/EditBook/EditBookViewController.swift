@@ -111,6 +111,16 @@ final class EditBookViewController: UIViewController {
     }()
 
     private var cancellables: Set<AnyCancellable> = []
+    private var successHandler: VoidBlock?
+
+    init(successHandler: VoidBlock?) {
+        self.successHandler = successHandler
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
 }
 
 // MARK: - override methods
@@ -264,6 +274,7 @@ private extension EditBookViewController {
                     case let .done(entity):
                         Logger.debug(message: "\(entity)")
                         self?.dismiss(animated: true)
+                        self?.successHandler?()
 
                     case let .failed(error):
                         Logger.debug(message: "\(error.localizedDescription)")
