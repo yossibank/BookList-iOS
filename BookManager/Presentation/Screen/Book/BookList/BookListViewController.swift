@@ -43,13 +43,7 @@ extension BookListViewController {
 
 // MARK: - internal methods
 
-extension BookListViewController {
-
-    func updateBookList(book: BookViewData) {
-        dataSource.updateCellDataList(book: book)
-        tableView.reloadData()
-    }
-}
+extension BookListViewController {}
 
 
 // MARK: private methods
@@ -131,9 +125,7 @@ extension BookListViewController: UITableViewDelegate {
     ) {
         tableView.deselectRow(at: indexPath, animated: true)
 
-        guard
-            let book = viewModel.bookList.any(at: indexPath.row)
-        else {
+        guard let book = viewModel.bookList.any(at: indexPath.row) else {
             return
         }
 
@@ -156,24 +148,8 @@ extension BookListViewController: UITableViewDelegate {
 
 extension BookListViewController: BookListDataSourceDelegate {
 
-    func didSelectFavoriteButton(index: Int) {
-        guard
-            let book = viewModel.bookList.any(at: index)
-        else {
-            return
-        }
-
-        if book.isFavorite {
-            viewModel.removeFavoriteBook(book: book)
-        } else {
-            viewModel.saveFavoriteBook(book: book)
-        }
-
-        dataSource.updateFavorite(index: index, bookViewData: book)
-        tableView.reloadRows(
-            at: [IndexPath(row: index, section: 0)],
-            with: .fade
-        )
+    func tappedFavoriteButton() {
+        // お気に入り画面のリロード
     }
 }
 

@@ -1,12 +1,15 @@
+import Combine
+import CombineCocoa
 import UIKit
 
 // MARK: - properties
 
 final class BookListTableViewCell: UITableViewCell {
+    var favoriteHandler: VoidBlock?
 
     private let mainStackView: UIStackView = .init(
         style: .horizontalStyle,
-        spacing: 16
+        spacing: 32
     )
 
     private let bookImageView: UIImageView = .init(
@@ -37,16 +40,30 @@ final class BookListTableViewCell: UITableViewCell {
         image: Resources.Images.App.favorite
     )
 
+    private var isFavorite: Bool = false {
+        didSet {
+            let image = isFavorite
+                ? Resources.Images.App.favorite
+                : Resources.Images.App.nonFavorite
+
+            favoriteButton.setImage(image, for: .normal)
+        }
+    }
+
+    private var cancellables: Set<AnyCancellable> = []
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupView()
         setupLayout()
+        setupEvent()
     }
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setupView()
         setupLayout()
+        setupEvent()
     }
 
     override func prepareForReuse() {
@@ -61,34 +78,19 @@ extension BookListTableViewCell {
 
     func setup(book: BookViewData) {
         bookTitleLabel.text = book.name
-
-        if let price = book.price {
-            bookPriceLabel.text = String.toTaxText(price)
-        }
-
-        if let purchaseDate = book.purchaseDate {
-            if let purchaseDateFormat = Date.toConvertDate(purchaseDate, with: .yearToDayOfWeek) {
-                bookPurchaseLabel.text = purchaseDateFormat.toConvertString(
-                    with: .yearToDayOfWeekJapanese
-                )
-            }
-        }
+        bookPriceLabel.text = String.toTaxText(book.price)
+        bookPurchaseLabel.text = Date.convertBookPurchaseDate(dateString: book.purchaseDate)
 
         if let imageUrl = book.image {
             ImageLoader.shared.loadImage(
                 with: .string(urlString: imageUrl)
             ) { [weak self] image, _ in
                 guard let self = self else { return }
-
                 self.bookImageView.image = image
             }
         }
 
-        let image = BookFileManager.isContainPath(path: String(book.id))
-            ? Resources.Images.App.favorite
-            : Resources.Images.App.nonFavorite
-
-        favoriteButton.setImage(image, for: .normal)
+        isFavorite = book.isFavorite
     }
 }
 
@@ -118,7 +120,8 @@ private extension BookListTableViewCell {
             mainStackView.addArrangedSubview($0)
         }
 
-        addSubview(mainStackView)
+        contentView.addSubview(favoriteButton)
+        contentView.addSubview(mainStackView)
     }
 
     func setupLayout() {
@@ -128,9 +131,16 @@ private extension BookListTableViewCell {
             $0.trailing.equal(to: trailingAnchor, offsetBy: -64)
         }
 
+        favoriteButton.layout {
+            $0.centerY == centerYAnchor
+            $0.trailing.equal(to: trailingAnchor, offsetBy: -16)
+            $0.widthConstant == 40
+            $0.heightConstant == 40
+        }
+
         bookImageView.layout {
-            $0.widthConstant == 100
-            $0.heightConstant == 100
+            $0.widthConstant == 120
+            $0.heightConstant == 120
         }
 
         bookTitleLabel.layout {
@@ -142,5 +152,13 @@ private extension BookListTableViewCell {
                 $0.heightConstant == 30
             }
         }
+    }
+
+    func setupEvent() {
+        favoriteButton.tapPublisher
+            .sink { [weak self] in
+                self?.favoriteHandler?()
+            }
+            .store(in: &cancellables)
     }
 }

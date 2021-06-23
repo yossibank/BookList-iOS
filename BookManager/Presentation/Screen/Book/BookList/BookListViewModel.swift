@@ -61,6 +61,19 @@ extension BookListViewModel {
             path: String(book.id)
         )
     }
+
+    func bookListMap() -> [BookViewData] {
+        bookList.map { book in
+            BookViewData(
+                id: book.id,
+                name: book.name,
+                image: book.image,
+                price: book.price,
+                purchaseDate: book.purchaseDate,
+                isFavorite: BookFileManager.isContainPath(path: String(book.id))
+            )
+        }
+    }
 }
 
 // MARK: - private methods
