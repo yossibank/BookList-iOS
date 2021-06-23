@@ -9,6 +9,7 @@ final class BookListDataSource: NSObject {
     private weak var viewModel: BookListViewModel!
 
     init(viewModel: BookListViewModel) {
+        super.init()
         self.viewModel = viewModel
     }
 }

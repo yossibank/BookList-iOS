@@ -28,12 +28,12 @@ final class BookListTableViewCell: UITableViewCell {
 
     private let bookPriceLabel: UILabel = .init(
         text: String.blank,
-        style: .fontBoldStyle
+        style: .fontNormalStyle
     )
 
     private let bookPurchaseLabel: UILabel = .init(
         text: String.blank,
-        style: .fontBoldStyle
+        style: .fontNormalStyle
     )
 
     private let favoriteButton: UIButton = .init(
@@ -142,13 +142,9 @@ private extension BookListTableViewCell {
             $0.heightConstant == 120
         }
 
-        bookTitleLabel.layout {
-            $0.heightConstant == 40
-        }
-
-        [bookPriceLabel, bookPurchaseLabel].forEach {
+        [bookTitleLabel, bookPriceLabel, bookPurchaseLabel].forEach {
             $0.layout {
-                $0.heightConstant == 30
+                $0.heightConstant == 40
             }
         }
     }

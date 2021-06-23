@@ -125,7 +125,9 @@ extension BookListViewController: UITableViewDelegate {
     ) {
         tableView.deselectRow(at: indexPath, animated: true)
 
-        guard let book = viewModel.bookList.any(at: indexPath.row) else {
+        guard
+            let book = viewModel.bookList.any(at: indexPath.row)
+        else {
             return
         }
 

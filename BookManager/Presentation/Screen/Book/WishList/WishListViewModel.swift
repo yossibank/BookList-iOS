@@ -4,7 +4,7 @@ import Utility
 
 final class WishListViewModel: ViewModel {
 
-    var books: [BookBusinessModel] {
+    var bookList: [BookBusinessModel] {
         BookFileManager.fetchData()
     }
 

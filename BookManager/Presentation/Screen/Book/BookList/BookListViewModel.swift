@@ -11,11 +11,11 @@ final class BookListViewModel: ViewModel {
 
     @Published private(set) var state: State = .standby
 
+    private let usecase: BookListUsecase
+
     private var pageRequest: Int = 1
     private var bookListEntity: [BookEntity] = []
     private var cancellables: Set<AnyCancellable> = []
-
-    private let usecase: BookListUsecase
 
     init(usecase: BookListUsecase = Domain.Usecase.Book.FetchBookList()) {
         self.usecase = usecase

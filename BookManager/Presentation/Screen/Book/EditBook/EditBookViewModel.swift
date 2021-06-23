@@ -5,16 +5,16 @@ import Utility
 final class EditBookViewModel: ViewModel {
     typealias State = LoadingState<BookEntity, APPError>
 
-    private let id: Int
-    private let usecase: EditBookUsecase
-
-    private var cancellables: Set<AnyCancellable> = []
-
     @Published var bookName = String.blank
     @Published var bookImage = String.blank
     @Published var bookPrice = String.blank
     @Published var bookPurchaseDate = String.blank
     @Published private(set) var state: State = .standby
+
+    private let id: Int
+    private let usecase: EditBookUsecase
+
+    private var cancellables: Set<AnyCancellable> = []
 
     init(id: Int, usecase: EditBookUsecase = Domain.Usecase.Book.EditBook()) {
         self.id = id

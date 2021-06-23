@@ -14,7 +14,9 @@ final class WishListViewController: UIViewController {
     var routing: R! { didSet { routing.viewController = self } }
     var viewModel: VM!
 
-    private let tableView: UITableView = .init(frame: .zero)
+    private let tableView: UITableView = .init(
+        frame: .zero
+    )
 
     private var cancellables: Set<AnyCancellable> = []
     private var dataSource: WishListDataSource!
@@ -85,7 +87,7 @@ extension WishListViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
 
         guard
-            let book = viewModel.books.any(at: indexPath.row)
+            let book = viewModel.bookList.any(at: indexPath.row)
         else {
             return
         }

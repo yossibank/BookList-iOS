@@ -5,13 +5,13 @@ import Utility
 final class LoginViewModel: ViewModel {
     typealias State = LoadingState<UserEntity, APPError>
 
+    @Published var email = String.blank
+    @Published var password = String.blank
+    @Published private(set) var state: State = .standby
+
     private let usecase: LoginUsecase
 
     private var cancellables: Set<AnyCancellable> = []
-
-    @Published private(set) var state: State = .standby
-    @Published var email = String.blank
-    @Published var password = String.blank
 
     init(usecase: LoginUsecase = Domain.Usecase.Account.Login()) {
         self.usecase = usecase

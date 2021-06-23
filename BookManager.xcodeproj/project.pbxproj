@@ -330,14 +330,6 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		781936BE25BC752000309FB7 /* ViewData */ = {
-			isa = PBXGroup;
-			children = (
-				781936BF25BC752D00309FB7 /* BookBusinessModel.swift */,
-			);
-			path = ViewData;
-			sourceTree = "<group>";
-		};
 		781B121B25E69A75006968ED /* OtherMessageCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -491,6 +483,7 @@
 		787052D225B06DC900CAAC3E /* Book */ = {
 			isa = PBXGroup;
 			children = (
+				789BC92126837DA300C9EC0F /* BusinessModel */,
 				78CF3AEC25ABF7EA00ADBB60 /* BookList */,
 				787052D325B06DD800CAAC3E /* AddBook */,
 				78B29D1A25B330D600A7DC7F /* EditBook */,
@@ -587,7 +580,6 @@
 				78B2A161267B7EB000D9EA0E /* Core */,
 				78997EC3259C35100076FF97 /* Screen */,
 				78CF3AED25ABF80700ADBB60 /* View */,
-				781936BE25BC752000309FB7 /* ViewData */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -673,6 +665,14 @@
 				785AB27125E9C527000FEEFE /* TapAction.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		789BC92126837DA300C9EC0F /* BusinessModel */ = {
+			isa = PBXGroup;
+			children = (
+				781936BF25BC752D00309FB7 /* BookBusinessModel.swift */,
+			);
+			path = BusinessModel;
 			sourceTree = "<group>";
 		};
 		78B29D1A25B330D600A7DC7F /* EditBook */ = {
