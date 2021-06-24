@@ -257,14 +257,12 @@ private extension AddBookViewController {
         bookTitleTextField.textPublisher
             .receive(on: DispatchQueue.main)
             .compactMap { $0 }
-            .removeDuplicates()
             .assign(to: \.bookName, on: viewModel)
             .store(in: &cancellables)
 
         bookPriceTextField.textPublisher
             .receive(on: DispatchQueue.main)
             .compactMap { $0 }
-            .removeDuplicates()
             .assign(to: \.bookPrice, on: viewModel)
             .store(in: &cancellables)
 
@@ -275,7 +273,6 @@ private extension AddBookViewController {
                     $0 ?? String.blank, with: .yearToDayOfWeekJapanese
                 )?.toConvertString(with: .yearToDayOfWeek)
             }
-            .removeDuplicates()
             .assign(to: \.bookPurchaseDate, on: viewModel)
             .store(in: &cancellables)
     }

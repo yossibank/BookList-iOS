@@ -270,14 +270,12 @@ private extension EditBookViewController {
         bookTitleTextField.textPublisher
             .receive(on: DispatchQueue.main)
             .compactMap { $0 }
-            .removeDuplicates()
             .assign(to: \.bookName, on: viewModel)
             .store(in: &cancellables)
 
         bookPriceTextField.textPublisher
             .receive(on: DispatchQueue.main)
             .compactMap { $0 }
-            .removeDuplicates()
             .assign(to: \.bookPrice, on: viewModel)
             .store(in: &cancellables)
 
