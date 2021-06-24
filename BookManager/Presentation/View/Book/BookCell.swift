@@ -70,11 +70,6 @@ final class BookCell: UITableViewCell {
         setupLayout()
         setupEvent()
     }
-
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        bookImageView.image = nil
-    }
 }
 
 // MARK: - internal methods
@@ -96,17 +91,7 @@ extension BookCell {
         bookTitleLabel.text = book.name
         bookPriceLabel.text = String.toTaxText(book.price)
         bookPurchaseLabel.text = Date.convertBookPurchaseDate(dateString: book.purchaseDate)
-
-        if let imageUrl = book.image {
-            ImageLoader.shared.loadImage(
-                with: .string(urlString: imageUrl)
-            ) { [weak self] image, _ in
-                guard let self = self else { return }
-                self.bookImageView.image = image
-            }
-        } else {
-            self.bookImageView.image = Resources.Images.App.noImage
-        }
+        bookImageView.loadImage(with: .string(urlString: book.image))
     }
 }
 

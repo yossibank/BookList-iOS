@@ -258,21 +258,16 @@ private extension AddBookViewController {
             .assign(to: \.bookPrice, on: viewModel)
             .store(in: &cancellables)
 
-        bookPurchaseDateTextField.textDatePickerPublisher
+        bookPurchaseDateTextField.textPublisher
             .receive(on: DispatchQueue.main)
             .compactMap {
                 Date.toConvertDate(
-                    $0, with: .yearToDayOfWeekJapanese
+                    $0 ?? String.blank, with: .yearToDayOfWeekJapanese
                 )?.toConvertString(with: .yearToDayOfWeek)
             }
             .removeDuplicates()
             .assign(to: \.bookPurchaseDate, on: viewModel)
             .store(in: &cancellables)
-
-        viewModel.$bookPurchaseDate.sink { text in
-            print("HOGEHOGE", text)
-        }
-        .store(in: &cancellables)
     }
 
     func bindViewModel() {

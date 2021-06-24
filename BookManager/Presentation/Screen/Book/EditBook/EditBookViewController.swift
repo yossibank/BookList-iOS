@@ -245,12 +245,7 @@ private extension EditBookViewController {
         bookPurchaseDateTextField.text = Date.convertBookPurchaseDate(
             dateString: viewModel.bookPurchaseDate
         )
-
-        ImageLoader.shared.loadImage(
-            with: .string(urlString: viewModel.bookImage)
-        ) { [weak self] image, _ in
-            self?.bookImageView.image = image
-        }
+        bookImageView.loadImage(with: .string(urlString: viewModel.bookImage))
     }
 
     func bindValue() {

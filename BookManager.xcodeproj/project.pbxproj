@@ -125,6 +125,8 @@
 		78EB164F267620CE00777F32 /* APIKit in Frameworks */ = {isa = PBXBuildFile; productRef = 78EB164E267620CE00777F32 /* APIKit */; };
 		78EC97CE25F4923F007E80FD /* RootNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78EC97CD25F4923F007E80FD /* RootNavigationController.swift */; };
 		78ED505725EB5C8B0045089C /* FirebaseStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78ED505625EB5C8B0045089C /* FirebaseStorageManager.swift */; };
+		78F675512684CF6C009E117D /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = 78F675502684CF6C009E117D /* Nuke */; };
+		78F675532684CF8A009E117D /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F675522684CF8A009E117D /* UIImageView+Extension.swift */; };
 		78F940E6259D7E42007C972A /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F940E5259D7E42007C972A /* Router.swift */; };
 		78F940EA259D7EEF007C972A /* ViewControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F940E9259D7EEF007C972A /* ViewControllers.swift */; };
 		78F940EE259D995F007C972A /* ResourcesSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F940ED259D995F007C972A /* ResourcesSupport.swift */; };
@@ -270,6 +272,7 @@
 		78EB164D2676201C00777F32 /* APIKit */ = {isa = PBXFileReference; lastKnownFileType = folder; path = APIKit; sourceTree = "<group>"; };
 		78EC97CD25F4923F007E80FD /* RootNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootNavigationController.swift; sourceTree = "<group>"; };
 		78ED505625EB5C8B0045089C /* FirebaseStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStorageManager.swift; sourceTree = "<group>"; };
+		78F675522684CF8A009E117D /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		78F940E5259D7E42007C972A /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		78F940E9259D7EEF007C972A /* ViewControllers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllers.swift; sourceTree = "<group>"; };
 		78F940ED259D995F007C972A /* ResourcesSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourcesSupport.swift; sourceTree = "<group>"; };
@@ -293,6 +296,7 @@
 				780F6B9A2682C656002D7513 /* FirebaseCrashlytics in Frameworks */,
 				781CC3A72658E6E00075D260 /* RxCocoa in Frameworks */,
 				781CC3A52658E6E00075D260 /* RxRelay in Frameworks */,
+				78F675512684CF6C009E117D /* Nuke in Frameworks */,
 				780F6B962682C656002D7513 /* FirebaseStorageSwift-Beta in Frameworks */,
 				780F6B902682C656002D7513 /* FirebaseFirestore in Frameworks */,
 				780F6B942682C656002D7513 /* FirebaseAnalytics in Frameworks */,
@@ -661,6 +665,7 @@
 				78DEE7BC25AAE3AD00219963 /* UIViewController+Extension.swift */,
 				78DEE7B825AADFC600219963 /* UIAlertController+Extension.swift */,
 				789BC93926845A8C00C9EC0F /* UIImage+Extension.swift */,
+				78F675522684CF8A009E117D /* UIImageView+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -881,6 +886,7 @@
 				780F6B972682C656002D7513 /* FirebaseStorage */,
 				780F6B992682C656002D7513 /* FirebaseCrashlytics */,
 				780F6B9B2682C656002D7513 /* FirebaseAuth */,
+				78F675502684CF6C009E117D /* Nuke */,
 			);
 			productName = Collections;
 			productReference = 782311F6259C0D9200D9E723 /* BookManager.app */;
@@ -936,6 +942,7 @@
 				78B6B4D62658EA2F00AE45E5 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 				78DC0BA0267B92F10085F5E7 /* XCRemoteSwiftPackageReference "CombineCocoa" */,
 				780F6B8E2682C656002D7513 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				78F6754F2684CF6C009E117D /* XCRemoteSwiftPackageReference "Nuke" */,
 			);
 			productRefGroup = 782311F7259C0D9200D9E723 /* Products */;
 			projectDirPath = "";
@@ -1015,6 +1022,7 @@
 				7892EF5C259C5DF0006F7315 /* IBDesignableTextField.swift in Sources */,
 				78752AA6267EEE92000B87AC /* Style.swift in Sources */,
 				784E135625B29952008FD947 /* DatePicker+Util.swift in Sources */,
+				78F675532684CF8A009E117D /* UIImageView+Extension.swift in Sources */,
 				78752AAB267EF0D9000B87AC /* ButtonStyle.swift in Sources */,
 				7892EF52259C58C0006F7315 /* IBDesignableButton.swift in Sources */,
 				78CF3AF325ABF82900ADBB60 /* BookListViewController.swift in Sources */,
@@ -1405,6 +1413,14 @@
 				minimumVersion = 0.3.0;
 			};
 		};
+		78F6754F2684CF6C009E117D /* XCRemoteSwiftPackageReference "Nuke" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kean/Nuke.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.3.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1475,6 +1491,11 @@
 		78EB164E267620CE00777F32 /* APIKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = APIKit;
+		};
+		78F675502684CF6C009E117D /* Nuke */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 78F6754F2684CF6C009E117D /* XCRemoteSwiftPackageReference "Nuke" */;
+			productName = Nuke;
 		};
 		78FFC6982678FCA500957F9C /* DomainKit */ = {
 			isa = XCSwiftPackageProductDependency;
