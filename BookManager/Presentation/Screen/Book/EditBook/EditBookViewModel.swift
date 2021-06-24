@@ -16,8 +16,11 @@ final class EditBookViewModel: ViewModel {
 
     private var cancellables: Set<AnyCancellable> = []
 
-    init(id: Int, usecase: EditBookUsecase = Domain.Usecase.Book.EditBook()) {
-        self.id = id
+    init(
+        book: BookBusinessModel,
+        usecase: EditBookUsecase = Domain.Usecase.Book.EditBook()
+    ) {
+        self.id = book.id
         self.usecase = usecase
     }
 }

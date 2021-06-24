@@ -96,7 +96,7 @@ extension WishListViewController: UITableViewDelegate {
         }}
 
         routing.showEditBookScreen(
-            id: book.id,
+            book: book,
             successHandler: successHandler
         )
     }

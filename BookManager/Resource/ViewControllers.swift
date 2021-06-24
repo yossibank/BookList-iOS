@@ -32,15 +32,18 @@ extension Resources {
                 return vc
             }
 
-            func addBook() -> AddBookViewController {
-                let vc = AddBookViewController()
+            func addBook(successHandler: VoidBlock?) -> AddBookViewController {
+                let vc = AddBookViewController(successHandler: successHandler)
                 vc.inject(routing: NoRouting(), viewModel: AddBookViewModel())
                 return vc
             }
 
-            func editBook(id: Int, successHandler: VoidBlock?) -> EditBookViewController {
+            func editBook(
+                book: BookBusinessModel,
+                successHandler: VoidBlock?
+            ) -> EditBookViewController {
                 let vc = EditBookViewController(successHandler: successHandler)
-                vc.inject(routing: NoRouting(), viewModel: EditBookViewModel(id: id))
+                vc.inject(routing: NoRouting(), viewModel: EditBookViewModel(book: book))
                 return vc
             }
 

@@ -273,8 +273,11 @@ private extension EditBookViewController {
 
                     case let .done(entity):
                         Logger.debug(message: "\(entity)")
-                        self?.dismiss(animated: true)
-                        self?.successHandler?()
+
+                        DispatchQueue.main.async {
+                            self?.successHandler?()
+                            self?.navigationController?.popViewController(animated: true)
+                        }
 
                     case let .failed(error):
                         Logger.debug(message: "\(error.localizedDescription)")

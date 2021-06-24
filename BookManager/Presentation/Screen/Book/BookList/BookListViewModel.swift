@@ -30,6 +30,7 @@ extension BookListViewModel {
         state = .loading
 
         if !isAdditional {
+            bookListEntity = []
             pageRequest = 1
         }
 

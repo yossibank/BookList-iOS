@@ -87,7 +87,15 @@ private extension BookListViewController {
     func setupButton() {
         navigationItem.rightBarButtonItem?.tapPublisher
             .sink { [weak self] in
-                self?.routing.showAddBookScreen()
+
+                var successHandler: VoidBlock? {{
+                    self?.viewModel.fetchBookList(isAdditional: false)
+                    self?.tableView.reloadData()
+                }}
+
+                self?.routing.showAddBookScreen(
+                    successHandler: successHandler
+                )
             }
             .store(in: &cancellables)
     }
@@ -136,7 +144,7 @@ extension BookListViewController: UITableViewDelegate {
         }}
 
         routing.showEditBookScreen(
-            id: book.id,
+            book: book,
             successHandler: successHandler
         )
     }

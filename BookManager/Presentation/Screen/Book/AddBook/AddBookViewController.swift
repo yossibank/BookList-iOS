@@ -108,6 +108,16 @@ final class AddBookViewController: UIViewController {
     }()
 
     private var cancellables: Set<AnyCancellable> = []
+    private var successHandler: VoidBlock?
+
+    init(successHandler: VoidBlock?) {
+        self.successHandler = successHandler
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
 }
 
 // MARK: - override methods
@@ -216,12 +226,14 @@ private extension AddBookViewController {
 
     func setupButton() {
         navigationItem.rightBarButtonItem?.tapPublisher
+            .receive(on: DispatchQueue.main)
             .sink { [weak self] in
                 self?.viewModel.addBook()
             }
             .store(in: &cancellables)
 
         bookImageSelectButton.tapPublisher
+            .receive(on: DispatchQueue.main)
             .sink { [weak self] in
                 let photoLibrary = UIImagePickerController.SourceType.photoLibrary
 
@@ -235,6 +247,7 @@ private extension AddBookViewController {
             .store(in: &cancellables)
 
         takingPictureButton.tapPublisher
+            .receive(on: DispatchQueue.main)
             .sink { [weak self] in
                 let camera = UIImagePickerController.SourceType.camera
 
@@ -260,7 +273,11 @@ private extension AddBookViewController {
 
                     case let .done(entity):
                         Logger.debug(message: "\(entity)")
-                        self?.dismiss(animated: true)
+
+                        DispatchQueue.main.async {
+                            self?.successHandler?()
+                            self?.navigationController?.popViewController(animated: true)
+                        }
 
                     case let .failed(error):
                         Logger.debug(message: "\(error.localizedDescription)")
