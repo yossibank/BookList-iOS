@@ -5,10 +5,10 @@ import Utility
 final class EditBookViewModel: ViewModel {
     typealias State = LoadingState<BookEntity, APPError>
 
-    @Published var bookImage = String.blank
     @Published var bookName = String.blank
     @Published var bookPrice = String.blank
     @Published var bookPurchaseDate = String.blank
+    @Published var bookImage = String.blank
     @Published private(set) var state: State = .standby
 
     private let book: BookBusinessModel

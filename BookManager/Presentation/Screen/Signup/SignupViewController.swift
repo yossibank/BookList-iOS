@@ -333,6 +333,7 @@ private extension SignupViewController {
 
     func bindViewModel() {
         viewModel.$state
+            .receive(on: DispatchQueue.main)
             .sink { [weak self] state in
                 switch state {
                     case .standby:

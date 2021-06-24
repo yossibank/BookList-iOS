@@ -70,6 +70,10 @@ final class AddBookViewController: UIViewController {
         style: .borderBottomStyle
     )
 
+    private let loadingIndicator: UIActivityIndicatorView = .init(
+        style: .largeStyle
+    )
+
     private lazy var toolbar: UIToolbar = {
         let toolbar = UIToolbar(
             frame: .init(
@@ -94,11 +98,11 @@ final class AddBookViewController: UIViewController {
 
         doneItem.tapPublisher
             .sink { [weak self] in
-                self?.bookPurchaseDateTextField.endEditing(true)
                 self?.bookPurchaseDateTextField.text = UIDatePicker
                     .purchaseDatePicker.date.toConvertString(
                         with: .yearToDayOfWeekJapanese
                     )
+                self?.bookPurchaseDateTextField.endEditing(true)
             }
             .store(in: &cancellables)
 
@@ -172,6 +176,7 @@ private extension AddBookViewController {
         }
 
         view.addSubview(mainStackView)
+        view.addSubview(loadingIndicator)
     }
 
     func setupLayout() {
@@ -179,6 +184,11 @@ private extension AddBookViewController {
             $0.centerY == view.centerYAnchor
             $0.leading.equal(to: view.leadingAnchor, offsetBy: 64)
             $0.trailing.equal(to: view.trailingAnchor, offsetBy: -64)
+        }
+
+        loadingIndicator.layout {
+            $0.centerX == view.centerXAnchor
+            $0.centerY == view.centerYAnchor
         }
 
         bookImageView.layout {
@@ -276,21 +286,21 @@ private extension AddBookViewController {
             .sink { [weak self] state in
                 switch state {
                     case .standby:
-                        Logger.debug(message: "standby")
+                        self?.loadingIndicator.stopAnimating()
 
                     case .loading:
-                        Logger.debug(message: "loading")
+                        self?.loadingIndicator.startAnimating()
 
-                    case let .done(entity):
-                        Logger.debug(message: "\(entity)")
+                    case .done:
+                        self?.loadingIndicator.stopAnimating()
 
                         DispatchQueue.main.async {
                             self?.successHandler?()
                             self?.navigationController?.popViewController(animated: true)
                         }
 
-                    case let .failed(error):
-                        Logger.debug(message: "\(error.localizedDescription)")
+                    case .failed:
+                        self?.loadingIndicator.stopAnimating()
                 }
             }
             .store(in: &cancellables)
