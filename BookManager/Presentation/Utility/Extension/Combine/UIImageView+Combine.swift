@@ -3,7 +3,7 @@ import UIKit
 
 extension UIImageView {
 
-    var base64ImgaePublisher: AnyPublisher<String, Never> {
+    var base64ImagePublisher: AnyPublisher<String, Never> {
         NotificationCenter
             .default
             .publisher(for: .didSetImageIntoImageView)

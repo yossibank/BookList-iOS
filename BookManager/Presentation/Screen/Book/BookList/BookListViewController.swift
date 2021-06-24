@@ -88,7 +88,7 @@ private extension BookListViewController {
         navigationItem.rightBarButtonItem?.tapPublisher
             .sink { [weak self] in
 
-                var successHandler: VoidBlock? {{
+                var successHandler: VoidBlock? {{ [weak self] in
                     self?.viewModel.fetchBookList(isAdditional: false)
                     self?.tableView.reloadData()
                 }}
@@ -139,8 +139,9 @@ extension BookListViewController: UITableViewDelegate {
             return
         }
 
-        var successHandler: VoidBlock {{
-            print("OK")
+        var successHandler: VoidBlock? {{ [weak self] in
+            self?.viewModel.fetchBookList(isAdditional: false)
+            self?.tableView.reloadData()
         }}
 
         routing.showEditBookScreen(

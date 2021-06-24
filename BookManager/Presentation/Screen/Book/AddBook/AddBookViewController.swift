@@ -110,13 +110,10 @@ final class AddBookViewController: UIViewController {
     private var cancellables: Set<AnyCancellable> = []
     private var successHandler: VoidBlock?
 
-    init(successHandler: VoidBlock?) {
-        self.successHandler = successHandler
-        super.init(nibName: nil, bundle: nil)
-    }
-
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
+    static func createInstance(successHandler: VoidBlock?) -> AddBookViewController {
+        let instance = AddBookViewController()
+        instance.successHandler = successHandler
+        return instance
     }
 }
 
@@ -130,6 +127,7 @@ extension AddBookViewController {
         setupLayout()
         setupTextField()
         setupButton()
+        bindValue()
         bindViewModel()
     }
 
@@ -201,27 +199,6 @@ private extension AddBookViewController {
 
         bookPurchaseDateTextField.inputAccessoryView = toolbar
         bookPurchaseDateTextField.inputView = UIDatePicker.purchaseDatePicker
-
-        bookTitleTextField.textPublisher
-            .receive(on: DispatchQueue.main)
-            .compactMap { $0 }
-            .removeDuplicates()
-            .assign(to: \.bookName, on: viewModel)
-            .store(in: &cancellables)
-
-        bookPriceTextField.textPublisher
-            .receive(on: DispatchQueue.main)
-            .compactMap { $0 }
-            .removeDuplicates()
-            .assign(to: \.bookPrice, on: viewModel)
-            .store(in: &cancellables)
-
-        bookPurchaseDateTextField.textPublisher
-            .receive(on: DispatchQueue.main)
-            .compactMap { $0 }
-            .removeDuplicates()
-            .assign(to: \.bookPurchaseDate, on: viewModel)
-            .store(in: &cancellables)
     }
 
     func setupButton() {
@@ -261,8 +238,46 @@ private extension AddBookViewController {
             .store(in: &cancellables)
     }
 
+    func bindValue() {
+        bookImageView.base64ImagePublisher
+            .receive(on: DispatchQueue.main)
+            .assign(to: \.bookImage, on: viewModel)
+            .store(in: &cancellables)
+
+        bookTitleTextField.textPublisher
+            .receive(on: DispatchQueue.main)
+            .compactMap { $0 }
+            .removeDuplicates()
+            .assign(to: \.bookName, on: viewModel)
+            .store(in: &cancellables)
+
+        bookPriceTextField.textPublisher
+            .receive(on: DispatchQueue.main)
+            .compactMap { $0 }
+            .removeDuplicates()
+            .assign(to: \.bookPrice, on: viewModel)
+            .store(in: &cancellables)
+
+        bookPurchaseDateTextField.textDatePickerPublisher
+            .receive(on: DispatchQueue.main)
+            .compactMap {
+                Date.toConvertDate(
+                    $0, with: .yearToDayOfWeekJapanese
+                )?.toConvertString(with: .yearToDayOfWeek)
+            }
+            .removeDuplicates()
+            .assign(to: \.bookPurchaseDate, on: viewModel)
+            .store(in: &cancellables)
+
+        viewModel.$bookPurchaseDate.sink { text in
+            print("HOGEHOGE", text)
+        }
+        .store(in: &cancellables)
+    }
+
     func bindViewModel() {
         viewModel.$state
+            .receive(on: DispatchQueue.main)
             .sink { [weak self] state in
                 switch state {
                     case .standby:
@@ -318,6 +333,12 @@ extension AddBookViewController: UIImagePickerControllerDelegate, UINavigationCo
     ) {
         if let image = info[.originalImage] as? UIImage {
             bookImageView.image = image
+
+            NotificationCenter.default.post(
+                name: .didSetImageIntoImageView,
+                object: nil,
+                userInfo: ["base64Image": image.convertBase64String()]
+            )
         }
         dismiss(animated: true)
     }

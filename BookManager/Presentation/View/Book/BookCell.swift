@@ -104,6 +104,8 @@ extension BookCell {
                 guard let self = self else { return }
                 self.bookImageView.image = image
             }
+        } else {
+            self.bookImageView.image = Resources.Images.App.noImage
         }
     }
 }

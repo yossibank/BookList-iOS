@@ -5,8 +5,8 @@ import Utility
 final class EditBookViewModel: ViewModel {
     typealias State = LoadingState<BookEntity, APPError>
 
-    @Published var bookName = String.blank
     @Published var bookImage = String.blank
+    @Published var bookName = String.blank
     @Published var bookPrice = String.blank
     @Published var bookPurchaseDate = String.blank
     @Published private(set) var state: State = .standby
@@ -22,7 +22,6 @@ final class EditBookViewModel: ViewModel {
     ) {
         self.book = book
         self.usecase = usecase
-        setInitialValue()
     }
 }
 
@@ -31,6 +30,8 @@ final class EditBookViewModel: ViewModel {
 extension EditBookViewModel {
 
     func editBook() {
+        state = .loading
+
         usecase.updateBook(
             id: book.id,
             name: bookName,

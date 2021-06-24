@@ -25,6 +25,8 @@ final class AddBookViewModel: ViewModel {
 extension AddBookViewModel {
 
     func addBook() {
+        state = .loading
+
         usecase.addBook(
             name: bookName,
             image: bookImage,

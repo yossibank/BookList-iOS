@@ -189,7 +189,7 @@ private extension EditBookViewController {
         }
 
         bookImageView.layout {
-            $0.heightConstant == 200
+            $0.heightConstant == 220
         }
 
         [bookTitleTextField, bookPriceTextField, bookPurchaseDateTextField].forEach {
@@ -257,7 +257,7 @@ private extension EditBookViewController {
     }
 
     func bindValue() {
-        bookImageView.base64ImgaePublisher
+        bookImageView.base64ImagePublisher
             .receive(on: DispatchQueue.main)
             .assign(to: \.bookImage, on: viewModel)
             .store(in: &cancellables)

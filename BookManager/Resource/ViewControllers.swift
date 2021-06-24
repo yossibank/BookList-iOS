@@ -33,7 +33,7 @@ extension Resources {
             }
 
             func addBook(successHandler: VoidBlock?) -> AddBookViewController {
-                let vc = AddBookViewController(successHandler: successHandler)
+                let vc = AddBookViewController.createInstance(successHandler: successHandler)
                 vc.inject(routing: NoRouting(), viewModel: AddBookViewModel())
                 return vc
             }
