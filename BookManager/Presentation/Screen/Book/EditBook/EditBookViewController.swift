@@ -250,13 +250,14 @@ private extension EditBookViewController {
     }
 
     func setupInitialValue() {
+        bookImageView.loadImage(with: .string(urlString: viewModel.bookImage))
         bookTitleTextField.text = viewModel.bookName
         bookPriceTextField.text = viewModel.bookPrice
         bookPurchaseDateTextField.text = Date.convertBookPurchaseDate(
             dateString: viewModel.bookPurchaseDate
         )
-        bookImageView.loadImage(with: .string(urlString: viewModel.bookImage))
 
+        // 画像をそのまま編集せずに完了ボタンを押した際にbase64に変換しておく
         viewModel.bookImage = bookImageView.image?.convertBase64String() ?? String.blank
     }
 
@@ -345,7 +346,6 @@ extension EditBookViewController: UIImagePickerControllerDelegate, UINavigationC
         didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]
     ) {
         if let image = info[.originalImage] as? UIImage {
-            bookImageView.contentMode = .scaleAspectFill
             bookImageView.image = image
 
             NotificationCenter.default.post(

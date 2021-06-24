@@ -293,11 +293,8 @@ private extension AddBookViewController {
 
                     case .done:
                         self?.loadingIndicator.stopAnimating()
-
-                        DispatchQueue.main.async {
-                            self?.successHandler?()
-                            self?.navigationController?.popViewController(animated: true)
-                        }
+                        self?.successHandler?()
+                        self?.navigationController?.popViewController(animated: true)
 
                     case .failed:
                         self?.loadingIndicator.stopAnimating()
