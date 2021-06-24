@@ -133,6 +133,8 @@ extension EditBookViewController {
         setupLayout()
         setupTextField()
         setupButton()
+        setupInitialValue()
+        bindValue()
         bindViewModel()
     }
 
@@ -204,27 +206,6 @@ private extension EditBookViewController {
 
         bookPurchaseDateTextField.inputAccessoryView = toolbar
         bookPurchaseDateTextField.inputView = UIDatePicker.purchaseDatePicker
-
-        bookTitleTextField.textPublisher
-            .receive(on: DispatchQueue.main)
-            .compactMap { $0 }
-            .removeDuplicates()
-            .assign(to: \.bookName, on: viewModel)
-            .store(in: &cancellables)
-
-        bookPriceTextField.textPublisher
-            .receive(on: DispatchQueue.main)
-            .compactMap { $0 }
-            .removeDuplicates()
-            .assign(to: \.bookPrice, on: viewModel)
-            .store(in: &cancellables)
-
-        bookPurchaseDateTextField.textPublisher
-            .receive(on: DispatchQueue.main)
-            .compactMap { $0 }
-            .removeDuplicates()
-            .assign(to: \.bookPurchaseDate, on: viewModel)
-            .store(in: &cancellables)
     }
 
     func setupButton() {
@@ -258,6 +239,52 @@ private extension EditBookViewController {
                     self?.present(picker, animated: true)
                 }
             }
+            .store(in: &cancellables)
+    }
+
+    func setupInitialValue() {
+        bookTitleTextField.text = viewModel.bookName
+        bookPriceTextField.text = viewModel.bookPrice
+        bookPurchaseDateTextField.text = Date.convertBookPurchaseDate(
+            dateString: viewModel.bookPurchaseDate
+        )
+
+        ImageLoader.shared.loadImage(
+            with: .string(urlString: viewModel.bookImage)
+        ) { [weak self] image, _ in
+            self?.bookImageView.image = image
+        }
+    }
+
+    func bindValue() {
+        bookImageView.base64ImgaePublisher
+            .receive(on: DispatchQueue.main)
+            .assign(to: \.bookImage, on: viewModel)
+            .store(in: &cancellables)
+
+        bookTitleTextField.textPublisher
+            .receive(on: DispatchQueue.main)
+            .compactMap { $0 }
+            .removeDuplicates()
+            .assign(to: \.bookName, on: viewModel)
+            .store(in: &cancellables)
+
+        bookPriceTextField.textPublisher
+            .receive(on: DispatchQueue.main)
+            .compactMap { $0 }
+            .removeDuplicates()
+            .assign(to: \.bookPrice, on: viewModel)
+            .store(in: &cancellables)
+
+        bookPurchaseDateTextField.textDatePickerPublisher
+            .receive(on: DispatchQueue.main)
+            .compactMap {
+                Date.toConvertDate(
+                    $0, with: .yearToDayOfWeekJapanese
+                )?.toConvertString(with: .yearToDayOfWeek)
+            }
+            .removeDuplicates()
+            .assign(to: \.bookPurchaseDate, on: viewModel)
             .store(in: &cancellables)
     }
 
@@ -319,6 +346,12 @@ extension EditBookViewController: UIImagePickerControllerDelegate, UINavigationC
         if let image = info[.originalImage] as? UIImage {
             bookImageView.contentMode = .scaleAspectFill
             bookImageView.image = image
+
+            NotificationCenter.default.post(
+                name: .didSetImageIntoImageView,
+                object: nil,
+                userInfo: ["base64Image": image.convertBase64String()]
+            )
         }
         dismiss(animated: true)
     }

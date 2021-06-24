@@ -11,7 +11,7 @@ final class EditBookViewModel: ViewModel {
     @Published var bookPurchaseDate = String.blank
     @Published private(set) var state: State = .standby
 
-    private let id: Int
+    private let book: BookBusinessModel
     private let usecase: EditBookUsecase
 
     private var cancellables: Set<AnyCancellable> = []
@@ -20,8 +20,9 @@ final class EditBookViewModel: ViewModel {
         book: BookBusinessModel,
         usecase: EditBookUsecase = Domain.Usecase.Book.EditBook()
     ) {
-        self.id = book.id
+        self.book = book
         self.usecase = usecase
+        setInitialValue()
     }
 }
 
@@ -31,7 +32,7 @@ extension EditBookViewModel {
 
     func editBook() {
         usecase.updateBook(
-            id: id,
+            id: book.id,
             name: bookName,
             image: bookImage,
             price: Int(bookPrice),
@@ -50,5 +51,17 @@ extension EditBookViewModel {
             self?.state = .done(state)
         }
         .store(in: &cancellables)
+    }
+}
+
+// MARK: - private methods
+
+private extension EditBookViewModel {
+
+    func setInitialValue() {
+        bookName = book.name
+        bookPrice = book.price?.description ?? String.blank
+        bookPurchaseDate = book.purchaseDate ?? String.blank
+        bookImage = book.image ?? String.blank
     }
 }
