@@ -13,6 +13,7 @@ public extension String {
 
         return String(price)
             + Resources.Strings.Book.yen
+            + "+"
             + Resources.Strings.Book.tax
     }
 }

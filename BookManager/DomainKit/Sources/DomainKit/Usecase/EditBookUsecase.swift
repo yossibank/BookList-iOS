@@ -12,6 +12,7 @@ public protocol EditBookUsecase {
 }
 
 extension UsecaseImpl: EditBookUsecase where R == Repos.Book.Put, M == BookMapper {
+
     public func updateBook(
         id: Int,
         name: String,

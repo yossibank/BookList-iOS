@@ -18,9 +18,9 @@ public struct SignupRequest: Request {
     }
 
     public var parameters: Parameters
+    public var queryItems: [URLQueryItem]?
     public var method: HTTPMethod { .post }
     public var path: String { "/sign_up" }
-    public var body: Data?
 
     public var successHandler: (Response) -> Void {
         { response in

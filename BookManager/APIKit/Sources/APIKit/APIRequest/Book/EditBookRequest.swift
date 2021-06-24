@@ -25,6 +25,7 @@ public struct EditBookRequest: Request {
     private let id: Int
 
     public var parameters: Parameters
+    public var queryItems: [URLQueryItem]?
     public var method: HTTPMethod { .put }
     public var path: String { "/books/\(id)" }
 

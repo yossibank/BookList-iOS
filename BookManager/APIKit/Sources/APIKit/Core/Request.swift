@@ -99,7 +99,9 @@ public extension Request {
     }
 
     var body: Data? {
-        try? JSONEncoder().encode(parameters)
+        let encoder = JSONEncoder()
+        encoder.keyEncodingStrategy = .convertToSnakeCase
+        return try? encoder.encode(parameters)
     }
 
     var headers: [String: String] {

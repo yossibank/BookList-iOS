@@ -24,9 +24,9 @@ public struct AddBookRequest: Request {
     }
 
     public var parameters: Parameters
+    public var queryItems: [URLQueryItem]?
     public var method: HTTPMethod { .post }
     public var path: String { "/books" }
-    public var body: Data?
 
     public var testDataPath: URL? {
         Bundle.module.url(forResource: "PostBook", withExtension: "json")

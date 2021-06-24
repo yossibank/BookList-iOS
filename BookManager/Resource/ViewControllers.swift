@@ -42,7 +42,7 @@ extension Resources {
                 book: BookBusinessModel,
                 successHandler: VoidBlock?
             ) -> EditBookViewController {
-                let vc = EditBookViewController(successHandler: successHandler)
+                let vc = EditBookViewController.createInstance(successHandler: successHandler)
                 vc.inject(routing: NoRouting(), viewModel: EditBookViewModel(book: book))
                 return vc
             }

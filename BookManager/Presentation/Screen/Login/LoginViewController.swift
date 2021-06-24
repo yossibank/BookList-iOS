@@ -189,6 +189,9 @@ private extension LoginViewController {
             $0?.delegate = self
         }
 
+        emailTextField.text = "test@test.com"
+        passwordTextField.text = "testtest"
+
         emailTextField.textPublisher
             .receive(on: DispatchQueue.main)
             .compactMap { $0 }

@@ -22,6 +22,7 @@ final class EditBookViewModel: ViewModel {
     ) {
         self.book = book
         self.usecase = usecase
+        self.setInitialValue()
     }
 }
 

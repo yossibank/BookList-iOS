@@ -113,13 +113,10 @@ final class EditBookViewController: UIViewController {
     private var cancellables: Set<AnyCancellable> = []
     private var successHandler: VoidBlock?
 
-    init(successHandler: VoidBlock?) {
-        self.successHandler = successHandler
-        super.init(nibName: nil, bundle: nil)
-    }
-
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
+    static func createInstance(successHandler: VoidBlock?) -> EditBookViewController {
+        let instance = EditBookViewController()
+        instance.successHandler = successHandler
+        return instance
     }
 }
 
@@ -283,7 +280,6 @@ private extension EditBookViewController {
                     $0, with: .yearToDayOfWeekJapanese
                 )?.toConvertString(with: .yearToDayOfWeek)
             }
-            .removeDuplicates()
             .assign(to: \.bookPurchaseDate, on: viewModel)
             .store(in: &cancellables)
     }
