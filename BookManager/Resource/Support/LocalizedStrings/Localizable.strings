@@ -21,11 +21,14 @@
 
 // MARK: - 書籍関連
 "title" = "タイトル";
+"book_title" = "書籍名";
 "price" = "金額";
 "purchase_date" = "購入日";
 "yen" = "円";
 "tax" = "税";
 "plus" = "+";
+"select_image" = "画像を選択";
+"take_a_picture" = "写真を撮る";
 
 // MARK: - タイトル関連
 "book_list" = "書籍一覧";
@@ -50,6 +53,7 @@
 "failed_book_edit" = "書籍編集に失敗しました";
 
 // MARK: - アラートメッセージ
+"ok" = "OK";
 "success_book_add" = "書籍登録が完了しました";
 "success_book_edit" = "書籍編集が完了しました";
 "did_you_logout" = "ログアウトしますか？";

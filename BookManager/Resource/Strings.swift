@@ -25,11 +25,14 @@ struct StringResources {
 
     struct Book {
         @Localizable static var title = "title"
+        @Localizable static var bookTitle = "book_title"
         @Localizable static var price = "price"
         @Localizable static var purchaseDate = "purchase_date"
         @Localizable static var yen = "yen"
         @Localizable static var tax = "tax"
-        @Localizable static  var plus = "plus"
+        @Localizable static var plus = "plus"
+        @Localizable static var selectImage = "select_image"
+        @Localizable static var takePicture = "take_a_picture"
     }
 
     struct TabBar {
@@ -63,6 +66,7 @@ struct StringResources {
     }
 
     struct Alert {
+        @Localizable static var ok = "ok"
         @Localizable static var successBookAdd = "success_book_add"
         @Localizable static var successBookEdit = "success_book_edit"
         @Localizable static var didYouLogout = "did_you_logout"
