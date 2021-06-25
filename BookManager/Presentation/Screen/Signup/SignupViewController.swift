@@ -19,19 +19,12 @@ final class SignupViewController: UIViewController {
         spacing: 32
     )
 
-    private let userIconStackView: UIStackView = .init(
-        style: .horizontalStyle,
-        spacing: 16
-    )
-
     private let userIconImageView: UIImageView = .init(
         style: .iconStyle
     )
 
-    private let spacerView: UIView = .init()
-
     private let userIconSelectButton: UIButton = .init(
-        title: "チャット画像選択",
+        title: Resources.Strings.Account.selectIconImage,
         backgroundColor: .black,
         style: .fontBoldStyle
     )
@@ -42,7 +35,7 @@ final class SignupViewController: UIViewController {
     )
 
     private let userNameTextField: UITextField = .init(
-        placeholder: "ニックネーム",
+        placeholder: Resources.Strings.Account.nickName,
         keyboardType: .default,
         style: .borderBottomStyle
     )
@@ -136,10 +129,12 @@ extension SignupViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupStackView()
         setupView()
         setupLayout()
         setupTextField()
-        setupButton()
+        setupEvent()
+        bindValue()
         bindViewModel()
     }
 
@@ -155,23 +150,11 @@ extension SignupViewController {
 
 private extension SignupViewController {
 
-    func setupView() {
-        view.backgroundColor = .white
-
+    func setupStackView() {
         userNameStackView.addArrangedSubview(userNameTextField)
         emailStackView.addArrangedSubview(emailTextField)
         passwordStackView.addArrangedSubview(passwordTextField)
         passwordConfirmationStackView.addArrangedSubview(passwordConfirmationTextField)
-
-        let userIconStackViewList = [
-            userIconImageView,
-            spacerView,
-            userIconSelectButton
-        ]
-
-        userIconStackViewList.forEach {
-            userIconStackView.addArrangedSubview($0)
-        }
 
         let secureStackViewList = [
             secureButton,
@@ -192,7 +175,6 @@ private extension SignupViewController {
         }
 
         let stackViewList = [
-            userIconStackView,
             userNameStackView,
             emailStackView,
             passwordStackView,
@@ -204,12 +186,62 @@ private extension SignupViewController {
         stackViewList.forEach {
             mainStackView.addArrangedSubview($0)
         }
+    }
 
-        view.addSubview(mainStackView)
-        view.addSubview(loadingIndicator)
+    func setupView() {
+        view.backgroundColor = .white
+
+        let viewList = [
+            userIconImageView,
+            userIconSelectButton,
+            mainStackView,
+            loadingIndicator
+        ]
+
+        viewList.forEach {
+            view.addSubview($0)
+        }
     }
 
     func setupLayout() {
+        userIconImageView.layout {
+            $0.bottom.equal(to: mainStackView.topAnchor, offsetBy: -10)
+            $0.leading.equal(to: mainStackView.leadingAnchor, offsetBy: 20)
+            $0.widthConstant == 80
+            $0.heightConstant == 80
+        }
+
+        userIconSelectButton.layout {
+            $0.centerY == userIconImageView.centerYAnchor
+            $0.leading.equal(to: userIconImageView.trailingAnchor, offsetBy: 20)
+            $0.widthConstant == 150
+            $0.heightConstant == 40
+        }
+
+        let textFields = [
+            userNameTextField,
+            emailTextField,
+            passwordTextField,
+            passwordConfirmationTextField
+        ]
+
+        textFields.forEach {
+            $0.layout {
+                $0.heightConstant == 30
+            }
+        }
+
+        secureButton.layout {
+            $0.widthConstant == 15
+            $0.heightConstant == 15
+        }
+
+        [loginButton, signupButton].forEach {
+            $0.layout {
+                $0.heightConstant == 40
+            }
+        }
+
         mainStackView.layout {
             $0.centerY == view.centerYAnchor
             $0.leading.equal(to: view.leadingAnchor, offsetBy: 48)
@@ -219,41 +251,6 @@ private extension SignupViewController {
         loadingIndicator.layout {
             $0.centerX == view.centerXAnchor
             $0.centerY == view.centerYAnchor
-        }
-
-        userIconImageView.layout {
-            $0.widthConstant == 60
-            $0.heightConstant == 60
-        }
-
-        spacerView.layout {
-            $0.widthConstant == 40
-        }
-
-        userIconSelectButton.layout {
-            $0.heightConstant == 60
-        }
-
-        secureButton.layout {
-            $0.widthConstant == 15
-            $0.heightConstant == 15
-        }
-
-        [
-            userNameTextField,
-            emailTextField,
-            passwordTextField,
-            passwordConfirmationTextField
-        ].forEach {
-            $0.layout {
-                $0.heightConstant == 30
-            }
-        }
-
-        [loginButton, signupButton].forEach {
-            $0.layout {
-                $0.heightConstant == 40
-            }
         }
     }
 
@@ -266,37 +263,9 @@ private extension SignupViewController {
         ]
 
         textFields.forEach { $0.delegate = self }
-
-        userNameTextField.textPublisher
-            .receive(on: DispatchQueue.main)
-            .compactMap { $0 }
-            .removeDuplicates()
-            .assign(to: \.userName, on: viewModel)
-            .store(in: &cancellables)
-
-        emailTextField.textPublisher
-            .receive(on: DispatchQueue.main)
-            .compactMap { $0 }
-            .removeDuplicates()
-            .assign(to: \.email, on: viewModel)
-            .store(in: &cancellables)
-
-        passwordTextField.textPublisher
-            .receive(on: DispatchQueue.main)
-            .compactMap { $0 }
-            .removeDuplicates()
-            .assign(to: \.password, on: viewModel)
-            .store(in: &cancellables)
-
-        passwordConfirmationTextField.textPublisher
-            .receive(on: DispatchQueue.main)
-            .compactMap { $0 }
-            .removeDuplicates()
-            .assign(to: \.passwordConfirmation, on: viewModel)
-            .store(in: &cancellables)
     }
 
-    func setupButton() {
+    func setupEvent() {
         userIconSelectButton.tapPublisher
             .sink { [weak self] in
                 let photoLibrary = UIImagePickerController.SourceType.photoLibrary
@@ -328,6 +297,36 @@ private extension SignupViewController {
             .sink { [weak self] in
                 self?.viewModel.signup()
             }
+            .store(in: &cancellables)
+    }
+
+    func bindValue() {
+        userNameTextField.textPublisher
+            .receive(on: DispatchQueue.main)
+            .compactMap { $0 }
+            .removeDuplicates()
+            .assign(to: \.userName, on: viewModel)
+            .store(in: &cancellables)
+
+        emailTextField.textPublisher
+            .receive(on: DispatchQueue.main)
+            .compactMap { $0 }
+            .removeDuplicates()
+            .assign(to: \.email, on: viewModel)
+            .store(in: &cancellables)
+
+        passwordTextField.textPublisher
+            .receive(on: DispatchQueue.main)
+            .compactMap { $0 }
+            .removeDuplicates()
+            .assign(to: \.password, on: viewModel)
+            .store(in: &cancellables)
+
+        passwordConfirmationTextField.textPublisher
+            .receive(on: DispatchQueue.main)
+            .compactMap { $0 }
+            .removeDuplicates()
+            .assign(to: \.passwordConfirmation, on: viewModel)
             .store(in: &cancellables)
     }
 

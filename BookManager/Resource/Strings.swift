@@ -19,6 +19,8 @@ struct StringResources {
         @Localizable static var login = "login"
         @Localizable static var createAccount = "create_account"
         @Localizable static var showPassword = "show_password"
+        @Localizable static var selectIconImage = "select_chat_image"
+        @Localizable static var nickName = "nickname"
     }
 
     struct Book {
