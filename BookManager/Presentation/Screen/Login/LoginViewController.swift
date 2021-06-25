@@ -189,8 +189,8 @@ private extension LoginViewController {
             $0?.delegate = self
         }
 
-        emailTextField.text = "test@test.com"
-        passwordTextField.text = "testtest"
+        emailTextField.text = "hogehoge@hoge.com"
+        passwordTextField.text = "hogehoge"
 
         emailTextField.textPublisher
             .receive(on: DispatchQueue.main)
@@ -243,8 +243,9 @@ private extension LoginViewController {
                         self?.loadingIndicator.stopAnimating()
                         self?.routing.showRootScreen()
 
-                    case .failed:
+                    case let .failed(error):
                         self?.loadingIndicator.stopAnimating()
+                        self?.showError(error: error)
                 }
             }
             .store(in: &cancellables)

@@ -159,6 +159,8 @@ extension BookListViewController: UITableViewDelegate {
         let lastSection = tableView.numberOfSections - 1
         let lastIndex = tableView.numberOfRows(inSection: lastSection) - 1
 
+        guard tableView.contentOffset.y > 500 else { return }
+
         if indexPath.section == lastSection && indexPath.row == lastIndex {
             viewModel.fetchBookList(isAdditional: true)
         }

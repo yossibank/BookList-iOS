@@ -346,8 +346,9 @@ private extension SignupViewController {
                         self?.loadingIndicator.stopAnimating()
                         self?.routing.showRootScreen()
 
-                    case .failed:
+                    case let .failed(error):
                         self?.loadingIndicator.stopAnimating()
+                        self?.showError(error: error)
                 }
             }
             .store(in: &cancellables)
