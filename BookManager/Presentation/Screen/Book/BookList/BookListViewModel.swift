@@ -64,15 +64,15 @@ extension BookListViewModel {
             path: String(book.id)
         )
     }
+
+    func isFavoriteBook(id: Int) -> Bool {
+        BookFileManager.isContainPath(path: String(id))
+    }
 }
 
 // MARK: - private methods
 
 private extension BookListViewModel {
-
-    func isFavoriteBook(id: Int) -> Bool {
-        BookFileManager.isContainPath(path: String(id))
-    }
 
     func mapBookEntityToBusinessModel(entity: [BookEntity]) -> [BookBusinessModel] {
         let bookList = entity.map { book in

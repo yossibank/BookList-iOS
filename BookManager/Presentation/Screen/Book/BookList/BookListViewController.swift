@@ -43,7 +43,13 @@ extension BookListViewController {
 
 // MARK: - internal methods
 
-extension BookListViewController {}
+extension BookListViewController {
+
+    func reload() {
+        viewModel.fetchBookList(isAdditional: false)
+        tableView.reloadData()
+    }
+}
 
 
 // MARK: private methods
@@ -122,6 +128,14 @@ private extension BookListViewController {
             }
             .store(in: &cancellables)
     }
+
+    func updateWishList() {
+        let wishListVC = getRootTabBarController()?.getViewController(
+            tag: .wishList
+        ) as? WishListViewController
+
+        wishListVC?.reload()
+    }
 }
 
 // MARK: - Delegate
@@ -140,9 +154,15 @@ extension BookListViewController: UITableViewDelegate {
             return
         }
 
-        var successHandler: VoidBlock? {{ [weak self] in
-            self?.viewModel.fetchBookList(isAdditional: false)
-            self?.tableView.reloadData()
+        var successHandler: (BookBusinessModel) -> Void {{ [weak self] book in
+            guard let self = self else { return }
+
+            if self.viewModel.isFavoriteBook(id: book.id) {
+                self.viewModel.saveFavoriteBook(book: book)
+                self.updateWishList()
+            }
+            self.viewModel.fetchBookList(isAdditional: false)
+            self.tableView.reloadData()
         }}
 
         routing.showEditBookScreen(
@@ -170,11 +190,7 @@ extension BookListViewController: UITableViewDelegate {
 extension BookListViewController: BookListDataSourceDelegate {
 
     func tappedFavoriteButton() {
-        let wishListVC = getRootTabBarController()?.getViewController(
-            tag: .wishList
-        ) as? WishListViewController
-
-        wishListVC?.reload()
+        updateWishList()
     }
 }
 

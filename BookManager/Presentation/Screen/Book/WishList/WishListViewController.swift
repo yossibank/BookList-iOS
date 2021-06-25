@@ -73,6 +73,14 @@ private extension WishListViewController {
         tableView.delegate = self
         tableView.rowHeight = 150
     }
+
+    func updateBookList() {
+        let bookListVC = getRootTabBarController()?.getViewController(
+            tag: .bookList
+        ) as? BookListViewController
+
+        bookListVC?.reload()
+    }
 }
 
 // MARK: - Delegate
@@ -91,8 +99,12 @@ extension WishListViewController: UITableViewDelegate {
             return
         }
 
-        var successHandler: VoidBlock {{
-            print("OK")
+        var successHandler: (BookBusinessModel) -> Void {{ [weak self] book in
+            guard let self = self else { return }
+
+            self.updateBookList()
+            self.viewModel.updateBook(book: book)
+            self.tableView.reloadData()
         }}
 
         routing.showEditBookScreen(

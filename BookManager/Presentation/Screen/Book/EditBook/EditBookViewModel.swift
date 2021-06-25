@@ -14,6 +14,7 @@ final class EditBookViewModel: ViewModel {
     private let book: BookBusinessModel
     private let usecase: EditBookUsecase
 
+    private var isFavorite: Bool?
     private var cancellables: Set<AnyCancellable> = []
 
     init(
@@ -54,6 +55,19 @@ extension EditBookViewModel {
         }
         .store(in: &cancellables)
     }
+
+    func mapBookEntityToBusinessModel(
+        entity: BookEntity
+    ) -> BookBusinessModel {
+        BookBusinessModel(
+            id: entity.id,
+            name: entity.name,
+            image: entity.image,
+            price: entity.price,
+            purchaseDate: entity.purchaseDate,
+            isFavorite: isFavorite ?? false
+        )
+    }
 }
 
 // MARK: - private methods
@@ -65,5 +79,6 @@ private extension EditBookViewModel {
         bookPrice = book.price?.description ?? String.blank
         bookPurchaseDate = book.purchaseDate ?? String.blank
         bookImage = book.image ?? String.blank
+        isFavorite = book.isFavorite
     }
 }

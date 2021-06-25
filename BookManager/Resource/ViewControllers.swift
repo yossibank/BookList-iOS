@@ -40,7 +40,7 @@ extension Resources {
 
             func editBook(
                 book: BookBusinessModel,
-                successHandler: VoidBlock?
+                successHandler: ((BookBusinessModel) -> Void)?
             ) -> EditBookViewController {
                 let vc = EditBookViewController.createInstance(successHandler: successHandler)
                 vc.inject(routing: NoRouting(), viewModel: EditBookViewModel(book: book))

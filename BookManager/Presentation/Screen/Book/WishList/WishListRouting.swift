@@ -6,17 +6,20 @@ final class WishListRouting: Routing {
 
 extension WishListRouting {
 
-    func showEditBookScreen(book: BookBusinessModel, successHandler: VoidBlock?) {
+    func showEditBookScreen(
+        book: BookBusinessModel,
+        successHandler: ((BookBusinessModel) -> Void)?
+    ) {
         let editBookVC = Resources.ViewControllers.App.editBook(
             book: book,
             successHandler: successHandler
         )
-        let navVC = viewController?.navigationController as? RootNavigationController
-        navVC?.setupNavigationBar(
+        let navVC = RootNavigationController(rootViewController: editBookVC)
+        navVC.setupNavigationBar(
             forVC: editBookVC,
             config: editBookVC as NavigationBarConfiguration
         )
 
-        navVC?.pushViewController(editBookVC, animated: true)
+        viewController?.present(navVC, animated: true)
     }
 }

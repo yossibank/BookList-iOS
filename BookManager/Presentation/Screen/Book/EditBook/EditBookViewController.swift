@@ -115,9 +115,11 @@ final class EditBookViewController: UIViewController {
     }()
 
     private var cancellables: Set<AnyCancellable> = []
-    private var successHandler: VoidBlock?
+    private var successHandler: ((BookBusinessModel) -> Void)?
 
-    static func createInstance(successHandler: VoidBlock?) -> EditBookViewController {
+    static func createInstance(
+        successHandler: ((BookBusinessModel) -> Void)?
+    ) -> EditBookViewController {
         let instance = EditBookViewController()
         instance.successHandler = successHandler
         return instance
@@ -294,16 +296,20 @@ private extension EditBookViewController {
         viewModel.$state
             .receive(on: DispatchQueue.main)
             .sink { [weak self] state in
+                guard let self = self else { return }
+
                 switch state {
                     case .standby:
-                        self?.loadingIndicator.stopAnimating()
+                        self.loadingIndicator.stopAnimating()
 
                     case .loading:
-                        self?.loadingIndicator.startAnimating()
+                        self.loadingIndicator.startAnimating()
 
-                    case .done:
-                        self?.loadingIndicator.stopAnimating()
-                        self?.successHandler?()
+                    case let .done(entity):
+                        let book = self.viewModel.mapBookEntityToBusinessModel(entity: entity)
+
+                        self.loadingIndicator.stopAnimating()
+                        self.successHandler?(book)
 
                         let okAction = UIAlertAction(
                             title: "OK",
@@ -312,11 +318,11 @@ private extension EditBookViewController {
                             self?.dismiss(animated: true)
                         }
 
-                        self?.showAlert(title: "書籍編集完了", actions: [okAction])
+                        self.showAlert(title: "書籍編集完了", actions: [okAction])
 
                     case let .failed(error):
-                        self?.loadingIndicator.stopAnimating()
-                        self?.showError(error: error)
+                        self.loadingIndicator.stopAnimating()
+                        self.showError(error: error)
                 }
             }
             .store(in: &cancellables)
