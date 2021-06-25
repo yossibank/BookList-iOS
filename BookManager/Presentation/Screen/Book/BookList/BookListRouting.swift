@@ -8,13 +8,13 @@ extension BookListRouting {
 
     func showAddBookScreen(successHandler: VoidBlock?) {
         let addBookVC = Resources.ViewControllers.App.addBook(successHandler: successHandler)
-        let navVC = viewController?.navigationController as? RootNavigationController
-        navVC?.setupNavigationBar(
+        let navVC = RootNavigationController(rootViewController: addBookVC)
+        navVC.setupNavigationBar(
             forVC: addBookVC,
             config: addBookVC as NavigationBarConfiguration
         )
 
-        navVC?.pushViewController(addBookVC, animated: true)
+        viewController?.present(navVC, animated: true)
     }
 
     func showEditBookScreen(book: BookBusinessModel, successHandler: VoidBlock?) {
@@ -22,12 +22,12 @@ extension BookListRouting {
             book: book,
             successHandler: successHandler
         )
-        let navVC = viewController?.navigationController as? RootNavigationController
-        navVC?.setupNavigationBar(
+        let navVC = RootNavigationController(rootViewController: editBookVC)
+        navVC.setupNavigationBar(
             forVC: editBookVC,
             config: editBookVC as NavigationBarConfiguration
         )
 
-        navVC?.pushViewController(editBookVC, animated: true)
+        viewController?.present(navVC, animated: true)
     }
 }

@@ -115,7 +115,6 @@
 		78DC0E4E267F4B710083EBC0 /* IndicatorStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DC0E4D267F4B710083EBC0 /* IndicatorStyle.swift */; };
 		78DE1D6725BD423A00A2C0F2 /* WishListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DE1D6625BD423A00A2C0F2 /* WishListViewController.swift */; };
 		78DEE7B525AAD4D500219963 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 78DEE7B425AAD4D500219963 /* Localizable.strings */; };
-		78DEE7B925AADFC600219963 /* UIAlertController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DEE7B825AADFC600219963 /* UIAlertController+Extension.swift */; };
 		78DEE7BD25AAE3AD00219963 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DEE7BC25AAE3AD00219963 /* UIViewController+Extension.swift */; };
 		78E609D325AA04300041B3D0 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E609D225AA04300041B3D0 /* LoginViewModel.swift */; };
 		78E609F125AAAA530041B3D0 /* Validator+Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E609F025AAAA530041B3D0 /* Validator+Protocol.swift */; };
@@ -262,7 +261,6 @@
 		78DC0E4D267F4B710083EBC0 /* IndicatorStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorStyle.swift; sourceTree = "<group>"; };
 		78DE1D6625BD423A00A2C0F2 /* WishListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListViewController.swift; sourceTree = "<group>"; };
 		78DEE7B425AAD4D500219963 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
-		78DEE7B825AADFC600219963 /* UIAlertController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extension.swift"; sourceTree = "<group>"; };
 		78DEE7BC25AAE3AD00219963 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		78E609D225AA04300041B3D0 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		78E609F025AAAA530041B3D0 /* Validator+Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Validator+Protocol.swift"; sourceTree = "<group>"; };
@@ -662,10 +660,9 @@
 			isa = PBXGroup;
 			children = (
 				789BC9342684593700C9EC0F /* Combine */,
-				78DEE7BC25AAE3AD00219963 /* UIViewController+Extension.swift */,
-				78DEE7B825AADFC600219963 /* UIAlertController+Extension.swift */,
 				789BC93926845A8C00C9EC0F /* UIImage+Extension.swift */,
 				78F675522684CF8A009E117D /* UIImageView+Extension.swift */,
+				78DEE7BC25AAE3AD00219963 /* UIViewController+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1087,7 +1084,6 @@
 				78B29D1C25B3310000A7DC7F /* EditBookViewController.swift in Sources */,
 				78DEE7BD25AAE3AD00219963 /* UIViewController+Extension.swift in Sources */,
 				7833D0C3260229E4005DFB79 /* ChatSelectDataSource.swift in Sources */,
-				78DEE7B925AADFC600219963 /* UIAlertController+Extension.swift in Sources */,
 				782311FA259C0D9200D9E723 /* AppDelegate.swift in Sources */,
 				78B2A16D267B8A6100D9EA0E /* LoadingState.swift in Sources */,
 				78C7F3A725E525C5005E9E2B /* ChatSelectViewController.swift in Sources */,

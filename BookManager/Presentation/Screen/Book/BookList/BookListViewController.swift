@@ -115,8 +115,9 @@ private extension BookListViewController {
                         self?.loadingIndicator.stopAnimating()
                         self?.tableView.reloadData()
 
-                    case .failed:
+                    case let .failed(error):
                         self?.loadingIndicator.stopAnimating()
+                        self?.showError(error: error)
                 }
             }
             .store(in: &cancellables)

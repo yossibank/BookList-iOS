@@ -291,10 +291,19 @@ private extension AddBookViewController {
                     case .done:
                         self?.loadingIndicator.stopAnimating()
                         self?.successHandler?()
-                        self?.navigationController?.popViewController(animated: true)
 
-                    case .failed:
+                        let okAction = UIAlertAction(
+                            title: "OK",
+                            style: .default
+                        ) { [weak self] _ in
+                            self?.dismiss(animated: true)
+                        }
+
+                        self?.showAlert(title: "書籍追加完了", actions: [okAction])
+
+                    case let .failed(error):
                         self?.loadingIndicator.stopAnimating()
+                        self?.showError(error: error)
                 }
             }
             .store(in: &cancellables)
