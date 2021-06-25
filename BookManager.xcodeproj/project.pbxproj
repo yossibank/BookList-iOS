@@ -695,8 +695,8 @@
 		78B29D1A25B330D600A7DC7F /* EditBook */ = {
 			isa = PBXGroup;
 			children = (
-				78772B5325B3E48B00E6493E /* EditBookViewModel.swift */,
 				78B29D1B25B3310000A7DC7F /* EditBookViewController.swift */,
+				78772B5325B3E48B00E6493E /* EditBookViewModel.swift */,
 			);
 			path = EditBook;
 			sourceTree = "<group>";
