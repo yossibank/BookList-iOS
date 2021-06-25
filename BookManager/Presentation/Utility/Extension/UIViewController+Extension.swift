@@ -1,54 +1,69 @@
+import DomainKit
 import UIKit
 
 extension UIViewController {
 
-    func showError(
-        title: String,
-        message: String,
-        completion: VoidBlock? = nil
-    ) {
-        let alert = UIAlertController.createCloseAlert(
-            title: title,
-            message: message
-        ) {
-            if let completion = completion {
-                completion()
-            }
-        }
-
-        present(alert, animated: true)
-    }
-
     func showAlert(
-        title: String,
-        message: String,
+        title: String? = nil,
+        message: String? = nil,
+        actions: [UIAlertAction],
+        animated: Bool = true,
         completion: VoidBlock? = nil
     ) {
-        let alert = UIAlertController.createActionAlert(
+        let alert = UIAlertController(
             title: title,
-            message: message
-        ) { _ in
-            if let completion = completion {
-                completion()
-            }
+            message: message,
+            preferredStyle: .alert
+        )
+
+        actions.forEach { action in
+            alert.addAction(action)
         }
 
-        present(alert, animated: true)
+        present(
+            alert,
+            animated: animated,
+            completion: completion
+        )
     }
 
-    func showActionAlert(
-        title: String,
-        message: String,
-        completion: @escaping VoidBlock
+    func showSheet(
+        title: String? = nil,
+        message: String? = nil,
+        actions: [UIAlertAction],
+        animated: Bool = true,
+        completion: VoidBlock? = nil
     ) {
-        let alert = UIAlertController.createAlert(
+        let sheet = UIAlertController(
             title: title,
-            message: message
-        ) { _ in
-            completion()
+            message: message,
+            preferredStyle: .actionSheet
+        )
+
+        actions.forEach { action in
+            sheet.addAction(action)
         }
 
-        present(alert, animated: true)
+        sheet.addAction(
+            .init(
+                title: "キャンセル",
+                style: .cancel
+            )
+        )
+
+        present(
+            sheet,
+            animated: animated,
+            completion: completion
+        )
+    }
+
+    func showError(error: APPError) {
+        showAlert(
+            title: "エラー",
+            message: error.localizedDescription,
+            actions: [.init(title: "OK", style: .cancel)]
+        )
     }
 }
 

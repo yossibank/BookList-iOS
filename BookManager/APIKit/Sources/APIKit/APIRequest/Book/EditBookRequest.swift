@@ -25,8 +25,9 @@ public struct EditBookRequest: Request {
     private let id: Int
 
     public var parameters: Parameters
+    public var queryItems: [URLQueryItem]?
     public var method: HTTPMethod { .put }
-    public var path: String { "/books\(id)" }
+    public var path: String { "/books/\(id)" }
 
     public var testDataPath: URL? {
         Bundle.module.url(forResource: "PutBook", withExtension: "json")

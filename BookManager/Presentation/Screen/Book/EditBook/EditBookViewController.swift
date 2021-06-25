@@ -70,6 +70,10 @@ final class EditBookViewController: UIViewController {
         style: .borderBottomStyle
     )
 
+    private let loadingIndicator: UIActivityIndicatorView = .init(
+        style: .largeStyle
+    )
+
     private lazy var toolbar: UIToolbar = {
         let toolbar = UIToolbar(
             frame: .init(
@@ -94,11 +98,11 @@ final class EditBookViewController: UIViewController {
 
         doneItem.tapPublisher
             .sink { [weak self] in
-                self?.bookPurchaseDateTextField.endEditing(true)
                 self?.bookPurchaseDateTextField.text = UIDatePicker
                     .purchaseDatePicker.date.toConvertString(
                         with: .yearToDayOfWeekJapanese
                     )
+                self?.bookPurchaseDateTextField.endEditing(true)
             }
             .store(in: &cancellables)
 
@@ -111,15 +115,14 @@ final class EditBookViewController: UIViewController {
     }()
 
     private var cancellables: Set<AnyCancellable> = []
-    private var successHandler: VoidBlock?
+    private var successHandler: ((BookBusinessModel) -> Void)?
 
-    init(successHandler: VoidBlock?) {
-        self.successHandler = successHandler
-        super.init(nibName: nil, bundle: nil)
-    }
-
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
+    static func createInstance(
+        successHandler: ((BookBusinessModel) -> Void)?
+    ) -> EditBookViewController {
+        let instance = EditBookViewController()
+        instance.successHandler = successHandler
+        return instance
     }
 }
 
@@ -133,6 +136,8 @@ extension EditBookViewController {
         setupLayout()
         setupTextField()
         setupButton()
+        setupInitialValue()
+        bindValue()
         bindViewModel()
     }
 
@@ -177,6 +182,7 @@ private extension EditBookViewController {
         }
 
         view.addSubview(mainStackView)
+        view.addSubview(loadingIndicator)
     }
 
     func setupLayout() {
@@ -186,8 +192,13 @@ private extension EditBookViewController {
             $0.trailing.equal(to: view.trailingAnchor, offsetBy: -64)
         }
 
+        loadingIndicator.layout {
+            $0.centerX == view.centerXAnchor
+            $0.centerY == view.centerYAnchor
+        }
+
         bookImageView.layout {
-            $0.heightConstant == 200
+            $0.heightConstant == 220
         }
 
         [bookTitleTextField, bookPriceTextField, bookPurchaseDateTextField].forEach {
@@ -204,27 +215,6 @@ private extension EditBookViewController {
 
         bookPurchaseDateTextField.inputAccessoryView = toolbar
         bookPurchaseDateTextField.inputView = UIDatePicker.purchaseDatePicker
-
-        bookTitleTextField.textPublisher
-            .receive(on: DispatchQueue.main)
-            .compactMap { $0 }
-            .removeDuplicates()
-            .assign(to: \.bookName, on: viewModel)
-            .store(in: &cancellables)
-
-        bookPriceTextField.textPublisher
-            .receive(on: DispatchQueue.main)
-            .compactMap { $0 }
-            .removeDuplicates()
-            .assign(to: \.bookPrice, on: viewModel)
-            .store(in: &cancellables)
-
-        bookPurchaseDateTextField.textPublisher
-            .receive(on: DispatchQueue.main)
-            .compactMap { $0 }
-            .removeDuplicates()
-            .assign(to: \.bookPurchaseDate, on: viewModel)
-            .store(in: &cancellables)
     }
 
     func setupButton() {
@@ -261,23 +251,78 @@ private extension EditBookViewController {
             .store(in: &cancellables)
     }
 
+    func setupInitialValue() {
+        bookImageView.loadImage(with: .string(urlString: viewModel.bookImage))
+        bookTitleTextField.text = viewModel.bookName
+        bookPriceTextField.text = viewModel.bookPrice
+        bookPurchaseDateTextField.text = Date.convertBookPurchaseDate(
+            dateString: viewModel.bookPurchaseDate
+        )
+
+        // 画像をそのまま編集せずに完了ボタンを押した際にbase64に変換しておく
+        viewModel.bookImage = bookImageView.image?.convertBase64String() ?? String.blank
+    }
+
+    func bindValue() {
+        bookImageView.base64ImagePublisher
+            .receive(on: DispatchQueue.main)
+            .assign(to: \.bookImage, on: viewModel)
+            .store(in: &cancellables)
+
+        bookTitleTextField.textPublisher
+            .receive(on: DispatchQueue.main)
+            .compactMap { $0 }
+            .assign(to: \.bookName, on: viewModel)
+            .store(in: &cancellables)
+
+        bookPriceTextField.textPublisher
+            .receive(on: DispatchQueue.main)
+            .compactMap { $0 }
+            .assign(to: \.bookPrice, on: viewModel)
+            .store(in: &cancellables)
+
+        bookPurchaseDateTextField.textDatePickerPublisher
+            .receive(on: DispatchQueue.main)
+            .compactMap {
+                Date.toConvertDate(
+                    $0, with: .yearToDayOfWeekJapanese
+                )?.toConvertString(with: .yearToDayOfWeek)
+            }
+            .assign(to: \.bookPurchaseDate, on: viewModel)
+            .store(in: &cancellables)
+    }
+
     func bindViewModel() {
         viewModel.$state
+            .receive(on: DispatchQueue.main)
             .sink { [weak self] state in
+                guard let self = self else { return }
+
                 switch state {
                     case .standby:
-                        Logger.debug(message: "standby")
+                        self.loadingIndicator.stopAnimating()
 
                     case .loading:
-                        Logger.debug(message: "loading")
+                        self.loadingIndicator.startAnimating()
 
                     case let .done(entity):
-                        Logger.debug(message: "\(entity)")
-                        self?.dismiss(animated: true)
-                        self?.successHandler?()
+                        let book = self.viewModel.mapBookEntityToBusinessModel(entity: entity)
+
+                        self.loadingIndicator.stopAnimating()
+                        self.successHandler?(book)
+
+                        let okAction = UIAlertAction(
+                            title: "OK",
+                            style: .default
+                        ) { [weak self] _ in
+                            self?.dismiss(animated: true)
+                        }
+
+                        self.showAlert(title: "書籍編集完了", actions: [okAction])
 
                     case let .failed(error):
-                        Logger.debug(message: "\(error.localizedDescription)")
+                        self.loadingIndicator.stopAnimating()
+                        self.showError(error: error)
                 }
             }
             .store(in: &cancellables)
@@ -314,8 +359,13 @@ extension EditBookViewController: UIImagePickerControllerDelegate, UINavigationC
         didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]
     ) {
         if let image = info[.originalImage] as? UIImage {
-            bookImageView.contentMode = .scaleAspectFill
             bookImageView.image = image
+
+            NotificationCenter.default.post(
+                name: .didSetImageIntoImageView,
+                object: nil,
+                userInfo: ["base64Image": image.convertBase64String()]
+            )
         }
         dismiss(animated: true)
     }

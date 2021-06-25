@@ -43,7 +43,13 @@ extension BookListViewController {
 
 // MARK: - internal methods
 
-extension BookListViewController {}
+extension BookListViewController {
+
+    func reload() {
+        viewModel.fetchBookList(isAdditional: false)
+        tableView.reloadData()
+    }
+}
 
 
 // MARK: private methods
@@ -87,7 +93,15 @@ private extension BookListViewController {
     func setupButton() {
         navigationItem.rightBarButtonItem?.tapPublisher
             .sink { [weak self] in
-                self?.routing.showAddBookScreen()
+
+                var successHandler: VoidBlock? {{ [weak self] in
+                    self?.viewModel.fetchBookList(isAdditional: false)
+                    self?.tableView.reloadData()
+                }}
+
+                self?.routing.showAddBookScreen(
+                    successHandler: successHandler
+                )
             }
             .store(in: &cancellables)
     }
@@ -107,11 +121,20 @@ private extension BookListViewController {
                         self?.loadingIndicator.stopAnimating()
                         self?.tableView.reloadData()
 
-                    case .failed:
+                    case let .failed(error):
                         self?.loadingIndicator.stopAnimating()
+                        self?.showError(error: error)
                 }
             }
             .store(in: &cancellables)
+    }
+
+    func updateWishList() {
+        let wishListVC = getRootTabBarController()?.getViewController(
+            tag: .wishList
+        ) as? WishListViewController
+
+        wishListVC?.reload()
     }
 }
 
@@ -131,12 +154,19 @@ extension BookListViewController: UITableViewDelegate {
             return
         }
 
-        var successHandler: VoidBlock {{
-            print("OK")
+        var successHandler: (BookBusinessModel) -> Void {{ [weak self] book in
+            guard let self = self else { return }
+
+            if self.viewModel.isFavoriteBook(id: book.id) {
+                self.viewModel.saveFavoriteBook(book: book)
+                self.updateWishList()
+            }
+            self.viewModel.fetchBookList(isAdditional: false)
+            self.tableView.reloadData()
         }}
 
         routing.showEditBookScreen(
-            id: book.id,
+            book: book,
             successHandler: successHandler
         )
     }
@@ -149,6 +179,8 @@ extension BookListViewController: UITableViewDelegate {
         let lastSection = tableView.numberOfSections - 1
         let lastIndex = tableView.numberOfRows(inSection: lastSection) - 1
 
+        guard tableView.contentOffset.y > 500 else { return }
+
         if indexPath.section == lastSection && indexPath.row == lastIndex {
             viewModel.fetchBookList(isAdditional: true)
         }
@@ -158,11 +190,7 @@ extension BookListViewController: UITableViewDelegate {
 extension BookListViewController: BookListDataSourceDelegate {
 
     func tappedFavoriteButton() {
-        let wishListVC = getRootTabBarController()?.getViewController(
-            tag: .wishList
-        ) as? WishListViewController
-
-        wishListVC?.reload()
+        updateWishList()
     }
 }
 

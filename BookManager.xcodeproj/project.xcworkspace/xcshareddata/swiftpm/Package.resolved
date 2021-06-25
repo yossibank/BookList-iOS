@@ -110,6 +110,15 @@
         }
       },
       {
+        "package": "Nuke",
+        "repositoryURL": "https://github.com/kean/Nuke.git",
+        "state": {
+          "branch": null,
+          "revision": "69ae6d5b8c4b898450432f94bd35f863d3830cfc",
+          "version": "10.3.0"
+        }
+      },
+      {
         "package": "Promises",
         "repositoryURL": "https://github.com/google/promises.git",
         "state": {

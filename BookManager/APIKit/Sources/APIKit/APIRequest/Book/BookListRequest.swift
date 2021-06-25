@@ -21,7 +21,6 @@ public struct BookListRequest: Request {
     public var method: HTTPMethod { .get }
     public var path: String { "/books" }
     public var body: Data?
-    public var wantCache: Bool { true }
 
     public var testDataPath: URL? {
         Bundle.module.url(forResource: "GetBook", withExtension: "json")
