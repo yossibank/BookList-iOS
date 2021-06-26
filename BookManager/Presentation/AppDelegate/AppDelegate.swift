@@ -10,8 +10,16 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     ) -> Bool {
         PackageConfig.setup()
 
+        let rootViewController: UIViewController
+
+        if PackageConfig.hasAccessToken() {
+            rootViewController = RootTabBarController()
+        } else {
+            rootViewController = Resources.ViewControllers.App.login()
+        }
+
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = Resources.ViewControllers.App.login()
+        window?.rootViewController = rootViewController
         window?.makeKeyAndVisible()
 
         return true

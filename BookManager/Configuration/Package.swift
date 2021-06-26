@@ -9,4 +9,8 @@ struct PackageConfig {
         DomainConfig.setup(baseURL: API.baseURL)
         UtilityConfig.setup(analytics: FirebaseProvider())
     }
+
+    static func hasAccessToken() -> Bool {
+        DomainConfig.hasAccessToken()
+    }
 }

@@ -34,7 +34,7 @@ extension RootTabBarController {
 enum Tabs: Int, CaseIterable {
     case bookList
     case wishList
-    case chatList
+    case account
 
     private var title: String {
         switch self {
@@ -44,8 +44,8 @@ enum Tabs: Int, CaseIterable {
             case .wishList:
                 return Resources.Strings.TabBar.wishList
 
-            case .chatList:
-                return Resources.Strings.TabBar.chat
+            case .account:
+                return Resources.Strings.TabBar.account
         }
     }
 
@@ -57,8 +57,8 @@ enum Tabs: Int, CaseIterable {
             case .wishList:
                 return Resources.Images.TabBar.wishList
 
-            case .chatList:
-                return Resources.Images.TabBar.chat
+            case .account:
+                return Resources.Images.TabBar.account
         }
     }
 
@@ -76,8 +76,8 @@ enum Tabs: Int, CaseIterable {
             case .wishList:
                 viewController = Resources.ViewControllers.App.wishList()
 
-            case .chatList:
-                viewController = Resources.ViewControllers.App.chatUserList()
+            case .account:
+                viewController = Resources.ViewControllers.App.account()
         }
 
         let nc = RootNavigationController(rootViewController: viewController)

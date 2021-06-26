@@ -13,7 +13,7 @@ struct ImageResources {
     struct TabBar {
         static var bookList: UIImage = #imageLiteral(resourceName: "BookList")
         static var wishList: UIImage = #imageLiteral(resourceName: "Favorite")
-        static var chat: UIImage = #imageLiteral(resourceName: "Chat")
+        static var account: UIImage = #imageLiteral(resourceName: "Account")
     }
 
     struct Navigation {

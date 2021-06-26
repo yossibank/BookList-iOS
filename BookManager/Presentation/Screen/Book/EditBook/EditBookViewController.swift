@@ -29,13 +29,13 @@ final class EditBookViewController: UIViewController {
     )
 
     private let bookImageSelectButton: UIButton = .init(
-        title: "画像を選択",
+        title: Resources.Strings.Book.selectImage,
         backgroundColor: .darkGray,
         style: .fontBoldStyle
     )
 
     private let takingPictureButton: UIButton = .init(
-        title: "写真を撮る",
+        title: Resources.Strings.Book.takePicture,
         backgroundColor: .darkGray,
         style: .fontBoldStyle
     )
@@ -46,7 +46,7 @@ final class EditBookViewController: UIViewController {
     )
 
     private let bookTitleTextField: UITextField = .init(
-        placeholder: "書籍名",
+        placeholder: Resources.Strings.Book.bookTitle,
         style: .borderBottomStyle
     )
 
@@ -56,7 +56,7 @@ final class EditBookViewController: UIViewController {
     )
 
     private let bookPriceTextField: UITextField = .init(
-        placeholder: "金額",
+        placeholder: Resources.Strings.Book.price,
         style: .borderBottomStyle
     )
 
@@ -66,7 +66,7 @@ final class EditBookViewController: UIViewController {
     )
 
     private let bookPurchaseDateTextField: UITextField = .init(
-        placeholder: "購入日",
+        placeholder: Resources.Strings.Book.purchaseDate,
         style: .borderBottomStyle
     )
 
@@ -132,10 +132,11 @@ extension EditBookViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupStackView()
         setupView()
         setupLayout()
         setupTextField()
-        setupButton()
+        setupEvent()
         setupInitialValue()
         bindValue()
         bindViewModel()
@@ -153,9 +154,7 @@ extension EditBookViewController {
 
 private extension EditBookViewController {
 
-    func setupView() {
-        view.backgroundColor = .white
-
+    func setupStackView() {
         bookTitleStackView.addArrangedSubview(bookTitleTextField)
         bookPriceStackView.addArrangedSubview(bookPriceTextField)
         bookPurchaseDateStackView.addArrangedSubview(bookPurchaseDateTextField)
@@ -180,12 +179,25 @@ private extension EditBookViewController {
         stackViewList.forEach {
             mainStackView.addArrangedSubview($0)
         }
+    }
 
+    func setupView() {
+        view.backgroundColor = .white
         view.addSubview(mainStackView)
         view.addSubview(loadingIndicator)
     }
 
     func setupLayout() {
+        bookImageView.layout {
+            $0.heightConstant == 220
+        }
+
+        [bookTitleTextField, bookPriceTextField, bookPurchaseDateTextField].forEach {
+            $0.layout {
+                $0.heightConstant == 30
+            }
+        }
+
         mainStackView.layout {
             $0.centerY == view.centerYAnchor
             $0.leading.equal(to: view.leadingAnchor, offsetBy: 64)
@@ -195,16 +207,6 @@ private extension EditBookViewController {
         loadingIndicator.layout {
             $0.centerX == view.centerXAnchor
             $0.centerY == view.centerYAnchor
-        }
-
-        bookImageView.layout {
-            $0.heightConstant == 220
-        }
-
-        [bookTitleTextField, bookPriceTextField, bookPurchaseDateTextField].forEach {
-            $0.layout {
-                $0.heightConstant == 30
-            }
         }
     }
 
@@ -217,7 +219,7 @@ private extension EditBookViewController {
         bookPurchaseDateTextField.inputView = UIDatePicker.purchaseDatePicker
     }
 
-    func setupButton() {
+    func setupEvent() {
         navigationItem.rightBarButtonItem?.tapPublisher
             .sink { [weak self] in
                 self?.viewModel.editBook()
@@ -312,13 +314,16 @@ private extension EditBookViewController {
                         self.successHandler?(book)
 
                         let okAction = UIAlertAction(
-                            title: "OK",
+                            title: Resources.Strings.Alert.ok,
                             style: .default
                         ) { [weak self] _ in
                             self?.dismiss(animated: true)
                         }
 
-                        self.showAlert(title: "書籍編集完了", actions: [okAction])
+                        self.showAlert(
+                            title: Resources.Strings.Alert.successBookEdit,
+                            actions: [okAction]
+                        )
 
                     case let .failed(error):
                         self.loadingIndicator.stopAnimating()

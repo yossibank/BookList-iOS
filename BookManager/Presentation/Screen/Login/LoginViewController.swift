@@ -96,10 +96,12 @@ extension LoginViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupStackView()
         setupView()
         setupLayout()
         setupTextField()
-        setupButton()
+        setupEvent()
+        bindValue()
         bindViewModel()
     }
 
@@ -115,9 +117,7 @@ extension LoginViewController {
 
 private extension LoginViewController {
 
-    func setupView() {
-        view.backgroundColor = .white
-
+    func setupStackView() {
         emailStackView.addArrangedSubview(emailTextField)
         passwordStackView.addArrangedSubview(passwordTextField)
 
@@ -149,23 +149,15 @@ private extension LoginViewController {
         stackViewList.forEach {
             mainStackView.addArrangedSubview($0)
         }
+    }
 
+    func setupView() {
+        view.backgroundColor = .white
         view.addSubview(mainStackView)
         view.addSubview(loadingIndicator)
     }
 
     func setupLayout() {
-        mainStackView.layout {
-            $0.centerY == view.centerYAnchor
-            $0.leading.equal(to: view.leadingAnchor, offsetBy: 48)
-            $0.trailing.equal(to: view.trailingAnchor, offsetBy: -48)
-        }
-
-        loadingIndicator.layout {
-            $0.centerX == view.centerXAnchor
-            $0.centerY == view.centerYAnchor
-        }
-
         secureButton.layout {
             $0.widthConstant == 15
             $0.heightConstant == 15
@@ -182,6 +174,17 @@ private extension LoginViewController {
                 $0.heightConstant == 40
             }
         }
+
+        mainStackView.layout {
+            $0.centerY == view.centerYAnchor
+            $0.leading.equal(to: view.leadingAnchor, offsetBy: 48)
+            $0.trailing.equal(to: view.trailingAnchor, offsetBy: -48)
+        }
+
+        loadingIndicator.layout {
+            $0.centerX == view.centerXAnchor
+            $0.centerY == view.centerYAnchor
+        }
     }
 
     func setupTextField() {
@@ -191,23 +194,9 @@ private extension LoginViewController {
 
         emailTextField.text = "hogehoge@hoge.com"
         passwordTextField.text = "hogehoge"
-
-        emailTextField.textPublisher
-            .receive(on: DispatchQueue.main)
-            .compactMap { $0 }
-            .removeDuplicates()
-            .assign(to: \.email, on: viewModel)
-            .store(in: &cancellables)
-
-        passwordTextField.textPublisher
-            .receive(on: DispatchQueue.main)
-            .compactMap { $0 }
-            .removeDuplicates()
-            .assign(to: \.password, on: viewModel)
-            .store(in: &cancellables)
     }
 
-    func setupButton() {
+    func setupEvent() {
         secureButton.tapPublisher
             .sink { [weak self] _ in
                 guard let self = self else { return }
@@ -225,6 +214,22 @@ private extension LoginViewController {
             .sink { [weak self] _ in
                 self?.viewModel.login()
             }
+            .store(in: &cancellables)
+    }
+
+    func bindValue() {
+        emailTextField.textPublisher
+            .receive(on: DispatchQueue.main)
+            .compactMap { $0 }
+            .removeDuplicates()
+            .assign(to: \.email, on: viewModel)
+            .store(in: &cancellables)
+
+        passwordTextField.textPublisher
+            .receive(on: DispatchQueue.main)
+            .compactMap { $0 }
+            .removeDuplicates()
+            .assign(to: \.password, on: viewModel)
             .store(in: &cancellables)
     }
 
