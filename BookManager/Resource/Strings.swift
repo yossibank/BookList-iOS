@@ -17,6 +17,7 @@ struct StringResources {
 
     struct Account {
         @Localizable static var login = "login"
+        @Localizable static var logout = "logout"
         @Localizable static var createAccount = "create_account"
         @Localizable static var showPassword = "show_password"
         @Localizable static var selectIconImage = "select_chat_image"
@@ -38,7 +39,7 @@ struct StringResources {
     struct TabBar {
         @Localizable static var bookList = "book_list"
         @Localizable static var wishList = "wish_list"
-        @Localizable static var chat = "chat"
+        @Localizable static var account = "account"
     }
 
     struct Navigation {
@@ -53,6 +54,7 @@ struct StringResources {
             @Localizable static var bookList = "book_list"
             @Localizable static var bookAdd = "book_add"
             @Localizable static var bookEdit = "book_edit"
+            @Localizable static var account = "account"
         }
     }
 

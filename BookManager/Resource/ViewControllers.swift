@@ -26,6 +26,12 @@ extension Resources {
                 return vc
             }
 
+            func account() -> AccountViewController {
+                let vc = AccountViewController()
+                vc.inject(routing: AccountRouting(), viewModel: AccountViewModel())
+                return vc
+            }
+
             func bookList() -> BookListViewController {
                 let vc = BookListViewController()
                 vc.inject(routing: BookListRouting(), viewModel: BookListViewModel())

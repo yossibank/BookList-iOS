@@ -14,6 +14,7 @@
 
 // MARK: - アカウント関連
 "login" = "ログイン";
+"logout" = "ログアウト";
 "create_account" = "アカウント作成";
 "show_password" = "パスワードを表示する";
 "select_chat_image" = "チャット画像選択";
@@ -37,6 +38,7 @@
 "chat" = "チャット";
 "book_add" = "書籍追加";
 "book_edit" = "書籍編集";
+"account" = "アカウント";
 
 // MARK: - ナビゲーションバー
 "done" = "完了";

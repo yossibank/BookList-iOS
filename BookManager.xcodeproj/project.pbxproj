@@ -45,6 +45,9 @@
 		782E63722675E5D40029E940 /* Utility in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 782E63702675E5D40029E940 /* Utility */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		7833D0BA26022624005DFB79 /* ChatSelectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7833D0B926022624005DFB79 /* ChatSelectViewModel.swift */; };
 		7833D0C3260229E4005DFB79 /* ChatSelectDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7833D0C2260229E4005DFB79 /* ChatSelectDataSource.swift */; };
+		783FBBC92686CEA10013CCD7 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783FBBC82686CEA10013CCD7 /* AccountViewController.swift */; };
+		783FBBCB2686CEAB0013CCD7 /* AccountRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783FBBCA2686CEAB0013CCD7 /* AccountRouting.swift */; };
+		783FBBCD2686D1F40013CCD7 /* AccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783FBBCC2686D1F40013CCD7 /* AccountViewModel.swift */; };
 		78421CE125E9273500950F62 /* KeyboardAccessoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78421CE025E9273500950F62 /* KeyboardAccessoryView.xib */; };
 		784B18F625BD4D5F0071C32E /* WishListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784B18F525BD4D5F0071C32E /* WishListViewModel.swift */; };
 		784B18FC25BD50FC0071C32E /* WishListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784B18FB25BD50FC0071C32E /* WishListDataSource.swift */; };
@@ -193,6 +196,9 @@
 		782E636B2675DC7A0029E940 /* Utility */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Utility; sourceTree = "<group>"; };
 		7833D0B926022624005DFB79 /* ChatSelectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatSelectViewModel.swift; sourceTree = "<group>"; };
 		7833D0C2260229E4005DFB79 /* ChatSelectDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatSelectDataSource.swift; sourceTree = "<group>"; };
+		783FBBC82686CEA10013CCD7 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
+		783FBBCA2686CEAB0013CCD7 /* AccountRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountRouting.swift; sourceTree = "<group>"; };
+		783FBBCC2686D1F40013CCD7 /* AccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewModel.swift; sourceTree = "<group>"; };
 		78421CE025E9273500950F62 /* KeyboardAccessoryView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KeyboardAccessoryView.xib; sourceTree = "<group>"; };
 		784B18F525BD4D5F0071C32E /* WishListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListViewModel.swift; sourceTree = "<group>"; };
 		784B18FB25BD50FC0071C32E /* WishListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListDataSource.swift; sourceTree = "<group>"; };
@@ -425,6 +431,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		783FBBC62686CE0D0013CCD7 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				783FBBCA2686CEAB0013CCD7 /* AccountRouting.swift */,
+				783FBBC82686CEA10013CCD7 /* AccountViewController.swift */,
+				783FBBCC2686D1F40013CCD7 /* AccountViewModel.swift */,
+			);
+			path = Account;
+			sourceTree = "<group>";
+		};
 		78421CDF25E926FD00950F62 /* KeyboardAccessory */ = {
 			isa = PBXGroup;
 			children = (
@@ -631,11 +647,11 @@
 			isa = PBXGroup;
 			children = (
 				78997EC7259C353E0076FF97 /* Launch */,
+				783FBBC62686CE0D0013CCD7 /* Account */,
 				78DF9170259C7D77007E5D9A /* Signup */,
 				78987B36259C87EE008311DC /* Login */,
 				787052D225B06DC900CAAC3E /* Book */,
 				78524FC625E533A6002AEF87 /* Chat */,
-				78997EC5259C35230076FF97 /* Router */,
 			);
 			path = Screen;
 			sourceTree = "<group>";
@@ -724,6 +740,7 @@
 		78B2A169267B87B600D9EA0E /* Before */ = {
 			isa = PBXGroup;
 			children = (
+				78997EC5259C35230076FF97 /* Router */,
 				7862C15225E2591800F1645A /* Firebase */,
 				78997EB8259C345F0076FF97 /* AppResources */,
 			);
@@ -1062,6 +1079,7 @@
 				78752AAF267EF412000B87AC /* LabelStyle.swift in Sources */,
 				78FE8CD6267B76750006612E /* FirebaseProvider.swift in Sources */,
 				7824042F25E9374D0001AB52 /* IBDesignableTextView.swift in Sources */,
+				783FBBCB2686CEAB0013CCD7 /* AccountRouting.swift in Sources */,
 				78C7F3B125E52C94005E9E2B /* ChatSelectTableViewCell.swift in Sources */,
 				789BC93A26845A8C00C9EC0F /* UIImage+Extension.swift in Sources */,
 				78844C6125B0873600C9AEC0 /* AddBookViewController.swift in Sources */,
@@ -1104,6 +1122,8 @@
 				78F940E6259D7E42007C972A /* Router.swift in Sources */,
 				78B8A69625E54AEB005BCB16 /* MyMessageBalloonView.swift in Sources */,
 				78FE8CD9267B79650006612E /* Localizable.swift in Sources */,
+				783FBBCD2686D1F40013CCD7 /* AccountViewModel.swift in Sources */,
+				783FBBC92686CEA10013CCD7 /* AccountViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
