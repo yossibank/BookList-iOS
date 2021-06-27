@@ -18,7 +18,8 @@ final class KeyboardNotifier {
         if
             let endFrame = (
                 notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue
-            )?.cgRectValue {
+            )?.cgRectValue
+        {
             let keyboardHeight = UIScreen.main.bounds.height - endFrame.origin.y
             if keyboardHeight > 0 {
                 keyboardPresent?(keyboardHeight)

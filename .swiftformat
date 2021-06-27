@@ -31,7 +31,7 @@
 --linebreaks lf
 --markextensions always
 --marktypes always
---maxwidth 100
+--maxwidth 120
 --modifierorder
 --nevertrailing
 --nospaceoperators
@@ -60,5 +60,5 @@
 --wrapparameters before-first
 --xcodeindentation disabled
 
---disable andOperator,anyObjectProtocol,blankLinesAroundMark,blankLinesAtStartOfScope,blankLinesBetweenScopes,consecutiveBlankLines,consecutiveSpaces,enumNamespaces,initCoderUnavailable,preferKeyPath,redundantRawValues,redundantSelf,sortedImports,spaceAroundOperators,wrapAttributes,wrapMultilineStatementBraces,yodaConditions,wrapSwitchCases
---enable wrapEnumCases
+--disable andOperator,anyObjectProtocol,blankLinesAroundMark,blankLinesAtStartOfScope,blankLinesBetweenScopes,consecutiveBlankLines,consecutiveSpaces,enumNamespaces,initCoderUnavailable,preferKeyPath,redundantRawValues,redundantSelf,sortedImports,spaceAroundOperators,wrapAttributes,yodaConditions,wrapSwitchCases
+--enable wrapMultilineStatementBraces,wrapEnumCases

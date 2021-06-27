@@ -1,4 +1,4 @@
-enum LoadingState<T: Equatable, E: Error & Equatable>: Equatable {
+enum LoadingState<T: Equatable, E: Error> {
     case standby
     case loading
     case failed(E)

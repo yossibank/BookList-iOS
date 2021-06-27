@@ -1,57 +1,56 @@
+import Combine
 import FirebaseStorage
+import FirebaseStorageSwift
 
-final class FirebaseStorageManager {
+struct FirebaseStorageManager {
 
-    static let shared = FirebaseStorageManager()
+    private struct Constant {
+        static let userIconPath = "user_icon"
+    }
 
-    private let database = Storage.storage()
+    private static let reference = Storage.storage().reference()
 
-    private let metaData: StorageMetadata = {
+    private static let metaData: StorageMetadata = {
         let metaData = StorageMetadata()
-        metaData.contentType = ""
+        metaData.contentType = "image/jpeg"
         return metaData
     }()
 
-    private init() {}
-
-    func saveUserIconImage(
-        path: String,
-        uploadImage: Data
-    ) {
-        database
-            .reference()
-            .child("")
-            .child(path)
-            .putData(
-                uploadImage,
-                metadata: metaData
-            ) { _, error in
-                if let error = error {
-                    print("FirebaseStorageへのデータの保存に失敗しました: \(error)")
-                    return
+    static func saveUserIconImage(path: String, uploadImage: Data) -> AnyPublisher<Void, Error> {
+        Deferred {
+            Future<Void, Error> { promise in
+                reference.child(Constant.userIconPath).child(path).putData(
+                    uploadImage,
+                    metadata: metaData
+                ) { _, error in
+                    if let error = error {
+                        promise(.failure(error))
+                        return
+                    }
+                    promise(.success(()))
                 }
             }
+        }.eraseToAnyPublisher()
     }
 
-    func fetchDownloadUrlString(
-        path: String,
-        completion: @escaping (String) -> Void
-    ) {
-        database
-            .reference()
-            .child("")
-            .child(path)
-            .downloadURL { url, error in
-                if let error = error {
-                    print("FirebaseStorageからのダウンロードに失敗しました: \(error)")
-                }
-                guard
-                    let urlString = url?.absoluteString
-                else {
-                    return
-                }
+    static func fetchDownloadUrlString(path: String) -> AnyPublisher<String, Error> {
+        Deferred {
+            Future<String, Error> { promise in
+                reference.child(Constant.userIconPath).child(path).downloadURL { url, error in
+                    if let error = error {
+                        promise(.failure(error))
+                        return
+                    }
 
-                completion(urlString)
+                    guard
+                        let urlString = url?.absoluteString
+                    else {
+                        return
+                    }
+
+                    promise(.success(urlString))
+                }
             }
+        }.eraseToAnyPublisher()
     }
 }

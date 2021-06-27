@@ -28,7 +28,7 @@ final class FirestoreManager {
                 name: user.name,
                 email: user.email,
                 imageUrl: user.imageUrl,
-                createdAt: timeStamp()
+                createdAt: Date()
             ).toDictionary()
         else {
             return

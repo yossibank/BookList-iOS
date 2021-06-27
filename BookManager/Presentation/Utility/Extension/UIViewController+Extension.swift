@@ -58,7 +58,7 @@ extension UIViewController {
         )
     }
 
-    func showError(error: APPError) {
+    func showError(error: Error) {
         showAlert(
             title: "エラー",
             message: error.localizedDescription,

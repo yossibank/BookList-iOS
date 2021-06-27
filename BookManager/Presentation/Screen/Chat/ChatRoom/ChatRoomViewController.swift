@@ -147,7 +147,8 @@ private extension ChatRoomViewController {
         if
             let endFrame = (
                 notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue
-            )?.cgRectValue {
+            )?.cgRectValue
+        {
             guard endFrame.height >= Constants.accessoryHeight else { return }
 
             let top = endFrame.height - safeAreaBottom

@@ -21,14 +21,16 @@ struct R: Rswift.Validatable {
                 if hostingBundle.localizations.contains(locale.identifier) {
                     if
                         let language = locale.languageCode,
-                        hostingBundle.localizations.contains(language) {
+                        hostingBundle.localizations.contains(language)
+                    {
                         return [locale.identifier, language]
                     } else {
                         return [locale.identifier]
                     }
                 } else if
                     let language = locale.languageCode,
-                    hostingBundle.localizations.contains(language) {
+                    hostingBundle.localizations.contains(language)
+                {
                     return [language]
                 } else {
                     return []
@@ -55,7 +57,8 @@ struct R: Rswift.Validatable {
         for language in languages {
             if
                 let lproj = hostingBundle.url(forResource: language, withExtension: "lproj"),
-                let lbundle = Bundle(url: lproj) {
+                let lbundle = Bundle(url: lproj)
+            {
                 let strings = lbundle.url(forResource: tableName, withExtension: "strings")
                 let stringsdict = lbundle.url(forResource: tableName, withExtension: "stringsdict")
 
@@ -230,7 +233,8 @@ struct R: Rswift.Validatable {
             compatibleWith traitCollection: UIKit
                 .UITraitCollection? = nil
         ) -> UIKit
-            .UIColor? {
+            .UIColor?
+        {
             UIKit.UIColor(resource: R.color.accentColor, compatibleWith: traitCollection)
         }
         #endif
@@ -351,7 +355,8 @@ struct R: Rswift.Validatable {
             compatibleWith traitCollection: UIKit
                 .UITraitCollection? = nil
         ) -> UIKit
-            .UIImage? {
+            .UIImage?
+        {
             UIKit.UIImage(resource: R.image.add_book, compatibleWith: traitCollection)
         }
         #endif
@@ -362,7 +367,8 @@ struct R: Rswift.Validatable {
             compatibleWith traitCollection: UIKit
                 .UITraitCollection? = nil
         ) -> UIKit
-            .UIImage? {
+            .UIImage?
+        {
             UIKit.UIImage(resource: R.image.book_list, compatibleWith: traitCollection)
         }
         #endif
@@ -370,7 +376,8 @@ struct R: Rswift.Validatable {
         #if os(iOS) || os(tvOS)
         /// `UIImage(named: "Chat", bundle: ..., traitCollection: ...)`
         static func chat(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit
-            .UIImage? {
+            .UIImage?
+        {
             UIKit.UIImage(resource: R.image.chat, compatibleWith: traitCollection)
         }
         #endif
@@ -401,7 +408,8 @@ struct R: Rswift.Validatable {
             compatibleWith traitCollection: UIKit
                 .UITraitCollection? = nil
         ) -> UIKit
-            .UIImage? {
+            .UIImage?
+        {
             UIKit.UIImage(resource: R.image.favorite, compatibleWith: traitCollection)
         }
         #endif
@@ -419,7 +427,8 @@ struct R: Rswift.Validatable {
         #if os(iOS) || os(tvOS)
         /// `UIImage(named: "Logout", bundle: ..., traitCollection: ...)`
         static func logout(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit
-            .UIImage? {
+            .UIImage?
+        {
             UIKit.UIImage(resource: R.image.logout, compatibleWith: traitCollection)
         }
         #endif
@@ -430,7 +439,8 @@ struct R: Rswift.Validatable {
             compatibleWith traitCollection: UIKit
                 .UITraitCollection? = nil
         ) -> UIKit
-            .UIImage? {
+            .UIImage?
+        {
             UIKit.UIImage(resource: R.image.no_Image, compatibleWith: traitCollection)
         }
         #endif
@@ -481,7 +491,8 @@ struct R: Rswift.Validatable {
             compatibleWith traitCollection: UIKit
                 .UITraitCollection? = nil
         ) -> UIKit
-            .UIImage? {
+            .UIImage?
+        {
             UIKit.UIImage(resource: R.image.no_favorite, compatibleWith: traitCollection)
         }
         #endif
@@ -529,7 +540,8 @@ struct R: Rswift.Validatable {
         #if os(iOS) || os(tvOS)
         /// `UIImage(named: "Send", bundle: ..., traitCollection: ...)`
         static func send(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit
-            .UIImage? {
+            .UIImage?
+        {
             UIKit.UIImage(resource: R.image.send, compatibleWith: traitCollection)
         }
         #endif
@@ -540,7 +552,8 @@ struct R: Rswift.Validatable {
             compatibleWith traitCollection: UIKit
                 .UITraitCollection? = nil
         ) -> UIKit
-            .UIImage? {
+            .UIImage?
+        {
             UIKit.UIImage(resource: R.image.wish_list, compatibleWith: traitCollection)
         }
         #endif
@@ -2030,7 +2043,8 @@ struct _R: Rswift.Validatable {
                 if
                     UIKit
                         .UIImage(named: "No_favorite", in: R.hostingBundle, compatibleWith: nil) ==
-                        nil {
+                        nil
+                {
                     throw Rswift
                         .ValidationError(
                             description: "[R.swift] Image named 'No_favorite' is used in nib 'BookListTableViewCell', but couldn't be loaded."
@@ -2105,7 +2119,8 @@ struct _R: Rswift.Validatable {
                 if
                     UIKit
                         .UIImage(named: "Send", in: R.hostingBundle, compatibleWith: nil) ==
-                        nil {
+                        nil
+                {
                     throw Rswift
                         .ValidationError(
                             description: "[R.swift] Image named 'Send' is used in nib 'KeyboardAccessoryView', but couldn't be loaded."
@@ -2215,7 +2230,8 @@ struct _R: Rswift.Validatable {
 
         #if os(iOS) || os(tvOS)
         struct addBookViewController: Rswift.StoryboardResourceWithInitialControllerType,
-            Rswift.Validatable {
+            Rswift.Validatable
+        {
             typealias InitialController = AddBookViewController
 
             let bundle = R.hostingBundle
@@ -2225,7 +2241,8 @@ struct _R: Rswift.Validatable {
                 if
                     UIKit
                         .UIImage(named: "No_Image", in: R.hostingBundle, compatibleWith: nil) ==
-                        nil {
+                        nil
+                {
                     throw Rswift
                         .ValidationError(
                             description: "[R.swift] Image named 'No_Image' is used in storyboard 'AddBookViewController', but couldn't be loaded."
@@ -2240,7 +2257,8 @@ struct _R: Rswift.Validatable {
 
         #if os(iOS) || os(tvOS)
         struct bookListViewController: Rswift.StoryboardResourceWithInitialControllerType,
-            Rswift.Validatable {
+            Rswift.Validatable
+        {
             typealias InitialController = BookListViewController
 
             let bundle = R.hostingBundle
@@ -2256,7 +2274,8 @@ struct _R: Rswift.Validatable {
 
         #if os(iOS) || os(tvOS)
         struct chatRoomViewController: Rswift.StoryboardResourceWithInitialControllerType,
-            Rswift.Validatable {
+            Rswift.Validatable
+        {
             typealias InitialController = ChatRoomViewController
 
             let bundle = R.hostingBundle
@@ -2272,7 +2291,8 @@ struct _R: Rswift.Validatable {
 
         #if os(iOS) || os(tvOS)
         struct chatSelectViewController: Rswift.StoryboardResourceWithInitialControllerType,
-            Rswift.Validatable {
+            Rswift.Validatable
+        {
             typealias InitialController = ChatSelectViewController
 
             let bundle = R.hostingBundle
@@ -2288,7 +2308,8 @@ struct _R: Rswift.Validatable {
 
         #if os(iOS) || os(tvOS)
         struct chatUserListViewController: Rswift.StoryboardResourceWithInitialControllerType,
-            Rswift.Validatable {
+            Rswift.Validatable
+        {
             typealias InitialController = ChatUserListViewController
 
             let bundle = R.hostingBundle
@@ -2304,7 +2325,8 @@ struct _R: Rswift.Validatable {
 
         #if os(iOS) || os(tvOS)
         struct editBookViewController: Rswift.StoryboardResourceWithInitialControllerType,
-            Rswift.Validatable {
+            Rswift.Validatable
+        {
             typealias InitialController = EditBookViewController
 
             let bundle = R.hostingBundle
@@ -2314,7 +2336,8 @@ struct _R: Rswift.Validatable {
                 if
                     UIKit
                         .UIImage(named: "No_Image", in: R.hostingBundle, compatibleWith: nil) ==
-                        nil {
+                        nil
+                {
                     throw Rswift
                         .ValidationError(
                             description: "[R.swift] Image named 'No_Image' is used in storyboard 'EditBookViewController', but couldn't be loaded."
@@ -2329,7 +2352,8 @@ struct _R: Rswift.Validatable {
 
         #if os(iOS) || os(tvOS)
         struct homeViewController: Rswift.StoryboardResourceWithInitialControllerType,
-            Rswift.Validatable {
+            Rswift.Validatable
+        {
             typealias InitialController = HomeViewController
 
             let bundle = R.hostingBundle
@@ -2345,7 +2369,8 @@ struct _R: Rswift.Validatable {
 
         #if os(iOS) || os(tvOS)
         struct launchScreen: Rswift.StoryboardResourceWithInitialControllerType,
-            Rswift.Validatable {
+            Rswift.Validatable
+        {
             typealias InitialController = UIKit.UIViewController
 
             let bundle = R.hostingBundle
@@ -2355,7 +2380,8 @@ struct _R: Rswift.Validatable {
                 if
                     UIKit
                         .UIImage(named: "Launch_Image", in: R.hostingBundle, compatibleWith: nil) ==
-                        nil {
+                        nil
+                {
                     throw Rswift
                         .ValidationError(
                             description: "[R.swift] Image named 'Launch_Image' is used in storyboard 'LaunchScreen', but couldn't be loaded."
@@ -2370,7 +2396,8 @@ struct _R: Rswift.Validatable {
 
         #if os(iOS) || os(tvOS)
         struct loginViewController: Rswift.StoryboardResourceWithInitialControllerType,
-            Rswift.Validatable {
+            Rswift.Validatable
+        {
             typealias InitialController = LoginViewController
 
             let bundle = R.hostingBundle
@@ -2384,7 +2411,8 @@ struct _R: Rswift.Validatable {
                             in: R.hostingBundle,
                             compatibleWith: nil
                         ) ==
-                        nil {
+                        nil
+                {
                     throw Rswift
                         .ValidationError(
                             description: "[R.swift] Image named 'Check_Off_Box' is used in storyboard 'LoginViewController', but couldn't be loaded."
@@ -2399,7 +2427,8 @@ struct _R: Rswift.Validatable {
 
         #if os(iOS) || os(tvOS)
         struct mainNavigationController: Rswift.StoryboardResourceWithInitialControllerType,
-            Rswift.Validatable {
+            Rswift.Validatable
+        {
             typealias InitialController = MainNavigationController
 
             let bundle = R.hostingBundle
@@ -2415,7 +2444,8 @@ struct _R: Rswift.Validatable {
 
         #if os(iOS) || os(tvOS)
         struct signupViewController: Rswift.StoryboardResourceWithInitialControllerType,
-            Rswift.Validatable {
+            Rswift.Validatable
+        {
             typealias InitialController = SignupViewController
 
             let bundle = R.hostingBundle
@@ -2429,7 +2459,8 @@ struct _R: Rswift.Validatable {
                             in: R.hostingBundle,
                             compatibleWith: nil
                         ) ==
-                        nil {
+                        nil
+                {
                     throw Rswift
                         .ValidationError(
                             description: "[R.swift] Image named 'Check_Off_Box' is used in storyboard 'SignupViewController', but couldn't be loaded."
@@ -2438,7 +2469,8 @@ struct _R: Rswift.Validatable {
                 if
                     UIKit
                         .UIImage(named: "No_Image", in: R.hostingBundle, compatibleWith: nil) ==
-                        nil {
+                        nil
+                {
                     throw Rswift
                         .ValidationError(
                             description: "[R.swift] Image named 'No_Image' is used in storyboard 'SignupViewController', but couldn't be loaded."
@@ -2453,7 +2485,8 @@ struct _R: Rswift.Validatable {
 
         #if os(iOS) || os(tvOS)
         struct wishListViewController: Rswift.StoryboardResourceWithInitialControllerType,
-            Rswift.Validatable {
+            Rswift.Validatable
+        {
             typealias InitialController = WishListViewController
 
             let bundle = R.hostingBundle

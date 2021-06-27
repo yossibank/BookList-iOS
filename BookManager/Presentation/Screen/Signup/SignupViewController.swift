@@ -334,6 +334,33 @@ private extension SignupViewController {
         viewModel.$state
             .receive(on: DispatchQueue.main)
             .sink { [weak self] state in
+                guard let self = self else { return }
+
+                switch state {
+                    case .standby:
+                        self.loadingIndicator.stopAnimating()
+
+                    case .loading:
+                        self.loadingIndicator.startAnimating()
+
+                    case .done:
+                        if let data = self.userIconImageView.image?.jpegData(compressionQuality: 0.6) {
+                            self.viewModel.saveUserIconImage(uploadImage: data)
+                        }
+
+                        self.loadingIndicator.stopAnimating()
+                        self.routing.showRootScreen()
+
+                    case let .failed(error):
+                        self.loadingIndicator.stopAnimating()
+                        self.showError(error: error)
+                }
+            }
+            .store(in: &cancellables)
+
+        viewModel.$fireStorageState
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] state in
                 switch state {
                     case .standby:
                         self?.loadingIndicator.stopAnimating()
@@ -343,7 +370,6 @@ private extension SignupViewController {
 
                     case .done:
                         self?.loadingIndicator.stopAnimating()
-                        self?.routing.showRootScreen()
 
                     case let .failed(error):
                         self?.loadingIndicator.stopAnimating()

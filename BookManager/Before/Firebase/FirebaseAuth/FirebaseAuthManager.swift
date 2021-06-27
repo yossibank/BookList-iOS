@@ -4,7 +4,6 @@ import Utility
 
 final class FirebaseAuthManager {
 
-    typealias SignupUser = UserEntity
     typealias CurrentUser = FirebaseAuth.User
 
     static let shared = FirebaseAuthManager()

@@ -5,7 +5,7 @@ struct User: FirebaseModelProtocol & Equatable {
     var name: String
     var email: String
     var imageUrl: String
-    var createdAt: FirestoreManager.timeStamp?
+    var createdAt: Date?
 
     static let collectionName = "users"
 }

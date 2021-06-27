@@ -23,7 +23,8 @@ extension WishListDataSource: UITableViewDataSource {
 
         if
             let wishListCell = cell as? BookCell,
-            let book = viewModel.bookList.any(at: indexPath.row) {
+            let book = viewModel.bookList.any(at: indexPath.row)
+        {
             wishListCell.setup(book: book, type: .wishList)
         }
 
