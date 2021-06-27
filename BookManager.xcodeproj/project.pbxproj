@@ -127,7 +127,6 @@
 		78ED505725EB5C8B0045089C /* FirebaseStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78ED505625EB5C8B0045089C /* FirebaseStorageManager.swift */; };
 		78F675512684CF6C009E117D /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = 78F675502684CF6C009E117D /* Nuke */; };
 		78F675532684CF8A009E117D /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F675522684CF8A009E117D /* UIImageView+Extension.swift */; };
-		78F940E6259D7E42007C972A /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F940E5259D7E42007C972A /* Router.swift */; };
 		78F940EA259D7EEF007C972A /* ViewControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F940E9259D7EEF007C972A /* ViewControllers.swift */; };
 		78F940EE259D995F007C972A /* ResourcesSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F940ED259D995F007C972A /* ResourcesSupport.swift */; };
 		78FE8CD2267B740C0006612E /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FE8CD1267B740C0006612E /* API.swift */; };
@@ -273,7 +272,6 @@
 		78EC97CD25F4923F007E80FD /* RootNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootNavigationController.swift; sourceTree = "<group>"; };
 		78ED505625EB5C8B0045089C /* FirebaseStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStorageManager.swift; sourceTree = "<group>"; };
 		78F675522684CF8A009E117D /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
-		78F940E5259D7E42007C972A /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		78F940E9259D7EEF007C972A /* ViewControllers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllers.swift; sourceTree = "<group>"; };
 		78F940ED259D995F007C972A /* ResourcesSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourcesSupport.swift; sourceTree = "<group>"; };
 		78FE8CD1267B740C0006612E /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
@@ -566,14 +564,6 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
-		78997EB8259C345F0076FF97 /* AppResources */ = {
-			isa = PBXGroup;
-			children = (
-				78F940ED259D995F007C972A /* ResourcesSupport.swift */,
-			);
-			path = AppResources;
-			sourceTree = "<group>";
-		};
 		78997EBA259C346B0076FF97 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
@@ -636,14 +626,6 @@
 				78524FC625E533A6002AEF87 /* Chat */,
 			);
 			path = Screen;
-			sourceTree = "<group>";
-		};
-		78997EC5259C35230076FF97 /* Router */ = {
-			isa = PBXGroup;
-			children = (
-				78F940E5259D7E42007C972A /* Router.swift */,
-			);
-			path = Router;
 			sourceTree = "<group>";
 		};
 		78997EC7259C353E0076FF97 /* Launch */ = {
@@ -725,9 +707,7 @@
 				7892EF77259C73B2006F7315 /* Service */,
 				7892EF48259C539B006F7315 /* IBDesignable */,
 				78E609EF25AAAA210041B3D0 /* Validator */,
-				78997EC5259C35230076FF97 /* Router */,
 				7862C15225E2591800F1645A /* Firebase */,
-				78997EB8259C345F0076FF97 /* AppResources */,
 			);
 			path = Before;
 			sourceTree = "<group>";
@@ -844,6 +824,7 @@
 				78231202259C0D9300D9E723 /* Assets.xcassets */,
 				78FE8CD8267B79650006612E /* Localizable.swift */,
 				7892EF6F259C721F006F7315 /* Resources.swift */,
+				78F940ED259D995F007C972A /* ResourcesSupport.swift */,
 				78618A102688624F00912F38 /* Colors.swift */,
 				78FE8CDA267B79720006612E /* Strings.swift */,
 				7892EF6B259C7212006F7315 /* Images.swift */,
@@ -1103,7 +1084,6 @@
 				78B2A165267B7F7100D9EA0E /* ViewModel.swift in Sources */,
 				784B18FC25BD50FC0071C32E /* WishListDataSource.swift in Sources */,
 				7892EF79259C73C9006F7315 /* KeyboardNotifier.swift in Sources */,
-				78F940E6259D7E42007C972A /* Router.swift in Sources */,
 				78B8A69625E54AEB005BCB16 /* MyMessageBalloonView.swift in Sources */,
 				78FE8CD9267B79650006612E /* Localizable.swift in Sources */,
 				783FBBCD2686D1F40013CCD7 /* AccountViewModel.swift in Sources */,
