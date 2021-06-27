@@ -19,6 +19,7 @@
 "show_password" = "パスワードを表示する";
 "select_chat_image" = "チャット画像選択";
 "nickname" = "ニックネーム";
+"start_chat" = "チャットをする";
 
 // MARK: - 書籍関連
 "title" = "タイトル";

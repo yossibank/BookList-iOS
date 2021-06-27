@@ -58,6 +58,7 @@
 		78524FCD25E533FA002AEF87 /* ChatRoomViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78524FCC25E533FA002AEF87 /* ChatRoomViewController.storyboard */; };
 		785A1AB725A9A369005E8A4B /* SignupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785A1AB625A9A369005E8A4B /* SignupViewModel.swift */; };
 		785AB27225E9C527000FEEFE /* TapAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785AB27125E9C527000FEEFE /* TapAction.swift */; };
+		78618A0D2688442400912F38 /* ChatSelectRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78618A0C2688442400912F38 /* ChatSelectRouting.swift */; };
 		7862C15425E2596D00F1645A /* FirebaseModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7862C15325E2596D00F1645A /* FirebaseModelProtocol.swift */; };
 		7862C15825E25B5C00F1645A /* FirestoreUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7862C15725E25B5C00F1645A /* FirestoreUser.swift */; };
 		7873D27A267E0C65007F7B31 /* WishListRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7873D279267E0C65007F7B31 /* WishListRouting.swift */; };
@@ -103,7 +104,6 @@
 		78B8A69625E54AEB005BCB16 /* MyMessageBalloonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B8A69525E54AEB005BCB16 /* MyMessageBalloonView.swift */; };
 		78C61C2C25A1716800DC78A6 /* String+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C61C2B25A1716800DC78A6 /* String+Util.swift */; };
 		78C7F3A725E525C5005E9E2B /* ChatSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C7F3A625E525C5005E9E2B /* ChatSelectViewController.swift */; };
-		78C7F3AB25E525E5005E9E2B /* ChatSelectViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78C7F3AA25E525E5005E9E2B /* ChatSelectViewController.storyboard */; };
 		78C7F3B125E52C94005E9E2B /* ChatSelectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C7F3AF25E52C94005E9E2B /* ChatSelectTableViewCell.swift */; };
 		78C7F3B225E52C94005E9E2B /* ChatSelectTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78C7F3B025E52C94005E9E2B /* ChatSelectTableViewCell.xib */; };
 		78CB209225EA48EB00D4E22D /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CB209125EA48EB00D4E22D /* FirebaseManager.swift */; };
@@ -209,6 +209,7 @@
 		78524FCC25E533FA002AEF87 /* ChatRoomViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChatRoomViewController.storyboard; sourceTree = "<group>"; };
 		785A1AB625A9A369005E8A4B /* SignupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewModel.swift; sourceTree = "<group>"; };
 		785AB27125E9C527000FEEFE /* TapAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapAction.swift; sourceTree = "<group>"; };
+		78618A0C2688442400912F38 /* ChatSelectRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatSelectRouting.swift; sourceTree = "<group>"; };
 		7862C15325E2596D00F1645A /* FirebaseModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseModelProtocol.swift; sourceTree = "<group>"; };
 		7862C15725E25B5C00F1645A /* FirestoreUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreUser.swift; sourceTree = "<group>"; };
 		7873D279267E0C65007F7B31 /* WishListRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListRouting.swift; sourceTree = "<group>"; };
@@ -253,7 +254,6 @@
 		78B8A69525E54AEB005BCB16 /* MyMessageBalloonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMessageBalloonView.swift; sourceTree = "<group>"; };
 		78C61C2B25A1716800DC78A6 /* String+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Util.swift"; sourceTree = "<group>"; };
 		78C7F3A625E525C5005E9E2B /* ChatSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatSelectViewController.swift; sourceTree = "<group>"; };
-		78C7F3AA25E525E5005E9E2B /* ChatSelectViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChatSelectViewController.storyboard; sourceTree = "<group>"; };
 		78C7F3AF25E52C94005E9E2B /* ChatSelectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatSelectTableViewCell.swift; sourceTree = "<group>"; };
 		78C7F3B025E52C94005E9E2B /* ChatSelectTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatSelectTableViewCell.xib; sourceTree = "<group>"; };
 		78CB209125EA48EB00D4E22D /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
@@ -762,10 +762,10 @@
 		78C7F3A525E52597005E9E2B /* ChatSelect */ = {
 			isa = PBXGroup;
 			children = (
-				7833D0B926022624005DFB79 /* ChatSelectViewModel.swift */,
+				78618A0C2688442400912F38 /* ChatSelectRouting.swift */,
 				7833D0C2260229E4005DFB79 /* ChatSelectDataSource.swift */,
 				78C7F3A625E525C5005E9E2B /* ChatSelectViewController.swift */,
-				78C7F3AA25E525E5005E9E2B /* ChatSelectViewController.storyboard */,
+				7833D0B926022624005DFB79 /* ChatSelectViewModel.swift */,
 			);
 			path = ChatSelect;
 			sourceTree = "<group>";
@@ -981,7 +981,6 @@
 				78421CE125E9273500950F62 /* KeyboardAccessoryView.xib in Resources */,
 				7805908F25F48ADA002B5296 /* ChatUserListTableViewCell.xib in Resources */,
 				78524FCD25E533FA002AEF87 /* ChatRoomViewController.storyboard in Resources */,
-				78C7F3AB25E525E5005E9E2B /* ChatSelectViewController.storyboard in Resources */,
 				78B8A69125E54021005BCB16 /* OtherMessageTableViewCell.xib in Resources */,
 				78299CEA25E69D0D001868FB /* MyMessageTableViewCell.xib in Resources */,
 				78C7F3B225E52C94005E9E2B /* ChatSelectTableViewCell.xib in Resources */,
@@ -1025,6 +1024,7 @@
 			files = (
 				781936C025BC752D00309FB7 /* BookBusinessModel.swift in Sources */,
 				782572AD25F4B2FE007962D0 /* NavigationBarConfigration.swift in Sources */,
+				78618A0D2688442400912F38 /* ChatSelectRouting.swift in Sources */,
 				78DE1D6725BD423A00A2C0F2 /* WishListViewController.swift in Sources */,
 				7862C15825E25B5C00F1645A /* FirestoreUser.swift in Sources */,
 				78987B3C259C8813008311DC /* LoginViewController.swift in Sources */,

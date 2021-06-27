@@ -1,4 +1,4 @@
-final class ChatSelectViewModel {
+final class ChatSelectViewModel: ViewModel {
 
     private let firestore = FirestoreManager.shared
 

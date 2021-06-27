@@ -22,6 +22,7 @@ struct StringResources {
         @Localizable static var showPassword = "show_password"
         @Localizable static var selectIconImage = "select_chat_image"
         @Localizable static var nickName = "nickname"
+        @Localizable static var startChat = "start_chat"
     }
 
     struct Book {

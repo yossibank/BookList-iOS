@@ -60,8 +60,8 @@ extension Resources {
             }
 
             func chatSelect() -> ChatSelectViewController {
-                let viewModel = ChatSelectViewModel()
-                let vc = ChatSelectViewController.createInstance(viewModel: viewModel)
+                let vc = ChatSelectViewController()
+                vc.inject(routing: ChatSelectRouting(), viewModel: ChatSelectViewModel())
                 return vc
             }
 
