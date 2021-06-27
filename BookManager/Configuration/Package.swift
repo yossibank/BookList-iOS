@@ -5,6 +5,7 @@ import Utility
 struct PackageConfig {
 
     static func setup() {
+        FirebaseConfiguration.shared.setLoggerLevel(.min)
         FirebaseApp.configure()
         DomainConfig.setup(baseURL: API.baseURL)
         UtilityConfig.setup(analytics: FirebaseProvider())

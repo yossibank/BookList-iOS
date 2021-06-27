@@ -74,7 +74,7 @@ extension Resources {
                 return vc
             }
 
-            func chatRoom(roomId: String, user: FirestoreUser) -> ChatRoomViewController {
+            func chatRoom(roomId: String, user: User) -> ChatRoomViewController {
                 let vc = ChatRoomViewController()
                 vc.inject(
                     routing: NoRouting(),

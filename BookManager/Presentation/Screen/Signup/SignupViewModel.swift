@@ -47,7 +47,7 @@ extension SignupViewModel {
             .store(in: &cancellables)
     }
 
-    func createUserForFirebase(user: FirestoreUser) {
+    func createUserForFirebase(user: User) {
         FirebaseAuthManager.shared.createUser(
             email: email,
             password: password,

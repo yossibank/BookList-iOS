@@ -1,4 +1,6 @@
-struct ChatMessage: FirebaseModelProtocol {
+import Foundation
+
+struct ChatMessage: FirebaseModelProtocol & Equatable {
     var id: Int
     var name: String
     var iconUrl: String

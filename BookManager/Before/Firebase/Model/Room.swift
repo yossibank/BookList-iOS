@@ -1,6 +1,8 @@
-struct Room: FirebaseModelProtocol {
+import Foundation
+
+struct Room: FirebaseModelProtocol & Equatable {
     var id: String
-    var users: [FirestoreUser]
+    var users: [User]
     var lastMessage: String?
     var lastMessageSendAt: FirestoreManager.timeStamp?
     var createdAt: FirestoreManager.timeStamp

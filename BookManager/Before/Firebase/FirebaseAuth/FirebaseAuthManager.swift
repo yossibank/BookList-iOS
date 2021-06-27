@@ -5,10 +5,11 @@ import Utility
 final class FirebaseAuthManager {
 
     typealias SignupUser = UserEntity
+    typealias CurrentUser = FirebaseAuth.User
 
     static let shared = FirebaseAuthManager()
 
-    var currentUser: User? {
+    var currentUser: CurrentUser? {
         Auth.auth().currentUser
     }
 
@@ -21,7 +22,7 @@ final class FirebaseAuthManager {
     func createUser(
         email: String,
         password: String,
-        user: FirestoreUser
+        user: User
     ) {
         Auth.auth().createUser(
             withEmail: email,

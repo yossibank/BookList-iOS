@@ -1,7 +1,7 @@
 import UIKit
 
 final class ChatUserListDataSource: NSObject {
-    var chatUserList: [FirestoreUser] = []
+    var chatUserList: [User] = []
 }
 
 extension ChatUserListDataSource: UITableViewDataSource {

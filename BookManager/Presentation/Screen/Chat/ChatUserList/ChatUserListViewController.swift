@@ -17,7 +17,7 @@ final class ChatUserListViewController: UIViewController {
         frame: .zero
     )
 
-    private var selectedUser: FirestoreUser?
+    private var selectedUser: User?
     private var dataSource: ChatUserListDataSource!
     private var cancellables: Set<AnyCancellable> = []
 }

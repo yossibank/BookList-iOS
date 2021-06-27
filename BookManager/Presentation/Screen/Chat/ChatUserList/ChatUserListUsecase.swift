@@ -2,11 +2,11 @@ import RxSwift
 import RxRelay
 
 final class ChatUserListUsecase {
-    private let userListRelay: BehaviorRelay<[FirestoreUser]> = BehaviorRelay(value: [])
+    private let userListRelay: BehaviorRelay<[User]> = BehaviorRelay(value: [])
     private let errorRelay: BehaviorRelay<Error?> = BehaviorRelay(value: nil)
     private let disposeBag = DisposeBag()
 
-    var userList: Observable<[FirestoreUser]> {
+    var userList: Observable<[User]> {
         userListRelay.asObservable()
     }
 

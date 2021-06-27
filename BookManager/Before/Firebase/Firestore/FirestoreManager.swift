@@ -20,10 +20,10 @@ final class FirestoreManager {
     // MARK: - Access for User
     func createUser(
         documentPath: String,
-        user: FirestoreUser
+        user: User
     ) {
         guard
-            let user = FirestoreUser(
+            let user = User(
                 id: user.id,
                 name: user.name,
                 email: user.email,
@@ -35,7 +35,7 @@ final class FirestoreManager {
         }
 
         database
-            .collection(FirestoreUser.collectionName)
+            .collection(User.collectionName)
             .document(documentPath)
             .setData(user) { error in
                 if let error = error {
@@ -46,10 +46,10 @@ final class FirestoreManager {
 
     func findUser(
         documentPath: String,
-        completion: @escaping (FirestoreUser) -> Void
+        completion: @escaping (User) -> Void
     ) {
         database
-            .collection(FirestoreUser.collectionName)
+            .collection(User.collectionName)
             .document(documentPath)
             .getDocument { querySnapshot, error in
                 if let error = error {
@@ -60,7 +60,7 @@ final class FirestoreManager {
                 guard
                     let querySanpshot = querySnapshot,
                     let data = querySanpshot.data(),
-                    let user = FirestoreUser.initialize(json: data)
+                    let user = User.initialize(json: data)
                 else {
                     return
                 }
@@ -68,10 +68,10 @@ final class FirestoreManager {
             }
     }
 
-    func fetchUsers() -> Single<[FirestoreUser]> {
+    func fetchUsers() -> Single<[User]> {
         Single.create(subscribe: { [weak self] observer -> Disposable in
             self?.database
-                .collection(FirestoreUser.collectionName)
+                .collection(User.collectionName)
                 .getDocuments { querySnapshot, error in
                     if let error = error {
                         print("user情報の取得に失敗しました: \(error)")
@@ -87,7 +87,7 @@ final class FirestoreManager {
 
                     let users = querySnapshot
                         .documents
-                        .compactMap { FirestoreUser.initialize(json: $0.data()) }
+                        .compactMap { User.initialize(json: $0.data()) }
                         .filter { $0.email != FirebaseAuthManager.shared.currentUser?.email }
 
                     return observer(.success(users))
@@ -97,7 +97,7 @@ final class FirestoreManager {
     }
 
     // MARK: - Access for Room
-    func createRoom(partnerUser: FirestoreUser) {
+    func createRoom(partnerUser: User) {
         findUser(documentPath: FirebaseAuthManager.shared.currentUserId) { [weak self] user in
             guard
                 let self = self,
@@ -151,7 +151,7 @@ final class FirestoreManager {
     // MARK: - Access for ChatMessage
     func createChatMessage(
         roomId: String,
-        user: FirestoreUser,
+        user: User,
         message: String
     ) {
         guard

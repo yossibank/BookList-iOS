@@ -1,4 +1,6 @@
-struct FirestoreUser: FirebaseModelProtocol {
+import Foundation
+
+struct User: FirebaseModelProtocol & Equatable {
     var id: Int
     var name: String
     var email: String
