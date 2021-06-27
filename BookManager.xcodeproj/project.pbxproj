@@ -54,10 +54,10 @@
 		784E135E25B2A13D008FD947 /* AddBookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784E135D25B2A13D008FD947 /* AddBookViewModel.swift */; };
 		784E138225B2F555008FD947 /* NumberValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784E138125B2F555008FD947 /* NumberValidator.swift */; };
 		78524FC925E533E3002AEF87 /* ChatRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78524FC825E533E3002AEF87 /* ChatRoomViewController.swift */; };
-		78524FCD25E533FA002AEF87 /* ChatRoomViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78524FCC25E533FA002AEF87 /* ChatRoomViewController.storyboard */; };
 		785A1AB725A9A369005E8A4B /* SignupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785A1AB625A9A369005E8A4B /* SignupViewModel.swift */; };
 		785AB27225E9C527000FEEFE /* TapAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785AB27125E9C527000FEEFE /* TapAction.swift */; };
 		78618A0D2688442400912F38 /* ChatSelectRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78618A0C2688442400912F38 /* ChatSelectRouting.swift */; };
+		78618A112688624F00912F38 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78618A102688624F00912F38 /* Colors.swift */; };
 		7862C15425E2596D00F1645A /* FirebaseModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7862C15325E2596D00F1645A /* FirebaseModelProtocol.swift */; };
 		7862C15825E25B5C00F1645A /* FirestoreUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7862C15725E25B5C00F1645A /* FirestoreUser.swift */; };
 		7873D27A267E0C65007F7B31 /* WishListRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7873D279267E0C65007F7B31 /* WishListRouting.swift */; };
@@ -204,10 +204,10 @@
 		784E135D25B2A13D008FD947 /* AddBookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookViewModel.swift; sourceTree = "<group>"; };
 		784E138125B2F555008FD947 /* NumberValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberValidator.swift; sourceTree = "<group>"; };
 		78524FC825E533E3002AEF87 /* ChatRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomViewController.swift; sourceTree = "<group>"; };
-		78524FCC25E533FA002AEF87 /* ChatRoomViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChatRoomViewController.storyboard; sourceTree = "<group>"; };
 		785A1AB625A9A369005E8A4B /* SignupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewModel.swift; sourceTree = "<group>"; };
 		785AB27125E9C527000FEEFE /* TapAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapAction.swift; sourceTree = "<group>"; };
 		78618A0C2688442400912F38 /* ChatSelectRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatSelectRouting.swift; sourceTree = "<group>"; };
+		78618A102688624F00912F38 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		7862C15325E2596D00F1645A /* FirebaseModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseModelProtocol.swift; sourceTree = "<group>"; };
 		7862C15725E25B5C00F1645A /* FirestoreUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreUser.swift; sourceTree = "<group>"; };
 		7873D279267E0C65007F7B31 /* WishListRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListRouting.swift; sourceTree = "<group>"; };
@@ -459,10 +459,9 @@
 		78524FC725E533BE002AEF87 /* ChatRoom */ = {
 			isa = PBXGroup;
 			children = (
-				787CB2EE2600C50E003B8CC9 /* ChatRoomViewModel.swift */,
 				787CB2F22600C7B2003B8CC9 /* ChatRoomDataSource.swift */,
 				78524FC825E533E3002AEF87 /* ChatRoomViewController.swift */,
-				78524FCC25E533FA002AEF87 /* ChatRoomViewController.storyboard */,
+				787CB2EE2600C50E003B8CC9 /* ChatRoomViewModel.swift */,
 			);
 			path = ChatRoom;
 			sourceTree = "<group>";
@@ -856,6 +855,7 @@
 				78231202259C0D9300D9E723 /* Assets.xcassets */,
 				78FE8CD8267B79650006612E /* Localizable.swift */,
 				7892EF6F259C721F006F7315 /* Resources.swift */,
+				78618A102688624F00912F38 /* Colors.swift */,
 				78FE8CDA267B79720006612E /* Strings.swift */,
 				7892EF6B259C7212006F7315 /* Images.swift */,
 				78F940E9259D7EEF007C972A /* ViewControllers.swift */,
@@ -976,7 +976,6 @@
 				78231206259C0D9300D9E723 /* LaunchScreen.storyboard in Resources */,
 				78421CE125E9273500950F62 /* KeyboardAccessoryView.xib in Resources */,
 				7805908F25F48ADA002B5296 /* ChatUserListTableViewCell.xib in Resources */,
-				78524FCD25E533FA002AEF87 /* ChatRoomViewController.storyboard in Resources */,
 				78B8A69125E54021005BCB16 /* OtherMessageTableViewCell.xib in Resources */,
 				78299CEA25E69D0D001868FB /* MyMessageTableViewCell.xib in Resources */,
 				78C7F3B225E52C94005E9E2B /* ChatSelectTableViewCell.xib in Resources */,
@@ -1019,6 +1018,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				781936C025BC752D00309FB7 /* BookBusinessModel.swift in Sources */,
+				78618A112688624F00912F38 /* Colors.swift in Sources */,
 				782572AD25F4B2FE007962D0 /* NavigationBarConfigration.swift in Sources */,
 				78618A0D2688442400912F38 /* ChatSelectRouting.swift in Sources */,
 				78DE1D6725BD423A00A2C0F2 /* WishListViewController.swift in Sources */,

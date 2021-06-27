@@ -41,14 +41,14 @@ extension ChatSelectViewController {
 
 // MARK: - private methods
 
-extension ChatSelectViewController {
+private extension ChatSelectViewController {
 
-    private func setupView() {
+    func setupView() {
         view.backgroundColor = .white
         view.addSubview(tableView)
     }
 
-    private func setupLayout() {
+    func setupLayout() {
         tableView.layout {
             $0.top == view.topAnchor
             $0.bottom == view.bottomAnchor
@@ -57,7 +57,7 @@ extension ChatSelectViewController {
         }
     }
 
-    private func setupTableView() {
+    func setupTableView() {
         dataSource = ChatSelectDataSource()
         tableView.dataSource = dataSource
 
@@ -70,7 +70,7 @@ extension ChatSelectViewController {
         tableView.rowHeight = 80
     }
 
-    private func setupEvent() {
+    func setupEvent() {
         navigationItem.rightBarButtonItem?.tapPublisher
             .sink { [weak self] in
                 self?.routing.showChatUserListScreen()
@@ -78,7 +78,7 @@ extension ChatSelectViewController {
             .store(in: &cancellables)
     }
 
-    private func fetchRooms() {
+    func fetchRooms() {
         viewModel.fetchRooms { [weak self] documentChange, room in
             guard let self = self else { return }
 
@@ -115,10 +115,10 @@ extension ChatSelectViewController: UITableViewDelegate {
         if let room = dataSource.roomList.any(at: indexPath.row) {
             let roomId = room.users.map { String($0.id) }.joined()
 
-            viewModel.findUser { [weak self] _ in
+            viewModel.findUser { [weak self] user in
                 guard let self = self else { return }
 
-                self.routing.showChatRoomScreen()
+                self.routing.showChatRoomScreen(roomId: roomId, user: user)
             }
         }
     }

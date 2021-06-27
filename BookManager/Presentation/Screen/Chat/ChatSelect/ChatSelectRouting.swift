@@ -17,7 +17,15 @@ extension ChatSelectRouting {
         viewController?.present(navVC, animated: true)
     }
 
-    func showChatRoomScreen() {
-        // push
+    func showChatRoomScreen(roomId: String, user: FirestoreUser) {
+        let chatRoomVC = Resources.ViewControllers.App.chatRoom(roomId: roomId, user: user)
+        let navVC = viewController?.navigationController as? RootNavigationController
+
+        navVC?.setupNavigationBar(
+            forVC: chatRoomVC,
+            config: chatRoomVC as NavigationBarConfiguration
+        )
+
+        navVC?.pushViewController(chatRoomVC, animated: true)
     }
 }

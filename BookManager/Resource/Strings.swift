@@ -52,6 +52,7 @@ struct StringResources {
         struct Title {
             @Localizable static var wishList = "wish_list"
             @Localizable static var talkList = "talk_list"
+            @Localizable static var talk = "talk"
             @Localizable static var bookList = "book_list"
             @Localizable static var bookAdd = "book_add"
             @Localizable static var bookEdit = "book_edit"

@@ -1,4 +1,4 @@
-final class ChatRoomViewModel {
+final class ChatRoomViewModel: ViewModel {
     private let roomId: String
     private let user: FirestoreUser
     private let firestore = FirestoreManager.shared

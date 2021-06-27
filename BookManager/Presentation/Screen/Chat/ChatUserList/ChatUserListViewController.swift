@@ -38,14 +38,14 @@ extension ChatUserListViewController {
 
 // MARK: - private methods
 
-extension ChatUserListViewController {
+private extension ChatUserListViewController {
 
-    private func setupView() {
+    func setupView() {
         view.backgroundColor = .white
         view.addSubview(tableView)
     }
 
-    private func setupLayout() {
+    func setupLayout() {
         tableView.layout {
             $0.top == view.topAnchor
             $0.bottom == view.bottomAnchor
@@ -54,7 +54,7 @@ extension ChatUserListViewController {
         }
     }
 
-    private func setupNavigationItem() {
+    func setupNavigationItem() {
         navigationItem.rightBarButtonItem?.isEnabled = false
         navigationItem.rightBarButtonItem?.tapPublisher
             .sink { [weak self] in
@@ -71,7 +71,7 @@ extension ChatUserListViewController {
             .store(in: &cancellables)
     }
 
-    private func setupTableView() {
+    func setupTableView() {
         dataSource = ChatUserListDataSource()
         tableView.dataSource = dataSource
 
