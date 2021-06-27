@@ -10,7 +10,7 @@ extension ChatSelectViewController: VCInjectable {
 // MARK: - properties
 
 final class ChatSelectViewController: UIViewController {
-    var routing: R!
+    var routing: R! { didSet { routing.viewController = self } }
     var viewModel: VM!
 
     private let tableView: UITableView = .init(
@@ -59,12 +59,13 @@ extension ChatSelectViewController {
 
     private func setupTableView() {
         dataSource = ChatSelectDataSource()
+        tableView.dataSource = dataSource
+
         tableView.register(
             ChatSelectTableViewCell.xib(),
             forCellReuseIdentifier: ChatSelectTableViewCell.resourceName
         )
         tableView.tableFooterView = UIView()
-        tableView.dataSource = dataSource
         tableView.delegate = self
         tableView.rowHeight = 80
     }
@@ -101,6 +102,8 @@ extension ChatSelectViewController {
     }
 }
 
+// MARK: - Delegate
+
 extension ChatSelectViewController: UITableViewDelegate {
 
     func tableView(
@@ -120,6 +123,8 @@ extension ChatSelectViewController: UITableViewDelegate {
         }
     }
 }
+
+// MARK: - Protocol
 
 extension ChatSelectViewController: NavigationBarConfiguration {
 

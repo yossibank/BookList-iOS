@@ -1,7 +1,7 @@
 import RxSwift
 import RxRelay
 
-final class ChatUserListViewModel {
+final class ChatUserListViewModel: ViewModel {
     private let usecase: ChatUserListUsecase!
     private let userListRelay: BehaviorRelay<[FirestoreUser]> = BehaviorRelay(value: [])
     private let errorRelay: BehaviorRelay<Error?> = BehaviorRelay(value: nil)

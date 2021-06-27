@@ -79,6 +79,7 @@ private extension BookListViewController {
     func setupTableView() {
         dataSource = BookListDataSource(viewModel: viewModel)
         dataSource.delegate = self
+        tableView.delegate = self
 
         tableView.register(
             BookCell.self,
@@ -86,7 +87,6 @@ private extension BookListViewController {
         )
         tableView.tableFooterView = UIView()
         tableView.dataSource = dataSource
-        tableView.delegate = self
         tableView.rowHeight = 150
     }
 

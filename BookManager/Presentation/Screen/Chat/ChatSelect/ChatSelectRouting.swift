@@ -7,7 +7,14 @@ final class ChatSelectRouting: Routing {
 extension ChatSelectRouting {
 
     func showChatUserListScreen() {
-        // present
+        let chatUserListVC = Resources.ViewControllers.App.chatUserList()
+        let navVC = RootNavigationController(rootViewController: chatUserListVC)
+        navVC.setupNavigationBar(
+            forVC: chatUserListVC,
+            config: chatUserListVC as NavigationBarConfiguration
+        )
+
+        viewController?.present(navVC, animated: true)
     }
 
     func showChatRoomScreen() {

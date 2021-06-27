@@ -1,75 +1,91 @@
 import UIKit
-import RxSwift
-import RxCocoa
+import Combine
+import CombineCocoa
+
+extension ChatUserListViewController: VCInjectable {
+    typealias R = NoRouting
+    typealias VM = ChatUserListViewModel
+}
+
+// MARK: - properties
 
 final class ChatUserListViewController: UIViewController {
+    var routing: R!
+    var viewModel: VM!
 
-    @IBOutlet var tableView: UITableView!
+    private let tableView: UITableView = .init(
+        frame: .zero
+    )
 
-    private let router: RouterProtocol = Router()
-    private let disposeBag = DisposeBag()
-
-    private var viewModel: ChatUserListViewModel!
-    private var dataSource: ChatUserListDataSource!
     private var selectedUser: FirestoreUser?
+    private var dataSource: ChatUserListDataSource!
+    private var cancellables: Set<AnyCancellable> = []
+}
 
-    static func createInstance(viewModel: ChatUserListViewModel) -> ChatUserListViewController {
-        let instance = ChatUserListViewController.instantiateInitialViewController()
-        instance.viewModel = viewModel
-        return instance
-    }
+// MARK: - override methods
+
+extension ChatUserListViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel.fetchUsers()
+        setupView()
+        setupLayout()
         setupNavigationItem()
         setupTableView()
-        viewModel.fetchUsers()
-        bindViewModel()
+    }
+}
+
+// MARK: - private methods
+
+extension ChatUserListViewController {
+
+    private func setupView() {
+        view.backgroundColor = .white
+        view.addSubview(tableView)
+    }
+
+    private func setupLayout() {
+        tableView.layout {
+            $0.top == view.topAnchor
+            $0.bottom == view.bottomAnchor
+            $0.leading == view.leadingAnchor
+            $0.trailing == view.trailingAnchor
+        }
     }
 
     private func setupNavigationItem() {
         navigationItem.rightBarButtonItem?.isEnabled = false
-        navigationItem.rightBarButtonItem?.rx.tap.subscribe { [weak self] _ in
-            guard
-                let self = self,
-                let partnerUser = self.selectedUser
-            else {
-                return
+        navigationItem.rightBarButtonItem?.tapPublisher
+            .sink { [weak self] in
+                guard
+                    let self = self,
+                    let partnerUser = self.selectedUser
+                else {
+                    return
+                }
+
+                self.viewModel.createRoom(partnerUser: partnerUser)
+                self.dismiss(animated: true)
             }
-
-            self.viewModel.createRoom(partnerUser: partnerUser)
-            self.router.dismiss(self, animated: true)
-
-        }.disposed(by: disposeBag)
+            .store(in: &cancellables)
     }
 
     private func setupTableView() {
         dataSource = ChatUserListDataSource()
+        tableView.dataSource = dataSource
+
         tableView.register(
             ChatUserListTableViewCell.xib(),
             forCellReuseIdentifier: ChatUserListTableViewCell.resourceName
         )
         tableView.tableFooterView = UIView()
-        tableView.dataSource = dataSource
         tableView.delegate = self
         tableView.rowHeight = 80
     }
 }
 
-extension ChatUserListViewController {
-
-    private func bindViewModel() {
-        viewModel.userList
-            .asDriver(onErrorJustReturn: [])
-            .drive(onNext: { [weak self] users in
-                guard let self = self else { return }
-
-                self.dataSource.chatUserList = users
-                self.tableView.reloadData()
-            })
-            .disposed(by: disposeBag)
-    }
-}
+// MARK: - Delegate
 
 extension ChatUserListViewController: UITableViewDelegate {
 
@@ -93,6 +109,8 @@ extension ChatUserListViewController: UITableViewDelegate {
         navigationItem.rightBarButtonItem?.isEnabled = false
     }
 }
+
+// MARK: - Protocol
 
 extension ChatUserListViewController: NavigationBarConfiguration {
 

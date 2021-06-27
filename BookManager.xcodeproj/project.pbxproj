@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		7802FBB425BBC91D00565A16 /* Date+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7802FBB325BBC91D00565A16 /* Date+Util.swift */; };
-		7805908525F48A82002B5296 /* ChatUserListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7805908425F48A82002B5296 /* ChatUserListViewController.storyboard */; };
 		7805908825F48A94002B5296 /* ChatUserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7805908725F48A94002B5296 /* ChatUserListViewController.swift */; };
 		7805908E25F48ADA002B5296 /* ChatUserListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7805908C25F48ADA002B5296 /* ChatUserListTableViewCell.swift */; };
 		7805908F25F48ADA002B5296 /* ChatUserListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7805908D25F48ADA002B5296 /* ChatUserListTableViewCell.xib */; };
@@ -166,7 +165,6 @@
 
 /* Begin PBXFileReference section */
 		7802FBB325BBC91D00565A16 /* Date+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Util.swift"; sourceTree = "<group>"; };
-		7805908425F48A82002B5296 /* ChatUserListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChatUserListViewController.storyboard; sourceTree = "<group>"; };
 		7805908725F48A94002B5296 /* ChatUserListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatUserListViewController.swift; sourceTree = "<group>"; };
 		7805908C25F48ADA002B5296 /* ChatUserListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatUserListTableViewCell.swift; sourceTree = "<group>"; };
 		7805908D25F48ADA002B5296 /* ChatUserListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatUserListTableViewCell.xib; sourceTree = "<group>"; };
@@ -325,11 +323,10 @@
 		7805908325F48A54002B5296 /* ChatUserList */ = {
 			isa = PBXGroup;
 			children = (
-				7826A74525F7AF03006F23AD /* ChatUserListUsecase.swift */,
-				7826A73C25F7A885006F23AD /* ChatUserListViewModel.swift */,
 				787FD0B825F9072800FBE386 /* ChatUserListDataSource.swift */,
 				7805908725F48A94002B5296 /* ChatUserListViewController.swift */,
-				7805908425F48A82002B5296 /* ChatUserListViewController.storyboard */,
+				7826A73C25F7A885006F23AD /* ChatUserListViewModel.swift */,
+				7826A74525F7AF03006F23AD /* ChatUserListUsecase.swift */,
 			);
 			path = ChatUserList;
 			sourceTree = "<group>";
@@ -977,7 +974,6 @@
 				78D18A88265E251500396D19 /* GoogleService-Info.plist in Resources */,
 				78DEE7B525AAD4D500219963 /* Localizable.strings in Resources */,
 				78231206259C0D9300D9E723 /* LaunchScreen.storyboard in Resources */,
-				7805908525F48A82002B5296 /* ChatUserListViewController.storyboard in Resources */,
 				78421CE125E9273500950F62 /* KeyboardAccessoryView.xib in Resources */,
 				7805908F25F48ADA002B5296 /* ChatUserListTableViewCell.xib in Resources */,
 				78524FCD25E533FA002AEF87 /* ChatRoomViewController.storyboard in Resources */,
