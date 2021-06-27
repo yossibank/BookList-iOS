@@ -1,7 +1,7 @@
 import Foundation
 
 struct User: FirebaseModelProtocol & Equatable {
-    var id: Int
+    var id: String
     var name: String
     var email: String
     var imageUrl: String

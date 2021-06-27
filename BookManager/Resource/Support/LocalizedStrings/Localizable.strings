@@ -58,6 +58,7 @@
 
 // MARK: - アラートメッセージ
 "ok" = "OK";
+"success_sign_up" = "会員登録が完了しました";
 "success_book_add" = "書籍登録が完了しました";
 "success_book_edit" = "書籍編集が完了しました";
 "did_you_logout" = "ログアウトしますか？";

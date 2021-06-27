@@ -52,6 +52,7 @@
 		784E135625B29952008FD947 /* DatePicker+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784E135525B29952008FD947 /* DatePicker+Util.swift */; };
 		784E135E25B2A13D008FD947 /* AddBookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784E135D25B2A13D008FD947 /* AddBookViewModel.swift */; };
 		784E138225B2F555008FD947 /* NumberValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784E138125B2F555008FD947 /* NumberValidator.swift */; };
+		784EAB012688A95B0032A0E9 /* Identifable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784EAB002688A95B0032A0E9 /* Identifable.swift */; };
 		78524FC925E533E3002AEF87 /* ChatRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78524FC825E533E3002AEF87 /* ChatRoomViewController.swift */; };
 		785A1AB725A9A369005E8A4B /* SignupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785A1AB625A9A369005E8A4B /* SignupViewModel.swift */; };
 		785AB27225E9C527000FEEFE /* TapAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785AB27125E9C527000FEEFE /* TapAction.swift */; };
@@ -199,6 +200,7 @@
 		784E135525B29952008FD947 /* DatePicker+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DatePicker+Util.swift"; sourceTree = "<group>"; };
 		784E135D25B2A13D008FD947 /* AddBookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookViewModel.swift; sourceTree = "<group>"; };
 		784E138125B2F555008FD947 /* NumberValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberValidator.swift; sourceTree = "<group>"; };
+		784EAB002688A95B0032A0E9 /* Identifable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifable.swift; sourceTree = "<group>"; };
 		78524FC825E533E3002AEF87 /* ChatRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomViewController.swift; sourceTree = "<group>"; };
 		785A1AB625A9A369005E8A4B /* SignupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewModel.swift; sourceTree = "<group>"; };
 		785AB27125E9C527000FEEFE /* TapAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapAction.swift; sourceTree = "<group>"; };
@@ -380,6 +382,7 @@
 				78997EBA259C346B0076FF97 /* Presentation */,
 				78FE8CD7267B79480006612E /* Resource */,
 				78997EC2259C350B0076FF97 /* Utility */,
+				7862C15225E2591800F1645A /* Firebase */,
 				781936B225BC5B2B00309FB7 /* BookFileManager.swift */,
 				78231207259C0D9300D9E723 /* Info.plist */,
 				78D18A87265E251500396D19 /* GoogleService-Info.plist */,
@@ -604,6 +607,7 @@
 				78C61C2A25A1714B00DC78A6 /* AppUtil */,
 				78997EE3259C4C4D0076FF97 /* Extension */,
 				78FE8CD5267B76750006612E /* FirebaseProvider.swift */,
+				784EAB002688A95B0032A0E9 /* Identifable.swift */,
 				78752AA3267EEBA9000B87AC /* Layout.swift */,
 				78B2A16C267B8A6100D9EA0E /* LoadingState.swift */,
 				78752AA5267EEE92000B87AC /* Style.swift */,
@@ -704,7 +708,6 @@
 				7892EF77259C73B2006F7315 /* Service */,
 				7892EF48259C539B006F7315 /* IBDesignable */,
 				78E609EF25AAAA210041B3D0 /* Validator */,
-				7862C15225E2591800F1645A /* Firebase */,
 			);
 			path = Before;
 			sourceTree = "<group>";
@@ -1074,6 +1077,7 @@
 				7892EF79259C73C9006F7315 /* KeyboardNotifier.swift in Sources */,
 				78B8A69625E54AEB005BCB16 /* MyMessageBalloonView.swift in Sources */,
 				78FE8CD9267B79650006612E /* Localizable.swift in Sources */,
+				784EAB012688A95B0032A0E9 /* Identifable.swift in Sources */,
 				783FBBCD2686D1F40013CCD7 /* AccountViewModel.swift in Sources */,
 				783FBBC92686CEA10013CCD7 /* AccountViewController.swift in Sources */,
 			);

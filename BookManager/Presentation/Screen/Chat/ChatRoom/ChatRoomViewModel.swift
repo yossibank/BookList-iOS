@@ -3,7 +3,7 @@ final class ChatRoomViewModel: ViewModel {
     private let user: User
     private let firestore = FirestoreManager.shared
 
-    var currentUserId: Int {
+    var currentUserId: String {
         user.id
     }
 

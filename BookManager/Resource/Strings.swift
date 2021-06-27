@@ -71,6 +71,7 @@ struct StringResources {
 
     struct Alert {
         @Localizable static var ok = "ok"
+        @Localizable static var successSignup = "success_sign_up"
         @Localizable static var successBookAdd = "success_book_add"
         @Localizable static var successBookEdit = "success_book_edit"
         @Localizable static var didYouLogout = "did_you_logout"
