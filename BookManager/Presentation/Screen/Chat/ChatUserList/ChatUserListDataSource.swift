@@ -1,22 +1,16 @@
 import UIKit
 
 final class ChatUserListDataSource: NSObject {
-    var chatUserList: [FirestoreUser] = []
+    var chatUserList: [User] = []
 }
 
 extension ChatUserListDataSource: UITableViewDataSource {
 
-    func tableView(
-        _: UITableView,
-        numberOfRowsInSection _: Int
-    ) -> Int {
+    func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
         chatUserList.count
     }
 
-    func tableView(
-        _ tableView: UITableView,
-        cellForRowAt indexPath: IndexPath
-    ) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(
             withIdentifier: ChatUserListTableViewCell.resourceName,
             for: indexPath

@@ -10,12 +10,18 @@ extension AccountViewController: VCInjectable {
 // MARK: - properties
 
 final class AccountViewController: UIViewController {
-    var routing: R!
+    var routing: R! { didSet { routing.viewController = self } }
     var viewModel: VM!
 
     private let logoutButton: UIButton = .init(
         title: Resources.Strings.Account.logout,
         backgroundColor: .darkGray,
+        style: .fontBoldStyle
+    )
+
+    private let chatButton: UIButton = .init(
+        title: Resources.Strings.Account.startChat,
+        backgroundColor: .purple,
         style: .fontBoldStyle
     )
 
@@ -45,14 +51,23 @@ private extension AccountViewController {
 
     func setupView() {
         view.backgroundColor = .white
-        view.addSubview(logoutButton)
-        view.addSubview(loadingIndicator)
+
+        [logoutButton, chatButton, loadingIndicator].forEach {
+            view.addSubview($0)
+        }
     }
 
     func setupLayout() {
         logoutButton.layout {
             $0.centerX == view.centerXAnchor
             $0.centerY == view.centerYAnchor
+            $0.widthConstant == 250
+            $0.heightConstant == 50
+        }
+
+        chatButton.layout {
+            $0.centerX == view.centerXAnchor
+            $0.top.equal(to: logoutButton.bottomAnchor, offsetBy: 20)
             $0.widthConstant == 250
             $0.heightConstant == 50
         }
@@ -67,6 +82,12 @@ private extension AccountViewController {
         logoutButton.tapPublisher
             .sink { [weak self] in
                 self?.viewModel.logout()
+            }
+            .store(in: &cancellables)
+
+        chatButton.tapPublisher
+            .sink { [weak self] in
+                self?.routing.showChatSelectScreen()
             }
             .store(in: &cancellables)
     }

@@ -1,55 +1,84 @@
+import Combine
+import CombineCocoa
 import UIKit
-import RxSwift
-import RxCocoa
+
+extension ChatSelectViewController: VCInjectable {
+    typealias R = ChatSelectRouting
+    typealias VM = ChatSelectViewModel
+}
+
+// MARK: - properties
 
 final class ChatSelectViewController: UIViewController {
+    var routing: R! { didSet { routing.viewController = self } }
+    var viewModel: VM!
 
-    @IBOutlet var tableView: UITableView!
+    private let tableView: UITableView = .init(
+        frame: .zero
+    )
 
-    private let router: RouterProtocol = Router()
-    private let disposeBag = DisposeBag()
-
-    private var viewModel: ChatSelectViewModel!
     private var dataSource: ChatSelectDataSource!
-
-    static func createInstance(viewModel: ChatSelectViewModel) -> ChatSelectViewController {
-        let instance = ChatSelectViewController.instantiateInitialViewController()
-        instance.viewModel = viewModel
-        return instance
-    }
+    private var cancellables: Set<AnyCancellable> = []
 
     deinit {
         viewModel.removeListener()
     }
+}
+
+// MARK: - override methods
+
+extension ChatSelectViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupButton()
+        setupView()
+        setupLayout()
         setupTableView()
+        setupEvent()
         fetchRooms()
     }
+}
 
-    private func setupButton() {
-        navigationItem.rightBarButtonItem?.rx.tap.subscribe { [weak self] _ in
-            guard let self = self else { return }
+// MARK: - private methods
 
-            self.router.present(.chatUserList, from: self, isModalInPresentation: false)
-        }.disposed(by: disposeBag)
+private extension ChatSelectViewController {
+
+    func setupView() {
+        view.backgroundColor = .white
+        view.addSubview(tableView)
     }
 
-    private func setupTableView() {
+    func setupLayout() {
+        tableView.layout {
+            $0.top == view.topAnchor
+            $0.bottom == view.bottomAnchor
+            $0.leading == view.leadingAnchor
+            $0.trailing == view.trailingAnchor
+        }
+    }
+
+    func setupTableView() {
         dataSource = ChatSelectDataSource()
+        tableView.dataSource = dataSource
+
         tableView.register(
             ChatSelectTableViewCell.xib(),
             forCellReuseIdentifier: ChatSelectTableViewCell.resourceName
         )
         tableView.tableFooterView = UIView()
-        tableView.dataSource = dataSource
         tableView.delegate = self
         tableView.rowHeight = 80
     }
 
-    private func fetchRooms() {
+    func setupEvent() {
+        navigationItem.rightBarButtonItem?.tapPublisher
+            .sink { [weak self] in
+                self?.routing.showChatUserListScreen()
+            }
+            .store(in: &cancellables)
+    }
+
+    func fetchRooms() {
         viewModel.fetchRooms { [weak self] documentChange, room in
             guard let self = self else { return }
 
@@ -73,6 +102,8 @@ final class ChatSelectViewController: UIViewController {
     }
 }
 
+// MARK: - Delegate
+
 extension ChatSelectViewController: UITableViewDelegate {
 
     func tableView(
@@ -87,11 +118,13 @@ extension ChatSelectViewController: UITableViewDelegate {
             viewModel.findUser { [weak self] user in
                 guard let self = self else { return }
 
-                self.router.push(.chatRoom(roomId: roomId, user: user), from: self)
+                self.routing.showChatRoomScreen(roomId: roomId, user: user)
             }
         }
     }
 }
+
+// MARK: - Protocol
 
 extension ChatSelectViewController: NavigationBarConfiguration {
 

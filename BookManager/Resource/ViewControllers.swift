@@ -60,21 +60,26 @@ extension Resources {
             }
 
             func chatSelect() -> ChatSelectViewController {
-                let viewModel = ChatSelectViewModel()
-                let vc = ChatSelectViewController.createInstance(viewModel: viewModel)
+                let vc = ChatSelectViewController()
+                vc.inject(routing: ChatSelectRouting(), viewModel: ChatSelectViewModel())
                 return vc
             }
 
             func chatUserList() -> ChatUserListViewController {
-                let usecase = ChatUserListUsecase()
-                let viewModel = ChatUserListViewModel(usecase: usecase)
-                let vc = ChatUserListViewController.createInstance(viewModel: viewModel)
+                let vc = ChatUserListViewController()
+                vc.inject(
+                    routing: NoRouting(),
+                    viewModel: ChatUserListViewModel(usecase: ChatUserListUsecase())
+                )
                 return vc
             }
 
-            func chatRoom(roomId: String, user: FirestoreUser) -> ChatRoomViewController {
-                let viewModel = ChatRoomViewModel(roomId: roomId, user: user)
-                let vc = ChatRoomViewController.createInstance(viewModel: viewModel)
+            func chatRoom(roomId: String, user: User) -> ChatRoomViewController {
+                let vc = ChatRoomViewController()
+                vc.inject(
+                    routing: NoRouting(),
+                    viewModel: ChatRoomViewModel(roomId: roomId, user: user)
+                )
                 return vc
             }
         }

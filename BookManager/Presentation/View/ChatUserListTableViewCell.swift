@@ -9,14 +9,8 @@ final class ChatUserListTableViewCell: UITableViewCell {
         super.awakeFromNib()
     }
 
-    func setup(user: FirestoreUser) {
+    func setup(user: User) {
         userNameLabel.text = user.name
-
-        ImageLoader.shared
-            .loadImage(with: .string(urlString: user.imageUrl)) { [weak self] image, _ in
-                guard let self = self else { return }
-
-                self.userIconImageView.image = image
-            }
+        userIconImageView.loadImage(with: .string(urlString: user.imageUrl))
     }
 }

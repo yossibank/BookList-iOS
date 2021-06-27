@@ -63,13 +63,13 @@ private extension WishListViewController {
 
     func setupTableView() {
         dataSource = WishListDataSource(viewModel: viewModel)
+        tableView.dataSource = dataSource
 
         tableView.register(
             BookCell.self,
             forCellReuseIdentifier: BookCell.resourceName
         )
         tableView.tableFooterView = UIView()
-        tableView.dataSource = dataSource
         tableView.delegate = self
         tableView.rowHeight = 150
     }

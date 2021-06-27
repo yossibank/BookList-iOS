@@ -4,11 +4,11 @@ import Utility
 
 final class FirebaseAuthManager {
 
-    typealias SignupUser = UserEntity
+    typealias CurrentUser = FirebaseAuth.User
 
     static let shared = FirebaseAuthManager()
 
-    var currentUser: User? {
+    var currentUser: CurrentUser? {
         Auth.auth().currentUser
     }
 
@@ -21,18 +21,17 @@ final class FirebaseAuthManager {
     func createUser(
         email: String,
         password: String,
-        user: FirestoreUser
+        id: String,
+        user: User
     ) {
         Auth.auth().createUser(
             withEmail: email,
             password: password
-        ) { result, error in
-            if let result = result {
-                FirestoreManager.shared.createUser(
-                    documentPath: result.user.uid,
-                    user: user
-                )
-            }
+        ) { _, error in
+            FirestoreManager.shared.createUser(
+                documentPath: id,
+                user: user
+            )
             if let error = error {
                 print("user情報の登録に失敗しました: \(error)")
             }

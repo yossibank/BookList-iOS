@@ -30,8 +30,8 @@ extension BookListDataSource: UITableViewDataSource {
 
         if
             let bookListCell = cell as? BookCell,
-            let book = viewModel.bookList.any(at: indexPath.row) {
-
+            let book = viewModel.bookList.any(at: indexPath.row)
+        {
             bookListCell.setup(book: book, type: .bookList)
             bookListCell.favoriteHandler = { [weak self] in
                 book.isFavorite

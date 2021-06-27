@@ -24,14 +24,7 @@ final class ChatSelectTableViewCell: UITableViewCell {
 
         guard let user = partnerUser else { return }
 
-        ImageLoader.shared.loadImage(
-            with: .string(urlString: user.imageUrl)
-        ) { [weak self] image, _ in
-            guard let self = self else { return }
-
-            self.userIconImageView.image = image
-        }
-
+        userIconImageView.loadImage(with: .string(urlString: user.imageUrl))
         userNameLabel.text = user.name
         lastMessageLabel.text = room.lastMessage
         sendTimeLabel.text = lastMessageSendAt

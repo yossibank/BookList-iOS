@@ -1,4 +1,13 @@
+import Combine
+import CombineCocoa
 import UIKit
+
+extension ChatRoomViewController: VCInjectable {
+    typealias R = NoRouting
+    typealias VM = ChatRoomViewModel
+}
+
+// MARK: - properties
 
 final class ChatRoomViewController: UIViewController {
 
@@ -7,10 +16,15 @@ final class ChatRoomViewController: UIViewController {
         static let contentInset: UIEdgeInsets = .init(top: 60, left: 0, bottom: 0, right: 0)
     }
 
-    @IBOutlet var tableView: UITableView!
+    var routing: R!
+    var viewModel: VM!
 
-    private var viewModel: ChatRoomViewModel!
+    private let tableView: UITableView = .init(
+        frame: .zero
+    )
+
     private var dataSource: ChatRoomDataSource!
+    private var cancellables: Set<AnyCancellable> = []
     private var safeAreaBottom: CGFloat {
         view.safeAreaInsets.bottom
     }
@@ -22,18 +36,19 @@ final class ChatRoomViewController: UIViewController {
         return view
     }()
 
-    static func createInstance(viewModel: ChatRoomViewModel) -> ChatRoomViewController {
-        let instance = ChatRoomViewController.instantiateInitialViewController()
-        instance.viewModel = viewModel
-        return instance
-    }
-
     deinit {
         viewModel.removeListener()
     }
+}
+
+// MARK: - override methods
+
+extension ChatRoomViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupView()
+        setupLayout()
         setupTableView()
         setupNotification()
         fetchChatMessages()
@@ -46,9 +61,29 @@ final class ChatRoomViewController: UIViewController {
     override var canBecomeFirstResponder: Bool {
         true
     }
+}
 
-    private func setupTableView() {
+// MARK: - private methods
+
+private extension ChatRoomViewController {
+
+    func setupView() {
+        view.addSubview(tableView)
+    }
+
+    func setupLayout() {
+        tableView.layout {
+            $0.top == view.topAnchor
+            $0.bottom == view.bottomAnchor
+            $0.leading == view.leadingAnchor
+            $0.trailing == view.trailingAnchor
+        }
+    }
+
+    func setupTableView() {
         dataSource = ChatRoomDataSource(viewModel: viewModel)
+        tableView.dataSource = dataSource
+
         tableView.register(
             MyMessageTableViewCell.xib(),
             forCellReuseIdentifier: MyMessageTableViewCell.resourceName
@@ -57,7 +92,8 @@ final class ChatRoomViewController: UIViewController {
             OtherMessageTableViewCell.xib(),
             forCellReuseIdentifier: OtherMessageTableViewCell.resourceName
         )
-        tableView.dataSource = dataSource
+        tableView.backgroundColor = Resources.Colors.lineBackground
+        tableView.separatorStyle = .none
         tableView.estimatedRowHeight = 80
         tableView.rowHeight = UITableView.automaticDimension
         tableView.contentInset = Constants.contentInset
@@ -66,7 +102,7 @@ final class ChatRoomViewController: UIViewController {
         tableView.keyboardDismissMode = .onDrag
     }
 
-    private func setupNotification() {
+    func setupNotification() {
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(keyboardWillShow),
@@ -82,7 +118,7 @@ final class ChatRoomViewController: UIViewController {
         )
     }
 
-    private func fetchChatMessages() {
+    func fetchChatMessages() {
         viewModel.fetchChatMessages { [weak self] documentChange, chatMessage in
             guard let self = self else { return }
 
@@ -101,13 +137,18 @@ final class ChatRoomViewController: UIViewController {
             }
         }
     }
+}
 
-    @objc private func keyboardWillShow(notification: NSNotification) {
+// MARK: - Objc
+
+private extension ChatRoomViewController {
+
+    @objc func keyboardWillShow(notification: NSNotification) {
         if
             let endFrame = (
-                notification
-                    .userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue
-            )?.cgRectValue {
+                notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue
+            )?.cgRectValue
+        {
             guard endFrame.height >= Constants.accessoryHeight else { return }
 
             let top = endFrame.height - safeAreaBottom
@@ -119,16 +160,27 @@ final class ChatRoomViewController: UIViewController {
         }
     }
 
-    @objc private func keyboardWillHide() {
+    @objc func keyboardWillHide() {
         tableView.contentInset = Constants.contentInset
         tableView.scrollIndicatorInsets = Constants.contentInset
     }
 }
+
+// MARK: - Delegate
 
 extension ChatRoomViewController: KeyboardAccessoryViewDelegate {
 
     func didTappedSendButton(message: String) {
         keyboardAccessoryView.didSendText()
         viewModel.sendChatMessage(message: message)
+    }
+}
+
+// MARK: - Protocol
+
+extension ChatRoomViewController: NavigationBarConfiguration {
+
+    var navigationTitle: String? {
+        Resources.Strings.Navigation.Title.talk
     }
 }

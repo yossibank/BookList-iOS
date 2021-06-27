@@ -1,4 +1,4 @@
-final class ChatSelectViewModel {
+final class ChatSelectViewModel: ViewModel {
 
     private let firestore = FirestoreManager.shared
 
@@ -12,7 +12,7 @@ final class ChatSelectViewModel {
         firestore.fetchRooms(completion: completion)
     }
 
-    func findUser(completion: @escaping (FirestoreUser) -> Void) {
+    func findUser(completion: @escaping (User) -> Void) {
         firestore.findUser(
             documentPath: FirebaseAuthManager.shared.currentUserId,
             completion: completion

@@ -19,6 +19,7 @@
 "show_password" = "パスワードを表示する";
 "select_chat_image" = "チャット画像選択";
 "nickname" = "ニックネーム";
+"start_chat" = "チャットをする";
 
 // MARK: - 書籍関連
 "title" = "タイトル";
@@ -35,6 +36,7 @@
 "book_list" = "書籍一覧";
 "wish_list" = "お気に入り一覧";
 "talk_list" = "トーク一覧";
+"talk" = "トーク";
 "chat" = "チャット";
 "book_add" = "書籍追加";
 "book_edit" = "書籍編集";
@@ -56,6 +58,7 @@
 
 // MARK: - アラートメッセージ
 "ok" = "OK";
+"success_sign_up" = "会員登録が完了しました";
 "success_book_add" = "書籍登録が完了しました";
 "success_book_edit" = "書籍編集が完了しました";
 "did_you_logout" = "ログアウトしますか？";

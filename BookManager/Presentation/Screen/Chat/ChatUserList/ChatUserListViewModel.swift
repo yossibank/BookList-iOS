@@ -1,13 +1,13 @@
 import RxSwift
 import RxRelay
 
-final class ChatUserListViewModel {
+final class ChatUserListViewModel: ViewModel {
     private let usecase: ChatUserListUsecase!
-    private let userListRelay: BehaviorRelay<[FirestoreUser]> = BehaviorRelay(value: [])
+    private let userListRelay: BehaviorRelay<[User]> = BehaviorRelay(value: [])
     private let errorRelay: BehaviorRelay<Error?> = BehaviorRelay(value: nil)
     private let disposeBag = DisposeBag()
 
-    var userList: Observable<[FirestoreUser]> {
+    var userList: Observable<[User]> {
         userListRelay.asObservable()
     }
 
@@ -30,7 +30,7 @@ final class ChatUserListViewModel {
             .disposed(by: disposeBag)
     }
 
-    func createRoom(partnerUser: FirestoreUser) {
+    func createRoom(partnerUser: User) {
         FirestoreManager.shared.createRoom(partnerUser: partnerUser)
     }
 

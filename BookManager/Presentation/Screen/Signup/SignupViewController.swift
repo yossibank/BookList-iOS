@@ -334,20 +334,35 @@ private extension SignupViewController {
         viewModel.$state
             .receive(on: DispatchQueue.main)
             .sink { [weak self] state in
+                guard let self = self else { return }
+
                 switch state {
                     case .standby:
-                        self?.loadingIndicator.stopAnimating()
+                        self.loadingIndicator.stopAnimating()
 
                     case .loading:
-                        self?.loadingIndicator.startAnimating()
+                        self.loadingIndicator.startAnimating()
 
                     case .done:
-                        self?.loadingIndicator.stopAnimating()
-                        self?.routing.showRootScreen()
+                        self.loadingIndicator.stopAnimating()
+
+                        let okAction: UIAlertAction = .init(
+                            title: Resources.Strings.Alert.ok,
+                            style: .default
+                        ) { [weak self] _ in
+                            self?.routing.showRootScreen()
+                        }
+
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                            self.showAlert(
+                                title: Resources.Strings.Alert.successSignup,
+                                actions: [okAction]
+                            )
+                        }
 
                     case let .failed(error):
-                        self?.loadingIndicator.stopAnimating()
-                        self?.showError(error: error)
+                        self.loadingIndicator.stopAnimating()
+                        self.showError(error: error)
                 }
             }
             .store(in: &cancellables)
@@ -390,6 +405,10 @@ extension SignupViewController: UIImagePickerControllerDelegate, UINavigationCon
             userIconImageView.image = image
         } else if let originalImage = info[.originalImage] as? UIImage {
             userIconImageView.image = originalImage
+        }
+
+        if let data = self.userIconImageView.image?.jpegData(compressionQuality: 0.6) {
+            self.viewModel.saveUserIconImage(uploadImage: data)
         }
 
         routing.dismiss()

@@ -12,17 +12,11 @@ final class ChatRoomDataSource: NSObject {
 
 extension ChatRoomDataSource: UITableViewDataSource {
 
-    func tableView(
-        _: UITableView,
-        numberOfRowsInSection _: Int
-    ) -> Int {
+    func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
         chatMessages.count
     }
 
-    func tableView(
-        _ tableView: UITableView,
-        cellForRowAt indexPath: IndexPath
-    ) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let chatMessage = chatMessages[indexPath.row]
 
         let myMessageCell = tableView.dequeueReusableCell(
@@ -35,7 +29,7 @@ extension ChatRoomDataSource: UITableViewDataSource {
             for: indexPath
         )
 
-        if chatMessage.id == viewModel?.currentUserId {
+        if String(chatMessage.id) == viewModel?.currentUserId {
             if let cell = myMessageCell as? MyMessageTableViewCell {
                 cell.transform = .init(a: 1, b: 0, c: 0, d: -1, tx: 0, ty: 0)
                 cell.setup(chat: chatMessage)

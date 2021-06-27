@@ -1,13 +1,13 @@
-final class ChatRoomViewModel {
+final class ChatRoomViewModel: ViewModel {
     private let roomId: String
-    private let user: FirestoreUser
+    private let user: User
     private let firestore = FirestoreManager.shared
 
-    var currentUserId: Int {
+    var currentUserId: String {
         user.id
     }
 
-    init(roomId: String, user: FirestoreUser) {
+    init(roomId: String, user: User) {
         self.roomId = roomId
         self.user = user
     }
