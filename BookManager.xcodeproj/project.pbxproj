@@ -24,7 +24,6 @@
 		781CC3A52658E6E00075D260 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 781CC3A42658E6E00075D260 /* RxRelay */; };
 		781CC3A72658E6E00075D260 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 781CC3A62658E6E00075D260 /* RxCocoa */; };
 		781F64C1267CB73C00D50B08 /* SignupRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781F64C0267CB73C00D50B08 /* SignupRouting.swift */; };
-		7820E0AB25AEFC1200A5E6D8 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7820E0AA25AEFC1200A5E6D8 /* ImageLoader.swift */; };
 		7821A5D025E25C5B0006DE50 /* FirebaseAuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7821A5CF25E25C5B0006DE50 /* FirebaseAuthManager.swift */; };
 		7821A5D425E25C630006DE50 /* FirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7821A5D325E25C630006DE50 /* FirestoreManager.swift */; };
 		782311FA259C0D9200D9E723 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782311F9259C0D9200D9E723 /* AppDelegate.swift */; };
@@ -171,7 +170,6 @@
 		781936B225BC5B2B00309FB7 /* BookFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookFileManager.swift; sourceTree = "<group>"; };
 		781936BF25BC752D00309FB7 /* BookBusinessModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookBusinessModel.swift; sourceTree = "<group>"; };
 		781F64C0267CB73C00D50B08 /* SignupRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupRouting.swift; sourceTree = "<group>"; };
-		7820E0AA25AEFC1200A5E6D8 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		7821A5CF25E25C5B0006DE50 /* FirebaseAuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthManager.swift; sourceTree = "<group>"; };
 		7821A5D325E25C630006DE50 /* FirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreManager.swift; sourceTree = "<group>"; };
 		782311F6259C0D9200D9E723 /* BookManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -341,14 +339,6 @@
 			path = OtherMessageCell;
 			sourceTree = "<group>";
 		};
-		7820E0A925AEFBFF00A5E6D8 /* ImageLoader */ = {
-			isa = PBXGroup;
-			children = (
-				7820E0AA25AEFC1200A5E6D8 /* ImageLoader.swift */,
-			);
-			path = ImageLoader;
-			sourceTree = "<group>";
-		};
 		7821A5CD25E25BEE0006DE50 /* FirebaseAuth */ = {
 			isa = PBXGroup;
 			children = (
@@ -394,6 +384,7 @@
 				78997EBA259C346B0076FF97 /* Presentation */,
 				78FE8CD7267B79480006612E /* Resource */,
 				78997EC2259C350B0076FF97 /* Utility */,
+				781936B225BC5B2B00309FB7 /* BookFileManager.swift */,
 				78231207259C0D9300D9E723 /* Info.plist */,
 				78D18A87265E251500396D19 /* GoogleService-Info.plist */,
 				78B2A169267B87B600D9EA0E /* Before */,
@@ -731,12 +722,10 @@
 		78B2A169267B87B600D9EA0E /* Before */ = {
 			isa = PBXGroup;
 			children = (
-				781936B225BC5B2B00309FB7 /* BookFileManager.swift */,
 				7892EF77259C73B2006F7315 /* Service */,
 				7892EF48259C539B006F7315 /* IBDesignable */,
 				78E609EF25AAAA210041B3D0 /* Validator */,
 				78997EC5259C35230076FF97 /* Router */,
-				7820E0A925AEFBFF00A5E6D8 /* ImageLoader */,
 				7862C15225E2591800F1645A /* Firebase */,
 				78997EB8259C345F0076FF97 /* AppResources */,
 			);
@@ -1107,7 +1096,6 @@
 				7833D0BA26022624005DFB79 /* ChatSelectViewModel.swift in Sources */,
 				78769C4425EA28A6007791E0 /* NameValidator.swift in Sources */,
 				7862C15425E2596D00F1645A /* FirebaseModelProtocol.swift in Sources */,
-				7820E0AB25AEFC1200A5E6D8 /* ImageLoader.swift in Sources */,
 				78CF3B3525AC48FD00ADBB60 /* BookListDataSource.swift in Sources */,
 				78EC97CE25F4923F007E80FD /* RootNavigationController.swift in Sources */,
 				78997EE5259C4C5E0076FF97 /* UIView-IBInspectable-Extensions.swift in Sources */,

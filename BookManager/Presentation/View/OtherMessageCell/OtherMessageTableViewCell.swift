@@ -40,13 +40,7 @@ final class OtherMessageTableViewCell: UITableViewCell {
             with: .hourToMinitue
         )
 
-        ImageLoader.shared
-            .loadImage(with: .string(urlString: chat.iconUrl)) { [weak self] image, _ in
-                guard let self = self else { return }
-
-                self.userIconImageView.image = image
-            }
-
+        userIconImageView.loadImage(with: .string(urlString: chat.iconUrl))
         userMessageTextView.text = chat.message
         sendTimeLabel.text = sendAt
     }
