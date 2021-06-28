@@ -30,6 +30,7 @@ extension ViewStyle where T: UITextField {
 
     static var securePassword: ViewStyle<T> {
         ViewStyle<T> {
+            $0.textContentType = .password
             $0.isSecureTextEntry = true
             $0.layer.backgroundColor = UIColor.white.cgColor
             $0.layer.shadowColor = UIColor.lightGray.cgColor

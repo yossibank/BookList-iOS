@@ -1,12 +1,10 @@
 import Foundation
 
-enum NumberValidator: ValidatorProtocol {
+enum BookPriceValidator: ValidatorProtocol {
     typealias ValueType = String?
-    typealias ErrorType = NumberError
+    typealias ErrorType = BookPriceError
 
-    static func validate(
-        _ value: String?
-    ) -> ValidationResult<NumberError> {
+    static func validate(_ value: String?) -> ValidationResult<BookPriceError> {
         guard
             let value = value,
             !value.isEmpty
@@ -21,25 +19,23 @@ enum NumberValidator: ValidatorProtocol {
         ).evaluate(with: value)
 
         if !isValidNumber {
-            return .invalid(.format)
+            return .invalid(.onlyNumber)
         }
 
         return .valid
     }
 }
 
-enum NumberError: LocalizedError {
+enum BookPriceError: LocalizedError {
     case empty
-    case format
+    case onlyNumber
 
     var errorDescription: String? {
-
         switch self {
-
             case .empty:
-                return Resources.Strings.Validation.notFilled
+                return Resources.Strings.Validation.notFilledBookPrice
 
-            case .format:
+            case .onlyNumber:
                 return Resources.Strings.Validation.onlyInputNumber
         }
     }

@@ -49,9 +49,10 @@
 		78421CE125E9273500950F62 /* KeyboardAccessoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78421CE025E9273500950F62 /* KeyboardAccessoryView.xib */; };
 		784B18F625BD4D5F0071C32E /* WishListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784B18F525BD4D5F0071C32E /* WishListViewModel.swift */; };
 		784B18FC25BD50FC0071C32E /* WishListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784B18FB25BD50FC0071C32E /* WishListDataSource.swift */; };
+		784C3FB22689C53000C0D9EF /* PasswordConfirmationValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784C3FB12689C53000C0D9EF /* PasswordConfirmationValidator.swift */; };
 		784E135625B29952008FD947 /* DatePicker+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784E135525B29952008FD947 /* DatePicker+Util.swift */; };
 		784E135E25B2A13D008FD947 /* AddBookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784E135D25B2A13D008FD947 /* AddBookViewModel.swift */; };
-		784E138225B2F555008FD947 /* NumberValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784E138125B2F555008FD947 /* NumberValidator.swift */; };
+		784E138225B2F555008FD947 /* BookPriceValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784E138125B2F555008FD947 /* BookPriceValidator.swift */; };
 		784EAB012688A95B0032A0E9 /* Identifable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784EAB002688A95B0032A0E9 /* Identifable.swift */; };
 		78524FC925E533E3002AEF87 /* ChatRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78524FC825E533E3002AEF87 /* ChatRoomViewController.swift */; };
 		785A1AB725A9A369005E8A4B /* SignupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785A1AB625A9A369005E8A4B /* SignupViewModel.swift */; };
@@ -68,8 +69,8 @@
 		78752AAB267EF0D9000B87AC /* ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78752AAA267EF0D9000B87AC /* ButtonStyle.swift */; };
 		78752AAD267EF39D000B87AC /* StackViewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78752AAC267EF39D000B87AC /* StackViewStyle.swift */; };
 		78752AAF267EF412000B87AC /* LabelStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78752AAE267EF412000B87AC /* LabelStyle.swift */; };
-		78769C4425EA28A6007791E0 /* NameValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78769C4325EA28A6007791E0 /* NameValidator.swift */; };
-		78772B3C25B3D37300E6493E /* PurchaseDateValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78772B3B25B3D37300E6493E /* PurchaseDateValidator.swift */; };
+		78769C4425EA28A6007791E0 /* NickNameValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78769C4325EA28A6007791E0 /* NickNameValidator.swift */; };
+		78772B3C25B3D37300E6493E /* BookPurchaseDateValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78772B3B25B3D37300E6493E /* BookPurchaseDateValidator.swift */; };
 		78772B4E25B3DEBD00E6493E /* Array+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78772B4D25B3DEBD00E6493E /* Array+Util.swift */; };
 		78772B5425B3E48B00E6493E /* EditBookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78772B5325B3E48B00E6493E /* EditBookViewModel.swift */; };
 		787CB2EC2600C3AD003B8CC9 /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787CB2EB2600C3AD003B8CC9 /* ChatMessage.swift */; };
@@ -90,7 +91,7 @@
 		789BC9382684599400C9EC0F /* NotificationName+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789BC9372684599400C9EC0F /* NotificationName+Util.swift */; };
 		789BC93A26845A8C00C9EC0F /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789BC93926845A8C00C9EC0F /* UIImage+Extension.swift */; };
 		789BC93C26845C0900C9EC0F /* UITextField+Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789BC93B26845C0900C9EC0F /* UITextField+Combine.swift */; };
-		78B29D0125B3124A00A7DC7F /* TitleValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B29D0025B3124A00A7DC7F /* TitleValidator.swift */; };
+		78B29D0125B3124A00A7DC7F /* BookTitleValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B29D0025B3124A00A7DC7F /* BookTitleValidator.swift */; };
 		78B29D1C25B3310000A7DC7F /* EditBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B29D1B25B3310000A7DC7F /* EditBookViewController.swift */; };
 		78B2A163267B7F6B00D9EA0E /* Routing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B2A162267B7F6B00D9EA0E /* Routing.swift */; };
 		78B2A165267B7F7100D9EA0E /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B2A164267B7F7100D9EA0E /* ViewModel.swift */; };
@@ -118,7 +119,7 @@
 		78DEE7B525AAD4D500219963 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 78DEE7B425AAD4D500219963 /* Localizable.strings */; };
 		78DEE7BD25AAE3AD00219963 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DEE7BC25AAE3AD00219963 /* UIViewController+Extension.swift */; };
 		78E609D325AA04300041B3D0 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E609D225AA04300041B3D0 /* LoginViewModel.swift */; };
-		78E609F125AAAA530041B3D0 /* Validator+Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E609F025AAAA530041B3D0 /* Validator+Protocol.swift */; };
+		78E609F125AAAA530041B3D0 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E609F025AAAA530041B3D0 /* Validator.swift */; };
 		78E609F725AAABEA0041B3D0 /* EmailValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E609F625AAABEA0041B3D0 /* EmailValidator.swift */; };
 		78E609FB25AAABF80041B3D0 /* PasswordValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E609FA25AAABF80041B3D0 /* PasswordValidator.swift */; };
 		78E60A0025AAAEAC0041B3D0 /* ObservableType+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E609FF25AAAEAC0041B3D0 /* ObservableType+Extension.swift */; };
@@ -197,9 +198,10 @@
 		78421CE025E9273500950F62 /* KeyboardAccessoryView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KeyboardAccessoryView.xib; sourceTree = "<group>"; };
 		784B18F525BD4D5F0071C32E /* WishListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListViewModel.swift; sourceTree = "<group>"; };
 		784B18FB25BD50FC0071C32E /* WishListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListDataSource.swift; sourceTree = "<group>"; };
+		784C3FB12689C53000C0D9EF /* PasswordConfirmationValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordConfirmationValidator.swift; sourceTree = "<group>"; };
 		784E135525B29952008FD947 /* DatePicker+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DatePicker+Util.swift"; sourceTree = "<group>"; };
 		784E135D25B2A13D008FD947 /* AddBookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookViewModel.swift; sourceTree = "<group>"; };
-		784E138125B2F555008FD947 /* NumberValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberValidator.swift; sourceTree = "<group>"; };
+		784E138125B2F555008FD947 /* BookPriceValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookPriceValidator.swift; sourceTree = "<group>"; };
 		784EAB002688A95B0032A0E9 /* Identifable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifable.swift; sourceTree = "<group>"; };
 		78524FC825E533E3002AEF87 /* ChatRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomViewController.swift; sourceTree = "<group>"; };
 		785A1AB625A9A369005E8A4B /* SignupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewModel.swift; sourceTree = "<group>"; };
@@ -216,8 +218,8 @@
 		78752AAA267EF0D9000B87AC /* ButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyle.swift; sourceTree = "<group>"; };
 		78752AAC267EF39D000B87AC /* StackViewStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackViewStyle.swift; sourceTree = "<group>"; };
 		78752AAE267EF412000B87AC /* LabelStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelStyle.swift; sourceTree = "<group>"; };
-		78769C4325EA28A6007791E0 /* NameValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameValidator.swift; sourceTree = "<group>"; };
-		78772B3B25B3D37300E6493E /* PurchaseDateValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseDateValidator.swift; sourceTree = "<group>"; };
+		78769C4325EA28A6007791E0 /* NickNameValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NickNameValidator.swift; sourceTree = "<group>"; };
+		78772B3B25B3D37300E6493E /* BookPurchaseDateValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookPurchaseDateValidator.swift; sourceTree = "<group>"; };
 		78772B4D25B3DEBD00E6493E /* Array+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Util.swift"; sourceTree = "<group>"; };
 		78772B5325B3E48B00E6493E /* EditBookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBookViewModel.swift; sourceTree = "<group>"; };
 		787CB2EB2600C3AD003B8CC9 /* ChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
@@ -238,7 +240,7 @@
 		789BC9372684599400C9EC0F /* NotificationName+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationName+Util.swift"; sourceTree = "<group>"; };
 		789BC93926845A8C00C9EC0F /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		789BC93B26845C0900C9EC0F /* UITextField+Combine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Combine.swift"; sourceTree = "<group>"; };
-		78B29D0025B3124A00A7DC7F /* TitleValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleValidator.swift; sourceTree = "<group>"; };
+		78B29D0025B3124A00A7DC7F /* BookTitleValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookTitleValidator.swift; sourceTree = "<group>"; };
 		78B29D1B25B3310000A7DC7F /* EditBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBookViewController.swift; sourceTree = "<group>"; };
 		78B2A162267B7F6B00D9EA0E /* Routing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routing.swift; sourceTree = "<group>"; };
 		78B2A164267B7F7100D9EA0E /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
@@ -264,7 +266,7 @@
 		78DEE7B425AAD4D500219963 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		78DEE7BC25AAE3AD00219963 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		78E609D225AA04300041B3D0 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
-		78E609F025AAAA530041B3D0 /* Validator+Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Validator+Protocol.swift"; sourceTree = "<group>"; };
+		78E609F025AAAA530041B3D0 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		78E609F625AAABEA0041B3D0 /* EmailValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailValidator.swift; sourceTree = "<group>"; };
 		78E609FA25AAABF80041B3D0 /* PasswordValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordValidator.swift; sourceTree = "<group>"; };
 		78E609FF25AAAEAC0041B3D0 /* ObservableType+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ObservableType+Extension.swift"; sourceTree = "<group>"; };
@@ -515,9 +517,10 @@
 		78772B4125B3D56200E6493E /* Account */ = {
 			isa = PBXGroup;
 			children = (
-				78769C4325EA28A6007791E0 /* NameValidator.swift */,
+				78769C4325EA28A6007791E0 /* NickNameValidator.swift */,
 				78E609F625AAABEA0041B3D0 /* EmailValidator.swift */,
 				78E609FA25AAABF80041B3D0 /* PasswordValidator.swift */,
+				784C3FB12689C53000C0D9EF /* PasswordConfirmationValidator.swift */,
 			);
 			path = Account;
 			sourceTree = "<group>";
@@ -525,9 +528,9 @@
 		78772B4225B3D56800E6493E /* Book */ = {
 			isa = PBXGroup;
 			children = (
-				78B29D0025B3124A00A7DC7F /* TitleValidator.swift */,
-				78772B3B25B3D37300E6493E /* PurchaseDateValidator.swift */,
-				784E138125B2F555008FD947 /* NumberValidator.swift */,
+				78B29D0025B3124A00A7DC7F /* BookTitleValidator.swift */,
+				784E138125B2F555008FD947 /* BookPriceValidator.swift */,
+				78772B3B25B3D37300E6493E /* BookPurchaseDateValidator.swift */,
 			);
 			path = Book;
 			sourceTree = "<group>";
@@ -606,11 +609,13 @@
 			children = (
 				78C61C2A25A1714B00DC78A6 /* AppUtil */,
 				78997EE3259C4C4D0076FF97 /* Extension */,
+				78E609EF25AAAA210041B3D0 /* Validation */,
 				78FE8CD5267B76750006612E /* FirebaseProvider.swift */,
 				784EAB002688A95B0032A0E9 /* Identifable.swift */,
 				78752AA3267EEBA9000B87AC /* Layout.swift */,
 				78B2A16C267B8A6100D9EA0E /* LoadingState.swift */,
 				78752AA5267EEE92000B87AC /* Style.swift */,
+				78E609F025AAAA530041B3D0 /* Validator.swift */,
 			);
 			name = Utility;
 			path = Presentation/Utility;
@@ -707,7 +712,6 @@
 			children = (
 				7892EF77259C73B2006F7315 /* Service */,
 				7892EF48259C539B006F7315 /* IBDesignable */,
-				78E609EF25AAAA210041B3D0 /* Validator */,
 			);
 			path = Before;
 			sourceTree = "<group>";
@@ -782,14 +786,13 @@
 			path = Signup;
 			sourceTree = "<group>";
 		};
-		78E609EF25AAAA210041B3D0 /* Validator */ = {
+		78E609EF25AAAA210041B3D0 /* Validation */ = {
 			isa = PBXGroup;
 			children = (
-				78E609F025AAAA530041B3D0 /* Validator+Protocol.swift */,
 				78772B4125B3D56200E6493E /* Account */,
 				78772B4225B3D56800E6493E /* Book */,
 			);
-			path = Validator;
+			path = Validation;
 			sourceTree = "<group>";
 		};
 		78ED505525EB5C7A0045089C /* FirebaseStorage */ = {
@@ -1001,7 +1004,7 @@
 				787CB2EF2600C50E003B8CC9 /* ChatRoomViewModel.swift in Sources */,
 				785AB27225E9C527000FEEFE /* TapAction.swift in Sources */,
 				78CF3B0725AC0E3500ADBB60 /* BookListViewModel.swift in Sources */,
-				78B29D0125B3124A00A7DC7F /* TitleValidator.swift in Sources */,
+				78B29D0125B3124A00A7DC7F /* BookTitleValidator.swift in Sources */,
 				781F64C1267CB73C00D50B08 /* SignupRouting.swift in Sources */,
 				785A1AB725A9A369005E8A4B /* SignupViewModel.swift in Sources */,
 				7873D27C267E1046007F7B31 /* RootTabBarController.swift in Sources */,
@@ -1015,6 +1018,7 @@
 				78752AA4267EEBA9000B87AC /* Layout.swift in Sources */,
 				78F940EA259D7EEF007C972A /* ViewControllers.swift in Sources */,
 				78E60A0025AAAEAC0041B3D0 /* ObservableType+Extension.swift in Sources */,
+				784C3FB22689C53000C0D9EF /* PasswordConfirmationValidator.swift in Sources */,
 				78752AA9267EF0D0000B87AC /* TextFieldStyle.swift in Sources */,
 				787FD0B925F9072800FBE386 /* ChatUserListDataSource.swift in Sources */,
 				78E609D325AA04300041B3D0 /* LoginViewModel.swift in Sources */,
@@ -1040,15 +1044,15 @@
 				78C7F3B125E52C94005E9E2B /* ChatSelectTableViewCell.swift in Sources */,
 				789BC93A26845A8C00C9EC0F /* UIImage+Extension.swift in Sources */,
 				78844C6125B0873600C9AEC0 /* AddBookViewController.swift in Sources */,
-				78E609F125AAAA530041B3D0 /* Validator+Protocol.swift in Sources */,
+				78E609F125AAAA530041B3D0 /* Validator.swift in Sources */,
 				78C61C2C25A1716800DC78A6 /* String+Util.swift in Sources */,
 				782311FE259C0D9200D9E723 /* SignupViewController.swift in Sources */,
 				78772B4E25B3DEBD00E6493E /* Array+Util.swift in Sources */,
 				78DC0E4E267F4B710083EBC0 /* IndicatorStyle.swift in Sources */,
-				784E138225B2F555008FD947 /* NumberValidator.swift in Sources */,
+				784E138225B2F555008FD947 /* BookPriceValidator.swift in Sources */,
 				78752AAD267EF39D000B87AC /* StackViewStyle.swift in Sources */,
 				78FE8CD4267B74130006612E /* Package.swift in Sources */,
-				78772B3C25B3D37300E6493E /* PurchaseDateValidator.swift in Sources */,
+				78772B3C25B3D37300E6493E /* BookPurchaseDateValidator.swift in Sources */,
 				78E609F725AAABEA0041B3D0 /* EmailValidator.swift in Sources */,
 				7892EF6C259C7212006F7315 /* Images.swift in Sources */,
 				78B2A163267B7F6B00D9EA0E /* Routing.swift in Sources */,
@@ -1066,7 +1070,7 @@
 				7805908825F48A94002B5296 /* ChatUserListViewController.swift in Sources */,
 				7821A5D425E25C630006DE50 /* FirestoreManager.swift in Sources */,
 				7833D0BA26022624005DFB79 /* ChatSelectViewModel.swift in Sources */,
-				78769C4425EA28A6007791E0 /* NameValidator.swift in Sources */,
+				78769C4425EA28A6007791E0 /* NickNameValidator.swift in Sources */,
 				7862C15425E2596D00F1645A /* FirebaseModelProtocol.swift in Sources */,
 				78CF3B3525AC48FD00ADBB60 /* BookListDataSource.swift in Sources */,
 				78EC97CE25F4923F007E80FD /* RootNavigationController.swift in Sources */,

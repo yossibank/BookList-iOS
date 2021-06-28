@@ -1,5 +1,6 @@
 import Combine
 import DomainKit
+import Foundation
 import Utility
 
 final class EditBookViewModel: ViewModel {
@@ -10,6 +11,24 @@ final class EditBookViewModel: ViewModel {
     @Published var bookPrice = String.blank
     @Published var bookPurchaseDate = String.blank
     @Published private(set) var state: State = .standby
+
+    var bookNamelValidationText: String? {
+        BookTitleValidator.validate(bookName).errorDescription
+    }
+
+    var bookPriceValidationText: String? {
+        BookPriceValidator.validate(bookPrice).errorDescription
+    }
+
+    var bookPurchaseDateValidationText: String? {
+        BookPurchaseDateValidator.validate(bookPurchaseDate).errorDescription
+    }
+
+    private(set) lazy var isEnabledButton = Publishers
+        .CombineLatest3($bookName, $bookPrice, $bookPurchaseDate)
+        .receive(on: DispatchQueue.main)
+        .map { _ in self.isValidate() }
+        .eraseToAnyPublisher()
 
     private let book: BookBusinessModel
     private let usecase: EditBookUsecase
@@ -80,5 +99,14 @@ private extension EditBookViewModel {
         bookPurchaseDate = book.purchaseDate ?? String.blank
         bookImage = book.image ?? String.blank
         isFavorite = book.isFavorite
+    }
+
+    func isValidate() -> Bool {
+        let results = [
+            BookTitleValidator.validate(bookName).isValid,
+            BookPriceValidator.validate(bookPrice).isValid,
+            BookPurchaseDateValidator.validate(bookPurchaseDate).isValid
+        ]
+        return results.allSatisfy { $0 }
     }
 }
