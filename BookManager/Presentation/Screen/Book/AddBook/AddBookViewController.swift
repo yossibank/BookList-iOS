@@ -16,7 +16,7 @@ final class AddBookViewController: UIViewController {
 
     private let mainStackView: UIStackView = .init(
         style: .verticalStyle,
-        spacing: 32
+        spacing: 24
     )
 
     private let bookImageView: UIImageView = .init(
@@ -224,7 +224,13 @@ private extension AddBookViewController {
 
     func setupLayout() {
         bookImageView.layout {
-            $0.heightConstant == 180
+            $0.heightConstant == 200
+        }
+
+        [bookImageSelectButton, takingPictureButton].forEach {
+            $0.layout {
+                $0.heightConstant == 30
+            }
         }
 
         [bookTitleTextField, bookPriceTextField, bookPurchaseDateTextField].forEach {
@@ -240,7 +246,7 @@ private extension AddBookViewController {
         }
 
         mainStackView.layout {
-            $0.bottom.equal(to: view.bottomAnchor, offsetBy: -32)
+            $0.centerY == view.centerYAnchor
             $0.leading.equal(to: view.leadingAnchor, offsetBy: 64)
             $0.trailing.equal(to: view.trailingAnchor, offsetBy: -64)
         }
