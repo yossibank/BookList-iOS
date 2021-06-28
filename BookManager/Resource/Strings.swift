@@ -78,7 +78,13 @@ struct StringResources {
     }
 
     struct Validation {
-        @Localizable static var notFilled = "not_filled"
+        @Localizable static var notFilledNickName = "not_filled_nick_name"
+        @Localizable static var notFilledEmail = "not_filled_email"
+        @Localizable static var notFilledPassword = "not_filled_password"
+        @Localizable static var notFilledPasswordConfirmation = "not_filled_password_confirmation"
+        @Localizable static var notFilledBookTitle = "not_filled_book_title"
+        @Localizable static var notFilledBookPrice = "not_filled_book_price"
+        @Localizable static var notFilledBookPurchaseDate = "not_filled_book_purchase_date"
         @Localizable static var notLongerTitleText = "not_longer_title_text"
         @Localizable static var notCorrectFormatEmail = "not_correct_format_email"
         @Localizable static var notLengthPassword = "not_length_password"

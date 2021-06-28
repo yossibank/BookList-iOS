@@ -1,12 +1,10 @@
 import Foundation
 
-enum TitleValidator: ValidatorProtocol {
+enum BookTitleValidator: ValidatorProtocol {
     typealias ValueType = String?
-    typealias ErrorType = TitleError
+    typealias ErrorType = BookTitleError
 
-    static func validate(
-        _ value: String?
-    ) -> ValidationResult<TitleError> {
+    static func validate(_ value: String?) -> ValidationResult<BookTitleError> {
         guard
             let value = value,
             !value.isEmpty
@@ -22,16 +20,14 @@ enum TitleValidator: ValidatorProtocol {
     }
 }
 
-enum TitleError: LocalizedError {
+enum BookTitleError: LocalizedError {
     case empty
     case longer
 
     var errorDescription: String? {
-
         switch self {
-
             case .empty:
-                return Resources.Strings.Validation.notFilled
+                return Resources.Strings.Validation.notFilledBookTitle
 
             case .longer:
                 return Resources.Strings.Validation.notLongerTitleText

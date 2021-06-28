@@ -6,9 +6,7 @@ enum PasswordValidator: ValidatorProtocol {
     typealias ValueType = String?
     typealias ErrorType = PasswordError
 
-    static func validate(
-        _ value: String?
-    ) -> ValidationResult<PasswordError> {
+    static func validate(_ value: String?) -> ValidationResult<PasswordError> {
         guard
             let value = value,
             !value.isEmpty
@@ -29,14 +27,12 @@ enum PasswordError: LocalizedError {
     case tooShort
 
     var errorDescription: String? {
-
         switch self {
-
             case .empty:
-                return Resources.Strings.Validation.notFilled
+                return Resources.Strings.Validation.notFilledPassword
 
             case .tooShort:
-                return Resources.Strings.Validation.notFilled
+                return Resources.Strings.Validation.notLengthPassword
         }
     }
 }

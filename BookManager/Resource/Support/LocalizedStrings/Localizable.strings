@@ -64,7 +64,13 @@
 "did_you_logout" = "ログアウトしますか？";
 
 // MARK: - バリデーション
-"not_filled" = "が入力されていません";
+"not_filled_nick_name" = "ニックネームが入力されていません";
+"not_filled_email" = "メールアドレスが入力されていません";
+"not_filled_password" = "パスワードが入力されていません";
+"not_filled_password_confirmation" = "パスワード(確認)が入力されていません";
+"not_filled_book_title" = "書籍名が入力されていません";
+"not_filled_book_price" = "書籍金額が入力されていません";
+"not_filled_book_purchase_date" = "書籍購入日が入力されていません";
 "not_longer_title_text" = "タイトル名は30文字以下でご入力ください";
 "not_correct_format_email" = "メールアドレスが正しいフォームで入力されていません";
 "not_length_password" = "パスワードは6文字以上で入力が必要です";

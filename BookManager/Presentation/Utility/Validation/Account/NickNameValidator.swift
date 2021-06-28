@@ -1,12 +1,10 @@
 import Foundation
 
-enum NameValidator: ValidatorProtocol {
+enum NickNameValidator: ValidatorProtocol {
     typealias ValueType = String?
-    typealias ErrorType = NameError
+    typealias ErrorType = NickNameError
 
-    static func validate(
-        _ value: String?
-    ) -> ValidationResult<NameError> {
+    static func validate(_ value: String?) -> ValidationResult<NickNameError> {
         guard
             let value = value,
             !value.isEmpty
@@ -18,15 +16,13 @@ enum NameValidator: ValidatorProtocol {
     }
 }
 
-enum NameError: LocalizedError {
+enum NickNameError: LocalizedError {
     case empty
 
     var errorDescription: String? {
-
         switch self {
-
             case .empty:
-                return Resources.Strings.Validation.notFilled
+                return Resources.Strings.Validation.notFilledNickName
         }
     }
 }

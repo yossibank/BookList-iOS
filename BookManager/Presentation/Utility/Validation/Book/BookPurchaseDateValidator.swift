@@ -1,12 +1,10 @@
 import Foundation
 
-enum PurchaseDateValidator: ValidatorProtocol {
+enum BookPurchaseDateValidator: ValidatorProtocol {
     typealias ValueType = String?
-    typealias ErrorType = PurchaseDateError
+    typealias ErrorType = BookPurchaseDateError
 
-    static func validate(
-        _ value: String?
-    ) -> ValidationResult<PurchaseDateError> {
+    static func validate(_ value: String?) -> ValidationResult<BookPurchaseDateError> {
         guard
             let value = value,
             !value.isEmpty
@@ -18,15 +16,13 @@ enum PurchaseDateValidator: ValidatorProtocol {
     }
 }
 
-enum PurchaseDateError: LocalizedError {
+enum BookPurchaseDateError: LocalizedError {
     case empty
 
     var errorDescription: String? {
-
         switch self {
-
             case .empty:
-                return Resources.Strings.Validation.notFilled
+                return Resources.Strings.Validation.notFilledBookPurchaseDate
         }
     }
 }
