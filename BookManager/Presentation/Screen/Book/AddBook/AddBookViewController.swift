@@ -50,6 +50,10 @@ final class AddBookViewController: UIViewController {
         style: .borderBottomStyle
     )
 
+    private let bookTitleValidationLabel: UILabel = .init(
+        style: .validationStyle
+    )
+
     private let bookPriceStackView: UIStackView = .init(
         style: .verticalStyle,
         spacing: 4
@@ -60,6 +64,10 @@ final class AddBookViewController: UIViewController {
         style: .borderBottomStyle
     )
 
+    private let bookPriceValidationLabel: UILabel = .init(
+        style: .validationStyle
+    )
+
     private let bookPurchaseDateStackView: UIStackView = .init(
         style: .verticalStyle,
         spacing: 4
@@ -68,6 +76,10 @@ final class AddBookViewController: UIViewController {
     private let bookPurchaseDateTextField: UITextField = .init(
         placeholder: Resources.Strings.Book.purchaseDate,
         style: .borderBottomStyle
+    )
+
+    private let bookPurchaseDateValidationLabel: UILabel = .init(
+        style: .validationStyle
     )
 
     private let loadingIndicator: UIActivityIndicatorView = .init(
@@ -111,6 +123,12 @@ final class AddBookViewController: UIViewController {
         return toolbar
     }()
 
+    private var isEnabled: Bool = false {
+        didSet {
+            navigationItem.rightBarButtonItem?.isEnabled = isEnabled
+        }
+    }
+
     private var cancellables: Set<AnyCancellable> = []
     private var successHandler: VoidBlock?
 
@@ -149,9 +167,32 @@ extension AddBookViewController {
 private extension AddBookViewController {
 
     func setupStackView() {
-        bookTitleStackView.addArrangedSubview(bookTitleTextField)
-        bookPriceStackView.addArrangedSubview(bookPriceTextField)
-        bookPurchaseDateStackView.addArrangedSubview(bookPurchaseDateTextField)
+        let bookTitleStackViewList = [
+            bookTitleTextField,
+            bookTitleValidationLabel
+        ]
+
+        bookTitleStackViewList.forEach {
+            bookTitleStackView.addArrangedSubview($0)
+        }
+
+        let bookPriceStackViewList = [
+            bookPriceTextField,
+            bookPriceValidationLabel
+        ]
+
+        bookPriceStackViewList.forEach {
+            bookPriceStackView.addArrangedSubview($0)
+        }
+
+        let bookPurchaseDateStackViewList = [
+            bookPurchaseDateTextField,
+            bookPurchaseDateValidationLabel
+        ]
+
+        bookPurchaseDateStackViewList.forEach {
+            bookPurchaseDateStackView.addArrangedSubview($0)
+        }
 
         let buttonStackViewList = [
             bookImageSelectButton,
@@ -183,17 +224,23 @@ private extension AddBookViewController {
 
     func setupLayout() {
         bookImageView.layout {
-            $0.heightConstant == 200
+            $0.heightConstant == 180
         }
 
         [bookTitleTextField, bookPriceTextField, bookPurchaseDateTextField].forEach {
             $0.layout {
-                $0.heightConstant == 30
+                $0.heightConstant == 25
+            }
+        }
+
+        [bookTitleValidationLabel, bookPriceValidationLabel, bookPurchaseDateValidationLabel].forEach {
+            $0.layout {
+                $0.heightConstant == 12
             }
         }
 
         mainStackView.layout {
-            $0.centerY == view.centerYAnchor
+            $0.bottom.equal(to: view.bottomAnchor, offsetBy: -32)
             $0.leading.equal(to: view.leadingAnchor, offsetBy: 64)
             $0.trailing.equal(to: view.trailingAnchor, offsetBy: -64)
         }
@@ -280,6 +327,31 @@ private extension AddBookViewController {
     }
 
     func bindViewModel() {
+        viewModel.isEnabledButton
+            .assign(to: \.isEnabled, on: self)
+            .store(in: &cancellables)
+
+        viewModel.$bookName
+            .debounce(for: 0.3, scheduler: DispatchQueue.main)
+            .dropFirst()
+            .map { _ in self.viewModel.bookNamelValidationText }
+            .assign(to: \.text, on: bookTitleValidationLabel)
+            .store(in: &cancellables)
+
+        viewModel.$bookPrice
+            .debounce(for: 0.3, scheduler: DispatchQueue.main)
+            .dropFirst()
+            .map { _ in self.viewModel.bookPriceValidationText }
+            .assign(to: \.text, on: bookPriceValidationLabel)
+            .store(in: &cancellables)
+
+        viewModel.$bookPurchaseDate
+            .debounce(for: 0.3, scheduler: DispatchQueue.main)
+            .dropFirst()
+            .map { _ in self.viewModel.bookPurchaseDateValidationText }
+            .assign(to: \.text, on: bookPurchaseDateValidationLabel)
+            .store(in: &cancellables)
+
         viewModel.$state
             .receive(on: DispatchQueue.main)
             .sink { [weak self] state in
