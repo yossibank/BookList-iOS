@@ -43,4 +43,11 @@ extension ViewStyle where T: UILabel {
             $0.font = .boldSystemFont(ofSize: 20)
         }
     }
+
+    static var validationStyle: ViewStyle<T> {
+        ViewStyle<T> {
+            $0.font = .boldSystemFont(ofSize: 10)
+            $0.textColor = .systemRed
+        }
+    }
 }

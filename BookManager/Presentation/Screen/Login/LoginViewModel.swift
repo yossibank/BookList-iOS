@@ -9,6 +9,14 @@ final class LoginViewModel: ViewModel {
     @Published var password = String.blank
     @Published private(set) var state: State = .standby
 
+    var emailValidationText: String? {
+        EmailValidator.validate(email).errorDescription
+    }
+
+    var passwordValidationText: String? {
+        PasswordValidator.validate(password).errorDescription
+    }
+
     private let usecase: LoginUsecase
 
     private var cancellables: Set<AnyCancellable> = []

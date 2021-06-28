@@ -30,6 +30,10 @@ final class LoginViewController: UIViewController {
         style: .borderBottomStyle
     )
 
+    private let emailValidationLabel: UILabel = .init(
+        style: .validationStyle
+    )
+
     private let passwordStackView: UIStackView = .init(
         style: .verticalStyle,
         spacing: 4
@@ -38,6 +42,10 @@ final class LoginViewController: UIViewController {
     private let passwordTextField: UITextField = .init(
         placeholder: Resources.Strings.General.password,
         style: .securePassword
+    )
+
+    private let passwordValidationLabel: UILabel = .init(
+        style: .validationStyle
     )
 
     private let secureStackView: UIStackView = .init(
@@ -118,8 +126,23 @@ extension LoginViewController {
 private extension LoginViewController {
 
     func setupStackView() {
-        emailStackView.addArrangedSubview(emailTextField)
-        passwordStackView.addArrangedSubview(passwordTextField)
+        let emailStackViewList = [
+            emailTextField,
+            emailValidationLabel
+        ]
+
+        emailStackViewList.forEach {
+            emailStackView.addArrangedSubview($0)
+        }
+
+        let passwordStackViewList = [
+            passwordTextField,
+            passwordValidationLabel
+        ]
+
+        passwordStackViewList.forEach {
+            passwordStackView.addArrangedSubview($0)
+        }
 
         let secureStackViewList = [
             secureButton,
@@ -161,6 +184,12 @@ private extension LoginViewController {
         secureButton.layout {
             $0.widthConstant == 15
             $0.heightConstant == 15
+        }
+
+        [emailValidationLabel, passwordValidationLabel].forEach {
+            $0.layout {
+                $0.heightConstant == 12
+            }
         }
 
         [emailTextField, passwordTextField].forEach {
@@ -234,6 +263,20 @@ private extension LoginViewController {
     }
 
     func bindViewModel() {
+        viewModel.$email
+            .debounce(for: 0.3, scheduler: DispatchQueue.main)
+            .dropFirst()
+            .map { _ in self.viewModel.emailValidationText }
+            .assign(to: \.text, on: emailValidationLabel)
+            .store(in: &cancellables)
+
+        viewModel.$password
+            .debounce(for: 0.3, scheduler: DispatchQueue.main)
+            .dropFirst()
+            .map { _ in self.viewModel.passwordValidationText }
+            .assign(to: \.text, on: passwordValidationLabel)
+            .store(in: &cancellables)
+
         viewModel.$state
             .receive(on: DispatchQueue.main)
             .sink { [weak self] state in
