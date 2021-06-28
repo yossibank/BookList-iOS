@@ -50,6 +50,10 @@ final class EditBookViewController: UIViewController {
         style: .borderBottomStyle
     )
 
+    private let bookTitleValidationLabel: UILabel = .init(
+        style: .validationStyle
+    )
+
     private let bookPriceStackView: UIStackView = .init(
         style: .verticalStyle,
         spacing: 4
@@ -60,6 +64,10 @@ final class EditBookViewController: UIViewController {
         style: .borderBottomStyle
     )
 
+    private let bookPriceValidationLabel: UILabel = .init(
+        style: .validationStyle
+    )
+
     private let bookPurchaseDateStackView: UIStackView = .init(
         style: .verticalStyle,
         spacing: 4
@@ -68,6 +76,10 @@ final class EditBookViewController: UIViewController {
     private let bookPurchaseDateTextField: UITextField = .init(
         placeholder: Resources.Strings.Book.purchaseDate,
         style: .borderBottomStyle
+    )
+
+    private let bookPurchaseDateValidationLabel: UILabel = .init(
+        style: .validationStyle
     )
 
     private let loadingIndicator: UIActivityIndicatorView = .init(
@@ -114,6 +126,12 @@ final class EditBookViewController: UIViewController {
         return toolbar
     }()
 
+    private var isEnabled: Bool = false {
+        didSet {
+            navigationItem.rightBarButtonItem?.isEnabled = isEnabled
+        }
+    }
+
     private var cancellables: Set<AnyCancellable> = []
     private var successHandler: ((BookBusinessModel) -> Void)?
 
@@ -155,9 +173,32 @@ extension EditBookViewController {
 private extension EditBookViewController {
 
     func setupStackView() {
-        bookTitleStackView.addArrangedSubview(bookTitleTextField)
-        bookPriceStackView.addArrangedSubview(bookPriceTextField)
-        bookPurchaseDateStackView.addArrangedSubview(bookPurchaseDateTextField)
+        let bookTitleStackViewList = [
+            bookTitleTextField,
+            bookTitleValidationLabel
+        ]
+
+        bookTitleStackViewList.forEach {
+            bookTitleStackView.addArrangedSubview($0)
+        }
+
+        let bookPriceStackViewList = [
+            bookPriceTextField,
+            bookPriceValidationLabel
+        ]
+
+        bookPriceStackViewList.forEach {
+            bookPriceStackView.addArrangedSubview($0)
+        }
+
+        let bookPurchaseDateStackViewList = [
+            bookPurchaseDateTextField,
+            bookPurchaseDateValidationLabel
+        ]
+
+        bookPurchaseDateStackViewList.forEach {
+            bookPurchaseDateStackView.addArrangedSubview($0)
+        }
 
         let buttonStackViewList = [
             bookImageSelectButton,
@@ -189,12 +230,24 @@ private extension EditBookViewController {
 
     func setupLayout() {
         bookImageView.layout {
-            $0.heightConstant == 220
+            $0.heightConstant == 200
+        }
+
+        [bookImageSelectButton, takingPictureButton].forEach {
+            $0.layout {
+                $0.heightConstant == 30
+            }
         }
 
         [bookTitleTextField, bookPriceTextField, bookPurchaseDateTextField].forEach {
             $0.layout {
                 $0.heightConstant == 30
+            }
+        }
+
+        [bookTitleValidationLabel, bookPriceValidationLabel, bookPurchaseDateValidationLabel].forEach {
+            $0.layout {
+                $0.heightConstant == 12
             }
         }
 
@@ -295,6 +348,31 @@ private extension EditBookViewController {
     }
 
     func bindViewModel() {
+        viewModel.isEnabledButton
+            .assign(to: \.isEnabled, on: self)
+            .store(in: &cancellables)
+
+        viewModel.$bookName
+            .debounce(for: 0.3, scheduler: DispatchQueue.main)
+            .dropFirst()
+            .map { _ in self.viewModel.bookNamelValidationText }
+            .assign(to: \.text, on: bookTitleValidationLabel)
+            .store(in: &cancellables)
+
+        viewModel.$bookPrice
+            .debounce(for: 0.3, scheduler: DispatchQueue.main)
+            .dropFirst()
+            .map { _ in self.viewModel.bookPriceValidationText }
+            .assign(to: \.text, on: bookPriceValidationLabel)
+            .store(in: &cancellables)
+
+        viewModel.$bookPurchaseDate
+            .debounce(for: 0.3, scheduler: DispatchQueue.main)
+            .dropFirst()
+            .map { _ in self.viewModel.bookPurchaseDateValidationText }
+            .assign(to: \.text, on: bookPurchaseDateValidationLabel)
+            .store(in: &cancellables)
+
         viewModel.$state
             .receive(on: DispatchQueue.main)
             .sink { [weak self] state in
