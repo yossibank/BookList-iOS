@@ -85,6 +85,13 @@ final class LoginViewController: UIViewController {
 
     private var cancellables: Set<AnyCancellable> = []
 
+    private var isEnabled: Bool = false {
+        didSet {
+            loginButton.alpha = isEnabled ? 1.0 : 0.5
+            loginButton.isEnabled = isEnabled
+        }
+    }
+
     private var isSecureCheck: Bool = false {
         didSet {
             let image = isSecureCheck
@@ -263,6 +270,10 @@ private extension LoginViewController {
     }
 
     func bindViewModel() {
+        viewModel.isEnabledButton
+            .assign(to: \.isEnabled, on: self)
+            .store(in: &cancellables)
+
         viewModel.$email
             .debounce(for: 0.3, scheduler: DispatchQueue.main)
             .dropFirst()

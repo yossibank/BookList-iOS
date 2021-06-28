@@ -1,5 +1,6 @@
 import Combine
 import DomainKit
+import Foundation
 import Utility
 
 final class LoginViewModel: ViewModel {
@@ -16,6 +17,12 @@ final class LoginViewModel: ViewModel {
     var passwordValidationText: String? {
         PasswordValidator.validate(password).errorDescription
     }
+
+    private(set) lazy var isEnabledButton = Publishers
+        .CombineLatest($email, $password)
+        .receive(on: DispatchQueue.main)
+        .map { _ in self.isValidate() }
+        .eraseToAnyPublisher()
 
     private let usecase: LoginUsecase
 
@@ -54,5 +61,18 @@ extension LoginViewModel {
                 self?.state = .done(state)
             }
             .store(in: &cancellables)
+    }
+}
+
+// MARK: - private methods
+
+private extension LoginViewModel {
+
+    func isValidate() -> Bool {
+        let results = [
+            EmailValidator.validate(email).isValid,
+            PasswordValidator.validate(password).isValid
+        ]
+        return results.allSatisfy { $0 }
     }
 }
