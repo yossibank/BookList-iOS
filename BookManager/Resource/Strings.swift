@@ -10,6 +10,7 @@ struct StringResources {
         @Localizable static var pleaseCheckAgainContents = "please_check_again_contents"
         @Localizable static var mailAddress = "mail_address"
         @Localizable static var password = "password"
+        @Localizable static var passwordConfirmation = "password_confirmation"
         @Localizable static var logout = "logout"
         @Localizable static var selectUser = "select_user"
         @Localizable static var nickName = "nick_name"

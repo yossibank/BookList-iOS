@@ -40,6 +40,10 @@ final class SignupViewController: UIViewController {
         style: .borderBottomStyle
     )
 
+    private let userNameValidationLabel: UILabel = .init(
+        style: .validationStyle
+    )
+
     private let emailStackView: UIStackView = .init(
         style: .verticalStyle,
         spacing: 4
@@ -49,6 +53,10 @@ final class SignupViewController: UIViewController {
         placeholder: Resources.Strings.General.mailAddress,
         keyboardType: .emailAddress,
         style: .borderBottomStyle
+    )
+
+    private let emailValidationLabel: UILabel = .init(
+        style: .validationStyle
     )
 
     private let passwordStackView: UIStackView = .init(
@@ -61,14 +69,22 @@ final class SignupViewController: UIViewController {
         style: .securePassword
     )
 
+    private let passwordValidationLabel: UILabel = .init(
+        style: .validationStyle
+    )
+
     private let passwordConfirmationStackView: UIStackView = .init(
         style: .verticalStyle,
         spacing: 4
     )
 
     private let passwordConfirmationTextField: UITextField = .init(
-        placeholder: Resources.Strings.General.password,
+        placeholder: Resources.Strings.General.passwordConfirmation,
         style: .securePassword
+    )
+
+    private let passwordConfirmationValidationLabel: UILabel = .init(
+        style: .validationStyle
     )
 
     private let secureStackView: UIStackView = .init(
@@ -107,6 +123,13 @@ final class SignupViewController: UIViewController {
     )
 
     private var cancellables: Set<AnyCancellable> = []
+
+    private var isEnabled: Bool = false {
+        didSet {
+            signupButton.alpha = isEnabled ? 1.0 : 0.5
+            signupButton.isEnabled = isEnabled
+        }
+    }
 
     private var isSecureCheck: Bool = false {
         didSet {
@@ -151,10 +174,41 @@ extension SignupViewController {
 private extension SignupViewController {
 
     func setupStackView() {
-        userNameStackView.addArrangedSubview(userNameTextField)
-        emailStackView.addArrangedSubview(emailTextField)
-        passwordStackView.addArrangedSubview(passwordTextField)
-        passwordConfirmationStackView.addArrangedSubview(passwordConfirmationTextField)
+        let userNameStackViewList = [
+            userNameTextField,
+            userNameValidationLabel
+        ]
+
+        userNameStackViewList.forEach {
+            userNameStackView.addArrangedSubview($0)
+        }
+
+        let emailStackViewList = [
+            emailTextField,
+            emailValidationLabel
+        ]
+
+        emailStackViewList.forEach {
+            emailStackView.addArrangedSubview($0)
+        }
+
+        let passwordStackViewList = [
+            passwordTextField,
+            passwordValidationLabel
+        ]
+
+        passwordStackViewList.forEach {
+            passwordStackView.addArrangedSubview($0)
+        }
+
+        let passwordConfirmationStackViewList = [
+            passwordConfirmationTextField,
+            passwordConfirmationValidationLabel
+        ]
+
+        passwordConfirmationStackViewList.forEach {
+            passwordConfirmationStackView.addArrangedSubview($0)
+        }
 
         let secureStackViewList = [
             secureButton,
@@ -207,15 +261,28 @@ private extension SignupViewController {
         userIconImageView.layout {
             $0.bottom.equal(to: mainStackView.topAnchor, offsetBy: -10)
             $0.leading.equal(to: mainStackView.leadingAnchor, offsetBy: 20)
-            $0.widthConstant == 80
-            $0.heightConstant == 80
+            $0.widthConstant == 70
+            $0.heightConstant == 70
         }
 
         userIconSelectButton.layout {
             $0.centerY == userIconImageView.centerYAnchor
             $0.leading.equal(to: userIconImageView.trailingAnchor, offsetBy: 20)
-            $0.widthConstant == 150
-            $0.heightConstant == 40
+            $0.widthConstant == 140
+            $0.heightConstant == 30
+        }
+
+        let stackViews = [
+            userNameStackView,
+            emailStackView,
+            passwordStackView,
+            passwordConfirmationStackView
+        ]
+
+        stackViews.forEach {
+            $0.layout {
+                $0.heightConstant == 40
+            }
         }
 
         let textFields = [
@@ -227,7 +294,7 @@ private extension SignupViewController {
 
         textFields.forEach {
             $0.layout {
-                $0.heightConstant == 30
+                $0.heightConstant == 25
             }
         }
 
@@ -331,6 +398,38 @@ private extension SignupViewController {
     }
 
     func bindViewModel() {
+        viewModel.isEnabledButton
+            .assign(to: \.isEnabled, on: self)
+            .store(in: &cancellables)
+
+        viewModel.$userName
+            .debounce(for: 0.3, scheduler: DispatchQueue.main)
+            .dropFirst()
+            .map { _ in self.viewModel.userNameValidationText }
+            .assign(to: \.text, on: userNameValidationLabel)
+            .store(in: &cancellables)
+
+        viewModel.$email
+            .debounce(for: 0.3, scheduler: DispatchQueue.main)
+            .dropFirst()
+            .map { _ in self.viewModel.emailValidationText }
+            .assign(to: \.text, on: emailValidationLabel)
+            .store(in: &cancellables)
+
+        viewModel.$password
+            .debounce(for: 0.3, scheduler: DispatchQueue.main)
+            .dropFirst()
+            .map { _ in self.viewModel.passwordValidationText }
+            .assign(to: \.text, on: passwordValidationLabel)
+            .store(in: &cancellables)
+
+        viewModel.$passwordConfirmation
+            .debounce(for: 0.3, scheduler: DispatchQueue.main)
+            .dropFirst()
+            .map { _ in self.viewModel.passwordConfirmationValidationText }
+            .assign(to: \.text, on: passwordConfirmationValidationLabel)
+            .store(in: &cancellables)
+
         viewModel.$state
             .receive(on: DispatchQueue.main)
             .sink { [weak self] state in

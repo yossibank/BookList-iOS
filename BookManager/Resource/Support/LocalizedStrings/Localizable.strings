@@ -8,6 +8,7 @@
 "please_check_again_contents" = "ご入力内容をもう一度ご確認ください";
 "mail_address" = "メールアドレス";
 "password" = "パスワード";
+"password_confirmation" = "パスワード(確認)";
 "logout" = "ログアウト";
 "select_user" = "ユーザー選択";
 "nick_name" = "ニックネーム";
@@ -74,6 +75,6 @@
 "not_longer_title_text" = "タイトル名は30文字以下でご入力ください";
 "not_correct_format_email" = "メールアドレスが正しいフォームで入力されていません";
 "not_length_password" = "パスワードは6文字以上で入力が必要です";
-"not_matching_password" = "パスワードとパスワード（確認）が一致しません";
+"not_matching_password" = "パスワードとパスワード(確認)が一致しません";
 "maybe_already_email" = "メールアドレスが使用されている可能性があります";
 "only_input_number" = "数字のみご入力ください";

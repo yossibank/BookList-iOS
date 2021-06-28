@@ -13,7 +13,7 @@ extension ViewStyle where T == UIImageView {
     static var iconStyle: ViewStyle<T> {
         ViewStyle<T> {
             $0.image = Resources.Images.App.noImage
-            $0.layer.cornerRadius = 30
+            $0.layer.cornerRadius = 25
             $0.layer.borderWidth = 1
             $0.layer.borderColor = UIColor.lightGray.cgColor
             $0.clipsToBounds = true

@@ -12,6 +12,28 @@ final class SignupViewModel: ViewModel {
     @Published var passwordConfirmation = String.blank
     @Published private(set) var state: State = .standby
 
+    var userNameValidationText: String? {
+        NickNameValidator.validate(userName).errorDescription
+    }
+
+    var emailValidationText: String? {
+        EmailValidator.validate(email).errorDescription
+    }
+
+    var passwordValidationText: String? {
+        PasswordValidator.validate(password).errorDescription
+    }
+
+    var passwordConfirmationValidationText: String? {
+        PasswordConfirmationValidator.validate(password, passwordConfirmation).errorDescription
+    }
+
+    private(set) lazy var isEnabledButton = Publishers
+        .CombineLatest4($userName, $email, $password, $passwordConfirmation)
+        .receive(on: DispatchQueue.main)
+        .map { _ in self.isValidate() }
+        .eraseToAnyPublisher()
+
     private let usecase: SignupUsecase
 
     private var id = UUIDIdentifiable().id
@@ -76,5 +98,15 @@ extension SignupViewModel {
                 user: user
             )
         }
+    }
+
+    func isValidate() -> Bool {
+        let results = [
+            NickNameValidator.validate(userName).isValid,
+            EmailValidator.validate(email).isValid,
+            PasswordValidator.validate(password).isValid,
+            PasswordConfirmationValidator.validate(password, passwordConfirmation).isValid
+        ]
+        return results.allSatisfy { $0 }
     }
 }
