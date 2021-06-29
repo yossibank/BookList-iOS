@@ -549,14 +549,6 @@
 			path = IBDesignable;
 			sourceTree = "<group>";
 		};
-		7892EF77259C73B2006F7315 /* Service */ = {
-			isa = PBXGroup;
-			children = (
-				7892EF78259C73C9006F7315 /* KeyboardNotifier.swift */,
-			);
-			path = Service;
-			sourceTree = "<group>";
-		};
 		78987B36259C87EE008311DC /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -612,6 +604,7 @@
 				78E609EF25AAAA210041B3D0 /* Validation */,
 				78FE8CD5267B76750006612E /* FirebaseProvider.swift */,
 				784EAB002688A95B0032A0E9 /* Identifable.swift */,
+				7892EF78259C73C9006F7315 /* KeyboardNotifier.swift */,
 				78752AA3267EEBA9000B87AC /* Layout.swift */,
 				78B2A16C267B8A6100D9EA0E /* LoadingState.swift */,
 				78752AA5267EEE92000B87AC /* Style.swift */,
@@ -710,7 +703,6 @@
 		78B2A169267B87B600D9EA0E /* Before */ = {
 			isa = PBXGroup;
 			children = (
-				7892EF77259C73B2006F7315 /* Service */,
 				7892EF48259C539B006F7315 /* IBDesignable */,
 			);
 			path = Before;

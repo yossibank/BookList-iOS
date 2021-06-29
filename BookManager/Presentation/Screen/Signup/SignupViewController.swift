@@ -13,6 +13,7 @@ extension SignupViewController: VCInjectable {
 final class SignupViewController: UIViewController {
     var routing: R! { didSet { routing.viewController = self } }
     var viewModel: VM!
+    var keyboardNotifier: KeyboardNotifier = .init()
 
     private let mainStackView: UIStackView = .init(
         style: .verticalStyle,
@@ -159,6 +160,7 @@ extension SignupViewController {
         setupEvent()
         bindValue()
         bindViewModel()
+        listenerKeyboard(keyboardNotifier: keyboardNotifier)
     }
 
     override func touchesBegan(
@@ -468,6 +470,8 @@ private extension SignupViewController {
     }
 }
 
+// MARK: - Delegate
+
 extension SignupViewController: UITextFieldDelegate {
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -515,5 +519,21 @@ extension SignupViewController: UIImagePickerControllerDelegate, UINavigationCon
 
     func imagePickerControllerDidCancel(_: UIImagePickerController) {
         routing.dismiss()
+    }
+}
+
+extension SignupViewController: KeyboardDelegate {
+
+    func keyboardPresent(_ keyboardFrame: CGRect) {
+        let displayHeight = view.frame.height - keyboardFrame.height
+        let bottomOffsetY = buttonStackView.convert(
+            signupButton.frame, to: self.view
+        ).maxY + 10 - displayHeight
+
+        view.frame.origin.y == 0 ? (view.frame.origin.y -= bottomOffsetY) : ()
+    }
+
+    func keyboardDismiss() {
+        view.frame.origin.y != 0 ? (view.frame.origin.y = 0) : ()
     }
 }
