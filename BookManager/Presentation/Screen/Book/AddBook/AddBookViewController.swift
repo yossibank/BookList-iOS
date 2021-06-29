@@ -13,6 +13,7 @@ extension AddBookViewController: VCInjectable {
 final class AddBookViewController: UIViewController {
     var routing: NoRouting!
     var viewModel: VM!
+    var keyboardNotifier: KeyboardNotifier = .init()
 
     private let mainStackView: UIStackView = .init(
         style: .verticalStyle,
@@ -152,6 +153,7 @@ extension AddBookViewController {
         setupEvent()
         bindValue()
         bindViewModel()
+        listenerKeyboard(keyboardNotifier: keyboardNotifier)
     }
 
     override func touchesBegan(
@@ -436,6 +438,22 @@ extension AddBookViewController: UIImagePickerControllerDelegate, UINavigationCo
 
     func imagePickerControllerDidCancel(_: UIImagePickerController) {
         dismiss(animated: true)
+    }
+}
+
+extension AddBookViewController: KeyboardDelegate {
+
+    func keyboardPresent(_ keyboardFrame: CGRect) {
+        let displayHeight = view.frame.height - keyboardFrame.height
+        let bottomOffsetY = bookPurchaseDateStackView.convert(
+            bookPurchaseDateTextField.frame, to: self.view
+        ).maxY + 10 - displayHeight
+
+        view.frame.origin.y == 0 ? (view.frame.origin.y -= bottomOffsetY) : ()
+    }
+
+    func keyboardDismiss() {
+        view.frame.origin.y != 0 ? (view.frame.origin.y = 0) : ()
     }
 }
 
