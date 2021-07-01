@@ -62,7 +62,7 @@ private extension ChatSelectViewController {
         tableView.dataSource = dataSource
 
         tableView.register(
-            ChatSelectTableViewCell.xib(),
+            ChatSelectTableViewCell.self,
             forCellReuseIdentifier: ChatSelectTableViewCell.resourceName
         )
         tableView.tableFooterView = UIView()
