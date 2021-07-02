@@ -55,7 +55,7 @@ extension ChatSelectTableViewCell {
 
 // MARK: - private methods
 
-extension ChatSelectTableViewCell {
+private extension ChatSelectTableViewCell {
 
     func setupView() {
         backgroundColor = .white

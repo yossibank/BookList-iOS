@@ -10,7 +10,6 @@
 		7802FBB425BBC91D00565A16 /* Date+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7802FBB325BBC91D00565A16 /* Date+Util.swift */; };
 		7805908825F48A94002B5296 /* ChatUserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7805908725F48A94002B5296 /* ChatUserListViewController.swift */; };
 		7805908E25F48ADA002B5296 /* ChatUserListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7805908C25F48ADA002B5296 /* ChatUserListTableViewCell.swift */; };
-		7805908F25F48ADA002B5296 /* ChatUserListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7805908D25F48ADA002B5296 /* ChatUserListTableViewCell.xib */; };
 		780F6B902682C656002D7513 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 780F6B8F2682C656002D7513 /* FirebaseFirestore */; };
 		780F6B922682C656002D7513 /* FirebaseFirestoreSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 780F6B912682C656002D7513 /* FirebaseFirestoreSwift-Beta */; };
 		780F6B942682C656002D7513 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 780F6B932682C656002D7513 /* FirebaseAnalytics */; };
@@ -165,7 +164,6 @@
 		7802FBB325BBC91D00565A16 /* Date+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Util.swift"; sourceTree = "<group>"; };
 		7805908725F48A94002B5296 /* ChatUserListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatUserListViewController.swift; sourceTree = "<group>"; };
 		7805908C25F48ADA002B5296 /* ChatUserListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatUserListTableViewCell.swift; sourceTree = "<group>"; };
-		7805908D25F48ADA002B5296 /* ChatUserListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatUserListTableViewCell.xib; sourceTree = "<group>"; };
 		781936B225BC5B2B00309FB7 /* BookFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookFileManager.swift; sourceTree = "<group>"; };
 		781936BF25BC752D00309FB7 /* BookBusinessModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookBusinessModel.swift; sourceTree = "<group>"; };
 		781F64C0267CB73C00D50B08 /* SignupRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupRouting.swift; sourceTree = "<group>"; };
@@ -749,7 +747,6 @@
 				781B121B25E69A75006968ED /* OtherMessageCell */,
 				78C7F3AF25E52C94005E9E2B /* ChatSelectTableViewCell.swift */,
 				7805908C25F48ADA002B5296 /* ChatUserListTableViewCell.swift */,
-				7805908D25F48ADA002B5296 /* ChatUserListTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -929,7 +926,6 @@
 				78DEE7B525AAD4D500219963 /* Localizable.strings in Resources */,
 				78231206259C0D9300D9E723 /* LaunchScreen.storyboard in Resources */,
 				78421CE125E9273500950F62 /* KeyboardAccessoryView.xib in Resources */,
-				7805908F25F48ADA002B5296 /* ChatUserListTableViewCell.xib in Resources */,
 				78B8A69125E54021005BCB16 /* OtherMessageTableViewCell.xib in Resources */,
 				78299CEA25E69D0D001868FB /* MyMessageTableViewCell.xib in Resources */,
 			);
