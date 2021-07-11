@@ -76,7 +76,7 @@ private extension ChatUserListViewController {
         tableView.dataSource = dataSource
 
         tableView.register(
-            ChatUserListTableViewCell.xib(),
+            ChatUserListTableViewCell.self,
             forCellReuseIdentifier: ChatUserListTableViewCell.resourceName
         )
         tableView.tableFooterView = UIView()

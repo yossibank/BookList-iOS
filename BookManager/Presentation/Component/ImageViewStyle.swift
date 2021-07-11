@@ -20,6 +20,15 @@ extension ViewStyle where T == UIImageView {
         }
     }
 
+    static var userIconStyle: ViewStyle<T> {
+        ViewStyle<T> {
+            $0.layer.cornerRadius = 20
+            $0.layer.borderWidth = 1
+            $0.layer.borderColor = UIColor.lightGray.cgColor
+            $0.clipsToBounds = true
+        }
+    }
+
     static var bookListImageStyle: ViewStyle<T> {
         ViewStyle<T> {
             $0.layer.borderWidth = 1
