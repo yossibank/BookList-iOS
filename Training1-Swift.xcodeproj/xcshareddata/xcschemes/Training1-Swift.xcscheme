@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "782311F5259C0D9200D9E723"
-               BuildableName = "BookManager.app"
-               BlueprintName = "BookManager"
-               ReferencedContainer = "container:BookManager.xcodeproj">
+               BuildableName = "Training1-Swift.app"
+               BlueprintName = "Training1-Swift"
+               ReferencedContainer = "container:Training1-Swift.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "7823120B259C0D9300D9E723"
-               BuildableName = "BookManagerTests.xctest"
-               BlueprintName = "BookManagerTests"
-               ReferencedContainer = "container:BookManager.xcodeproj">
+               BuildableName = "Training1-SwiftTests.xctest"
+               BlueprintName = "Training1-SwiftTests"
+               ReferencedContainer = "container:Training1-Swift.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -45,7 +45,7 @@
                BlueprintIdentifier = "APIKitTests"
                BuildableName = "APIKitTests"
                BlueprintName = "APIKitTests"
-               ReferencedContainer = "container:BookManager/APIKit">
+               ReferencedContainer = "container:Training1-Swift/APIKit">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -55,7 +55,7 @@
                BlueprintIdentifier = "DomainKitTests"
                BuildableName = "DomainKitTests"
                BlueprintName = "DomainKitTests"
-               ReferencedContainer = "container:BookManager/DomainKit">
+               ReferencedContainer = "container:Training1-Swift/DomainKit">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -75,9 +75,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "782311F5259C0D9200D9E723"
-            BuildableName = "BookManager.app"
-            BlueprintName = "BookManager"
-            ReferencedContainer = "container:BookManager.xcodeproj">
+            BuildableName = "Training1-Swift.app"
+            BlueprintName = "Training1-Swift"
+            ReferencedContainer = "container:Training1-Swift.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <CommandLineArguments>
@@ -102,9 +102,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "782311F5259C0D9200D9E723"
-            BuildableName = "BookManager.app"
-            BlueprintName = "BookManager"
-            ReferencedContainer = "container:BookManager.xcodeproj">
+            BuildableName = "Training1-Swift.app"
+            BlueprintName = "Training1-Swift"
+            ReferencedContainer = "container:Training1-Swift.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
