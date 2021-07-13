@@ -169,13 +169,13 @@
 		781F64C0267CB73C00D50B08 /* SignupRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupRouting.swift; sourceTree = "<group>"; };
 		7821A5CF25E25C5B0006DE50 /* FirebaseAuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthManager.swift; sourceTree = "<group>"; };
 		7821A5D325E25C630006DE50 /* FirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreManager.swift; sourceTree = "<group>"; };
-		782311F6259C0D9200D9E723 /* Training1-Swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Training1-Swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		782311F6259C0D9200D9E723 /* BookManager-Swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BookManager-Swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		782311F9259C0D9200D9E723 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		782311FD259C0D9200D9E723 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		78231202259C0D9300D9E723 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		78231205259C0D9300D9E723 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		78231207259C0D9300D9E723 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7823120C259C0D9300D9E723 /* Training1-SwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Training1-SwiftTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7823120C259C0D9300D9E723 /* BookManager-SwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "BookManager-SwiftTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		78231210259C0D9300D9E723 /* Training1-SwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Training1-SwiftTests.swift"; sourceTree = "<group>"; };
 		78231212259C0D9300D9E723 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7824042325E92A040001AB52 /* KeyboardAccessoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardAccessoryView.swift; sourceTree = "<group>"; };
@@ -354,8 +354,8 @@
 		782311ED259C0D9200D9E723 = {
 			isa = PBXGroup;
 			children = (
-				782311F8259C0D9200D9E723 /* Training1-Swift */,
-				7823120F259C0D9300D9E723 /* Training1-SwiftTests */,
+				782311F8259C0D9200D9E723 /* BookManager-Swift */,
+				7823120F259C0D9300D9E723 /* BookManager-SwiftTests */,
 				782311F7259C0D9200D9E723 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -363,13 +363,13 @@
 		782311F7259C0D9200D9E723 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				782311F6259C0D9200D9E723 /* Training1-Swift.app */,
-				7823120C259C0D9300D9E723 /* Training1-SwiftTests.xctest */,
+				782311F6259C0D9200D9E723 /* BookManager-Swift.app */,
+				7823120C259C0D9300D9E723 /* BookManager-SwiftTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		782311F8259C0D9200D9E723 /* Training1-Swift */ = {
+		782311F8259C0D9200D9E723 /* BookManager-Swift */ = {
 			isa = PBXGroup;
 			children = (
 				78EB164D2676201C00777F32 /* APIKit */,
@@ -385,16 +385,16 @@
 				78D18A87265E251500396D19 /* GoogleService-Info.plist */,
 				78B2A169267B87B600D9EA0E /* Before */,
 			);
-			path = "Training1-Swift";
+			path = "BookManager-Swift";
 			sourceTree = "<group>";
 		};
-		7823120F259C0D9300D9E723 /* Training1-SwiftTests */ = {
+		7823120F259C0D9300D9E723 /* BookManager-SwiftTests */ = {
 			isa = PBXGroup;
 			children = (
 				78231212259C0D9300D9E723 /* Info.plist */,
 				78231210259C0D9300D9E723 /* Training1-SwiftTests.swift */,
 			);
-			path = "Training1-SwiftTests";
+			path = "BookManager-SwiftTests";
 			sourceTree = "<group>";
 		};
 		78299CE625E69CFD001868FB /* MyMessageCell */ = {
@@ -809,9 +809,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		782311F5259C0D9200D9E723 /* Training1-Swift */ = {
+		782311F5259C0D9200D9E723 /* BookManager-Swift */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 78231220259C0D9300D9E723 /* Build configuration list for PBXNativeTarget "Training1-Swift" */;
+			buildConfigurationList = 78231220259C0D9300D9E723 /* Build configuration list for PBXNativeTarget "BookManager-Swift" */;
 			buildPhases = (
 				782311F2259C0D9200D9E723 /* Sources */,
 				782311F3259C0D9200D9E723 /* Frameworks */,
@@ -823,7 +823,7 @@
 			);
 			dependencies = (
 			);
-			name = "Training1-Swift";
+			name = "BookManager-Swift";
 			packageProductDependencies = (
 				781CC3A02658E6E00075D260 /* RxSwift */,
 				781CC3A42658E6E00075D260 /* RxRelay */,
@@ -843,12 +843,12 @@
 				78F675502684CF6C009E117D /* Nuke */,
 			);
 			productName = Collections;
-			productReference = 782311F6259C0D9200D9E723 /* Training1-Swift.app */;
+			productReference = 782311F6259C0D9200D9E723 /* BookManager-Swift.app */;
 			productType = "com.apple.product-type.application";
 		};
-		7823120B259C0D9300D9E723 /* Training1-SwiftTests */ = {
+		7823120B259C0D9300D9E723 /* BookManager-SwiftTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 78231223259C0D9300D9E723 /* Build configuration list for PBXNativeTarget "Training1-SwiftTests" */;
+			buildConfigurationList = 78231223259C0D9300D9E723 /* Build configuration list for PBXNativeTarget "BookManager-SwiftTests" */;
 			buildPhases = (
 				78231208259C0D9300D9E723 /* Sources */,
 				78231209259C0D9300D9E723 /* Frameworks */,
@@ -859,9 +859,9 @@
 			dependencies = (
 				7823120E259C0D9300D9E723 /* PBXTargetDependency */,
 			);
-			name = "Training1-SwiftTests";
+			name = "BookManager-SwiftTests";
 			productName = CollectionsTests;
-			productReference = 7823120C259C0D9300D9E723 /* Training1-SwiftTests.xctest */;
+			productReference = 7823120C259C0D9300D9E723 /* BookManager-SwiftTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -882,7 +882,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 782311F1259C0D9200D9E723 /* Build configuration list for PBXProject "Training1-Swift" */;
+			buildConfigurationList = 782311F1259C0D9200D9E723 /* Build configuration list for PBXProject "BookManager-Swift" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -902,8 +902,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				782311F5259C0D9200D9E723 /* Training1-Swift */,
-				7823120B259C0D9300D9E723 /* Training1-SwiftTests */,
+				782311F5259C0D9200D9E723 /* BookManager-Swift */,
+				7823120B259C0D9300D9E723 /* BookManager-SwiftTests */,
 			);
 		};
 /* End PBXProject section */
@@ -1076,7 +1076,7 @@
 /* Begin PBXTargetDependency section */
 		7823120E259C0D9300D9E723 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 782311F5259C0D9200D9E723 /* Training1-Swift */;
+			target = 782311F5259C0D9200D9E723 /* BookManager-Swift */;
 			targetProxy = 7823120D259C0D9300D9E723 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -1220,13 +1220,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = "Training1-Swift/Info.plist";
+				INFOPLIST_FILE = "BookManager-Swift/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.yossibank.Trainging1-Swift";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.yossibank.BookManager-Swift";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1242,13 +1242,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = "Training1-Swift/Info.plist";
+				INFOPLIST_FILE = "BookManager-Swift/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.yossibank.Trainging1-Swift";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.yossibank.BookManager-Swift";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1263,18 +1263,18 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = "Training1-SwiftTests/Info.plist";
+				INFOPLIST_FILE = "BookManager-SwiftTests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.yossibank.Training1-SwiftTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.yossibank.BookManager-SwiftTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Training1-Swift.app/Training1-Swift";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BookManager-Swift.app/BookManager-Swift";
 			};
 			name = Debug;
 		};
@@ -1285,25 +1285,25 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = "Training1-SwiftTests/Info.plist";
+				INFOPLIST_FILE = "BookManager-SwiftTests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.yossibank.Training1-SwiftTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.yossibank.BookManager-SwiftTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Training1-Swift.app/Training1-Swift";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BookManager-Swift.app/BookManager-Swift";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		782311F1259C0D9200D9E723 /* Build configuration list for PBXProject "Training1-Swift" */ = {
+		782311F1259C0D9200D9E723 /* Build configuration list for PBXProject "BookManager-Swift" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7823121E259C0D9300D9E723 /* Debug */,
@@ -1312,7 +1312,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		78231220259C0D9300D9E723 /* Build configuration list for PBXNativeTarget "Training1-Swift" */ = {
+		78231220259C0D9300D9E723 /* Build configuration list for PBXNativeTarget "BookManager-Swift" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				78231221259C0D9300D9E723 /* Debug */,
@@ -1321,7 +1321,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		78231223259C0D9300D9E723 /* Build configuration list for PBXNativeTarget "Training1-SwiftTests" */ = {
+		78231223259C0D9300D9E723 /* Build configuration list for PBXNativeTarget "BookManager-SwiftTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				78231224259C0D9300D9E723 /* Debug */,
